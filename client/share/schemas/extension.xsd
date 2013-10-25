@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="extension">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="scripts" minOccurs="0">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element maxOccurs="unbounded" name="script">
+                <xs:complexType>
+                  <xs:attribute name="path" type="xs:string" use="required" />
+                  <xs:attribute name="language" type="xs:string" use="required" />
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+      <xs:attribute name="id" type="xs:string" use="required" />
+      <xs:attribute name="name" type="xs:string" use="required" />      
+      <xs:attribute name="description" type="xs:string" use="optional" />
+      <xs:attribute name="content" type="xs:string" use="optional" />
+      <xs:attribute name="category" type="xs:string" use="optional" />
+      <xs:attribute name="tags" type="xs:string" use="optional" />
+      <xs:attribute name="trust" type="xs:string" use="optional" />
+      <xs:attribute name="author" type="xs:string" use="optional" />
+      <xs:attribute name="version" type="xs:decimal" use="required" />
+      <xs:attribute name="compatibility" type="xs:decimal" use="optional" />
+      <xs:attribute name="homepage" type="xs:string" use="optional" />
+      <xs:attribute name="icon" type="xs:string" use="optional" />
+      <xs:attribute name="logo" type="xs:string" use="optional" />
+
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

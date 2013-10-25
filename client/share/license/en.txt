@@ -1,0 +1,94 @@
+﻿Osiris End User License Agreement
+
+IMPORTANT: PLEASE READ CAREFULLY
+
+Before reading the articles below, please note the following preliminary terms below:
+
+Entering into this Agreement: This End User License Agreement constitutes a valid and binding agreement between Kodeware srl and You, as a user, for the use of the Osiris Software. You must enter into this Agreement by clicking on the ACCEPT button in order to install and use the Osiris Software. You hereby agree and acknowledge that this Agreement covers all Your use of Osiris Software, whether it be from this installation or from any other terminals where Osiris Software has been installed, by You or by third parties. Furthermore, by installing and continuing to use the Osirs Software You agree to be bound by the terms of this Agreement and any new versions hereof.
+
+Jurisdiction’s Restrictions: if You are residing in a jurisdiction which restricts the use of internet-based applications according to age, or which restricts the ability to enter into agreements such as this agreement according to age and You are under such a jurisdiction and under such age limit, You may not enter into this Agreement and download, install or use the Osiris Software. 
+
+Article 1	License and Restrictions
+
+1.1 License. Subject to the terms of this Agreement, Kodeware srl hereby grants You a limited, personal, non-commercial, non-exclusive, non-sublicensable, non-assignable, free of charge license to download, install and use the Osiris Software on Your computer.
+1.2 No Granting of Rights to Third Parties. You will not sell, assign, rent, lease, distribute, export, import, act as an intermediary or provider, or otherwise grant rights to third parties with regard to the Osiris Software or any part thereof.
+1.3 No Modifications. You will not undertake, cause, permit or authorize the modification, creation of derivative works, translation, reverse engineering, decompiling, disassembling or hacking of the Osiris Software or any part thereof.
+1.4 New Versions of the Osiris Software. Kodeware srl , in its sole discretion, reserves the right to add additional features or functions, or to provide programming fixes, updates and upgrades, to the Osiris Software. You acknowledge and agree that Kodeware srl has no obligation to make available to You any subsequent versions of the Osirs Software. You also agree that you may have to enter into a renewed version of this Agreement, in the event you want to download, install or use a new version of the Osiris Software. 
+
+Article 2	Definitions to License Restrictions and Additional Terms
+
+2.1 Distribution of Osiris Software. You are not allowed to distribute the Osiris Software under this Agreement. 
+2.2 Distribution of Osiris API. Under this Agreement You are not allowed to use the Osiris API in connection with applications that You (or any third party) distribute or intend to distribute. If you wish to distribute Your application, which uses Osiris API, You will have to agree to and meet with the Osiris API Terms of Use as published on the Osiris Website. 
+2.3 Use of Osiris API. You may make use of the Osiris API, subject to license terms.
+2.4 You will not remove, overtake, hide or otherwise make the UI inaccessible for end users;
+2.5 You will monitor the Osiris Website in order to ensure that You are aware of any changes in the applicable legal documents. In the event You cannot agree on any changes in any applicable legal document, You will immediately cease any and all use of the Osiris API and, where applicable, any and all use of the Osiris Software.
+2.6 You acknowledge and agree that Your use of the Osiris API will be at Your own risk and account.
+
+Article 3	Utilization of Your computer
+
+3.1 Utilization of Your computer. You hereby acknowledge that the Osiris Software may utilize the processor and bandwidth of the computer (or other applicable device) You are utilizing, for the limited purpose of facilitating the communication between Osiris Software users.
+3.2 Protection of Your computer (resources). You understand that the Osiris Software will use its commercially reasonable efforts to protect the privacy and integrity of the computer resources (or other applicable device) You are utilizing and of Your communication, however, You acknowledge and agree that Kodeware cannot give any warranties in this respect. 
+
+
+Article 4	Confidentiality and Privacy
+
+4.1 Osiris Confidential Information. You agree to take all reasonable steps at all times to protect and keep strictly confidential any confidential information regarding Osiris, its Affiliates, the Osiris Staff, the Osiris Software and the IP Rights.
+4.2 Your Confidential Information and Your Privacy. Kodeware is committed to respecting Your privacy and the confidentiality of Your personal data
+
+Article 5	IP Rights and Translations
+
+5.1 Exclusive Ownership. You acknowledge and agree that any and all IP Rights to or arising from the Osiris Software are and shall remain the exclusive property of Kodeware and/or its licensors. Nothing in this Agreement intends to transfer any such IP Rights to, or to vest any such IP Rights in, You. You are only entitled to the limited use of the IP Rights granted to You in this Agreement. You will not take any action to jeopardize, limit or interfere with the IP Rights. You acknowledge and agree that any unauthorized use of the IP Rights is a violation of this Agreement as well as a violation of intellectual property laws, including without limitation, copyright laws and trademark laws. You acknowledge and understand that all title and IP Rights in and to any third party content that is not contained in the Osiris Software, but may be accessed through use of the Osiris Software, is the property of the respective content owners and may be protected by applicable copyright or other intellectual property laws and treaties.
+5.2 With the exception of IP Rights of Osiris and/or its licensors in Osiris Software (including the Osiris API), You retain the intellectual property rights You may have in the applications, materials, products or processes You create which are based on or utilize the Osiris API. You hereby release and covenant not to hold liable Osiris or its Affiliates, or any of their licensees, assigns or successors, for any and all damages, liabilities, causes of action, judgments or claims (a) pertaining to any intellectual property You develop that is based on, uses, or relates to the Osiris API; and (b) which otherwise may arise in connection with Your use of, reliance on, or reference to the Osiris API. As between You and Osiris, Kodeware and its licensors retain the IP Rights in and to the Osiris Software (including the Osiris API) and any derivative works thereto created by or for Osiris or its licensors.
+5.3 No Removal of Notices. You agree that You will not remove, obscure, make illegible or alter any notices or indications of the IP Rights and/or Kodeware rights and ownership thereof, whether such notice or indications are affixed on, contained in or otherwise connected to such materials.
+
+Article 6	Communication and Your Use of the Osiris Software
+
+6.1	No Responsibility of Content. You acknowledge and understand that the content of the communication spread by the use of the Osiris Software is entirely the responsibility of the person from whom such content originated. You, therefore, may be exposed to content that is offensive, harmful to minors, indecent or otherwise objectionable. Kodeware will not be liable for any type of communication spread by means of the Osiris Software. 
+6.2	Lawful purposes. You acknowledge and agree to use the Osiris Software solely for lawful purposes. 
+
+Article 7	Term and (Consequences of) Termination
+
+7.1 Term. This Agreement will be effective as of the Effective Date and will remain effective until terminated by either Kodeware or You as set forth below.
+7.2 Termination by Kodeware. Without limiting other remedies, kodeware may limit, suspend, or terminate this license and Your use of Osiris Software, prohibit access to Osiris Website and delete Your User Account and/or User ID, with immediate effect, if we think that You are in breach of this Agreement, creating problems, possible legal liabilities, acting inconsistently with the letter or spirit of our policies.
+Kodeware shall effect such termination by providing notice to You to the email address You have provided, and/or by preventing Your access to the respective User Account. 
+7.3 Termination by You. You may terminate this Agreement with immediate effect at any time, with or without cause and without recourse to the courts
+7.4 Consequences of Termination. Upon termination of this Agreement, You (a) acknowledge and agree that all licenses and rights to use the Osiris Software shall terminate, and (b) will cease any and all use of the Osiris Software, and (c) will remove the Osiris Software from all hard drives, networks and other storage media and destroy all copies of the Osiris Software in Your possession or under Your control.
+7.5	No liability. Kodeware will not be liable in respect to any damage caused by the termination of this Agreement.
+
+
+Article 8	Your Representations and Warranties; Indemnification of Osiris
+
+8.1 Representations. You represent and warrant that You are authorized to enter into this Agreement and comply with its terms. Furthermore, You represent and warrant that You will at any and all times meet with Your obligations hereunder, as well as any and all laws, regulations and policies that may apply to the use of the Osiris Software.
+8.2 Export Restrictions. You acknowledge that the Osiris Software may be subject to international rules that govern the export of software. You agree to comply with all applicable international and national laws that apply to the Osiris Software as well as end-user, end-use and destination restrictions issued by national governments.  
+
+Article 9	Disclaimer of Warranties
+
+9.1 No warranties. THE Osiris SOFTWARE IS PROVIDED “AS IS”, WITH NO WARRANTIES WHATSOEVER; Kodeware DOES NOT, EITHER EXPRESSED, IMPLIED OR STATUTORY, MAKE ANY WARRANTIES, CLAIMS OR REPRESENTATIONS WITH RESPECT TO THE Osiris SOFTWARE, INCLUDING, WITHOUT LIMITATION, WARRANTIES OF QUALITY, PERFORMANCE, NON-INFRINGEMENT, MERCHANTABILITY, OR FITNESS FOR USE OR A PARTICULAR PURPOSE. Kodeware FURTHER DOES NOT REPRESENT OR WARRANT THAT THE Osiris SOFTWARE WILL ALWAYS BE AVAILABLE, ACCESSIBLE, UNINTERRUPTED, TIMELY, SECURE, ACCURATE, COMPLETE AND ERROR-FREE OR WILL OPERATE WITHOUT PACKET LOSS, NOR DOES Kodeware WARRANT ANY CONNECTION TO OR TRANSMISSION FROM THE INTERNET, OR ANY QUALITY OF CALLS MADE THROUGH THE Osiris SOFTWARE.
+9.2 Your own Risk. You acknowledge and agree that the entire risk arising out of the use or performance of the Osiris Software remains with You, to the maximum extent permitted by law.
+9.3 Jurisdiction’s Limitations. As some jurisdictions do not allow some of the exclusions or limitations as set forth above, some of these exclusions or limitations may not apply to You. In such event the liability will be limited as far as legally possible under the applicable legislation.
+
+Article 10	Limitation of Liability
+
+10.1 No Liability. The Osiris Software is being provided to You free of charge. ACCORDINGLY, YOU ACKNOWLEDGE AND AGREE THAT Kodeware, ITS AFFILIATES AND THE Kodeware STAFF WILL HAVE NO LIABILITY IN CONNECTION WITH OR ARISING FROM YOUR USE OF THE Osiris SOFTWARE, AS SET FORTH BELOW.
+10.2 Limitation of Liability. IN NO EVENT SHALL Kodeware, ITS AFFILIATES OR THE Kodeware STAFF BE LIABLE, WHETHER IN CONTRACT, WARRANTY, TORT (INCLUDING NEGLIGENCE), PRODUCT LIABILITY OR ANY OTHER FORM OF LIABILITY, FOR ANY INDIRECT, INCIDENTAL, SPECIAL OR CONSEQUENTIAL DAMAGES (INCLUDING WITHOUT LIMITATION ANY LOSS OF DATA, INTERRUPTION, COMPUTER FAILURE OR PECUNIARY LOSS) ARISING OUT OF THE USE OR INABILITY TO USE THE Osiris SOFTWARE, EVEN IF Kodeware, ITS AFFILIATES OR THE Kodeware STAFF HAVE BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES.
+10.3 Remedy. YOUR ONLY RIGHT OR REMEDY WITH RESPECT TO ANY PROBLEMS OR DISSATISFACTION WITH THE Osiris SOFTWARE IS TO DEINSTALL AND CEASE USE OF SUCH Osiris SOFTWARE.
+10.4 Jurisdiction’s Limitations. As some jurisdictions do not allow some of the exclusions or limitations as set forth above, some of these exclusions or limitations may not apply to You. In such event the liability will be limited as far as legally possible under the applicable legislation.
+
+Article 11	General Provisions
+
+11.1 New versions of the Agreement. Kodeware reserves the right to modify this Agreement at any time by providing such revised Agreement to You or by publishing the revised Agreement on the Osiris Website. The revised Agreement shall become effective within thirty (30) days of such publishing or provision to You, unless You expressly accept the revised Agreement earlier by clicking on the accept button. The express acceptance by You, or Your continued use of the Osiris Software after expiry of the notice period of thirty (30) days, shall constitute Your acceptance to be bound by the terms and conditions of the revised Agreement. Kodeware reserves the right to make changes to this Agreement from time to time.
+11.2 Entire Agreement. The terms and conditions of this Agreement constitute the entire agreement between You and Kodeware with respect to the subject matter hereof and will supersede and replace all prior understandings and agreements, in whatever form, regarding the subject matter.
+11.3 Partial Invalidity. Should any term or provision hereof be deemed invalid, void or unenforceable either in its entirety or in a particular application, the remainder of this Agreement shall nonetheless remain in full force and effect.
+11.4 No Assignment by You. You are not allowed to assign this Agreement or any rights hereunder.
+11.5 Assignment by Kodeware. Kodeware is allowed at its sole discretion to assign this Agreement or any rights hereunder to any Affiliate, without giving prior notice.
+11.6 Applicable Law. This Agreement shall be governed by and construed in accordance with the laws of Italy without giving effect to any conflict of laws provisions, whether contained in Italy law, or the laws of your current state or country of residence.
+11.7 Competent Court. Any legal proceedings arising out of or relating to this Agreement will be subject to the jurisdiction of the courts of the district of Italy.
+11.8 Language. The original Italian version of this Agreement may have been translated into other languages. In the event of inconsistency or discrepancy between the Italian version and any other language version of this Agreement, the Italian language version shall prevail.
+
+YOU EXPRESSLY ACKNOWLEDGE THAT YOU HAVE READ THIS AGREEMENT AND UNDERSTAND THE RIGHTS, OBLIGATIONS, TERMS AND CONDITIONS SET FORTH HEREIN. BY CLICKING ON THE ACCEPT BUTTON AND/OR CONTINUING TO INSTALL THE Osiris SOFTWARE, YOU EXPRESSLY CONSENT TO BE BOUND BY ITS TERMS AND CONDITIONS AND GRANT TO Kodeware THE RIGHTS SET FORTH HEREIN.
+
+Copyright © 2002-2008 Kodeware s.r.l. (http://www.kodeware.net)
+
+
+
+

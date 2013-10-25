@@ -1,0 +1,96 @@
+﻿Contratto di Licenza per Utente Finale Software Osiris
+
+IMPORTANTE: LEGGERE ATTENTAMENTE
+
+Prima di leggere gli articoli di seguito, prendere nota delle seguenti condizioni preliminari:
+
+Stipula del presente Contratto: il presente Contratto di Licenza per Utente Finale costituisce un contratto valido e vincolante fra Kodeware srl e l’utente per l’utilizzo del Software Osiris. Per installare e usare il Software Osiris l’utente deve stipulare il presente Contratto facendo clic sul pulsante ACCEPT (ACCETTA). L’utente concorda e accetta che il presente Contratto copra tutto l’uso del Software Osiris da parte dell’utente o di terze parti, sia che riguardi l’installazione o l’uso da altri terminali in cui sia stato installato il Software Osiris. Inoltre, con l’installazione e l’uso continuo del Software Osiris, l’utente riconosce di essere vincolato dalle condizioni del presente Contratto e dalle eventuali nuove versioni.
+
+Restrizioni vigenti nella giurisdizione: qualora l’utente sia residente in una giurisdizione che limita l’utilizzo di applicazioni basate su Internet in funzione dell’età, o che limiti la	 facoltà di stipulare contratti analoghi al presente contratto in funzione dell’età, e l’utente si trovi soggetto a tale giurisdizione e a tale limite di età, non è consentita la stipula del presente Contratto, il download, l’installazione o l’utilizzo del Software Osiris. 
+
+Articolo 1	Licenza e limitazioni
+
+1.1 Licenza. Nel contesto delle condizioni del presente Contratto, Kodeware srl concede all’utente una licenza limitata, personale, non commerciale, non esclusiva, non cedibile, non trasferibile e gratuita per scaricare, installare e utilizzare il Software Osiris.
+1.2 Divieto di concessioni di diritti a terzi. All’utente non è consentita la vendita, la cessione, l’affitto, la locazione, la distribuzione, l’esportazione, l’importazione, né è consentito agire da intermediario o fornitore, o comunque concedere diritti a terzi in relazione al Software Osiris o a una sua parte.
+1.3 Divieto di modifica. All’utente non è consentito intraprendere, causare, consentire o autorizzare la modifica, la creazione di lavori derivati, la traduzione, il reverse engineering, la decompilazione, il disassemblaggio o lo hacking del Software Osiris o di una sua parte.
+1.4 Nuove versioni del Software Osiris. Kodeware, a suo insindacabile giudizio, si riserva il diritto di aggiungere al Software Osiris ulteriori capacità o funzioni, o di fornire correzioni, aggiornamenti e perfezionamenti di programmazione. L’utente prende atto e accetta che Kodeware non ha alcun obbligo di rendere disponibili eventuali versioni successive del Software Osiris. L’utente concorda inoltre che potrà rendersi necessario stipulare una versione rinnovata del presente Contratto, nel caso in cui l’utente desideri scaricare, installare o utilizzare una nuova versione del Software Osiris. 
+
+Articolo 2	Definizioni delle limitazioni di licenza e condizioni aggiuntive
+
+2.1 Distribuzione del Software Osiris. In base al presente Contratto, all’utente non è consentito distribuire il Software Osiris. 
+2.2 Distribuzione dell’API Osiris. In virtù del presente Contratto, l’utente non può utilizzare l’API Osiris in connessione con altre applicazioni che l’utente (o qualsiasi terza parte) distribuisce o intende distribuire. Se l’utente desidera distribuire un’applicazione propria che utilizza l’API Osiris, l’utente sarà tenuto a sottoscrivere le Condizioni d’uso dell’API Osiris pubblicate sul sito web Osiris. 
+2.3 Utilizzo dell’API Osiris. L’utente può utilizzare l’API Osiris, in base alle condizioni della licenza. 
+2.4 L’utente non rimuoverà, nasconderà o renderà altrimenti inaccessibile agli utenti finali l’interfaccia utente (UI);
+2.5 L’utente controllerà il sito web Osiris al fine di assicurarsi di essere al corrente di eventuali modifiche ai documenti legali applicabili. In caso di impossibilità ad accettare eventuali modifiche in qualsiasi documento legale applicabile, l’utente dovrà immediatamente cessare ogni utilizzo dell’API Osiris e, se del caso, ogni utilizzo del Software Osiris.
+2.6 L’utente prende atto e concorda che l’utilizzo dell’API saranno a proprio rischio e a proprie spese.
+
+Articolo 3	Uso del computer dell’utente
+
+3.1 Uso del computer dell’utente. L’utente concorda che il Software Osiris può utilizzare il processore e la larghezza di banda del computer (o altro dispositivo del caso) al solo scopo di agevolare le comunicazioni tra utenti del Software Osiris.
+3.2 Protezione del computer dell’utente (risorse). L’utente è consapevole che il Software Osiris farà quanto in proprio potere, in misura ragionevole, per proteggere la privacy e l’integrità delle risorse del computer (o altro dispositivo del caso) e delle comunicazioni dell’utente, tuttavia l’utente prende atto e accetta che Kodeware non può dare nessuna garanzia in questo ambito. 
+
+
+Articolo 4	Riservatezza e privacy
+
+4.1 Informazioni riservate di Osiris. L’utente acconsente a fare quanto ragionevolmente in suo potere per proteggere e salvaguardare la riservatezza di tutte le informazioni riservate relative a Osiris, alle sue Consociate, al Personale Osiris, al Software Osiris e ai diritti di proprietà intellettuale di Osiris.
+4.2 Informazioni riservate e privacy dell’utente. Osiris si impegna a rispettare la privacy e la riservatezza dei dati personali dell’utente.
+
+Articolo 5	Diritti IP e traduzioni
+
+5.1 Proprietà esclusiva. L’utente prende atto e accetta che tutti i diritti di proprietà intellettuale derivanti dal Software Osiris sono e resteranno proprietà esclusiva di Kodeware e/o dei suoi concessori di licenza. Il presente Contratto non contiene nessuna disposizione tesa a cedere tali diritti di proprietà intellettuale o a investire l’utente di qualsivoglia diritto di proprietà intellettuale. L’utente ha diritto esclusivamente all’utilizzo limitato dei diritti di proprietà intellettuale concessi nel presente Contratto. L’utente si asterrà dall’intraprendere qualsiasi azione volta a compromettere, limitare o interferire con i diritti di proprietà intellettuale. L’utente prende atto e accetta che ogni utilizzo non autorizzato dei diritti di proprietà intellettuale costituisce una violazione del presente Contratto nonché una violazione delle leggi relative alla proprietà intellettuale, comprese in via esemplificativa le leggi relative ai diritti d’autore e ai marchi commerciali. L’utente prende atto e accetta che tutti i diritti di proprietà e IP rispetto a materiale di terze parti non contenuto nel Software Osiris, ma al quale è possibile accedere tramite l’uso del Software Osiris, sono di proprietà del rispettivo proprietario e possono essere protetti dalle leggi del caso relative alla proprietà intellettuale e al diritto d’autore.
+5.2 Ad eccezione dei diritti di proprietà intellettuale di Osiris e/o dei suoi concessori di licenza del Software Osiris (inclusa l’API Osiris), l’utente conserva i diritti sulla proprietà intellettuale eventualmente detenuti su applicazioni, materiali, prodotti o processi creati che si basano sull’utilizzo l’API Osiris. L’utente si impegna a non ritenere responsabile Kodeware o le sue Consociate, concessori di licenza, assegnatari o successori, per danni, responsabilità, cause, giudizi o richieste (a) relativi a qualsivoglia proprietà intellettuale sviluppata dall’utente che si basa su, utilizza o fa riferimento all’API Osiris; e (b) per quanto può in altro modo derivare in connessione all’utilizzo, affidamento o riferimento all’API Osiris da parte dell’utente. Analogamente a quanto accade tra l’utente e Osiris, Kodeware e i suoi concessori di licenza conservano i diritti di proprietà intellettuale nel e per il Software Osiris (inclusa l’API Osiris) e per qualsivoglia lavoro derivato creato da o per Osiris e i suoi concessori di licenza.
+5.3 Divieto di rimozione di avvisi. L’utente dichiara che si asterrà dal rimuovere, oscurare, rendere illeggibili o comunque alterare eventuali avvisi o indicazioni dei diritti di proprietà intellettuale e/o dei diritti e della proprietà di Kodeware relativi ai diritti di proprietà intellettuale stessi, avvisi e indicazioni presenti o in altro modo connessi a tali materiali.
+
+Articolo 6	Comunicazione e Utilizzo del Software Osiris
+
+6.1	Nessuna responsabilità relativa ai contenuti. L’utente prende atto e comprende che il contenuto delle comunicazioni diffuse tramite l’uso del Software Osiris è interamente responsabilità della persona da cui tale contenuto è stato originato. L’utente potrebbe pertanto essere esposto a contenuti offensivi, dannosi per un minore, indecenti o comunque discutibili. Kodeware non è in alcun modo responsabile per la qualità delle informazioni diffuse mediante il Software Osiris. 
+6.2	Scopi legittimi. L’utente prende atto e accetta di fare uso del Software Osiris esclusivamente per scopi legittimi. 
+
+Articolo 7	Durata e (conseguenze della) risoluzione
+
+7.1 Durata. Il presente Contratto sarà valido a partire dalla data di validità e rimarrà valido fino alla sua risoluzione da parte di Kodeware o da parte dell’utente secondo quanto previsto qui di seguito.
+7.2 Risoluzione da parte di Kodeware. Senza alcun limite per altri tipi di rimedi, Kodeware può limitare, sospendere o risolvere questa licenza e l’uso del Software Osiris da parte dell’utente, vietare l’accesso al sito web Osiris, se ritiene che l’utente violi il presente Contratto creando problemi che comportino responsabilità legali o agendo in modo non conforme alle linee di condotta delle nostre direttive, violi i diritti di proprietà intellettuale altrui, sia coinvolto in attività fraudolente, immorali o illegali, o per altri simili motivi. Skype potrà effettuare tale risoluzione fornendone notifica all’utente all’indirizzo e-mail fornito e/o impedendo l’accesso al proprio account utente. 
+7.3 Risoluzione da parte dell’utente. L’utente potrà risolvere il presente Contratto con effetto immediato, in qualsiasi momento, con o senza causa e senza ricorso a procedimenti legali.
+7.4 Conseguenze della risoluzione. Alla risoluzione del presente Contratto, l’utente prende atto e concorda che tutte le licenze e i diritti di usare il Software Osiris cesseranno, e cesserà ogni uso del Software Osiris, e rimuoverà il Software Osiris da tutti i dischi fissi, le reti e gli altri supporti elettronici e distruggerà tutte le copie del Software Osiris in proprio possesso o sotto il proprio controllo.
+7.5	Assenza di responsabilità. Kodeware non riconosce alcuna responsabilità rispetto a qualsivoglia danno determinato della risoluzione del presente Contratto.
+
+
+Articolo 8	Dichiarazioni e garanzie dell’utente; Indennizzo di Osiris
+
+8.1 Dichiarazioni. L’utente dichiara e garantisce di essere autorizzato a stipulare il presente Contratto e adempiere alle relative condizioni. Inoltre, l’utente dichiara e garantisce di attenersi sempre a tutti i propri obblighi ai sensi del presente Contratto, nonché di osservare tutte le leggi, i regolamenti e le direttive eventualmente applicabili all’uso del Software Osiris.
+8.2 Limiti per l’esportazione. L’utente è consapevole che il Software Osiris può essere soggetto a leggi internazionali che governano l’esportazione di software. L’utente accetta di attenersi a tutte le leggi nazionali e internazionali applicabili al Software Osiris, nonché a tutte le norme dei governi locali relative all’utente finale e all’uso finale.  
+
+Articolo 9	Esonero da garanzie
+
+9.1 Esclusione di garanzie. IL SOFTWARE Osiris È FORNITO SENZA ALCUNA GARANZIA; Kodeware NON RICONOSCE ALCUNA GARANZIA, ESPRESSA, IMPLICITA O DI LEGGE, NÉ ALCUNA RIVENDICAZIONE O DICHIARAZIONE RELATIVAMENTE AL SOFTWARE Osiris, INCLUSE, IN VIA ESEMPLIFICATIVA, GARANZIE DI QUALITÀ, PRESTAZIONI, DI NON VIOLAZIONE DI DIRITTI ALTRUI, COMMERCIABILITÀ, O IDONEITÀ ALL’USO O A UNO SCOPO PARTICOLARE. Kodeware INOLTRE NON DICHIARA O GARANTISCE CHE IL SOFTWARE Osiris SARÀ SEMPRE DISPONIBILE, ACCESSIBILE, ININTERROTTO, TEMPESTIVO, SICURO, ACCURATO, COMPLETO E PRIVO DI ERRORI O CHE FUNZIONERÀ SENZA PERDITA DI PACCHETTI; Kodeware NON GARANTISCE ALCUN COLLEGAMENTO A O TRASMISSIONE DA INTERNET, O LA QUALITÀ DEL SOFTWARE Osiris.
+9.2 Rischio personale dell’utente. L’utente accetta tutto il rischio derivante dall’utilizzo o dalle prestazioni del Software Osiris, nella massima misura consentita dalla legge.
+9.3 Limitazioni della giurisdizione. Dal momento che alcune giurisdizioni non consentono alcune delle esclusioni o limitazioni previste in precedenza, alcune esclusioni o limitazioni potrebbero non essere applicabili all’utente. In tal caso la responsabilità sarà limitata per quanto legalmente possibile in base alla normativa vigente.
+
+Articolo 10	Limitazione di responsabilità
+
+10.1 Assenza di responsabilità. Il Software Osiris viene fornito all’utente a titolo gratuito. DI CONSEGUENZA, L’UTENTE PRENDE ATTO E CONCORDA CHE Kodeware, LE SUE CONSOCIATE E IL PERSONALE Kodeware NON AVRANNO ALCUNA RESPONSABILITÀ IN RELAZIONE A O DERIVANTE DALL’UTILIZZO DEL SOFTWARE Osiris, SECONDO QUANTO PREVISTO QUI DI SEGUITO.
+10.2 Limitazione di responsabilità. IN NESSUN CASO Kodeware, LE SUE CONSOCIATE O IL PERSONALE Kodeware ASSUME ALCUNA RESPONSABILITÀ, SECONDO CONTRATTO, GARANZIA, ILLECITO (COMPRESA LA NEGLIGENZA) RELATIVA AI PRODOTTI O QUALSIASI ALTRA FORMA DI RESPONSABILITÀ, PER QUALSIASI DANNO INDIRETTO, INCIDENTALE, SPECIALE O CONSEGUENTE (INCLUSE SENZA LIMITAZIONE EVENTUALI PERDITE DI DATI, INTERRUZIONI, GUASTI INFORMATICI O PERDITE PECUNIARIE) DERIVANTI DALL’USO O DAL MANCATO UTILIZZO DEL SOFTWARE Osiris, ANCHE NEL CASO IN CUI Kodeware, LE SUE CONSOCIATE O IL PERSONALE Kodeware SIANO STATI AVVERTITI DELLA POSSIBILITÀ DI TALI DANNI.
+10.3 Tutela. L’UNICO DIRITTO O TUTELA DELL’UTENTE NEI CONFRONTI DI EVENTUALI PROBLEMI O NEL CASO DI INSODDISFAZIONE NEI CONFRONTI DEL SOFTWARE Osiris È DISINSTALLARE E CESSARE L’USO DEL SOFTWARE Osiris.
+10.4 Limitazioni della giurisdizione. Dal momento che alcune giurisdizioni non consentono alcune delle esclusioni o limitazioni previste in precedenza, alcune esclusioni o limitazioni potrebbero non essere applicabili all’utente. In tal caso la responsabilità sarà limitata per quanto legalmente possibile in base alla normativa vigente.
+
+
+Articolo 11	Disposizioni generali
+
+11.1 Nuove versioni del Contratto. Kodeware si riserva il diritto di modificare il presente Contratto in qualsiasi momento fornendo all’utente il Contratto modificato o pubblicando il Contratto modificato sul sito web Osiris. Il Contratto aggiornato entrerà in vigore entro 30 (trenta) giorni dalla sua pubblicazione o consegna all’utente, a meno che l’utente non accetti prima il Contratto aggiornato facendo clic sul pulsante di accettazione. L’accettazione espressa dall’utente o l’uso continuato da parte dell’utente del Software Osiris al termine del periodo di preavviso di trenta (30) giorni costituirà accettazione dei termini e delle condizioni del contratto aggiornato. Kodeware si riserva il diritto di apportare modifiche al presente Contratto nel corso del tempo.
+11.2 Intero contratto. I termini e le condizioni del presente Contratto costituiscono l’intero contratto fra l’utente e kodeware rispetto alla materia in oggetto e rimpiazzeranno e sostituiranno tutti i patti e gli accordi precedenti, in qualsivoglia forma, in relazione alla materia in oggetto.
+11.3 Invalidità parziale. Nel caso in cui un qualsiasi termine o disposizione del presente Contratto fosse considerato non valido, nullo o inapplicabile nella sua interezza o in una particolare applicazione, le altre disposizioni del presente Contratto manterranno comunque piena validità ed efficacia.
+11.4 Divieto di cessione da parte dell’utente. All’utente non è consentito cedere il presente Contratto o qualsiasi diritto relativo al Contratto stesso.
+11.5 Cessione da parte di Kodeware. Kodeware ha facoltà, a suo insindacabile giudizio, di cedere il presente Contratto o qualsiasi diritto da esso previsto a qualsiasi Consociata, senza darne preavviso.
+11.6 Legge applicabile. Il presente Contratto sarà disciplinato e interpretato secondo le leggi vigenti in Italia e senza dare effetto a conflitti di legge o disposizioni dell’ Italia o dello stato o paese di residenza dell’utente.
+11.7 Foro competente. Gli eventuali procedimenti legali derivanti da o relativi al presente contratto saranno soggetti alla giurisdizione dei tribunali con sede in Italia.
+11.8 Lingua. La versione originale italiana del presente contratto può essere stata tradotta in altre lingue. Nel caso di difformità o discrepanze tra la versione italiana e una qualsiasi altra versione tradotta del presente Contratto, farà testo la versione in italiana.
+
+L’UTENTE PRENDE ESPRESSAMENTE ATTO DI AVER LETTO IL PRESENTE CONTRATTO E DI COMPRENDERE I DIRITTI, GLI OBBLIGHI, I TERMINI E LE CONDIZIONI IN ESSO RIPORTATI. FACENDO CLIC SUL TASTO ACCEPT (ACCETTA) E/O CONTINUANDO A INSTALLARE IL SOFTWARE Osiris, L’UTENTE ACCONSENTE ESPRESSAMENTE A ESSERE VINCOLATO DAI RELATIVI TERMINI E CONDIZIONI E DI CONCEDERE A Kodeware I DIRITTI RIPORTATI NEL PRESENTE CONTRATTO.
+
+Copyright © 2002-2008 Kodeware s.r.l. (http://www.kodeware.net)
+
+
+
+
+
+- (漢字)

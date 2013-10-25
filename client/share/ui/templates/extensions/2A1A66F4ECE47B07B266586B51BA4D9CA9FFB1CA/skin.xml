@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<skin id="{unique_id}" name="{extension_name}" description="{extension_description}" version="1.0" author="{extension_author}" compatibility="0.1">
+	<schemas>     		
+    <schema name="default" preview="default.png">
+      <styles>
+        <style css="css/skin.css"/>        
+      </styles>      
+    </schema>    
+  </schemas>
+</skin>

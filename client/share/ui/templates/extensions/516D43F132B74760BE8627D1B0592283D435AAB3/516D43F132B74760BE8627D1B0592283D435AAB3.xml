@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<template name="Minimal" description="A minimal extension" author="Osiris Team">
+	<files>
+		<file target="scripts/script.py" source="script.py" script="true" macro="false"/>
+    <file target="logo.png" source="logo.png" script="false" macro="false"/>
+    <file target="icon.png" source="icon.png" script="false" macro="false"/>
+	</files>
+</template>
