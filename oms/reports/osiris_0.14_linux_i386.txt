@@ -1,0 +1,842 @@
+Library Dependencies
+---------------------------------------------------------------------------
+File:/home/clodo/osiris-sps/oms/temp/usr/lib/osiris-sps/_ctypes.so
+	linux-gate.so.1 =>  (0xb7761000)
+	libpython2.6.so.1.0 => not found
+	libpthread.so.0 => /lib/i386-linux-gnu/libpthread.so.0 (0xb771a000)
+	libc.so.6 => /lib/i386-linux-gnu/libc.so.6 (0xb75b8000)
+	/lib/ld-linux.so.2 (0xb7762000)
+-------------------
+File:/home/clodo/osiris-sps/oms/temp/usr/lib/osiris-sps/_socket.so
+	linux-gate.so.1 =>  (0xb78af000)
+	libpython2.6.so.1.0 => not found
+	libpthread.so.0 => /lib/i386-linux-gnu/libpthread.so.0 (0xb7875000)
+	libc.so.6 => /lib/i386-linux-gnu/libc.so.6 (0xb7713000)
+	/lib/ld-linux.so.2 (0xb78b0000)
+-------------------
+File:/home/clodo/osiris-sps/oms/temp/usr/lib/osiris-sps/_weakref.so
+	linux-gate.so.1 =>  (0xb77d3000)
+	libpython2.6.so.1.0 => not found
+	libpthread.so.0 => /lib/i386-linux-gnu/libpthread.so.0 (0xb77a4000)
+	libc.so.6 => /lib/i386-linux-gnu/libc.so.6 (0xb7642000)
+	/lib/ld-linux.so.2 (0xb77d4000)
+-------------------
+File:/home/clodo/osiris-sps/oms/temp/usr/lib/osiris-sps/cStringIO.so
+	linux-gate.so.1 =>  (0xb77c4000)
+	libpython2.6.so.1.0 => not found
+	libpthread.so.0 => /lib/i386-linux-gnu/libpthread.so.0 (0xb7793000)
+	libc.so.6 => /lib/i386-linux-gnu/libc.so.6 (0xb7631000)
+	/lib/ld-linux.so.2 (0xb77c5000)
+-------------------
+File:/home/clodo/osiris-sps/oms/temp/usr/lib/osiris-sps/components.so
+	linux-gate.so.1 =>  (0xb781e000)
+	libcore.so => not found
+	libweb.so => not found
+	libengine.so => not found
+	libxml.so => not found
+	libdb.so => not found
+	libhttp.so => not found
+	libpthread.so.0 => /lib/i386-linux-gnu/libpthread.so.0 (0xb7721000)
+	liblang.so => not found
+	libnet.so => not found
+	libm.so.6 => /lib/i386-linux-gnu/libm.so.6 (0xb76fa000)
+	libc.so.6 => /lib/i386-linux-gnu/libc.so.6 (0xb7599000)
+	/lib/ld-linux.so.2 (0xb781f000)
+-------------------
+File:/home/clodo/osiris-sps/oms/temp/usr/lib/osiris-sps/console
+	linux-gate.so.1 =>  (0xb786f000)
+	libcore.so => /home/clodo/osiris-sps/oms/temp/usr/lib/osiris-sps/libcore.so (0xb706d000)
+	libxerces-c-3.1.so => /home/clodo/osiris-sps/oms/temp/usr/lib/osiris-sps/libxerces-c-3.1.so (0xb6ccf000)
+	libxalan-c.so.111 => /home/clodo/osiris-sps/oms/temp/usr/lib/osiris-sps/libxalan-c.so.111 (0xb6907000)
+	libxalanMsg.so.111 => /home/clodo/osiris-sps/oms/temp/usr/lib/osiris-sps/libxalanMsg.so.111 (0xb68fe000)
+	librt.so.1 => /lib/i386-linux-gnu/librt.so.1 (0xb68e5000)
+	libssl.so.0.9.8 => /home/clodo/osiris-sps/oms/temp/usr/lib/osiris-sps/libssl.so.0.9.8 (0xb689e000)
+	libcrypto.so.0.9.8 => /home/clodo/osiris-sps/oms/temp/usr/lib/osiris-sps/libcrypto.so.0.9.8 (0xb674d000)
+	libengine.so => /home/clodo/osiris-sps/oms/temp/usr/lib/osiris-sps/libengine.so (0xb5ebb000)
+	libnet.so => /home/clodo/osiris-sps/oms/temp/usr/lib/osiris-sps/libnet.so (0xb5df5000)
+	libhttp.so => /home/clodo/osiris-sps/oms/temp/usr/lib/osiris-sps/libhttp.so (0xb5ca9000)
+	libweb.so => /home/clodo/osiris-sps/oms/temp/usr/lib/osiris-sps/libweb.so (0xb5c1a000)
+	liblang.so => /home/clodo/osiris-sps/oms/temp/usr/lib/osiris-sps/liblang.so (0xb5bc6000)
+	libxml.so => /home/clodo/osiris-sps/oms/temp/usr/lib/osiris-sps/libxml.so (0xb5b51000)
+	libupnp.so => /home/clodo/osiris-sps/oms/temp/usr/lib/osiris-sps/libupnp.so (0xb5b37000)
+	libdb.so => /home/clodo/osiris-sps/oms/temp/usr/lib/osiris-sps/libdb.so (0xb5b0e000)
+	libicuuc.so.38 => /home/clodo/osiris-sps/oms/temp/usr/lib/osiris-sps/libicuuc.so.38 (0xb59e0000)
+	libicuio.so.38 => /home/clodo/osiris-sps/oms/temp/usr/lib/osiris-sps/libicuio.so.38 (0xb59d6000)
+	libicui18n.so.38 => /home/clodo/osiris-sps/oms/temp/usr/lib/osiris-sps/libicui18n.so.38 (0xb5877000)
+	libicudata.so.38 => /home/clodo/osiris-sps/oms/temp/usr/lib/osiris-sps/libicudata.so.38 (0xb4da0000)
+	libsdk.so => /home/clodo/osiris-sps/oms/temp/usr/lib/osiris-sps/libsdk.so (0xb4d89000)
+	libarchives.so => /home/clodo/osiris-sps/oms/temp/usr/lib/osiris-sps/libarchives.so (0xb4d62000)
+	libm.so.6 => /lib/i386-linux-gnu/libm.so.6 (0xb4d3c000)
+	libc.so.6 => /lib/i386-linux-gnu/libc.so.6 (0xb4bda000)
+	libpthread.so.0 => /lib/i386-linux-gnu/libpthread.so.0 (0xb4bc1000)
+	libdl.so.2 => /lib/i386-linux-gnu/libdl.so.2 (0xb4bbd000)
+	/lib/ld-linux.so.2 (0xb7870000)
+	libnsl.so.1 => /lib/i386-linux-gnu/libnsl.so.1 (0xb4ba6000)
+	libstdc++.so.6 => /home/clodo/osiris-sps/oms/temp/usr/lib/osiris-sps/libstdc++.so.6 (0xb4ab4000)
+	libgcc_s.so.1 => /home/clodo/osiris-sps/oms/temp/usr/lib/osiris-sps/libgcc_s.so.1 (0xb4a95000)
+	libz.so.1 => /home/clodo/osiris-sps/oms/temp/usr/lib/osiris-sps/libz.so.1 (0xb4a7f000)
+-------------------
+File:/home/clodo/osiris-sps/oms/temp/usr/lib/osiris-sps/dht.so
+	linux-gate.so.1 =>  (0xb7770000)
+	libcore.so => not found
+	libpthread.so.0 => /lib/i386-linux-gnu/libpthread.so.0 (0xb770d000)
+	libengine.so => not found
+	libxml.so => not found
+	libnet.so => not found
+	libm.so.6 => /lib/i386-linux-gnu/libm.so.6 (0xb76e6000)
+	libc.so.6 => /lib/i386-linux-gnu/libc.so.6 (0xb7585000)
+	/lib/ld-linux.so.2 (0xb7771000)
+-------------------
+File:/home/clodo/osiris-sps/oms/temp/usr/lib/osiris-sps/libarchives.so
+	linux-gate.so.1 =>  (0xb781f000)
+	libcore.so => not found
+	libm.so.6 => /lib/i386-linux-gnu/libm.so.6 (0xb77bf000)
+	libc.so.6 => /lib/i386-linux-gnu/libc.so.6 (0xb765d000)
+	/lib/ld-linux.so.2 (0xb7820000)
+-------------------
+File:/home/clodo/osiris-sps/oms/temp/usr/lib/osiris-sps/libboost_unit_test_framework-gcc44-mt-1_41.so
+	linux-gate.so.1 =>  (0xb7792000)
+	librt.so.1 => /lib/i386-linux-gnu/librt.so.1 (0xb76ca000)
+	libstdc++.so.6 => /usr/lib/i386-linux-gnu/libstdc++.so.6 (0xb75df000)
+	libm.so.6 => /lib/i386-linux-gnu/libm.so.6 (0xb75b8000)
+	libgcc_s.so.1 => /lib/i386-linux-gnu/libgcc_s.so.1 (0xb759c000)
+	libpthread.so.0 => /lib/i386-linux-gnu/libpthread.so.0 (0xb7583000)
+	libc.so.6 => /lib/i386-linux-gnu/libc.so.6 (0xb7422000)
+	/lib/ld-linux.so.2 (0xb7793000)
+-------------------
+File:/home/clodo/osiris-sps/oms/temp/usr/lib/osiris-sps/libboost_unit_test_framework-gcc44-mt-1_41.so.1.41.0
+	linux-gate.so.1 =>  (0xb7805000)
+	librt.so.1 => /lib/i386-linux-gnu/librt.so.1 (0xb773d000)
+	libstdc++.so.6 => /usr/lib/i386-linux-gnu/libstdc++.so.6 (0xb7652000)
+	libm.so.6 => /lib/i386-linux-gnu/libm.so.6 (0xb762b000)
+	libgcc_s.so.1 => /lib/i386-linux-gnu/libgcc_s.so.1 (0xb760f000)
+	libpthread.so.0 => /lib/i386-linux-gnu/libpthread.so.0 (0xb75f6000)
+	libc.so.6 => /lib/i386-linux-gnu/libc.so.6 (0xb7495000)
+	/lib/ld-linux.so.2 (0xb7806000)
+-------------------
+File:/home/clodo/osiris-sps/oms/temp/usr/lib/osiris-sps/libboost_unit_test_framework-gcc44-mt.so
+	linux-gate.so.1 =>  (0xb7832000)
+	librt.so.1 => /lib/i386-linux-gnu/librt.so.1 (0xb776a000)
+	libstdc++.so.6 => /usr/lib/i386-linux-gnu/libstdc++.so.6 (0xb767f000)
+	libm.so.6 => /lib/i386-linux-gnu/libm.so.6 (0xb7658000)
+	libgcc_s.so.1 => /lib/i386-linux-gnu/libgcc_s.so.1 (0xb763c000)
+	libpthread.so.0 => /lib/i386-linux-gnu/libpthread.so.0 (0xb7623000)
+	libc.so.6 => /lib/i386-linux-gnu/libc.so.6 (0xb74c2000)
+	/lib/ld-linux.so.2 (0xb7833000)
+-------------------
+File:/home/clodo/osiris-sps/oms/temp/usr/lib/osiris-sps/libcore.so
+	linux-gate.so.1 =>  (0xb7788000)
+	libdl.so.2 => /lib/i386-linux-gnu/libdl.so.2 (0xb6f72000)
+	libpthread.so.0 => /lib/i386-linux-gnu/libpthread.so.0 (0xb6f59000)
+	libicuuc.so.38 => not found
+	libicuio.so.38 => not found
+	libm.so.6 => /lib/i386-linux-gnu/libm.so.6 (0xb6f32000)
+	libc.so.6 => /lib/i386-linux-gnu/libc.so.6 (0xb6dd1000)
+	/lib/ld-linux.so.2 (0xb7789000)
+-------------------
+File:/home/clodo/osiris-sps/oms/temp/usr/lib/osiris-sps/libcrypto.so
+	linux-gate.so.1 =>  (0xb777e000)
+	libdl.so.2 => /lib/i386-linux-gnu/libdl.so.2 (0xb7616000)
+	libz.so.1 => /lib/i386-linux-gnu/libz.so.1 (0xb7601000)
+	libc.so.6 => /lib/i386-linux-gnu/libc.so.6 (0xb749f000)
+	/lib/ld-linux.so.2 (0xb777f000)
+-------------------
+File:/home/clodo/osiris-sps/oms/temp/usr/lib/osiris-sps/libcrypto.so.0.9.8
+	linux-gate.so.1 =>  (0xb78d3000)
+	libdl.so.2 => /lib/i386-linux-gnu/libdl.so.2 (0xb776b000)
+	libz.so.1 => /lib/i386-linux-gnu/libz.so.1 (0xb7756000)
+	libc.so.6 => /lib/i386-linux-gnu/libc.so.6 (0xb75f4000)
+	/lib/ld-linux.so.2 (0xb78d4000)
+-------------------
+File:/home/clodo/osiris-sps/oms/temp/usr/lib/osiris-sps/libdb.so
+	linux-gate.so.1 =>  (0xb783b000)
+	libcore.so => not found
+	libm.so.6 => /lib/i386-linux-gnu/libm.so.6 (0xb77d9000)
+	libc.so.6 => /lib/i386-linux-gnu/libc.so.6 (0xb7677000)
+	/lib/ld-linux.so.2 (0xb783c000)
+-------------------
+File:/home/clodo/osiris-sps/oms/temp/usr/lib/osiris-sps/libengine.so
+	linux-gate.so.1 =>  (0xb7746000)
+	libarchives.so => not found
+	libcore.so => not found
+	liblang.so => not found
+	libnet.so => not found
+	libweb.so => not found
+	libxml.so => not found
+	libupnp.so => not found
+	libdb.so => not found
+	libpthread.so.0 => /lib/i386-linux-gnu/libpthread.so.0 (0xb6e87000)
+	libhttp.so => not found
+	libssl.so.0.9.8 => /lib/libssl.so.0.9.8 (0xb6e3f000)
+	libcrypto.so.0.9.8 => /lib/libcrypto.so.0.9.8 (0xb6cf3000)
+	libm.so.6 => /lib/i386-linux-gnu/libm.so.6 (0xb6ccc000)
+	libc.so.6 => /lib/i386-linux-gnu/libc.so.6 (0xb6b6b000)
+	/lib/ld-linux.so.2 (0xb7747000)
+	libdl.so.2 => /lib/i386-linux-gnu/libdl.so.2 (0xb6b67000)
+	libz.so.1 => /lib/i386-linux-gnu/libz.so.1 (0xb6b52000)
+-------------------
+File:/home/clodo/osiris-sps/oms/temp/usr/lib/osiris-sps/libgcc_s.so.1
+	linux-gate.so.1 =>  (0xb7812000)
+	libc.so.6 => /lib/i386-linux-gnu/libc.so.6 (0xb7680000)
+	/lib/ld-linux.so.2 (0xb7813000)
+-------------------
+File:/home/clodo/osiris-sps/oms/temp/usr/lib/osiris-sps/libhttp.so
+	linux-gate.so.1 =>  (0xb7773000)
+	libcore.so => not found
+	libnet.so => not found
+	libssl.so.0.9.8 => /lib/libssl.so.0.9.8 (0xb75cb000)
+	libcrypto.so.0.9.8 => /lib/libcrypto.so.0.9.8 (0xb747f000)
+	libpthread.so.0 => /lib/i386-linux-gnu/libpthread.so.0 (0xb7466000)
+	libm.so.6 => /lib/i386-linux-gnu/libm.so.6 (0xb7440000)
+	libc.so.6 => /lib/i386-linux-gnu/libc.so.6 (0xb72df000)
+	libdl.so.2 => /lib/i386-linux-gnu/libdl.so.2 (0xb72da000)
+	libz.so.1 => /lib/i386-linux-gnu/libz.so.1 (0xb72c5000)
+	/lib/ld-linux.so.2 (0xb7774000)
+-------------------
+File:/home/clodo/osiris-sps/oms/temp/usr/lib/osiris-sps/libicudata.so
+	statically linked
+-------------------
+File:/home/clodo/osiris-sps/oms/temp/usr/lib/osiris-sps/libicudata.so.38
+	statically linked
+-------------------
+File:/home/clodo/osiris-sps/oms/temp/usr/lib/osiris-sps/libicudata.so.38.1
+	statically linked
+-------------------
+File:/home/clodo/osiris-sps/oms/temp/usr/lib/osiris-sps/libicui18n.so
+	linux-gate.so.1 =>  (0xb7850000)
+	libicuuc.so.38 => not found
+	libicudata.so.38 => not found
+	libpthread.so.0 => /lib/i386-linux-gnu/libpthread.so.0 (0xb76c5000)
+	libstdc++.so.6 => /usr/lib/i386-linux-gnu/libstdc++.so.6 (0xb75da000)
+	libm.so.6 => /lib/i386-linux-gnu/libm.so.6 (0xb75b4000)
+	libgcc_s.so.1 => /lib/i386-linux-gnu/libgcc_s.so.1 (0xb7598000)
+	libc.so.6 => /lib/i386-linux-gnu/libc.so.6 (0xb7437000)
+	/lib/ld-linux.so.2 (0xb7851000)
+-------------------
+File:/home/clodo/osiris-sps/oms/temp/usr/lib/osiris-sps/libicui18n.so.38
+	linux-gate.so.1 =>  (0xb77dd000)
+	libicuuc.so.38 => not found
+	libicudata.so.38 => not found
+	libpthread.so.0 => /lib/i386-linux-gnu/libpthread.so.0 (0xb7652000)
+	libstdc++.so.6 => /usr/lib/i386-linux-gnu/libstdc++.so.6 (0xb7567000)
+	libm.so.6 => /lib/i386-linux-gnu/libm.so.6 (0xb7541000)
+	libgcc_s.so.1 => /lib/i386-linux-gnu/libgcc_s.so.1 (0xb7525000)
+	libc.so.6 => /lib/i386-linux-gnu/libc.so.6 (0xb73c4000)
+	/lib/ld-linux.so.2 (0xb77de000)
+-------------------
+File:/home/clodo/osiris-sps/oms/temp/usr/lib/osiris-sps/libicui18n.so.38.1
+	linux-gate.so.1 =>  (0xb7727000)
+	libicuuc.so.38 => not found
+	libicudata.so.38 => not found
+	libpthread.so.0 => /lib/i386-linux-gnu/libpthread.so.0 (0xb759c000)
+	libstdc++.so.6 => /usr/lib/i386-linux-gnu/libstdc++.so.6 (0xb74b1000)
+	libm.so.6 => /lib/i386-linux-gnu/libm.so.6 (0xb748b000)
+	libgcc_s.so.1 => /lib/i386-linux-gnu/libgcc_s.so.1 (0xb746f000)
+	libc.so.6 => /lib/i386-linux-gnu/libc.so.6 (0xb730e000)
+	/lib/ld-linux.so.2 (0xb7728000)
+-------------------
+File:/home/clodo/osiris-sps/oms/temp/usr/lib/osiris-sps/libicuio.so
+	linux-gate.so.1 =>  (0xb7867000)
+	libicuuc.so.38 => not found
+	libicudata.so.38 => not found
+	libicui18n.so.38 => not found
+	libpthread.so.0 => /lib/i386-linux-gnu/libpthread.so.0 (0xb7830000)
+	libstdc++.so.6 => /usr/lib/i386-linux-gnu/libstdc++.so.6 (0xb7745000)
+	libm.so.6 => /lib/i386-linux-gnu/libm.so.6 (0xb771f000)
+	libgcc_s.so.1 => /lib/i386-linux-gnu/libgcc_s.so.1 (0xb7703000)
+	libc.so.6 => /lib/i386-linux-gnu/libc.so.6 (0xb75a1000)
+	/lib/ld-linux.so.2 (0xb7868000)
+-------------------
+File:/home/clodo/osiris-sps/oms/temp/usr/lib/osiris-sps/libicuio.so.38
+	linux-gate.so.1 =>  (0xb78de000)
+	libicuuc.so.38 => not found
+	libicudata.so.38 => not found
+	libicui18n.so.38 => not found
+	libpthread.so.0 => /lib/i386-linux-gnu/libpthread.so.0 (0xb78a7000)
+	libstdc++.so.6 => /usr/lib/i386-linux-gnu/libstdc++.so.6 (0xb77bc000)
+	libm.so.6 => /lib/i386-linux-gnu/libm.so.6 (0xb7796000)
+	libgcc_s.so.1 => /lib/i386-linux-gnu/libgcc_s.so.1 (0xb777a000)
+	libc.so.6 => /lib/i386-linux-gnu/libc.so.6 (0xb7618000)
+	/lib/ld-linux.so.2 (0xb78df000)
+-------------------
+File:/home/clodo/osiris-sps/oms/temp/usr/lib/osiris-sps/libicuio.so.38.1
+	linux-gate.so.1 =>  (0xb7721000)
+	libicuuc.so.38 => not found
+	libicudata.so.38 => not found
+	libicui18n.so.38 => not found
+	libpthread.so.0 => /lib/i386-linux-gnu/libpthread.so.0 (0xb76ea000)
+	libstdc++.so.6 => /usr/lib/i386-linux-gnu/libstdc++.so.6 (0xb75ff000)
+	libm.so.6 => /lib/i386-linux-gnu/libm.so.6 (0xb75d9000)
+	libgcc_s.so.1 => /lib/i386-linux-gnu/libgcc_s.so.1 (0xb75bd000)
+	libc.so.6 => /lib/i386-linux-gnu/libc.so.6 (0xb745b000)
+	/lib/ld-linux.so.2 (0xb7722000)
+-------------------
+File:/home/clodo/osiris-sps/oms/temp/usr/lib/osiris-sps/libicuuc.so
+	linux-gate.so.1 =>  (0xb774b000)
+	libicudata.so.38 => not found
+	libpthread.so.0 => /lib/i386-linux-gnu/libpthread.so.0 (0xb75f1000)
+	libstdc++.so.6 => /usr/lib/i386-linux-gnu/libstdc++.so.6 (0xb7505000)
+	libm.so.6 => /lib/i386-linux-gnu/libm.so.6 (0xb74df000)
+	libgcc_s.so.1 => /lib/i386-linux-gnu/libgcc_s.so.1 (0xb74c3000)
+	libc.so.6 => /lib/i386-linux-gnu/libc.so.6 (0xb7362000)
+	/lib/ld-linux.so.2 (0xb774c000)
+-------------------
+File:/home/clodo/osiris-sps/oms/temp/usr/lib/osiris-sps/libicuuc.so.38
+	linux-gate.so.1 =>  (0xb7746000)
+	libicudata.so.38 => not found
+	libpthread.so.0 => /lib/i386-linux-gnu/libpthread.so.0 (0xb75ec000)
+	libstdc++.so.6 => /usr/lib/i386-linux-gnu/libstdc++.so.6 (0xb7500000)
+	libm.so.6 => /lib/i386-linux-gnu/libm.so.6 (0xb74da000)
+	libgcc_s.so.1 => /lib/i386-linux-gnu/libgcc_s.so.1 (0xb74be000)
+	libc.so.6 => /lib/i386-linux-gnu/libc.so.6 (0xb735d000)
+	/lib/ld-linux.so.2 (0xb7747000)
+-------------------
+File:/home/clodo/osiris-sps/oms/temp/usr/lib/osiris-sps/libicuuc.so.38.1
+	linux-gate.so.1 =>  (0xb77f4000)
+	libicudata.so.38 => not found
+	libpthread.so.0 => /lib/i386-linux-gnu/libpthread.so.0 (0xb769a000)
+	libstdc++.so.6 => /usr/lib/i386-linux-gnu/libstdc++.so.6 (0xb75ae000)
+	libm.so.6 => /lib/i386-linux-gnu/libm.so.6 (0xb7588000)
+	libgcc_s.so.1 => /lib/i386-linux-gnu/libgcc_s.so.1 (0xb756c000)
+	libc.so.6 => /lib/i386-linux-gnu/libc.so.6 (0xb740b000)
+	/lib/ld-linux.so.2 (0xb77f5000)
+-------------------
+File:/home/clodo/osiris-sps/oms/temp/usr/lib/osiris-sps/libirc.so
+	linux-gate.so.1 =>  (0xb78d0000)
+	libcore.so => not found
+	libnet.so => not found
+	libssl.so.0.9.8 => /lib/libssl.so.0.9.8 (0xb7795000)
+	libcrypto.so.0.9.8 => /lib/libcrypto.so.0.9.8 (0xb7649000)
+	libpthread.so.0 => /lib/i386-linux-gnu/libpthread.so.0 (0xb7630000)
+	libm.so.6 => /lib/i386-linux-gnu/libm.so.6 (0xb760a000)
+	libc.so.6 => /lib/i386-linux-gnu/libc.so.6 (0xb74a9000)
+	libdl.so.2 => /lib/i386-linux-gnu/libdl.so.2 (0xb74a4000)
+	libz.so.1 => /lib/i386-linux-gnu/libz.so.1 (0xb748f000)
+	/lib/ld-linux.so.2 (0xb78d1000)
+-------------------
+File:/home/clodo/osiris-sps/oms/temp/usr/lib/osiris-sps/liblang.so
+	linux-gate.so.1 =>  (0xb77e4000)
+	libcore.so => not found
+	libxml.so => not found
+	libm.so.6 => /lib/i386-linux-gnu/libm.so.6 (0xb7756000)
+	libc.so.6 => /lib/i386-linux-gnu/libc.so.6 (0xb75f5000)
+	/lib/ld-linux.so.2 (0xb77e5000)
+-------------------
+File:/home/clodo/osiris-sps/oms/temp/usr/lib/osiris-sps/libnet.so
+	linux-gate.so.1 =>  (0xb774c000)
+	libcore.so => not found
+	libpthread.so.0 => /lib/i386-linux-gnu/libpthread.so.0 (0xb765a000)
+	libssl.so.0.9.8 => /lib/libssl.so.0.9.8 (0xb7611000)
+	libcrypto.so.0.9.8 => /lib/libcrypto.so.0.9.8 (0xb74c5000)
+	libm.so.6 => /lib/i386-linux-gnu/libm.so.6 (0xb749f000)
+	libc.so.6 => /lib/i386-linux-gnu/libc.so.6 (0xb733e000)
+	/lib/ld-linux.so.2 (0xb774d000)
+	libdl.so.2 => /lib/i386-linux-gnu/libdl.so.2 (0xb733a000)
+	libz.so.1 => /lib/i386-linux-gnu/libz.so.1 (0xb7324000)
+-------------------
+File:/home/clodo/osiris-sps/oms/temp/usr/lib/osiris-sps/libsdk.so
+	linux-gate.so.1 =>  (0xb787f000)
+	libcore.so => /home/clodo/osiris-sps/oms/temp/usr/lib/osiris-sps/libcore.so (0xb7066000)
+	libengine.so => /home/clodo/osiris-sps/oms/temp/usr/lib/osiris-sps/libengine.so (0xb67d5000)
+	libpthread.so.0 => /lib/i386-linux-gnu/libpthread.so.0 (0xb67ab000)
+	libm.so.6 => /lib/i386-linux-gnu/libm.so.6 (0xb6785000)
+	libc.so.6 => /lib/i386-linux-gnu/libc.so.6 (0xb6624000)
+	libdl.so.2 => /lib/i386-linux-gnu/libdl.so.2 (0xb6620000)
+	libicuuc.so.38 => /home/clodo/osiris-sps/oms/temp/usr/lib/osiris-sps/libicuuc.so.38 (0xb64f2000)
+	libicuio.so.38 => /home/clodo/osiris-sps/oms/temp/usr/lib/osiris-sps/libicuio.so.38 (0xb64e7000)
+	/lib/ld-linux.so.2 (0xb7880000)
+	libarchives.so => /home/clodo/osiris-sps/oms/temp/usr/lib/osiris-sps/libarchives.so (0xb64c0000)
+	liblang.so => /home/clodo/osiris-sps/oms/temp/usr/lib/osiris-sps/liblang.so (0xb646c000)
+	libnet.so => /home/clodo/osiris-sps/oms/temp/usr/lib/osiris-sps/libnet.so (0xb63a6000)
+	libweb.so => /home/clodo/osiris-sps/oms/temp/usr/lib/osiris-sps/libweb.so (0xb6317000)
+	libxml.so => /home/clodo/osiris-sps/oms/temp/usr/lib/osiris-sps/libxml.so (0xb62a2000)
+	libupnp.so => /home/clodo/osiris-sps/oms/temp/usr/lib/osiris-sps/libupnp.so (0xb6288000)
+	libdb.so => /home/clodo/osiris-sps/oms/temp/usr/lib/osiris-sps/libdb.so (0xb625f000)
+	libhttp.so => /home/clodo/osiris-sps/oms/temp/usr/lib/osiris-sps/libhttp.so (0xb6113000)
+	libssl.so.0.9.8 => /home/clodo/osiris-sps/oms/temp/usr/lib/osiris-sps/libssl.so.0.9.8 (0xb60cc000)
+	libcrypto.so.0.9.8 => /home/clodo/osiris-sps/oms/temp/usr/lib/osiris-sps/libcrypto.so.0.9.8 (0xb5f7a000)
+	libicudata.so.38 => /home/clodo/osiris-sps/oms/temp/usr/lib/osiris-sps/libicudata.so.38 (0xb54a3000)
+	libstdc++.so.6 => /home/clodo/osiris-sps/oms/temp/usr/lib/osiris-sps/libstdc++.so.6 (0xb53b1000)
+	libgcc_s.so.1 => /home/clodo/osiris-sps/oms/temp/usr/lib/osiris-sps/libgcc_s.so.1 (0xb5393000)
+	libicui18n.so.38 => /home/clodo/osiris-sps/oms/temp/usr/lib/osiris-sps/libicui18n.so.38 (0xb5234000)
+	libxerces-c-3.1.so => /home/clodo/osiris-sps/oms/temp/usr/lib/osiris-sps/libxerces-c-3.1.so (0xb4e96000)
+	libxalan-c.so.111 => /home/clodo/osiris-sps/oms/temp/usr/lib/osiris-sps/libxalan-c.so.111 (0xb4acf000)
+	libz.so.1 => /home/clodo/osiris-sps/oms/temp/usr/lib/osiris-sps/libz.so.1 (0xb4ab9000)
+	libnsl.so.1 => /lib/i386-linux-gnu/libnsl.so.1 (0xb4aa2000)
+	libxalanMsg.so.111 => /home/clodo/osiris-sps/oms/temp/usr/lib/osiris-sps/libxalanMsg.so.111 (0xb4a98000)
+-------------------
+File:/home/clodo/osiris-sps/oms/temp/usr/lib/osiris-sps/libssl.so
+	linux-gate.so.1 =>  (0xb7886000)
+	libcrypto.so.0.9.8 => /lib/libcrypto.so.0.9.8 (0xb76e0000)
+	libdl.so.2 => /lib/i386-linux-gnu/libdl.so.2 (0xb76dc000)
+	libz.so.1 => /lib/i386-linux-gnu/libz.so.1 (0xb76c6000)
+	libc.so.6 => /lib/i386-linux-gnu/libc.so.6 (0xb7565000)
+	/lib/ld-linux.so.2 (0xb7887000)
+-------------------
+File:/home/clodo/osiris-sps/oms/temp/usr/lib/osiris-sps/libssl.so.0.9.8
+	linux-gate.so.1 =>  (0xb772c000)
+	libcrypto.so.0.9.8 => /lib/libcrypto.so.0.9.8 (0xb7586000)
+	libdl.so.2 => /lib/i386-linux-gnu/libdl.so.2 (0xb7582000)
+	libz.so.1 => /lib/i386-linux-gnu/libz.so.1 (0xb756c000)
+	libc.so.6 => /lib/i386-linux-gnu/libc.so.6 (0xb740b000)
+	/lib/ld-linux.so.2 (0xb772d000)
+-------------------
+File:/home/clodo/osiris-sps/oms/temp/usr/lib/osiris-sps/libstdc++.so.6
+	linux-gate.so.1 =>  (0xb77d4000)
+	libm.so.6 => /lib/i386-linux-gnu/libm.so.6 (0xb76a9000)
+	libc.so.6 => /lib/i386-linux-gnu/libc.so.6 (0xb7548000)
+	/lib/ld-linux.so.2 (0xb77d5000)
+	libgcc_s.so.1 => /lib/i386-linux-gnu/libgcc_s.so.1 (0xb752b000)
+-------------------
+File:/home/clodo/osiris-sps/oms/temp/usr/lib/osiris-sps/libstdc++.so.6.0.13
+	linux-gate.so.1 =>  (0xb7837000)
+	libm.so.6 => /lib/i386-linux-gnu/libm.so.6 (0xb770c000)
+	libc.so.6 => /lib/i386-linux-gnu/libc.so.6 (0xb75ab000)
+	/lib/ld-linux.so.2 (0xb7838000)
+	libgcc_s.so.1 => /lib/i386-linux-gnu/libgcc_s.so.1 (0xb758e000)
+-------------------
+File:/home/clodo/osiris-sps/oms/temp/usr/lib/osiris-sps/libui.so
+	linux-gate.so.1 =>  (0xb7764000)
+	libcore.so => not found
+	libirc.so => not found
+	liblang.so => not found
+	libengine.so => not found
+	libpthread.so.0 => /lib/i386-linux-gnu/libpthread.so.0 (0xb7560000)
+	libxml.so => not found
+	libnet.so => not found
+	libssl.so.0.9.8 => /lib/libssl.so.0.9.8 (0xb7517000)
+	libcrypto.so.0.9.8 => /lib/libcrypto.so.0.9.8 (0xb73cb000)
+	libhttp.so => not found
+	libupnp.so => not found
+	libwx_gtk2u-2.9.so.2 => not found
+	libm.so.6 => /lib/i386-linux-gnu/libm.so.6 (0xb73a4000)
+	libc.so.6 => /lib/i386-linux-gnu/libc.so.6 (0xb7243000)
+	/lib/ld-linux.so.2 (0xb7765000)
+	libdl.so.2 => /lib/i386-linux-gnu/libdl.so.2 (0xb723f000)
+	libz.so.1 => /lib/i386-linux-gnu/libz.so.1 (0xb722a000)
+-------------------
+File:/home/clodo/osiris-sps/oms/temp/usr/lib/osiris-sps/libupnp.so
+	linux-gate.so.1 =>  (0xb779a000)
+	libcore.so => not found
+	libpthread.so.0 => /lib/i386-linux-gnu/libpthread.so.0 (0xb7754000)
+	libm.so.6 => /lib/i386-linux-gnu/libm.so.6 (0xb772d000)
+	libc.so.6 => /lib/i386-linux-gnu/libc.so.6 (0xb75cc000)
+	/lib/ld-linux.so.2 (0xb779b000)
+-------------------
+File:/home/clodo/osiris-sps/oms/temp/usr/lib/osiris-sps/libweb.so
+	linux-gate.so.1 =>  (0xb7885000)
+	libcore.so => not found
+	libhttp.so => not found
+	libxml.so => not found
+	libpthread.so.0 => /lib/i386-linux-gnu/libpthread.so.0 (0xb77c9000)
+	libm.so.6 => /lib/i386-linux-gnu/libm.so.6 (0xb77a3000)
+	libc.so.6 => /lib/i386-linux-gnu/libc.so.6 (0xb7642000)
+	/lib/ld-linux.so.2 (0xb7886000)
+-------------------
+File:/home/clodo/osiris-sps/oms/temp/usr/lib/osiris-sps/libwx_gtk2u-2.9.so
+	linux-gate.so.1 =>  (0xb77e1000)
+	libz.so.1 => /lib/i386-linux-gnu/libz.so.1 (0xb6661000)
+	libdl.so.2 => /lib/i386-linux-gnu/libdl.so.2 (0xb665d000)
+	libgtk-x11-2.0.so.0 => /usr/lib/libgtk-x11-2.0.so.0 (0xb6283000)
+	libgdk-x11-2.0.so.0 => /usr/lib/libgdk-x11-2.0.so.0 (0xb61ea000)
+	libatk-1.0.so.0 => /usr/lib/i386-linux-gnu/libatk-1.0.so.0 (0xb61ce000)
+	libgio-2.0.so.0 => /usr/lib/i386-linux-gnu/libgio-2.0.so.0 (0xb60cb000)
+	libpangoft2-1.0.so.0 => /usr/lib/i386-linux-gnu/libpangoft2-1.0.so.0 (0xb60a3000)
+	libpangocairo-1.0.so.0 => /usr/lib/i386-linux-gnu/libpangocairo-1.0.so.0 (0xb6096000)
+	libgdk_pixbuf-2.0.so.0 => /usr/lib/libgdk_pixbuf-2.0.so.0 (0xb6079000)
+	libm.so.6 => /lib/i386-linux-gnu/libm.so.6 (0xb6053000)
+	libcairo.so.2 => /usr/lib/libcairo.so.2 (0xb5fa0000)
+	libpango-1.0.so.0 => /usr/lib/i386-linux-gnu/libpango-1.0.so.0 (0xb5f60000)
+	libfreetype.so.6 => /usr/lib/i386-linux-gnu/libfreetype.so.6 (0xb5ed9000)
+	libfontconfig.so.1 => /usr/lib/i386-linux-gnu/libfontconfig.so.1 (0xb5eaa000)
+	libgobject-2.0.so.0 => /usr/lib/i386-linux-gnu/libgobject-2.0.so.0 (0xb5e63000)
+	libgmodule-2.0.so.0 => /usr/lib/i386-linux-gnu/libgmodule-2.0.so.0 (0xb5e5f000)
+	libgthread-2.0.so.0 => /usr/lib/i386-linux-gnu/libgthread-2.0.so.0 (0xb5e5a000)
+	librt.so.1 => /lib/i386-linux-gnu/librt.so.1 (0xb5e50000)
+	libglib-2.0.so.0 => /lib/i386-linux-gnu/libglib-2.0.so.0 (0xb5d79000)
+	libX11.so.6 => /usr/lib/i386-linux-gnu/libX11.so.6 (0xb5c5e000)
+	libpng12.so.0 => /lib/i386-linux-gnu/libpng12.so.0 (0xb5c39000)
+	libexpat.so.1 => /lib/i386-linux-gnu/libexpat.so.1 (0xb5c0f000)
+	libstdc++.so.6 => /usr/lib/i386-linux-gnu/libstdc++.so.6 (0xb5b23000)
+	libgcc_s.so.1 => /lib/i386-linux-gnu/libgcc_s.so.1 (0xb5b07000)
+	libpthread.so.0 => /lib/i386-linux-gnu/libpthread.so.0 (0xb5aee000)
+	libc.so.6 => /lib/i386-linux-gnu/libc.so.6 (0xb598d000)
+	/lib/ld-linux.so.2 (0xb77e2000)
+	libXcomposite.so.1 => /usr/lib/i386-linux-gnu/libXcomposite.so.1 (0xb5989000)
+	libXdamage.so.1 => /usr/lib/i386-linux-gnu/libXdamage.so.1 (0xb5984000)
+	libXfixes.so.3 => /usr/lib/i386-linux-gnu/libXfixes.so.3 (0xb597e000)
+	libXext.so.6 => /usr/lib/i386-linux-gnu/libXext.so.6 (0xb596f000)
+	libXrender.so.1 => /usr/lib/i386-linux-gnu/libXrender.so.1 (0xb5965000)
+	libXinerama.so.1 => /usr/lib/i386-linux-gnu/libXinerama.so.1 (0xb5961000)
+	libXi.so.6 => /usr/lib/i386-linux-gnu/libXi.so.6 (0xb5951000)
+	libXrandr.so.2 => /usr/lib/i386-linux-gnu/libXrandr.so.2 (0xb5949000)
+	libXcursor.so.1 => /usr/lib/i386-linux-gnu/libXcursor.so.1 (0xb593f000)
+	libpcre.so.3 => /lib/i386-linux-gnu/libpcre.so.3 (0xb5900000)
+	libresolv.so.2 => /lib/i386-linux-gnu/libresolv.so.2 (0xb58eb000)
+	libselinux.so.1 => /lib/i386-linux-gnu/libselinux.so.1 (0xb58cf000)
+	libpixman-1.so.0 => /usr/lib/libpixman-1.so.0 (0xb5863000)
+	libxcb-shm.so.0 => /usr/lib/i386-linux-gnu/libxcb-shm.so.0 (0xb585f000)
+	libxcb-render.so.0 => /usr/lib/i386-linux-gnu/libxcb-render.so.0 (0xb5857000)
+	libxcb.so.1 => /usr/lib/i386-linux-gnu/libxcb.so.1 (0xb583e000)
+	libXau.so.6 => /usr/lib/i386-linux-gnu/libXau.so.6 (0xb5839000)
+	libXdmcp.so.6 => /usr/lib/i386-linux-gnu/libXdmcp.so.6 (0xb5833000)
+-------------------
+File:/home/clodo/osiris-sps/oms/temp/usr/lib/osiris-sps/libwx_gtk2u-2.9.so.2
+	linux-gate.so.1 =>  (0xb78bf000)
+	libz.so.1 => /lib/i386-linux-gnu/libz.so.1 (0xb673f000)
+	libdl.so.2 => /lib/i386-linux-gnu/libdl.so.2 (0xb673b000)
+	libgtk-x11-2.0.so.0 => /usr/lib/libgtk-x11-2.0.so.0 (0xb6361000)
+	libgdk-x11-2.0.so.0 => /usr/lib/libgdk-x11-2.0.so.0 (0xb62c8000)
+	libatk-1.0.so.0 => /usr/lib/i386-linux-gnu/libatk-1.0.so.0 (0xb62ac000)
+	libgio-2.0.so.0 => /usr/lib/i386-linux-gnu/libgio-2.0.so.0 (0xb61a9000)
+	libpangoft2-1.0.so.0 => /usr/lib/i386-linux-gnu/libpangoft2-1.0.so.0 (0xb6181000)
+	libpangocairo-1.0.so.0 => /usr/lib/i386-linux-gnu/libpangocairo-1.0.so.0 (0xb6174000)
+	libgdk_pixbuf-2.0.so.0 => /usr/lib/libgdk_pixbuf-2.0.so.0 (0xb6157000)
+	libm.so.6 => /lib/i386-linux-gnu/libm.so.6 (0xb6131000)
+	libcairo.so.2 => /usr/lib/libcairo.so.2 (0xb607e000)
+	libpango-1.0.so.0 => /usr/lib/i386-linux-gnu/libpango-1.0.so.0 (0xb603e000)
+	libfreetype.so.6 => /usr/lib/i386-linux-gnu/libfreetype.so.6 (0xb5fb7000)
+	libfontconfig.so.1 => /usr/lib/i386-linux-gnu/libfontconfig.so.1 (0xb5f88000)
+	libgobject-2.0.so.0 => /usr/lib/i386-linux-gnu/libgobject-2.0.so.0 (0xb5f41000)
+	libgmodule-2.0.so.0 => /usr/lib/i386-linux-gnu/libgmodule-2.0.so.0 (0xb5f3d000)
+	libgthread-2.0.so.0 => /usr/lib/i386-linux-gnu/libgthread-2.0.so.0 (0xb5f38000)
+	librt.so.1 => /lib/i386-linux-gnu/librt.so.1 (0xb5f2e000)
+	libglib-2.0.so.0 => /lib/i386-linux-gnu/libglib-2.0.so.0 (0xb5e57000)
+	libX11.so.6 => /usr/lib/i386-linux-gnu/libX11.so.6 (0xb5d3c000)
+	libpng12.so.0 => /lib/i386-linux-gnu/libpng12.so.0 (0xb5d17000)
+	libexpat.so.1 => /lib/i386-linux-gnu/libexpat.so.1 (0xb5ced000)
+	libstdc++.so.6 => /usr/lib/i386-linux-gnu/libstdc++.so.6 (0xb5c01000)
+	libgcc_s.so.1 => /lib/i386-linux-gnu/libgcc_s.so.1 (0xb5be5000)
+	libpthread.so.0 => /lib/i386-linux-gnu/libpthread.so.0 (0xb5bcc000)
+	libc.so.6 => /lib/i386-linux-gnu/libc.so.6 (0xb5a6b000)
+	/lib/ld-linux.so.2 (0xb78c0000)
+	libXcomposite.so.1 => /usr/lib/i386-linux-gnu/libXcomposite.so.1 (0xb5a67000)
+	libXdamage.so.1 => /usr/lib/i386-linux-gnu/libXdamage.so.1 (0xb5a62000)
+	libXfixes.so.3 => /usr/lib/i386-linux-gnu/libXfixes.so.3 (0xb5a5c000)
+	libXext.so.6 => /usr/lib/i386-linux-gnu/libXext.so.6 (0xb5a4d000)
+	libXrender.so.1 => /usr/lib/i386-linux-gnu/libXrender.so.1 (0xb5a43000)
+	libXinerama.so.1 => /usr/lib/i386-linux-gnu/libXinerama.so.1 (0xb5a3f000)
+	libXi.so.6 => /usr/lib/i386-linux-gnu/libXi.so.6 (0xb5a2f000)
+	libXrandr.so.2 => /usr/lib/i386-linux-gnu/libXrandr.so.2 (0xb5a27000)
+	libXcursor.so.1 => /usr/lib/i386-linux-gnu/libXcursor.so.1 (0xb5a1d000)
+	libpcre.so.3 => /lib/i386-linux-gnu/libpcre.so.3 (0xb59de000)
+	libresolv.so.2 => /lib/i386-linux-gnu/libresolv.so.2 (0xb59c9000)
+	libselinux.so.1 => /lib/i386-linux-gnu/libselinux.so.1 (0xb59ad000)
+	libpixman-1.so.0 => /usr/lib/libpixman-1.so.0 (0xb5941000)
+	libxcb-shm.so.0 => /usr/lib/i386-linux-gnu/libxcb-shm.so.0 (0xb593d000)
+	libxcb-render.so.0 => /usr/lib/i386-linux-gnu/libxcb-render.so.0 (0xb5935000)
+	libxcb.so.1 => /usr/lib/i386-linux-gnu/libxcb.so.1 (0xb591c000)
+	libXau.so.6 => /usr/lib/i386-linux-gnu/libXau.so.6 (0xb5917000)
+	libXdmcp.so.6 => /usr/lib/i386-linux-gnu/libXdmcp.so.6 (0xb5911000)
+-------------------
+File:/home/clodo/osiris-sps/oms/temp/usr/lib/osiris-sps/libwx_gtk2u-2.9.so.2.0.0
+	linux-gate.so.1 =>  (0xb7713000)
+	libz.so.1 => /lib/i386-linux-gnu/libz.so.1 (0xb6593000)
+	libdl.so.2 => /lib/i386-linux-gnu/libdl.so.2 (0xb658f000)
+	libgtk-x11-2.0.so.0 => /usr/lib/libgtk-x11-2.0.so.0 (0xb61b5000)
+	libgdk-x11-2.0.so.0 => /usr/lib/libgdk-x11-2.0.so.0 (0xb611c000)
+	libatk-1.0.so.0 => /usr/lib/i386-linux-gnu/libatk-1.0.so.0 (0xb6100000)
+	libgio-2.0.so.0 => /usr/lib/i386-linux-gnu/libgio-2.0.so.0 (0xb5ffd000)
+	libpangoft2-1.0.so.0 => /usr/lib/i386-linux-gnu/libpangoft2-1.0.so.0 (0xb5fd5000)
+	libpangocairo-1.0.so.0 => /usr/lib/i386-linux-gnu/libpangocairo-1.0.so.0 (0xb5fc8000)
+	libgdk_pixbuf-2.0.so.0 => /usr/lib/libgdk_pixbuf-2.0.so.0 (0xb5fab000)
+	libm.so.6 => /lib/i386-linux-gnu/libm.so.6 (0xb5f85000)
+	libcairo.so.2 => /usr/lib/libcairo.so.2 (0xb5ed2000)
+	libpango-1.0.so.0 => /usr/lib/i386-linux-gnu/libpango-1.0.so.0 (0xb5e92000)
+	libfreetype.so.6 => /usr/lib/i386-linux-gnu/libfreetype.so.6 (0xb5e0b000)
+	libfontconfig.so.1 => /usr/lib/i386-linux-gnu/libfontconfig.so.1 (0xb5ddc000)
+	libgobject-2.0.so.0 => /usr/lib/i386-linux-gnu/libgobject-2.0.so.0 (0xb5d95000)
+	libgmodule-2.0.so.0 => /usr/lib/i386-linux-gnu/libgmodule-2.0.so.0 (0xb5d91000)
+	libgthread-2.0.so.0 => /usr/lib/i386-linux-gnu/libgthread-2.0.so.0 (0xb5d8c000)
+	librt.so.1 => /lib/i386-linux-gnu/librt.so.1 (0xb5d82000)
+	libglib-2.0.so.0 => /lib/i386-linux-gnu/libglib-2.0.so.0 (0xb5cab000)
+	libX11.so.6 => /usr/lib/i386-linux-gnu/libX11.so.6 (0xb5b90000)
+	libpng12.so.0 => /lib/i386-linux-gnu/libpng12.so.0 (0xb5b6b000)
+	libexpat.so.1 => /lib/i386-linux-gnu/libexpat.so.1 (0xb5b41000)
+	libstdc++.so.6 => /usr/lib/i386-linux-gnu/libstdc++.so.6 (0xb5a55000)
+	libgcc_s.so.1 => /lib/i386-linux-gnu/libgcc_s.so.1 (0xb5a39000)
+	libpthread.so.0 => /lib/i386-linux-gnu/libpthread.so.0 (0xb5a20000)
+	libc.so.6 => /lib/i386-linux-gnu/libc.so.6 (0xb58bf000)
+	/lib/ld-linux.so.2 (0xb7714000)
+	libXcomposite.so.1 => /usr/lib/i386-linux-gnu/libXcomposite.so.1 (0xb58bb000)
+	libXdamage.so.1 => /usr/lib/i386-linux-gnu/libXdamage.so.1 (0xb58b6000)
+	libXfixes.so.3 => /usr/lib/i386-linux-gnu/libXfixes.so.3 (0xb58b0000)
+	libXext.so.6 => /usr/lib/i386-linux-gnu/libXext.so.6 (0xb58a1000)
+	libXrender.so.1 => /usr/lib/i386-linux-gnu/libXrender.so.1 (0xb5897000)
+	libXinerama.so.1 => /usr/lib/i386-linux-gnu/libXinerama.so.1 (0xb5893000)
+	libXi.so.6 => /usr/lib/i386-linux-gnu/libXi.so.6 (0xb5883000)
+	libXrandr.so.2 => /usr/lib/i386-linux-gnu/libXrandr.so.2 (0xb587b000)
+	libXcursor.so.1 => /usr/lib/i386-linux-gnu/libXcursor.so.1 (0xb5871000)
+	libpcre.so.3 => /lib/i386-linux-gnu/libpcre.so.3 (0xb5832000)
+	libresolv.so.2 => /lib/i386-linux-gnu/libresolv.so.2 (0xb581d000)
+	libselinux.so.1 => /lib/i386-linux-gnu/libselinux.so.1 (0xb5801000)
+	libpixman-1.so.0 => /usr/lib/libpixman-1.so.0 (0xb5795000)
+	libxcb-shm.so.0 => /usr/lib/i386-linux-gnu/libxcb-shm.so.0 (0xb5791000)
+	libxcb-render.so.0 => /usr/lib/i386-linux-gnu/libxcb-render.so.0 (0xb5789000)
+	libxcb.so.1 => /usr/lib/i386-linux-gnu/libxcb.so.1 (0xb5770000)
+	libXau.so.6 => /usr/lib/i386-linux-gnu/libXau.so.6 (0xb576b000)
+	libXdmcp.so.6 => /usr/lib/i386-linux-gnu/libXdmcp.so.6 (0xb5765000)
+-------------------
+File:/home/clodo/osiris-sps/oms/temp/usr/lib/osiris-sps/libxalan-c.so
+	linux-gate.so.1 =>  (0xb76fd000)
+	libpthread.so.0 => /lib/i386-linux-gnu/libpthread.so.0 (0xb730a000)
+	libxerces-c-3.1.so => not found
+	libxalanMsg.so.111 => not found
+	libicuuc.so.38 => not found
+	libicui18n.so.38 => not found
+	libstdc++.so.6 => /usr/lib/i386-linux-gnu/libstdc++.so.6 (0xb721e000)
+	libm.so.6 => /lib/i386-linux-gnu/libm.so.6 (0xb71f8000)
+	libgcc_s.so.1 => /lib/i386-linux-gnu/libgcc_s.so.1 (0xb71db000)
+	libc.so.6 => /lib/i386-linux-gnu/libc.so.6 (0xb707a000)
+	/lib/ld-linux.so.2 (0xb76fe000)
+-------------------
+File:/home/clodo/osiris-sps/oms/temp/usr/lib/osiris-sps/libxalan-c.so.111
+	linux-gate.so.1 =>  (0xb773f000)
+	libpthread.so.0 => /lib/i386-linux-gnu/libpthread.so.0 (0xb734c000)
+	libxerces-c-3.1.so => not found
+	libxalanMsg.so.111 => not found
+	libicuuc.so.38 => not found
+	libicui18n.so.38 => not found
+	libstdc++.so.6 => /usr/lib/i386-linux-gnu/libstdc++.so.6 (0xb7260000)
+	libm.so.6 => /lib/i386-linux-gnu/libm.so.6 (0xb723a000)
+	libgcc_s.so.1 => /lib/i386-linux-gnu/libgcc_s.so.1 (0xb721d000)
+	libc.so.6 => /lib/i386-linux-gnu/libc.so.6 (0xb70bc000)
+	/lib/ld-linux.so.2 (0xb7740000)
+-------------------
+File:/home/clodo/osiris-sps/oms/temp/usr/lib/osiris-sps/libxalan-c.so.111.0
+	linux-gate.so.1 =>  (0xb780b000)
+	libpthread.so.0 => /lib/i386-linux-gnu/libpthread.so.0 (0xb7418000)
+	libxerces-c-3.1.so => not found
+	libxalanMsg.so.111 => not found
+	libicuuc.so.38 => not found
+	libicui18n.so.38 => not found
+	libstdc++.so.6 => /usr/lib/i386-linux-gnu/libstdc++.so.6 (0xb732c000)
+	libm.so.6 => /lib/i386-linux-gnu/libm.so.6 (0xb7306000)
+	libgcc_s.so.1 => /lib/i386-linux-gnu/libgcc_s.so.1 (0xb72e9000)
+	libc.so.6 => /lib/i386-linux-gnu/libc.so.6 (0xb7188000)
+	/lib/ld-linux.so.2 (0xb780c000)
+-------------------
+File:/home/clodo/osiris-sps/oms/temp/usr/lib/osiris-sps/libxalanMsg.so
+	linux-gate.so.1 =>  (0xb779e000)
+	libstdc++.so.6 => /usr/lib/i386-linux-gnu/libstdc++.so.6 (0xb7697000)
+	libm.so.6 => /lib/i386-linux-gnu/libm.so.6 (0xb7671000)
+	libgcc_s.so.1 => /lib/i386-linux-gnu/libgcc_s.so.1 (0xb7654000)
+	libpthread.so.0 => /lib/i386-linux-gnu/libpthread.so.0 (0xb763b000)
+	libc.so.6 => /lib/i386-linux-gnu/libc.so.6 (0xb74da000)
+	/lib/ld-linux.so.2 (0xb779f000)
+-------------------
+File:/home/clodo/osiris-sps/oms/temp/usr/lib/osiris-sps/libxalanMsg.so.111
+	linux-gate.so.1 =>  (0xb7808000)
+	libstdc++.so.6 => /usr/lib/i386-linux-gnu/libstdc++.so.6 (0xb7701000)
+	libm.so.6 => /lib/i386-linux-gnu/libm.so.6 (0xb76db000)
+	libgcc_s.so.1 => /lib/i386-linux-gnu/libgcc_s.so.1 (0xb76be000)
+	libpthread.so.0 => /lib/i386-linux-gnu/libpthread.so.0 (0xb76a5000)
+	libc.so.6 => /lib/i386-linux-gnu/libc.so.6 (0xb7544000)
+	/lib/ld-linux.so.2 (0xb7809000)
+-------------------
+File:/home/clodo/osiris-sps/oms/temp/usr/lib/osiris-sps/libxalanMsg.so.111.0
+	linux-gate.so.1 =>  (0xb76e9000)
+	libstdc++.so.6 => /usr/lib/i386-linux-gnu/libstdc++.so.6 (0xb75e2000)
+	libm.so.6 => /lib/i386-linux-gnu/libm.so.6 (0xb75bc000)
+	libgcc_s.so.1 => /lib/i386-linux-gnu/libgcc_s.so.1 (0xb759f000)
+	libpthread.so.0 => /lib/i386-linux-gnu/libpthread.so.0 (0xb7586000)
+	libc.so.6 => /lib/i386-linux-gnu/libc.so.6 (0xb7425000)
+	/lib/ld-linux.so.2 (0xb76ea000)
+-------------------
+File:/home/clodo/osiris-sps/oms/temp/usr/lib/osiris-sps/libxerces-c-3.1.so
+	linux-gate.so.1 =>  (0xb7767000)
+	libnsl.so.1 => /lib/i386-linux-gnu/libnsl.so.1 (0xb739f000)
+	libpthread.so.0 => /lib/i386-linux-gnu/libpthread.so.0 (0xb7386000)
+	libicuuc.so.38 => not found
+	libicudata.so.38 => not found
+	libstdc++.so.6 => /usr/lib/i386-linux-gnu/libstdc++.so.6 (0xb729a000)
+	libm.so.6 => /lib/i386-linux-gnu/libm.so.6 (0xb7274000)
+	libc.so.6 => /lib/i386-linux-gnu/libc.so.6 (0xb7113000)
+	libgcc_s.so.1 => /lib/i386-linux-gnu/libgcc_s.so.1 (0xb70f6000)
+	/lib/ld-linux.so.2 (0xb7768000)
+-------------------
+File:/home/clodo/osiris-sps/oms/temp/usr/lib/osiris-sps/libxerces-c.so
+	linux-gate.so.1 =>  (0xb7720000)
+	libnsl.so.1 => /lib/i386-linux-gnu/libnsl.so.1 (0xb7358000)
+	libpthread.so.0 => /lib/i386-linux-gnu/libpthread.so.0 (0xb733f000)
+	libicuuc.so.38 => not found
+	libicudata.so.38 => not found
+	libstdc++.so.6 => /usr/lib/i386-linux-gnu/libstdc++.so.6 (0xb7253000)
+	libm.so.6 => /lib/i386-linux-gnu/libm.so.6 (0xb722d000)
+	libc.so.6 => /lib/i386-linux-gnu/libc.so.6 (0xb70cc000)
+	libgcc_s.so.1 => /lib/i386-linux-gnu/libgcc_s.so.1 (0xb70af000)
+	/lib/ld-linux.so.2 (0xb7721000)
+-------------------
+File:/home/clodo/osiris-sps/oms/temp/usr/lib/osiris-sps/libxml.so
+	linux-gate.so.1 =>  (0xb7798000)
+	libxerces-c-3.1.so => not found
+	libxalan-c.so.111 => not found
+	libcore.so => not found
+	libhttp.so => not found
+	libpthread.so.0 => /lib/i386-linux-gnu/libpthread.so.0 (0xb76f7000)
+	libssl.so.0.9.8 => /lib/libssl.so.0.9.8 (0xb76af000)
+	libcrypto.so.0.9.8 => /lib/libcrypto.so.0.9.8 (0xb7563000)
+	libm.so.6 => /lib/i386-linux-gnu/libm.so.6 (0xb753c000)
+	libc.so.6 => /lib/i386-linux-gnu/libc.so.6 (0xb73db000)
+	/lib/ld-linux.so.2 (0xb7799000)
+	libdl.so.2 => /lib/i386-linux-gnu/libdl.so.2 (0xb73d7000)
+	libz.so.1 => /lib/i386-linux-gnu/libz.so.1 (0xb73c2000)
+-------------------
+File:/home/clodo/osiris-sps/oms/temp/usr/lib/osiris-sps/libz.so.1
+	linux-gate.so.1 =>  (0xb7750000)
+	libc.so.6 => /lib/i386-linux-gnu/libc.so.6 (0xb75c6000)
+	/lib/ld-linux.so.2 (0xb7751000)
+-------------------
+File:/home/clodo/osiris-sps/oms/temp/usr/lib/osiris-sps/libz.so.1.2.3.3
+	linux-gate.so.1 =>  (0xb781c000)
+	libc.so.6 => /lib/i386-linux-gnu/libc.so.6 (0xb7692000)
+	/lib/ld-linux.so.2 (0xb781d000)
+-------------------
+File:/home/clodo/osiris-sps/oms/temp/usr/lib/osiris-sps/osiris
+	linux-gate.so.1 =>  (0xb7735000)
+	libcore.so => /home/clodo/osiris-sps/oms/temp/usr/lib/osiris-sps/libcore.so (0xb6f33000)
+	libengine.so => /home/clodo/osiris-sps/oms/temp/usr/lib/osiris-sps/libengine.so (0xb66a2000)
+	liblang.so => /home/clodo/osiris-sps/oms/temp/usr/lib/osiris-sps/liblang.so (0xb664d000)
+	libxml.so => /home/clodo/osiris-sps/oms/temp/usr/lib/osiris-sps/libxml.so (0xb65d9000)
+	libnet.so => /home/clodo/osiris-sps/oms/temp/usr/lib/osiris-sps/libnet.so (0xb6513000)
+	libweb.so => /home/clodo/osiris-sps/oms/temp/usr/lib/osiris-sps/libweb.so (0xb6484000)
+	libxerces-c-3.1.so => /home/clodo/osiris-sps/oms/temp/usr/lib/osiris-sps/libxerces-c-3.1.so (0xb60e6000)
+	libxalan-c.so.111 => /home/clodo/osiris-sps/oms/temp/usr/lib/osiris-sps/libxalan-c.so.111 (0xb5d1e000)
+	libxalanMsg.so.111 => /home/clodo/osiris-sps/oms/temp/usr/lib/osiris-sps/libxalanMsg.so.111 (0xb5d15000)
+	librt.so.1 => /lib/i386-linux-gnu/librt.so.1 (0xb5cfc000)
+	libssl.so.0.9.8 => /home/clodo/osiris-sps/oms/temp/usr/lib/osiris-sps/libssl.so.0.9.8 (0xb5cb5000)
+	libcrypto.so.0.9.8 => /home/clodo/osiris-sps/oms/temp/usr/lib/osiris-sps/libcrypto.so.0.9.8 (0xb5b64000)
+	libhttp.so => /home/clodo/osiris-sps/oms/temp/usr/lib/osiris-sps/libhttp.so (0xb5a17000)
+	libui.so => /home/clodo/osiris-sps/oms/temp/usr/lib/osiris-sps/libui.so (0xb5840000)
+	libirc.so => /home/clodo/osiris-sps/oms/temp/usr/lib/osiris-sps/libirc.so (0xb5761000)
+	libupnp.so => /home/clodo/osiris-sps/oms/temp/usr/lib/osiris-sps/libupnp.so (0xb5747000)
+	libdb.so => /home/clodo/osiris-sps/oms/temp/usr/lib/osiris-sps/libdb.so (0xb571e000)
+	libicuuc.so.38 => /home/clodo/osiris-sps/oms/temp/usr/lib/osiris-sps/libicuuc.so.38 (0xb55ef000)
+	libicuio.so.38 => /home/clodo/osiris-sps/oms/temp/usr/lib/osiris-sps/libicuio.so.38 (0xb55e5000)
+	libicui18n.so.38 => /home/clodo/osiris-sps/oms/temp/usr/lib/osiris-sps/libicui18n.so.38 (0xb5487000)
+	libicudata.so.38 => /home/clodo/osiris-sps/oms/temp/usr/lib/osiris-sps/libicudata.so.38 (0xb49b0000)
+	libarchives.so => /home/clodo/osiris-sps/oms/temp/usr/lib/osiris-sps/libarchives.so (0xb4989000)
+	libwx_gtk2u-2.9.so.2 => /home/clodo/osiris-sps/oms/temp/usr/lib/osiris-sps/libwx_gtk2u-2.9.so.2 (0xb3830000)
+	libm.so.6 => /lib/i386-linux-gnu/libm.so.6 (0xb380a000)
+	libc.so.6 => /lib/i386-linux-gnu/libc.so.6 (0xb36a9000)
+	libpthread.so.0 => /lib/i386-linux-gnu/libpthread.so.0 (0xb3690000)
+	libdl.so.2 => /lib/i386-linux-gnu/libdl.so.2 (0xb368c000)
+	/lib/ld-linux.so.2 (0xb7736000)
+	libnsl.so.1 => /lib/i386-linux-gnu/libnsl.so.1 (0xb3674000)
+	libstdc++.so.6 => /home/clodo/osiris-sps/oms/temp/usr/lib/osiris-sps/libstdc++.so.6 (0xb3582000)
+	libgcc_s.so.1 => /home/clodo/osiris-sps/oms/temp/usr/lib/osiris-sps/libgcc_s.so.1 (0xb3564000)
+	libz.so.1 => /home/clodo/osiris-sps/oms/temp/usr/lib/osiris-sps/libz.so.1 (0xb354e000)
+	libgtk-x11-2.0.so.0 => /usr/lib/libgtk-x11-2.0.so.0 (0xb3174000)
+	libgdk-x11-2.0.so.0 => /usr/lib/libgdk-x11-2.0.so.0 (0xb30db000)
+	libatk-1.0.so.0 => /usr/lib/i386-linux-gnu/libatk-1.0.so.0 (0xb30bf000)
+	libgio-2.0.so.0 => /usr/lib/i386-linux-gnu/libgio-2.0.so.0 (0xb2fbc000)
+	libpangoft2-1.0.so.0 => /usr/lib/i386-linux-gnu/libpangoft2-1.0.so.0 (0xb2f94000)
+	libpangocairo-1.0.so.0 => /usr/lib/i386-linux-gnu/libpangocairo-1.0.so.0 (0xb2f87000)
+	libgdk_pixbuf-2.0.so.0 => /usr/lib/libgdk_pixbuf-2.0.so.0 (0xb2f6a000)
+	libcairo.so.2 => /usr/lib/libcairo.so.2 (0xb2eb7000)
+	libpango-1.0.so.0 => /usr/lib/i386-linux-gnu/libpango-1.0.so.0 (0xb2e77000)
+	libfreetype.so.6 => /usr/lib/i386-linux-gnu/libfreetype.so.6 (0xb2df1000)
+	libfontconfig.so.1 => /usr/lib/i386-linux-gnu/libfontconfig.so.1 (0xb2dc1000)
+	libgobject-2.0.so.0 => /usr/lib/i386-linux-gnu/libgobject-2.0.so.0 (0xb2d7a000)
+	libgmodule-2.0.so.0 => /usr/lib/i386-linux-gnu/libgmodule-2.0.so.0 (0xb2d76000)
+	libgthread-2.0.so.0 => /usr/lib/i386-linux-gnu/libgthread-2.0.so.0 (0xb2d71000)
+	libglib-2.0.so.0 => /lib/i386-linux-gnu/libglib-2.0.so.0 (0xb2c9a000)
+	libX11.so.6 => /usr/lib/i386-linux-gnu/libX11.so.6 (0xb2b7e000)
+	libpng12.so.0 => /lib/i386-linux-gnu/libpng12.so.0 (0xb2b59000)
+	libexpat.so.1 => /lib/i386-linux-gnu/libexpat.so.1 (0xb2b2f000)
+	libXcomposite.so.1 => /usr/lib/i386-linux-gnu/libXcomposite.so.1 (0xb2b2b000)
+	libXdamage.so.1 => /usr/lib/i386-linux-gnu/libXdamage.so.1 (0xb2b27000)
+	libXfixes.so.3 => /usr/lib/i386-linux-gnu/libXfixes.so.3 (0xb2b20000)
+	libXext.so.6 => /usr/lib/i386-linux-gnu/libXext.so.6 (0xb2b11000)
+	libXrender.so.1 => /usr/lib/i386-linux-gnu/libXrender.so.1 (0xb2b07000)
+	libXinerama.so.1 => /usr/lib/i386-linux-gnu/libXinerama.so.1 (0xb2b03000)
+	libXi.so.6 => /usr/lib/i386-linux-gnu/libXi.so.6 (0xb2af4000)
+	libXrandr.so.2 => /usr/lib/i386-linux-gnu/libXrandr.so.2 (0xb2aeb000)
+	libXcursor.so.1 => /usr/lib/i386-linux-gnu/libXcursor.so.1 (0xb2ae1000)
+	libpcre.so.3 => /lib/i386-linux-gnu/libpcre.so.3 (0xb2aa2000)
+	libresolv.so.2 => /lib/i386-linux-gnu/libresolv.so.2 (0xb2a8d000)
+	libselinux.so.1 => /lib/i386-linux-gnu/libselinux.so.1 (0xb2a72000)
+	libpixman-1.so.0 => /usr/lib/libpixman-1.so.0 (0xb2a05000)
+	libxcb-shm.so.0 => /usr/lib/i386-linux-gnu/libxcb-shm.so.0 (0xb2a01000)
+	libxcb-render.so.0 => /usr/lib/i386-linux-gnu/libxcb-render.so.0 (0xb29f9000)
+	libxcb.so.1 => /usr/lib/i386-linux-gnu/libxcb.so.1 (0xb29e0000)
+	libXau.so.6 => /usr/lib/i386-linux-gnu/libXau.so.6 (0xb29db000)
+	libXdmcp.so.6 => /usr/lib/i386-linux-gnu/libXdmcp.so.6 (0xb29d5000)
+-------------------
+File:/home/clodo/osiris-sps/oms/temp/usr/lib/osiris-sps/python.so
+	linux-gate.so.1 =>  (0xb770f000)
+	libcore.so => not found
+	libhttp.so => not found
+	libpthread.so.0 => /lib/i386-linux-gnu/libpthread.so.0 (0xb57d2000)
+	libengine.so => not found
+	libweb.so => not found
+	libxml.so => not found
+	libssl.so.0.9.8 => /lib/libssl.so.0.9.8 (0xb578a000)
+	libcrypto.so.0.9.8 => /lib/libcrypto.so.0.9.8 (0xb563d000)
+	libdb.so => not found
+	libnet.so => not found
+	liblang.so => not found
+	libdl.so.2 => /lib/i386-linux-gnu/libdl.so.2 (0xb5639000)
+	libutil.so.1 => /lib/i386-linux-gnu/libutil.so.1 (0xb5634000)
+	libm.so.6 => /lib/i386-linux-gnu/libm.so.6 (0xb560e000)
+	libc.so.6 => /lib/i386-linux-gnu/libc.so.6 (0xb54ad000)
+	/lib/ld-linux.so.2 (0xb7710000)
+	libz.so.1 => /lib/i386-linux-gnu/libz.so.1 (0xb5498000)
+-------------------
+File:/home/clodo/osiris-sps/oms/temp/usr/lib/osiris-sps/select.so
+	linux-gate.so.1 =>  (0xb7756000)
+	libpython2.6.so.1.0 => not found
+	libpthread.so.0 => /lib/i386-linux-gnu/libpthread.so.0 (0xb7723000)
+	libc.so.6 => /lib/i386-linux-gnu/libc.so.6 (0xb75c1000)
+	/lib/ld-linux.so.2 (0xb7757000)
+-------------------
+File:/home/clodo/osiris-sps/oms/temp/usr/lib/osiris-sps/sqlite.so
+	linux-gate.so.1 =>  (0xb78c7000)
+	libcore.so => not found
+	libdb.so => not found
+	libengine.so => not found
+	libpthread.so.0 => /lib/i386-linux-gnu/libpthread.so.0 (0xb77d1000)
+	libdl.so.2 => /lib/i386-linux-gnu/libdl.so.2 (0xb77cd000)
+	libm.so.6 => /lib/i386-linux-gnu/libm.so.6 (0xb77a7000)
+	libc.so.6 => /lib/i386-linux-gnu/libc.so.6 (0xb7646000)
+	/lib/ld-linux.so.2 (0xb78c8000)
+-------------------
+File:/home/clodo/osiris-sps/oms/temp/usr/lib/osiris-sps/system.xml
+	not a dynamic executable
+-------------------
+File:/home/clodo/osiris-sps/oms/temp/usr/lib/osiris-sps/testapp
+	linux-gate.so.1 =>  (0xb7788000)
+	libboost_unit_test_framework-gcc44-mt-1_41.so.1.41.0 => /home/clodo/osiris-sps/oms/temp/usr/lib/osiris-sps/libboost_unit_test_framework-gcc44-mt-1_41.so.1.41.0 (0xb76d9000)
+	libcore.so => /home/clodo/osiris-sps/oms/temp/usr/lib/osiris-sps/libcore.so (0xb6eda000)
+	libhttp.so => /home/clodo/osiris-sps/oms/temp/usr/lib/osiris-sps/libhttp.so (0xb6d8d000)
+	libengine.so => /home/clodo/osiris-sps/oms/temp/usr/lib/osiris-sps/libengine.so (0xb64fc000)
+	libnet.so => /home/clodo/osiris-sps/oms/temp/usr/lib/osiris-sps/libnet.so (0xb6436000)
+	libxml.so => /home/clodo/osiris-sps/oms/temp/usr/lib/osiris-sps/libxml.so (0xb63c2000)
+	libsdk.so => /home/clodo/osiris-sps/oms/temp/usr/lib/osiris-sps/libsdk.so (0xb63ab000)
+	libweb.so => /home/clodo/osiris-sps/oms/temp/usr/lib/osiris-sps/libweb.so (0xb631b000)
+	libdb.so => /home/clodo/osiris-sps/oms/temp/usr/lib/osiris-sps/libdb.so (0xb62f2000)
+	libupnp.so => /home/clodo/osiris-sps/oms/temp/usr/lib/osiris-sps/libupnp.so (0xb62d8000)
+	libxalan-c.so.111 => /home/clodo/osiris-sps/oms/temp/usr/lib/osiris-sps/libxalan-c.so.111 (0xb5f11000)
+	libxerces-c-3.1.so => /home/clodo/osiris-sps/oms/temp/usr/lib/osiris-sps/libxerces-c-3.1.so (0xb5b73000)
+	libxalanMsg.so.111 => /home/clodo/osiris-sps/oms/temp/usr/lib/osiris-sps/libxalanMsg.so.111 (0xb5b69000)
+	libssl.so.0.9.8 => /home/clodo/osiris-sps/oms/temp/usr/lib/osiris-sps/libssl.so.0.9.8 (0xb5b22000)
+	libcrypto.so.0.9.8 => /home/clodo/osiris-sps/oms/temp/usr/lib/osiris-sps/libcrypto.so.0.9.8 (0xb59d1000)
+	libicuuc.so.38 => /home/clodo/osiris-sps/oms/temp/usr/lib/osiris-sps/libicuuc.so.38 (0xb58a3000)
+	libicuio.so.38 => /home/clodo/osiris-sps/oms/temp/usr/lib/osiris-sps/libicuio.so.38 (0xb5899000)
+	libicui18n.so.38 => /home/clodo/osiris-sps/oms/temp/usr/lib/osiris-sps/libicui18n.so.38 (0xb573a000)
+	libicudata.so.38 => /home/clodo/osiris-sps/oms/temp/usr/lib/osiris-sps/libicudata.so.38 (0xb4c63000)
+	liblang.so => /home/clodo/osiris-sps/oms/temp/usr/lib/osiris-sps/liblang.so (0xb4c0f000)
+	libarchives.so => /home/clodo/osiris-sps/oms/temp/usr/lib/osiris-sps/libarchives.so (0xb4be8000)
+	libm.so.6 => /lib/i386-linux-gnu/libm.so.6 (0xb4bb2000)
+	libc.so.6 => /lib/i386-linux-gnu/libc.so.6 (0xb4a50000)
+	libpthread.so.0 => /lib/i386-linux-gnu/libpthread.so.0 (0xb4a37000)
+	librt.so.1 => /lib/i386-linux-gnu/librt.so.1 (0xb4a2e000)
+	libstdc++.so.6 => /home/clodo/osiris-sps/oms/temp/usr/lib/osiris-sps/libstdc++.so.6 (0xb493c000)
+	libgcc_s.so.1 => /home/clodo/osiris-sps/oms/temp/usr/lib/osiris-sps/libgcc_s.so.1 (0xb491e000)
+	libdl.so.2 => /lib/i386-linux-gnu/libdl.so.2 (0xb4919000)
+	/lib/ld-linux.so.2 (0xb7789000)
+	libnsl.so.1 => /lib/i386-linux-gnu/libnsl.so.1 (0xb4902000)
+	libz.so.1 => /home/clodo/osiris-sps/oms/temp/usr/lib/osiris-sps/libz.so.1 (0xb48ec000)
+-------------------
+File:/home/clodo/osiris-sps/oms/temp/usr/lib/osiris-sps/testapp.sh
+	not a dynamic executable

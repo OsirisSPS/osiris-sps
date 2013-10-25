@@ -1,0 +1,12 @@
+Package: osiris-sps
+Version: {{{os:version}}}
+Section: web 
+Priority: optional
+Architecture: {{{os:architecture}}}
+Essential: no
+HomePage: http://www.osiris-sps.org
+Installed-Size: {{{os:size}}}
+Maintainer: Osiris Team <info@osiris-sps.org>
+Provides: osiris-sps
+Description: Osiris - Serverless Portal System
+ Software for decentralized portal, managed and shared via P2P between members.
