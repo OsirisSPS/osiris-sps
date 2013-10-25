@@ -1,0 +1,9 @@
+.svn
+_work
+configuration.php
+robots.txt
+distribute
+logs
+data
+xx_
+scoreboard
