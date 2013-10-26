@@ -64,7 +64,7 @@ FileSystem::~FileSystem()
 
 bool FileSystem::isDirectory(const String &path) const
 {
-	//if(path == _S("D:")) return true; // CAZZO, tolto il 16/07/2012, non so perchè c'è sta roba.
+	//if(path == _S("D:")) return true; // CLODOURGENT, tolto il 16/07/2012, non so perchè c'è sta roba.
    	try
 	{
 		return boost::filesystem::is_directory(createPath(path));

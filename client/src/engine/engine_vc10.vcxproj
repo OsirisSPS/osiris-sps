@@ -1,0 +1,864 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="debug|Win32">
+      <Configuration>debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="debug|x64">
+      <Configuration>debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="release|Win32">
+      <Configuration>release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="release|x64">
+      <Configuration>release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectName>Engine</ProjectName>
+    <ProjectGuid>{3E7BF832-359F-467D-BAAF-0CE1A3E7052F}</ProjectGuid>
+    <RootNamespace>engine</RootNamespace>
+    <Keyword>Win32Proj</Keyword>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='release|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <CharacterSet>NotSet</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='debug|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <CharacterSet>NotSet</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='release|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <CharacterSet>NotSet</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='debug|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <CharacterSet>NotSet</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='release|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(VCTargetsPath)Microsoft.CPP.UpgradeFromVC71.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='debug|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(VCTargetsPath)Microsoft.CPP.UpgradeFromVC71.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='release|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(VCTargetsPath)Microsoft.CPP.UpgradeFromVC71.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='debug|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(VCTargetsPath)Microsoft.CPP.UpgradeFromVC71.props" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>10.0.30319.1</_ProjectFileVersion>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">../../bin/windows/i386/vc10/$(Configuration)\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">../../obj/windows/i386/vc10/$(TargetName)/$(Configuration)\</IntDir>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</LinkIncremental>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='debug|x64'">../../bin/windows/x86_64/vc10/$(Configuration)\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='debug|x64'">../../obj/windows/x86_64/vc10/$(TargetName)/$(Configuration)\</IntDir>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='debug|x64'">true</LinkIncremental>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='release|Win32'">../../bin/windows/i386/vc10/$(Configuration)\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='release|Win32'">../../obj/windows/i386/vc10/$(TargetName)/$(Configuration)\</IntDir>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='release|Win32'">false</LinkIncremental>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='release|x64'">../../bin/windows/x86_64/vc10/$(Configuration)\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='release|x64'">../../obj/windows/x86_64/vc10/$(TargetName)/$(Configuration)\</IntDir>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='release|x64'">false</LinkIncremental>
+    <CodeAnalysisRuleSet Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRules Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" />
+    <CodeAnalysisRuleAssemblies Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" />
+    <CodeAnalysisRuleSet Condition="'$(Configuration)|$(Platform)'=='debug|x64'">AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRules Condition="'$(Configuration)|$(Platform)'=='debug|x64'" />
+    <CodeAnalysisRuleAssemblies Condition="'$(Configuration)|$(Platform)'=='debug|x64'" />
+    <CodeAnalysisRuleSet Condition="'$(Configuration)|$(Platform)'=='release|Win32'">AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRules Condition="'$(Configuration)|$(Platform)'=='release|Win32'" />
+    <CodeAnalysisRuleAssemblies Condition="'$(Configuration)|$(Platform)'=='release|Win32'" />
+    <CodeAnalysisRuleSet Condition="'$(Configuration)|$(Platform)'=='release|x64'">AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRules Condition="'$(Configuration)|$(Platform)'=='release|x64'" />
+    <CodeAnalysisRuleAssemblies Condition="'$(Configuration)|$(Platform)'=='release|x64'" />
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>../../dependencies/include/common;../core;../xml;../web;../lang;../net;./;../http;../upnp;../db;../archives;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;_USRDLL;OS_ENGINE_LIB;UNICODE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MinimalRebuild>false</MinimalRebuild>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ResourceCompile>
+      <ResourceOutputFileName>
+      </ResourceOutputFileName>
+    </ResourceCompile>
+    <Link>
+      <AdditionalDependencies>CLuceneUDLib.lib;ssleay32.lib;libeay32.lib;zlibstat.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>../../bin/windows/i386/vc10/$(Configuration)/engine.dll</OutputFile>
+      <AdditionalLibraryDirectories>../../dependencies/lib/windows/i386/vc10/$(Configuration);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <IgnoreSpecificDefaultLibraries>LIBCMT; libcpmt;%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <ProgramDatabaseFile>$(IntDir)$(TargetName).pdb</ProgramDatabaseFile>
+      <SubSystem>Windows</SubSystem>
+      <TargetMachine>MachineX86</TargetMachine>
+      <Profile>true</Profile>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='debug|x64'">
+    <Midl>
+      <TargetEnvironment>X64</TargetEnvironment>
+    </Midl>
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>../../dependencies/include/common;../core;../xml;../web;../lang;../net;./;../http;../upnp;../db;../archives;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;_USRDLL;OS_ENGINE_LIB;UNICODE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MinimalRebuild>true</MinimalRebuild>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ResourceCompile>
+      <ResourceOutputFileName>
+      </ResourceOutputFileName>
+    </ResourceCompile>
+    <Link>
+      <AdditionalDependencies>CLuceneUDLib.lib;ssleay32.lib;libeay32.lib;zlibstat.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>../../bin/windows/x86_64/vc10/$(Configuration)/engine.dll</OutputFile>
+      <AdditionalLibraryDirectories>../../dependencies/lib/windows/x86_64/vc10/$(Configuration);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <IgnoreSpecificDefaultLibraries>LIBCMT; libcpmt;%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <ProgramDatabaseFile>$(IntDir)$(TargetName).pdb</ProgramDatabaseFile>
+      <SubSystem>Windows</SubSystem>
+      <TargetMachine>MachineX64</TargetMachine>
+      <Profile>true</Profile>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='release|Win32'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>../../dependencies/include/common;../core;../xml;../web;../lang;../net;./;../http;../upnp;../db;../archives;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_USRDLL;OS_ENGINE_LIB;UNICODE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ResourceCompile>
+      <ResourceOutputFileName>
+      </ResourceOutputFileName>
+    </ResourceCompile>
+    <Link>
+      <AdditionalDependencies>CLuceneULib.lib;ssleay32.lib;libeay32.lib;zlibstat.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>../../bin/windows/i386/vc10/$(Configuration)/engine.dll</OutputFile>
+      <AdditionalLibraryDirectories>../../dependencies/lib/windows/i386/vc10/$(Configuration);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <IgnoreSpecificDefaultLibraries>LIBCMT; libcpmt;%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <ProgramDatabaseFile>$(IntDir)$(TargetName).pdb</ProgramDatabaseFile>
+      <SubSystem>Windows</SubSystem>
+      <OptimizeReferences>true</OptimizeReferences>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <TargetMachine>MachineX86</TargetMachine>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='release|x64'">
+    <Midl>
+      <TargetEnvironment>X64</TargetEnvironment>
+    </Midl>
+    <ClCompile>
+      <AdditionalIncludeDirectories>../../dependencies/include/common;../core;../xml;../web;../lang;../net;./;../http;../upnp;../db;../archives;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_USRDLL;OS_ENGINE_LIB;UNICODE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ResourceCompile>
+      <ResourceOutputFileName>
+      </ResourceOutputFileName>
+    </ResourceCompile>
+    <Link>
+      <AdditionalDependencies>CLuceneULib.lib;ssleay32.lib;libeay32.lib;zlibstat.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>../../bin/windows/x86_64/vc10/$(Configuration)/engine.dll</OutputFile>
+      <AdditionalLibraryDirectories>../../dependencies/lib/windows/x86_64/vc10/$(Configuration);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <IgnoreSpecificDefaultLibraries>LIBCMT; libcpmt;%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <ProgramDatabaseFile>$(IntDir)$(TargetName).pdb</ProgramDatabaseFile>
+      <SubSystem>Windows</SubSystem>
+      <OptimizeReferences>true</OptimizeReferences>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <TargetMachine>MachineX64</TargetMachine>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="cachesystem.cpp" />
+    <ClCompile Include="compatibilitymanager.cpp" />
+    <ClCompile Include="convert.cpp" />
+    <ClCompile Include="dataaccount.cpp" />
+    <ClCompile Include="datadiscussionstats.cpp" />
+    <ClCompile Include="dataentry.cpp" />
+    <ClCompile Include="datainstancecache.cpp" />
+    <ClCompile Include="datairecord.cpp" />
+    <ClCompile Include="dataistatistics.cpp" />
+    <ClCompile Include="datalocalmessage.cpp" />
+    <ClCompile Include="datapeer.cpp" />
+    <ClCompile Include="datapolloptionstats.cpp" />
+    <ClCompile Include="datapollstats.cpp" />
+    <ClCompile Include="datauserstats.cpp" />
+    <ClCompile Include="dbbinder.cpp" />
+    <ClCompile Include="dbdatabasessystem.cpp" />
+    <ClCompile Include="dbschemafield.cpp" />
+    <ClCompile Include="dbschemaindex.cpp" />
+    <ClCompile Include="dbschemaindexfield.cpp" />
+    <ClCompile Include="dbschemaschema.cpp" />
+    <ClCompile Include="dbschematable.cpp" />
+    <ClCompile Include="dbsqlactions.cpp" />
+    <ClCompile Include="dbtables.cpp" />
+    <ClCompile Include="dbvalue.cpp" />
+    <ClCompile Include="engine.cpp" />
+    <ClCompile Include="entitiesentitiescache.cpp" />
+    <ClCompile Include="entitiesentity.cpp" />
+    <ClCompile Include="entitiesentitychilds.cpp" />
+    <ClCompile Include="entitiessnapshotmanager.cpp" />
+    <ClCompile Include="entitiessnapshotoptions.cpp" />
+    <ClCompile Include="entitiesstatisticscache.cpp" />
+    <ClCompile Include="extensionscomponentcontrol.cpp" />
+    <ClCompile Include="extensionscomponenteditor.cpp" />
+    <ClCompile Include="extensionscomponentviewer.cpp" />
+    <ClCompile Include="extensionsextension.cpp" />
+    <ClCompile Include="extensionsinvalidcomponent.cpp" />
+    <ClCompile Include="extensionsinvalidmodule.cpp" />
+    <ClCompile Include="extensionsmodulecontrol.cpp" />
+    <ClCompile Include="extensionsmoduleeditor.cpp" />
+    <ClCompile Include="extensionsmoduleviewer.cpp" />
+    <ClCompile Include="extensionsmoduleviewerhidden.cpp" />
+    <ClCompile Include="extensionssystem.cpp" />
+    <ClCompile Include="iapplication.cpp" />
+    <ClCompile Include="ibackgroundjob.cpp" />
+    <ClCompile Include="id.cpp" />
+    <ClCompile Include="ideaccount.cpp" />
+    <ClCompile Include="ideaccountsmanager.cpp" />
+    <ClCompile Include="ideassistant.cpp" />
+    <ClCompile Include="ideblock.cpp" />
+    <ClCompile Include="idebutton.cpp" />
+    <ClCompile Include="ideeditattachmenteditor.cpp" />
+    <ClCompile Include="ideeditcalendareventeditor.cpp" />
+    <ClCompile Include="ideeditfileeditor.cpp" />
+    <ClCompile Include="ideeditinstanceeditor.cpp" />
+    <ClCompile Include="ideeditiobjecteditor.cpp" />
+    <ClCompile Include="ideeditmodeleditor.cpp" />
+    <ClCompile Include="ideeditpolleditor.cpp" />
+    <ClCompile Include="ideeditpolloptioneditor.cpp" />
+    <ClCompile Include="ideeditposteditor.cpp" />
+    <ClCompile Include="ideeditsectioneditor.cpp" />
+    <ClCompile Include="ideedittageditor.cpp" />
+    <ClCompile Include="ideedittexteditor.cpp" />
+    <ClCompile Include="idefunctionsfunctions.cpp" />
+    <ClCompile Include="idehelpbox.cpp" />
+    <ClCompile Include="ideide.cpp" />
+    <ClCompile Include="idemailbox.cpp" />
+    <ClCompile Include="idemainaccounts.cpp" />
+    <ClCompile Include="idemainexport.cpp" />
+    <ClCompile Include="idemainimport.cpp" />
+    <ClCompile Include="idemainisis.cpp" />
+    <ClCompile Include="idemainjobdetail.cpp" />
+    <ClCompile Include="idemainjobs.cpp" />
+    <ClCompile Include="idemainmaintenance.cpp" />
+    <ClCompile Include="idemainoptions.cpp" />
+    <ClCompile Include="idemainresources.cpp" />
+    <ClCompile Include="idemainsettings.cpp" />
+    <ClCompile Include="idemainsubscribe.cpp" />
+    <ClCompile Include="ideomleditor.cpp" />
+    <ClCompile Include="idepathway.cpp" />
+    <ClCompile Include="idepickerbool.cpp" />
+    <ClCompile Include="idepickercomponent.cpp" />
+    <ClCompile Include="idepickerculture.cpp" />
+    <ClCompile Include="idepickerdatetime.cpp" />
+    <ClCompile Include="idepickerdatetimespecial.cpp" />
+    <ClCompile Include="idepickernumber.cpp" />
+    <ClCompile Include="idepickerobject.cpp" />
+    <ClCompile Include="idepickersections.cpp" />
+    <ClCompile Include="idepickerselect.cpp" />
+    <ClCompile Include="idepickerskin.cpp" />
+    <ClCompile Include="ideportalaccount.cpp" />
+    <ClCompile Include="ideportalassistant.cpp" />
+    <ClCompile Include="ideportaledit.cpp" />
+    <ClCompile Include="ideportalmessenger.cpp" />
+    <ClCompile Include="ideportalobjectdetail.cpp" />
+    <ClCompile Include="ideportalsearch.cpp" />
+    <ClCompile Include="ideportaluser.cpp" />
+    <ClCompile Include="ideportalusers.cpp" />
+    <ClCompile Include="ideportalview.cpp" />
+    <ClCompile Include="idepositioneditor.cpp" />
+    <ClCompile Include="idesearchglobalparams.cpp" />
+    <ClCompile Include="idesearchparam.cpp" />
+    <ClCompile Include="idesearchquery.cpp" />
+    <ClCompile Include="idesearchresults.cpp" />
+    <ClCompile Include="idesession.cpp" />
+    <ClCompile Include="idesessionportal.cpp" />
+    <ClCompile Include="ideskin.cpp" />
+    <ClCompile Include="ideskinsimple.cpp" />
+    <ClCompile Include="idesystem.cpp" />
+    <ClCompile Include="idetablequery.cpp" />
+    <ClCompile Include="ideutils.cpp" />
+    <ClCompile Include="ideviewattachmentviewer.cpp" />
+    <ClCompile Include="ideviewcalendareventviewer.cpp" />
+    <ClCompile Include="ideviewcommentableobjectviewer.cpp" />
+    <ClCompile Include="ideviewfileviewer.cpp" />
+    <ClCompile Include="ideviewinstanceviewer.cpp" />
+    <ClCompile Include="ideviewiobjectviewer.cpp" />
+    <ClCompile Include="ideviewmodelviewer.cpp" />
+    <ClCompile Include="ideviewpolloptionviewer.cpp" />
+    <ClCompile Include="ideviewpollviewer.cpp" />
+    <ClCompile Include="ideviewpostviewer.cpp" />
+    <ClCompile Include="ideviewsectionviewer.cpp" />
+    <ClCompile Include="ideviewtagviewer.cpp" />
+    <ClCompile Include="ideviewtextviewer.cpp" />
+    <ClCompile Include="idevoteeditor.cpp" />
+    <ClCompile Include="idexslresolver.cpp" />
+    <ClCompile Include="ids.cpp" />
+    <ClCompile Include="iextensionscodecontext.cpp" />
+    <ClCompile Include="iextensionscodeprovider.cpp" />
+    <ClCompile Include="iextensionscomponent.cpp" />
+    <ClCompile Include="iextensionsextension.cpp" />
+    <ClCompile Include="iextensionsmodule.cpp" />
+    <ClCompile Include="iidemainpage.cpp" />
+    <ClCompile Include="iidepage.cpp" />
+    <ClCompile Include="iidepageable.cpp" />
+    <ClCompile Include="iideportalpage.cpp" />
+    <ClCompile Include="iomlcode.cpp" />
+    <ClCompile Include="iomlxsl.cpp" />
+    <ClCompile Include="iportalbackgroundjob.cpp" />
+    <ClCompile Include="iportaldatabase.cpp" />
+    <ClCompile Include="isearchoptions.cpp" />
+    <ClCompile Include="isearchresults.cpp" />
+    <ClCompile Include="isisconnection.cpp" />
+    <ClCompile Include="isisconnectionstatus.cpp" />
+    <ClCompile Include="isisendpoint.cpp" />
+    <ClCompile Include="isisservice.cpp" />
+    <ClCompile Include="isissystem.cpp" />
+    <ClCompile Include="isystem.cpp" />
+    <ClCompile Include="mainaddonsjob.cpp" />
+    <ClCompile Include="notificationsmanager.cpp" />
+    <ClCompile Include="objectsattachment.cpp" />
+    <ClCompile Include="objectsattribute.cpp" />
+    <ClCompile Include="objectsavatar.cpp" />
+    <ClCompile Include="objectscalendarevent.cpp" />
+    <ClCompile Include="objectsdescriptor.cpp" />
+    <ClCompile Include="objectsdescriptorclass.cpp" />
+    <ClCompile Include="objectsfile.cpp" />
+    <ClCompile Include="objectsicommentable.cpp" />
+    <ClCompile Include="objectsientry.cpp" />
+    <ClCompile Include="objectsinstance.cpp" />
+    <ClCompile Include="objectsiobject.cpp" />
+    <ClCompile Include="objectsirevisionable.cpp" />
+    <ClCompile Include="objectsmessage.cpp" />
+    <ClCompile Include="objectsmodel.cpp" />
+    <ClCompile Include="objectsobjectid.cpp" />
+    <ClCompile Include="objectsobjectscache.cpp" />
+    <ClCompile Include="objectspoll.cpp" />
+    <ClCompile Include="objectspolloption.cpp" />
+    <ClCompile Include="objectspollvote.cpp" />
+    <ClCompile Include="objectspost.cpp" />
+    <ClCompile Include="objectsprivatemessage.cpp" />
+    <ClCompile Include="objectsreputation.cpp" />
+    <ClCompile Include="objectssection.cpp" />
+    <ClCompile Include="objectssigner.cpp" />
+    <ClCompile Include="objectssystem.cpp" />
+    <ClCompile Include="objectstag.cpp" />
+    <ClCompile Include="objectstext.cpp" />
+    <ClCompile Include="objectsuser.cpp" />
+    <ClCompile Include="objectsvote.cpp" />
+    <ClCompile Include="omla.cpp" />
+    <ClCompile Include="omlanchor.cpp" />
+    <ClCompile Include="omlcode.cpp" />
+    <ClCompile Include="omlcontext.cpp" />
+    <ClCompile Include="omldate.cpp" />
+    <ClCompile Include="omldebug.cpp" />
+    <ClCompile Include="omlemail.cpp" />
+    <ClCompile Include="omlemoticon.cpp" />
+    <ClCompile Include="omlgoto.cpp" />
+    <ClCompile Include="omlhtml.cpp" />
+    <ClCompile Include="omlhtmlwrapper.cpp" />
+    <ClCompile Include="omlif.cpp" />
+    <ClCompile Include="omlimg.cpp" />
+    <ClCompile Include="omlitem.cpp" />
+    <ClCompile Include="omllang.cpp" />
+    <ClCompile Include="omlless.cpp" />
+    <ClCompile Include="omllist.cpp" />
+    <ClCompile Include="omlmanager.cpp" />
+    <ClCompile Include="omlmore.cpp" />
+    <ClCompile Include="omlnobr.cpp" />
+    <ClCompile Include="omlnoparse.cpp" />
+    <ClCompile Include="omlobject.cpp" />
+    <ClCompile Include="omlpopup.cpp" />
+    <ClCompile Include="omlquote.cpp" />
+    <ClCompile Include="omlreplace.cpp" />
+    <ClCompile Include="omlsize.cpp" />
+    <ClCompile Include="omlsystem.cpp" />
+    <ClCompile Include="omltab.cpp" />
+    <ClCompile Include="omltext.cpp" />
+    <ClCompile Include="omlurl.cpp" />
+    <ClCompile Include="omluser.cpp" />
+    <ClCompile Include="omlview.cpp" />
+    <ClCompile Include="options.cpp" />
+    <ClCompile Include="osiris.cpp" />
+    <ClCompile Include="osirislink.cpp" />
+    <ClCompile Include="p2pclient.cpp" />
+    <ClCompile Include="p2pconnection.cpp" />
+    <ClCompile Include="p2pexchangecontext.cpp" />
+    <ClCompile Include="p2pexchangesession.cpp" />
+    <ClCompile Include="p2pimachine.cpp" />
+    <ClCompile Include="p2pkeyscache.cpp" />
+    <ClCompile Include="p2plocalmachine.cpp" />
+    <ClCompile Include="p2pmachine.cpp" />
+    <ClCompile Include="p2pmachinescache.cpp" />
+    <ClCompile Include="p2pnodesession.cpp" />
+    <ClCompile Include="p2pnodestatus.cpp" />
+    <ClCompile Include="p2pp2psystem.cpp" />
+    <ClCompile Include="p2ppacketsauthenticationrequest.cpp" />
+    <ClCompile Include="p2ppacketsauthenticationresponse.cpp" />
+    <ClCompile Include="p2ppacketsbusy.cpp" />
+    <ClCompile Include="p2ppacketserror.cpp" />
+    <ClCompile Include="p2ppacketshello.cpp" />
+    <ClCompile Include="p2ppacketsipacket.cpp" />
+    <ClCompile Include="p2ppacketsobjectsrequest.cpp" />
+    <ClCompile Include="p2ppacketsobjectsresponse.cpp" />
+    <ClCompile Include="p2ppacketsportalrequest.cpp" />
+    <ClCompile Include="p2ppacketsportalresponse.cpp" />
+    <ClCompile Include="p2ppacketsqueryrequest.cpp" />
+    <ClCompile Include="p2ppacketsqueryresponse.cpp" />
+    <ClCompile Include="p2ppacketsterminate.cpp" />
+    <ClCompile Include="p2prequest.cpp" />
+    <ClCompile Include="p2pserver.cpp" />
+    <ClCompile Include="p2psession.cpp" />
+    <ClCompile Include="plugin.cpp" />
+    <ClCompile Include="pluginmodule.cpp" />
+    <ClCompile Include="pluginsmanager.cpp" />
+    <ClCompile Include="portalsaccount.cpp" />
+    <ClCompile Include="portalsdatabasescache.cpp" />
+    <ClCompile Include="portalsexporterjob.cpp" />
+    <ClCompile Include="portalsimporterjob.cpp" />
+    <ClCompile Include="portalsiportalslistener.cpp" />
+    <ClCompile Include="portalsmaindirectory.cpp" />
+    <ClCompile Include="portalsmessenger.cpp" />
+    <ClCompile Include="portalsoptimizerjob.cpp" />
+    <ClCompile Include="portalsoptionsshared.cpp" />
+    <ClCompile Include="portalspeer.cpp" />
+    <ClCompile Include="portalspeersmanager.cpp" />
+    <ClCompile Include="portalsportal.cpp" />
+    <ClCompile Include="portalsportaloptions.cpp" />
+    <ClCompile Include="portalsportalprocessor.cpp" />
+    <ClCompile Include="portalsportalsdirectory.cpp" />
+    <ClCompile Include="portalsportalsessionstate.cpp" />
+    <ClCompile Include="portalsportalssystem.cpp" />
+    <ClCompile Include="portalsprofile.cpp" />
+    <ClCompile Include="portalsprofilescache.cpp" />
+    <ClCompile Include="portalsserializer.cpp" />
+    <ClCompile Include="portalsstabilityjob.cpp" />
+    <ClCompile Include="portalssyncjob.cpp" />
+    <ClCompile Include="portalstransaction.cpp" />
+    <ClCompile Include="reputationsfeedback.cpp" />
+    <ClCompile Include="reputationsmanager.cpp" />
+    <ClCompile Include="reputationsscore.cpp" />
+    <ClCompile Include="searchattachmentoptions.cpp" />
+    <ClCompile Include="searchcalendareventoptions.cpp" />
+    <ClCompile Include="searchfileoptions.cpp" />
+    <ClCompile Include="searchinstanceoptions.cpp" />
+    <ClCompile Include="searchmodeloptions.cpp" />
+    <ClCompile Include="searchpolloptionoptions.cpp" />
+    <ClCompile Include="searchpolloptions.cpp" />
+    <ClCompile Include="searchpostoptions.cpp" />
+    <ClCompile Include="searchquery.cpp" />
+    <ClCompile Include="searchresult.cpp" />
+    <ClCompile Include="searchresultsdatabase.cpp" />
+    <ClCompile Include="searchresultslucene.cpp" />
+    <ClCompile Include="searchsectionoptions.cpp" />
+    <ClCompile Include="searchtagoptions.cpp" />
+    <ClCompile Include="searchtextoptions.cpp" />
+    <ClCompile Include="stdafx.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='debug|x64'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='release|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='release|x64'">Create</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="xmlexporter.cpp" />
+    <ClCompile Include="xmloptions.cpp" />
+    <ClCompile Include="xmlportalexporter.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="cachesystem.h" />
+    <ClInclude Include="compatibilitymanager.h" />
+    <ClInclude Include="compatibilityrazor.h" />
+    <ClInclude Include="convert.h" />
+    <ClInclude Include="dataaccount.h" />
+    <ClInclude Include="datadata.h" />
+    <ClInclude Include="datadiscussionstats.h" />
+    <ClInclude Include="dataentry.h" />
+    <ClInclude Include="datainstancecache.h" />
+    <ClInclude Include="datairecord.h" />
+    <ClInclude Include="dataistatistics.h" />
+    <ClInclude Include="datalocalmessage.h" />
+    <ClInclude Include="datapeer.h" />
+    <ClInclude Include="datapolloptionstats.h" />
+    <ClInclude Include="datapollstats.h" />
+    <ClInclude Include="datauserstats.h" />
+    <ClInclude Include="dbbinder.h" />
+    <ClInclude Include="dbdatabasessystem.h" />
+    <ClInclude Include="dbschemafield.h" />
+    <ClInclude Include="dbschemaindex.h" />
+    <ClInclude Include="dbschemaindexfield.h" />
+    <ClInclude Include="dbschemaschema.h" />
+    <ClInclude Include="dbschematable.h" />
+    <ClInclude Include="dbsqlactions.h" />
+    <ClInclude Include="dbtables.h" />
+    <ClInclude Include="dbvalue.h" />
+    <ClInclude Include="engine.h" />
+    <ClInclude Include="engineconfig.h" />
+    <ClInclude Include="entitiesentities.h" />
+    <ClInclude Include="entitiesentitiescache.h" />
+    <ClInclude Include="entitiesentity.h" />
+    <ClInclude Include="entitiesentitychilds.h" />
+    <ClInclude Include="entitiessnapshotmanager.h" />
+    <ClInclude Include="entitiessnapshotoptions.h" />
+    <ClInclude Include="entitiesstatisticscache.h" />
+    <ClInclude Include="extensionscomponentcontrol.h" />
+    <ClInclude Include="extensionscomponenteditor.h" />
+    <ClInclude Include="extensionscomponentviewer.h" />
+    <ClInclude Include="extensionsextension.h" />
+    <ClInclude Include="extensionsextensions.h" />
+    <ClInclude Include="extensionsinvalidcomponent.h" />
+    <ClInclude Include="extensionsinvalidmodule.h" />
+    <ClInclude Include="extensionsmodulecontrol.h" />
+    <ClInclude Include="extensionsmoduleeditor.h" />
+    <ClInclude Include="extensionsmoduleviewer.h" />
+    <ClInclude Include="extensionsmoduleviewerhidden.h" />
+    <ClInclude Include="extensionssystem.h" />
+    <ClInclude Include="iapplication.h" />
+    <ClInclude Include="ibackgroundjob.h" />
+    <ClInclude Include="id.h" />
+    <ClInclude Include="ideaccount.h" />
+    <ClInclude Include="ideaccountsmanager.h" />
+    <ClInclude Include="ideassistant.h" />
+    <ClInclude Include="ideblock.h" />
+    <ClInclude Include="idebutton.h" />
+    <ClInclude Include="idecontrol.h" />
+    <ClInclude Include="ideeditattachmenteditor.h" />
+    <ClInclude Include="ideeditcalendareventeditor.h" />
+    <ClInclude Include="ideeditfileeditor.h" />
+    <ClInclude Include="ideeditinstanceeditor.h" />
+    <ClInclude Include="ideeditiobjecteditor.h" />
+    <ClInclude Include="ideeditmodeleditor.h" />
+    <ClInclude Include="ideeditpolleditor.h" />
+    <ClInclude Include="ideeditpolloptioneditor.h" />
+    <ClInclude Include="ideeditposteditor.h" />
+    <ClInclude Include="ideeditsectioneditor.h" />
+    <ClInclude Include="ideedittageditor.h" />
+    <ClInclude Include="ideedittexteditor.h" />
+    <ClInclude Include="idefunctionsfunctions.h" />
+    <ClInclude Include="idehelpbox.h" />
+    <ClInclude Include="ideide.h" />
+    <ClInclude Include="idemailbox.h" />
+    <ClInclude Include="idemainaccounts.h" />
+    <ClInclude Include="idemainexport.h" />
+    <ClInclude Include="idemainimport.h" />
+    <ClInclude Include="idemainisis.h" />
+    <ClInclude Include="idemainjobdetail.h" />
+    <ClInclude Include="idemainjobs.h" />
+    <ClInclude Include="idemainmaintenance.h" />
+    <ClInclude Include="idemainoptions.h" />
+    <ClInclude Include="idemainresources.h" />
+    <ClInclude Include="idemainsettings.h" />
+    <ClInclude Include="idemainsubscribe.h" />
+    <ClInclude Include="ideomleditor.h" />
+    <ClInclude Include="idepages.h" />
+    <ClInclude Include="idepathway.h" />
+    <ClInclude Include="idepickerbool.h" />
+    <ClInclude Include="idepickercomponent.h" />
+    <ClInclude Include="idepickerculture.h" />
+    <ClInclude Include="idepickerdatetime.h" />
+    <ClInclude Include="idepickerdatetimespecial.h" />
+    <ClInclude Include="idepickernumber.h" />
+    <ClInclude Include="idepickerobject.h" />
+    <ClInclude Include="idepickersections.h" />
+    <ClInclude Include="idepickerselect.h" />
+    <ClInclude Include="idepickerskin.h" />
+    <ClInclude Include="ideportalaccount.h" />
+    <ClInclude Include="ideportalassistant.h" />
+    <ClInclude Include="ideportalcontrol.h" />
+    <ClInclude Include="ideportaledit.h" />
+    <ClInclude Include="ideportalmessenger.h" />
+    <ClInclude Include="ideportalobjectdetail.h" />
+    <ClInclude Include="ideportalsearch.h" />
+    <ClInclude Include="ideportaluser.h" />
+    <ClInclude Include="ideportalusers.h" />
+    <ClInclude Include="ideportalview.h" />
+    <ClInclude Include="idepositioneditor.h" />
+    <ClInclude Include="idesearchglobalparams.h" />
+    <ClInclude Include="idesearchparam.h" />
+    <ClInclude Include="idesearchquery.h" />
+    <ClInclude Include="idesearchresults.h" />
+    <ClInclude Include="idesession.h" />
+    <ClInclude Include="idesessionportal.h" />
+    <ClInclude Include="ideskin.h" />
+    <ClInclude Include="ideskinsimple.h" />
+    <ClInclude Include="idesystem.h" />
+    <ClInclude Include="idetablequery.h" />
+    <ClInclude Include="ideutils.h" />
+    <ClInclude Include="ideviewattachmentviewer.h" />
+    <ClInclude Include="ideviewcalendareventviewer.h" />
+    <ClInclude Include="ideviewcommentableobjectviewer.h" />
+    <ClInclude Include="ideviewfileviewer.h" />
+    <ClInclude Include="ideviewinstanceviewer.h" />
+    <ClInclude Include="ideviewiobjectviewer.h" />
+    <ClInclude Include="ideviewmodelviewer.h" />
+    <ClInclude Include="ideviewpolloptionviewer.h" />
+    <ClInclude Include="ideviewpollviewer.h" />
+    <ClInclude Include="ideviewpostviewer.h" />
+    <ClInclude Include="ideviewsectionviewer.h" />
+    <ClInclude Include="ideviewtagviewer.h" />
+    <ClInclude Include="ideviewtextviewer.h" />
+    <ClInclude Include="idevoteeditor.h" />
+    <ClInclude Include="idexslresolver.h" />
+    <ClInclude Include="ids.h" />
+    <ClInclude Include="iextensionscodecontext.h" />
+    <ClInclude Include="iextensionscodeprovider.h" />
+    <ClInclude Include="iextensionscomponent.h" />
+    <ClInclude Include="iextensionsextension.h" />
+    <ClInclude Include="iextensionsmodule.h" />
+    <ClInclude Include="iidemainpage.h" />
+    <ClInclude Include="iidepage.h" />
+    <ClInclude Include="iidepageable.h" />
+    <ClInclude Include="iideportalpage.h" />
+    <ClInclude Include="iidexslrenderer.h" />
+    <ClInclude Include="iomlcode.h" />
+    <ClInclude Include="iomlxsl.h" />
+    <ClInclude Include="iportalbackgroundjob.h" />
+    <ClInclude Include="iportaldatabase.h" />
+    <ClInclude Include="isearchoptions.h" />
+    <ClInclude Include="isearchresults.h" />
+    <ClInclude Include="isis.h" />
+    <ClInclude Include="isisconnection.h" />
+    <ClInclude Include="isisconnectionstatus.h" />
+    <ClInclude Include="isisendpoint.h" />
+    <ClInclude Include="isisservice.h" />
+    <ClInclude Include="isissystem.h" />
+    <ClInclude Include="isystem.h" />
+    <ClInclude Include="lucene.h" />
+    <ClInclude Include="mainaddonsjob.h" />
+    <ClInclude Include="notificationsmanager.h" />
+    <ClInclude Include="objectsattachment.h" />
+    <ClInclude Include="objectsattribute.h" />
+    <ClInclude Include="objectsavatar.h" />
+    <ClInclude Include="objectscalendarevent.h" />
+    <ClInclude Include="objectsdescriptor.h" />
+    <ClInclude Include="objectsdescriptorclass.h" />
+    <ClInclude Include="objectsfile.h" />
+    <ClInclude Include="objectsicommentable.h" />
+    <ClInclude Include="objectsientry.h" />
+    <ClInclude Include="objectsinstance.h" />
+    <ClInclude Include="objectsiobject.h" />
+    <ClInclude Include="objectsirevisionable.h" />
+    <ClInclude Include="objectsmessage.h" />
+    <ClInclude Include="objectsmodel.h" />
+    <ClInclude Include="objectsobjectid.h" />
+    <ClInclude Include="objectsobjects.h" />
+    <ClInclude Include="objectsobjectscache.h" />
+    <ClInclude Include="objectspoll.h" />
+    <ClInclude Include="objectspolloption.h" />
+    <ClInclude Include="objectspollvote.h" />
+    <ClInclude Include="objectspost.h" />
+    <ClInclude Include="objectsprivatemessage.h" />
+    <ClInclude Include="objectsreputation.h" />
+    <ClInclude Include="objectssection.h" />
+    <ClInclude Include="objectssigner.h" />
+    <ClInclude Include="objectssystem.h" />
+    <ClInclude Include="objectstag.h" />
+    <ClInclude Include="objectstext.h" />
+    <ClInclude Include="objectsuser.h" />
+    <ClInclude Include="objectsvote.h" />
+    <ClInclude Include="omla.h" />
+    <ClInclude Include="omlanchor.h" />
+    <ClInclude Include="omlcode.h" />
+    <ClInclude Include="omlcontext.h" />
+    <ClInclude Include="omldate.h" />
+    <ClInclude Include="omldebug.h" />
+    <ClInclude Include="omlemail.h" />
+    <ClInclude Include="omlemoticon.h" />
+    <ClInclude Include="omlgoto.h" />
+    <ClInclude Include="omlhtml.h" />
+    <ClInclude Include="omlhtmlwrapper.h" />
+    <ClInclude Include="omlif.h" />
+    <ClInclude Include="omlimg.h" />
+    <ClInclude Include="omlitem.h" />
+    <ClInclude Include="omllang.h" />
+    <ClInclude Include="omlless.h" />
+    <ClInclude Include="omllist.h" />
+    <ClInclude Include="omlmanager.h" />
+    <ClInclude Include="omlmore.h" />
+    <ClInclude Include="omlnobr.h" />
+    <ClInclude Include="omlnoparse.h" />
+    <ClInclude Include="omlobject.h" />
+    <ClInclude Include="omlpopup.h" />
+    <ClInclude Include="omlquote.h" />
+    <ClInclude Include="omlreplace.h" />
+    <ClInclude Include="omlsize.h" />
+    <ClInclude Include="omlsystem.h" />
+    <ClInclude Include="omltab.h" />
+    <ClInclude Include="omltext.h" />
+    <ClInclude Include="omlurl.h" />
+    <ClInclude Include="omluser.h" />
+    <ClInclude Include="omlview.h" />
+    <ClInclude Include="options.h" />
+    <ClInclude Include="osiriscommon.h" />
+    <ClInclude Include="osirislink.h" />
+    <ClInclude Include="osirisplugins.h" />
+    <ClInclude Include="p2pclient.h" />
+    <ClInclude Include="p2pconnection.h" />
+    <ClInclude Include="p2pexchangecontext.h" />
+    <ClInclude Include="p2pexchangesession.h" />
+    <ClInclude Include="p2pimachine.h" />
+    <ClInclude Include="p2pkeyscache.h" />
+    <ClInclude Include="p2plocalmachine.h" />
+    <ClInclude Include="p2pmachine.h" />
+    <ClInclude Include="p2pmachinescache.h" />
+    <ClInclude Include="p2pnodesession.h" />
+    <ClInclude Include="p2pnodestatus.h" />
+    <ClInclude Include="p2pp2p.h" />
+    <ClInclude Include="p2pp2psystem.h" />
+    <ClInclude Include="p2ppacketsauthenticationrequest.h" />
+    <ClInclude Include="p2ppacketsauthenticationresponse.h" />
+    <ClInclude Include="p2ppacketsbusy.h" />
+    <ClInclude Include="p2ppacketserror.h" />
+    <ClInclude Include="p2ppacketshello.h" />
+    <ClInclude Include="p2ppacketsipacket.h" />
+    <ClInclude Include="p2ppacketsobjectsrequest.h" />
+    <ClInclude Include="p2ppacketsobjectsresponse.h" />
+    <ClInclude Include="p2ppacketspackets.h" />
+    <ClInclude Include="p2ppacketsportalrequest.h" />
+    <ClInclude Include="p2ppacketsportalresponse.h" />
+    <ClInclude Include="p2ppacketsqueryrequest.h" />
+    <ClInclude Include="p2ppacketsqueryresponse.h" />
+    <ClInclude Include="p2ppacketsterminate.h" />
+    <ClInclude Include="p2prequest.h" />
+    <ClInclude Include="p2pserver.h" />
+    <ClInclude Include="p2psession.h" />
+    <ClInclude Include="plugin.h" />
+    <ClInclude Include="pluginmodule.h" />
+    <ClInclude Include="pluginsmanager.h" />
+    <ClInclude Include="portalsaccount.h" />
+    <ClInclude Include="portalsdatabasescache.h" />
+    <ClInclude Include="portalsexporterjob.h" />
+    <ClInclude Include="portalsimporterjob.h" />
+    <ClInclude Include="portalsiportalslistener.h" />
+    <ClInclude Include="portalsmaindirectory.h" />
+    <ClInclude Include="portalsmessenger.h" />
+    <ClInclude Include="portalsoptimizerjob.h" />
+    <ClInclude Include="portalsoptionsshared.h" />
+    <ClInclude Include="portalspeer.h" />
+    <ClInclude Include="portalspeersmanager.h" />
+    <ClInclude Include="portalsportal.h" />
+    <ClInclude Include="portalsportaloptions.h" />
+    <ClInclude Include="portalsportalprocessor.h" />
+    <ClInclude Include="portalsportals.h" />
+    <ClInclude Include="portalsportalsdirectory.h" />
+    <ClInclude Include="portalsportalsessionstate.h" />
+    <ClInclude Include="portalsportalssystem.h" />
+    <ClInclude Include="portalsprofile.h" />
+    <ClInclude Include="portalsprofilescache.h" />
+    <ClInclude Include="portalsserializer.h" />
+    <ClInclude Include="portalsstabilityjob.h" />
+    <ClInclude Include="portalssyncjob.h" />
+    <ClInclude Include="portalstransaction.h" />
+    <ClInclude Include="reputationsfeedback.h" />
+    <ClInclude Include="reputationsmanager.h" />
+    <ClInclude Include="reputationsreputations.h" />
+    <ClInclude Include="reputationsscore.h" />
+    <ClInclude Include="searchattachmentoptions.h" />
+    <ClInclude Include="searchcalendareventoptions.h" />
+    <ClInclude Include="searchfileoptions.h" />
+    <ClInclude Include="searchinstanceoptions.h" />
+    <ClInclude Include="searchmodeloptions.h" />
+    <ClInclude Include="searchpolloptionoptions.h" />
+    <ClInclude Include="searchpolloptions.h" />
+    <ClInclude Include="searchpostoptions.h" />
+    <ClInclude Include="searchquery.h" />
+    <ClInclude Include="searchresult.h" />
+    <ClInclude Include="searchresultsdatabase.h" />
+    <ClInclude Include="searchresultslucene.h" />
+    <ClInclude Include="searchsearch.h" />
+    <ClInclude Include="searchsectionoptions.h" />
+    <ClInclude Include="searchtagoptions.h" />
+    <ClInclude Include="searchtextoptions.h" />
+    <ClInclude Include="stdafx.h" />
+    <ClInclude Include="xmlexporter.h" />
+    <ClInclude Include="xmloptions.h" />
+    <ClInclude Include="xmlportalexporter.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\archives\archives_vc10.vcxproj">
+      <Project>{fa1877ae-b854-4040-8afb-0e6e8cfb00d7}</Project>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+    <ProjectReference Include="..\core\core_vc10.vcxproj">
+      <Project>{df5edb66-966d-4514-8100-f82d9cf39002}</Project>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+    <ProjectReference Include="..\db\db_vc10.vcxproj">
+      <Project>{df5edc66-c66a-d114-8111-382d9cf39005}</Project>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+    <ProjectReference Include="..\http\http_vc10.vcxproj">
+      <Project>{df5edc66-966d-4514-8100-bb2d9cf5510b}</Project>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+    <ProjectReference Include="..\lang\lang_vc10.vcxproj">
+      <Project>{df5edb66-966d-4514-8100-f82d9cf39107}</Project>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+    <ProjectReference Include="..\net\net_vc10.vcxproj">
+      <Project>{df5edb66-966d-4514-8100-f82d9cf39005}</Project>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+    <ProjectReference Include="..\upnp\upnp_vc10.vcxproj">
+      <Project>{df5edc22-226d-2214-8100-bb222cf55122}</Project>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+    <ProjectReference Include="..\web\web_vc10.vcxproj">
+      <Project>{df5edb66-966d-4514-8100-f82d9cf39106}</Project>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+    <ProjectReference Include="..\xml\xml_vc10.vcxproj">
+      <Project>{df5edb66-966d-4514-8100-f82d9cf39001}</Project>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+  <ProjectExtensions>
+    <VisualStudio>
+      <UserProperties RESOURCE_FILE="\Visual C++\Windows\Mfc\osiris\alfa\Gui\workspace\GUI.rc" />
+    </VisualStudio>
+  </ProjectExtensions>
+</Project>

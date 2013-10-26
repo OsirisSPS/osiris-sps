@@ -87,7 +87,7 @@ String LanguageManager::getText(const String &culture, const LanguageResult &res
 {	
 	String text = getText(culture, String(result.getId()));
 
-	// CAZZO TODO, qua devo scorrere i parametri di 'result' e fare replace di {@key}
+	// CLODOURGENT, qua devo scorrere i parametri di 'result' e fare replace di {@key}
 
 	return text;
 }

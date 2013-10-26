@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_workspace_file>
+	<Workspace title="osiris workspace">
+		<Project filename="../../../osiris-sps/client/src/application/application.cbp" active="1">
+			<Depends filename="plugins/components/components.cbp" />
+			<Depends filename="../../../osiris-sps/client/src/core/core.cbp" />
+			<Depends filename="../../../osiris-sps/client/src/db/db.cbp" />
+			<Depends filename="../../../osiris-sps/client/src/plugins/dht/dht.cbp" />
+			<Depends filename="engine/engine.cbp" />
+			<Depends filename="../../../osiris-sps/client/src/http/http.cbp" />
+			<Depends filename="../../../osiris-sps/client/src/irc/irc.cbp" />
+			<Depends filename="../../../osiris-sps/client/src/lang/lang.cbp" />
+			<Depends filename="../../../osiris-sps/client/src/net/net.cbp" />
+			<Depends filename="../../../osiris-sps/client/src/plugins/pluginsample/pluginsample.cbp" />
+			<Depends filename="plugins/python/python.cbp" />
+			<Depends filename="../../../osiris-sps/client/src/sampleapp/sampleapp.cbp" />
+			<Depends filename="../../../osiris-sps/client/src/sdk/sdk.cbp" />
+			<Depends filename="../../../osiris-sps/client/src/plugins/sqlite/sqlite.cbp" />
+			<Depends filename="plugins/stress/stress.cbp" />
+			<Depends filename="../../../osiris-sps/client/src/testapp/testapp.cbp" />
+			<Depends filename="../../../osiris-sps/client/src/plugins/translations/translations.cbp" />
+			<Depends filename="../../../osiris-sps/client/src/ui/ui.cbp" />
+			<Depends filename="../../../osiris-sps/client/src/upnp/upnp.cbp" />
+			<Depends filename="../../../osiris-sps/client/src/web/web.cbp" />
+			<Depends filename="../../../osiris-sps/client/src/xml/xml.cbp" />
+		</Project>
+		<Project filename="plugins/components/components.cbp">
+			<Depends filename="engine/engine.cbp" />
+		</Project>
+		<Project filename="../../../osiris-sps/client/src/console/console.cbp">
+			<Depends filename="plugins/components/components.cbp" />
+			<Depends filename="../../../osiris-sps/client/src/core/core.cbp" />
+			<Depends filename="../../../osiris-sps/client/src/db/db.cbp" />
+			<Depends filename="../../../osiris-sps/client/src/plugins/dht/dht.cbp" />
+			<Depends filename="engine/engine.cbp" />
+			<Depends filename="../../../osiris-sps/client/src/http/http.cbp" />
+			<Depends filename="../../../osiris-sps/client/src/irc/irc.cbp" />
+			<Depends filename="../../../osiris-sps/client/src/lang/lang.cbp" />
+			<Depends filename="../../../osiris-sps/client/src/net/net.cbp" />
+			<Depends filename="../../../osiris-sps/client/src/plugins/pluginsample/pluginsample.cbp" />
+			<Depends filename="plugins/python/python.cbp" />
+			<Depends filename="../../../osiris-sps/client/src/sampleapp/sampleapp.cbp" />
+			<Depends filename="../../../osiris-sps/client/src/sdk/sdk.cbp" />
+			<Depends filename="../../../osiris-sps/client/src/plugins/sqlite/sqlite.cbp" />
+			<Depends filename="plugins/stress/stress.cbp" />
+			<Depends filename="../../../osiris-sps/client/src/testapp/testapp.cbp" />
+			<Depends filename="../../../osiris-sps/client/src/plugins/translations/translations.cbp" />
+			<Depends filename="../../../osiris-sps/client/src/ui/ui.cbp" />
+			<Depends filename="../../../osiris-sps/client/src/upnp/upnp.cbp" />
+			<Depends filename="../../../osiris-sps/client/src/web/web.cbp" />
+			<Depends filename="../../../osiris-sps/client/src/xml/xml.cbp" />
+		</Project>
+		<Project filename="../../../osiris-sps/client/src/core/core.cbp" />
+		<Project filename="../../../osiris-sps/client/src/db/db.cbp" />
+		<Project filename="../../../osiris-sps/client/src/plugins/dht/dht.cbp" />
+		<Project filename="engine/engine.cbp">
+			<Depends filename="../../../osiris-sps/client/src/archives/archives.cbp" />
+			<Depends filename="../../../osiris-sps/client/src/core/core.cbp" />
+			<Depends filename="../../../osiris-sps/client/src/db/db.cbp" />
+			<Depends filename="../../../osiris-sps/client/src/http/http.cbp" />
+			<Depends filename="../../../osiris-sps/client/src/lang/lang.cbp" />
+			<Depends filename="../../../osiris-sps/client/src/net/net.cbp" />
+			<Depends filename="../../../osiris-sps/client/src/upnp/upnp.cbp" />
+			<Depends filename="../../../osiris-sps/client/src/web/web.cbp" />
+			<Depends filename="../../../osiris-sps/client/src/xml/xml.cbp" />
+		</Project>
+		<Project filename="../../../osiris-sps/client/src/http/http.cbp">
+			<Depends filename="../../../osiris-sps/client/src/net/net.cbp" />
+		</Project>
+		<Project filename="../../../osiris-sps/client/src/irc/irc.cbp">
+			<Depends filename="../../../osiris-sps/client/src/core/core.cbp" />
+			<Depends filename="../../../osiris-sps/client/src/net/net.cbp" />
+		</Project>
+		<Project filename="../../../osiris-sps/client/src/lang/lang.cbp">
+			<Depends filename="../../../osiris-sps/client/src/core/core.cbp" />
+			<Depends filename="../../../osiris-sps/client/src/xml/xml.cbp" />
+		</Project>
+		<Project filename="../../../osiris-sps/client/src/net/net.cbp">
+			<Depends filename="../../../osiris-sps/client/src/core/core.cbp" />
+		</Project>
+		<Project filename="../../../osiris-sps/client/src/plugins/pluginsample/pluginsample.cbp">
+			<Depends filename="engine/engine.cbp" />
+		</Project>
+		<Project filename="plugins/python/python.cbp">
+			<Depends filename="engine/engine.cbp" />
+		</Project>
+		<Project filename="../../../osiris-sps/client/src/sampleapp/sampleapp.cbp" />
+		<Project filename="../../../osiris-sps/client/src/sdk/sdk.cbp">
+			<Depends filename="../../../osiris-sps/client/src/core/core.cbp" />
+			<Depends filename="engine/engine.cbp" />
+		</Project>
+		<Project filename="../../../osiris-sps/client/src/plugins/sqlite/sqlite.cbp">
+			<Depends filename="engine/engine.cbp" />
+		</Project>
+		<Project filename="plugins/stress/stress.cbp">
+			<Depends filename="engine/engine.cbp" />
+		</Project>
+		<Project filename="../../../osiris-sps/client/src/testapp/testapp.cbp" />
+		<Project filename="../../../osiris-sps/client/src/plugins/translations/translations.cbp">
+			<Depends filename="engine/engine.cbp" />
+		</Project>
+		<Project filename="../../../osiris-sps/client/src/ui/ui.cbp">
+			<Depends filename="engine/engine.cbp" />
+			<Depends filename="../../../osiris-sps/client/src/irc/irc.cbp" />
+			<Depends filename="../../../osiris-sps/client/src/plugins/pluginsample/pluginsample.cbp" />
+			<Depends filename="plugins/python/python.cbp" />
+			<Depends filename="../../../osiris-sps/client/src/plugins/sqlite/sqlite.cbp" />
+			<Depends filename="plugins/stress/stress.cbp" />
+			<Depends filename="../../../osiris-sps/client/src/plugins/translations/translations.cbp" />
+		</Project>
+		<Project filename="../../../osiris-sps/client/src/upnp/upnp.cbp">
+			<Depends filename="../../../osiris-sps/client/src/core/core.cbp" />
+		</Project>
+		<Project filename="../../../osiris-sps/client/src/web/web.cbp">
+			<Depends filename="../../../osiris-sps/client/src/core/core.cbp" />
+			<Depends filename="../../../osiris-sps/client/src/http/http.cbp" />
+			<Depends filename="../../../osiris-sps/client/src/net/net.cbp" />
+			<Depends filename="../../../osiris-sps/client/src/xml/xml.cbp" />
+		</Project>
+		<Project filename="../../../osiris-sps/client/src/xml/xml.cbp">
+			<Depends filename="../../../osiris-sps/client/src/http/http.cbp" />
+			<Depends filename="../../../osiris-sps/client/src/net/net.cbp" />
+		</Project>
+		<Project filename="../../../osiris-sps/client/src/archives/archives.cbp">
+			<Depends filename="../../../osiris-sps/client/src/core/core.cbp" />
+		</Project>
+	</Workspace>
+</CodeBlocks_workspace_file>
