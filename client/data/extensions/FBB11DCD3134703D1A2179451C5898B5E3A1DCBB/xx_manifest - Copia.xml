@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<extension id="FBB11DCD3134703D1A2179451C5898B5E3A1DCBB" author="Osiris Team" description="Custom CSS" name="Custom CSS" version="1.0" icon="icon.png" logo="logo.png" category="skin" tags="css skin">
+
+  <scripts>
+    <script language="python" path="scripts/script.py"/>
+  </scripts>
+
+</extension>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RDF xmlns="http://www.w3.org/1999/02/22-rdf-syntax-ns#" 
+ xmlns:em="http://www.mozilla.org/2004/em-rdf#">
+  <Description about="urn:mozilla:install-manifest">
+    <em:id>osiris@kodeware.net</em:id>
+    <em:name>Osirifox</em:name>
+    <em:version>{{{os:version3}}}</em:version>
+    <em:creator>Kodeware</em:creator>
+    <em:iconURL>chrome://osiris/content/icon.png</em:iconURL>
+    <em:description>Osiris Serverless Portal System</em:description>
+    <em:homepageURL>http://www.osiris-sps.org/</em:homepageURL>
+    <em:updateURL>http://www.osiris-sps.org/repository/{{{os:updaterdf}}}</em:updateURL>
+    <em:updateKey>MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQC4H53oAyF5MG/UsS5UgKZOmrUwutsnt2msc1SoPGHGpR4MU8Pf1ZWeH7fNvAyEl6ChvMlQuqbtL9MdxKIWIPWq7VcmhBO+gh8YsLGAbz700XB7aUoxTb1B5A3by8eGZicozKcNqQoHON134pT3giLm41OSAO5vg03Tm7+7q1WCdwIDAQAB</em:updateKey>
+    <em:targetApplication>
+      <Description>
+        <em:id>{ec8030f7-c20a-464f-9b0e-13a3a9e97384}</em:id> <!-- firefox -->
+        <em:minVersion>{{{os:ffminversion}}}</em:minVersion>
+        <em:maxVersion>{{{os:ffmaxversion}}}</em:maxVersion>
+      </Description>
+    </em:targetApplication>
+  </Description>
+</RDF>

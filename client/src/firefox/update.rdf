@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<r:RDF xmlns:r="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+        xmlns="http://www.mozilla.org/2004/em-rdf#">
+
+<r:Description about="urn:mozilla:extension:osiris@kodeware.net">
+    <updates>
+    <r:Seq>
+    <r:li>
+    <r:Description>
+        <version>{{{os:version3}}}</version>
+        <targetApplication>
+            <r:Description>
+            <id>{ec8030f7-c20a-464f-9b0e-13a3a9e97384}</id>
+            <minVersion>{{{os:ffminversion}}}</minVersion>
+            <maxVersion>{{{os:ffmaxversion}}}</maxVersion>
+            <updateLink>http://osiris.kodeware.net/repository/{{{os:xpi}}}</updateLink>
+            <updateHash>
+            {{{os:sha256}}}
+            </updateHash>
+            </r:Description>
+        </targetApplication>
+    </r:Description>
+    </r:li>
+    </r:Seq>
+    </updates>
+</r:Description>
+
+</r:RDF>

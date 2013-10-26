@@ -1,0 +1,13 @@
+2.0 - 27/04/2012 - Internet Archive, SoundCloud, and others.
+1.8 - 17/11/2011 - Crash fix, added some XXX services.
+1.7 - 11/11/2011 - Log debug disabled, added xvideos.com
+1.6 - xx/10/2011 - Bugfix, macro system
+1.3 - xx/09/2011 - Added cleaning html, layout fixing, added "ref" and "url" macros. Added Mibbit, Jamendo, Disqus.
+1.2 - 18/09/2011 - Bug "Generic html" always "ask". IntenseDebate fix. Added custom notes and macro explaination. Added Megavideo
+1.1 - xx/09/2011 - Bugfixes
+1.0 - xx/09/2011 - First release
+
+Under works by Clodo:
+
+W- Apply macros to each snippets, by replacing regex in python.
+N- Create an "Anubis" snippet, and deprecate the custom extension. No, i think many time about this... maybe additional customization are possible with a dedicated extension.

@@ -1,0 +1,65 @@
+-- Opzioni Firefox ---------------------------------------------------
+
+In Firefox aprire about:config e settare
+javascript.options.showInConsole = true
+extensions.logging.enabled = true
+
+-- Links -------------------------------------------------------------
+
+Private Browsing
+https://wiki.mozilla.org/User:Ehsan/PrivateBrowsingForExtensions#Extensions_that_want_to_listen_to_the_Private_Browsing_mode_changes
+
+https://developer.mozilla.org/en/Troubleshooting_XPCOM_components_registration
+
+
+
+
+<extension_root>
+	osiris
+		share
+		system.xml
+
+	platform
+		Linux
+			components
+				libfirefox.so
+				bin
+					libsdk.so
+					...
+		Win
+			components
+				firefox.dll
+				bin
+					sdk.dll
+					...
+		
+
+
+
+
+// Creare una directory nella root del profilo
+var ext = Components.classes["@mozilla.org/file/directory_service;1"]
+		.createInstance(Components.interfaces.nsIProperties)
+		.get("ProfD", Components.interfaces.nsIFile);
+ext.append("morningCoffee");
+ext.append("sites");
+
+if (!ext.exists()) 
+{
+	ext.create(Components.interfaces.nsIFile.DIRECTORY_TYPE, 0755);
+	for (var i=0; i < morningCoffee_main.NUM_FILES; i++)
+	{
+		var newFile = Components.classes["@mozilla.org/file/directory_service;1"]
+			.createInstance(Components.interfaces.nsIProperties)
+			.get("ProfD", Components.interfaces.nsIFile);
+		newFile.append("morningCoffee");
+		newFile.append("sites");
+		newFile.append(morningCoffee_main.files[i]);
+
+		var foStream = Components.classes["@mozilla.org/network/file-output-stream;1"]
+					.createInstance(Components.interfaces.nsIFileOutputStream);
+
+		foStream.init(newFile, 0x08, 0644, 0);
+		foStream.close();
+	}
+}

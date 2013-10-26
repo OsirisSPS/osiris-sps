@@ -1,0 +1,6 @@
+content	osiris	content/
+locale	osiris	en-US	locale/en-US/
+locale	osiris	it-IT		locale/it-IT/
+skin	osiris	classic/1.0	skin/
+overlay	chrome://browser/content/browser.xul	chrome://osiris/content/overlay.xul
+style	chrome://global/content/customizeToolbar.xul	chrome://osiris/skin/overlay.css

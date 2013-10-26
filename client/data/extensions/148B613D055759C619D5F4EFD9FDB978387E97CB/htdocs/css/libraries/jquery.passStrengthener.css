@@ -1,0 +1,45 @@
+/* ======================================== */
+/*   jQuery - passStrengthener					*/
+/* ======================================== */
+
+.jquery_passStrengthener{
+	display: inline-block;
+	height:28px;
+	width:240px !important;
+	/*margin: 0 10px;	*/
+}
+
+.jquery_passStrengthener span.score
+{	
+	display:block;
+	white-space: nowrap;
+	border:1px solid gray;
+	width:100% !important;
+}
+
+.jquery_passStrengthener span.score span{
+	
+	display:block;
+	white-space: nowrap;		
+}
+
+.jquery_passStrengthener.shortPass span.score span{
+	background-color:#F4715B;
+}
+
+.jquery_passStrengthener.badPass span.score span{
+	background-color:#F4715B;
+}
+
+.jquery_passStrengthener.goodPass span.score span{
+	background-color:#EEF042;
+}
+
+.jquery_passStrengthener.strongPass span.score span{
+	background-color:#64FD58;
+}
+
+
+
+
+

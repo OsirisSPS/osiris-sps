@@ -1,0 +1,152 @@
+div.os_htmlsnippet_play,
+div.os_htmlsnippet_waiting
+{
+	display:block;
+	border:1px solid gray;
+	box-shadow: 0 0 3px 3px #AAA;	
+	background-color: rgba(255,255,255,0.2);	
+	background-repeat:no-repeat;
+	background-position: center center;	
+}
+
+div.os_htmlsnippet_play
+{
+	background-image:url("/9A53510BB471C48AF9B7954466D123438C387368/images/play.png"),url("/9A53510BB471C48AF9B7954466D123438C387368/images/play.png");
+	cursor: pointer;
+}
+
+div.os_htmlsnippet_play:hover
+{
+	background-color: rgba(255,255,255,0.5);	
+}
+
+div.os_htmlsnippet_waiting
+{
+	background-image:url("/9A53510BB471C48AF9B7954466D123438C387368/images/wait.gif");
+}
+
+div.os_htmlsnippet_denied
+{
+	display:none;	
+}
+
+div.os_htmlsnippet_debug1
+{
+	background-color:#FFAAAA;
+	border:1px solid #FF0000;
+	padding:5px;
+	margin:5px;
+}
+
+div.os_htmlsnippet_debug2
+{
+	background-color:#FFFFAA;
+	border:1px solid #FFFF00;
+	padding:5px;
+	margin:5px;
+}
+
+div.os_htmlsnippet_play_message
+{
+	margin-left:170px;
+	padding:5px;
+}
+
+div.os_htmlsnippet_play_name
+{
+	font-size:1.5em;
+	margin-left:170px;
+	padding:5px;
+}
+
+div.os_htmlsnippet_play_url
+{
+	font-size:0.8em;
+	margin-left:170px;
+	padding:5px;
+}
+
+div.os_htmlsnippet_play_security
+{
+	margin:10px;
+	margin-left:170px;	
+	padding:5px;
+}
+
+div.os_htmlsnippet_box
+{
+	float:left;
+	width:430px;
+	height:140px;
+	border:1px solid red;
+	margin:10px;
+	
+	background-image:url("/htdocs/images/utils/white_radial.png");
+	background-repeat: no-repeat;
+	
+	box-shadow: 5px 5px 5px rgba(0,0,0,0.3);
+	
+	border-radius: 1em;	
+		
+}
+
+div.os_htmlsnippet_box_iframe
+{
+	background-color:#FFFFCC;
+	border:1px outset #FFFF88;
+}
+
+div.os_htmlsnippet_box_script
+{
+	background-color:#FFCCCC;
+	border:1px outset #FF8888;
+}
+
+div.os_htmlsnippet_box_external
+{
+	background-color:#CCFFCC;
+	border:1px outset #88FF88;
+}
+
+div.os_htmlsnippet_box img
+{
+	vertical-align:middle;
+}
+
+img.os_htmlsnippet_box_logo
+{
+	float:left;
+	width:150px;
+	height:130px;
+	margin:5px;
+}
+
+div.os_htmlsnippet_box_name
+{
+	float:left;
+	text-align:center;
+	width:220px;		
+	margin:5px;
+	font-size:1.1em;
+	font-weight:bold;
+}
+
+div.os_htmlsnippet_box_url
+{
+	float:left;
+	text-align:center;
+	width:220px;		
+	font-size:0.8em;
+}
+
+div.os_htmlsnippet_box_details
+{
+	float:right;
+	margin:5px;
+}
+
+div.os_htmlsnippet_box_details td
+{
+	margin:3px;
+	padding:3px;
+}

@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<extension id="5B1D133CA24D2B5B93B675279CB60C9CB7E47502" author="Osiris Team" name="Citation" description="Citation OML Tag." content="Samples:&#xD;&#xA;[code]&#xD;&#xA;[citation]Citation text[/citation]&#xD;&#xA;[citation=&quot;Author&quot;]Citation text[/citation]&#xD;&#xA;[citation=&quot;Author&quot; src=&quot;http://www.google.it&quot;]Citation text[/citation]&#xD;&#xA;[citation=&quot;[url=&quot;http://www.google.it&quot;]Author[/url]&quot;]Citation text[/citation]&#xD;&#xA;[citation author=&quot;Author&quot; src=&quot;http://www.google.it&quot; text=&quot;Citation text&quot; /]&#xD;&#xA;[/code]" version="1.0" icon="icon.png" logo="logo.png" category="OML" tags="oml citation" homepage="http://www.osiris-sps.org/forums/index.php?showtopic=1402">
+  <scripts>
+    <script language="python" path="scripts/script.py" />
+  </scripts>
+</extension>

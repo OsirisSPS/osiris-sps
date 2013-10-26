@@ -1,0 +1,11 @@
+#include "nsISupports.idl"
+
+[scriptable, uuid(BF09DA54-A667-486B-BE59-A972391358EA)]
+interface IOsiris : nsISupports
+{
+	boolean init(in AString root);
+	AString parse(in AString link);
+	
+	readonly attribute boolean started;	
+	readonly attribute AString homepage;	
+};

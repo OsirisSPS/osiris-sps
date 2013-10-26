@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<options>
+  <option name="folders.share" value="./share"/>
+  <option name="folders.data" value="./../../../osiris@kodeware.net/data"/>
+  <option name="folders.temp" value="./../../../osiris@kodeware.net/data/temp"/>
+  <option name="folders.log" value="./../../../osiris@kodeware.net/data/log"/>
+</options>

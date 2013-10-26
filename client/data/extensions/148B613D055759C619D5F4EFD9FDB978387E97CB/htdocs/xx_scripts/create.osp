@@ -1,0 +1,256 @@
+page.onInit = function()
+{
+	page.portalName = new html.TextBox();
+	page.portalName.id = "portalName";		
+	page.portalName.css = "os_input_full";
+	
+	page.portalDescription = new html.TextBox();
+	page.portalDescription.id = "portalDescription";	
+	page.portalDescription.css = "os_input_full";
+	
+	page.portalType = new html.ComboBox();
+	page.portalType.id = "portalType";
+	page.portalType.addOption(page.getText("main.pages.create.portalType.anarchist"), portals.typeAnarchic.toString());
+	page.portalType.addOption(page.getText("main.pages.create.portalType.monarchist"), portals.typeMonarchic.toString());
+	page.portalType.value = portals.typeAnarchic.toString();
+	
+	page.portalPasswordVisible = new html.CheckBox();
+	page.portalPasswordVisible.id = "portalPasswordVisible";	
+	page.portalPasswordVisible.autoPostBack = true;
+	
+	page.portalPassword = new html.TextBox();
+	page.portalPassword.id = "portalPassword";	
+	page.portalPassword.css = "os_input_full";
+	
+	page.portalEnableExchange = new html.CheckBox();
+	page.portalEnableExchange.id = "portalEnableExchange";		
+		
+	page.databaseDriver = new html.ComboBox();
+	page.databaseDriver.id = "databaseDriver";
+	page.databaseDriver.autoPostBack = true;
+
+	var drivers = databasesSystem.drivers;
+	for(var i in drivers)
+	{
+		var driver = drivers[i];
+		page.databaseDriver.addOption(driver.description, driver.name);
+	}
+	page.databaseDriver.value = databasesSystem.defaultDriver.name;
+	
+	var block = new ide.Block(page.getText("main.pages.create.title"));
+	page.getArea(ide.content).controls.add(block);
+	
+	block.body.controls.add(new ide.HelpBox(page.getText("main.pages.create.help"), "050000021FD02EEE2EEF8B51E34DDDA6E1A4F1DEFD4F5613"));
+	
+	var table = new html.Table();
+	page.table = table;
+	table.css = "os_table2";
+	block.body.controls.add(table);
+			
+	// Header opzioni portale
+	
+	var portalHeader = table.addRow().addHeader();
+	portalHeader.css = "os_subtitle";
+	portalHeader.colspan = 2;	
+	portalHeader.controls.add(new html.Text(page.getText("main.pages.create.subtitle")));
+	
+	// Nome del portale
+	
+	var rowName = table.addRow();
+
+	var nameLeft = rowName.addCell();
+	nameLeft.css = "os_label";
+	nameLeft.controls.add(new html.Text(page.getText("main.pages.create.name")));
+	nameLeft.controls.add(new html.Text(":"));
+
+	var nameRight = rowName.addCell();
+	nameRight.css = "os_value";
+	nameRight.controls.add(page.portalName);
+	
+	// Descrizione del portale
+	
+	var rowDescription = table.addRow();
+
+	var descriptionLeft = rowDescription.addCell();
+	descriptionLeft.css = "os_label";
+	descriptionLeft.controls.add(new html.Text(page.getText("main.pages.create.description")));
+	descriptionLeft.controls.add(new html.Text(":"));
+
+	var descriptionRight = rowDescription.addCell();
+	descriptionRight.css = "os_value";
+	descriptionRight.controls.add(page.portalDescription);	
+	
+	// Tipologia di portale
+	
+	var rowType = table.addRow();
+
+	var typeLeft = rowType.addCell();
+	typeLeft.css = "os_label";
+	typeLeft.controls.add(new html.Text(page.getText("main.pages.create.type")));
+	typeLeft.controls.add(new html.Text(":"));
+
+	var typeRight = rowType.addCell();
+	typeRight.css = "os_value";
+	typeRight.controls.add(page.portalType);	
+	
+	// Password del portale
+	
+	var rowPasswordVisible = table.addRow();
+
+	var colPasswordVisibleLeft = rowPasswordVisible.addCell();
+	colPasswordVisibleLeft.css = "os_label";
+	colPasswordVisibleLeft.controls.add(new html.Text(page.getText("main.pages.create.portalPassword")));
+	colPasswordVisibleLeft.controls.add(new html.Text(":"));
+	
+	var colPasswordVisibleRight = rowPasswordVisible.addCell();
+	colPasswordVisibleRight.css = "os_value";	
+	colPasswordVisibleRight.controls.add(page.portalPasswordVisible);
+	
+	var rowPassword = table.addRow();
+	page.rowPassword = rowPassword;
+
+	var passwordLeft = rowPassword.addCell();
+	passwordLeft.css = "os_label";
+	passwordLeft.controls.add(new html.Text(page.getText("main.pages.create.password")));
+	passwordLeft.controls.add(new html.Text(":"));
+		
+	var passwordRight = rowPassword.addCell();
+	passwordRight.css = "os_value";	
+	passwordRight.controls.add(page.portalPassword);	
+	
+	// Enable Exchange
+	
+	var rowEnableExchange = table.addRow();
+
+	var enableExchangeLeft = rowEnableExchange.addCell();
+	enableExchangeLeft.css = "os_label";
+	enableExchangeLeft.controls.add(new html.Text(page.getText("main.pages.create.enableExchange")));
+	enableExchangeLeft.controls.add(new html.Text(":"));
+
+	var enableExchangeRight = rowEnableExchange.addCell();
+	enableExchangeRight.css = "os_value";
+	enableExchangeRight.controls.add(page.portalEnableExchange);		
+	
+	// Header opzioni database
+	
+	var databaseHeader = table.addRow().addHeader();
+	databaseHeader.css = "os_subtitle";
+	databaseHeader.colspan = 2;	
+	databaseHeader.controls.add(new html.Text(page.getText("main.pages.create.database.title")));	
+	
+	// Driver
+	
+	var rowDriver = table.addRow();
+	
+	var driverLeft = rowDriver.addCell();
+	driverLeft.css = "os_label";
+	driverLeft.controls.add(new html.Text(page.getText("main.pages.create.database.driver")));
+	driverLeft.controls.add(new html.Text(":"));
+	
+	var driverRight = rowDriver.addCell();
+	driverRight.css = "os_value";
+	driverRight.controls.add(page.databaseDriver);	
+}
+
+page.onLoad = function()
+{
+	if(page.isPostBack == false)
+		page.portalEnableExchange.check = true;
+		
+	var table = page.table;
+	
+	// Opzioni driver
+
+	page.driver = databasesSystem.getDriver(page.databaseDriver.value);
+	if(page.driver != null)
+	{
+		var optionsHeader = page.rowDriverHeader
+			
+		page.driverOptions = page.driver.createOptions();
+		for(var option in page.driverOptions)
+		{
+			var rowOption = table.addRow();
+			
+			var optionLeft = rowOption.addCell();
+			optionLeft.css = "os_label";
+			optionLeft.controls.add(new html.Literal(option));
+	
+			var optionRight = rowOption.addCell();
+			optionRight.css = "os_label";
+			
+			var optionControl = page.getDriverOptionControl(page.driver.name, option);
+			optionControl.value = page.driverOptions[option];
+			optionRight.controls.add(optionControl);	
+		}
+	}
+	
+	// Comandi
+	
+	var cellCommands = table.addRow().addCell();
+	cellCommands.css = "os_commands";
+	cellCommands.colspan = 2;	
+
+	var cmdCreate = new ide.Button(page.getText("main.pages.create.action.create"));
+	cmdCreate.id = "create";
+	cmdCreate.isDefault = true;
+	cmdCreate.onClick = page.onCreate;
+	cellCommands.controls.add(cmdCreate);	
+	
+	var cmdCancel = new ide.Button(page.getText("main.pages.create.action.cancel"));
+	cmdCancel.id = "cancel";
+	cmdCancel.isDefault = false;
+	cmdCancel.onClick = page.onCancel;
+	cellCommands.controls.add(cmdCancel);	
+}
+
+page.onPreRender = function()
+{
+	page.rowPassword.visible = page.portalPasswordVisible.check;
+}
+
+page.onCreate = function()
+{	
+	for(var option in page.driverOptions)
+	{
+		var value = page.getDriverOptionControl(page.driver.name, option).value;
+		if(value != "")
+			page.driverOptions[option] = value;
+	}
+
+	var options = new portals.PortalOptions();
+	options.name = page.portalName.value;
+	options.description = page.portalDescription.value;
+	options.enableExchange = page.portalEnableExchange.check;
+	options.password = page.portalPassword.value;
+	options.databaseDriver = page.databaseDriver.value;	
+	options.databaseOptions = page.driverOptions;
+
+	var done;	
+	if(page.portalType.value == portals.typeAnarchic.toString())
+		done = portalsSystem.createAnarchicPortal(options);
+	else
+		done = portalsSystem.createMonarchicPortal(options);
+	
+	if(done)
+		page.redirect("home");
+	else
+		page.showError(page.getText("main.pages.create.error.cannotCreate"));
+}
+
+page.onCancel = function()
+{
+	page.redirect("home");
+}
+
+page.getDriverOptionControl = function(driver, option)
+{
+	var optionControl = eval("page.driverOption" + option);
+	if(optionControl == null)
+	{
+		optionControl = eval("page.driverOption" + option + " = new html.TextBox()");		
+		//optionControl.id = driver + "_" + option;
+		optionControl.id = driver + option;
+	}
+
+	return optionControl;
+}

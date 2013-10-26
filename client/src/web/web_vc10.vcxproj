@@ -1,0 +1,318 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="debug|Win32">
+      <Configuration>debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="debug|x64">
+      <Configuration>debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="release|Win32">
+      <Configuration>release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="release|x64">
+      <Configuration>release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectName>Web</ProjectName>
+    <ProjectGuid>{DF5EDB66-966D-4514-8100-F82D9CF39106}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='release|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <CharacterSet>NotSet</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='debug|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <CharacterSet>NotSet</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='release|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <CharacterSet>NotSet</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='debug|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <CharacterSet>NotSet</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='release|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(VCTargetsPath)Microsoft.CPP.UpgradeFromVC71.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='debug|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(VCTargetsPath)Microsoft.CPP.UpgradeFromVC71.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='release|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(VCTargetsPath)Microsoft.CPP.UpgradeFromVC71.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='debug|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(VCTargetsPath)Microsoft.CPP.UpgradeFromVC71.props" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>10.0.30319.1</_ProjectFileVersion>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">../../bin/windows/i386/vc10/$(Configuration)\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">../../obj/windows/i386/vc10/$(TargetName)/$(Configuration)\</IntDir>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</LinkIncremental>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='debug|x64'">../../bin/windows/x86_64/vc10/$(Configuration)\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='debug|x64'">../../obj/windows/x86_64/vc10/$(TargetName)/$(Configuration)\</IntDir>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='debug|x64'">true</LinkIncremental>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='release|Win32'">../../bin/windows/i386/vc10/$(Configuration)\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='release|Win32'">../../obj/windows/i386/vc10/$(TargetName)/$(Configuration)\</IntDir>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='release|Win32'">false</LinkIncremental>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='release|x64'">../../bin/windows/x86_64/vc10/$(Configuration)\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='release|x64'">../../obj/windows/x86_64/vc10/$(TargetName)/$(Configuration)\</IntDir>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='release|x64'">false</LinkIncremental>
+    <CodeAnalysisRuleSet Condition="'$(Configuration)|$(Platform)'=='debug|Win32'">AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRules Condition="'$(Configuration)|$(Platform)'=='debug|Win32'" />
+    <CodeAnalysisRuleAssemblies Condition="'$(Configuration)|$(Platform)'=='debug|Win32'" />
+    <CodeAnalysisRuleSet Condition="'$(Configuration)|$(Platform)'=='debug|x64'">AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRules Condition="'$(Configuration)|$(Platform)'=='debug|x64'" />
+    <CodeAnalysisRuleAssemblies Condition="'$(Configuration)|$(Platform)'=='debug|x64'" />
+    <CodeAnalysisRuleSet Condition="'$(Configuration)|$(Platform)'=='release|Win32'">AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRules Condition="'$(Configuration)|$(Platform)'=='release|Win32'" />
+    <CodeAnalysisRuleAssemblies Condition="'$(Configuration)|$(Platform)'=='release|Win32'" />
+    <CodeAnalysisRuleSet Condition="'$(Configuration)|$(Platform)'=='release|x64'">AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRules Condition="'$(Configuration)|$(Platform)'=='release|x64'" />
+    <CodeAnalysisRuleAssemblies Condition="'$(Configuration)|$(Platform)'=='release|x64'" />
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>../../dependencies/include/common;../xml;../core;../net;../http;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;_USRDLL;OS_WEB_LIB;UNICODE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MinimalRebuild>false</MinimalRebuild>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <Link>
+      <OutputFile>../../bin/windows/i386/vc10/$(Configuration)/web.dll</OutputFile>
+      <AdditionalLibraryDirectories>../../dependencies/lib/windows/i386/vc10/$(Configuration);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <IgnoreAllDefaultLibraries>false</IgnoreAllDefaultLibraries>
+      <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <ProgramDatabaseFile>$(IntDir)$(TargetName).pdb</ProgramDatabaseFile>
+      <SubSystem>Windows</SubSystem>
+      <TargetMachine>MachineX86</TargetMachine>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='debug|x64'">
+    <Midl>
+      <TargetEnvironment>X64</TargetEnvironment>
+    </Midl>
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>../../dependencies/include/common;../xml;../core;../net;../http;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;_USRDLL;OS_WEB_LIB;UNICODE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MinimalRebuild>true</MinimalRebuild>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <Link>
+      <OutputFile>../../bin/windows/x86_64/vc10/$(Configuration)/web.dll</OutputFile>
+      <AdditionalLibraryDirectories>../../dependencies/lib/windows/x86_64/vc10/$(Configuration);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <IgnoreAllDefaultLibraries>false</IgnoreAllDefaultLibraries>
+      <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <ProgramDatabaseFile>$(IntDir)$(TargetName).pdb</ProgramDatabaseFile>
+      <SubSystem>Windows</SubSystem>
+      <TargetMachine>MachineX64</TargetMachine>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='release|Win32'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>../../dependencies/include/common;../xml;../core;../net;../http;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_USRDLL;OS_WEB_LIB;UNICODE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <Link>
+      <OutputFile>../../bin/windows/i386/vc10/$(Configuration)/web.dll</OutputFile>
+      <AdditionalLibraryDirectories>../../dependencies/lib/windows/i386/vc10/$(Configuration);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <ProgramDatabaseFile>$(IntDir)$(TargetName).pdb</ProgramDatabaseFile>
+      <SubSystem>Windows</SubSystem>
+      <OptimizeReferences>true</OptimizeReferences>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <TargetMachine>MachineX86</TargetMachine>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='release|x64'">
+    <Midl>
+      <TargetEnvironment>X64</TargetEnvironment>
+    </Midl>
+    <ClCompile>
+      <AdditionalIncludeDirectories>../../dependencies/include/common;../xml;../core;../net;../http;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_USRDLL;OS_WEB_LIB;UNICODE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <Link>
+      <OutputFile>../../bin/windows/x86_64/vc10/$(Configuration)/web.dll</OutputFile>
+      <AdditionalLibraryDirectories>../../dependencies/lib/windows/x86_64/vc10/$(Configuration);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <ProgramDatabaseFile>$(IntDir)$(TargetName).pdb</ProgramDatabaseFile>
+      <SubSystem>Windows</SubSystem>
+      <OptimizeReferences>true</OptimizeReferences>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <TargetMachine>MachineX64</TargetMachine>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="htmlattribute.cpp" />
+    <ClCompile Include="htmlattributes.cpp" />
+    <ClCompile Include="htmlbr.cpp" />
+    <ClCompile Include="htmlbutton.cpp" />
+    <ClCompile Include="htmlcheckbox.cpp" />
+    <ClCompile Include="htmlcombobox.cpp" />
+    <ClCompile Include="htmlcontrols.cpp" />
+    <ClCompile Include="htmldiv.cpp" />
+    <ClCompile Include="htmlevent.cpp" />
+    <ClCompile Include="htmlfilebrowser.cpp" />
+    <ClCompile Include="htmlimage.cpp" />
+    <ClCompile Include="htmllink.cpp" />
+    <ClCompile Include="htmllinkbutton.cpp" />
+    <ClCompile Include="htmllinktag.cpp" />
+    <ClCompile Include="htmllistbox.cpp" />
+    <ClCompile Include="htmlliteral.cpp" />
+    <ClCompile Include="htmlmetatag.cpp" />
+    <ClCompile Include="htmloption.cpp" />
+    <ClCompile Include="htmloptiongroup.cpp" />
+    <ClCompile Include="htmlpage.cpp" />
+    <ClCompile Include="htmlpager.cpp" />
+    <ClCompile Include="htmlpanel.cpp" />
+    <ClCompile Include="htmlparagraph.cpp" />
+    <ClCompile Include="htmlparser.cpp" />
+    <ClCompile Include="htmlpopup.cpp" />
+    <ClCompile Include="htmlroller.cpp" />
+    <ClCompile Include="htmlscript.cpp" />
+    <ClCompile Include="htmlspace.cpp" />
+    <ClCompile Include="htmlspan.cpp" />
+    <ClCompile Include="htmltab.cpp" />
+    <ClCompile Include="htmltabctrl.cpp" />
+    <ClCompile Include="htmltable.cpp" />
+    <ClCompile Include="htmltablecell.cpp" />
+    <ClCompile Include="htmltableheader.cpp" />
+    <ClCompile Include="htmltablerow.cpp" />
+    <ClCompile Include="htmltabpage.cpp" />
+    <ClCompile Include="htmltext.cpp" />
+    <ClCompile Include="htmltextarea.cpp" />
+    <ClCompile Include="htmltextbox.cpp" />
+    <ClCompile Include="htmltooltip.cpp" />
+    <ClCompile Include="htmlunit.cpp" />
+    <ClCompile Include="htmlwriter.cpp" />
+    <ClCompile Include="htmlxslcontrol.cpp" />
+    <ClCompile Include="ihtmlcontrol.cpp" />
+    <ClCompile Include="ihtmlinput.cpp" />
+    <ClCompile Include="ihtmlselect.cpp" />
+    <ClCompile Include="stdafx.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='debug|x64'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='release|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='release|x64'">Create</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="web.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="css.h" />
+    <ClInclude Include="htmlattribute.h" />
+    <ClInclude Include="htmlattributes.h" />
+    <ClInclude Include="htmlbr.h" />
+    <ClInclude Include="htmlbutton.h" />
+    <ClInclude Include="htmlcheckbox.h" />
+    <ClInclude Include="htmlcombobox.h" />
+    <ClInclude Include="htmlcontrols.h" />
+    <ClInclude Include="htmldiv.h" />
+    <ClInclude Include="htmlevent.h" />
+    <ClInclude Include="htmlfilebrowser.h" />
+    <ClInclude Include="htmlimage.h" />
+    <ClInclude Include="htmllink.h" />
+    <ClInclude Include="htmllinkbutton.h" />
+    <ClInclude Include="htmllinktag.h" />
+    <ClInclude Include="htmllistbox.h" />
+    <ClInclude Include="htmlliteral.h" />
+    <ClInclude Include="htmlmetatag.h" />
+    <ClInclude Include="htmloption.h" />
+    <ClInclude Include="htmloptiongroup.h" />
+    <ClInclude Include="htmlpage.h" />
+    <ClInclude Include="htmlpager.h" />
+    <ClInclude Include="htmlpanel.h" />
+    <ClInclude Include="htmlparagraph.h" />
+    <ClInclude Include="htmlparser.h" />
+    <ClInclude Include="htmlpopup.h" />
+    <ClInclude Include="htmlroller.h" />
+    <ClInclude Include="htmlscript.h" />
+    <ClInclude Include="htmlspace.h" />
+    <ClInclude Include="htmlspan.h" />
+    <ClInclude Include="htmltab.h" />
+    <ClInclude Include="htmltabctrl.h" />
+    <ClInclude Include="htmltable.h" />
+    <ClInclude Include="htmltablecell.h" />
+    <ClInclude Include="htmltableheader.h" />
+    <ClInclude Include="htmltablerow.h" />
+    <ClInclude Include="htmltabpage.h" />
+    <ClInclude Include="htmltext.h" />
+    <ClInclude Include="htmltextarea.h" />
+    <ClInclude Include="htmltextbox.h" />
+    <ClInclude Include="htmltooltip.h" />
+    <ClInclude Include="htmlunit.h" />
+    <ClInclude Include="htmlvirtualpage.h" />
+    <ClInclude Include="htmlwriter.h" />
+    <ClInclude Include="htmlxslcontrol.h" />
+    <ClInclude Include="ihtmlcontrol.h" />
+    <ClInclude Include="ihtmlinput.h" />
+    <ClInclude Include="ihtmlselect.h" />
+    <ClInclude Include="stdafx.h" />
+    <ClInclude Include="webconfig.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\core\core_vc10.vcxproj">
+      <Project>{df5edb66-966d-4514-8100-f82d9cf39002}</Project>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+    <ProjectReference Include="..\http\http_vc10.vcxproj">
+      <Project>{df5edc66-966d-4514-8100-bb2d9cf5510b}</Project>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+    <ProjectReference Include="..\net\net_vc10.vcxproj">
+      <Project>{df5edb66-966d-4514-8100-f82d9cf39005}</Project>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+    <ProjectReference Include="..\xml\xml_vc10.vcxproj">
+      <Project>{df5edb66-966d-4514-8100-f82d9cf39001}</Project>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

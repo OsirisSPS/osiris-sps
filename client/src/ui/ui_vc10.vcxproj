@@ -1,0 +1,371 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="debug|Win32">
+      <Configuration>debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="debug|x64">
+      <Configuration>debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="release|Win32">
+      <Configuration>release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="release|x64">
+      <Configuration>release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectName>UI</ProjectName>
+    <ProjectGuid>{DF5E7766-966D-4514-8100-332D9CF39177}</ProjectGuid>
+    <RootNamespace>ui</RootNamespace>
+    <Keyword>Win32Proj</Keyword>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='release|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <CharacterSet>NotSet</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='debug|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <CharacterSet>NotSet</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='release|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <CharacterSet>NotSet</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='debug|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <CharacterSet>NotSet</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='release|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(VCTargetsPath)Microsoft.CPP.UpgradeFromVC71.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='debug|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(VCTargetsPath)Microsoft.CPP.UpgradeFromVC71.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='release|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(VCTargetsPath)Microsoft.CPP.UpgradeFromVC71.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='debug|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(VCTargetsPath)Microsoft.CPP.UpgradeFromVC71.props" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>10.0.30319.1</_ProjectFileVersion>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">../../bin/windows/i386/vc10/$(Configuration)\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">../../obj/windows/i386/vc10/$(TargetName)/$(Configuration)\</IntDir>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</LinkIncremental>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='debug|x64'">../../bin/windows/x86_64/vc10/$(Configuration)\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='debug|x64'">../../obj/windows/x86_64/vc10/$(TargetName)/$(Configuration)\</IntDir>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='debug|x64'">true</LinkIncremental>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='release|Win32'">../../bin/windows/i386/vc10/$(Configuration)\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='release|Win32'">../../obj/windows/i386/vc10/$(TargetName)/$(Configuration)\</IntDir>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='release|Win32'">false</LinkIncremental>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='release|x64'">../../bin/windows/x86_64/vc10/$(Configuration)\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='release|x64'">../../obj/windows/x86_64/vc10/$(TargetName)/$(Configuration)\</IntDir>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='release|x64'">false</LinkIncremental>
+    <CodeAnalysisRuleSet Condition="'$(Configuration)|$(Platform)'=='debug|Win32'">AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRules Condition="'$(Configuration)|$(Platform)'=='debug|Win32'" />
+    <CodeAnalysisRuleAssemblies Condition="'$(Configuration)|$(Platform)'=='debug|Win32'" />
+    <CodeAnalysisRuleSet Condition="'$(Configuration)|$(Platform)'=='debug|x64'">AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRules Condition="'$(Configuration)|$(Platform)'=='debug|x64'" />
+    <CodeAnalysisRuleAssemblies Condition="'$(Configuration)|$(Platform)'=='debug|x64'" />
+    <CodeAnalysisRuleSet Condition="'$(Configuration)|$(Platform)'=='release|Win32'">AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRules Condition="'$(Configuration)|$(Platform)'=='release|Win32'" />
+    <CodeAnalysisRuleAssemblies Condition="'$(Configuration)|$(Platform)'=='release|Win32'" />
+    <CodeAnalysisRuleSet Condition="'$(Configuration)|$(Platform)'=='release|x64'">AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRules Condition="'$(Configuration)|$(Platform)'=='release|x64'" />
+    <CodeAnalysisRuleAssemblies Condition="'$(Configuration)|$(Platform)'=='release|x64'" />
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>../../dependencies/include/common;../../dependencies/include/common/wxwidgets;../../dependencies/include/windows/i386/vc10/$(Configuration)/wxwidgets;../core;../xml;../web;../lang;../skin;../net;../engine;../http;../upnp;../irc;../db;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;_USRDLL;OS_UI_LIB;UNICODE;WXUSINGDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MinimalRebuild>false</MinimalRebuild>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>wxmsw29ud_core.lib;wxbase29ud.lib;wxmsw29ud_adv.lib;wxmsw29ud_aui.lib;wxbase29ud_net.lib;wxmsw29ud_richtext.lib;ssleay32.lib;libeay32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>../../bin/windows/i386/vc10/$(Configuration)/ui.dll</OutputFile>
+      <AdditionalLibraryDirectories>../../dependencies/lib/windows/i386/vc10/$(Configuration);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <IgnoreAllDefaultLibraries>false</IgnoreAllDefaultLibraries>
+      <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <ProgramDatabaseFile>$(IntDir)$(TargetName).pdb</ProgramDatabaseFile>
+      <SubSystem>Windows</SubSystem>
+      <TargetMachine>MachineX86</TargetMachine>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='debug|x64'">
+    <Midl>
+      <TargetEnvironment>X64</TargetEnvironment>
+    </Midl>
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>../../dependencies/include/common;../../dependencies/include/common/wxwidgets;../../dependencies/include/windows/x86_64/vc10/$(Configuration)/wxwidgets;../core;../xml;../web;../lang;../skin;../net;../engine;../http;../upnp;../irc;../db;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;_USRDLL;OS_UI_LIB;UNICODE;WXUSINGDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MinimalRebuild>true</MinimalRebuild>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>wxmsw29ud_core.lib;wxbase29ud.lib;wxmsw29ud_adv.lib;wxmsw29ud_aui.lib;wxbase29ud_net.lib;wxmsw29ud_richtext.lib;ssleay32.lib;libeay32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>../../bin/windows/x86_64/vc10/$(Configuration)/ui.dll</OutputFile>
+      <AdditionalLibraryDirectories>../../dependencies/lib/windows/x86_64/vc10/$(Configuration);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <IgnoreAllDefaultLibraries>false</IgnoreAllDefaultLibraries>
+      <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <ProgramDatabaseFile>$(IntDir)$(TargetName).pdb</ProgramDatabaseFile>
+      <SubSystem>Windows</SubSystem>
+      <TargetMachine>MachineX64</TargetMachine>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='release|Win32'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>../../dependencies/include/common;../../dependencies/include/common/wxwidgets;../../dependencies/include/windows/i386/vc10/$(Configuration)/wxwidgets;../core;../xml;../web;../lang;../skin;../net;../engine;../http;../upnp;../irc;../db;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_USRDLL;OS_UI_LIB;UNICODE;WXUSINGDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>wxmsw29u_core.lib;wxbase29u.lib;wxmsw29u_adv.lib;wxmsw29u_aui.lib;wxbase29u_net.lib;wxmsw29u_richtext.lib;ssleay32.lib;libeay32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>../../bin/windows/i386/vc10/$(Configuration)/ui.dll</OutputFile>
+      <AdditionalLibraryDirectories>../../dependencies/lib/windows/i386/vc10/$(Configuration);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <ProgramDatabaseFile>$(IntDir)$(TargetName).pdb</ProgramDatabaseFile>
+      <SubSystem>Windows</SubSystem>
+      <OptimizeReferences>true</OptimizeReferences>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <TargetMachine>MachineX86</TargetMachine>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='release|x64'">
+    <Midl>
+      <TargetEnvironment>X64</TargetEnvironment>
+    </Midl>
+    <ClCompile>
+      <AdditionalIncludeDirectories>../../dependencies/include/common;../../dependencies/include/common/wxwidgets;../../dependencies/include/windows/x86_64/vc10/$(Configuration)/wxwidgets;../core;../xml;../web;../lang;../skin;../net;../engine;../http;../upnp;../irc;../db;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_USRDLL;OS_UI_LIB;UNICODE;WXUSINGDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>wxmsw29u_core.lib;wxbase29u.lib;wxmsw29u_adv.lib;wxmsw29u_aui.lib;wxbase29u_net.lib;wxmsw29u_richtext.lib;ssleay32.lib;libeay32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>../../bin/windows/x86_64/vc10/$(Configuration)/ui.dll</OutputFile>
+      <AdditionalLibraryDirectories>../../dependencies/lib/windows/x86_64/vc10/$(Configuration);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <ProgramDatabaseFile>$(IntDir)$(TargetName).pdb</ProgramDatabaseFile>
+      <SubSystem>Windows</SubSystem>
+      <OptimizeReferences>true</OptimizeReferences>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <TargetMachine>MachineX64</TargetMachine>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="application.cpp" />
+    <ClCompile Include="chartpanel.cpp" />
+    <ClCompile Include="connectioninfo.cpp" />
+    <ClCompile Include="downloadevent.cpp" />
+    <ClCompile Include="downloadthread.cpp" />
+    <ClCompile Include="extensionswizard.cpp" />
+    <ClCompile Include="extensionswizardpagefinish.cpp" />
+    <ClCompile Include="extensionswizardpagegeneral.cpp" />
+    <ClCompile Include="extensionswizardpagetemplate.cpp" />
+    <ClCompile Include="framerenderer.cpp" />
+    <ClCompile Include="iircpage.cpp" />
+    <ClCompile Include="iircroompage.cpp" />
+    <ClCompile Include="ioptionswizardpage.cpp" />
+    <ClCompile Include="ircchannelpage.cpp" />
+    <ClCompile Include="ircconfigwindow.cpp" />
+    <ClCompile Include="ircserverpage.cpp" />
+    <ClCompile Include="irctextctrl.cpp" />
+    <ClCompile Include="ircuserpage.cpp" />
+    <ClCompile Include="ircwindow.cpp" />
+    <ClCompile Include="isisconnectionswindow.cpp" />
+    <ClCompile Include="listctrlrenderer.cpp" />
+    <ClCompile Include="logwindow.cpp" />
+    <ClCompile Include="mainwindow.cpp" />
+    <ClCompile Include="multilanguagewindow.cpp" />
+    <ClCompile Include="multilanguagewizard.cpp" />
+    <ClCompile Include="optionswizard.cpp" />
+    <ClCompile Include="optionswizardpagefinish.cpp" />
+    <ClCompile Include="optionswizardpagegeneral.cpp" />
+    <ClCompile Include="optionswizardpagenetwork.cpp" />
+    <ClCompile Include="optionswizardpageproxy.cpp" />
+    <ClCompile Include="optionswizardpagewelcome.cpp" />
+    <ClCompile Include="p2pconnectionswindow.cpp" />
+    <ClCompile Include="skinsmanager.cpp" />
+    <ClCompile Include="skintemplate.cpp" />
+    <ClCompile Include="soundmanager.cpp" />
+    <ClCompile Include="splashscreen.cpp" />
+    <ClCompile Include="statisticswindow.cpp" />
+    <ClCompile Include="stdafx.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='debug|x64'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='release|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='release|x64'">Create</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="taskbaricon.cpp" />
+    <ClCompile Include="togglebitmapbutton.cpp" />
+    <ClCompile Include="ui.cpp" />
+    <ClCompile Include="uiapi.cpp" />
+    <ClCompile Include="windowrenderer.cpp" />
+    <ClCompile Include="wxskinbutton.cpp" />
+    <ClCompile Include="wxskinwindow.cpp" />
+    <ClCompile Include="wxwidgets.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="application.h" />
+    <ClInclude Include="chartpanel.h" />
+    <ClInclude Include="connectioninfo.h" />
+    <ClInclude Include="downloadevent.h" />
+    <ClInclude Include="downloadthread.h" />
+    <ClInclude Include="extensionswizard.h" />
+    <ClInclude Include="extensionswizardpagefinish.h" />
+    <ClInclude Include="extensionswizardpagegeneral.h" />
+    <ClInclude Include="extensionswizardpagetemplate.h" />
+    <ClInclude Include="framerenderer.h" />
+    <ClInclude Include="iircpage.h" />
+    <ClInclude Include="iircroompage.h" />
+    <ClInclude Include="ioptionswizardpage.h" />
+    <ClInclude Include="ircchannelpage.h" />
+    <ClInclude Include="ircconfigwindow.h" />
+    <ClInclude Include="ircserverpage.h" />
+    <ClInclude Include="irctextctrl.h" />
+    <ClInclude Include="ircuserpage.h" />
+    <ClInclude Include="ircwindow.h" />
+    <ClInclude Include="isisconnectionswindow.h" />
+    <ClInclude Include="listctrlrenderer.h" />
+    <ClInclude Include="logwindow.h" />
+    <ClInclude Include="mainwindow.h" />
+    <ClInclude Include="multilanguagewindow.h" />
+    <ClInclude Include="multilanguagewizard.h" />
+    <ClInclude Include="optionswizard.h" />
+    <ClInclude Include="optionswizardpagefinish.h" />
+    <ClInclude Include="optionswizardpagegeneral.h" />
+    <ClInclude Include="optionswizardpagenetwork.h" />
+    <ClInclude Include="optionswizardpageproxy.h" />
+    <ClInclude Include="optionswizardpagewelcome.h" />
+    <ClInclude Include="p2pconnectionswindow.h" />
+    <ClInclude Include="skinnedframe.h" />
+    <ClInclude Include="skinnedwindow.h" />
+    <ClInclude Include="skinprerequisites.h" />
+    <ClInclude Include="skinsmanager.h" />
+    <ClInclude Include="skintemplate.h" />
+    <ClInclude Include="soundmanager.h" />
+    <ClInclude Include="splashscreen.h" />
+    <ClInclude Include="statisticswindow.h" />
+    <ClInclude Include="stdafx.h" />
+    <ClInclude Include="taskbaricon.h" />
+    <ClInclude Include="togglebitmapbutton.h" />
+    <ClInclude Include="ui.h" />
+    <ClInclude Include="uiapi.h" />
+    <ClInclude Include="uiconfig.h" />
+    <ClInclude Include="uistandards.h" />
+    <ClInclude Include="windowrenderer.h" />
+    <ClInclude Include="wxcustomclientdata.h" />
+    <ClInclude Include="wxskinbutton.h" />
+    <ClInclude Include="wxskinwindow.h" />
+    <ClInclude Include="wxwidgets.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\core\core_vc10.vcxproj">
+      <Project>{df5edb66-966d-4514-8100-f82d9cf39002}</Project>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+    <ProjectReference Include="..\db\db_vc10.vcxproj">
+      <Project>{df5edc66-c66a-d114-8111-382d9cf39005}</Project>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+    <ProjectReference Include="..\engine\engine_vc10.vcxproj">
+      <Project>{3e7bf832-359f-467d-baaf-0ce1a3e7052f}</Project>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+    <ProjectReference Include="..\http\http_vc10.vcxproj">
+      <Project>{df5edc66-966d-4514-8100-bb2d9cf5510b}</Project>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+    <ProjectReference Include="..\irc\irc_vc10.vcxproj">
+      <Project>{df5edc32-9632-4532-8100-bb2d9cf5510b}</Project>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+    <ProjectReference Include="..\lang\lang_vc10.vcxproj">
+      <Project>{df5edb66-966d-4514-8100-f82d9cf39107}</Project>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+    <ProjectReference Include="..\net\net_vc10.vcxproj">
+      <Project>{df5edb66-966d-4514-8100-f82d9cf39005}</Project>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+    <ProjectReference Include="..\plugins\Components\Components_vc10.vcxproj">
+      <Project>{df5edb61-966d-4514-8100-f22d2cf25a35}</Project>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+    <ProjectReference Include="..\plugins\PluginSample\PluginSample_vc10.vcxproj">
+      <Project>{df5edb61-966d-4514-8100-f82d9cf39e35}</Project>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+    <ProjectReference Include="..\plugins\python\python_vc10.vcxproj">
+      <Project>{123edb63-9777-4714-7789-f82d9cf39456}</Project>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+    <ProjectReference Include="..\plugins\sqlite\Sqlite_vc10.vcxproj">
+      <Project>{df5edb63-966d-4514-8100-f82d9cf39e35}</Project>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+    <ProjectReference Include="..\plugins\stress\Stress_vc10.vcxproj">
+      <Project>{df5edb64-966d-4514-8100-f82d9cf39e35}</Project>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+    <ProjectReference Include="..\plugins\translations\translations_vc10.vcxproj">
+      <Project>{e058601d-14e6-468b-9663-823f009a1345}</Project>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+    <ProjectReference Include="..\upnp\upnp_vc10.vcxproj">
+      <Project>{df5edc22-226d-2214-8100-bb222cf55122}</Project>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+    <ProjectReference Include="..\web\web_vc10.vcxproj">
+      <Project>{df5edb66-966d-4514-8100-f82d9cf39106}</Project>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+    <ProjectReference Include="..\xml\xml_vc10.vcxproj">
+      <Project>{df5edb66-966d-4514-8100-f82d9cf39001}</Project>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!--Created with Kodeware Tools.-->
+<language id="en">
+<key name="extension.4A7F130B4A5C42CC5D928D157641596A89543C65.group.python" value="Python Developing" auto="false" />
+<key name="extension.4A7F130B4A5C42CC5D928D157641596A89543C65.group.resources" value="Resources" auto="false" />
+<key name="extension.4A7F130B4A5C42CC5D928D157641596A89543C65.group.testing_pages" value="Testing pages" auto="false" />
+<key name="extension.4A7F130B4A5C42CC5D928D157641596A89543C65.htmltest.description" value="Test page for HTML code." auto="false" />
+<key name="extension.4A7F130B4A5C42CC5D928D157641596A89543C65.htmltest.title" value="Html Tester" auto="false" />
+<key name="extension.4A7F130B4A5C42CC5D928D157641596A89543C65.images.description" value="Show all images in the base resource directory." auto="false" />
+<key name="extension.4A7F130B4A5C42CC5D928D157641596A89543C65.images.title" value="Images" auto="false" />
+<key name="extension.4A7F130B4A5C42CC5D928D157641596A89543C65.omltest.description" value="Test page for OML (Osiris Markup Language) code." auto="false" />
+<key name="extension.4A7F130B4A5C42CC5D928D157641596A89543C65.omltest.title" value="OML Tester" auto="false" />
+<key name="extension.4A7F130B4A5C42CC5D928D157641596A89543C65.pythondoc.description" value="Python reference documentation for writing Osiris extensions" auto="false" />
+<key name="extension.4A7F130B4A5C42CC5D928D157641596A89543C65.pythondoc.title" value="Python Documentation" auto="false" />
+<key name="extension.4A7F130B4A5C42CC5D928D157641596A89543C65.regextest.description" value="Test page for regular expressions." auto="false" />
+<key name="extension.4A7F130B4A5C42CC5D928D157641596A89543C65.regextest.title" value="Regular Expressions" auto="false" />
+<key name="main.pages.developer_tools.help" value="[h1]Developer Tools[/h1]&#xD;&#xA;Here you can find tools for developing or advanced testing." auto="false" />
+<key name="main.pages.developer_tools.title" value="Developer Tools" auto="false" />
+</language>

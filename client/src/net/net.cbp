@@ -1,0 +1,276 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="Net" />
+		<Option pch_mode="2" />
+		<Option compiler="gcc" />
+		<Build>
+			<Target title="debug linux-i386">
+				<Option platforms="Unix;" />
+				<Option output="../../bin/linux/i386/gcc/debug/libnet" prefix_auto="1" extension_auto="1" />
+				<Option object_output="../../obj/linux/i386/gcc/net/debug" />
+				<Option type="3" />
+				<Option compiler="gcc" />
+				<Option createDefFile="1" />
+				<Option createStaticLib="1" />
+				<Compiler>
+					<Add option="-g" />
+					<Add option="-W" />
+					<Add option="-D_DEBUG" />
+					<Add option="-DOS_NET_LIB" />
+					<Add option="-DUNICODE" />
+					<Add directory="../../dependencies/include" />
+					<Add directory="../core" />
+					<Add directory="../../dependencies/include/linux-i386" />
+				</Compiler>
+				<ResourceCompiler>
+					<Add directory="../../dependencies/include" />
+					<Add directory="../core" />
+				</ResourceCompiler>
+				<Linker>
+					<Add option="-Wl,-z,defs,-rpath=./" />
+					<Add option="-static-libstdc++" />
+					<Add option="-static-libgcc" />
+					<Add library="libcore" />
+					<Add library="libpthread" />
+					<Add library="libssl" />
+					<Add library="libboost_signals-gcc44-mt-d-1_41" />
+					<Add library="libcrypto" />
+					<Add directory="../../bin/linux/i386/gcc/debug" />
+					<Add directory="../../dependencies/lib/linux/i386/gcc/debug" />
+				</Linker>
+			</Target>
+			<Target title="release linux-i386">
+				<Option platforms="Unix;" />
+				<Option output="../../bin/linux/i386/gcc/release/libnet" prefix_auto="1" extension_auto="1" />
+				<Option object_output="../../obj/linux/i386/gcc/net/release" />
+				<Option type="3" />
+				<Option compiler="gcc" />
+				<Option createDefFile="1" />
+				<Option createStaticLib="1" />
+				<Compiler>
+					<Add option="-O2" />
+					<Add option="-W" />
+					<Add option="-DNDEBUG" />
+					<Add option="-DOS_NET_LIB" />
+					<Add option="-DUNICODE" />
+					<Add directory="../../dependencies/include" />
+					<Add directory="../core" />
+					<Add directory="../../dependencies/include/linux-i386" />
+				</Compiler>
+				<ResourceCompiler>
+					<Add directory="../../dependencies/include" />
+					<Add directory="../core" />
+				</ResourceCompiler>
+				<Linker>
+					<Add option="-s" />
+					<Add option="-Wl,-z,defs,-rpath=./" />
+					<Add option="-static-libstdc++" />
+					<Add option="-static-libgcc" />
+					<Add library="libcore" />
+					<Add library="libpthread" />
+					<Add library="libssl" />
+					<Add library="libboost_signals-gcc44-mt-1_41" />
+					<Add library="libcrypto" />
+					<Add directory="../../bin/linux/i386/gcc/release" />
+					<Add directory="../../dependencies/lib/linux/i386/gcc/release" />
+				</Linker>
+			</Target>
+			<Target title="debug mac-x86_64">
+				<Option platforms="Mac;" />
+				<Option output="../../bin/macosx/x86_64/gcc/debug/Osiris.app/Contents/MacOS/libnet" prefix_auto="1" extension_auto="1" />
+				<Option object_output="../../obj/macosx/x86_64/gcc/net/debug" />
+				<Option type="3" />
+				<Option compiler="gcc" />
+				<Option createDefFile="1" />
+				<Option createStaticLib="1" />
+				<Compiler>
+					<Add option="-W" />
+					<Add option="-g" />
+					<Add option="-D_DEBUG" />
+					<Add option="-DOS_NET_LIB" />
+					<Add option="-DUNICODE" />
+					<Add directory="../../dependencies/include" />
+					<Add directory="../core" />
+					<Add directory="../../dependencies/include/mac-x86_64" />
+				</Compiler>
+				<ResourceCompiler>
+					<Add directory="../../dependencies/include" />
+					<Add directory="../core" />
+				</ResourceCompiler>
+				<Linker>
+					<Add option="-dynamiclib " />
+					<Add library="core" />
+					<Add library="libcrypto" />
+					<Add library="libssl" />
+					<Add library="libboost_signals-xgcc42-mt-d-1_41" />
+					<Add directory="../../lib/macosx/x86_64/gcc/debug" />
+					<Add directory="../../dependencies/lib/macosx/x86_64/gcc/debug" />
+					<Add directory="../../bin/macosx/x86_64/gcc/debug/Osiris.app/Contents/MacOS" />
+				</Linker>
+				<ExtraCommands>
+					<Add after="../postbuild_osx.sh $(TARGET_OUTPUT_BASENAME).dylib $(TARGET_OUTPUT_DIR)" />
+				</ExtraCommands>
+			</Target>
+			<Target title="release mac-x86_64">
+				<Option platforms="Mac;" />
+				<Option output="../../bin/macosx/x86_64/gcc/release/Osiris.app/Contents/MacOS/libnet" prefix_auto="1" extension_auto="1" />
+				<Option object_output="../../obj/macosx/x86_64/gcc/net/release" />
+				<Option type="3" />
+				<Option compiler="gcc" />
+				<Option createDefFile="1" />
+				<Option createStaticLib="1" />
+				<Compiler>
+					<Add option="-O2" />
+					<Add option="-W" />
+					<Add option="-DNDEBUG" />
+					<Add option="-DOS_NET_LIB" />
+					<Add option="-DUNICODE" />
+					<Add directory="../../dependencies/include" />
+					<Add directory="../core" />
+					<Add directory="../../dependencies/include/mac-x86_64" />
+				</Compiler>
+				<ResourceCompiler>
+					<Add directory="../../dependencies/include" />
+					<Add directory="../core" />
+				</ResourceCompiler>
+				<Linker>
+					<Add option="-s" />
+					<Add option="-dynamiclib " />
+					<Add library="core" />
+					<Add library="libcrypto" />
+					<Add library="libssl" />
+					<Add library="libboost_signals-xgcc42-mt-1_41" />
+					<Add directory="../../lib/macosx/x86_64/gcc/release" />
+					<Add directory="../../dependencies/lib/macosx/x86_64/gcc/release" />
+					<Add directory="../../bin/macosx/x86_64/gcc/release/Osiris.app/Contents/MacOS" />
+				</Linker>
+				<ExtraCommands>
+					<Add after="../postbuild_osx.sh $(TARGET_OUTPUT_BASENAME).dylib $(TARGET_OUTPUT_DIR)" />
+				</ExtraCommands>
+			</Target>
+			<Target title="debug linux-x86_64">
+				<Option platforms="Unix;" />
+				<Option output="../../bin/linux/x86_64/gcc/debug/libnet" prefix_auto="1" extension_auto="1" />
+				<Option object_output="../../obj/linux/x86_64/gcc/net/debug" />
+				<Option type="3" />
+				<Option compiler="gcc" />
+				<Option createDefFile="1" />
+				<Option createStaticLib="1" />
+				<Compiler>
+					<Add option="-W" />
+					<Add option="-g" />
+					<Add option="-fPIC" />
+					<Add option="-D_DEBUG" />
+					<Add option="-DOS_NET_LIB" />
+					<Add option="-DUNICODE" />
+					<Add directory="../../dependencies/include" />
+					<Add directory="../core" />
+					<Add directory="../../dependencies/include/linux-x86_64" />
+				</Compiler>
+				<ResourceCompiler>
+					<Add directory="../../dependencies/include" />
+					<Add directory="../core" />
+				</ResourceCompiler>
+				<Linker>
+					<Add option="-Wl,-z,defs,-rpath=./" />
+					<Add library="libcore" />
+					<Add library="libpthread" />
+					<Add library="libssl" />
+					<Add library="libboost_signals-gcc44-mt-d-1_41" />
+					<Add library="libcrypto" />
+					<Add directory="../../bin/linux/x86_64/gcc/debug" />
+					<Add directory="../../dependencies/lib/linux/x86_64/gcc/debug" />
+				</Linker>
+			</Target>
+			<Target title="release linux-x86_64">
+				<Option platforms="Unix;" />
+				<Option output="../../bin/linux/x86_64/gcc/release/libnet" prefix_auto="1" extension_auto="1" />
+				<Option object_output="../../obj/linux/x86_64/gcc/net/release" />
+				<Option type="3" />
+				<Option compiler="gcc" />
+				<Option createDefFile="1" />
+				<Option createStaticLib="1" />
+				<Compiler>
+					<Add option="-O2" />
+					<Add option="-W" />
+					<Add option="-fPIC" />
+					<Add option="-DNDEBUG" />
+					<Add option="-DOS_NET_LIB" />
+					<Add option="-DUNICODE" />
+					<Add directory="../../dependencies/include" />
+					<Add directory="../core" />
+					<Add directory="../../dependencies/include/linux-x86_64" />
+				</Compiler>
+				<ResourceCompiler>
+					<Add directory="../../dependencies/include" />
+					<Add directory="../core" />
+				</ResourceCompiler>
+				<Linker>
+					<Add option="-s" />
+					<Add option="-Wl,-z,defs,-rpath=./" />
+					<Add library="libcore" />
+					<Add library="libpthread" />
+					<Add library="libssl" />
+					<Add library="libboost_signals-gcc44-mt-1_41" />
+					<Add library="libcrypto" />
+					<Add directory="../../bin/linux/x86_64/gcc/release" />
+					<Add directory="../../dependencies/lib/linux/x86_64/gcc/release" />
+				</Linker>
+			</Target>
+		</Build>
+		<Unit filename="bandwidth.cpp" />
+		<Unit filename="bandwidth.h" />
+		<Unit filename="bandwidthmanager.cpp" />
+		<Unit filename="bandwidthmanager.h" />
+		<Unit filename="boostasio.cpp" />
+		<Unit filename="boostasio.h" />
+		<Unit filename="boostasio_fwd.h" />
+		<Unit filename="boostasio_ssl.cpp" />
+		<Unit filename="boostasio_ssl.h" />
+		<Unit filename="connectionscope.cpp" />
+		<Unit filename="connectionscope.h" />
+		<Unit filename="connectionsmanager.cpp" />
+		<Unit filename="connectionsmanager.h" />
+		<Unit filename="connectionstatus.cpp" />
+		<Unit filename="connectionstatus.h" />
+		<Unit filename="connectionstatusguard.cpp" />
+		<Unit filename="connectionstatusguard.h" />
+		<Unit filename="iconnection.cpp" />
+		<Unit filename="iconnection.h" />
+		<Unit filename="ipaddress.cpp" />
+		<Unit filename="ipaddress.h" />
+		<Unit filename="iserver.cpp" />
+		<Unit filename="iserver.h" />
+		<Unit filename="isocketlayer.cpp" />
+		<Unit filename="isocketlayer.h" />
+		<Unit filename="limitedconnection.cpp" />
+		<Unit filename="limitedconnection.h" />
+		<Unit filename="net.cpp" />
+		<Unit filename="netconfig.h" />
+		<Unit filename="networkservice.cpp" />
+		<Unit filename="networkservice.h" />
+		<Unit filename="networksystem.cpp" />
+		<Unit filename="networksystem.h" />
+		<Unit filename="ntp.h" />
+		<Unit filename="ntpclient.cpp" />
+		<Unit filename="ntpclient.h" />
+		<Unit filename="ntptime.cpp" />
+		<Unit filename="ntptime.h" />
+		<Unit filename="socket.h" />
+		<Unit filename="socks5socketproxy.h" />
+		<Unit filename="stdafx.cpp" />
+		<Unit filename="stdafx.h" />
+		<Unit filename="tcpsocket.cpp" />
+		<Unit filename="tcpsocket.h" />
+		<Unit filename="udpsocket.cpp" />
+		<Unit filename="udpsocket.h" />
+		<Extensions>
+			<code_completion />
+			<envvars />
+			<lib_finder disable_auto="1" />
+			<debugger />
+		</Extensions>
+	</Project>
+</CodeBlocks_project_file>

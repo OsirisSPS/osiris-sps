@@ -1,0 +1,7 @@
+1.2 - xx/10/2011 - Fix a Mac-OSX problem.
+1.1 - xx/09/2011 - First public release
+
+
+Todo:
+
+- Real machine-id hash.

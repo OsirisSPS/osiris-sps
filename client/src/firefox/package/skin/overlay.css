@@ -1,0 +1,23 @@
+#osiris-toolbar-button
+{
+	list-style-image: url("chrome://osiris/skin/normal.png");
+	-moz-image-region: rect(0px 24px 24px 0px);
+}
+
+#osiris-toolbar-button[disabled="true"]
+{
+	list-style-image: url("chrome://osiris/skin/disabled.png");
+	-moz-image-region: rect(0px 24px 24px 0px);
+}
+
+[iconsize="small"] #osiris-toolbar-button
+{
+	list-style-image: url("chrome://osiris/skin/normal_small.png");
+	-moz-image-region: rect(0px 16px 16px 0px);
+}
+
+[iconsize="small"] #osiris-toolbar-button[disabled="true"]
+{
+	list-style-image: url("chrome://osiris/skin/disabled_small.png");
+	-moz-image-region: rect(0px 16px 16px 0px);
+}

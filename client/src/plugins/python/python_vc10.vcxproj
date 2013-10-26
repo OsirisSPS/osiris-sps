@@ -1,0 +1,1004 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="debug|Win32">
+      <Configuration>debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="debug|x64">
+      <Configuration>debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="release|Win32">
+      <Configuration>release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="release|x64">
+      <Configuration>release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectName>Python</ProjectName>
+    <ProjectGuid>{123EDB63-9777-4714-7789-F82D9CF39456}</ProjectGuid>
+    <RootNamespace>Python</RootNamespace>
+    <Keyword>Win32Proj</Keyword>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='release|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <CharacterSet>NotSet</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='debug|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <CharacterSet>NotSet</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='release|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <CharacterSet>NotSet</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='debug|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <CharacterSet>NotSet</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='release|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(VCTargetsPath)Microsoft.CPP.UpgradeFromVC71.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='debug|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(VCTargetsPath)Microsoft.CPP.UpgradeFromVC71.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='release|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(VCTargetsPath)Microsoft.CPP.UpgradeFromVC71.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='debug|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(VCTargetsPath)Microsoft.CPP.UpgradeFromVC71.props" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>10.0.30319.1</_ProjectFileVersion>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">../../../bin/windows/i386/vc10/$(Configuration)\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">../../../obj/windows/i386/vc10/plugins/$(TargetName)/$(Configuration)\</IntDir>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</LinkIncremental>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='debug|x64'">../../../bin/windows/x86_64/vc10/$(Configuration)\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='debug|x64'">../../../obj/windows/x86_64/vc10/plugins/$(TargetName)/$(Configuration)\</IntDir>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='debug|x64'">true</LinkIncremental>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='release|Win32'">../../../bin/windows/i386/vc10/$(Configuration)\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='release|Win32'">../../../obj/windows/i386/vc10/plugins/$(TargetName)/$(Configuration)\</IntDir>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='release|Win32'">false</LinkIncremental>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='release|x64'">../../../bin/windows/x86_64/vc10/$(Configuration)\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='release|x64'">../../../obj/windows/x86_64/vc10/plugins/$(TargetName)/$(Configuration)\</IntDir>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='release|x64'">false</LinkIncremental>
+    <CodeAnalysisRuleSet Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRules Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" />
+    <CodeAnalysisRuleAssemblies Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" />
+    <CodeAnalysisRuleSet Condition="'$(Configuration)|$(Platform)'=='debug|x64'">AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRules Condition="'$(Configuration)|$(Platform)'=='debug|x64'" />
+    <CodeAnalysisRuleAssemblies Condition="'$(Configuration)|$(Platform)'=='debug|x64'" />
+    <CodeAnalysisRuleSet Condition="'$(Configuration)|$(Platform)'=='release|Win32'">AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRules Condition="'$(Configuration)|$(Platform)'=='release|Win32'" />
+    <CodeAnalysisRuleAssemblies Condition="'$(Configuration)|$(Platform)'=='release|Win32'" />
+    <CodeAnalysisRuleSet Condition="'$(Configuration)|$(Platform)'=='release|x64'">AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRules Condition="'$(Configuration)|$(Platform)'=='release|x64'" />
+    <CodeAnalysisRuleAssemblies Condition="'$(Configuration)|$(Platform)'=='release|x64'" />
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <CustomBuildStep>
+      <Message>
+      </Message>
+      <Command>
+      </Command>
+    </CustomBuildStep>
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>./;../../../dependencies/include/common;../../../dependencies/include/windows/python;./wrappers;../../archives;../../core;../../engine;../../db;../../web;../../xml;../../http;../../net;../../lang;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;_USRDLL;PYTHON_EXPORTS;UNICODE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
+      <ShowIncludes>false</ShowIncludes>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <MinimalRebuild>false</MinimalRebuild>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>ssleay32.lib;libeay32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>../../../bin/windows/i386/vc10/$(Configuration)/python.dll</OutputFile>
+      <AdditionalLibraryDirectories>../../../dependencies/lib/windows/i386/vc10/$(Configuration);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <IgnoreAllDefaultLibraries>false</IgnoreAllDefaultLibraries>
+      <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <ProgramDatabaseFile>$(IntDir)$(TargetName).pdb</ProgramDatabaseFile>
+      <SubSystem>Windows</SubSystem>
+      <TargetMachine>MachineX86</TargetMachine>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='debug|x64'">
+    <CustomBuildStep>
+      <Message>
+      </Message>
+      <Command>
+      </Command>
+    </CustomBuildStep>
+    <Midl>
+      <TargetEnvironment>X64</TargetEnvironment>
+    </Midl>
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>./;../../../dependencies/include/common;../../../dependencies/include/windows/python;./wrappers;../../archives;../../core;../../engine;../../db;../../web;../../xml;../../http;../../net;../../lang;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;_USRDLL;PYTHON_EXPORTS;UNICODE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <ShowIncludes>false</ShowIncludes>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>ssleay32.lib;libeay32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>../../../bin/windows/x86_64/vc10/$(Configuration)/python.dll</OutputFile>
+      <AdditionalLibraryDirectories>../../../dependencies/lib/windows/x86_64/vc10/$(Configuration);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <IgnoreAllDefaultLibraries>false</IgnoreAllDefaultLibraries>
+      <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <ProgramDatabaseFile>$(IntDir)$(TargetName).pdb</ProgramDatabaseFile>
+      <SubSystem>Windows</SubSystem>
+      <TargetMachine>MachineX64</TargetMachine>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='release|Win32'">
+    <CustomBuildStep>
+      <Message>
+      </Message>
+      <Command>
+      </Command>
+    </CustomBuildStep>
+    <ClCompile>
+      <AdditionalIncludeDirectories>./;../../../dependencies/include/common;../../../dependencies/include/windows/python;./wrappers;../../archives;../../core;../../engine;../../db;../../web;../../xml;../../http;../../net;../../lang;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_USRDLL;PYTHON_EXPORTS;UNICODE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>ssleay32.lib;libeay32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>../../../bin/windows/i386/vc10/$(Configuration)/python.dll</OutputFile>
+      <AdditionalLibraryDirectories>../../../dependencies/lib/windows/i386/vc10/$(Configuration);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <ProgramDatabaseFile>$(IntDir)$(TargetName).pdb</ProgramDatabaseFile>
+      <SubSystem>Windows</SubSystem>
+      <OptimizeReferences>true</OptimizeReferences>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <TargetMachine>MachineX86</TargetMachine>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='release|x64'">
+    <CustomBuildStep>
+      <Message>
+      </Message>
+      <Command>
+      </Command>
+    </CustomBuildStep>
+    <Midl>
+      <TargetEnvironment>X64</TargetEnvironment>
+    </Midl>
+    <ClCompile>
+      <AdditionalIncludeDirectories>./;../../../dependencies/include/common;../../../dependencies/include/windows/python;./wrappers;../../archives;../../core;../../engine;../../db;../../web;../../xml;../../http;../../net;../../lang;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_USRDLL;PYTHON_EXPORTS;UNICODE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>ssleay32.lib;libeay32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>../../../bin/windows/x86_64/vc10/$(Configuration)/python.dll</OutputFile>
+      <AdditionalLibraryDirectories>../../../dependencies/lib/windows/x86_64/vc10/$(Configuration);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <ProgramDatabaseFile>$(IntDir)$(TargetName).pdb</ProgramDatabaseFile>
+      <SubSystem>Windows</SubSystem>
+      <OptimizeReferences>true</OptimizeReferences>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <TargetMachine>MachineX64</TargetMachine>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\core\core_vc10.vcxproj">
+      <Project>{df5edb66-966d-4514-8100-f82d9cf39002}</Project>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+    <ProjectReference Include="..\..\db\db_vc10.vcxproj">
+      <Project>{df5edc66-c66a-d114-8111-382d9cf39005}</Project>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+    <ProjectReference Include="..\..\engine\engine_vc10.vcxproj">
+      <Project>{3e7bf832-359f-467d-baaf-0ce1a3e7052f}</Project>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+    <ProjectReference Include="..\..\http\http_vc10.vcxproj">
+      <Project>{df5edc66-966d-4514-8100-bb2d9cf5510b}</Project>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+    <ProjectReference Include="..\..\lang\lang_vc10.vcxproj">
+      <Project>{df5edb66-966d-4514-8100-f82d9cf39107}</Project>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+    <ProjectReference Include="..\..\net\net_vc10.vcxproj">
+      <Project>{df5edb66-966d-4514-8100-f82d9cf39005}</Project>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+    <ProjectReference Include="..\..\web\web_vc10.vcxproj">
+      <Project>{df5edb66-966d-4514-8100-f82d9cf39106}</Project>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+    <ProjectReference Include="..\..\xml\xml_vc10.vcxproj">
+      <Project>{df5edb66-966d-4514-8100-f82d9cf39001}</Project>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="boostpython.h" />
+    <ClInclude Include="gccxml.h" />
+    <ClInclude Include="patchlevel.h" />
+    <ClInclude Include="pyplusplusaliases.h" />
+    <ClInclude Include="pypluspluscommon.h" />
+    <ClInclude Include="pyplusplusmanualtemplates.h" />
+    <ClInclude Include="Python.h" />
+    <ClInclude Include="pythoncodecontext.h" />
+    <ClInclude Include="pythoncodeprovider.h" />
+    <ClInclude Include="pythoncommon.h" />
+    <ClInclude Include="pythonconverters.h" />
+    <ClInclude Include="pythonengine.h" />
+    <ClInclude Include="pythoninterpreter.h" />
+    <ClInclude Include="pythonmanualwrappers.h" />
+    <ClInclude Include="pythonmethodresult.h" />
+    <ClInclude Include="pythonoverride.h" />
+    <ClInclude Include="pythonstate.h" />
+    <ClInclude Include="pythonthreadsaver.h" />
+    <ClInclude Include="pythonwrapper.h" />
+    <ClInclude Include="stdafx.h" />
+    <ClInclude Include="wrappers.h" />
+    <ClInclude Include="wrappers\buffer.pypp.hpp" />
+    <ClInclude Include="wrappers\cachesystem.pypp.hpp" />
+    <ClInclude Include="wrappers\cachesystemsingleton.pypp.hpp" />
+    <ClInclude Include="wrappers\cryptmanager.pypp.hpp" />
+    <ClInclude Include="wrappers\cryptmanagersingleton.pypp.hpp" />
+    <ClInclude Include="wrappers\dataaccount.pypp.hpp" />
+    <ClInclude Include="wrappers\databasessystem.pypp.hpp" />
+    <ClInclude Include="wrappers\databasessystemsingleton.pypp.hpp" />
+    <ClInclude Include="wrappers\dataitem.pypp.hpp" />
+    <ClInclude Include="wrappers\dataitemvector.pypp.hpp" />
+    <ClInclude Include="wrappers\datatable.pypp.hpp" />
+    <ClInclude Include="wrappers\datetime.pypp.hpp" />
+    <ClInclude Include="wrappers\engine.pypp.hpp" />
+    <ClInclude Include="wrappers\enginesingleton.pypp.hpp" />
+    <ClInclude Include="wrappers\eventsource.pypp.hpp" />
+    <ClInclude Include="wrappers\extensionscomponentcontrol.pypp.hpp" />
+    <ClInclude Include="wrappers\extensionscomponenteditor.pypp.hpp" />
+    <ClInclude Include="wrappers\extensionscomponentviewer.pypp.hpp" />
+    <ClInclude Include="wrappers\extensionsextension.pypp.hpp" />
+    <ClInclude Include="wrappers\extensionsinvalidcomponent.pypp.hpp" />
+    <ClInclude Include="wrappers\extensionsinvalidmodule.pypp.hpp" />
+    <ClInclude Include="wrappers\extensionsmodulecontrol.pypp.hpp" />
+    <ClInclude Include="wrappers\extensionsmoduleeditor.pypp.hpp" />
+    <ClInclude Include="wrappers\extensionsmoduleviewer.pypp.hpp" />
+    <ClInclude Include="wrappers\extensionsmoduleviewerhidden.pypp.hpp" />
+    <ClInclude Include="wrappers\extensionssystem.pypp.hpp" />
+    <ClInclude Include="wrappers\extensionssystemsingleton.pypp.hpp" />
+    <ClInclude Include="wrappers\file.pypp.hpp" />
+    <ClInclude Include="wrappers\filelogger.pypp.hpp" />
+    <ClInclude Include="wrappers\filesystem.pypp.hpp" />
+    <ClInclude Include="wrappers\filesystemsingleton.pypp.hpp" />
+    <ClInclude Include="wrappers\hash.pypp.hpp" />
+    <ClInclude Include="wrappers\htmlattribute.pypp.hpp" />
+    <ClInclude Include="wrappers\htmlattributes.pypp.hpp" />
+    <ClInclude Include="wrappers\htmlbr.pypp.hpp" />
+    <ClInclude Include="wrappers\htmlbutton.pypp.hpp" />
+    <ClInclude Include="wrappers\htmlcheckbox.pypp.hpp" />
+    <ClInclude Include="wrappers\htmlcombobox.pypp.hpp" />
+    <ClInclude Include="wrappers\htmlcontrols.pypp.hpp" />
+    <ClInclude Include="wrappers\htmldiv.pypp.hpp" />
+    <ClInclude Include="wrappers\htmlevent.pypp.hpp" />
+    <ClInclude Include="wrappers\htmlevents.pypp.hpp" />
+    <ClInclude Include="wrappers\htmlfilebrowser.pypp.hpp" />
+    <ClInclude Include="wrappers\htmlimage.pypp.hpp" />
+    <ClInclude Include="wrappers\htmllink.pypp.hpp" />
+    <ClInclude Include="wrappers\htmllinkbutton.pypp.hpp" />
+    <ClInclude Include="wrappers\htmllinktag.pypp.hpp" />
+    <ClInclude Include="wrappers\htmllistbox.pypp.hpp" />
+    <ClInclude Include="wrappers\htmlliteral.pypp.hpp" />
+    <ClInclude Include="wrappers\htmlmetatag.pypp.hpp" />
+    <ClInclude Include="wrappers\htmloption.pypp.hpp" />
+    <ClInclude Include="wrappers\htmloptiongroup.pypp.hpp" />
+    <ClInclude Include="wrappers\htmlpage.pypp.hpp" />
+    <ClInclude Include="wrappers\htmlpager.pypp.hpp" />
+    <ClInclude Include="wrappers\htmlpanel.pypp.hpp" />
+    <ClInclude Include="wrappers\htmlparagraph.pypp.hpp" />
+    <ClInclude Include="wrappers\htmlparser.pypp.hpp" />
+    <ClInclude Include="wrappers\htmlparsersingleton.pypp.hpp" />
+    <ClInclude Include="wrappers\htmlpopup.pypp.hpp" />
+    <ClInclude Include="wrappers\htmlroller.pypp.hpp" />
+    <ClInclude Include="wrappers\htmlscript.pypp.hpp" />
+    <ClInclude Include="wrappers\htmlspace.pypp.hpp" />
+    <ClInclude Include="wrappers\htmlspan.pypp.hpp" />
+    <ClInclude Include="wrappers\htmltab.pypp.hpp" />
+    <ClInclude Include="wrappers\htmltabctrl.pypp.hpp" />
+    <ClInclude Include="wrappers\htmltable.pypp.hpp" />
+    <ClInclude Include="wrappers\htmltablecell.pypp.hpp" />
+    <ClInclude Include="wrappers\htmltableheader.pypp.hpp" />
+    <ClInclude Include="wrappers\htmltablerow.pypp.hpp" />
+    <ClInclude Include="wrappers\htmltabpage.pypp.hpp" />
+    <ClInclude Include="wrappers\htmltext.pypp.hpp" />
+    <ClInclude Include="wrappers\htmltextarea.pypp.hpp" />
+    <ClInclude Include="wrappers\htmltextbox.pypp.hpp" />
+    <ClInclude Include="wrappers\htmltooltip.pypp.hpp" />
+    <ClInclude Include="wrappers\htmlunit.pypp.hpp" />
+    <ClInclude Include="wrappers\htmlwriter.pypp.hpp" />
+    <ClInclude Include="wrappers\htmlxslcontrol.pypp.hpp" />
+    <ClInclude Include="wrappers\httpclient.pypp.hpp" />
+    <ClInclude Include="wrappers\httpcontent.pypp.hpp" />
+    <ClInclude Include="wrappers\httpcookie.pypp.hpp" />
+    <ClInclude Include="wrappers\httpcookies.pypp.hpp" />
+    <ClInclude Include="wrappers\httpdata.pypp.hpp" />
+    <ClInclude Include="wrappers\httpparser.pypp.hpp" />
+    <ClInclude Include="wrappers\httppath.pypp.hpp" />
+    <ClInclude Include="wrappers\httpphysicaldirectory.pypp.hpp" />
+    <ClInclude Include="wrappers\httppostparam.pypp.hpp" />
+    <ClInclude Include="wrappers\httpproxy.pypp.hpp" />
+    <ClInclude Include="wrappers\httprequest.pypp.hpp" />
+    <ClInclude Include="wrappers\httpresponse.pypp.hpp" />
+    <ClInclude Include="wrappers\httprootdirectory.pypp.hpp" />
+    <ClInclude Include="wrappers\httpsession.pypp.hpp" />
+    <ClInclude Include="wrappers\httpsessionstate.pypp.hpp" />
+    <ClInclude Include="wrappers\httpurl.pypp.hpp" />
+    <ClInclude Include="wrappers\httpvirtualdirectory.pypp.hpp" />
+    <ClInclude Include="wrappers\ibackgroundjob.pypp.hpp" />
+    <ClInclude Include="wrappers\id.pypp.hpp" />
+    <ClInclude Include="wrappers\idbconnection.pypp.hpp" />
+    <ClInclude Include="wrappers\idbdriver.pypp.hpp" />
+    <ClInclude Include="wrappers\idbdriverlist.pypp.hpp" />
+    <ClInclude Include="wrappers\idboptions.pypp.hpp" />
+    <ClInclude Include="wrappers\idbparameter.pypp.hpp" />
+    <ClInclude Include="wrappers\idbparameterdeque.pypp.hpp" />
+    <ClInclude Include="wrappers\idbresult.pypp.hpp" />
+    <ClInclude Include="wrappers\idbstatement.pypp.hpp" />
+    <ClInclude Include="wrappers\ideaccount.pypp.hpp" />
+    <ClInclude Include="wrappers\ideaccountslist.pypp.hpp" />
+    <ClInclude Include="wrappers\ideaccountsmanager.pypp.hpp" />
+    <ClInclude Include="wrappers\ideaccountsmanagersingleton.pypp.hpp" />
+    <ClInclude Include="wrappers\ideassistant.pypp.hpp" />
+    <ClInclude Include="wrappers\ideblock.pypp.hpp" />
+    <ClInclude Include="wrappers\idebutton.pypp.hpp" />
+    <ClInclude Include="wrappers\idehelpbox.pypp.hpp" />
+    <ClInclude Include="wrappers\idemailbox.pypp.hpp" />
+    <ClInclude Include="wrappers\ideomleditor.pypp.hpp" />
+    <ClInclude Include="wrappers\idepathway.pypp.hpp" />
+    <ClInclude Include="wrappers\idepickerbool.pypp.hpp" />
+    <ClInclude Include="wrappers\idepickercomponent.pypp.hpp" />
+    <ClInclude Include="wrappers\idepickerculture.pypp.hpp" />
+    <ClInclude Include="wrappers\idepickerdatetime.pypp.hpp" />
+    <ClInclude Include="wrappers\idepickerdatetimespecial.pypp.hpp" />
+    <ClInclude Include="wrappers\idepickernumber.pypp.hpp" />
+    <ClInclude Include="wrappers\idepickerobject.pypp.hpp" />
+    <ClInclude Include="wrappers\idepickersections.pypp.hpp" />
+    <ClInclude Include="wrappers\idepickerselect.pypp.hpp" />
+    <ClInclude Include="wrappers\idepickerskin.pypp.hpp" />
+    <ClInclude Include="wrappers\idepositioneditor.pypp.hpp" />
+    <ClInclude Include="wrappers\idesearchglobalparams.pypp.hpp" />
+    <ClInclude Include="wrappers\idesearchparam.pypp.hpp" />
+    <ClInclude Include="wrappers\idesearchquery.pypp.hpp" />
+    <ClInclude Include="wrappers\idesearchresults.pypp.hpp" />
+    <ClInclude Include="wrappers\idesession.pypp.hpp" />
+    <ClInclude Include="wrappers\idesessionportal.pypp.hpp" />
+    <ClInclude Include="wrappers\ideskin.pypp.hpp" />
+    <ClInclude Include="wrappers\ideskinsimple.pypp.hpp" />
+    <ClInclude Include="wrappers\idesystem.pypp.hpp" />
+    <ClInclude Include="wrappers\idesystemsingleton.pypp.hpp" />
+    <ClInclude Include="wrappers\idetablequery.pypp.hpp" />
+    <ClInclude Include="wrappers\idevoteeditor.pypp.hpp" />
+    <ClInclude Include="wrappers\idexslresolver.pypp.hpp" />
+    <ClInclude Include="wrappers\ievent.pypp.hpp" />
+    <ClInclude Include="wrappers\ieventcallback.pypp.hpp" />
+    <ClInclude Include="wrappers\iextensionscomponent.pypp.hpp" />
+    <ClInclude Include="wrappers\iextensionsextension.pypp.hpp" />
+    <ClInclude Include="wrappers\iextensionsmodule.pypp.hpp" />
+    <ClInclude Include="wrappers\ihtmlcontrol.pypp.hpp" />
+    <ClInclude Include="wrappers\ihtmlinput.pypp.hpp" />
+    <ClInclude Include="wrappers\ihtmlselect.pypp.hpp" />
+    <ClInclude Include="wrappers\ihttpclient.pypp.hpp" />
+    <ClInclude Include="wrappers\ihttpdirectory.pypp.hpp" />
+    <ClInclude Include="wrappers\ihttpdirectoryhandler.pypp.hpp" />
+    <ClInclude Include="wrappers\ihttpdirectoryhandlerlist.pypp.hpp" />
+    <ClInclude Include="wrappers\ihttpdirectoryregexhandler.pypp.hpp" />
+    <ClInclude Include="wrappers\ihttpmethod.pypp.hpp" />
+    <ClInclude Include="wrappers\ihttpserver.pypp.hpp" />
+    <ClInclude Include="wrappers\iidepageable.pypp.hpp" />
+    <ClInclude Include="wrappers\ijob.pypp.hpp" />
+    <ClInclude Include="wrappers\image.pypp.hpp" />
+    <ClInclude Include="wrappers\imainpage.pypp.hpp" />
+    <ClInclude Include="wrappers\indexing_suite\algorithms.hpp" />
+    <ClInclude Include="wrappers\indexing_suite\container_proxy.hpp" />
+    <ClInclude Include="wrappers\indexing_suite\container_suite.hpp" />
+    <ClInclude Include="wrappers\indexing_suite\container_traits.hpp" />
+    <ClInclude Include="wrappers\indexing_suite\deque.hpp" />
+    <ClInclude Include="wrappers\indexing_suite\element_proxy.hpp" />
+    <ClInclude Include="wrappers\indexing_suite\element_proxy_traits.hpp" />
+    <ClInclude Include="wrappers\indexing_suite\int_slice_helper.hpp" />
+    <ClInclude Include="wrappers\indexing_suite\iterator_range.hpp" />
+    <ClInclude Include="wrappers\indexing_suite\iterator_traits.hpp" />
+    <ClInclude Include="wrappers\indexing_suite\list.hpp" />
+    <ClInclude Include="wrappers\indexing_suite\map.hpp" />
+    <ClInclude Include="wrappers\indexing_suite\methods.hpp" />
+    <ClInclude Include="wrappers\indexing_suite\multimap.hpp" />
+    <ClInclude Include="wrappers\indexing_suite\pair.hpp" />
+    <ClInclude Include="wrappers\indexing_suite\proxy_iterator.hpp" />
+    <ClInclude Include="wrappers\indexing_suite\python_iterator.hpp" />
+    <ClInclude Include="wrappers\indexing_suite\registry_utils.hpp" />
+    <ClInclude Include="wrappers\indexing_suite\set.hpp" />
+    <ClInclude Include="wrappers\indexing_suite\shared_proxy_impl.hpp" />
+    <ClInclude Include="wrappers\indexing_suite\slice.hpp" />
+    <ClInclude Include="wrappers\indexing_suite\slice_handler.hpp" />
+    <ClInclude Include="wrappers\indexing_suite\suite_utils.hpp" />
+    <ClInclude Include="wrappers\indexing_suite\value_traits.hpp" />
+    <ClInclude Include="wrappers\indexing_suite\vector.hpp" />
+    <ClInclude Include="wrappers\indexing_suite\visitor.hpp" />
+    <ClInclude Include="wrappers\indexing_suite\workaround.hpp" />
+    <ClInclude Include="wrappers\iomlcode.pypp.hpp" />
+    <ClInclude Include="wrappers\iomlxsl.pypp.hpp" />
+    <ClInclude Include="wrappers\ioptionvalidator.pypp.hpp" />
+    <ClInclude Include="wrappers\ipaddress.pypp.hpp" />
+    <ClInclude Include="wrappers\ipage.pypp.hpp" />
+    <ClInclude Include="wrappers\ipagehtmlcontrol.pypp.hpp" />
+    <ClInclude Include="wrappers\ipagehtmldiv.pypp.hpp" />
+    <ClInclude Include="wrappers\ipagexslrendererhtmlcontrol.pypp.hpp" />
+    <ClInclude Include="wrappers\iportalbackgroundjob.pypp.hpp" />
+    <ClInclude Include="wrappers\iportaldatabase.pypp.hpp" />
+    <ClInclude Include="wrappers\iportalpage.pypp.hpp" />
+    <ClInclude Include="wrappers\iportalpagehtmlcontrol.pypp.hpp" />
+    <ClInclude Include="wrappers\iportalpagehtmldiv.pypp.hpp" />
+    <ClInclude Include="wrappers\iportalpagexslrendererhtmlcontrol.pypp.hpp" />
+    <ClInclude Include="wrappers\isearchoptions.pypp.hpp" />
+    <ClInclude Include="wrappers\isearchresults.pypp.hpp" />
+    <ClInclude Include="wrappers\iserver.pypp.hpp" />
+    <ClInclude Include="wrappers\isisendpoint.pypp.hpp" />
+    <ClInclude Include="wrappers\isissystem.pypp.hpp" />
+    <ClInclude Include="wrappers\isissystemsingleton.pypp.hpp" />
+    <ClInclude Include="wrappers\istream.pypp.hpp" />
+    <ClInclude Include="wrappers\ivirtualmainpage.pypp.hpp" />
+    <ClInclude Include="wrappers\ixmlfunction.pypp.hpp" />
+    <ClInclude Include="wrappers\ixmlhandler.pypp.hpp" />
+    <ClInclude Include="wrappers\ixmlresolver.pypp.hpp" />
+    <ClInclude Include="wrappers\ixmlserializable.pypp.hpp" />
+    <ClInclude Include="wrappers\languageculture.pypp.hpp" />
+    <ClInclude Include="wrappers\languagefolder.pypp.hpp" />
+    <ClInclude Include="wrappers\languagefolderlist.pypp.hpp" />
+    <ClInclude Include="wrappers\languagefolderlistener.pypp.hpp" />
+    <ClInclude Include="wrappers\languagemanager.pypp.hpp" />
+    <ClInclude Include="wrappers\languagemanagersingleton.pypp.hpp" />
+    <ClInclude Include="wrappers\languageresult.pypp.hpp" />
+    <ClInclude Include="wrappers\languagevocabolary.pypp.hpp" />
+    <ClInclude Include="wrappers\logmanager.pypp.hpp" />
+    <ClInclude Include="wrappers\logmanagersingleton.pypp.hpp" />
+    <ClInclude Include="wrappers\mainaddonsjob.pypp.hpp" />
+    <ClInclude Include="wrappers\networksystem.pypp.hpp" />
+    <ClInclude Include="wrappers\networksystemsingleton.pypp.hpp" />
+    <ClInclude Include="wrappers\omla.pypp.hpp" />
+    <ClInclude Include="wrappers\omlanchor.pypp.hpp" />
+    <ClInclude Include="wrappers\omlcode.pypp.hpp" />
+    <ClInclude Include="wrappers\omlcontext.pypp.hpp" />
+    <ClInclude Include="wrappers\omldate.pypp.hpp" />
+    <ClInclude Include="wrappers\omldebug.pypp.hpp" />
+    <ClInclude Include="wrappers\omlemail.pypp.hpp" />
+    <ClInclude Include="wrappers\omlemoticon.pypp.hpp" />
+    <ClInclude Include="wrappers\omlemoticonlist.pypp.hpp" />
+    <ClInclude Include="wrappers\omlgoto.pypp.hpp" />
+    <ClInclude Include="wrappers\omlhtml.pypp.hpp" />
+    <ClInclude Include="wrappers\omlhtmlwrapper.pypp.hpp" />
+    <ClInclude Include="wrappers\omlif.pypp.hpp" />
+    <ClInclude Include="wrappers\omlimg.pypp.hpp" />
+    <ClInclude Include="wrappers\omlitem.pypp.hpp" />
+    <ClInclude Include="wrappers\omlitemlist.pypp.hpp" />
+    <ClInclude Include="wrappers\omllang.pypp.hpp" />
+    <ClInclude Include="wrappers\omlless.pypp.hpp" />
+    <ClInclude Include="wrappers\omllist.pypp.hpp" />
+    <ClInclude Include="wrappers\omlmanager.pypp.hpp" />
+    <ClInclude Include="wrappers\omlmanagersingleton.pypp.hpp" />
+    <ClInclude Include="wrappers\omlmore.pypp.hpp" />
+    <ClInclude Include="wrappers\omlnobr.pypp.hpp" />
+    <ClInclude Include="wrappers\omlnoparse.pypp.hpp" />
+    <ClInclude Include="wrappers\omlobject.pypp.hpp" />
+    <ClInclude Include="wrappers\omlpopup.pypp.hpp" />
+    <ClInclude Include="wrappers\omlquote.pypp.hpp" />
+    <ClInclude Include="wrappers\omlreplace.pypp.hpp" />
+    <ClInclude Include="wrappers\omlsize.pypp.hpp" />
+    <ClInclude Include="wrappers\omlsystem.pypp.hpp" />
+    <ClInclude Include="wrappers\omltab.pypp.hpp" />
+    <ClInclude Include="wrappers\omltext.pypp.hpp" />
+    <ClInclude Include="wrappers\omlurl.pypp.hpp" />
+    <ClInclude Include="wrappers\omluser.pypp.hpp" />
+    <ClInclude Include="wrappers\omlview.pypp.hpp" />
+    <ClInclude Include="wrappers\options.pypp.hpp" />
+    <ClInclude Include="wrappers\optionssingleton.pypp.hpp" />
+    <ClInclude Include="wrappers\osirislib_enumerations.pypp.hpp" />
+    <ClInclude Include="wrappers\portal.pypp.hpp" />
+    <ClInclude Include="wrappers\portallist.pypp.hpp" />
+    <ClInclude Include="wrappers\portaloptions.pypp.hpp" />
+    <ClInclude Include="wrappers\portalsimporterjob.pypp.hpp" />
+    <ClInclude Include="wrappers\portalsoptionsshared.pypp.hpp" />
+    <ClInclude Include="wrappers\portalspeer.pypp.hpp" />
+    <ClInclude Include="wrappers\portalspeerlist.pypp.hpp" />
+    <ClInclude Include="wrappers\portalspeersmanager.pypp.hpp" />
+    <ClInclude Include="wrappers\portalsstabilityjob.pypp.hpp" />
+    <ClInclude Include="wrappers\portalssystem.pypp.hpp" />
+    <ClInclude Include="wrappers\portalssystemsingleton.pypp.hpp" />
+    <ClInclude Include="wrappers\portalstransaction.pypp.hpp" />
+    <ClInclude Include="wrappers\regexmanager.pypp.hpp" />
+    <ClInclude Include="wrappers\regexmanagersingleton.pypp.hpp" />
+    <ClInclude Include="wrappers\reputationsmanager.pypp.hpp" />
+    <ClInclude Include="wrappers\reputationsscore.pypp.hpp" />
+    <ClInclude Include="wrappers\searchattachmentoptions.pypp.hpp" />
+    <ClInclude Include="wrappers\searchcalendareventoptions.pypp.hpp" />
+    <ClInclude Include="wrappers\searchfileoptions.pypp.hpp" />
+    <ClInclude Include="wrappers\searchinstanceoptions.pypp.hpp" />
+    <ClInclude Include="wrappers\searchmodeloptions.pypp.hpp" />
+    <ClInclude Include="wrappers\searchpolloptionoptions.pypp.hpp" />
+    <ClInclude Include="wrappers\searchpolloptions.pypp.hpp" />
+    <ClInclude Include="wrappers\searchpostoptions.pypp.hpp" />
+    <ClInclude Include="wrappers\searchquery.pypp.hpp" />
+    <ClInclude Include="wrappers\searchqueryoptions.pypp.hpp" />
+    <ClInclude Include="wrappers\searchresult.pypp.hpp" />
+    <ClInclude Include="wrappers\searchresultsdatabase.pypp.hpp" />
+    <ClInclude Include="wrappers\searchresultslucene.pypp.hpp" />
+    <ClInclude Include="wrappers\searchsectionoptions.pypp.hpp" />
+    <ClInclude Include="wrappers\searchtagoptions.pypp.hpp" />
+    <ClInclude Include="wrappers\searchtextoptions.pypp.hpp" />
+    <ClInclude Include="wrappers\stringlist.pypp.hpp" />
+    <ClInclude Include="wrappers\stringmap.pypp.hpp" />
+    <ClInclude Include="wrappers\stringvector.pypp.hpp" />
+    <ClInclude Include="wrappers\textfile.pypp.hpp" />
+    <ClInclude Include="wrappers\thirdpartylibrariesreporter.pypp.hpp" />
+    <ClInclude Include="wrappers\thirdpartylibrariesreportersingleton.pypp.hpp" />
+    <ClInclude Include="wrappers\thirdpartylibrary.pypp.hpp" />
+    <ClInclude Include="wrappers\timeduration.pypp.hpp" />
+    <ClInclude Include="wrappers\uniqueid.pypp.hpp" />
+    <ClInclude Include="wrappers\version.pypp.hpp" />
+    <ClInclude Include="wrappers\xmlattribute.pypp.hpp" />
+    <ClInclude Include="wrappers\xmlattributes.pypp.hpp" />
+    <ClInclude Include="wrappers\xmldocument.pypp.hpp" />
+    <ClInclude Include="wrappers\xmlmanager.pypp.hpp" />
+    <ClInclude Include="wrappers\xmlmanagersingleton.pypp.hpp" />
+    <ClInclude Include="wrappers\xmlnode.pypp.hpp" />
+    <ClInclude Include="wrappers\xmlnodes.pypp.hpp" />
+    <ClInclude Include="wrappers\xmlschema.pypp.hpp" />
+    <ClInclude Include="wrappers\xmlstylesheet.pypp.hpp" />
+    <ClInclude Include="wrappers\xmlwriter.pypp.hpp" />
+    <ClInclude Include="wrappers\_dataitem__value_traits.pypp.hpp" />
+    <ClInclude Include="wrappers\_idbdriverptr__value_traits.pypp.hpp" />
+    <ClInclude Include="wrappers\_idbparameterptr__value_traits.pypp.hpp" />
+    <ClInclude Include="wrappers\_isearchoptionsptr__value_traits.pypp.hpp" />
+    <ClInclude Include="wrappers\_languagefolderptr__value_traits.pypp.hpp" />
+    <ClInclude Include="wrappers\_omlemoticonptr__value_traits.pypp.hpp" />
+    <ClInclude Include="wrappers\_omlitemptr__value_traits.pypp.hpp" />
+    <ClInclude Include="wrappers\_portalptr__value_traits.pypp.hpp" />
+    <ClInclude Include="wrappers\__call_policies.pypp.hpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="plugin.cpp" />
+    <ClCompile Include="pythoncodecontext.cpp" />
+    <ClCompile Include="pythoncodeprovider.cpp" />
+    <ClCompile Include="pythonconverters.cpp" />
+    <ClCompile Include="pythonengine.cpp" />
+    <ClCompile Include="pythoninterpreter.cpp" />
+    <ClCompile Include="pythonmanualwrappers.cpp" />
+    <ClCompile Include="pythonmethodresult.cpp" />
+    <ClCompile Include="pythonoverride.cpp" />
+    <ClCompile Include="pythonstate.cpp" />
+    <ClCompile Include="pythonthreadsaver.cpp" />
+    <ClCompile Include="stdafx.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='release|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='debug|Win32'">Create</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="wrappers\buffer.pypp.cpp" />
+    <ClCompile Include="wrappers\cachesystem.pypp.cpp" />
+    <ClCompile Include="wrappers\cachesystemsingleton.pypp.cpp" />
+    <ClCompile Include="wrappers\cryptmanager.pypp.cpp" />
+    <ClCompile Include="wrappers\cryptmanagersingleton.pypp.cpp" />
+    <ClCompile Include="wrappers\dataaccount.pypp.cpp" />
+    <ClCompile Include="wrappers\databasessystem.pypp.cpp" />
+    <ClCompile Include="wrappers\databasessystemsingleton.pypp.cpp" />
+    <ClCompile Include="wrappers\dataitem.pypp.cpp" />
+    <ClCompile Include="wrappers\dataitemvector.pypp.cpp" />
+    <ClCompile Include="wrappers\datatable.pypp.cpp" />
+    <ClCompile Include="wrappers\datetime.pypp.cpp" />
+    <ClCompile Include="wrappers\engine.pypp.cpp" />
+    <ClCompile Include="wrappers\enginesingleton.pypp.cpp" />
+    <ClCompile Include="wrappers\eventsource.pypp.cpp" />
+    <ClCompile Include="wrappers\extensionscomponentcontrol.pypp.cpp" />
+    <ClCompile Include="wrappers\extensionscomponenteditor.pypp.cpp" />
+    <ClCompile Include="wrappers\extensionscomponentviewer.pypp.cpp" />
+    <ClCompile Include="wrappers\extensionsextension.pypp.cpp" />
+    <ClCompile Include="wrappers\extensionsinvalidcomponent.pypp.cpp" />
+    <ClCompile Include="wrappers\extensionsinvalidmodule.pypp.cpp" />
+    <ClCompile Include="wrappers\extensionsmodulecontrol.pypp.cpp" />
+    <ClCompile Include="wrappers\extensionsmoduleeditor.pypp.cpp" />
+    <ClCompile Include="wrappers\extensionsmoduleviewer.pypp.cpp" />
+    <ClCompile Include="wrappers\extensionsmoduleviewerhidden.pypp.cpp" />
+    <ClCompile Include="wrappers\extensionssystem.pypp.cpp" />
+    <ClCompile Include="wrappers\extensionssystemsingleton.pypp.cpp" />
+    <ClCompile Include="wrappers\file.pypp.cpp" />
+    <ClCompile Include="wrappers\filelogger.pypp.cpp" />
+    <ClCompile Include="wrappers\filesystem.pypp.cpp" />
+    <ClCompile Include="wrappers\filesystemsingleton.pypp.cpp" />
+    <ClCompile Include="wrappers\hash.pypp.cpp" />
+    <ClCompile Include="wrappers\htmlattribute.pypp.cpp" />
+    <ClCompile Include="wrappers\htmlattributes.pypp.cpp" />
+    <ClCompile Include="wrappers\htmlbr.pypp.cpp" />
+    <ClCompile Include="wrappers\htmlbutton.pypp.cpp" />
+    <ClCompile Include="wrappers\htmlcheckbox.pypp.cpp" />
+    <ClCompile Include="wrappers\htmlcombobox.pypp.cpp" />
+    <ClCompile Include="wrappers\htmlcontrols.pypp.cpp" />
+    <ClCompile Include="wrappers\htmldiv.pypp.cpp" />
+    <ClCompile Include="wrappers\htmlevent.pypp.cpp" />
+    <ClCompile Include="wrappers\htmlevents.pypp.cpp" />
+    <ClCompile Include="wrappers\htmlfilebrowser.pypp.cpp" />
+    <ClCompile Include="wrappers\htmlimage.pypp.cpp" />
+    <ClCompile Include="wrappers\htmllink.pypp.cpp" />
+    <ClCompile Include="wrappers\htmllinkbutton.pypp.cpp" />
+    <ClCompile Include="wrappers\htmllinktag.pypp.cpp" />
+    <ClCompile Include="wrappers\htmllistbox.pypp.cpp" />
+    <ClCompile Include="wrappers\htmlliteral.pypp.cpp" />
+    <ClCompile Include="wrappers\htmlmetatag.pypp.cpp" />
+    <ClCompile Include="wrappers\htmloption.pypp.cpp" />
+    <ClCompile Include="wrappers\htmloptiongroup.pypp.cpp" />
+    <ClCompile Include="wrappers\htmlpage.pypp.cpp" />
+    <ClCompile Include="wrappers\htmlpager.pypp.cpp" />
+    <ClCompile Include="wrappers\htmlpanel.pypp.cpp" />
+    <ClCompile Include="wrappers\htmlparagraph.pypp.cpp" />
+    <ClCompile Include="wrappers\htmlparser.pypp.cpp" />
+    <ClCompile Include="wrappers\htmlparsersingleton.pypp.cpp" />
+    <ClCompile Include="wrappers\htmlpopup.pypp.cpp" />
+    <ClCompile Include="wrappers\htmlroller.pypp.cpp" />
+    <ClCompile Include="wrappers\htmlscript.pypp.cpp" />
+    <ClCompile Include="wrappers\htmlspace.pypp.cpp" />
+    <ClCompile Include="wrappers\htmlspan.pypp.cpp" />
+    <ClCompile Include="wrappers\htmltab.pypp.cpp" />
+    <ClCompile Include="wrappers\htmltabctrl.pypp.cpp" />
+    <ClCompile Include="wrappers\htmltable.pypp.cpp" />
+    <ClCompile Include="wrappers\htmltablecell.pypp.cpp" />
+    <ClCompile Include="wrappers\htmltableheader.pypp.cpp" />
+    <ClCompile Include="wrappers\htmltablerow.pypp.cpp" />
+    <ClCompile Include="wrappers\htmltabpage.pypp.cpp" />
+    <ClCompile Include="wrappers\htmltext.pypp.cpp" />
+    <ClCompile Include="wrappers\htmltextarea.pypp.cpp" />
+    <ClCompile Include="wrappers\htmltextbox.pypp.cpp" />
+    <ClCompile Include="wrappers\htmltooltip.pypp.cpp" />
+    <ClCompile Include="wrappers\htmlunit.pypp.cpp" />
+    <ClCompile Include="wrappers\htmlwriter.pypp.cpp" />
+    <ClCompile Include="wrappers\htmlxslcontrol.pypp.cpp" />
+    <ClCompile Include="wrappers\httpclient.pypp.cpp" />
+    <ClCompile Include="wrappers\httpcontent.pypp.cpp" />
+    <ClCompile Include="wrappers\httpcookie.pypp.cpp" />
+    <ClCompile Include="wrappers\httpcookies.pypp.cpp" />
+    <ClCompile Include="wrappers\httpdata.pypp.cpp" />
+    <ClCompile Include="wrappers\httpparser.pypp.cpp" />
+    <ClCompile Include="wrappers\httppath.pypp.cpp" />
+    <ClCompile Include="wrappers\httpphysicaldirectory.pypp.cpp" />
+    <ClCompile Include="wrappers\httppostparam.pypp.cpp" />
+    <ClCompile Include="wrappers\httpproxy.pypp.cpp" />
+    <ClCompile Include="wrappers\httprequest.pypp.cpp" />
+    <ClCompile Include="wrappers\httpresponse.pypp.cpp" />
+    <ClCompile Include="wrappers\httprootdirectory.pypp.cpp" />
+    <ClCompile Include="wrappers\httpsession.pypp.cpp" />
+    <ClCompile Include="wrappers\httpsessionstate.pypp.cpp" />
+    <ClCompile Include="wrappers\httpurl.pypp.cpp" />
+    <ClCompile Include="wrappers\httpvirtualdirectory.pypp.cpp" />
+    <ClCompile Include="wrappers\ibackgroundjob.pypp.cpp" />
+    <ClCompile Include="wrappers\id.pypp.cpp" />
+    <ClCompile Include="wrappers\idbconnection.pypp.cpp" />
+    <ClCompile Include="wrappers\idbdriver.pypp.cpp" />
+    <ClCompile Include="wrappers\idbdriverlist.pypp.cpp" />
+    <ClCompile Include="wrappers\idboptions.pypp.cpp" />
+    <ClCompile Include="wrappers\idbparameter.pypp.cpp" />
+    <ClCompile Include="wrappers\idbparameterdeque.pypp.cpp" />
+    <ClCompile Include="wrappers\idbresult.pypp.cpp" />
+    <ClCompile Include="wrappers\idbstatement.pypp.cpp" />
+    <ClCompile Include="wrappers\ideaccount.pypp.cpp" />
+    <ClCompile Include="wrappers\ideaccountslist.pypp.cpp" />
+    <ClCompile Include="wrappers\ideaccountsmanager.pypp.cpp" />
+    <ClCompile Include="wrappers\ideaccountsmanagersingleton.pypp.cpp" />
+    <ClCompile Include="wrappers\ideassistant.pypp.cpp" />
+    <ClCompile Include="wrappers\ideblock.pypp.cpp" />
+    <ClCompile Include="wrappers\idebutton.pypp.cpp" />
+    <ClCompile Include="wrappers\idehelpbox.pypp.cpp" />
+    <ClCompile Include="wrappers\idemailbox.pypp.cpp" />
+    <ClCompile Include="wrappers\ideomleditor.pypp.cpp" />
+    <ClCompile Include="wrappers\idepathway.pypp.cpp" />
+    <ClCompile Include="wrappers\idepickerbool.pypp.cpp" />
+    <ClCompile Include="wrappers\idepickercomponent.pypp.cpp" />
+    <ClCompile Include="wrappers\idepickerculture.pypp.cpp" />
+    <ClCompile Include="wrappers\idepickerdatetime.pypp.cpp" />
+    <ClCompile Include="wrappers\idepickerdatetimespecial.pypp.cpp" />
+    <ClCompile Include="wrappers\idepickernumber.pypp.cpp" />
+    <ClCompile Include="wrappers\idepickerobject.pypp.cpp" />
+    <ClCompile Include="wrappers\idepickersections.pypp.cpp" />
+    <ClCompile Include="wrappers\idepickerselect.pypp.cpp" />
+    <ClCompile Include="wrappers\idepickerskin.pypp.cpp" />
+    <ClCompile Include="wrappers\idepositioneditor.pypp.cpp" />
+    <ClCompile Include="wrappers\idesearchglobalparams.pypp.cpp" />
+    <ClCompile Include="wrappers\idesearchparam.pypp.cpp" />
+    <ClCompile Include="wrappers\idesearchquery.pypp.cpp" />
+    <ClCompile Include="wrappers\idesearchresults.pypp.cpp" />
+    <ClCompile Include="wrappers\idesession.pypp.cpp" />
+    <ClCompile Include="wrappers\idesessionportal.pypp.cpp" />
+    <ClCompile Include="wrappers\ideskin.pypp.cpp" />
+    <ClCompile Include="wrappers\ideskinsimple.pypp.cpp" />
+    <ClCompile Include="wrappers\idesystem.pypp.cpp" />
+    <ClCompile Include="wrappers\idesystemsingleton.pypp.cpp" />
+    <ClCompile Include="wrappers\idetablequery.pypp.cpp" />
+    <ClCompile Include="wrappers\idevoteeditor.pypp.cpp" />
+    <ClCompile Include="wrappers\idexslresolver.pypp.cpp" />
+    <ClCompile Include="wrappers\ievent.pypp.cpp" />
+    <ClCompile Include="wrappers\ieventcallback.pypp.cpp" />
+    <ClCompile Include="wrappers\iextensionscomponent.pypp.cpp" />
+    <ClCompile Include="wrappers\iextensionsextension.pypp.cpp" />
+    <ClCompile Include="wrappers\iextensionsmodule.pypp.cpp" />
+    <ClCompile Include="wrappers\ihtmlcontrol.pypp.cpp" />
+    <ClCompile Include="wrappers\ihtmlinput.pypp.cpp" />
+    <ClCompile Include="wrappers\ihtmlselect.pypp.cpp" />
+    <ClCompile Include="wrappers\ihttpclient.pypp.cpp" />
+    <ClCompile Include="wrappers\ihttpdirectory.pypp.cpp" />
+    <ClCompile Include="wrappers\ihttpdirectoryhandler.pypp.cpp" />
+    <ClCompile Include="wrappers\ihttpdirectoryhandlerlist.pypp.cpp" />
+    <ClCompile Include="wrappers\ihttpdirectoryregexhandler.pypp.cpp" />
+    <ClCompile Include="wrappers\ihttpmethod.pypp.cpp" />
+    <ClCompile Include="wrappers\ihttpserver.pypp.cpp" />
+    <ClCompile Include="wrappers\iidepageable.pypp.cpp" />
+    <ClCompile Include="wrappers\ijob.pypp.cpp" />
+    <ClCompile Include="wrappers\image.pypp.cpp" />
+    <ClCompile Include="wrappers\imainpage.pypp.cpp" />
+    <ClCompile Include="wrappers\iomlcode.pypp.cpp" />
+    <ClCompile Include="wrappers\iomlxsl.pypp.cpp" />
+    <ClCompile Include="wrappers\ioptionvalidator.pypp.cpp" />
+    <ClCompile Include="wrappers\ipaddress.pypp.cpp" />
+    <ClCompile Include="wrappers\ipage.pypp.cpp" />
+    <ClCompile Include="wrappers\ipagehtmlcontrol.pypp.cpp" />
+    <ClCompile Include="wrappers\ipagehtmldiv.pypp.cpp" />
+    <ClCompile Include="wrappers\ipagexslrendererhtmlcontrol.pypp.cpp" />
+    <ClCompile Include="wrappers\iportalbackgroundjob.pypp.cpp" />
+    <ClCompile Include="wrappers\iportaldatabase.pypp.cpp" />
+    <ClCompile Include="wrappers\iportalpage.pypp.cpp" />
+    <ClCompile Include="wrappers\iportalpagehtmlcontrol.pypp.cpp" />
+    <ClCompile Include="wrappers\iportalpagehtmldiv.pypp.cpp" />
+    <ClCompile Include="wrappers\iportalpagexslrendererhtmlcontrol.pypp.cpp" />
+    <ClCompile Include="wrappers\isearchoptions.pypp.cpp" />
+    <ClCompile Include="wrappers\isearchresults.pypp.cpp" />
+    <ClCompile Include="wrappers\iserver.pypp.cpp" />
+    <ClCompile Include="wrappers\isisendpoint.pypp.cpp" />
+    <ClCompile Include="wrappers\isissystem.pypp.cpp" />
+    <ClCompile Include="wrappers\isissystemsingleton.pypp.cpp" />
+    <ClCompile Include="wrappers\istream.pypp.cpp" />
+    <ClCompile Include="wrappers\ivirtualmainpage.pypp.cpp" />
+    <ClCompile Include="wrappers\ixmlfunction.pypp.cpp" />
+    <ClCompile Include="wrappers\ixmlhandler.pypp.cpp" />
+    <ClCompile Include="wrappers\ixmlresolver.pypp.cpp" />
+    <ClCompile Include="wrappers\ixmlserializable.pypp.cpp" />
+    <ClCompile Include="wrappers\languageculture.pypp.cpp" />
+    <ClCompile Include="wrappers\languagefolder.pypp.cpp" />
+    <ClCompile Include="wrappers\languagefolderlist.pypp.cpp" />
+    <ClCompile Include="wrappers\languagefolderlistener.pypp.cpp" />
+    <ClCompile Include="wrappers\languagemanager.pypp.cpp" />
+    <ClCompile Include="wrappers\languagemanagersingleton.pypp.cpp" />
+    <ClCompile Include="wrappers\languageresult.pypp.cpp" />
+    <ClCompile Include="wrappers\languagevocabolary.pypp.cpp" />
+    <ClCompile Include="wrappers\logmanager.pypp.cpp" />
+    <ClCompile Include="wrappers\logmanagersingleton.pypp.cpp" />
+    <ClCompile Include="wrappers\mainaddonsjob.pypp.cpp" />
+    <ClCompile Include="wrappers\networksystem.pypp.cpp" />
+    <ClCompile Include="wrappers\networksystemsingleton.pypp.cpp" />
+    <ClCompile Include="wrappers\omla.pypp.cpp" />
+    <ClCompile Include="wrappers\omlanchor.pypp.cpp" />
+    <ClCompile Include="wrappers\omlcode.pypp.cpp" />
+    <ClCompile Include="wrappers\omlcontext.pypp.cpp" />
+    <ClCompile Include="wrappers\omldate.pypp.cpp" />
+    <ClCompile Include="wrappers\omldebug.pypp.cpp" />
+    <ClCompile Include="wrappers\omlemail.pypp.cpp" />
+    <ClCompile Include="wrappers\omlemoticon.pypp.cpp" />
+    <ClCompile Include="wrappers\omlemoticonlist.pypp.cpp" />
+    <ClCompile Include="wrappers\omlgoto.pypp.cpp" />
+    <ClCompile Include="wrappers\omlhtml.pypp.cpp" />
+    <ClCompile Include="wrappers\omlhtmlwrapper.pypp.cpp" />
+    <ClCompile Include="wrappers\omlif.pypp.cpp" />
+    <ClCompile Include="wrappers\omlimg.pypp.cpp" />
+    <ClCompile Include="wrappers\omlitem.pypp.cpp" />
+    <ClCompile Include="wrappers\omlitemlist.pypp.cpp" />
+    <ClCompile Include="wrappers\omllang.pypp.cpp" />
+    <ClCompile Include="wrappers\omlless.pypp.cpp" />
+    <ClCompile Include="wrappers\omllist.pypp.cpp" />
+    <ClCompile Include="wrappers\omlmanager.pypp.cpp" />
+    <ClCompile Include="wrappers\omlmanagersingleton.pypp.cpp" />
+    <ClCompile Include="wrappers\omlmore.pypp.cpp" />
+    <ClCompile Include="wrappers\omlnobr.pypp.cpp" />
+    <ClCompile Include="wrappers\omlnoparse.pypp.cpp" />
+    <ClCompile Include="wrappers\omlobject.pypp.cpp" />
+    <ClCompile Include="wrappers\omlpopup.pypp.cpp" />
+    <ClCompile Include="wrappers\omlquote.pypp.cpp" />
+    <ClCompile Include="wrappers\omlreplace.pypp.cpp" />
+    <ClCompile Include="wrappers\omlsize.pypp.cpp" />
+    <ClCompile Include="wrappers\omlsystem.pypp.cpp" />
+    <ClCompile Include="wrappers\omltab.pypp.cpp" />
+    <ClCompile Include="wrappers\omltext.pypp.cpp" />
+    <ClCompile Include="wrappers\omlurl.pypp.cpp" />
+    <ClCompile Include="wrappers\omluser.pypp.cpp" />
+    <ClCompile Include="wrappers\omlview.pypp.cpp" />
+    <ClCompile Include="wrappers\options.pypp.cpp" />
+    <ClCompile Include="wrappers\optionssingleton.pypp.cpp" />
+    <ClCompile Include="wrappers\osirislib.main.cpp" />
+    <ClCompile Include="wrappers\osirislib_enumerations.pypp.cpp" />
+    <ClCompile Include="wrappers\portal.pypp.cpp" />
+    <ClCompile Include="wrappers\portallist.pypp.cpp" />
+    <ClCompile Include="wrappers\portaloptions.pypp.cpp" />
+    <ClCompile Include="wrappers\portalsimporterjob.pypp.cpp" />
+    <ClCompile Include="wrappers\portalsoptionsshared.pypp.cpp" />
+    <ClCompile Include="wrappers\portalspeer.pypp.cpp" />
+    <ClCompile Include="wrappers\portalspeerlist.pypp.cpp" />
+    <ClCompile Include="wrappers\portalspeersmanager.pypp.cpp" />
+    <ClCompile Include="wrappers\portalsstabilityjob.pypp.cpp" />
+    <ClCompile Include="wrappers\portalssystem.pypp.cpp" />
+    <ClCompile Include="wrappers\portalssystemsingleton.pypp.cpp" />
+    <ClCompile Include="wrappers\portalstransaction.pypp.cpp" />
+    <ClCompile Include="wrappers\regexmanager.pypp.cpp" />
+    <ClCompile Include="wrappers\regexmanagersingleton.pypp.cpp" />
+    <ClCompile Include="wrappers\reputationsmanager.pypp.cpp" />
+    <ClCompile Include="wrappers\reputationsscore.pypp.cpp" />
+    <ClCompile Include="wrappers\searchattachmentoptions.pypp.cpp" />
+    <ClCompile Include="wrappers\searchcalendareventoptions.pypp.cpp" />
+    <ClCompile Include="wrappers\searchfileoptions.pypp.cpp" />
+    <ClCompile Include="wrappers\searchinstanceoptions.pypp.cpp" />
+    <ClCompile Include="wrappers\searchmodeloptions.pypp.cpp" />
+    <ClCompile Include="wrappers\searchpolloptionoptions.pypp.cpp" />
+    <ClCompile Include="wrappers\searchpolloptions.pypp.cpp" />
+    <ClCompile Include="wrappers\searchpostoptions.pypp.cpp" />
+    <ClCompile Include="wrappers\searchquery.pypp.cpp" />
+    <ClCompile Include="wrappers\searchqueryoptions.pypp.cpp" />
+    <ClCompile Include="wrappers\searchresult.pypp.cpp" />
+    <ClCompile Include="wrappers\searchresultsdatabase.pypp.cpp" />
+    <ClCompile Include="wrappers\searchresultslucene.pypp.cpp" />
+    <ClCompile Include="wrappers\searchsectionoptions.pypp.cpp" />
+    <ClCompile Include="wrappers\searchtagoptions.pypp.cpp" />
+    <ClCompile Include="wrappers\searchtextoptions.pypp.cpp" />
+    <ClCompile Include="wrappers\stringlist.pypp.cpp" />
+    <ClCompile Include="wrappers\stringmap.pypp.cpp" />
+    <ClCompile Include="wrappers\stringvector.pypp.cpp" />
+    <ClCompile Include="wrappers\textfile.pypp.cpp" />
+    <ClCompile Include="wrappers\thirdpartylibrariesreporter.pypp.cpp" />
+    <ClCompile Include="wrappers\thirdpartylibrariesreportersingleton.pypp.cpp" />
+    <ClCompile Include="wrappers\thirdpartylibrary.pypp.cpp" />
+    <ClCompile Include="wrappers\timeduration.pypp.cpp" />
+    <ClCompile Include="wrappers\uniqueid.pypp.cpp" />
+    <ClCompile Include="wrappers\version.pypp.cpp" />
+    <ClCompile Include="wrappers\xmlattribute.pypp.cpp" />
+    <ClCompile Include="wrappers\xmlattributes.pypp.cpp" />
+    <ClCompile Include="wrappers\xmldocument.pypp.cpp" />
+    <ClCompile Include="wrappers\xmlmanager.pypp.cpp" />
+    <ClCompile Include="wrappers\xmlmanagersingleton.pypp.cpp" />
+    <ClCompile Include="wrappers\xmlnode.pypp.cpp" />
+    <ClCompile Include="wrappers\xmlnodes.pypp.cpp" />
+    <ClCompile Include="wrappers\xmlschema.pypp.cpp" />
+    <ClCompile Include="wrappers\xmlstylesheet.pypp.cpp" />
+    <ClCompile Include="wrappers\xmlwriter.pypp.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="wrappers\exposed_decl.pypp.txt" />
+    <None Include="wrappers\extensionscomponentcontrol.pypp.cpp~" />
+    <None Include="wrappers\extensionsmodulecontrol.pypp.cpp~" />
+    <None Include="wrappers\extensionsmoduleviewer.pypp.cpp~" />
+    <None Include="wrappers\extensionssystem.pypp.cpp~" />
+    <None Include="wrappers\htmldiv.pypp.cpp.mine" />
+    <None Include="wrappers\htmldiv.pypp.cpp.r70" />
+    <None Include="wrappers\htmldiv.pypp.cpp.r75" />
+    <None Include="wrappers\htmldiv.pypp.cpp~" />
+    <None Include="wrappers\htmlpage.pypp.cpp~" />
+    <None Include="wrappers\ibackgroundjob.pypp.cpp.mine" />
+    <None Include="wrappers\ibackgroundjob.pypp.cpp.r75" />
+    <None Include="wrappers\ibackgroundjob.pypp.cpp.r76" />
+    <None Include="wrappers\id.pypp.cpp.mine" />
+    <None Include="wrappers\id.pypp.cpp.r75" />
+    <None Include="wrappers\id.pypp.cpp.r76" />
+    <None Include="wrappers\id.pypp.cpp~" />
+    <None Include="wrappers\idepickernumber.pypp.cpp~" />
+    <None Include="wrappers\idepickerskin.pypp.cpp~" />
+    <None Include="wrappers\iextensionscomponent.pypp.cpp.mine" />
+    <None Include="wrappers\iextensionscomponent.pypp.cpp.r201" />
+    <None Include="wrappers\iextensionscomponent.pypp.cpp.r206" />
+    <None Include="wrappers\ihtmlcontrol.pypp.cpp.mine" />
+    <None Include="wrappers\ihtmlcontrol.pypp.cpp.r70" />
+    <None Include="wrappers\ihtmlcontrol.pypp.cpp.r75" />
+    <None Include="wrappers\ihtmlcontrol.pypp.cpp~" />
+    <None Include="wrappers\ihtmlinput.pypp.cpp.mine" />
+    <None Include="wrappers\ihtmlinput.pypp.cpp.r156" />
+    <None Include="wrappers\ihtmlinput.pypp.cpp.r189" />
+    <None Include="wrappers\ihtmlinput.pypp.cpp~" />
+    <None Include="wrappers\ihtmlselect.pypp.cpp~" />
+    <None Include="wrappers\ihttpdirectory.pypp.cpp.mine" />
+    <None Include="wrappers\ihttpdirectory.pypp.cpp.r137" />
+    <None Include="wrappers\ihttpdirectory.pypp.cpp.r86" />
+    <None Include="wrappers\ihttpdirectory.pypp.cpp~" />
+    <None Include="wrappers\ihttpmethod.pypp.cpp~" />
+    <None Include="wrappers\ijob.pypp.cpp.mine" />
+    <None Include="wrappers\ijob.pypp.cpp.r75" />
+    <None Include="wrappers\ijob.pypp.cpp.r76" />
+    <None Include="wrappers\iomlcode.pypp.cpp.mine" />
+    <None Include="wrappers\iomlcode.pypp.cpp.r70" />
+    <None Include="wrappers\iomlcode.pypp.cpp.r75" />
+    <None Include="wrappers\iomlcode.pypp.cpp~" />
+    <None Include="wrappers\ipage.pypp.cpp~" />
+    <None Include="wrappers\ipagehtmlcontrol.pypp.cpp.mine" />
+    <None Include="wrappers\ipagehtmlcontrol.pypp.cpp.r70" />
+    <None Include="wrappers\ipagehtmlcontrol.pypp.cpp.r75" />
+    <None Include="wrappers\ipagehtmlcontrol.pypp.cpp~" />
+    <None Include="wrappers\ipagehtmldiv.pypp.cpp.mine" />
+    <None Include="wrappers\ipagehtmldiv.pypp.cpp.r70" />
+    <None Include="wrappers\ipagehtmldiv.pypp.cpp.r75" />
+    <None Include="wrappers\ipagehtmldiv.pypp.cpp~" />
+    <None Include="wrappers\ipagexslrendererhtmlcontrol.pypp.cpp.mine" />
+    <None Include="wrappers\ipagexslrendererhtmlcontrol.pypp.cpp.r75" />
+    <None Include="wrappers\ipagexslrendererhtmlcontrol.pypp.cpp.r76" />
+    <None Include="wrappers\ipagexslrendererhtmlcontrol.pypp.cpp~" />
+    <None Include="wrappers\iportalbackgroundjob.pypp.cpp.mine" />
+    <None Include="wrappers\iportalbackgroundjob.pypp.cpp.r75" />
+    <None Include="wrappers\iportalbackgroundjob.pypp.cpp.r76" />
+    <None Include="wrappers\iportalpagehtmlcontrol.pypp.cpp.mine" />
+    <None Include="wrappers\iportalpagehtmlcontrol.pypp.cpp.r70" />
+    <None Include="wrappers\iportalpagehtmlcontrol.pypp.cpp.r75" />
+    <None Include="wrappers\iportalpagehtmlcontrol.pypp.cpp~" />
+    <None Include="wrappers\iportalpagehtmldiv.pypp.cpp.mine" />
+    <None Include="wrappers\iportalpagehtmldiv.pypp.cpp.r70" />
+    <None Include="wrappers\iportalpagehtmldiv.pypp.cpp.r75" />
+    <None Include="wrappers\iportalpagehtmldiv.pypp.cpp~" />
+    <None Include="wrappers\iportalpagexslrendererhtmlcontrol.pypp.cpp.mine" />
+    <None Include="wrappers\iportalpagexslrendererhtmlcontrol.pypp.cpp.r70" />
+    <None Include="wrappers\iportalpagexslrendererhtmlcontrol.pypp.cpp.r75" />
+    <None Include="wrappers\iportalpagexslrendererhtmlcontrol.pypp.cpp~" />
+    <None Include="wrappers\isearchoptions.pypp.cpp.mine" />
+    <None Include="wrappers\isearchoptions.pypp.cpp.r70" />
+    <None Include="wrappers\isearchoptions.pypp.cpp.r75" />
+    <None Include="wrappers\isearchoptions.pypp.cpp~" />
+    <None Include="wrappers\isearchresults.pypp.cpp~" />
+    <None Include="wrappers\languageculture.pypp.cpp~" />
+    <None Include="wrappers\languagemanager.pypp.cpp~" />
+    <None Include="wrappers\named_tuple.py" />
+    <None Include="wrappers\options.pypp.cpp.mine" />
+    <None Include="wrappers\options.pypp.cpp.r70" />
+    <None Include="wrappers\options.pypp.cpp.r75" />
+    <None Include="wrappers\osirislib.main.cpp~" />
+    <None Include="wrappers\portal.pypp.cpp.mine" />
+    <None Include="wrappers\portal.pypp.cpp.r156" />
+    <None Include="wrappers\portal.pypp.cpp.r189" />
+    <None Include="wrappers\portal.pypp.cpp~" />
+    <None Include="wrappers\portaloptions.pypp.cpp~" />
+    <None Include="wrappers\portalssystem.pypp.cpp.mine" />
+    <None Include="wrappers\portalssystem.pypp.cpp.r137" />
+    <None Include="wrappers\portalssystem.pypp.cpp.r86" />
+    <None Include="wrappers\portalssystem.pypp.cpp~" />
+    <None Include="wrappers\regexmanager.pypp.cpp~" />
+    <None Include="wrappers\wrappers.xml" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

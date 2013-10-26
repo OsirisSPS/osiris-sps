@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<page>
+  <credits>
+    <group title="Developers:" group="main">
+      <person nick="Berserker"/>
+      <person nick="Clodo"/>
+    </group>
+    <group title="Supporters / Beta-Tester:" group="supporters">
+      <person nick="Fede"/>
+      <person nick="Gilean"/>
+      <person nick="Luftw@ffer"/>
+      <person nick="megaborg"/>
+      <person nick="mmorselli"/>    
+      <person nick="abcde2"/>
+      <person nick="DiGiT@LoN"/>
+      <person nick="Barney"/>
+      <person nick="darkbasic"/>
+      <person nick="Barricade"/>
+      <person nick="Ge"/>
+      <person nick="FenrirTheWolf"/>
+      <person nick="Hide"/>
+      <person nick="HostFat"/>
+      <person nick="skynetman"/>
+      <person nick="Sylfaen"/>
+      <person nick="framework"/>
+    </group>
+    <group title="Translators" group="supporters">
+      <person nick="wetterfrosch"/>
+    </group>
+    <group title="Thanks to:" group="supporters">
+      <person nick="DanielZ"/>
+      <person nick="rei.andrea"/>
+    </group>
+  </credits>
+</page>
