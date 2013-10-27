@@ -1,0 +1,1262 @@
+Library Dependencies
+---------------------------------------------------------------------------
+File:/Users/osiris/osiris/osiris/distribute/temp/Osiris.app/Contents/MacOS/MacOS.so
+/Users/osiris/osiris/osiris/distribute/temp/Osiris.app/Contents/MacOS/MacOS.so:
+	/System/Library/Frameworks/Carbon.framework/Versions/A/Carbon (compatibility version 2.0.0, current version 152.0.0)
+	/usr/lib/libSystem.B.dylib (compatibility version 1.0.0, current version 123.0.0)
+	/System/Library/Frameworks/CoreServices.framework/Versions/A/CoreServices (compatibility version 1.0.0, current version 44.0.0)
+	/System/Library/Frameworks/ApplicationServices.framework/Versions/A/ApplicationServices (compatibility version 1.0.0, current version 38.0.0)
+-------------------
+File:/Users/osiris/osiris/osiris/distribute/temp/Osiris.app/Contents/MacOS/Osiris
+/Users/osiris/osiris/osiris/distribute/temp/Osiris.app/Contents/MacOS/Osiris:
+	/System/Library/Frameworks/Cocoa.framework/Versions/A/Cocoa (compatibility version 1.0.0, current version 15.0.0)
+	@executable_path/libui.dylib (compatibility version 0.0.0, current version 0.0.0)
+	@executable_path/libwx_osx_cocoau_core-2.9.dylib (compatibility version 1.0.0, current version 1.0.0)
+	@executable_path/libwx_baseu-2.9.dylib (compatibility version 1.0.0, current version 1.0.0)
+	/usr/lib/libstdc++.6.dylib (compatibility version 7.0.0, current version 7.9.0)
+	/usr/lib/libSystem.B.dylib (compatibility version 1.0.0, current version 123.0.0)
+-------------------
+File:/Users/osiris/osiris/osiris/distribute/temp/Osiris.app/Contents/MacOS/_ctypes.so
+/Users/osiris/osiris/osiris/distribute/temp/Osiris.app/Contents/MacOS/_ctypes.so:
+	/usr/lib/libSystem.B.dylib (compatibility version 1.0.0, current version 123.0.0)
+-------------------
+File:/Users/osiris/osiris/osiris/distribute/temp/Osiris.app/Contents/MacOS/_socket.so
+/Users/osiris/osiris/osiris/distribute/temp/Osiris.app/Contents/MacOS/_socket.so:
+	/usr/lib/libSystem.B.dylib (compatibility version 1.0.0, current version 123.0.0)
+-------------------
+File:/Users/osiris/osiris/osiris/distribute/temp/Osiris.app/Contents/MacOS/_weakref.so
+/Users/osiris/osiris/osiris/distribute/temp/Osiris.app/Contents/MacOS/_weakref.so:
+	/usr/lib/libSystem.B.dylib (compatibility version 1.0.0, current version 123.0.0)
+-------------------
+File:/Users/osiris/osiris/osiris/distribute/temp/Osiris.app/Contents/MacOS/cStringIO.so
+/Users/osiris/osiris/osiris/distribute/temp/Osiris.app/Contents/MacOS/cStringIO.so:
+	/usr/lib/libSystem.B.dylib (compatibility version 1.0.0, current version 123.0.0)
+-------------------
+File:/Users/osiris/osiris/osiris/distribute/temp/Osiris.app/Contents/MacOS/components.dylib
+/Users/osiris/osiris/osiris/distribute/temp/Osiris.app/Contents/MacOS/components.dylib:
+	@executable_path/components.dylib (compatibility version 0.0.0, current version 0.0.0)
+	@executable_path/libcore.dylib (compatibility version 0.0.0, current version 0.0.0)
+	@executable_path/libhttp.dylib (compatibility version 0.0.0, current version 0.0.0)
+	@executable_path/liblang.dylib (compatibility version 0.0.0, current version 0.0.0)
+	@executable_path/libxml.dylib (compatibility version 0.0.0, current version 0.0.0)
+	@executable_path/libweb.dylib (compatibility version 0.0.0, current version 0.0.0)
+	@executable_path/libengine.dylib (compatibility version 0.0.0, current version 0.0.0)
+	@executable_path/libdb.dylib (compatibility version 0.0.0, current version 0.0.0)
+	@executable_path/libnet.dylib (compatibility version 0.0.0, current version 0.0.0)
+	/usr/lib/libstdc++.6.dylib (compatibility version 7.0.0, current version 7.9.0)
+	/usr/lib/libSystem.B.dylib (compatibility version 1.0.0, current version 123.0.0)
+-------------------
+File:/Users/osiris/osiris/osiris/distribute/temp/Osiris.app/Contents/MacOS/console
+/Users/osiris/osiris/osiris/distribute/temp/Osiris.app/Contents/MacOS/console:
+	@executable_path/libcore.dylib (compatibility version 0.0.0, current version 0.0.0)
+	@executable_path/libnet.dylib (compatibility version 0.0.0, current version 0.0.0)
+	@executable_path/libhttp.dylib (compatibility version 0.0.0, current version 0.0.0)
+	@executable_path/libweb.dylib (compatibility version 0.0.0, current version 0.0.0)
+	@executable_path/liblang.dylib (compatibility version 0.0.0, current version 0.0.0)
+	@executable_path/libxml.dylib (compatibility version 0.0.0, current version 0.0.0)
+	@executable_path/libengine.dylib (compatibility version 0.0.0, current version 0.0.0)
+	@executable_path/libsdk.dylib (compatibility version 0.0.0, current version 0.0.0)
+	/usr/lib/libstdc++.6.dylib (compatibility version 7.0.0, current version 7.9.0)
+	/usr/lib/libSystem.B.dylib (compatibility version 1.0.0, current version 123.0.0)
+-------------------
+File:/Users/osiris/osiris/osiris/distribute/temp/Osiris.app/Contents/MacOS/libcore.dylib
+/Users/osiris/osiris/osiris/distribute/temp/Osiris.app/Contents/MacOS/libcore.dylib:
+	@executable_path/libcore.dylib (compatibility version 0.0.0, current version 0.0.0)
+	/System/Library/Frameworks/Carbon.framework/Versions/A/Carbon (compatibility version 2.0.0, current version 152.0.0)
+	/usr/lib/libSystem.B.dylib (compatibility version 1.0.0, current version 123.0.0)
+	@executable_path/libicuuc.dylib (compatibility version 38.0.0, current version 38.1.0)
+	@executable_path/libicuio.dylib (compatibility version 38.0.0, current version 38.1.0)
+	@executable_path/libicudata.dylib (compatibility version 38.0.0, current version 38.1.0)
+	@executable_path/libicui18n.dylib (compatibility version 38.0.0, current version 38.1.0)
+	/usr/lib/libstdc++.6.dylib (compatibility version 7.0.0, current version 7.9.0)
+	/System/Library/Frameworks/CoreServices.framework/Versions/A/CoreServices (compatibility version 1.0.0, current version 44.0.0)
+	/System/Library/Frameworks/ApplicationServices.framework/Versions/A/ApplicationServices (compatibility version 1.0.0, current version 38.0.0)
+-------------------
+File:/Users/osiris/osiris/osiris/distribute/temp/Osiris.app/Contents/MacOS/libcrypto.0.9.8.dylib
+/Users/osiris/osiris/osiris/distribute/temp/Osiris.app/Contents/MacOS/libcrypto.0.9.8.dylib:
+	@executable_path/libcrypto.dylib (compatibility version 0.9.8, current version 0.9.8)
+	/System/Library/PrivateFrameworks/TrustEvaluationAgent.framework/Versions/A/TrustEvaluationAgent (compatibility version 1.0.0, current version 1.0.0)
+	/usr/lib/libz.1.dylib (compatibility version 1.0.0, current version 1.2.3)
+	/usr/lib/libSystem.B.dylib (compatibility version 1.0.0, current version 123.0.0)
+-------------------
+File:/Users/osiris/osiris/osiris/distribute/temp/Osiris.app/Contents/MacOS/libcrypto.dylib
+/Users/osiris/osiris/osiris/distribute/temp/Osiris.app/Contents/MacOS/libcrypto.dylib:
+	@executable_path/libcrypto.dylib (compatibility version 0.9.8, current version 0.9.8)
+	/System/Library/PrivateFrameworks/TrustEvaluationAgent.framework/Versions/A/TrustEvaluationAgent (compatibility version 1.0.0, current version 1.0.0)
+	/usr/lib/libz.1.dylib (compatibility version 1.0.0, current version 1.2.3)
+	/usr/lib/libSystem.B.dylib (compatibility version 1.0.0, current version 123.0.0)
+-------------------
+File:/Users/osiris/osiris/osiris/distribute/temp/Osiris.app/Contents/MacOS/libdb.dylib
+/Users/osiris/osiris/osiris/distribute/temp/Osiris.app/Contents/MacOS/libdb.dylib:
+	@executable_path/libdb.dylib (compatibility version 0.0.0, current version 0.0.0)
+	@executable_path/libcore.dylib (compatibility version 0.0.0, current version 0.0.0)
+	@executable_path/libcrypto.dylib (compatibility version 0.9.8, current version 0.9.8)
+	@executable_path/libssl.dylib (compatibility version 0.9.8, current version 0.9.8)
+	/usr/lib/libstdc++.6.dylib (compatibility version 7.0.0, current version 7.9.0)
+	/usr/lib/libSystem.B.dylib (compatibility version 1.0.0, current version 123.0.0)
+-------------------
+File:/Users/osiris/osiris/osiris/distribute/temp/Osiris.app/Contents/MacOS/libengine.dylib
+/Users/osiris/osiris/osiris/distribute/temp/Osiris.app/Contents/MacOS/libengine.dylib:
+	@executable_path/libengine.dylib (compatibility version 0.0.0, current version 0.0.0)
+	@executable_path/libcore.dylib (compatibility version 0.0.0, current version 0.0.0)
+	@executable_path/liblang.dylib (compatibility version 0.0.0, current version 0.0.0)
+	@executable_path/libnet.dylib (compatibility version 0.0.0, current version 0.0.0)
+	@executable_path/libweb.dylib (compatibility version 0.0.0, current version 0.0.0)
+	@executable_path/libxml.dylib (compatibility version 0.0.0, current version 0.0.0)
+	@executable_path/libhttp.dylib (compatibility version 0.0.0, current version 0.0.0)
+	@executable_path/libcrypto.dylib (compatibility version 0.9.8, current version 0.9.8)
+	@executable_path/libssl.dylib (compatibility version 0.9.8, current version 0.9.8)
+	@executable_path/libupnp.dylib (compatibility version 0.0.0, current version 0.0.0)
+	@executable_path/libdb.dylib (compatibility version 0.0.0, current version 0.0.0)
+	/usr/lib/libstdc++.6.dylib (compatibility version 7.0.0, current version 7.9.0)
+	/usr/lib/libSystem.B.dylib (compatibility version 1.0.0, current version 123.0.0)
+-------------------
+File:/Users/osiris/osiris/osiris/distribute/temp/Osiris.app/Contents/MacOS/libhttp.dylib
+/Users/osiris/osiris/osiris/distribute/temp/Osiris.app/Contents/MacOS/libhttp.dylib:
+	@executable_path/libhttp.dylib (compatibility version 0.0.0, current version 0.0.0)
+	@executable_path/libcore.dylib (compatibility version 0.0.0, current version 0.0.0)
+	@executable_path/libnet.dylib (compatibility version 0.0.0, current version 0.0.0)
+	@executable_path/libssl.dylib (compatibility version 0.9.8, current version 0.9.8)
+	@executable_path/libcrypto.dylib (compatibility version 0.9.8, current version 0.9.8)
+	/usr/lib/libstdc++.6.dylib (compatibility version 7.0.0, current version 7.9.0)
+	/usr/lib/libSystem.B.dylib (compatibility version 1.0.0, current version 123.0.0)
+-------------------
+File:/Users/osiris/osiris/osiris/distribute/temp/Osiris.app/Contents/MacOS/libicudata.38.1.dylib
+/Users/osiris/osiris/osiris/distribute/temp/Osiris.app/Contents/MacOS/libicudata.38.1.dylib:
+	@executable_path/libicudata.dylib (compatibility version 38.0.0, current version 38.1.0)
+	/usr/lib/libSystem.B.dylib (compatibility version 1.0.0, current version 123.0.0)
+-------------------
+File:/Users/osiris/osiris/osiris/distribute/temp/Osiris.app/Contents/MacOS/libicudata.38.dylib
+/Users/osiris/osiris/osiris/distribute/temp/Osiris.app/Contents/MacOS/libicudata.38.dylib:
+	@executable_path/libicudata.dylib (compatibility version 38.0.0, current version 38.1.0)
+	/usr/lib/libSystem.B.dylib (compatibility version 1.0.0, current version 123.0.0)
+-------------------
+File:/Users/osiris/osiris/osiris/distribute/temp/Osiris.app/Contents/MacOS/libicudata.dylib
+/Users/osiris/osiris/osiris/distribute/temp/Osiris.app/Contents/MacOS/libicudata.dylib:
+	@executable_path/libicudata.dylib (compatibility version 38.0.0, current version 38.1.0)
+	/usr/lib/libSystem.B.dylib (compatibility version 1.0.0, current version 123.0.0)
+-------------------
+File:/Users/osiris/osiris/osiris/distribute/temp/Osiris.app/Contents/MacOS/libicui18n.38.1.dylib
+/Users/osiris/osiris/osiris/distribute/temp/Osiris.app/Contents/MacOS/libicui18n.38.1.dylib:
+	@executable_path/libicui18n.dylib (compatibility version 38.0.0, current version 38.1.0)
+	@executable_path/libicuuc.38.dylib (compatibility version 38.0.0, current version 38.1.0)
+	@executable_path/libicudata.38.dylib (compatibility version 38.0.0, current version 38.1.0)
+	/usr/lib/libSystem.B.dylib (compatibility version 1.0.0, current version 123.0.0)
+	/usr/lib/libstdc++.6.dylib (compatibility version 7.0.0, current version 7.9.0)
+-------------------
+File:/Users/osiris/osiris/osiris/distribute/temp/Osiris.app/Contents/MacOS/libicui18n.38.dylib
+/Users/osiris/osiris/osiris/distribute/temp/Osiris.app/Contents/MacOS/libicui18n.38.dylib:
+	@executable_path/libicui18n.dylib (compatibility version 38.0.0, current version 38.1.0)
+	@executable_path/libicuuc.38.dylib (compatibility version 38.0.0, current version 38.1.0)
+	@executable_path/libicudata.38.dylib (compatibility version 38.0.0, current version 38.1.0)
+	/usr/lib/libSystem.B.dylib (compatibility version 1.0.0, current version 123.0.0)
+	/usr/lib/libstdc++.6.dylib (compatibility version 7.0.0, current version 7.9.0)
+-------------------
+File:/Users/osiris/osiris/osiris/distribute/temp/Osiris.app/Contents/MacOS/libicui18n.dylib
+/Users/osiris/osiris/osiris/distribute/temp/Osiris.app/Contents/MacOS/libicui18n.dylib:
+	@executable_path/libicui18n.dylib (compatibility version 38.0.0, current version 38.1.0)
+	@executable_path/libicuuc.38.dylib (compatibility version 38.0.0, current version 38.1.0)
+	@executable_path/libicudata.38.dylib (compatibility version 38.0.0, current version 38.1.0)
+	/usr/lib/libSystem.B.dylib (compatibility version 1.0.0, current version 123.0.0)
+	/usr/lib/libstdc++.6.dylib (compatibility version 7.0.0, current version 7.9.0)
+-------------------
+File:/Users/osiris/osiris/osiris/distribute/temp/Osiris.app/Contents/MacOS/libicuio.38.1.dylib
+/Users/osiris/osiris/osiris/distribute/temp/Osiris.app/Contents/MacOS/libicuio.38.1.dylib:
+	@executable_path/libicuio.dylib (compatibility version 38.0.0, current version 38.1.0)
+	@executable_path/libicuuc.38.dylib (compatibility version 38.0.0, current version 38.1.0)
+	@executable_path/libicudata.38.dylib (compatibility version 38.0.0, current version 38.1.0)
+	@executable_path/libicui18n.38.dylib (compatibility version 38.0.0, current version 38.1.0)
+	/usr/lib/libSystem.B.dylib (compatibility version 1.0.0, current version 123.0.0)
+	/usr/lib/libstdc++.6.dylib (compatibility version 7.0.0, current version 7.9.0)
+-------------------
+File:/Users/osiris/osiris/osiris/distribute/temp/Osiris.app/Contents/MacOS/libicuio.38.dylib
+/Users/osiris/osiris/osiris/distribute/temp/Osiris.app/Contents/MacOS/libicuio.38.dylib:
+	@executable_path/libicuio.dylib (compatibility version 38.0.0, current version 38.1.0)
+	@executable_path/libicuuc.38.dylib (compatibility version 38.0.0, current version 38.1.0)
+	@executable_path/libicudata.38.dylib (compatibility version 38.0.0, current version 38.1.0)
+	@executable_path/libicui18n.38.dylib (compatibility version 38.0.0, current version 38.1.0)
+	/usr/lib/libSystem.B.dylib (compatibility version 1.0.0, current version 123.0.0)
+	/usr/lib/libstdc++.6.dylib (compatibility version 7.0.0, current version 7.9.0)
+-------------------
+File:/Users/osiris/osiris/osiris/distribute/temp/Osiris.app/Contents/MacOS/libicuio.dylib
+/Users/osiris/osiris/osiris/distribute/temp/Osiris.app/Contents/MacOS/libicuio.dylib:
+	@executable_path/libicuio.dylib (compatibility version 38.0.0, current version 38.1.0)
+	@executable_path/libicuuc.38.dylib (compatibility version 38.0.0, current version 38.1.0)
+	@executable_path/libicudata.38.dylib (compatibility version 38.0.0, current version 38.1.0)
+	@executable_path/libicui18n.38.dylib (compatibility version 38.0.0, current version 38.1.0)
+	/usr/lib/libSystem.B.dylib (compatibility version 1.0.0, current version 123.0.0)
+	/usr/lib/libstdc++.6.dylib (compatibility version 7.0.0, current version 7.9.0)
+-------------------
+File:/Users/osiris/osiris/osiris/distribute/temp/Osiris.app/Contents/MacOS/libicule.38.1.dylib
+/Users/osiris/osiris/osiris/distribute/temp/Osiris.app/Contents/MacOS/libicule.38.1.dylib:
+	@executable_path/libicule.dylib (compatibility version 38.0.0, current version 38.1.0)
+	@executable_path/libicuuc.38.dylib (compatibility version 38.0.0, current version 38.1.0)
+	@executable_path/libicudata.38.dylib (compatibility version 38.0.0, current version 38.1.0)
+	/usr/lib/libSystem.B.dylib (compatibility version 1.0.0, current version 123.0.0)
+	/usr/lib/libstdc++.6.dylib (compatibility version 7.0.0, current version 7.9.0)
+-------------------
+File:/Users/osiris/osiris/osiris/distribute/temp/Osiris.app/Contents/MacOS/libicule.38.dylib
+/Users/osiris/osiris/osiris/distribute/temp/Osiris.app/Contents/MacOS/libicule.38.dylib:
+	@executable_path/libicule.dylib (compatibility version 38.0.0, current version 38.1.0)
+	@executable_path/libicuuc.38.dylib (compatibility version 38.0.0, current version 38.1.0)
+	@executable_path/libicudata.38.dylib (compatibility version 38.0.0, current version 38.1.0)
+	/usr/lib/libSystem.B.dylib (compatibility version 1.0.0, current version 123.0.0)
+	/usr/lib/libstdc++.6.dylib (compatibility version 7.0.0, current version 7.9.0)
+-------------------
+File:/Users/osiris/osiris/osiris/distribute/temp/Osiris.app/Contents/MacOS/libicule.dylib
+/Users/osiris/osiris/osiris/distribute/temp/Osiris.app/Contents/MacOS/libicule.dylib:
+	@executable_path/libicule.dylib (compatibility version 38.0.0, current version 38.1.0)
+	@executable_path/libicuuc.38.dylib (compatibility version 38.0.0, current version 38.1.0)
+	@executable_path/libicudata.38.dylib (compatibility version 38.0.0, current version 38.1.0)
+	/usr/lib/libSystem.B.dylib (compatibility version 1.0.0, current version 123.0.0)
+	/usr/lib/libstdc++.6.dylib (compatibility version 7.0.0, current version 7.9.0)
+-------------------
+File:/Users/osiris/osiris/osiris/distribute/temp/Osiris.app/Contents/MacOS/libiculx.38.1.dylib
+/Users/osiris/osiris/osiris/distribute/temp/Osiris.app/Contents/MacOS/libiculx.38.1.dylib:
+	@executable_path/libiculx.dylib (compatibility version 38.0.0, current version 38.1.0)
+	@executable_path/libicuuc.38.dylib (compatibility version 38.0.0, current version 38.1.0)
+	@executable_path/libicudata.38.dylib (compatibility version 38.0.0, current version 38.1.0)
+	@executable_path/libicule.38.dylib (compatibility version 38.0.0, current version 38.1.0)
+	/usr/lib/libSystem.B.dylib (compatibility version 1.0.0, current version 123.0.0)
+	/usr/lib/libstdc++.6.dylib (compatibility version 7.0.0, current version 7.9.0)
+-------------------
+File:/Users/osiris/osiris/osiris/distribute/temp/Osiris.app/Contents/MacOS/libiculx.38.dylib
+/Users/osiris/osiris/osiris/distribute/temp/Osiris.app/Contents/MacOS/libiculx.38.dylib:
+	@executable_path/libiculx.dylib (compatibility version 38.0.0, current version 38.1.0)
+	@executable_path/libicuuc.38.dylib (compatibility version 38.0.0, current version 38.1.0)
+	@executable_path/libicudata.38.dylib (compatibility version 38.0.0, current version 38.1.0)
+	@executable_path/libicule.38.dylib (compatibility version 38.0.0, current version 38.1.0)
+	/usr/lib/libSystem.B.dylib (compatibility version 1.0.0, current version 123.0.0)
+	/usr/lib/libstdc++.6.dylib (compatibility version 7.0.0, current version 7.9.0)
+-------------------
+File:/Users/osiris/osiris/osiris/distribute/temp/Osiris.app/Contents/MacOS/libiculx.dylib
+/Users/osiris/osiris/osiris/distribute/temp/Osiris.app/Contents/MacOS/libiculx.dylib:
+	@executable_path/libiculx.dylib (compatibility version 38.0.0, current version 38.1.0)
+	@executable_path/libicuuc.38.dylib (compatibility version 38.0.0, current version 38.1.0)
+	@executable_path/libicudata.38.dylib (compatibility version 38.0.0, current version 38.1.0)
+	@executable_path/libicule.38.dylib (compatibility version 38.0.0, current version 38.1.0)
+	/usr/lib/libSystem.B.dylib (compatibility version 1.0.0, current version 123.0.0)
+	/usr/lib/libstdc++.6.dylib (compatibility version 7.0.0, current version 7.9.0)
+-------------------
+File:/Users/osiris/osiris/osiris/distribute/temp/Osiris.app/Contents/MacOS/libicutu.38.1.dylib
+/Users/osiris/osiris/osiris/distribute/temp/Osiris.app/Contents/MacOS/libicutu.38.1.dylib:
+	@executable_path/libicutu.dylib (compatibility version 38.0.0, current version 38.1.0)
+	@executable_path/libicui18n.38.dylib (compatibility version 38.0.0, current version 38.1.0)
+	@executable_path/libicuuc.38.dylib (compatibility version 38.0.0, current version 38.1.0)
+	@executable_path/libicudata.38.dylib (compatibility version 38.0.0, current version 38.1.0)
+	/usr/lib/libSystem.B.dylib (compatibility version 1.0.0, current version 123.0.0)
+	/usr/lib/libstdc++.6.dylib (compatibility version 7.0.0, current version 7.9.0)
+-------------------
+File:/Users/osiris/osiris/osiris/distribute/temp/Osiris.app/Contents/MacOS/libicutu.38.dylib
+/Users/osiris/osiris/osiris/distribute/temp/Osiris.app/Contents/MacOS/libicutu.38.dylib:
+	@executable_path/libicutu.dylib (compatibility version 38.0.0, current version 38.1.0)
+	@executable_path/libicui18n.38.dylib (compatibility version 38.0.0, current version 38.1.0)
+	@executable_path/libicuuc.38.dylib (compatibility version 38.0.0, current version 38.1.0)
+	@executable_path/libicudata.38.dylib (compatibility version 38.0.0, current version 38.1.0)
+	/usr/lib/libSystem.B.dylib (compatibility version 1.0.0, current version 123.0.0)
+	/usr/lib/libstdc++.6.dylib (compatibility version 7.0.0, current version 7.9.0)
+-------------------
+File:/Users/osiris/osiris/osiris/distribute/temp/Osiris.app/Contents/MacOS/libicutu.dylib
+/Users/osiris/osiris/osiris/distribute/temp/Osiris.app/Contents/MacOS/libicutu.dylib:
+	@executable_path/libicutu.dylib (compatibility version 38.0.0, current version 38.1.0)
+	@executable_path/libicui18n.38.dylib (compatibility version 38.0.0, current version 38.1.0)
+	@executable_path/libicuuc.38.dylib (compatibility version 38.0.0, current version 38.1.0)
+	@executable_path/libicudata.38.dylib (compatibility version 38.0.0, current version 38.1.0)
+	/usr/lib/libSystem.B.dylib (compatibility version 1.0.0, current version 123.0.0)
+	/usr/lib/libstdc++.6.dylib (compatibility version 7.0.0, current version 7.9.0)
+-------------------
+File:/Users/osiris/osiris/osiris/distribute/temp/Osiris.app/Contents/MacOS/libicuuc.38.1.dylib
+/Users/osiris/osiris/osiris/distribute/temp/Osiris.app/Contents/MacOS/libicuuc.38.1.dylib:
+	@executable_path/libicuuc.dylib (compatibility version 38.0.0, current version 38.1.0)
+	@executable_path/libicudata.38.dylib (compatibility version 38.0.0, current version 38.1.0)
+	/usr/lib/libSystem.B.dylib (compatibility version 1.0.0, current version 123.0.0)
+	/usr/lib/libstdc++.6.dylib (compatibility version 7.0.0, current version 7.9.0)
+-------------------
+File:/Users/osiris/osiris/osiris/distribute/temp/Osiris.app/Contents/MacOS/libicuuc.38.dylib
+/Users/osiris/osiris/osiris/distribute/temp/Osiris.app/Contents/MacOS/libicuuc.38.dylib:
+	@executable_path/libicuuc.dylib (compatibility version 38.0.0, current version 38.1.0)
+	@executable_path/libicudata.38.dylib (compatibility version 38.0.0, current version 38.1.0)
+	/usr/lib/libSystem.B.dylib (compatibility version 1.0.0, current version 123.0.0)
+	/usr/lib/libstdc++.6.dylib (compatibility version 7.0.0, current version 7.9.0)
+-------------------
+File:/Users/osiris/osiris/osiris/distribute/temp/Osiris.app/Contents/MacOS/libicuuc.dylib
+/Users/osiris/osiris/osiris/distribute/temp/Osiris.app/Contents/MacOS/libicuuc.dylib:
+	@executable_path/libicuuc.dylib (compatibility version 38.0.0, current version 38.1.0)
+	@executable_path/libicudata.38.dylib (compatibility version 38.0.0, current version 38.1.0)
+	/usr/lib/libSystem.B.dylib (compatibility version 1.0.0, current version 123.0.0)
+	/usr/lib/libstdc++.6.dylib (compatibility version 7.0.0, current version 7.9.0)
+-------------------
+File:/Users/osiris/osiris/osiris/distribute/temp/Osiris.app/Contents/MacOS/libirc.dylib
+/Users/osiris/osiris/osiris/distribute/temp/Osiris.app/Contents/MacOS/libirc.dylib:
+	@executable_path/libirc.dylib (compatibility version 0.0.0, current version 0.0.0)
+	@executable_path/libcore.dylib (compatibility version 0.0.0, current version 0.0.0)
+	@executable_path/libnet.dylib (compatibility version 0.0.0, current version 0.0.0)
+	@executable_path/libssl.dylib (compatibility version 0.9.8, current version 0.9.8)
+	@executable_path/libcrypto.dylib (compatibility version 0.9.8, current version 0.9.8)
+	/usr/lib/libstdc++.6.dylib (compatibility version 7.0.0, current version 7.9.0)
+	/usr/lib/libSystem.B.dylib (compatibility version 1.0.0, current version 123.0.0)
+-------------------
+File:/Users/osiris/osiris/osiris/distribute/temp/Osiris.app/Contents/MacOS/liblang.dylib
+/Users/osiris/osiris/osiris/distribute/temp/Osiris.app/Contents/MacOS/liblang.dylib:
+	@executable_path/liblang.dylib (compatibility version 0.0.0, current version 0.0.0)
+	@executable_path/libcore.dylib (compatibility version 0.0.0, current version 0.0.0)
+	@executable_path/libxml.dylib (compatibility version 0.0.0, current version 0.0.0)
+	/usr/lib/libstdc++.6.dylib (compatibility version 7.0.0, current version 7.9.0)
+	/usr/lib/libSystem.B.dylib (compatibility version 1.0.0, current version 123.0.0)
+-------------------
+File:/Users/osiris/osiris/osiris/distribute/temp/Osiris.app/Contents/MacOS/libnet.dylib
+/Users/osiris/osiris/osiris/distribute/temp/Osiris.app/Contents/MacOS/libnet.dylib:
+	@executable_path/libnet.dylib (compatibility version 0.0.0, current version 0.0.0)
+	@executable_path/libcore.dylib (compatibility version 0.0.0, current version 0.0.0)
+	@executable_path/libcrypto.dylib (compatibility version 0.9.8, current version 0.9.8)
+	@executable_path/libssl.dylib (compatibility version 0.9.8, current version 0.9.8)
+	/usr/lib/libstdc++.6.dylib (compatibility version 7.0.0, current version 7.9.0)
+	/usr/lib/libSystem.B.dylib (compatibility version 1.0.0, current version 123.0.0)
+-------------------
+File:/Users/osiris/osiris/osiris/distribute/temp/Osiris.app/Contents/MacOS/libpython2.6.dylib
+/Users/osiris/osiris/osiris/distribute/temp/Osiris.app/Contents/MacOS/libpython2.6.dylib:
+	@executable_path/libpython2.6.dylib (compatibility version 2.6.0, current version 2.6.0)
+	/usr/lib/libSystem.B.dylib (compatibility version 1.0.0, current version 123.0.0)
+-------------------
+File:/Users/osiris/osiris/osiris/distribute/temp/Osiris.app/Contents/MacOS/libsdk.dylib
+/Users/osiris/osiris/osiris/distribute/temp/Osiris.app/Contents/MacOS/libsdk.dylib:
+	@executable_path/libsdk.dylib (compatibility version 0.0.0, current version 0.0.0)
+	@executable_path/libcore.dylib (compatibility version 0.0.0, current version 0.0.0)
+	@executable_path/libengine.dylib (compatibility version 0.0.0, current version 0.0.0)
+	/usr/lib/libSystem.B.dylib (compatibility version 1.0.0, current version 123.0.0)
+	/usr/lib/libstdc++.6.dylib (compatibility version 7.0.0, current version 7.9.0)
+-------------------
+File:/Users/osiris/osiris/osiris/distribute/temp/Osiris.app/Contents/MacOS/libsqlite3.0.8.6.dylib
+/Users/osiris/osiris/osiris/distribute/temp/Osiris.app/Contents/MacOS/libsqlite3.0.8.6.dylib:
+	@executable_path/libsqlite3.dylib (compatibility version 9.0.0, current version 9.6.0)
+	/usr/lib/libSystem.B.dylib (compatibility version 1.0.0, current version 123.0.0)
+-------------------
+File:/Users/osiris/osiris/osiris/distribute/temp/Osiris.app/Contents/MacOS/libsqlite3.0.dylib
+/Users/osiris/osiris/osiris/distribute/temp/Osiris.app/Contents/MacOS/libsqlite3.0.dylib:
+	@executable_path/libsqlite3.dylib (compatibility version 9.0.0, current version 9.6.0)
+	/usr/lib/libSystem.B.dylib (compatibility version 1.0.0, current version 123.0.0)
+-------------------
+File:/Users/osiris/osiris/osiris/distribute/temp/Osiris.app/Contents/MacOS/libsqlite3.dylib
+/Users/osiris/osiris/osiris/distribute/temp/Osiris.app/Contents/MacOS/libsqlite3.dylib:
+	@executable_path/libsqlite3.dylib (compatibility version 9.0.0, current version 9.6.0)
+	/usr/lib/libSystem.B.dylib (compatibility version 1.0.0, current version 123.0.0)
+-------------------
+File:/Users/osiris/osiris/osiris/distribute/temp/Osiris.app/Contents/MacOS/libssl.0.9.8.dylib
+/Users/osiris/osiris/osiris/distribute/temp/Osiris.app/Contents/MacOS/libssl.0.9.8.dylib:
+	@executable_path/libssl.dylib (compatibility version 0.9.8, current version 0.9.8)
+	/usr/lib/libcrypto.0.9.8.dylib (compatibility version 0.9.8, current version 0.9.8)
+	/usr/lib/libSystem.B.dylib (compatibility version 1.0.0, current version 123.0.0)
+-------------------
+File:/Users/osiris/osiris/osiris/distribute/temp/Osiris.app/Contents/MacOS/libssl.dylib
+/Users/osiris/osiris/osiris/distribute/temp/Osiris.app/Contents/MacOS/libssl.dylib:
+	@executable_path/libssl.dylib (compatibility version 0.9.8, current version 0.9.8)
+	/usr/lib/libcrypto.0.9.8.dylib (compatibility version 0.9.8, current version 0.9.8)
+	/usr/lib/libSystem.B.dylib (compatibility version 1.0.0, current version 123.0.0)
+-------------------
+File:/Users/osiris/osiris/osiris/distribute/temp/Osiris.app/Contents/MacOS/libui.dylib
+/Users/osiris/osiris/osiris/distribute/temp/Osiris.app/Contents/MacOS/libui.dylib:
+	@executable_path/libui.dylib (compatibility version 0.0.0, current version 0.0.0)
+	/System/Library/Frameworks/Carbon.framework/Versions/A/Carbon (compatibility version 2.0.0, current version 152.0.0)
+	@executable_path/libcore.dylib (compatibility version 0.0.0, current version 0.0.0)
+	@executable_path/libengine.dylib (compatibility version 0.0.0, current version 0.0.0)
+	@executable_path/libnet.dylib (compatibility version 0.0.0, current version 0.0.0)
+	@executable_path/libwx_baseu-2.9.dylib (compatibility version 1.0.0, current version 1.0.0)
+	@executable_path/libwx_baseu_net-2.9.dylib (compatibility version 1.0.0, current version 1.0.0)
+	@executable_path/libwx_baseu_xml-2.9.dylib (compatibility version 1.0.0, current version 1.0.0)
+	@executable_path/libwx_osx_cocoau_core-2.9.dylib (compatibility version 1.0.0, current version 1.0.0)
+	@executable_path/libwx_osx_cocoau_aui-2.9.dylib (compatibility version 1.0.0, current version 1.0.0)
+	@executable_path/libwx_osx_cocoau_adv-2.9.dylib (compatibility version 1.0.0, current version 1.0.0)
+	@executable_path/libwx_osx_cocoau_html-2.9.dylib (compatibility version 1.0.0, current version 1.0.0)
+	@executable_path/libwx_osx_cocoau_qa-2.9.dylib (compatibility version 1.0.0, current version 1.0.0)
+	@executable_path/libwx_osx_cocoau_richtext-2.9.dylib (compatibility version 1.0.0, current version 1.0.0)
+	@executable_path/libwx_osx_cocoau_xrc-2.9.dylib (compatibility version 1.0.0, current version 1.0.0)
+	@executable_path/liblang.dylib (compatibility version 0.0.0, current version 0.0.0)
+	@executable_path/libxml.dylib (compatibility version 0.0.0, current version 0.0.0)
+	@executable_path/libweb.dylib (compatibility version 0.0.0, current version 0.0.0)
+	@executable_path/libcrypto.dylib (compatibility version 0.9.8, current version 0.9.8)
+	@executable_path/libssl.dylib (compatibility version 0.9.8, current version 0.9.8)
+	@executable_path/libhttp.dylib (compatibility version 0.0.0, current version 0.0.0)
+	@executable_path/libirc.dylib (compatibility version 0.0.0, current version 0.0.0)
+	@executable_path/libupnp.dylib (compatibility version 0.0.0, current version 0.0.0)
+	@executable_path/libwx_osx_cocoau_stc-2.9.dylib (compatibility version 1.0.0, current version 1.0.0)
+	@executable_path/libwx_osx_cocoau_media-2.9.dylib (compatibility version 1.0.0, current version 1.0.0)
+	@executable_path/libwx_osx_cocoau_propgrid-2.9.dylib (compatibility version 1.0.0, current version 1.0.0)
+	/usr/lib/libstdc++.6.dylib (compatibility version 7.0.0, current version 7.9.0)
+	/usr/lib/libSystem.B.dylib (compatibility version 1.0.0, current version 123.0.0)
+	/System/Library/Frameworks/CoreServices.framework/Versions/A/CoreServices (compatibility version 1.0.0, current version 44.0.0)
+	/System/Library/Frameworks/CoreFoundation.framework/Versions/A/CoreFoundation (compatibility version 150.0.0, current version 550.0.0)
+-------------------
+File:/Users/osiris/osiris/osiris/distribute/temp/Osiris.app/Contents/MacOS/libupnp.dylib
+/Users/osiris/osiris/osiris/distribute/temp/Osiris.app/Contents/MacOS/libupnp.dylib:
+	@executable_path/libupnp.dylib (compatibility version 0.0.0, current version 0.0.0)
+	@executable_path/libcore.dylib (compatibility version 0.0.0, current version 0.0.0)
+	/usr/lib/libstdc++.6.dylib (compatibility version 7.0.0, current version 7.9.0)
+	/usr/lib/libSystem.B.dylib (compatibility version 1.0.0, current version 123.0.0)
+-------------------
+File:/Users/osiris/osiris/osiris/distribute/temp/Osiris.app/Contents/MacOS/libweb.dylib
+/Users/osiris/osiris/osiris/distribute/temp/Osiris.app/Contents/MacOS/libweb.dylib:
+	@executable_path/libweb.dylib (compatibility version 0.0.0, current version 0.0.0)
+	@executable_path/libcore.dylib (compatibility version 0.0.0, current version 0.0.0)
+	@executable_path/libnet.dylib (compatibility version 0.0.0, current version 0.0.0)
+	@executable_path/libhttp.dylib (compatibility version 0.0.0, current version 0.0.0)
+	@executable_path/libxml.dylib (compatibility version 0.0.0, current version 0.0.0)
+	/usr/lib/libstdc++.6.dylib (compatibility version 7.0.0, current version 7.9.0)
+	/usr/lib/libSystem.B.dylib (compatibility version 1.0.0, current version 123.0.0)
+-------------------
+File:/Users/osiris/osiris/osiris/distribute/temp/Osiris.app/Contents/MacOS/libwx_baseu-2.9.0.0.0.dylib
+/Users/osiris/osiris/osiris/distribute/temp/Osiris.app/Contents/MacOS/libwx_baseu-2.9.0.0.0.dylib:
+	@executable_path/libwx_baseu-2.9.dylib (compatibility version 1.0.0, current version 1.0.0)
+	/System/Library/Frameworks/IOKit.framework/Versions/A/IOKit (compatibility version 1.0.0, current version 275.0.0)
+	/System/Library/Frameworks/Carbon.framework/Versions/A/Carbon (compatibility version 2.0.0, current version 152.0.0)
+	/System/Library/Frameworks/Cocoa.framework/Versions/A/Cocoa (compatibility version 1.0.0, current version 15.0.0)
+	/System/Library/Frameworks/AudioToolbox.framework/Versions/A/AudioToolbox (compatibility version 1.0.0, current version 1.0.0)
+	/usr/lib/libSystem.B.dylib (compatibility version 1.0.0, current version 123.0.0)
+	/System/Library/Frameworks/OpenGL.framework/Versions/A/OpenGL (compatibility version 1.0.0, current version 1.0.0)
+	/usr/lib/libz.1.dylib (compatibility version 1.0.0, current version 1.2.3)
+	/usr/lib/libiconv.2.dylib (compatibility version 7.0.0, current version 7.0.0)
+	/usr/lib/libstdc++.6.dylib (compatibility version 7.0.0, current version 7.9.0)
+	/usr/lib/libgcc_s.1.dylib (compatibility version 1.0.0, current version 246.0.0)
+	/usr/lib/libobjc.A.dylib (compatibility version 1.0.0, current version 227.0.0)
+	/System/Library/Frameworks/CoreServices.framework/Versions/A/CoreServices (compatibility version 1.0.0, current version 44.0.0)
+	/System/Library/Frameworks/CoreFoundation.framework/Versions/A/CoreFoundation (compatibility version 150.0.0, current version 550.0.0)
+	/System/Library/Frameworks/Foundation.framework/Versions/C/Foundation (compatibility version 300.0.0, current version 751.0.0)
+	/System/Library/Frameworks/AppKit.framework/Versions/C/AppKit (compatibility version 45.0.0, current version 1038.0.0)
+-------------------
+File:/Users/osiris/osiris/osiris/distribute/temp/Osiris.app/Contents/MacOS/libwx_baseu-2.9.0.dylib
+/Users/osiris/osiris/osiris/distribute/temp/Osiris.app/Contents/MacOS/libwx_baseu-2.9.0.dylib:
+	@executable_path/libwx_baseu-2.9.dylib (compatibility version 1.0.0, current version 1.0.0)
+	/System/Library/Frameworks/IOKit.framework/Versions/A/IOKit (compatibility version 1.0.0, current version 275.0.0)
+	/System/Library/Frameworks/Carbon.framework/Versions/A/Carbon (compatibility version 2.0.0, current version 152.0.0)
+	/System/Library/Frameworks/Cocoa.framework/Versions/A/Cocoa (compatibility version 1.0.0, current version 15.0.0)
+	/System/Library/Frameworks/AudioToolbox.framework/Versions/A/AudioToolbox (compatibility version 1.0.0, current version 1.0.0)
+	/usr/lib/libSystem.B.dylib (compatibility version 1.0.0, current version 123.0.0)
+	/System/Library/Frameworks/OpenGL.framework/Versions/A/OpenGL (compatibility version 1.0.0, current version 1.0.0)
+	/usr/lib/libz.1.dylib (compatibility version 1.0.0, current version 1.2.3)
+	/usr/lib/libiconv.2.dylib (compatibility version 7.0.0, current version 7.0.0)
+	/usr/lib/libstdc++.6.dylib (compatibility version 7.0.0, current version 7.9.0)
+	/usr/lib/libgcc_s.1.dylib (compatibility version 1.0.0, current version 246.0.0)
+	/usr/lib/libobjc.A.dylib (compatibility version 1.0.0, current version 227.0.0)
+	/System/Library/Frameworks/CoreServices.framework/Versions/A/CoreServices (compatibility version 1.0.0, current version 44.0.0)
+	/System/Library/Frameworks/CoreFoundation.framework/Versions/A/CoreFoundation (compatibility version 150.0.0, current version 550.0.0)
+	/System/Library/Frameworks/Foundation.framework/Versions/C/Foundation (compatibility version 300.0.0, current version 751.0.0)
+	/System/Library/Frameworks/AppKit.framework/Versions/C/AppKit (compatibility version 45.0.0, current version 1038.0.0)
+-------------------
+File:/Users/osiris/osiris/osiris/distribute/temp/Osiris.app/Contents/MacOS/libwx_baseu-2.9.dylib
+/Users/osiris/osiris/osiris/distribute/temp/Osiris.app/Contents/MacOS/libwx_baseu-2.9.dylib:
+	@executable_path/libwx_baseu-2.9.dylib (compatibility version 1.0.0, current version 1.0.0)
+	/System/Library/Frameworks/IOKit.framework/Versions/A/IOKit (compatibility version 1.0.0, current version 275.0.0)
+	/System/Library/Frameworks/Carbon.framework/Versions/A/Carbon (compatibility version 2.0.0, current version 152.0.0)
+	/System/Library/Frameworks/Cocoa.framework/Versions/A/Cocoa (compatibility version 1.0.0, current version 15.0.0)
+	/System/Library/Frameworks/AudioToolbox.framework/Versions/A/AudioToolbox (compatibility version 1.0.0, current version 1.0.0)
+	/usr/lib/libSystem.B.dylib (compatibility version 1.0.0, current version 123.0.0)
+	/System/Library/Frameworks/OpenGL.framework/Versions/A/OpenGL (compatibility version 1.0.0, current version 1.0.0)
+	/usr/lib/libz.1.dylib (compatibility version 1.0.0, current version 1.2.3)
+	/usr/lib/libiconv.2.dylib (compatibility version 7.0.0, current version 7.0.0)
+	/usr/lib/libstdc++.6.dylib (compatibility version 7.0.0, current version 7.9.0)
+	/usr/lib/libgcc_s.1.dylib (compatibility version 1.0.0, current version 246.0.0)
+	/usr/lib/libobjc.A.dylib (compatibility version 1.0.0, current version 227.0.0)
+	/System/Library/Frameworks/CoreServices.framework/Versions/A/CoreServices (compatibility version 1.0.0, current version 44.0.0)
+	/System/Library/Frameworks/CoreFoundation.framework/Versions/A/CoreFoundation (compatibility version 150.0.0, current version 550.0.0)
+	/System/Library/Frameworks/Foundation.framework/Versions/C/Foundation (compatibility version 300.0.0, current version 751.0.0)
+	/System/Library/Frameworks/AppKit.framework/Versions/C/AppKit (compatibility version 45.0.0, current version 1038.0.0)
+-------------------
+File:/Users/osiris/osiris/osiris/distribute/temp/Osiris.app/Contents/MacOS/libwx_baseu_net-2.9.0.0.0.dylib
+/Users/osiris/osiris/osiris/distribute/temp/Osiris.app/Contents/MacOS/libwx_baseu_net-2.9.0.0.0.dylib:
+	@executable_path/libwx_baseu_net-2.9.dylib (compatibility version 1.0.0, current version 1.0.0)
+	/System/Library/Frameworks/IOKit.framework/Versions/A/IOKit (compatibility version 1.0.0, current version 275.0.0)
+	/System/Library/Frameworks/Carbon.framework/Versions/A/Carbon (compatibility version 2.0.0, current version 152.0.0)
+	/System/Library/Frameworks/Cocoa.framework/Versions/A/Cocoa (compatibility version 1.0.0, current version 15.0.0)
+	/System/Library/Frameworks/AudioToolbox.framework/Versions/A/AudioToolbox (compatibility version 1.0.0, current version 1.0.0)
+	/usr/lib/libSystem.B.dylib (compatibility version 1.0.0, current version 123.0.0)
+	/System/Library/Frameworks/OpenGL.framework/Versions/A/OpenGL (compatibility version 1.0.0, current version 1.0.0)
+	/usr/lib/libz.1.dylib (compatibility version 1.0.0, current version 1.2.3)
+	/usr/lib/libiconv.2.dylib (compatibility version 7.0.0, current version 7.0.0)
+	@executable_path/libwx_baseu-2.9.0.0.0.dylib (compatibility version 1.0.0, current version 1.0.0)
+	/usr/lib/libstdc++.6.dylib (compatibility version 7.0.0, current version 7.9.0)
+	/usr/lib/libgcc_s.1.dylib (compatibility version 1.0.0, current version 246.0.0)
+	/System/Library/Frameworks/CoreFoundation.framework/Versions/A/CoreFoundation (compatibility version 150.0.0, current version 550.0.0)
+-------------------
+File:/Users/osiris/osiris/osiris/distribute/temp/Osiris.app/Contents/MacOS/libwx_baseu_net-2.9.0.dylib
+/Users/osiris/osiris/osiris/distribute/temp/Osiris.app/Contents/MacOS/libwx_baseu_net-2.9.0.dylib:
+	@executable_path/libwx_baseu_net-2.9.dylib (compatibility version 1.0.0, current version 1.0.0)
+	/System/Library/Frameworks/IOKit.framework/Versions/A/IOKit (compatibility version 1.0.0, current version 275.0.0)
+	/System/Library/Frameworks/Carbon.framework/Versions/A/Carbon (compatibility version 2.0.0, current version 152.0.0)
+	/System/Library/Frameworks/Cocoa.framework/Versions/A/Cocoa (compatibility version 1.0.0, current version 15.0.0)
+	/System/Library/Frameworks/AudioToolbox.framework/Versions/A/AudioToolbox (compatibility version 1.0.0, current version 1.0.0)
+	/usr/lib/libSystem.B.dylib (compatibility version 1.0.0, current version 123.0.0)
+	/System/Library/Frameworks/OpenGL.framework/Versions/A/OpenGL (compatibility version 1.0.0, current version 1.0.0)
+	/usr/lib/libz.1.dylib (compatibility version 1.0.0, current version 1.2.3)
+	/usr/lib/libiconv.2.dylib (compatibility version 7.0.0, current version 7.0.0)
+	@executable_path/libwx_baseu-2.9.0.0.0.dylib (compatibility version 1.0.0, current version 1.0.0)
+	/usr/lib/libstdc++.6.dylib (compatibility version 7.0.0, current version 7.9.0)
+	/usr/lib/libgcc_s.1.dylib (compatibility version 1.0.0, current version 246.0.0)
+	/System/Library/Frameworks/CoreFoundation.framework/Versions/A/CoreFoundation (compatibility version 150.0.0, current version 550.0.0)
+-------------------
+File:/Users/osiris/osiris/osiris/distribute/temp/Osiris.app/Contents/MacOS/libwx_baseu_net-2.9.dylib
+/Users/osiris/osiris/osiris/distribute/temp/Osiris.app/Contents/MacOS/libwx_baseu_net-2.9.dylib:
+	@executable_path/libwx_baseu_net-2.9.dylib (compatibility version 1.0.0, current version 1.0.0)
+	/System/Library/Frameworks/IOKit.framework/Versions/A/IOKit (compatibility version 1.0.0, current version 275.0.0)
+	/System/Library/Frameworks/Carbon.framework/Versions/A/Carbon (compatibility version 2.0.0, current version 152.0.0)
+	/System/Library/Frameworks/Cocoa.framework/Versions/A/Cocoa (compatibility version 1.0.0, current version 15.0.0)
+	/System/Library/Frameworks/AudioToolbox.framework/Versions/A/AudioToolbox (compatibility version 1.0.0, current version 1.0.0)
+	/usr/lib/libSystem.B.dylib (compatibility version 1.0.0, current version 123.0.0)
+	/System/Library/Frameworks/OpenGL.framework/Versions/A/OpenGL (compatibility version 1.0.0, current version 1.0.0)
+	/usr/lib/libz.1.dylib (compatibility version 1.0.0, current version 1.2.3)
+	/usr/lib/libiconv.2.dylib (compatibility version 7.0.0, current version 7.0.0)
+	@executable_path/libwx_baseu-2.9.0.0.0.dylib (compatibility version 1.0.0, current version 1.0.0)
+	/usr/lib/libstdc++.6.dylib (compatibility version 7.0.0, current version 7.9.0)
+	/usr/lib/libgcc_s.1.dylib (compatibility version 1.0.0, current version 246.0.0)
+	/System/Library/Frameworks/CoreFoundation.framework/Versions/A/CoreFoundation (compatibility version 150.0.0, current version 550.0.0)
+-------------------
+File:/Users/osiris/osiris/osiris/distribute/temp/Osiris.app/Contents/MacOS/libwx_baseu_xml-2.9.0.0.0.dylib
+/Users/osiris/osiris/osiris/distribute/temp/Osiris.app/Contents/MacOS/libwx_baseu_xml-2.9.0.0.0.dylib:
+	@executable_path/libwx_baseu_xml-2.9.dylib (compatibility version 1.0.0, current version 1.0.0)
+	/System/Library/Frameworks/IOKit.framework/Versions/A/IOKit (compatibility version 1.0.0, current version 275.0.0)
+	/System/Library/Frameworks/Carbon.framework/Versions/A/Carbon (compatibility version 2.0.0, current version 152.0.0)
+	/System/Library/Frameworks/Cocoa.framework/Versions/A/Cocoa (compatibility version 1.0.0, current version 15.0.0)
+	/System/Library/Frameworks/AudioToolbox.framework/Versions/A/AudioToolbox (compatibility version 1.0.0, current version 1.0.0)
+	/usr/lib/libSystem.B.dylib (compatibility version 1.0.0, current version 123.0.0)
+	/System/Library/Frameworks/OpenGL.framework/Versions/A/OpenGL (compatibility version 1.0.0, current version 1.0.0)
+	/usr/lib/libz.1.dylib (compatibility version 1.0.0, current version 1.2.3)
+	/usr/lib/libiconv.2.dylib (compatibility version 7.0.0, current version 7.0.0)
+	@executable_path/libwx_baseu-2.9.0.0.0.dylib (compatibility version 1.0.0, current version 1.0.0)
+	/usr/lib/libexpat.1.dylib (compatibility version 7.0.0, current version 7.2.0)
+	/usr/lib/libstdc++.6.dylib (compatibility version 7.0.0, current version 7.9.0)
+	/usr/lib/libgcc_s.1.dylib (compatibility version 1.0.0, current version 246.0.0)
+-------------------
+File:/Users/osiris/osiris/osiris/distribute/temp/Osiris.app/Contents/MacOS/libwx_baseu_xml-2.9.0.dylib
+/Users/osiris/osiris/osiris/distribute/temp/Osiris.app/Contents/MacOS/libwx_baseu_xml-2.9.0.dylib:
+	@executable_path/libwx_baseu_xml-2.9.dylib (compatibility version 1.0.0, current version 1.0.0)
+	/System/Library/Frameworks/IOKit.framework/Versions/A/IOKit (compatibility version 1.0.0, current version 275.0.0)
+	/System/Library/Frameworks/Carbon.framework/Versions/A/Carbon (compatibility version 2.0.0, current version 152.0.0)
+	/System/Library/Frameworks/Cocoa.framework/Versions/A/Cocoa (compatibility version 1.0.0, current version 15.0.0)
+	/System/Library/Frameworks/AudioToolbox.framework/Versions/A/AudioToolbox (compatibility version 1.0.0, current version 1.0.0)
+	/usr/lib/libSystem.B.dylib (compatibility version 1.0.0, current version 123.0.0)
+	/System/Library/Frameworks/OpenGL.framework/Versions/A/OpenGL (compatibility version 1.0.0, current version 1.0.0)
+	/usr/lib/libz.1.dylib (compatibility version 1.0.0, current version 1.2.3)
+	/usr/lib/libiconv.2.dylib (compatibility version 7.0.0, current version 7.0.0)
+	@executable_path/libwx_baseu-2.9.0.0.0.dylib (compatibility version 1.0.0, current version 1.0.0)
+	/usr/lib/libexpat.1.dylib (compatibility version 7.0.0, current version 7.2.0)
+	/usr/lib/libstdc++.6.dylib (compatibility version 7.0.0, current version 7.9.0)
+	/usr/lib/libgcc_s.1.dylib (compatibility version 1.0.0, current version 246.0.0)
+-------------------
+File:/Users/osiris/osiris/osiris/distribute/temp/Osiris.app/Contents/MacOS/libwx_baseu_xml-2.9.dylib
+/Users/osiris/osiris/osiris/distribute/temp/Osiris.app/Contents/MacOS/libwx_baseu_xml-2.9.dylib:
+	@executable_path/libwx_baseu_xml-2.9.dylib (compatibility version 1.0.0, current version 1.0.0)
+	/System/Library/Frameworks/IOKit.framework/Versions/A/IOKit (compatibility version 1.0.0, current version 275.0.0)
+	/System/Library/Frameworks/Carbon.framework/Versions/A/Carbon (compatibility version 2.0.0, current version 152.0.0)
+	/System/Library/Frameworks/Cocoa.framework/Versions/A/Cocoa (compatibility version 1.0.0, current version 15.0.0)
+	/System/Library/Frameworks/AudioToolbox.framework/Versions/A/AudioToolbox (compatibility version 1.0.0, current version 1.0.0)
+	/usr/lib/libSystem.B.dylib (compatibility version 1.0.0, current version 123.0.0)
+	/System/Library/Frameworks/OpenGL.framework/Versions/A/OpenGL (compatibility version 1.0.0, current version 1.0.0)
+	/usr/lib/libz.1.dylib (compatibility version 1.0.0, current version 1.2.3)
+	/usr/lib/libiconv.2.dylib (compatibility version 7.0.0, current version 7.0.0)
+	@executable_path/libwx_baseu-2.9.0.0.0.dylib (compatibility version 1.0.0, current version 1.0.0)
+	/usr/lib/libexpat.1.dylib (compatibility version 7.0.0, current version 7.2.0)
+	/usr/lib/libstdc++.6.dylib (compatibility version 7.0.0, current version 7.9.0)
+	/usr/lib/libgcc_s.1.dylib (compatibility version 1.0.0, current version 246.0.0)
+-------------------
+File:/Users/osiris/osiris/osiris/distribute/temp/Osiris.app/Contents/MacOS/libwx_osx_cocoau_adv-2.9.0.0.0.dylib
+/Users/osiris/osiris/osiris/distribute/temp/Osiris.app/Contents/MacOS/libwx_osx_cocoau_adv-2.9.0.0.0.dylib:
+	@executable_path/libwx_osx_cocoau_adv-2.9.dylib (compatibility version 1.0.0, current version 1.0.0)
+	/System/Library/Frameworks/IOKit.framework/Versions/A/IOKit (compatibility version 1.0.0, current version 275.0.0)
+	/System/Library/Frameworks/Carbon.framework/Versions/A/Carbon (compatibility version 2.0.0, current version 152.0.0)
+	/System/Library/Frameworks/Cocoa.framework/Versions/A/Cocoa (compatibility version 1.0.0, current version 15.0.0)
+	/System/Library/Frameworks/AudioToolbox.framework/Versions/A/AudioToolbox (compatibility version 1.0.0, current version 1.0.0)
+	/usr/lib/libSystem.B.dylib (compatibility version 1.0.0, current version 123.0.0)
+	/System/Library/Frameworks/OpenGL.framework/Versions/A/OpenGL (compatibility version 1.0.0, current version 1.0.0)
+	/System/Library/Frameworks/WebKit.framework/Versions/A/WebKit (compatibility version 1.0.0, current version 531.9.0)
+	/usr/lib/libz.1.dylib (compatibility version 1.0.0, current version 1.2.3)
+	/usr/lib/libiconv.2.dylib (compatibility version 7.0.0, current version 7.0.0)
+	@executable_path/libwx_osx_cocoau_core-2.9.0.0.0.dylib (compatibility version 1.0.0, current version 1.0.0)
+	@executable_path/libwx_baseu-2.9.0.0.0.dylib (compatibility version 1.0.0, current version 1.0.0)
+	/usr/lib/libstdc++.6.dylib (compatibility version 7.0.0, current version 7.9.0)
+	/usr/lib/libgcc_s.1.dylib (compatibility version 1.0.0, current version 246.0.0)
+	/usr/lib/libobjc.A.dylib (compatibility version 1.0.0, current version 227.0.0)
+	/System/Library/Frameworks/CoreServices.framework/Versions/A/CoreServices (compatibility version 1.0.0, current version 44.0.0)
+	/System/Library/Frameworks/CoreFoundation.framework/Versions/A/CoreFoundation (compatibility version 150.0.0, current version 550.0.0)
+	/System/Library/Frameworks/AppKit.framework/Versions/C/AppKit (compatibility version 45.0.0, current version 1038.0.0)
+-------------------
+File:/Users/osiris/osiris/osiris/distribute/temp/Osiris.app/Contents/MacOS/libwx_osx_cocoau_adv-2.9.0.dylib
+/Users/osiris/osiris/osiris/distribute/temp/Osiris.app/Contents/MacOS/libwx_osx_cocoau_adv-2.9.0.dylib:
+	@executable_path/libwx_osx_cocoau_adv-2.9.dylib (compatibility version 1.0.0, current version 1.0.0)
+	/System/Library/Frameworks/IOKit.framework/Versions/A/IOKit (compatibility version 1.0.0, current version 275.0.0)
+	/System/Library/Frameworks/Carbon.framework/Versions/A/Carbon (compatibility version 2.0.0, current version 152.0.0)
+	/System/Library/Frameworks/Cocoa.framework/Versions/A/Cocoa (compatibility version 1.0.0, current version 15.0.0)
+	/System/Library/Frameworks/AudioToolbox.framework/Versions/A/AudioToolbox (compatibility version 1.0.0, current version 1.0.0)
+	/usr/lib/libSystem.B.dylib (compatibility version 1.0.0, current version 123.0.0)
+	/System/Library/Frameworks/OpenGL.framework/Versions/A/OpenGL (compatibility version 1.0.0, current version 1.0.0)
+	/System/Library/Frameworks/WebKit.framework/Versions/A/WebKit (compatibility version 1.0.0, current version 531.9.0)
+	/usr/lib/libz.1.dylib (compatibility version 1.0.0, current version 1.2.3)
+	/usr/lib/libiconv.2.dylib (compatibility version 7.0.0, current version 7.0.0)
+	@executable_path/libwx_osx_cocoau_core-2.9.0.0.0.dylib (compatibility version 1.0.0, current version 1.0.0)
+	@executable_path/libwx_baseu-2.9.0.0.0.dylib (compatibility version 1.0.0, current version 1.0.0)
+	/usr/lib/libstdc++.6.dylib (compatibility version 7.0.0, current version 7.9.0)
+	/usr/lib/libgcc_s.1.dylib (compatibility version 1.0.0, current version 246.0.0)
+	/usr/lib/libobjc.A.dylib (compatibility version 1.0.0, current version 227.0.0)
+	/System/Library/Frameworks/CoreServices.framework/Versions/A/CoreServices (compatibility version 1.0.0, current version 44.0.0)
+	/System/Library/Frameworks/CoreFoundation.framework/Versions/A/CoreFoundation (compatibility version 150.0.0, current version 550.0.0)
+	/System/Library/Frameworks/AppKit.framework/Versions/C/AppKit (compatibility version 45.0.0, current version 1038.0.0)
+-------------------
+File:/Users/osiris/osiris/osiris/distribute/temp/Osiris.app/Contents/MacOS/libwx_osx_cocoau_adv-2.9.dylib
+/Users/osiris/osiris/osiris/distribute/temp/Osiris.app/Contents/MacOS/libwx_osx_cocoau_adv-2.9.dylib:
+	@executable_path/libwx_osx_cocoau_adv-2.9.dylib (compatibility version 1.0.0, current version 1.0.0)
+	/System/Library/Frameworks/IOKit.framework/Versions/A/IOKit (compatibility version 1.0.0, current version 275.0.0)
+	/System/Library/Frameworks/Carbon.framework/Versions/A/Carbon (compatibility version 2.0.0, current version 152.0.0)
+	/System/Library/Frameworks/Cocoa.framework/Versions/A/Cocoa (compatibility version 1.0.0, current version 15.0.0)
+	/System/Library/Frameworks/AudioToolbox.framework/Versions/A/AudioToolbox (compatibility version 1.0.0, current version 1.0.0)
+	/usr/lib/libSystem.B.dylib (compatibility version 1.0.0, current version 123.0.0)
+	/System/Library/Frameworks/OpenGL.framework/Versions/A/OpenGL (compatibility version 1.0.0, current version 1.0.0)
+	/System/Library/Frameworks/WebKit.framework/Versions/A/WebKit (compatibility version 1.0.0, current version 531.9.0)
+	/usr/lib/libz.1.dylib (compatibility version 1.0.0, current version 1.2.3)
+	/usr/lib/libiconv.2.dylib (compatibility version 7.0.0, current version 7.0.0)
+	@executable_path/libwx_osx_cocoau_core-2.9.0.0.0.dylib (compatibility version 1.0.0, current version 1.0.0)
+	@executable_path/libwx_baseu-2.9.0.0.0.dylib (compatibility version 1.0.0, current version 1.0.0)
+	/usr/lib/libstdc++.6.dylib (compatibility version 7.0.0, current version 7.9.0)
+	/usr/lib/libgcc_s.1.dylib (compatibility version 1.0.0, current version 246.0.0)
+	/usr/lib/libobjc.A.dylib (compatibility version 1.0.0, current version 227.0.0)
+	/System/Library/Frameworks/CoreServices.framework/Versions/A/CoreServices (compatibility version 1.0.0, current version 44.0.0)
+	/System/Library/Frameworks/CoreFoundation.framework/Versions/A/CoreFoundation (compatibility version 150.0.0, current version 550.0.0)
+	/System/Library/Frameworks/AppKit.framework/Versions/C/AppKit (compatibility version 45.0.0, current version 1038.0.0)
+-------------------
+File:/Users/osiris/osiris/osiris/distribute/temp/Osiris.app/Contents/MacOS/libwx_osx_cocoau_aui-2.9.0.0.0.dylib
+/Users/osiris/osiris/osiris/distribute/temp/Osiris.app/Contents/MacOS/libwx_osx_cocoau_aui-2.9.0.0.0.dylib:
+	@executable_path/libwx_osx_cocoau_aui-2.9.dylib (compatibility version 1.0.0, current version 1.0.0)
+	/System/Library/Frameworks/IOKit.framework/Versions/A/IOKit (compatibility version 1.0.0, current version 275.0.0)
+	/System/Library/Frameworks/Carbon.framework/Versions/A/Carbon (compatibility version 2.0.0, current version 152.0.0)
+	/System/Library/Frameworks/Cocoa.framework/Versions/A/Cocoa (compatibility version 1.0.0, current version 15.0.0)
+	/System/Library/Frameworks/AudioToolbox.framework/Versions/A/AudioToolbox (compatibility version 1.0.0, current version 1.0.0)
+	/usr/lib/libSystem.B.dylib (compatibility version 1.0.0, current version 123.0.0)
+	/System/Library/Frameworks/OpenGL.framework/Versions/A/OpenGL (compatibility version 1.0.0, current version 1.0.0)
+	/System/Library/Frameworks/WebKit.framework/Versions/A/WebKit (compatibility version 1.0.0, current version 531.9.0)
+	/usr/lib/libz.1.dylib (compatibility version 1.0.0, current version 1.2.3)
+	/usr/lib/libiconv.2.dylib (compatibility version 7.0.0, current version 7.0.0)
+	@executable_path/libwx_osx_cocoau_adv-2.9.0.0.0.dylib (compatibility version 1.0.0, current version 1.0.0)
+	@executable_path/libwx_osx_cocoau_core-2.9.0.0.0.dylib (compatibility version 1.0.0, current version 1.0.0)
+	@executable_path/libwx_baseu-2.9.0.0.0.dylib (compatibility version 1.0.0, current version 1.0.0)
+	/usr/lib/libstdc++.6.dylib (compatibility version 7.0.0, current version 7.9.0)
+	/usr/lib/libgcc_s.1.dylib (compatibility version 1.0.0, current version 246.0.0)
+	/System/Library/Frameworks/CoreFoundation.framework/Versions/A/CoreFoundation (compatibility version 150.0.0, current version 550.0.0)
+-------------------
+File:/Users/osiris/osiris/osiris/distribute/temp/Osiris.app/Contents/MacOS/libwx_osx_cocoau_aui-2.9.0.dylib
+/Users/osiris/osiris/osiris/distribute/temp/Osiris.app/Contents/MacOS/libwx_osx_cocoau_aui-2.9.0.dylib:
+	@executable_path/libwx_osx_cocoau_aui-2.9.dylib (compatibility version 1.0.0, current version 1.0.0)
+	/System/Library/Frameworks/IOKit.framework/Versions/A/IOKit (compatibility version 1.0.0, current version 275.0.0)
+	/System/Library/Frameworks/Carbon.framework/Versions/A/Carbon (compatibility version 2.0.0, current version 152.0.0)
+	/System/Library/Frameworks/Cocoa.framework/Versions/A/Cocoa (compatibility version 1.0.0, current version 15.0.0)
+	/System/Library/Frameworks/AudioToolbox.framework/Versions/A/AudioToolbox (compatibility version 1.0.0, current version 1.0.0)
+	/usr/lib/libSystem.B.dylib (compatibility version 1.0.0, current version 123.0.0)
+	/System/Library/Frameworks/OpenGL.framework/Versions/A/OpenGL (compatibility version 1.0.0, current version 1.0.0)
+	/System/Library/Frameworks/WebKit.framework/Versions/A/WebKit (compatibility version 1.0.0, current version 531.9.0)
+	/usr/lib/libz.1.dylib (compatibility version 1.0.0, current version 1.2.3)
+	/usr/lib/libiconv.2.dylib (compatibility version 7.0.0, current version 7.0.0)
+	@executable_path/libwx_osx_cocoau_adv-2.9.0.0.0.dylib (compatibility version 1.0.0, current version 1.0.0)
+	@executable_path/libwx_osx_cocoau_core-2.9.0.0.0.dylib (compatibility version 1.0.0, current version 1.0.0)
+	@executable_path/libwx_baseu-2.9.0.0.0.dylib (compatibility version 1.0.0, current version 1.0.0)
+	/usr/lib/libstdc++.6.dylib (compatibility version 7.0.0, current version 7.9.0)
+	/usr/lib/libgcc_s.1.dylib (compatibility version 1.0.0, current version 246.0.0)
+	/System/Library/Frameworks/CoreFoundation.framework/Versions/A/CoreFoundation (compatibility version 150.0.0, current version 550.0.0)
+-------------------
+File:/Users/osiris/osiris/osiris/distribute/temp/Osiris.app/Contents/MacOS/libwx_osx_cocoau_aui-2.9.dylib
+/Users/osiris/osiris/osiris/distribute/temp/Osiris.app/Contents/MacOS/libwx_osx_cocoau_aui-2.9.dylib:
+	@executable_path/libwx_osx_cocoau_aui-2.9.dylib (compatibility version 1.0.0, current version 1.0.0)
+	/System/Library/Frameworks/IOKit.framework/Versions/A/IOKit (compatibility version 1.0.0, current version 275.0.0)
+	/System/Library/Frameworks/Carbon.framework/Versions/A/Carbon (compatibility version 2.0.0, current version 152.0.0)
+	/System/Library/Frameworks/Cocoa.framework/Versions/A/Cocoa (compatibility version 1.0.0, current version 15.0.0)
+	/System/Library/Frameworks/AudioToolbox.framework/Versions/A/AudioToolbox (compatibility version 1.0.0, current version 1.0.0)
+	/usr/lib/libSystem.B.dylib (compatibility version 1.0.0, current version 123.0.0)
+	/System/Library/Frameworks/OpenGL.framework/Versions/A/OpenGL (compatibility version 1.0.0, current version 1.0.0)
+	/System/Library/Frameworks/WebKit.framework/Versions/A/WebKit (compatibility version 1.0.0, current version 531.9.0)
+	/usr/lib/libz.1.dylib (compatibility version 1.0.0, current version 1.2.3)
+	/usr/lib/libiconv.2.dylib (compatibility version 7.0.0, current version 7.0.0)
+	@executable_path/libwx_osx_cocoau_adv-2.9.0.0.0.dylib (compatibility version 1.0.0, current version 1.0.0)
+	@executable_path/libwx_osx_cocoau_core-2.9.0.0.0.dylib (compatibility version 1.0.0, current version 1.0.0)
+	@executable_path/libwx_baseu-2.9.0.0.0.dylib (compatibility version 1.0.0, current version 1.0.0)
+	/usr/lib/libstdc++.6.dylib (compatibility version 7.0.0, current version 7.9.0)
+	/usr/lib/libgcc_s.1.dylib (compatibility version 1.0.0, current version 246.0.0)
+	/System/Library/Frameworks/CoreFoundation.framework/Versions/A/CoreFoundation (compatibility version 150.0.0, current version 550.0.0)
+-------------------
+File:/Users/osiris/osiris/osiris/distribute/temp/Osiris.app/Contents/MacOS/libwx_osx_cocoau_core-2.9.0.0.0.dylib
+/Users/osiris/osiris/osiris/distribute/temp/Osiris.app/Contents/MacOS/libwx_osx_cocoau_core-2.9.0.0.0.dylib:
+	@executable_path/libwx_osx_cocoau_core-2.9.dylib (compatibility version 1.0.0, current version 1.0.0)
+	/System/Library/Frameworks/IOKit.framework/Versions/A/IOKit (compatibility version 1.0.0, current version 275.0.0)
+	/System/Library/Frameworks/Carbon.framework/Versions/A/Carbon (compatibility version 2.0.0, current version 152.0.0)
+	/System/Library/Frameworks/Cocoa.framework/Versions/A/Cocoa (compatibility version 1.0.0, current version 15.0.0)
+	/System/Library/Frameworks/AudioToolbox.framework/Versions/A/AudioToolbox (compatibility version 1.0.0, current version 1.0.0)
+	/usr/lib/libSystem.B.dylib (compatibility version 1.0.0, current version 123.0.0)
+	/System/Library/Frameworks/OpenGL.framework/Versions/A/OpenGL (compatibility version 1.0.0, current version 1.0.0)
+	/System/Library/Frameworks/WebKit.framework/Versions/A/WebKit (compatibility version 1.0.0, current version 531.9.0)
+	/usr/lib/libz.1.dylib (compatibility version 1.0.0, current version 1.2.3)
+	/usr/lib/libiconv.2.dylib (compatibility version 7.0.0, current version 7.0.0)
+	@executable_path/libwx_baseu-2.9.0.0.0.dylib (compatibility version 1.0.0, current version 1.0.0)
+	/usr/lib/libstdc++.6.dylib (compatibility version 7.0.0, current version 7.9.0)
+	/usr/lib/libgcc_s.1.dylib (compatibility version 1.0.0, current version 246.0.0)
+	/usr/lib/libobjc.A.dylib (compatibility version 1.0.0, current version 227.0.0)
+	/System/Library/Frameworks/CoreServices.framework/Versions/A/CoreServices (compatibility version 1.0.0, current version 44.0.0)
+	/System/Library/Frameworks/CoreFoundation.framework/Versions/A/CoreFoundation (compatibility version 150.0.0, current version 550.0.0)
+	/System/Library/Frameworks/ApplicationServices.framework/Versions/A/ApplicationServices (compatibility version 1.0.0, current version 38.0.0)
+	/System/Library/Frameworks/Foundation.framework/Versions/C/Foundation (compatibility version 300.0.0, current version 751.0.0)
+	/System/Library/Frameworks/AppKit.framework/Versions/C/AppKit (compatibility version 45.0.0, current version 1038.0.0)
+-------------------
+File:/Users/osiris/osiris/osiris/distribute/temp/Osiris.app/Contents/MacOS/libwx_osx_cocoau_core-2.9.0.dylib
+/Users/osiris/osiris/osiris/distribute/temp/Osiris.app/Contents/MacOS/libwx_osx_cocoau_core-2.9.0.dylib:
+	@executable_path/libwx_osx_cocoau_core-2.9.dylib (compatibility version 1.0.0, current version 1.0.0)
+	/System/Library/Frameworks/IOKit.framework/Versions/A/IOKit (compatibility version 1.0.0, current version 275.0.0)
+	/System/Library/Frameworks/Carbon.framework/Versions/A/Carbon (compatibility version 2.0.0, current version 152.0.0)
+	/System/Library/Frameworks/Cocoa.framework/Versions/A/Cocoa (compatibility version 1.0.0, current version 15.0.0)
+	/System/Library/Frameworks/AudioToolbox.framework/Versions/A/AudioToolbox (compatibility version 1.0.0, current version 1.0.0)
+	/usr/lib/libSystem.B.dylib (compatibility version 1.0.0, current version 123.0.0)
+	/System/Library/Frameworks/OpenGL.framework/Versions/A/OpenGL (compatibility version 1.0.0, current version 1.0.0)
+	/System/Library/Frameworks/WebKit.framework/Versions/A/WebKit (compatibility version 1.0.0, current version 531.9.0)
+	/usr/lib/libz.1.dylib (compatibility version 1.0.0, current version 1.2.3)
+	/usr/lib/libiconv.2.dylib (compatibility version 7.0.0, current version 7.0.0)
+	@executable_path/libwx_baseu-2.9.0.0.0.dylib (compatibility version 1.0.0, current version 1.0.0)
+	/usr/lib/libstdc++.6.dylib (compatibility version 7.0.0, current version 7.9.0)
+	/usr/lib/libgcc_s.1.dylib (compatibility version 1.0.0, current version 246.0.0)
+	/usr/lib/libobjc.A.dylib (compatibility version 1.0.0, current version 227.0.0)
+	/System/Library/Frameworks/CoreServices.framework/Versions/A/CoreServices (compatibility version 1.0.0, current version 44.0.0)
+	/System/Library/Frameworks/CoreFoundation.framework/Versions/A/CoreFoundation (compatibility version 150.0.0, current version 550.0.0)
+	/System/Library/Frameworks/ApplicationServices.framework/Versions/A/ApplicationServices (compatibility version 1.0.0, current version 38.0.0)
+	/System/Library/Frameworks/Foundation.framework/Versions/C/Foundation (compatibility version 300.0.0, current version 751.0.0)
+	/System/Library/Frameworks/AppKit.framework/Versions/C/AppKit (compatibility version 45.0.0, current version 1038.0.0)
+-------------------
+File:/Users/osiris/osiris/osiris/distribute/temp/Osiris.app/Contents/MacOS/libwx_osx_cocoau_core-2.9.dylib
+/Users/osiris/osiris/osiris/distribute/temp/Osiris.app/Contents/MacOS/libwx_osx_cocoau_core-2.9.dylib:
+	@executable_path/libwx_osx_cocoau_core-2.9.dylib (compatibility version 1.0.0, current version 1.0.0)
+	/System/Library/Frameworks/IOKit.framework/Versions/A/IOKit (compatibility version 1.0.0, current version 275.0.0)
+	/System/Library/Frameworks/Carbon.framework/Versions/A/Carbon (compatibility version 2.0.0, current version 152.0.0)
+	/System/Library/Frameworks/Cocoa.framework/Versions/A/Cocoa (compatibility version 1.0.0, current version 15.0.0)
+	/System/Library/Frameworks/AudioToolbox.framework/Versions/A/AudioToolbox (compatibility version 1.0.0, current version 1.0.0)
+	/usr/lib/libSystem.B.dylib (compatibility version 1.0.0, current version 123.0.0)
+	/System/Library/Frameworks/OpenGL.framework/Versions/A/OpenGL (compatibility version 1.0.0, current version 1.0.0)
+	/System/Library/Frameworks/WebKit.framework/Versions/A/WebKit (compatibility version 1.0.0, current version 531.9.0)
+	/usr/lib/libz.1.dylib (compatibility version 1.0.0, current version 1.2.3)
+	/usr/lib/libiconv.2.dylib (compatibility version 7.0.0, current version 7.0.0)
+	@executable_path/libwx_baseu-2.9.0.0.0.dylib (compatibility version 1.0.0, current version 1.0.0)
+	/usr/lib/libstdc++.6.dylib (compatibility version 7.0.0, current version 7.9.0)
+	/usr/lib/libgcc_s.1.dylib (compatibility version 1.0.0, current version 246.0.0)
+	/usr/lib/libobjc.A.dylib (compatibility version 1.0.0, current version 227.0.0)
+	/System/Library/Frameworks/CoreServices.framework/Versions/A/CoreServices (compatibility version 1.0.0, current version 44.0.0)
+	/System/Library/Frameworks/CoreFoundation.framework/Versions/A/CoreFoundation (compatibility version 150.0.0, current version 550.0.0)
+	/System/Library/Frameworks/ApplicationServices.framework/Versions/A/ApplicationServices (compatibility version 1.0.0, current version 38.0.0)
+	/System/Library/Frameworks/Foundation.framework/Versions/C/Foundation (compatibility version 300.0.0, current version 751.0.0)
+	/System/Library/Frameworks/AppKit.framework/Versions/C/AppKit (compatibility version 45.0.0, current version 1038.0.0)
+-------------------
+File:/Users/osiris/osiris/osiris/distribute/temp/Osiris.app/Contents/MacOS/libwx_osx_cocoau_html-2.9.0.0.0.dylib
+/Users/osiris/osiris/osiris/distribute/temp/Osiris.app/Contents/MacOS/libwx_osx_cocoau_html-2.9.0.0.0.dylib:
+	@executable_path/libwx_osx_cocoau_html-2.9.dylib (compatibility version 1.0.0, current version 1.0.0)
+	/System/Library/Frameworks/IOKit.framework/Versions/A/IOKit (compatibility version 1.0.0, current version 275.0.0)
+	/System/Library/Frameworks/Carbon.framework/Versions/A/Carbon (compatibility version 2.0.0, current version 152.0.0)
+	/System/Library/Frameworks/Cocoa.framework/Versions/A/Cocoa (compatibility version 1.0.0, current version 15.0.0)
+	/System/Library/Frameworks/AudioToolbox.framework/Versions/A/AudioToolbox (compatibility version 1.0.0, current version 1.0.0)
+	/usr/lib/libSystem.B.dylib (compatibility version 1.0.0, current version 123.0.0)
+	/System/Library/Frameworks/OpenGL.framework/Versions/A/OpenGL (compatibility version 1.0.0, current version 1.0.0)
+	/System/Library/Frameworks/WebKit.framework/Versions/A/WebKit (compatibility version 1.0.0, current version 531.9.0)
+	/usr/lib/libz.1.dylib (compatibility version 1.0.0, current version 1.2.3)
+	/usr/lib/libiconv.2.dylib (compatibility version 7.0.0, current version 7.0.0)
+	@executable_path/libwx_osx_cocoau_core-2.9.0.0.0.dylib (compatibility version 1.0.0, current version 1.0.0)
+	@executable_path/libwx_baseu-2.9.0.0.0.dylib (compatibility version 1.0.0, current version 1.0.0)
+	/usr/lib/libstdc++.6.dylib (compatibility version 7.0.0, current version 7.9.0)
+	/usr/lib/libgcc_s.1.dylib (compatibility version 1.0.0, current version 246.0.0)
+	/System/Library/Frameworks/CoreFoundation.framework/Versions/A/CoreFoundation (compatibility version 150.0.0, current version 550.0.0)
+-------------------
+File:/Users/osiris/osiris/osiris/distribute/temp/Osiris.app/Contents/MacOS/libwx_osx_cocoau_html-2.9.0.dylib
+/Users/osiris/osiris/osiris/distribute/temp/Osiris.app/Contents/MacOS/libwx_osx_cocoau_html-2.9.0.dylib:
+	@executable_path/libwx_osx_cocoau_html-2.9.dylib (compatibility version 1.0.0, current version 1.0.0)
+	/System/Library/Frameworks/IOKit.framework/Versions/A/IOKit (compatibility version 1.0.0, current version 275.0.0)
+	/System/Library/Frameworks/Carbon.framework/Versions/A/Carbon (compatibility version 2.0.0, current version 152.0.0)
+	/System/Library/Frameworks/Cocoa.framework/Versions/A/Cocoa (compatibility version 1.0.0, current version 15.0.0)
+	/System/Library/Frameworks/AudioToolbox.framework/Versions/A/AudioToolbox (compatibility version 1.0.0, current version 1.0.0)
+	/usr/lib/libSystem.B.dylib (compatibility version 1.0.0, current version 123.0.0)
+	/System/Library/Frameworks/OpenGL.framework/Versions/A/OpenGL (compatibility version 1.0.0, current version 1.0.0)
+	/System/Library/Frameworks/WebKit.framework/Versions/A/WebKit (compatibility version 1.0.0, current version 531.9.0)
+	/usr/lib/libz.1.dylib (compatibility version 1.0.0, current version 1.2.3)
+	/usr/lib/libiconv.2.dylib (compatibility version 7.0.0, current version 7.0.0)
+	@executable_path/libwx_osx_cocoau_core-2.9.0.0.0.dylib (compatibility version 1.0.0, current version 1.0.0)
+	@executable_path/libwx_baseu-2.9.0.0.0.dylib (compatibility version 1.0.0, current version 1.0.0)
+	/usr/lib/libstdc++.6.dylib (compatibility version 7.0.0, current version 7.9.0)
+	/usr/lib/libgcc_s.1.dylib (compatibility version 1.0.0, current version 246.0.0)
+	/System/Library/Frameworks/CoreFoundation.framework/Versions/A/CoreFoundation (compatibility version 150.0.0, current version 550.0.0)
+-------------------
+File:/Users/osiris/osiris/osiris/distribute/temp/Osiris.app/Contents/MacOS/libwx_osx_cocoau_html-2.9.dylib
+/Users/osiris/osiris/osiris/distribute/temp/Osiris.app/Contents/MacOS/libwx_osx_cocoau_html-2.9.dylib:
+	@executable_path/libwx_osx_cocoau_html-2.9.dylib (compatibility version 1.0.0, current version 1.0.0)
+	/System/Library/Frameworks/IOKit.framework/Versions/A/IOKit (compatibility version 1.0.0, current version 275.0.0)
+	/System/Library/Frameworks/Carbon.framework/Versions/A/Carbon (compatibility version 2.0.0, current version 152.0.0)
+	/System/Library/Frameworks/Cocoa.framework/Versions/A/Cocoa (compatibility version 1.0.0, current version 15.0.0)
+	/System/Library/Frameworks/AudioToolbox.framework/Versions/A/AudioToolbox (compatibility version 1.0.0, current version 1.0.0)
+	/usr/lib/libSystem.B.dylib (compatibility version 1.0.0, current version 123.0.0)
+	/System/Library/Frameworks/OpenGL.framework/Versions/A/OpenGL (compatibility version 1.0.0, current version 1.0.0)
+	/System/Library/Frameworks/WebKit.framework/Versions/A/WebKit (compatibility version 1.0.0, current version 531.9.0)
+	/usr/lib/libz.1.dylib (compatibility version 1.0.0, current version 1.2.3)
+	/usr/lib/libiconv.2.dylib (compatibility version 7.0.0, current version 7.0.0)
+	@executable_path/libwx_osx_cocoau_core-2.9.0.0.0.dylib (compatibility version 1.0.0, current version 1.0.0)
+	@executable_path/libwx_baseu-2.9.0.0.0.dylib (compatibility version 1.0.0, current version 1.0.0)
+	/usr/lib/libstdc++.6.dylib (compatibility version 7.0.0, current version 7.9.0)
+	/usr/lib/libgcc_s.1.dylib (compatibility version 1.0.0, current version 246.0.0)
+	/System/Library/Frameworks/CoreFoundation.framework/Versions/A/CoreFoundation (compatibility version 150.0.0, current version 550.0.0)
+-------------------
+File:/Users/osiris/osiris/osiris/distribute/temp/Osiris.app/Contents/MacOS/libwx_osx_cocoau_media-2.9.0.0.0.dylib
+/Users/osiris/osiris/osiris/distribute/temp/Osiris.app/Contents/MacOS/libwx_osx_cocoau_media-2.9.0.0.0.dylib:
+	@executable_path/libwx_osx_cocoau_media-2.9.dylib (compatibility version 1.0.0, current version 1.0.0)
+	/System/Library/Frameworks/IOKit.framework/Versions/A/IOKit (compatibility version 1.0.0, current version 275.0.0)
+	/System/Library/Frameworks/Carbon.framework/Versions/A/Carbon (compatibility version 2.0.0, current version 152.0.0)
+	/System/Library/Frameworks/Cocoa.framework/Versions/A/Cocoa (compatibility version 1.0.0, current version 15.0.0)
+	/System/Library/Frameworks/AudioToolbox.framework/Versions/A/AudioToolbox (compatibility version 1.0.0, current version 1.0.0)
+	/usr/lib/libSystem.B.dylib (compatibility version 1.0.0, current version 123.0.0)
+	/System/Library/Frameworks/OpenGL.framework/Versions/A/OpenGL (compatibility version 1.0.0, current version 1.0.0)
+	/System/Library/Frameworks/WebKit.framework/Versions/A/WebKit (compatibility version 1.0.0, current version 531.9.0)
+	/usr/lib/libz.1.dylib (compatibility version 1.0.0, current version 1.2.3)
+	/usr/lib/libiconv.2.dylib (compatibility version 7.0.0, current version 7.0.0)
+	@executable_path/libwx_osx_cocoau_core-2.9.0.0.0.dylib (compatibility version 1.0.0, current version 1.0.0)
+	@executable_path/libwx_baseu-2.9.0.0.0.dylib (compatibility version 1.0.0, current version 1.0.0)
+	/usr/lib/libstdc++.6.dylib (compatibility version 7.0.0, current version 7.9.0)
+	/usr/lib/libgcc_s.1.dylib (compatibility version 1.0.0, current version 246.0.0)
+-------------------
+File:/Users/osiris/osiris/osiris/distribute/temp/Osiris.app/Contents/MacOS/libwx_osx_cocoau_media-2.9.0.dylib
+/Users/osiris/osiris/osiris/distribute/temp/Osiris.app/Contents/MacOS/libwx_osx_cocoau_media-2.9.0.dylib:
+	@executable_path/libwx_osx_cocoau_media-2.9.dylib (compatibility version 1.0.0, current version 1.0.0)
+	/System/Library/Frameworks/IOKit.framework/Versions/A/IOKit (compatibility version 1.0.0, current version 275.0.0)
+	/System/Library/Frameworks/Carbon.framework/Versions/A/Carbon (compatibility version 2.0.0, current version 152.0.0)
+	/System/Library/Frameworks/Cocoa.framework/Versions/A/Cocoa (compatibility version 1.0.0, current version 15.0.0)
+	/System/Library/Frameworks/AudioToolbox.framework/Versions/A/AudioToolbox (compatibility version 1.0.0, current version 1.0.0)
+	/usr/lib/libSystem.B.dylib (compatibility version 1.0.0, current version 123.0.0)
+	/System/Library/Frameworks/OpenGL.framework/Versions/A/OpenGL (compatibility version 1.0.0, current version 1.0.0)
+	/System/Library/Frameworks/WebKit.framework/Versions/A/WebKit (compatibility version 1.0.0, current version 531.9.0)
+	/usr/lib/libz.1.dylib (compatibility version 1.0.0, current version 1.2.3)
+	/usr/lib/libiconv.2.dylib (compatibility version 7.0.0, current version 7.0.0)
+	@executable_path/libwx_osx_cocoau_core-2.9.0.0.0.dylib (compatibility version 1.0.0, current version 1.0.0)
+	@executable_path/libwx_baseu-2.9.0.0.0.dylib (compatibility version 1.0.0, current version 1.0.0)
+	/usr/lib/libstdc++.6.dylib (compatibility version 7.0.0, current version 7.9.0)
+	/usr/lib/libgcc_s.1.dylib (compatibility version 1.0.0, current version 246.0.0)
+-------------------
+File:/Users/osiris/osiris/osiris/distribute/temp/Osiris.app/Contents/MacOS/libwx_osx_cocoau_media-2.9.dylib
+/Users/osiris/osiris/osiris/distribute/temp/Osiris.app/Contents/MacOS/libwx_osx_cocoau_media-2.9.dylib:
+	@executable_path/libwx_osx_cocoau_media-2.9.dylib (compatibility version 1.0.0, current version 1.0.0)
+	/System/Library/Frameworks/IOKit.framework/Versions/A/IOKit (compatibility version 1.0.0, current version 275.0.0)
+	/System/Library/Frameworks/Carbon.framework/Versions/A/Carbon (compatibility version 2.0.0, current version 152.0.0)
+	/System/Library/Frameworks/Cocoa.framework/Versions/A/Cocoa (compatibility version 1.0.0, current version 15.0.0)
+	/System/Library/Frameworks/AudioToolbox.framework/Versions/A/AudioToolbox (compatibility version 1.0.0, current version 1.0.0)
+	/usr/lib/libSystem.B.dylib (compatibility version 1.0.0, current version 123.0.0)
+	/System/Library/Frameworks/OpenGL.framework/Versions/A/OpenGL (compatibility version 1.0.0, current version 1.0.0)
+	/System/Library/Frameworks/WebKit.framework/Versions/A/WebKit (compatibility version 1.0.0, current version 531.9.0)
+	/usr/lib/libz.1.dylib (compatibility version 1.0.0, current version 1.2.3)
+	/usr/lib/libiconv.2.dylib (compatibility version 7.0.0, current version 7.0.0)
+	@executable_path/libwx_osx_cocoau_core-2.9.0.0.0.dylib (compatibility version 1.0.0, current version 1.0.0)
+	@executable_path/libwx_baseu-2.9.0.0.0.dylib (compatibility version 1.0.0, current version 1.0.0)
+	/usr/lib/libstdc++.6.dylib (compatibility version 7.0.0, current version 7.9.0)
+	/usr/lib/libgcc_s.1.dylib (compatibility version 1.0.0, current version 246.0.0)
+-------------------
+File:/Users/osiris/osiris/osiris/distribute/temp/Osiris.app/Contents/MacOS/libwx_osx_cocoau_propgrid-2.9.0.0.0.dylib
+/Users/osiris/osiris/osiris/distribute/temp/Osiris.app/Contents/MacOS/libwx_osx_cocoau_propgrid-2.9.0.0.0.dylib:
+	@executable_path/libwx_osx_cocoau_propgrid-2.9.dylib (compatibility version 1.0.0, current version 1.0.0)
+	/System/Library/Frameworks/IOKit.framework/Versions/A/IOKit (compatibility version 1.0.0, current version 275.0.0)
+	/System/Library/Frameworks/Carbon.framework/Versions/A/Carbon (compatibility version 2.0.0, current version 152.0.0)
+	/System/Library/Frameworks/Cocoa.framework/Versions/A/Cocoa (compatibility version 1.0.0, current version 15.0.0)
+	/System/Library/Frameworks/AudioToolbox.framework/Versions/A/AudioToolbox (compatibility version 1.0.0, current version 1.0.0)
+	/usr/lib/libSystem.B.dylib (compatibility version 1.0.0, current version 123.0.0)
+	/System/Library/Frameworks/OpenGL.framework/Versions/A/OpenGL (compatibility version 1.0.0, current version 1.0.0)
+	/System/Library/Frameworks/WebKit.framework/Versions/A/WebKit (compatibility version 1.0.0, current version 531.9.0)
+	/usr/lib/libz.1.dylib (compatibility version 1.0.0, current version 1.2.3)
+	/usr/lib/libiconv.2.dylib (compatibility version 7.0.0, current version 7.0.0)
+	@executable_path/libwx_osx_cocoau_adv-2.9.0.0.0.dylib (compatibility version 1.0.0, current version 1.0.0)
+	@executable_path/libwx_osx_cocoau_core-2.9.0.0.0.dylib (compatibility version 1.0.0, current version 1.0.0)
+	@executable_path/libwx_baseu-2.9.0.0.0.dylib (compatibility version 1.0.0, current version 1.0.0)
+	/usr/lib/libstdc++.6.dylib (compatibility version 7.0.0, current version 7.9.0)
+	/usr/lib/libgcc_s.1.dylib (compatibility version 1.0.0, current version 246.0.0)
+	/System/Library/Frameworks/CoreFoundation.framework/Versions/A/CoreFoundation (compatibility version 150.0.0, current version 550.0.0)
+-------------------
+File:/Users/osiris/osiris/osiris/distribute/temp/Osiris.app/Contents/MacOS/libwx_osx_cocoau_propgrid-2.9.0.dylib
+/Users/osiris/osiris/osiris/distribute/temp/Osiris.app/Contents/MacOS/libwx_osx_cocoau_propgrid-2.9.0.dylib:
+	@executable_path/libwx_osx_cocoau_propgrid-2.9.dylib (compatibility version 1.0.0, current version 1.0.0)
+	/System/Library/Frameworks/IOKit.framework/Versions/A/IOKit (compatibility version 1.0.0, current version 275.0.0)
+	/System/Library/Frameworks/Carbon.framework/Versions/A/Carbon (compatibility version 2.0.0, current version 152.0.0)
+	/System/Library/Frameworks/Cocoa.framework/Versions/A/Cocoa (compatibility version 1.0.0, current version 15.0.0)
+	/System/Library/Frameworks/AudioToolbox.framework/Versions/A/AudioToolbox (compatibility version 1.0.0, current version 1.0.0)
+	/usr/lib/libSystem.B.dylib (compatibility version 1.0.0, current version 123.0.0)
+	/System/Library/Frameworks/OpenGL.framework/Versions/A/OpenGL (compatibility version 1.0.0, current version 1.0.0)
+	/System/Library/Frameworks/WebKit.framework/Versions/A/WebKit (compatibility version 1.0.0, current version 531.9.0)
+	/usr/lib/libz.1.dylib (compatibility version 1.0.0, current version 1.2.3)
+	/usr/lib/libiconv.2.dylib (compatibility version 7.0.0, current version 7.0.0)
+	@executable_path/libwx_osx_cocoau_adv-2.9.0.0.0.dylib (compatibility version 1.0.0, current version 1.0.0)
+	@executable_path/libwx_osx_cocoau_core-2.9.0.0.0.dylib (compatibility version 1.0.0, current version 1.0.0)
+	@executable_path/libwx_baseu-2.9.0.0.0.dylib (compatibility version 1.0.0, current version 1.0.0)
+	/usr/lib/libstdc++.6.dylib (compatibility version 7.0.0, current version 7.9.0)
+	/usr/lib/libgcc_s.1.dylib (compatibility version 1.0.0, current version 246.0.0)
+	/System/Library/Frameworks/CoreFoundation.framework/Versions/A/CoreFoundation (compatibility version 150.0.0, current version 550.0.0)
+-------------------
+File:/Users/osiris/osiris/osiris/distribute/temp/Osiris.app/Contents/MacOS/libwx_osx_cocoau_propgrid-2.9.dylib
+/Users/osiris/osiris/osiris/distribute/temp/Osiris.app/Contents/MacOS/libwx_osx_cocoau_propgrid-2.9.dylib:
+	@executable_path/libwx_osx_cocoau_propgrid-2.9.dylib (compatibility version 1.0.0, current version 1.0.0)
+	/System/Library/Frameworks/IOKit.framework/Versions/A/IOKit (compatibility version 1.0.0, current version 275.0.0)
+	/System/Library/Frameworks/Carbon.framework/Versions/A/Carbon (compatibility version 2.0.0, current version 152.0.0)
+	/System/Library/Frameworks/Cocoa.framework/Versions/A/Cocoa (compatibility version 1.0.0, current version 15.0.0)
+	/System/Library/Frameworks/AudioToolbox.framework/Versions/A/AudioToolbox (compatibility version 1.0.0, current version 1.0.0)
+	/usr/lib/libSystem.B.dylib (compatibility version 1.0.0, current version 123.0.0)
+	/System/Library/Frameworks/OpenGL.framework/Versions/A/OpenGL (compatibility version 1.0.0, current version 1.0.0)
+	/System/Library/Frameworks/WebKit.framework/Versions/A/WebKit (compatibility version 1.0.0, current version 531.9.0)
+	/usr/lib/libz.1.dylib (compatibility version 1.0.0, current version 1.2.3)
+	/usr/lib/libiconv.2.dylib (compatibility version 7.0.0, current version 7.0.0)
+	@executable_path/libwx_osx_cocoau_adv-2.9.0.0.0.dylib (compatibility version 1.0.0, current version 1.0.0)
+	@executable_path/libwx_osx_cocoau_core-2.9.0.0.0.dylib (compatibility version 1.0.0, current version 1.0.0)
+	@executable_path/libwx_baseu-2.9.0.0.0.dylib (compatibility version 1.0.0, current version 1.0.0)
+	/usr/lib/libstdc++.6.dylib (compatibility version 7.0.0, current version 7.9.0)
+	/usr/lib/libgcc_s.1.dylib (compatibility version 1.0.0, current version 246.0.0)
+	/System/Library/Frameworks/CoreFoundation.framework/Versions/A/CoreFoundation (compatibility version 150.0.0, current version 550.0.0)
+-------------------
+File:/Users/osiris/osiris/osiris/distribute/temp/Osiris.app/Contents/MacOS/libwx_osx_cocoau_qa-2.9.0.0.0.dylib
+/Users/osiris/osiris/osiris/distribute/temp/Osiris.app/Contents/MacOS/libwx_osx_cocoau_qa-2.9.0.0.0.dylib:
+	@executable_path/libwx_osx_cocoau_qa-2.9.dylib (compatibility version 1.0.0, current version 1.0.0)
+	/System/Library/Frameworks/IOKit.framework/Versions/A/IOKit (compatibility version 1.0.0, current version 275.0.0)
+	/System/Library/Frameworks/Carbon.framework/Versions/A/Carbon (compatibility version 2.0.0, current version 152.0.0)
+	/System/Library/Frameworks/Cocoa.framework/Versions/A/Cocoa (compatibility version 1.0.0, current version 15.0.0)
+	/System/Library/Frameworks/AudioToolbox.framework/Versions/A/AudioToolbox (compatibility version 1.0.0, current version 1.0.0)
+	/usr/lib/libSystem.B.dylib (compatibility version 1.0.0, current version 123.0.0)
+	/System/Library/Frameworks/OpenGL.framework/Versions/A/OpenGL (compatibility version 1.0.0, current version 1.0.0)
+	/System/Library/Frameworks/WebKit.framework/Versions/A/WebKit (compatibility version 1.0.0, current version 531.9.0)
+	/usr/lib/libz.1.dylib (compatibility version 1.0.0, current version 1.2.3)
+	/usr/lib/libiconv.2.dylib (compatibility version 7.0.0, current version 7.0.0)
+	@executable_path/libwx_osx_cocoau_core-2.9.0.0.0.dylib (compatibility version 1.0.0, current version 1.0.0)
+	@executable_path/libwx_baseu-2.9.0.0.0.dylib (compatibility version 1.0.0, current version 1.0.0)
+	@executable_path/libwx_baseu_xml-2.9.0.0.0.dylib (compatibility version 1.0.0, current version 1.0.0)
+	/usr/lib/libstdc++.6.dylib (compatibility version 7.0.0, current version 7.9.0)
+	/usr/lib/libgcc_s.1.dylib (compatibility version 1.0.0, current version 246.0.0)
+	/System/Library/Frameworks/CoreFoundation.framework/Versions/A/CoreFoundation (compatibility version 150.0.0, current version 550.0.0)
+-------------------
+File:/Users/osiris/osiris/osiris/distribute/temp/Osiris.app/Contents/MacOS/libwx_osx_cocoau_qa-2.9.0.dylib
+/Users/osiris/osiris/osiris/distribute/temp/Osiris.app/Contents/MacOS/libwx_osx_cocoau_qa-2.9.0.dylib:
+	@executable_path/libwx_osx_cocoau_qa-2.9.dylib (compatibility version 1.0.0, current version 1.0.0)
+	/System/Library/Frameworks/IOKit.framework/Versions/A/IOKit (compatibility version 1.0.0, current version 275.0.0)
+	/System/Library/Frameworks/Carbon.framework/Versions/A/Carbon (compatibility version 2.0.0, current version 152.0.0)
+	/System/Library/Frameworks/Cocoa.framework/Versions/A/Cocoa (compatibility version 1.0.0, current version 15.0.0)
+	/System/Library/Frameworks/AudioToolbox.framework/Versions/A/AudioToolbox (compatibility version 1.0.0, current version 1.0.0)
+	/usr/lib/libSystem.B.dylib (compatibility version 1.0.0, current version 123.0.0)
+	/System/Library/Frameworks/OpenGL.framework/Versions/A/OpenGL (compatibility version 1.0.0, current version 1.0.0)
+	/System/Library/Frameworks/WebKit.framework/Versions/A/WebKit (compatibility version 1.0.0, current version 531.9.0)
+	/usr/lib/libz.1.dylib (compatibility version 1.0.0, current version 1.2.3)
+	/usr/lib/libiconv.2.dylib (compatibility version 7.0.0, current version 7.0.0)
+	@executable_path/libwx_osx_cocoau_core-2.9.0.0.0.dylib (compatibility version 1.0.0, current version 1.0.0)
+	@executable_path/libwx_baseu-2.9.0.0.0.dylib (compatibility version 1.0.0, current version 1.0.0)
+	@executable_path/libwx_baseu_xml-2.9.0.0.0.dylib (compatibility version 1.0.0, current version 1.0.0)
+	/usr/lib/libstdc++.6.dylib (compatibility version 7.0.0, current version 7.9.0)
+	/usr/lib/libgcc_s.1.dylib (compatibility version 1.0.0, current version 246.0.0)
+	/System/Library/Frameworks/CoreFoundation.framework/Versions/A/CoreFoundation (compatibility version 150.0.0, current version 550.0.0)
+-------------------
+File:/Users/osiris/osiris/osiris/distribute/temp/Osiris.app/Contents/MacOS/libwx_osx_cocoau_qa-2.9.dylib
+/Users/osiris/osiris/osiris/distribute/temp/Osiris.app/Contents/MacOS/libwx_osx_cocoau_qa-2.9.dylib:
+	@executable_path/libwx_osx_cocoau_qa-2.9.dylib (compatibility version 1.0.0, current version 1.0.0)
+	/System/Library/Frameworks/IOKit.framework/Versions/A/IOKit (compatibility version 1.0.0, current version 275.0.0)
+	/System/Library/Frameworks/Carbon.framework/Versions/A/Carbon (compatibility version 2.0.0, current version 152.0.0)
+	/System/Library/Frameworks/Cocoa.framework/Versions/A/Cocoa (compatibility version 1.0.0, current version 15.0.0)
+	/System/Library/Frameworks/AudioToolbox.framework/Versions/A/AudioToolbox (compatibility version 1.0.0, current version 1.0.0)
+	/usr/lib/libSystem.B.dylib (compatibility version 1.0.0, current version 123.0.0)
+	/System/Library/Frameworks/OpenGL.framework/Versions/A/OpenGL (compatibility version 1.0.0, current version 1.0.0)
+	/System/Library/Frameworks/WebKit.framework/Versions/A/WebKit (compatibility version 1.0.0, current version 531.9.0)
+	/usr/lib/libz.1.dylib (compatibility version 1.0.0, current version 1.2.3)
+	/usr/lib/libiconv.2.dylib (compatibility version 7.0.0, current version 7.0.0)
+	@executable_path/libwx_osx_cocoau_core-2.9.0.0.0.dylib (compatibility version 1.0.0, current version 1.0.0)
+	@executable_path/libwx_baseu-2.9.0.0.0.dylib (compatibility version 1.0.0, current version 1.0.0)
+	@executable_path/libwx_baseu_xml-2.9.0.0.0.dylib (compatibility version 1.0.0, current version 1.0.0)
+	/usr/lib/libstdc++.6.dylib (compatibility version 7.0.0, current version 7.9.0)
+	/usr/lib/libgcc_s.1.dylib (compatibility version 1.0.0, current version 246.0.0)
+	/System/Library/Frameworks/CoreFoundation.framework/Versions/A/CoreFoundation (compatibility version 150.0.0, current version 550.0.0)
+-------------------
+File:/Users/osiris/osiris/osiris/distribute/temp/Osiris.app/Contents/MacOS/libwx_osx_cocoau_richtext-2.9.0.0.0.dylib
+/Users/osiris/osiris/osiris/distribute/temp/Osiris.app/Contents/MacOS/libwx_osx_cocoau_richtext-2.9.0.0.0.dylib:
+	@executable_path/libwx_osx_cocoau_richtext-2.9.dylib (compatibility version 1.0.0, current version 1.0.0)
+	/System/Library/Frameworks/IOKit.framework/Versions/A/IOKit (compatibility version 1.0.0, current version 275.0.0)
+	/System/Library/Frameworks/Carbon.framework/Versions/A/Carbon (compatibility version 2.0.0, current version 152.0.0)
+	/System/Library/Frameworks/Cocoa.framework/Versions/A/Cocoa (compatibility version 1.0.0, current version 15.0.0)
+	/System/Library/Frameworks/AudioToolbox.framework/Versions/A/AudioToolbox (compatibility version 1.0.0, current version 1.0.0)
+	/usr/lib/libSystem.B.dylib (compatibility version 1.0.0, current version 123.0.0)
+	/System/Library/Frameworks/OpenGL.framework/Versions/A/OpenGL (compatibility version 1.0.0, current version 1.0.0)
+	/System/Library/Frameworks/WebKit.framework/Versions/A/WebKit (compatibility version 1.0.0, current version 531.9.0)
+	/usr/lib/libz.1.dylib (compatibility version 1.0.0, current version 1.2.3)
+	/usr/lib/libiconv.2.dylib (compatibility version 7.0.0, current version 7.0.0)
+	@executable_path/libwx_osx_cocoau_adv-2.9.0.0.0.dylib (compatibility version 1.0.0, current version 1.0.0)
+	@executable_path/libwx_osx_cocoau_html-2.9.0.0.0.dylib (compatibility version 1.0.0, current version 1.0.0)
+	@executable_path/libwx_baseu_xml-2.9.0.0.0.dylib (compatibility version 1.0.0, current version 1.0.0)
+	@executable_path/libwx_osx_cocoau_core-2.9.0.0.0.dylib (compatibility version 1.0.0, current version 1.0.0)
+	@executable_path/libwx_baseu-2.9.0.0.0.dylib (compatibility version 1.0.0, current version 1.0.0)
+	/usr/lib/libstdc++.6.dylib (compatibility version 7.0.0, current version 7.9.0)
+	/usr/lib/libgcc_s.1.dylib (compatibility version 1.0.0, current version 246.0.0)
+	/System/Library/Frameworks/CoreFoundation.framework/Versions/A/CoreFoundation (compatibility version 150.0.0, current version 550.0.0)
+-------------------
+File:/Users/osiris/osiris/osiris/distribute/temp/Osiris.app/Contents/MacOS/libwx_osx_cocoau_richtext-2.9.0.dylib
+/Users/osiris/osiris/osiris/distribute/temp/Osiris.app/Contents/MacOS/libwx_osx_cocoau_richtext-2.9.0.dylib:
+	@executable_path/libwx_osx_cocoau_richtext-2.9.dylib (compatibility version 1.0.0, current version 1.0.0)
+	/System/Library/Frameworks/IOKit.framework/Versions/A/IOKit (compatibility version 1.0.0, current version 275.0.0)
+	/System/Library/Frameworks/Carbon.framework/Versions/A/Carbon (compatibility version 2.0.0, current version 152.0.0)
+	/System/Library/Frameworks/Cocoa.framework/Versions/A/Cocoa (compatibility version 1.0.0, current version 15.0.0)
+	/System/Library/Frameworks/AudioToolbox.framework/Versions/A/AudioToolbox (compatibility version 1.0.0, current version 1.0.0)
+	/usr/lib/libSystem.B.dylib (compatibility version 1.0.0, current version 123.0.0)
+	/System/Library/Frameworks/OpenGL.framework/Versions/A/OpenGL (compatibility version 1.0.0, current version 1.0.0)
+	/System/Library/Frameworks/WebKit.framework/Versions/A/WebKit (compatibility version 1.0.0, current version 531.9.0)
+	/usr/lib/libz.1.dylib (compatibility version 1.0.0, current version 1.2.3)
+	/usr/lib/libiconv.2.dylib (compatibility version 7.0.0, current version 7.0.0)
+	@executable_path/libwx_osx_cocoau_adv-2.9.0.0.0.dylib (compatibility version 1.0.0, current version 1.0.0)
+	@executable_path/libwx_osx_cocoau_html-2.9.0.0.0.dylib (compatibility version 1.0.0, current version 1.0.0)
+	@executable_path/libwx_baseu_xml-2.9.0.0.0.dylib (compatibility version 1.0.0, current version 1.0.0)
+	@executable_path/libwx_osx_cocoau_core-2.9.0.0.0.dylib (compatibility version 1.0.0, current version 1.0.0)
+	@executable_path/libwx_baseu-2.9.0.0.0.dylib (compatibility version 1.0.0, current version 1.0.0)
+	/usr/lib/libstdc++.6.dylib (compatibility version 7.0.0, current version 7.9.0)
+	/usr/lib/libgcc_s.1.dylib (compatibility version 1.0.0, current version 246.0.0)
+	/System/Library/Frameworks/CoreFoundation.framework/Versions/A/CoreFoundation (compatibility version 150.0.0, current version 550.0.0)
+-------------------
+File:/Users/osiris/osiris/osiris/distribute/temp/Osiris.app/Contents/MacOS/libwx_osx_cocoau_richtext-2.9.dylib
+/Users/osiris/osiris/osiris/distribute/temp/Osiris.app/Contents/MacOS/libwx_osx_cocoau_richtext-2.9.dylib:
+	@executable_path/libwx_osx_cocoau_richtext-2.9.dylib (compatibility version 1.0.0, current version 1.0.0)
+	/System/Library/Frameworks/IOKit.framework/Versions/A/IOKit (compatibility version 1.0.0, current version 275.0.0)
+	/System/Library/Frameworks/Carbon.framework/Versions/A/Carbon (compatibility version 2.0.0, current version 152.0.0)
+	/System/Library/Frameworks/Cocoa.framework/Versions/A/Cocoa (compatibility version 1.0.0, current version 15.0.0)
+	/System/Library/Frameworks/AudioToolbox.framework/Versions/A/AudioToolbox (compatibility version 1.0.0, current version 1.0.0)
+	/usr/lib/libSystem.B.dylib (compatibility version 1.0.0, current version 123.0.0)
+	/System/Library/Frameworks/OpenGL.framework/Versions/A/OpenGL (compatibility version 1.0.0, current version 1.0.0)
+	/System/Library/Frameworks/WebKit.framework/Versions/A/WebKit (compatibility version 1.0.0, current version 531.9.0)
+	/usr/lib/libz.1.dylib (compatibility version 1.0.0, current version 1.2.3)
+	/usr/lib/libiconv.2.dylib (compatibility version 7.0.0, current version 7.0.0)
+	@executable_path/libwx_osx_cocoau_adv-2.9.0.0.0.dylib (compatibility version 1.0.0, current version 1.0.0)
+	@executable_path/libwx_osx_cocoau_html-2.9.0.0.0.dylib (compatibility version 1.0.0, current version 1.0.0)
+	@executable_path/libwx_baseu_xml-2.9.0.0.0.dylib (compatibility version 1.0.0, current version 1.0.0)
+	@executable_path/libwx_osx_cocoau_core-2.9.0.0.0.dylib (compatibility version 1.0.0, current version 1.0.0)
+	@executable_path/libwx_baseu-2.9.0.0.0.dylib (compatibility version 1.0.0, current version 1.0.0)
+	/usr/lib/libstdc++.6.dylib (compatibility version 7.0.0, current version 7.9.0)
+	/usr/lib/libgcc_s.1.dylib (compatibility version 1.0.0, current version 246.0.0)
+	/System/Library/Frameworks/CoreFoundation.framework/Versions/A/CoreFoundation (compatibility version 150.0.0, current version 550.0.0)
+-------------------
+File:/Users/osiris/osiris/osiris/distribute/temp/Osiris.app/Contents/MacOS/libwx_osx_cocoau_stc-2.9.0.0.0.dylib
+/Users/osiris/osiris/osiris/distribute/temp/Osiris.app/Contents/MacOS/libwx_osx_cocoau_stc-2.9.0.0.0.dylib:
+	@executable_path/libwx_osx_cocoau_stc-2.9.dylib (compatibility version 1.0.0, current version 1.0.0)
+	/System/Library/Frameworks/IOKit.framework/Versions/A/IOKit (compatibility version 1.0.0, current version 275.0.0)
+	/System/Library/Frameworks/Carbon.framework/Versions/A/Carbon (compatibility version 2.0.0, current version 152.0.0)
+	/System/Library/Frameworks/Cocoa.framework/Versions/A/Cocoa (compatibility version 1.0.0, current version 15.0.0)
+	/System/Library/Frameworks/AudioToolbox.framework/Versions/A/AudioToolbox (compatibility version 1.0.0, current version 1.0.0)
+	/usr/lib/libSystem.B.dylib (compatibility version 1.0.0, current version 123.0.0)
+	/System/Library/Frameworks/OpenGL.framework/Versions/A/OpenGL (compatibility version 1.0.0, current version 1.0.0)
+	/System/Library/Frameworks/WebKit.framework/Versions/A/WebKit (compatibility version 1.0.0, current version 531.9.0)
+	/usr/lib/libz.1.dylib (compatibility version 1.0.0, current version 1.2.3)
+	/usr/lib/libiconv.2.dylib (compatibility version 7.0.0, current version 7.0.0)
+	@executable_path/libwx_osx_cocoau_core-2.9.0.0.0.dylib (compatibility version 1.0.0, current version 1.0.0)
+	@executable_path/libwx_baseu-2.9.0.0.0.dylib (compatibility version 1.0.0, current version 1.0.0)
+	/usr/lib/libstdc++.6.dylib (compatibility version 7.0.0, current version 7.9.0)
+	/usr/lib/libgcc_s.1.dylib (compatibility version 1.0.0, current version 246.0.0)
+	/System/Library/Frameworks/CoreFoundation.framework/Versions/A/CoreFoundation (compatibility version 150.0.0, current version 550.0.0)
+-------------------
+File:/Users/osiris/osiris/osiris/distribute/temp/Osiris.app/Contents/MacOS/libwx_osx_cocoau_stc-2.9.0.dylib
+/Users/osiris/osiris/osiris/distribute/temp/Osiris.app/Contents/MacOS/libwx_osx_cocoau_stc-2.9.0.dylib:
+	@executable_path/libwx_osx_cocoau_stc-2.9.dylib (compatibility version 1.0.0, current version 1.0.0)
+	/System/Library/Frameworks/IOKit.framework/Versions/A/IOKit (compatibility version 1.0.0, current version 275.0.0)
+	/System/Library/Frameworks/Carbon.framework/Versions/A/Carbon (compatibility version 2.0.0, current version 152.0.0)
+	/System/Library/Frameworks/Cocoa.framework/Versions/A/Cocoa (compatibility version 1.0.0, current version 15.0.0)
+	/System/Library/Frameworks/AudioToolbox.framework/Versions/A/AudioToolbox (compatibility version 1.0.0, current version 1.0.0)
+	/usr/lib/libSystem.B.dylib (compatibility version 1.0.0, current version 123.0.0)
+	/System/Library/Frameworks/OpenGL.framework/Versions/A/OpenGL (compatibility version 1.0.0, current version 1.0.0)
+	/System/Library/Frameworks/WebKit.framework/Versions/A/WebKit (compatibility version 1.0.0, current version 531.9.0)
+	/usr/lib/libz.1.dylib (compatibility version 1.0.0, current version 1.2.3)
+	/usr/lib/libiconv.2.dylib (compatibility version 7.0.0, current version 7.0.0)
+	@executable_path/libwx_osx_cocoau_core-2.9.0.0.0.dylib (compatibility version 1.0.0, current version 1.0.0)
+	@executable_path/libwx_baseu-2.9.0.0.0.dylib (compatibility version 1.0.0, current version 1.0.0)
+	/usr/lib/libstdc++.6.dylib (compatibility version 7.0.0, current version 7.9.0)
+	/usr/lib/libgcc_s.1.dylib (compatibility version 1.0.0, current version 246.0.0)
+	/System/Library/Frameworks/CoreFoundation.framework/Versions/A/CoreFoundation (compatibility version 150.0.0, current version 550.0.0)
+-------------------
+File:/Users/osiris/osiris/osiris/distribute/temp/Osiris.app/Contents/MacOS/libwx_osx_cocoau_stc-2.9.dylib
+/Users/osiris/osiris/osiris/distribute/temp/Osiris.app/Contents/MacOS/libwx_osx_cocoau_stc-2.9.dylib:
+	@executable_path/libwx_osx_cocoau_stc-2.9.dylib (compatibility version 1.0.0, current version 1.0.0)
+	/System/Library/Frameworks/IOKit.framework/Versions/A/IOKit (compatibility version 1.0.0, current version 275.0.0)
+	/System/Library/Frameworks/Carbon.framework/Versions/A/Carbon (compatibility version 2.0.0, current version 152.0.0)
+	/System/Library/Frameworks/Cocoa.framework/Versions/A/Cocoa (compatibility version 1.0.0, current version 15.0.0)
+	/System/Library/Frameworks/AudioToolbox.framework/Versions/A/AudioToolbox (compatibility version 1.0.0, current version 1.0.0)
+	/usr/lib/libSystem.B.dylib (compatibility version 1.0.0, current version 123.0.0)
+	/System/Library/Frameworks/OpenGL.framework/Versions/A/OpenGL (compatibility version 1.0.0, current version 1.0.0)
+	/System/Library/Frameworks/WebKit.framework/Versions/A/WebKit (compatibility version 1.0.0, current version 531.9.0)
+	/usr/lib/libz.1.dylib (compatibility version 1.0.0, current version 1.2.3)
+	/usr/lib/libiconv.2.dylib (compatibility version 7.0.0, current version 7.0.0)
+	@executable_path/libwx_osx_cocoau_core-2.9.0.0.0.dylib (compatibility version 1.0.0, current version 1.0.0)
+	@executable_path/libwx_baseu-2.9.0.0.0.dylib (compatibility version 1.0.0, current version 1.0.0)
+	/usr/lib/libstdc++.6.dylib (compatibility version 7.0.0, current version 7.9.0)
+	/usr/lib/libgcc_s.1.dylib (compatibility version 1.0.0, current version 246.0.0)
+	/System/Library/Frameworks/CoreFoundation.framework/Versions/A/CoreFoundation (compatibility version 150.0.0, current version 550.0.0)
+-------------------
+File:/Users/osiris/osiris/osiris/distribute/temp/Osiris.app/Contents/MacOS/libwx_osx_cocoau_xrc-2.9.0.0.0.dylib
+/Users/osiris/osiris/osiris/distribute/temp/Osiris.app/Contents/MacOS/libwx_osx_cocoau_xrc-2.9.0.0.0.dylib:
+	@executable_path/libwx_osx_cocoau_xrc-2.9.dylib (compatibility version 1.0.0, current version 1.0.0)
+	/System/Library/Frameworks/IOKit.framework/Versions/A/IOKit (compatibility version 1.0.0, current version 275.0.0)
+	/System/Library/Frameworks/Carbon.framework/Versions/A/Carbon (compatibility version 2.0.0, current version 152.0.0)
+	/System/Library/Frameworks/Cocoa.framework/Versions/A/Cocoa (compatibility version 1.0.0, current version 15.0.0)
+	/System/Library/Frameworks/AudioToolbox.framework/Versions/A/AudioToolbox (compatibility version 1.0.0, current version 1.0.0)
+	/usr/lib/libSystem.B.dylib (compatibility version 1.0.0, current version 123.0.0)
+	/System/Library/Frameworks/OpenGL.framework/Versions/A/OpenGL (compatibility version 1.0.0, current version 1.0.0)
+	/System/Library/Frameworks/WebKit.framework/Versions/A/WebKit (compatibility version 1.0.0, current version 531.9.0)
+	/usr/lib/libz.1.dylib (compatibility version 1.0.0, current version 1.2.3)
+	/usr/lib/libiconv.2.dylib (compatibility version 7.0.0, current version 7.0.0)
+	@executable_path/libwx_osx_cocoau_html-2.9.0.0.0.dylib (compatibility version 1.0.0, current version 1.0.0)
+	@executable_path/libwx_osx_cocoau_adv-2.9.0.0.0.dylib (compatibility version 1.0.0, current version 1.0.0)
+	@executable_path/libwx_osx_cocoau_core-2.9.0.0.0.dylib (compatibility version 1.0.0, current version 1.0.0)
+	@executable_path/libwx_baseu_xml-2.9.0.0.0.dylib (compatibility version 1.0.0, current version 1.0.0)
+	@executable_path/libwx_baseu-2.9.0.0.0.dylib (compatibility version 1.0.0, current version 1.0.0)
+	/usr/lib/libstdc++.6.dylib (compatibility version 7.0.0, current version 7.9.0)
+	/usr/lib/libgcc_s.1.dylib (compatibility version 1.0.0, current version 246.0.0)
+	/System/Library/Frameworks/CoreFoundation.framework/Versions/A/CoreFoundation (compatibility version 150.0.0, current version 550.0.0)
+-------------------
+File:/Users/osiris/osiris/osiris/distribute/temp/Osiris.app/Contents/MacOS/libwx_osx_cocoau_xrc-2.9.0.dylib
+/Users/osiris/osiris/osiris/distribute/temp/Osiris.app/Contents/MacOS/libwx_osx_cocoau_xrc-2.9.0.dylib:
+	@executable_path/libwx_osx_cocoau_xrc-2.9.dylib (compatibility version 1.0.0, current version 1.0.0)
+	/System/Library/Frameworks/IOKit.framework/Versions/A/IOKit (compatibility version 1.0.0, current version 275.0.0)
+	/System/Library/Frameworks/Carbon.framework/Versions/A/Carbon (compatibility version 2.0.0, current version 152.0.0)
+	/System/Library/Frameworks/Cocoa.framework/Versions/A/Cocoa (compatibility version 1.0.0, current version 15.0.0)
+	/System/Library/Frameworks/AudioToolbox.framework/Versions/A/AudioToolbox (compatibility version 1.0.0, current version 1.0.0)
+	/usr/lib/libSystem.B.dylib (compatibility version 1.0.0, current version 123.0.0)
+	/System/Library/Frameworks/OpenGL.framework/Versions/A/OpenGL (compatibility version 1.0.0, current version 1.0.0)
+	/System/Library/Frameworks/WebKit.framework/Versions/A/WebKit (compatibility version 1.0.0, current version 531.9.0)
+	/usr/lib/libz.1.dylib (compatibility version 1.0.0, current version 1.2.3)
+	/usr/lib/libiconv.2.dylib (compatibility version 7.0.0, current version 7.0.0)
+	@executable_path/libwx_osx_cocoau_html-2.9.0.0.0.dylib (compatibility version 1.0.0, current version 1.0.0)
+	@executable_path/libwx_osx_cocoau_adv-2.9.0.0.0.dylib (compatibility version 1.0.0, current version 1.0.0)
+	@executable_path/libwx_osx_cocoau_core-2.9.0.0.0.dylib (compatibility version 1.0.0, current version 1.0.0)
+	@executable_path/libwx_baseu_xml-2.9.0.0.0.dylib (compatibility version 1.0.0, current version 1.0.0)
+	@executable_path/libwx_baseu-2.9.0.0.0.dylib (compatibility version 1.0.0, current version 1.0.0)
+	/usr/lib/libstdc++.6.dylib (compatibility version 7.0.0, current version 7.9.0)
+	/usr/lib/libgcc_s.1.dylib (compatibility version 1.0.0, current version 246.0.0)
+	/System/Library/Frameworks/CoreFoundation.framework/Versions/A/CoreFoundation (compatibility version 150.0.0, current version 550.0.0)
+-------------------
+File:/Users/osiris/osiris/osiris/distribute/temp/Osiris.app/Contents/MacOS/libwx_osx_cocoau_xrc-2.9.dylib
+/Users/osiris/osiris/osiris/distribute/temp/Osiris.app/Contents/MacOS/libwx_osx_cocoau_xrc-2.9.dylib:
+	@executable_path/libwx_osx_cocoau_xrc-2.9.dylib (compatibility version 1.0.0, current version 1.0.0)
+	/System/Library/Frameworks/IOKit.framework/Versions/A/IOKit (compatibility version 1.0.0, current version 275.0.0)
+	/System/Library/Frameworks/Carbon.framework/Versions/A/Carbon (compatibility version 2.0.0, current version 152.0.0)
+	/System/Library/Frameworks/Cocoa.framework/Versions/A/Cocoa (compatibility version 1.0.0, current version 15.0.0)
+	/System/Library/Frameworks/AudioToolbox.framework/Versions/A/AudioToolbox (compatibility version 1.0.0, current version 1.0.0)
+	/usr/lib/libSystem.B.dylib (compatibility version 1.0.0, current version 123.0.0)
+	/System/Library/Frameworks/OpenGL.framework/Versions/A/OpenGL (compatibility version 1.0.0, current version 1.0.0)
+	/System/Library/Frameworks/WebKit.framework/Versions/A/WebKit (compatibility version 1.0.0, current version 531.9.0)
+	/usr/lib/libz.1.dylib (compatibility version 1.0.0, current version 1.2.3)
+	/usr/lib/libiconv.2.dylib (compatibility version 7.0.0, current version 7.0.0)
+	@executable_path/libwx_osx_cocoau_html-2.9.0.0.0.dylib (compatibility version 1.0.0, current version 1.0.0)
+	@executable_path/libwx_osx_cocoau_adv-2.9.0.0.0.dylib (compatibility version 1.0.0, current version 1.0.0)
+	@executable_path/libwx_osx_cocoau_core-2.9.0.0.0.dylib (compatibility version 1.0.0, current version 1.0.0)
+	@executable_path/libwx_baseu_xml-2.9.0.0.0.dylib (compatibility version 1.0.0, current version 1.0.0)
+	@executable_path/libwx_baseu-2.9.0.0.0.dylib (compatibility version 1.0.0, current version 1.0.0)
+	/usr/lib/libstdc++.6.dylib (compatibility version 7.0.0, current version 7.9.0)
+	/usr/lib/libgcc_s.1.dylib (compatibility version 1.0.0, current version 246.0.0)
+	/System/Library/Frameworks/CoreFoundation.framework/Versions/A/CoreFoundation (compatibility version 150.0.0, current version 550.0.0)
+-------------------
+File:/Users/osiris/osiris/osiris/distribute/temp/Osiris.app/Contents/MacOS/libxalan-c.111.0.dylib
+/Users/osiris/osiris/osiris/distribute/temp/Osiris.app/Contents/MacOS/libxalan-c.111.0.dylib:
+	@executable_path/libxalan-c.dylib (compatibility version 1.0.0, current version 1.11.0)
+	/usr/lib/libSystem.B.dylib (compatibility version 1.0.0, current version 123.0.0)
+	@executable_path/libxerces-c-3.1.dylib (compatibility version 0.0.0, current version 0.0.0)
+	@executable_path/libxalanMsg.dylib (compatibility version 1.0.0, current version 1.11.0)
+	/usr/lib/libstdc++.6.dylib (compatibility version 7.0.0, current version 7.9.0)
+-------------------
+File:/Users/osiris/osiris/osiris/distribute/temp/Osiris.app/Contents/MacOS/libxalan-c.111.dylib
+/Users/osiris/osiris/osiris/distribute/temp/Osiris.app/Contents/MacOS/libxalan-c.111.dylib:
+	@executable_path/libxalan-c.dylib (compatibility version 1.0.0, current version 1.11.0)
+	/usr/lib/libSystem.B.dylib (compatibility version 1.0.0, current version 123.0.0)
+	@executable_path/libxerces-c-3.1.dylib (compatibility version 0.0.0, current version 0.0.0)
+	@executable_path/libxalanMsg.dylib (compatibility version 1.0.0, current version 1.11.0)
+	/usr/lib/libstdc++.6.dylib (compatibility version 7.0.0, current version 7.9.0)
+-------------------
+File:/Users/osiris/osiris/osiris/distribute/temp/Osiris.app/Contents/MacOS/libxalan-c.dylib
+/Users/osiris/osiris/osiris/distribute/temp/Osiris.app/Contents/MacOS/libxalan-c.dylib:
+	@executable_path/libxalan-c.dylib (compatibility version 1.0.0, current version 1.11.0)
+	/usr/lib/libSystem.B.dylib (compatibility version 1.0.0, current version 123.0.0)
+	@executable_path/libxerces-c-3.1.dylib (compatibility version 0.0.0, current version 0.0.0)
+	@executable_path/libxalanMsg.dylib (compatibility version 1.0.0, current version 1.11.0)
+	/usr/lib/libstdc++.6.dylib (compatibility version 7.0.0, current version 7.9.0)
+-------------------
+File:/Users/osiris/osiris/osiris/distribute/temp/Osiris.app/Contents/MacOS/libxalanMsg.111.0.dylib
+/Users/osiris/osiris/osiris/distribute/temp/Osiris.app/Contents/MacOS/libxalanMsg.111.0.dylib:
+	@executable_path/libxalanMsg.dylib (compatibility version 1.0.0, current version 1.11.0)
+	/usr/lib/libstdc++.6.dylib (compatibility version 7.0.0, current version 7.9.0)
+	/usr/lib/libSystem.B.dylib (compatibility version 1.0.0, current version 123.0.0)
+-------------------
+File:/Users/osiris/osiris/osiris/distribute/temp/Osiris.app/Contents/MacOS/libxalanMsg.dylib
+/Users/osiris/osiris/osiris/distribute/temp/Osiris.app/Contents/MacOS/libxalanMsg.dylib:
+	@executable_path/libxalanMsg.dylib (compatibility version 1.0.0, current version 1.11.0)
+	/usr/lib/libstdc++.6.dylib (compatibility version 7.0.0, current version 7.9.0)
+	/usr/lib/libSystem.B.dylib (compatibility version 1.0.0, current version 123.0.0)
+-------------------
+File:/Users/osiris/osiris/osiris/distribute/temp/Osiris.app/Contents/MacOS/libxalanMsg.dylib.111
+/Users/osiris/osiris/osiris/distribute/temp/Osiris.app/Contents/MacOS/libxalanMsg.dylib.111:
+	@executable_path/libxalanMsg.dylib (compatibility version 1.0.0, current version 1.11.0)
+	/usr/lib/libstdc++.6.dylib (compatibility version 7.0.0, current version 7.9.0)
+	/usr/lib/libSystem.B.dylib (compatibility version 1.0.0, current version 123.0.0)
+-------------------
+File:/Users/osiris/osiris/osiris/distribute/temp/Osiris.app/Contents/MacOS/libxerces-c-3.1.dylib
+/Users/osiris/osiris/osiris/distribute/temp/Osiris.app/Contents/MacOS/libxerces-c-3.1.dylib:
+	@executable_path/libxerces-c.dylib (compatibility version 0.0.0, current version 0.0.0)
+	/usr/lib/libSystem.B.dylib (compatibility version 1.0.0, current version 123.0.0)
+	/System/Library/Frameworks/CoreServices.framework/Versions/A/CoreServices (compatibility version 1.0.0, current version 44.0.0)
+	/usr/lib/libstdc++.6.dylib (compatibility version 7.0.0, current version 7.9.0)
+	/System/Library/Frameworks/CoreFoundation.framework/Versions/A/CoreFoundation (compatibility version 150.0.0, current version 550.0.0)
+-------------------
+File:/Users/osiris/osiris/osiris/distribute/temp/Osiris.app/Contents/MacOS/libxerces-c.dylib
+/Users/osiris/osiris/osiris/distribute/temp/Osiris.app/Contents/MacOS/libxerces-c.dylib:
+	@executable_path/libxerces-c.dylib (compatibility version 0.0.0, current version 0.0.0)
+	/usr/lib/libSystem.B.dylib (compatibility version 1.0.0, current version 123.0.0)
+	/System/Library/Frameworks/CoreServices.framework/Versions/A/CoreServices (compatibility version 1.0.0, current version 44.0.0)
+	/usr/lib/libstdc++.6.dylib (compatibility version 7.0.0, current version 7.9.0)
+	/System/Library/Frameworks/CoreFoundation.framework/Versions/A/CoreFoundation (compatibility version 150.0.0, current version 550.0.0)
+-------------------
+File:/Users/osiris/osiris/osiris/distribute/temp/Osiris.app/Contents/MacOS/libxml.dylib
+/Users/osiris/osiris/osiris/distribute/temp/Osiris.app/Contents/MacOS/libxml.dylib:
+	@executable_path/libxml.dylib (compatibility version 0.0.0, current version 0.0.0)
+	@executable_path/libxerces-c.dylib (compatibility version 0.0.0, current version 0.0.0)
+	@executable_path/libxalan-c.dylib (compatibility version 1.0.0, current version 1.11.0)
+	@executable_path/libcore.dylib (compatibility version 0.0.0, current version 0.0.0)
+	@executable_path/libnet.dylib (compatibility version 0.0.0, current version 0.0.0)
+	@executable_path/libhttp.dylib (compatibility version 0.0.0, current version 0.0.0)
+	@executable_path/libcrypto.dylib (compatibility version 0.9.8, current version 0.9.8)
+	@executable_path/libssl.dylib (compatibility version 0.9.8, current version 0.9.8)
+	/usr/lib/libstdc++.6.dylib (compatibility version 7.0.0, current version 7.9.0)
+	/usr/lib/libSystem.B.dylib (compatibility version 1.0.0, current version 123.0.0)
+-------------------
+File:/Users/osiris/osiris/osiris/distribute/temp/Osiris.app/Contents/MacOS/libz.1.2.3.dylib
+/Users/osiris/osiris/osiris/distribute/temp/Osiris.app/Contents/MacOS/libz.1.2.3.dylib:
+	@executable_path/libz.dylib (compatibility version 1.0.0, current version 1.2.3)
+	/usr/lib/libSystem.B.dylib (compatibility version 1.0.0, current version 123.0.0)
+-------------------
+File:/Users/osiris/osiris/osiris/distribute/temp/Osiris.app/Contents/MacOS/libz.1.dylib
+/Users/osiris/osiris/osiris/distribute/temp/Osiris.app/Contents/MacOS/libz.1.dylib:
+	@executable_path/libz.dylib (compatibility version 1.0.0, current version 1.2.3)
+	/usr/lib/libSystem.B.dylib (compatibility version 1.0.0, current version 123.0.0)
+-------------------
+File:/Users/osiris/osiris/osiris/distribute/temp/Osiris.app/Contents/MacOS/libz.dylib
+/Users/osiris/osiris/osiris/distribute/temp/Osiris.app/Contents/MacOS/libz.dylib:
+	@executable_path/libz.dylib (compatibility version 1.0.0, current version 1.2.3)
+	/usr/lib/libSystem.B.dylib (compatibility version 1.0.0, current version 123.0.0)
+-------------------
+File:/Users/osiris/osiris/osiris/distribute/temp/Osiris.app/Contents/MacOS/python.dylib
+/Users/osiris/osiris/osiris/distribute/temp/Osiris.app/Contents/MacOS/python.dylib:
+	@executable_path/python.dylib (compatibility version 0.0.0, current version 0.0.0)
+	@executable_path/libcore.dylib (compatibility version 0.0.0, current version 0.0.0)
+	@executable_path/libengine.dylib (compatibility version 0.0.0, current version 0.0.0)
+	@executable_path/liblang.dylib (compatibility version 0.0.0, current version 0.0.0)
+	@executable_path/libxml.dylib (compatibility version 0.0.0, current version 0.0.0)
+	@executable_path/libnet.dylib (compatibility version 0.0.0, current version 0.0.0)
+	@executable_path/libweb.dylib (compatibility version 0.0.0, current version 0.0.0)
+	@executable_path/libhttp.dylib (compatibility version 0.0.0, current version 0.0.0)
+	@executable_path/libpython2.6.dylib (compatibility version 2.6.0, current version 2.6.0)
+	@executable_path/libssl.dylib (compatibility version 0.9.8, current version 0.9.8)
+	@executable_path/libcrypto.dylib (compatibility version 0.9.8, current version 0.9.8)
+	@executable_path/libdb.dylib (compatibility version 0.0.0, current version 0.0.0)
+	/usr/lib/libstdc++.6.dylib (compatibility version 7.0.0, current version 7.9.0)
+	/usr/lib/libSystem.B.dylib (compatibility version 1.0.0, current version 123.0.0)
+-------------------
+File:/Users/osiris/osiris/osiris/distribute/temp/Osiris.app/Contents/MacOS/select.so
+/Users/osiris/osiris/osiris/distribute/temp/Osiris.app/Contents/MacOS/select.so:
+	/usr/lib/libSystem.B.dylib (compatibility version 1.0.0, current version 111.1.1)
+-------------------
+File:/Users/osiris/osiris/osiris/distribute/temp/Osiris.app/Contents/MacOS/sqlite.dylib
+/Users/osiris/osiris/osiris/distribute/temp/Osiris.app/Contents/MacOS/sqlite.dylib:
+	@executable_path/sqlite.dylib (compatibility version 0.0.0, current version 0.0.0)
+	@executable_path/libsqlite3.dylib (compatibility version 9.0.0, current version 9.6.0)
+	@executable_path/libcore.dylib (compatibility version 0.0.0, current version 0.0.0)
+	@executable_path/libengine.dylib (compatibility version 0.0.0, current version 0.0.0)
+	@executable_path/libdb.dylib (compatibility version 0.0.0, current version 0.0.0)
+	/usr/lib/libstdc++.6.dylib (compatibility version 7.0.0, current version 7.9.0)
+	/usr/lib/libSystem.B.dylib (compatibility version 1.0.0, current version 123.0.0)
+-------------------
+File:/Users/osiris/osiris/osiris/distribute/temp/Osiris.app/Contents/MacOS/system.xml
+/Users/osiris/osiris/osiris/distribute/temp/Osiris.app/Contents/MacOS/system.xml: is not an object file

@@ -1,0 +1,5 @@
+Files/directories are under an external repository.
+
+Look 
+https://www.osiris-sps.org/source_repository_structure/ 
+for more informations.

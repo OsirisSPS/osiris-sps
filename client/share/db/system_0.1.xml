@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<schema version="0.1">
+  <tables>
+    <table name="os_machines">
+      <fields>
+        <field name="id" type="varchar" size="40" primary="true" />
+        <field name="public_key" type="blob" />        
+      </fields>    
+    </table>
+  </tables>
+</schema>

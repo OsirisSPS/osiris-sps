@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<template name="OML Code" description="Custom OML Code or hypertext language changer" author="Osiris Team">
+	<files>
+		<file target="scripts/script.py" source="script.py" script="true" macro="false"/>
+		<file target="scripts/omltag.py" source="omltag.py" script="true" macro="false"/>
+		<file target="scripts/globalvars.py" source="globalvars.py" script="true" macro="false"/>
+		<file target="logo.png" source="logo.png" script="false" macro="false"/>
+		<file target="icon.png" source="icon.png" script="false" macro="false"/>
+	</files>
+</template>

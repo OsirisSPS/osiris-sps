@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<plugin name="Sqlite driver" description="Sqlite Database Driver" author="Osiris Team" version="1.0">
+  <modules>
+    <module path="sqlite"/>    
+  </modules>
+</plugin>

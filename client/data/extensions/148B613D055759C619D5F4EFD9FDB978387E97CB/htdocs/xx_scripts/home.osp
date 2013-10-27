@@ -1,0 +1,87 @@
+page.onLoad = function()
+{
+	var document = new xml.Document();
+	var root = document.create("page");
+	
+	page.renderPageActions(root);
+	page.renderSubscribedPortals(root);
+	
+	var template = new html.XSLControl();
+	template.stylesheet = this.loadStylesheet(page.skin.getResourcePath("scripts/home.xsl"));
+	template.document = document;
+	page.getArea(ide.content).controls.add(template);	
+}
+
+page.renderPageActions = function(node)
+{
+	var nodeActions = node.nodes.add("actions");
+	
+	var actionPreferences = nodeActions.nodes.add("action");
+	actionPreferences.attributes["name"] = "settings";
+	actionPreferences.attributes["href"] = portalsSystem.getLink("options");
+	
+	var actionCreatePortal = nodeActions.nodes.add("action");
+	actionCreatePortal.attributes["name"] = "create_portal";
+	actionCreatePortal.attributes["href"] = portalsSystem.getLink("create");
+	
+	var actionSubscribePortal = nodeActions.nodes.add("action");
+	actionSubscribePortal.attributes["name"] = "subscribe_portal";
+	actionSubscribePortal.attributes["href"] = portalsSystem.getLink("subscribe");		
+}
+
+page.renderSubscribedPortals = function(root)
+{
+	var subscribedPortals = portalsSystem.portals;		// registeredPortals per evitare il conflitto con l'oggetto globale "portals"
+	if(subscribedPortals.length == 0)
+		return;
+		
+	var nodePortals = root.nodes.add("subscribedPortals");
+	for(var i in subscribedPortals)
+	{
+		var portal = subscribedPortals[i];
+		var href = portal.getLink("view");
+	
+		var nodePortal = nodePortals.nodes.add("portal");
+		
+		page.renderPortal(nodePortal, portal.id, portal.options.name, portal.options.description, portal.options.enableExchange, portal.options.lastObjectDate, href);
+		
+		var nodeActions = nodePortal.nodes.add("actions");
+		
+		var nodeAction = nodeActions.nodes.add("action");
+		nodeAction.attributes["name"] = "enter";
+		nodeAction.attributes["href"] = href;		
+		var nodeAction = nodeActions.nodes.add("action");
+		nodeAction.attributes["name"] = "accounts";
+		nodeAction.attributes["href"] = portalsSystem.getLink("accounts?portal="+portal.id.toString());		
+		var nodeAction = nodeActions.nodes.add("action");
+		nodeAction.attributes["name"] = "settings";
+		nodeAction.attributes["href"] = portalsSystem.getLink("settings?portal="+portal.id.toString());		
+		
+		if(portal.id.portalType == portals.typeMonarchic)
+		{
+			var nodeAction = nodeActions.nodes.add("action");
+			nodeAction.attributes["name"] = "export";
+			nodeAction.attributes["href"] = portalsSystem.getLink("export?portal="+portal.id.toString());		
+		}
+		
+		var nodeAction = nodeActions.nodes.add("action");
+		nodeAction.attributes["name"] = "remove";
+		nodeAction.attributes["href"] = portalsSystem.getLink("removeportal?portal="+portal.id.toString());		
+		nodeAction.attributes["confirm"] = true;
+	}
+}
+
+page.renderPortal = function(node, id, name, description, enableExchange, lastObjectDate, href)
+{
+	node.attributes["id"] = id.toString();
+	node.attributes["name"] = name;
+	if(description != "")
+		node.attributes["description"] = description;	
+	node.attributes["enableExchange"] = enableExchange;
+	node.attributes["lastObjectDate"] = lastObjectDate;
+		
+	node.attributes["href"] = href;
+	
+	node.attributes["type"] = id.portalType == portals.typeAnarchic? "anarchist" : "monarchist";
+	node.attributes["access"] = id.portalAccess == portals.accessPublic ? "public" : "private";
+}

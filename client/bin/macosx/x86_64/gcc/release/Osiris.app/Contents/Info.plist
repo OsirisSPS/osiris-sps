@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CFBundleDevelopmentRegion</key>
+	<string>English</string>
+	<key>CFBundleDisplayName</key>
+	<string>Osiris</string>
+	<key>CFBundleDocumentTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleTypeExtensions</key>
+			<array>
+				<string>pdf</string>
+			</array>
+			<key>CFBundleTypeName</key>
+			<string>NSPDFPboardType</string>
+			<key>CFBundleTypeRole</key>
+			<string>None</string>
+		</dict>
+		<dict>
+			<key>CFBundleTypeExtensions</key>
+			<array>
+				<string>tiff</string>
+				<string>tif</string>
+			</array>
+			<key>CFBundleTypeName</key>
+			<string>NSTIFFPboardType</string>
+			<key>CFBundleTypeRole</key>
+			<string>None</string>
+		</dict>
+		<dict>
+			<key>CFBundleTypeExtensions</key>
+			<array>
+				<string>osiris</string>
+			</array>
+			<key>CFBundleTypeIconFile</key>
+			<string>osiris_file.icns</string>
+			<key>CFBundleTypeName</key>
+			<string>Osiris Document</string>
+			<key>CFBundleTypeMIMETypes</key>
+			<array>
+				<string>application/osiris</string>
+			</array>
+			<key>CFBundleTypeOSTypes</key>
+			<array>
+				<string>****</string>
+			</array>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>LSTypeIsPackage</key>
+			<false/>
+		</dict>
+	</array>
+	<key>CFBundleExecutable</key>
+	<string>Osiris</string>
+	<key>CFBundleGetInfoString</key>
+	<string>Osiris - Serverless Portal System - Copyright 2004-2009, Kodeware.net</string>
+	<key>CFBundleIconFile</key>
+	<string>Osiris.icns</string>
+	<key>CFBundleIdentifier</key>
+	<string>com.kodeware.osiris</string>
+	<key>CFBundleInfoDictionaryVersion</key>
+	<string>6.0</string>
+	<key>CFBundleName</key>
+	<string>Osiris</string>
+	<key>CFBundlePackageType</key>
+	<string>APPL</string>
+	<key>CFBundleShortVersionString</key>
+	<string>0.13</string>
+	<key>CFBundleSignature</key>
+	<string>????</string>
+	<key>CFBundleVersion</key>
+	<string>0.13</string>
+	<key>LSEnvironment</key>
+	<dict>
+		<key>LC_ALL</key>
+		<string>C</string>
+	</dict>
+	<key>LSRequiresCarbon</key>
+	<true/>
+	<key>NSHumanReadableCopyright</key>
+	<string>Copyright 2004-2009, Kodeware.net</string>
+</dict>
+</plist>

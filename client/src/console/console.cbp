@@ -1,0 +1,463 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="Console" />
+		<Option pch_mode="2" />
+		<Option compiler="gcc" />
+		<Build>
+			<Target title="debug linux-i386">
+				<Option platforms="Unix;" />
+				<Option output="../../bin/linux/i386/gcc/debug/console" prefix_auto="1" extension_auto="1" />
+				<Option working_dir="../../bin/linux/i386/gcc/debug" />
+				<Option object_output="../../obj/linux/i386/gcc/console/debug" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Option use_console_runner="0" />
+				<Compiler>
+					<Add option="-g" />
+					<Add option="-W" />
+					<Add option="-D_DEBUG" />
+					<Add option="-D__WXDEBUG__" />
+					<Add option="-DUNICODE" />
+					<Add option="-D__WXGTK__" />
+					<Add directory="../../dependencies/include" />
+					<Add directory="../../dependencies/include/wxwidgets" />
+					<Add directory="../../dependencies/include/wxwidgets/setup/linux-i386/debug" />
+					<Add directory="../core" />
+					<Add directory="../xml" />
+					<Add directory="../web" />
+					<Add directory="../lang" />
+					<Add directory="../skin" />
+					<Add directory="../net" />
+					<Add directory="../engine" />
+					<Add directory="../http" />
+					<Add directory="../../dependencies/include/linux-i386" />
+					<Add directory="../upnp" />
+					<Add directory="../sdk" />
+				</Compiler>
+				<ResourceCompiler>
+					<Add directory="../../dependencies/include" />
+					<Add directory="../../dependencies/include/wxwidgets" />
+					<Add directory="../../dependencies/include/wxwidgets/setup/mswud" />
+					<Add directory="../core" />
+					<Add directory="../xml" />
+					<Add directory="../web" />
+					<Add directory="../lang" />
+					<Add directory="../skin" />
+					<Add directory="../net" />
+					<Add directory="../engine" />
+				</ResourceCompiler>
+				<Linker>
+					<Add option="-Wl,-z,defs,-rpath=\\$$ORIGIN" />
+					<Add option="-static-libstdc++" />
+					<Add option="-static-libgcc" />
+					<Add library="libcore" />
+					<Add library="libxerces-c" />
+					<Add library="libxalan-c" />
+					<Add library="libxalanMsg" />
+					<Add library="libz" />
+					<Add library="librt" />
+					<Add library="libssl" />
+					<Add library="libcrypto" />
+					<Add library="libengine" />
+					<Add library="libnet" />
+					<Add library="libhttp" />
+					<Add library="libweb" />
+					<Add library="liblang" />
+					<Add library="libxml" />
+					<Add library="libclucene" />
+					<Add library="libboost_date_time-gcc44-mt-d-1_41" />
+					<Add library="libboost_signals-gcc44-mt-d-1_41" />
+					<Add library="libupnp" />
+					<Add library="libminiupnpc" />
+					<Add library="libdb" />
+					<Add library="libicuuc" />
+					<Add library="libicuio" />
+					<Add library="libicui18n" />
+					<Add library="libicudata" />
+					<Add library="libboost_filesystem-gcc44-mt-d-1_41" />
+					<Add library="libsdk" />
+					<Add library="libarchives" />
+					<Add directory="../../dependencies/lib/linux/i386/gcc/debug" />
+					<Add directory="../../lib/linux/i386/gcc/debug" />
+					<Add directory="../../bin/linux/i386/gcc/debug" />
+				</Linker>
+			</Target>
+			<Target title="release linux-i386">
+				<Option platforms="Unix;" />
+				<Option output="../../bin/linux/i386/gcc/release/console" prefix_auto="1" extension_auto="1" />
+				<Option object_output="../../obj/linux/i386/gcc/console/release" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Option use_console_runner="0" />
+				<Compiler>
+					<Add option="-O2" />
+					<Add option="-W" />
+					<Add option="-DNDEBUG" />
+					<Add option="-DUNICODE" />
+					<Add option="-D__WXGTK__" />
+					<Add directory="../../dependencies/include" />
+					<Add directory="../../dependencies/include/wxwidgets" />
+					<Add directory="../../dependencies/include/wxwidgets/setup/linux-i386/release" />
+					<Add directory="../core" />
+					<Add directory="../xml" />
+					<Add directory="../web" />
+					<Add directory="../lang" />
+					<Add directory="../skin" />
+					<Add directory="../net" />
+					<Add directory="../engine" />
+					<Add directory="../http" />
+					<Add directory="../../dependencies/include/linux-i386" />
+					<Add directory="../upnp" />
+					<Add directory="../sdk" />
+				</Compiler>
+				<ResourceCompiler>
+					<Add directory="../../dependencies/include" />
+					<Add directory="../../dependencies/include/wxwidgets" />
+					<Add directory="../../dependencies/include/wxwidgets/setup/mswu" />
+					<Add directory="../core" />
+					<Add directory="../xml" />
+					<Add directory="../web" />
+					<Add directory="../lang" />
+					<Add directory="../skin" />
+					<Add directory="../net" />
+					<Add directory="../engine" />
+				</ResourceCompiler>
+				<Linker>
+					<Add option="-s" />
+					<Add option="-Wl,-z,defs,-rpath=\\$$ORIGIN" />
+					<Add option="-static-libstdc++" />
+					<Add option="-static-libgcc" />
+					<Add library="libcore" />
+					<Add library="libxerces-c" />
+					<Add library="libxalan-c" />
+					<Add library="libxalanMsg" />
+					<Add library="libz" />
+					<Add library="librt" />
+					<Add library="libssl" />
+					<Add library="libcrypto" />
+					<Add library="libengine" />
+					<Add library="libnet" />
+					<Add library="libhttp" />
+					<Add library="libweb" />
+					<Add library="liblang" />
+					<Add library="libxml" />
+					<Add library="libclucene" />
+					<Add library="libboost_date_time-gcc44-mt-1_41" />
+					<Add library="libboost_signals-gcc44-mt-1_41" />
+					<Add library="libupnp" />
+					<Add library="libminiupnpc" />
+					<Add library="libdb" />
+					<Add library="libicuuc" />
+					<Add library="libicuio" />
+					<Add library="libicui18n" />
+					<Add library="libicudata" />
+					<Add library="libboost_filesystem-gcc44-mt-1_41" />
+					<Add library="libsdk" />
+					<Add library="libarchives" />
+					<Add directory="../../dependencies/lib/linux/i386/gcc/release" />
+					<Add directory="../../lib/linux/i386/gcc/release" />
+					<Add directory="../../bin/linux/i386/gcc/release" />
+				</Linker>
+			</Target>
+			<Target title="debug mac-x86_64">
+				<Option platforms="Mac;" />
+				<Option output="../../bin/macosx/x86_64/gcc/debug/Osiris.app/Contents/MacOS/console" prefix_auto="1" extension_auto="1" />
+				<Option working_dir="../../bin/macosx/x86_64/gcc/debug" />
+				<Option object_output="../../obj/macosx/x86_64/gcc/console/debug" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Option use_console_runner="0" />
+				<Compiler>
+					<Add option="-W" />
+					<Add option="-g" />
+					<Add option="-D_DEBUG" />
+					<Add option="-D__WXDEBUG__" />
+					<Add option="-DUNICODE" />
+					<Add option="-D__WXGTK__" />
+					<Add directory="../../dependencies/include" />
+					<Add directory="../../dependencies/include/wxwidgets" />
+					<Add directory="../../dependencies/include/wxwidgets/setup/mac-x86_64/debug" />
+					<Add directory="../core" />
+					<Add directory="../xml" />
+					<Add directory="../web" />
+					<Add directory="../lang" />
+					<Add directory="../skin" />
+					<Add directory="../net" />
+					<Add directory="../engine" />
+					<Add directory="../http" />
+					<Add directory="../../dependencies/include/mac-x86_64" />
+					<Add directory="../upnp" />
+					<Add directory="../sdk" />
+				</Compiler>
+				<ResourceCompiler>
+					<Add directory="../../dependencies/include" />
+					<Add directory="../../dependencies/include/wxwidgets" />
+					<Add directory="../../dependencies/include/wxwidgets/setup/mswud" />
+					<Add directory="../core" />
+					<Add directory="../xml" />
+					<Add directory="../web" />
+					<Add directory="../lang" />
+					<Add directory="../skin" />
+					<Add directory="../net" />
+					<Add directory="../engine" />
+				</ResourceCompiler>
+				<Linker>
+					<Add library="core" />
+					<Add library="net" />
+					<Add library="http" />
+					<Add library="web" />
+					<Add library="lang" />
+					<Add library="xml" />
+					<Add library="engine" />
+					<Add library="libengine" />
+					<Add library="libnet" />
+					<Add library="libhttp" />
+					<Add library="libweb" />
+					<Add library="liblang" />
+					<Add library="libxml" />
+					<Add library="libclucene" />
+					<Add library="libboost_date_time-xgcc42-mt-d-1_41" />
+					<Add library="libboost_signals-xgcc42-mt-d-1_41" />
+					<Add library="libsdk" />
+					<Add directory="../../dependencies/lib/macosx/x86_64/gcc/debug" />
+					<Add directory="../../lib/macosx/x86_64/gcc/debug" />
+					<Add directory="../../bin/macosx/x86_64/gcc/debug/Osiris.app/Contents/MacOS" />
+				</Linker>
+				<ExtraCommands>
+					<Add after="../postbuild_osx.sh $(TARGET_OUTPUT_BASENAME) $(TARGET_OUTPUT_DIR)" />
+				</ExtraCommands>
+			</Target>
+			<Target title="release mac-x86_64">
+				<Option platforms="Mac;" />
+				<Option output="../../bin/macosx/x86_64/gcc/release/Osiris.app/Contents/MacOS/console" prefix_auto="1" extension_auto="1" />
+				<Option object_output="../../obj/macosx/x86_64/gcc/console/release" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Option use_console_runner="0" />
+				<Compiler>
+					<Add option="-O2" />
+					<Add option="-W" />
+					<Add option="-DNDEBUG" />
+					<Add option="-DUNICODE" />
+					<Add option="-D__WXGTK__" />
+					<Add directory="../../dependencies/include" />
+					<Add directory="../../dependencies/include/wxwidgets" />
+					<Add directory="../../dependencies/include/wxwidgets/setup/mac-x86_64/release" />
+					<Add directory="../core" />
+					<Add directory="../xml" />
+					<Add directory="../web" />
+					<Add directory="../lang" />
+					<Add directory="../skin" />
+					<Add directory="../net" />
+					<Add directory="../engine" />
+					<Add directory="../http" />
+					<Add directory="../../dependencies/include/mac-x86_64" />
+					<Add directory="../upnp" />
+					<Add directory="../sdk" />
+				</Compiler>
+				<ResourceCompiler>
+					<Add directory="../../dependencies/include" />
+					<Add directory="../../dependencies/include/wxwidgets" />
+					<Add directory="../../dependencies/include/wxwidgets/setup/mswu" />
+					<Add directory="../core" />
+					<Add directory="../xml" />
+					<Add directory="../web" />
+					<Add directory="../lang" />
+					<Add directory="../skin" />
+					<Add directory="../net" />
+					<Add directory="../engine" />
+				</ResourceCompiler>
+				<Linker>
+					<Add option="-s" />
+					<Add library="core" />
+					<Add library="net" />
+					<Add library="http" />
+					<Add library="web" />
+					<Add library="lang" />
+					<Add library="xml" />
+					<Add library="engine" />
+					<Add library="libengine" />
+					<Add library="libnet" />
+					<Add library="libhttp" />
+					<Add library="libweb" />
+					<Add library="liblang" />
+					<Add library="libxml" />
+					<Add library="libclucene" />
+					<Add library="libboost_date_time-xgcc42-mt-1_41" />
+					<Add library="libboost_signals-xgcc42-mt-1_41" />
+					<Add library="libsdk" />
+					<Add directory="../../dependencies/lib/macosx/x86_64/gcc/release" />
+					<Add directory="../../lib/macosx/x86_64/gcc/release" />
+					<Add directory="../../bin/macosx/x86_64/gcc/release/Osiris.app/Contents/MacOS" />
+				</Linker>
+				<ExtraCommands>
+					<Add after="../postbuild_osx.sh $(TARGET_OUTPUT_BASENAME) $(TARGET_OUTPUT_DIR)" />
+				</ExtraCommands>
+			</Target>
+			<Target title="debug linux-x86_64">
+				<Option platforms="Unix;" />
+				<Option output="../../bin/linux/x86_64/gcc/debug/console" prefix_auto="1" extension_auto="1" />
+				<Option working_dir="../../bin/linux/x86_64/gcc/debug" />
+				<Option object_output="../../obj/linux/x86_64/gcc/console/debug" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Option use_console_runner="0" />
+				<Compiler>
+					<Add option="-g" />
+					<Add option="-W" />
+					<Add option="-fPIC" />
+					<Add option="-D_DEBUG" />
+					<Add option="-D__WXDEBUG__" />
+					<Add option="-DUNICODE" />
+					<Add option="-D__WXGTK__" />
+					<Add directory="../../dependencies/include" />
+					<Add directory="../../dependencies/include/wxwidgets" />
+					<Add directory="../../dependencies/include/wxwidgets/setup/linux-x86_64/debug" />
+					<Add directory="../core" />
+					<Add directory="../xml" />
+					<Add directory="../web" />
+					<Add directory="../lang" />
+					<Add directory="../skin" />
+					<Add directory="../net" />
+					<Add directory="../engine" />
+					<Add directory="../http" />
+					<Add directory="../../dependencies/include/linux-x86_64" />
+					<Add directory="../upnp" />
+					<Add directory="../sdk" />
+				</Compiler>
+				<ResourceCompiler>
+					<Add directory="../../dependencies/include" />
+					<Add directory="../../dependencies/include/wxwidgets" />
+					<Add directory="../../dependencies/include/wxwidgets/setup/mswud" />
+					<Add directory="../core" />
+					<Add directory="../xml" />
+					<Add directory="../web" />
+					<Add directory="../lang" />
+					<Add directory="../skin" />
+					<Add directory="../net" />
+					<Add directory="../engine" />
+				</ResourceCompiler>
+				<Linker>
+					<Add option="-Wl,-z,defs,-rpath=\\$$ORIGIN" />
+					<Add library="libcore" />
+					<Add library="libxerces-c" />
+					<Add library="libxalan-c" />
+					<Add library="libxalanMsg" />
+					<Add library="libz" />
+					<Add library="librt" />
+					<Add library="libssl" />
+					<Add library="libcrypto" />
+					<Add library="libengine" />
+					<Add library="libnet" />
+					<Add library="libhttp" />
+					<Add library="libweb" />
+					<Add library="liblang" />
+					<Add library="libxml" />
+					<Add library="libclucene" />
+					<Add library="libboost_date_time-gcc44-mt-d-1_41" />
+					<Add library="libboost_signals-gcc44-mt-d-1_41" />
+					<Add library="libupnp" />
+					<Add library="libminiupnpc" />
+					<Add library="libdb" />
+					<Add library="libicuuc" />
+					<Add library="libicuio" />
+					<Add library="libicui18n" />
+					<Add library="libicudata" />
+					<Add library="libboost_filesystem-gcc44-mt-d-1_41" />
+					<Add library="libsdk" />
+					<Add library="libarchives" />
+					<Add directory="../../dependencies/lib/linux/x86_64/gcc/debug" />
+					<Add directory="../../lib/linux/x86_64/gcc/debug" />
+					<Add directory="../../bin/linux/x86_64/gcc/debug" />
+				</Linker>
+			</Target>
+			<Target title="release linux-x86_64">
+				<Option platforms="Unix;" />
+				<Option output="../../bin/linux/x86_64/gcc/release/console" prefix_auto="1" extension_auto="1" />
+				<Option object_output="../../obj/linux/x86_64/gcc/console/release" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Option use_console_runner="0" />
+				<Compiler>
+					<Add option="-O2" />
+					<Add option="-W" />
+					<Add option="-fPIC" />
+					<Add option="-DNDEBUG" />
+					<Add option="-DUNICODE" />
+					<Add option="-D__WXGTK__" />
+					<Add directory="../../dependencies/include" />
+					<Add directory="../../dependencies/include/wxwidgets" />
+					<Add directory="../../dependencies/include/wxwidgets/setup/linux-x86_64/release" />
+					<Add directory="../core" />
+					<Add directory="../xml" />
+					<Add directory="../web" />
+					<Add directory="../lang" />
+					<Add directory="../skin" />
+					<Add directory="../net" />
+					<Add directory="../engine" />
+					<Add directory="../http" />
+					<Add directory="../../dependencies/include/linux-x86_64" />
+					<Add directory="../upnp" />
+					<Add directory="../sdk" />
+				</Compiler>
+				<ResourceCompiler>
+					<Add directory="../../dependencies/include" />
+					<Add directory="../../dependencies/include/wxwidgets" />
+					<Add directory="../../dependencies/include/wxwidgets/setup/mswu" />
+					<Add directory="../core" />
+					<Add directory="../xml" />
+					<Add directory="../web" />
+					<Add directory="../lang" />
+					<Add directory="../skin" />
+					<Add directory="../net" />
+					<Add directory="../engine" />
+				</ResourceCompiler>
+				<Linker>
+					<Add option="-s" />
+					<Add option="-Wl,-z,defs,-rpath=\\$$ORIGIN" />
+					<Add library="libcore" />
+					<Add library="libxerces-c" />
+					<Add library="libxalan-c" />
+					<Add library="libxalanMsg" />
+					<Add library="libz" />
+					<Add library="librt" />
+					<Add library="libssl" />
+					<Add library="libcrypto" />
+					<Add library="libengine" />
+					<Add library="libnet" />
+					<Add library="libhttp" />
+					<Add library="libweb" />
+					<Add library="liblang" />
+					<Add library="libxml" />
+					<Add library="libclucene" />
+					<Add library="libboost_date_time-gcc44-mt-1_41" />
+					<Add library="libboost_signals-gcc44-mt-1_41" />
+					<Add library="libupnp" />
+					<Add library="libminiupnpc" />
+					<Add library="libdb" />
+					<Add library="libicuuc" />
+					<Add library="libicuio" />
+					<Add library="libicui18n" />
+					<Add library="libicudata" />
+					<Add library="libboost_filesystem-gcc44-mt-1_41" />
+					<Add library="libsdk" />
+					<Add library="libarchives" />
+					<Add directory="../../dependencies/lib/linux/x86_64/gcc/release" />
+					<Add directory="../../lib/linux/x86_64/gcc/release" />
+					<Add directory="../../bin/linux/x86_64/gcc/release" />
+				</Linker>
+			</Target>
+		</Build>
+		<Unit filename="main.cpp" />
+		<Unit filename="stdafx.cpp" />
+		<Unit filename="stdafx.h" />
+		<Extensions>
+			<code_completion />
+			<envvars />
+			<lib_finder disable_auto="1" />
+			<debugger />
+		</Extensions>
+	</Project>
+</CodeBlocks_project_file>

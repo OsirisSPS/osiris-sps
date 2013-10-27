@@ -1,0 +1,333 @@
+﻿-------------------------------------------------------------------------------------
+Osiris 0.15
+-------------------------------------------------------------------------------------
+- [bugfix] Random crash that may occur on exit.
+- [new] Body mode param in RSS: full / link only / none
+- [bugfix] RSS generation now have absolute links.
+- [new] First step migration of Osiris protocol. 
+- [changes] Disabled gzip compression for specific mime-types
+- [new] Added "Open Log" under Developers Menu.
+- [new] Roller/Block client status storage.
+- [changes] Font in splash screen.
+- [changes] New background in DMG installer
+- [bugfix] Python exception handling in OS-X
+- [bugfix] Tray options issue
+- [new] Python Informations in Developer Tools extension.
+- [changes] Some CSS changes.
+- [bugfix] Win64 NSIS now propose the correct 64 bit program folder.
+- [bugfix] Ajax error 500 under Mac OS-X in Advertising extension
+- [bugfix] Random crash related to gzip compression of pages (probably Linux only)
+- [bugfix] Quote link
+- [bugfix] Layout glitch on main windows (black on the right when start).
+- [bugfix] Main window menu checkbox problem under Linux
+- [new] MachineID for Advertising Extension
+- [new] Editor date in "Preview" object view
+- [bugfix] Charset encoding problem under Mac OS-X
+- [bugfix] Icon link of childs objects in edit page.
+- [new] Added param "collect" to \[url] tag.
+- [bugfix] OML Url collections issue with Isis
+- [bugfix] Layout fix in latest_discussions
+- [bugfix] Layout fix in Assistant (unused button removed)
+- [bugfix] Layout fix in Assistant (unused edit link)
+- [bugfix] Issue with osiris://|portal| link without a description.
+
+-------------------------------------------------------------------------------------
+Osiris 0.14
+-------------------------------------------------------------------------------------
+- [changes] "prototype" and "scriptaculous" removed, totally replaced by jQuery.
+- [changes] RSS Feed in user research, and generally in search page with url param.
+- [new] Repository / Marketplace of extensions.
+- [new] Allow configure a machine access, to allow connection from external directly in selected portals.
+- [new] Help Tip System.
+- [new] Syntax Highlighting in [code] tag.
+- [changes] Languages system changes; support to extension.
+- [bugfix] Shared libraries search path fixed in Linux version.
+- [changed] Post view in thread mode in last comments links.
+- [new] OMLCode/BBCode extensions support
+- [new] Skin Engine / extensions support
+- [changed] Many pages redesign
+- [changed] Skin fixes
+- [new] Build Windows x64 (64 bit)
+- [new] Aggiunta un nuovo parametro al modulo mirror per scegliere la modalità di visualizzazione dell'oggetto (default o solo contenuto)
+- [new] Integrazione DHT per la ricerca dei nodi
+- [new] Nuovo modulo per il supporto ai commenti tramite IntenseDebate (http://intensedebate.com/)
+- [bugfix] Corretto un bug nella gestione delle connessioni p2p in uscita
+- [bugfix] Corretto un bug nella gestione dei nodi p2p
+- [changed] E' ora permesso impostare una soglia reputazioni editore più bassa rispetto a quella degli autori.
+
+-------------------------------------------------------------------------------------
+Osiris 0.13
+-------------------------------------------------------------------------------------
+- [new] Aggiunto il parametro "/verbose" alla commandline per settare in automatico il log al livello più basso e abilitare la serializzazione su file
+- [new] Aggiunto il livello al file di log
+- [new] Aggiunto un comando nella finestra di log per la copia dei messaggi
+- [new] Aggiunta una pagina web per l'importazione di files osiris
+- [changed] Ottimizzazione dello scroll nella finestra di log
+- [new] Aggiunto un comando nella finestra di log per modificarne il livello
+- [new] Aggiunto un comando nella finestra di log per abilitare/disabilitare il log su file
+- [bugfix] Errore di spostamento cursore nel OML Editor, in FireFox.
+- [bugfix] Errore di visualizzazione scrollbar in instanze con dimensione automatica, in FireFox.
+- [new] Aggiunto il log dei messaggi lato server IRC
+- [bugfix] Registrazione protocollo osiris
+- [new] Supporto jQuery Lightbox nel tag [img] attraverso attributi 'tsrc/twidth/theight'.
+- [new] Aggiunti i comandi per il ripristino dell'associazione files e protocollo osiris
+- [new] Aggiunto un wizard per la creazione di extensions
+- [changed] Spostate le impostazioni del proxy in una pagina dedicata nel wizard
+- [changed] L'area dell'editor BBCode si "aggiusta" in automatico sin dall'inizio.
+- [new] Aggiunto "ID" nel dettaglio oggetto dell'assistente, per permettere un copia-incolla comodo.
+- [changed] Convertiti i copia-incolla di link, ora mostrano una dialog correttamente tradotta.
+- [changed] Le istanze impostate come "Visualizza solo nella sezione che la contiene" vengono mostrate ora solo nella visualizzazione (view), non nelle altre pagine.
+- [new] Autoresize dell'editor BBCode
+- [new] Inclusione libreria jQuery e jQueryUI - http://jquery.com/
+- [new] Aggiunto il salvataggio e ripristino della posizione della finestra principale
+- [new] Aggiunte le impostazioni sul proxy nel wizard di configurazione
+- [bugfix] Supporto HTTP Pipelining
+- [changed] Mantenimento nel layout nella dimensione della pagina, in presenza di contenuti oltre tale limite
+- [new] Modulo di visualizzazione ricerca custom, generazione/esportazione Feed RSS.
+- [new] Detect dei links a sistemi di file-sharing, e pulsanti di lancio automatico o riepilogo links.
+- [changed] Layout tableless
+- [changed] Output HTML5 e validazione W3C
+- [new] Sostituzione del motore di script Javascript con Python
+- [new] Supporto utf8 nella chat IRC
+- [new] Aggiunto il filtro ".osiris" nella finestra di importazione files
+- [new] Aggiunto il supporto ai files osiris non compressi
+- [new] Il nome dei files osiris generati è ora proposto di default con il nome del portale
+- [new] In caso di importazione di un file "non osiris" viene ora riportato un messaggio di errore specifico al posto di "Invalid portal link"
+- [bugfix] Fix del bug sull'username nella pagina di login
+- [bugfix] Fix bug sulla percentuale di importazione di un portale nella pagina dei jobs
+- [bugfix] Fix bug stabilizzazione infinita con più account
+- [new] Modulo di visualizzazione Feed RSS
+- [new] Versione nativa per Mac OSX - Intel
+- [new] Supporto proxy http
+- [new] Supporto files .osiris per l'importazione/esportazione di un portale
+- [new] Aggiunto il ripristino delle opzioni al valore di default in modalità di recovery
+- [new] Aggiunta una colonna per il timestamp nella finestra di log
+- [new] Aggiunto il pulsante di abilitazione/disabilitazione Isis nella finestra principale
+- [new] Nuovo layout della finestra principale
+- [new] Implementati gli shortcut da tastiera per i principali tag bbcode.
+- [new] Integrazione di un client IRC
+- [new] Integrazione delle librerie "prototype" e "scriptaculous", per un miglior feedback visivo.
+- [new] Modulo "Language Switcher" (con supporto guest e Isis).
+- [changed] Migliorie all'interfaccia
+- [changed] Ottimizzazioni varie di performance e gestione volumi.
+- [changed] Integrazione di miniupnp per il supporto upnp multipiattaforma
+- [changed] Riscrittura del layer per la gestione dei threads
+- [changed] La mancanza dell'utente di riferimento in una sottoscrizione Isis non richiede più la riattivazione manuale.
+- [changed] Migrazione dei servizi esterni da Anubis ad Isis.
+- [changed] Ulteriori traduzioni di testi mancanti.
+- [changed] Font di default a 12px, conforme con le board tradizionali.
+- [changed] Layout e opzioni della pagina di ricerca utenti.
+- [changed] Gli utenti sotto la soglia di reputazione autori non vengono più mostrati.
+- [changed] Nuova pagina a livello di utente di gestione link di invito e esportazioni
+- [bugfix] Risolto un problema nella gestione delle reputazione da link di invito in fase di creazione di un account.
+- [bugfix] Gestione e layout dei popup.
+- [bugfix] Corretto un bug nella gestione dei messaggi privati nei portali monarchici
+- [bugfix] Corretto un bug nel salvataggio delle opzioni nella versione console
+- [bugfix] Corretto un bug relativo all'inizializzazione di moduli istanziati ma non presenti nell'installazione.
+- [bugfix] Corretti dei bug del parser bbcodes (relativo al tag [?], [codebox]).
+- [bugfix] Corretto un bug relativo alla favicon.
+- [bugfix] Corretto un crash relativo alla visualizzazione dei sondaggi da Isis o dalla navigazione non-loggata nei monarchici.
+- [bugfix] Corretto un bug relativo alla presenza di acapo negli url bbcode.
+- [bugfix] Corretta la visualizzazione del pulsante "restore" via Guest o Isis.
+- [bugfix] Corretto un problema di visualizzazione delle reputazioni utenti via Guest o Isis.
+- [bugfix] La ricerca viene ora eseguita anche sui titoli degli oggetti.
+- [bugfix] Corretta l'interpretazione del tag [size] rispetto ai bbcodes tradizionali.
+- [bugfix] Corretto un crash relativo al modulo mirror se l'ID puntava ad un'istanza.
+
+-------------------------------------------------------------------------------------
+Osiris 0.12
+-------------------------------------------------------------------------------------
+- Implementazione di Isis
+- Porting del codice sotto Linux: rilasciati i pacchetti tar.gz, deb e rpm oltre al supporto synaptic per debian/ubuntu.
+- Supporto completo nel webserver all'HTTP 1.1.
+- Varie ottimizzazioni nell'uso del disco: ora i dati vengono serializzati solo quando serve e "a blocchi".
+- Ottimizzazione del codice di allineamento p2p (ora è asincrono e vengono gestiti meglio i timeout).
+- Implementazione della modalità  "guest" nei portali monarchici.
+- Vari restyling grafici lato web e nella finestra dell'applicazione.
+- L'eseguibile principale è ora minimalista per evitare falsi-positivi dagli antivirus sotto Windows (es. Nod32).
+- Aggiunta una nuova pagina per la configurazione delle opzioni.
+- Nuove pagine di ricerca: "ultime discussioni" e "discussioni utente".
+- Sono concluse le migliorie alle performance di accesso e navigazione tra le pagine.
+- Aggiunti i tag bbcodes per supportare l'html completo e gli oggetti multimediali (tra cui Flash).
+- Agganciate al sistema di traduzioni molte voci mancanti.
+- Report vari di ricerche a livello di utente.
+- Ottimizzazione dei tempi di stabilizzazione di un portale.
+- Estesa la pagina di sottoscrizione ad un portale esistente per supportare i link osiris://.
+- Corretto un bug che aggiungeva uno "\" nei testi dei link di invito.
+- Aggiunte le richieste di conferma per i comandi di "rimozione portale", "revisione di cancellazione" e "revisione di spostamento".
+- La sincronizzazione ntp avviene ora in background per consentire un avvio più rapido dell'applicazione.
+- Ottimizzazione del tempo di chiusura del processo.
+- Aggiornamento alla versione più recente di varie librerie (boost, sqlite, wxWidgets, ecc...).
+- Modifiche e bugfix vari.
+
+-------------------------------------------------------------------------------------
+Osiris 0.11
+-------------------------------------------------------------------------------------
+- Ulteriori ottimizzazioni di accesso al disco fisso
+- Ulteriori ottimizzazioni relative all'uso di CPU
+- Ottimizzazioni della gestione del database in generale
+- Ottimizzazioni di caricamento / entrata nei portali
+- E' stato implementato il rilevamento automatico dei link, in modo da non doverli necessariamente racchiudere con il tag [url]
+- Ora i tag che non vengono interpretati, come ad esempio alfa[beta]gamma, generano comunque dei warning, ma vengono visualizzati come testo.
+- E' stato modificato il tag [size] in modo che prenda anche valori senza unità  di misura (considerando la percentuale come default).
+- E' stato corretto il tag ed2k per supportare i server & le serverlist.
+- Sono stati corretti alcuni errori di charset
+- Corretti dei problemi di case-sensitive.
+- Miglioramenti nella conversione da html a bbcode e correzione di errori di charset.
+- I link interni alle pagine contengono ora il riferimento al portale.
+- Aggiunta la modalità  "report" nel bbeditor
+- Alcune correzioni nel parser bbcode per la generazione ottimale del codice da indicizzare nel Lucene
+- Esteso il set base di emoticons (aggiunti altri stati emotivi + emoticons di utilità  - si,no,spam etc.)
+- Altre correzioni varie minori.
+- Dimensione massima di un oggetto portata da 64kb a 128kb
+- Ottimizzazione della gestione dei crash
+- Aggiunta la cartella dei messaggi inviati
+- Ottimizzazione della gestione dei processi in background
+- Gestione dei css per piattaforme ad hoc (Wii/WinCe/PSP/iPhone/PS3)
+- Aggiunta di lingue tradotte in automatico (spagnolo, portoghese, tedesco, francese)
+- Il "segui per reputazioni indirette" non è più attivo di default.
+- Migliorie grafiche in generale
+- Sistemate le larghezze degli editbox nelle pagine di edit
+- Aggiunta la creazione dello shortcut sul desktop nella versione con installer
+- Rinomina di un account
+- Abolita l'opzione "net.enable_upnp", sostituita da "p2p.server.enable_upnp" e "web.server.enable_upnp"
+- Aggiunte le opzioni "p2p.server.bind_ip" e "web.server.bind_ip"
+- La directory di lavoro temporanea non è più richiesta al sistema, ma bensì usa data\temp.
+- La firma di un utente viene ora renderizzata in modalità  sicura nei messaggi privati
+- Disattivazione dell'allineamento a livello di singolo portale
+- Disattivazione globale dell'allineamento
+- Abolita la dipendenza al vcredist_x86.exe
+- bbEditor, inserimento tag non in posizione del caret in IE7
+- Corretto un bug di gestione del pulsante "back" del browser in Opera e IE7.
+- Crash nell'editing di oggetti
+- Corretto un possibile bug nella decodifica di un messaggio privato
+- Corretto un problema di drag dell'assistente
+- Altre correzioni varie
+
+-------------------------------------------------------------------------------------
+Osiris 0.10
+-------------------------------------------------------------------------------------
+- Implementato un wizard di configurazione per le opzioni di base (apribile manualmente da GUI->Edit->Configure options)
+- Aggiunta la possibilità  di lanciare in automatico Osiris all'avvio del sistema operativo (tramite Wizard di configurazione)
+- Aggiunto il supporto alla sincronizzazione dell'orologio interno tramite anubis se l'ntp non è disponibile
+- Corretto un bug nel motore di indicizzazione per la ricerca
+- Sistemata la formattazione dei nomi dei files e delle dimensioni dei link ed2k/ants.
+- Corretto un problema di layout nella visualizzazione dei forums (i titoli dei topics vengono ora troncati)
+- Corretto un problema nella gestione dei mimetypes nel webserver
+- Risoluzione di bugs vari.
+- Risoluzione del problema delle doppie-richieste in IE7.
+- Prime ottimizzazioni di prestazioni.
+- Ottimizzate le richieste multiple contemporanee nel web-server.
+- Modificate alcune pagine ed alcuni CSS, generalmente per correzioni di layout.
+- Inserite alcune traduzioni mancanti.
+- Aggiunto il supporto multilingua alla GUI
+- I link di invito monarchici non contengono più il riferimento per la reputazione di invito.
+- Ottimizzato il caricamento delle lingue, e introduzione del francese, dello spagnolo, del tedesco e del portoghese (generati automaticamente).
+- Aggiunto un messaggio di benvenuto che compare nei portali vuoti, in attesa di allineamento (in pratica finchè non arriva un'istanza in home).
+- Aggiunta la colonna "Ultimo allineamento" nell'elenco portali, che riporta l'ultima data in cui è arrivato un oggetto da quando Osiris è stato avviato.
+- Varie modifiche minori.
+
+-------------------------------------------------------------------------------------
+Osiris 0.9
+-------------------------------------------------------------------------------------
+- Supporto upnp (sperimentale)
+- Reputazione automatica nei link di invito
+- Randomizzazione delle porte per l'allineamento come opzione di default (con la possibilità  di usarne sempre una fissa)
+- Ottimizzazione utilizzo cpu in fase di allineamento (implementato un sistema di cache delle chiavi DH)
+- Editazione dei parametri di un portale (nome, descrizione)
+- Rimozione dei portali
+- Sistemati molti testi ancora in italiano per una versione completamente inglese
+- Aggiunta la possibilità  di specificare "" o "*" alle opzioni "url.protocols.no_confirm" e "url.protocols.no_redirect"
+- Sistemati i crash causati dal javascript 
+- Risolto un possibile crash in fase di creazione di un account durante l'allineamento
+- Corretto un problema nella creazione dei profili nei portali monarchici.
+- Corretto un problema nella gestione dei link esterni
+- Corretti vari bugs nel parser osml.
+- Corretto un problema del calcolo statistiche
+
+-------------------------------------------------------------------------------------
+Osiris 0.8
+-------------------------------------------------------------------------------------
+- Aggiunta la possibilità  di creare polls all'interno del componente forum
+- Corretto un bug nella visualizzazione della legenda del componente forum
+- Le descrizioni delle sezioni possono ora contenere testo bbcode
+- Modificata la gestione di Garbage Collection nel Javascript
+- Aggiunto un comando nella GUI per localizzare la directory in cui vengono salvati i dati personali
+- Corretto un bug nella gestione delle code in fase di allineamento
+- Aggiunta la possibilità  di creare portali privati
+- Aggiunto il supporto ai link ants2k & magnet, la formattazione delle dimensioni dei files nei link ed2k e ants2k
+- Corretto un bug della stabilità  degli accounts nei portali monarchici
+- Corretto un bug di calcolo statistiche nelle sezioni dei forum
+- Corretto il tag [email]
+- Modifiche minori
+- Modificato l'installer Windows
+
+-------------------------------------------------------------------------------------
+Osiris 0.7
+-------------------------------------------------------------------------------------
+- Corretto un bug di visualizzazione degli smiles nel parser bbCodes
+- Aggiunto un tab "notes" nell'assistente.
+- Fix della selezione della lingua nella pagina del profilo utente
+- Fix registrazione del protocollo osiris nel registro di sistema
+- Risolti problemi di avvio con Windows Vista
+- Aggiunto il campo "descrizione" nella pagina di creazione di un nuovo portale
+- Corretto un problema di script client-side in IE7, che impediva tra l'altro l'apertura dell'assistente.
+- Corretta la visualizzazione della pagina di help dei bbCodes.
+- Corretto un problema di posizionamento dell'assistente
+- Corretto un problema nel calcolo delle statistiche degli utenti
+- Corretto un problema per cui non venivano mostrate le statistiche nei portali monarchici.
+- Corretto un problema di calcolo delle statistiche delle sezioni del componente forums
+- Aggiornata la visualizzazione del log nella finestra principale.
+
+-------------------------------------------------------------------------------------
+Osiris 0.6
+-------------------------------------------------------------------------------------
+- Libera creazione di portali anarchici e monarchici
+- Implementazione dei componenti
+- Ottimizzazione dell'algoritmo di stabilizzazione
+- Supporto Windows Vista
+- Supporto multiutenza
+- implementazione dell'editor di posizione per le sezioni e le istanze 
+- Versione noinstall
+- Vari bugfix
+
+-------------------------------------------------------------------------------------
+Osiris 0.5
+-------------------------------------------------------------------------------------
+- ottimizzazione server http e protocollo di allineamento
+- offuscamento delle connessioni p2p
+- aggiunto il comando per il ripristino di una revisione
+- aggiunti la possibilità  di commentare una revisione
+- modifica della gestione delle istanze: aggiunta la possibilità  di specificare lo stile e il tipo di blocco
+- modifica nella gestione dei voti nei polls
+- modifica nella gestione delle reputazioni: aggiunta l'opzione di "follow"
+- miglioramento nella gestione dei protocolli (http, osiris, ed2k ecc...) nel parser bbcode
+- modifica della gestione dei link esterni
+- detect delle connessioni in loopback
+- correzione bugs minori (es.: ricorsività  oggetti)
+
+-------------------------------------------------------------------------------------
+Osiris 0.4
+-------------------------------------------------------------------------------------
+- implementazione delle statistiche sui posts
+- implementazione delle statistiche sugli utenti
+- votazione degli oggetti
+- aggiornamento della pagina utente in particolare nella visualizzazione dei valori di reputazione
+- chiusura del blocco quando si passa alla seconda pagina dei commenti
+- visualizzazione di un post in contesto quando si clicca su "back"
+- correzione bugs (pagina modifiche recenti)
+- visualizzazione dei portali disponibili e delle news nella home di sistema
+
+-------------------------------------------------------------------------------------
+Osiris 0.3
+-------------------------------------------------------------------------------------
+- ottimizzazione sincronizzazione ntp
+- ottimizzazione protocollo p2p
+- pagina di redirect
+- mappa del sito
+- modalità blog
+- modalità repository
+- implementazione dei polls
+- correzione bugs nei bbcodes
+- correzione bug nella quotazione di oggetti revisionati
+- (漢字)

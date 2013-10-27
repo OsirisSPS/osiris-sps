@@ -1,0 +1,590 @@
+isis/1.0 response
+200
+HTTP/1.1 200
+Connection: keep-alive
+Set-Cookie: os_session=B7C6555939A2D6526C3A3A8DBBE6C922244F71FC; expires=Tue, 01 Jan 2030 00:00:00 GMT; path=/;
+Content-Type: text/html; charset=utf-8
+Content-Length: 50302
+Allow: GET, HEAD, DELETE
+Server: Osiris/1.0
+Date: Tue, 15 May 2012 00:39:06 GMT
+
+<!DOCTYPE HTML>
+<html><head>
+	<title>dgdfgdfg</title>
+	<meta name="generator" content="Osiris" />
+	<meta http-equiv="Content-type" content="text/html;charset=UTF-8" />
+	<meta name="description" />
+	<style id="lesslib" rel="stylesheet/less">@import url("/htdocs/css/default.less");@import url("/htdocs/css/skin.less");@os-skin-block-big-type: heading;
+@os-skin-block-small-type: heading;</style>
+	<link href="/htdocs/css/osiris.less" type="text/css" rel="stylesheet/less">
+	<link href="/htdocs/css/test.less" type="text/css" rel="stylesheet/less">
+	<link href="/htdocs/css/assistant.less" type="text/css" rel="stylesheet/less">
+	<script type="text/javascript" src="/htdocs/js/jquery/jquery.js"></script>
+	<script type="text/javascript" src="/htdocs/js/jquery/jquery.ui.js"></script>
+	<script type="text/javascript" src="/htdocs/js/libraries.js"></script>
+	<script type="text/javascript" src="/htdocs/js/less.js"></script>
+	<script type="text/javascript" src="/htdocs/js/osiris.js"></script>
+	<script type="text/javascript" src="/htdocs/js/osirislibraries.js"></script>
+	<script type="text/javascript" src="/htdocs/js/assistant.js"></script>
+	<script type="text/javascript" src="/15EC737256997E5993528A94D0540235D59E384B/rotator.js"></script>
+	
+</head>
+<body><form method="POST" action="/portals/view?portal=010000010D2C4E505C1D98B221E222CABE4E167BECB2D669_010000020D2C4E505C1D98B221E222CABE4E167BECB2D669" id="Form">
+<input type="hidden" id="osPostCtlId" name="osPostCtlId"><input type="hidden" id="osPostCtlArg" name="osPostCtlArg">
+<div class="os_root">
+	<a id="system" href="#system" accesskey="s" title="{System bar of the page}"></a>
+          <!--{__Isis_Area_System__}-->
+          <div class="os_page_container3">
+<div class="os_page_container2">
+<div class="os_page_container">
+<div class="os_page">
+<a id="top" href="#top" accesskey="t" title="{Top of the page}"></a><a href="javascript:Osiris.Assistant.toggle()" accesskey="a"></a>
+<div class="os_header">
+<div class="os_area_top" style="padding-top:5px;"><div>
+		<div style="position:relative;top:0px;left:0px;">
+<div data-os-objectId="04000002C4A52AC203E8709D0B79D6975111ACB1925579D2" style="margin:0px;padding:0px;">	<div class="os_block_none">	<div class="os_modules_text" style="margin:0px;padding:0px;">
+<div class='os_oml'><div class="heading"><div style="float:left;width:387px;height:90px;background-image:url(/htdocs/images/logo/logo1.png);background-repeat:no-repeat;"></div><div class="heading_list"><a href="/portals/view?id=040000024A5D24DA79AF53EEE5E6B8D7D8101697536BD120&amp;portal=010000010D2C4E505C1D98B221E222CABE4E167BECB2D669&amp;user=010000020D2C4E505C1D98B221E222CABE4E167BECB2D669">Forums</a><a href="/portals/view?id=030000025A08ABABD14A590162B8839E94F3C105E65F79BA&amp;portal=010000010D2C4E505C1D98B221E222CABE4E167BECB2D669&amp;user=010000020D2C4E505C1D98B221E222CABE4E167BECB2D669">Support</a><a href="/portals/view?id=03000002C6B12993B627D6080141BA098C40EC09FCCF6EE7&amp;portal=010000010D2C4E505C1D98B221E222CABE4E167BECB2D669&amp;user=010000020D2C4E505C1D98B221E222CABE4E167BECB2D669">Contribute</a><a href="/portals/view?id=0300000265FEF2640A89C24EF2D945AA2E9A8C035810BB7D&amp;portal=010000010D2C4E505C1D98B221E222CABE4E167BECB2D669&amp;user=010000020D2C4E505C1D98B221E222CABE4E167BECB2D669">Start</a><a href="/portals/view?id=030000029B0E95AA882AE17137D76906363794F362671AD2&amp;portal=010000010D2C4E505C1D98B221E222CABE4E167BECB2D669&amp;user=010000020D2C4E505C1D98B221E222CABE4E167BECB2D669">Download</a><a href="/portals/view?portal=010000010D2C4E505C1D98B221E222CABE4E167BECB2D669&amp;user=010000020D2C4E505C1D98B221E222CABE4E167BECB2D669">Home</a></div><div style="clear:both;"></div></div></div><div class="os_oml_footer"></div>	</div>
+</div>
+</div>
+</div>
+		<div style="position:relative;top:0px;left:0px;">
+<div data-os-objectId="040000027D12221463F9288B1B193DF1CBDBC30033894036" style="width:180px;float:left;position:absolute;top:-80px;left:750px;">	<div class="os_block_none">	<div id="page-040000027D12221463F9288B1B193DF1CBDBC30033894036">
+		<div style="padding:3px;">
+<table>
+<tr>
+<td style="width:100%;"><input style="width:100%" id="quick_search" value="{Search}" onfocus="javascript:if (this.value == '{Search}') this.value = '';" onkeypress="javascript:if (osGetEvent(event).keyCode != 13)  return true; Osiris.Assistant.doSearch('quick_search', '/portals/search?portal=010000010D2C4E505C1D98B221E222CABE4E167BECB2D669_010000020D2C4E505C1D98B221E222CABE4E167BECB2D669', '{Search}', false); return false;"></td><td style="vertical-align:middle;"><img style="padding-left:10px;cursor:pointer;" src="/htdocs/images/quick_search.gif" onclick="javascript:Osiris.Assistant.doSearch('quick_search', '/portals/search?portal=010000010D2C4E505C1D98B221E222CABE4E167BECB2D669_010000020D2C4E505C1D98B221E222CABE4E167BECB2D669', '{Search}', false);"></td>
+</tr>
+</table>
+</div>
+	</div>
+</div>
+</div>
+</div>
+		<div style="position:relative;top:0px;left:0px;">
+<div data-os-objectId="04000002EEE0E77164D6C261CB5AD91F15AF5F7403509AEB" style="margin:10px;width:60px;position:absolute;top:-90px;left:950px;">	<div class="os_block_none">	<div id="page-04000002EEE0E77164D6C261CB5AD91F15AF5F7403509AEB">
+		<div class="os_content" style="text-align:center;">
+<span style="padding:2px"><span><img src="/htdocs/images/flags/small/en-US.png" data-os-tooltip="<b>English (United States)</b><br />English (United States)"></span></span><span style="padding:2px"><a href="javascript:void(osEventPostCtl('page-04000002EEE0E77164D6C261CB5AD91F15AF5F7403509AEB', 'onSelect:it-IT'));" class="os_alpha_highlight"><img src="/htdocs/images/flags/small/it-IT.png" data-os-tooltip="<b>italiano (Italia)</b><br />Italian (Italy)"></a></span>
+</div>
+	</div>
+</div>
+</div>
+</div>
+		<div style="position:relative;top:0px;left:0px;">
+<div data-os-objectId="040000020F479038611B989E7A60BEB6A025EFD7AF9EBA7F" style="">	<div class="os_block_none">	<div>
+		<style type="text/css" media="all">html
+{
+background-color:#F0B500;
+}
+
+
+.os_page_container3
+{	
+	background:url(/main/resources?file=080000021583B25A0FEB2CE1218BDBBBF0A1C8BE3027C743&portal=010000010D2C4E505C1D98B221E222CABE4E167BECB2D669_010000020D2C4E505C1D98B221E222CABE4E167BECB2D669) repeat fixed 0 0 white;	
+}
+
+.os_page_container2
+{	
+	background:url(/main/resources?file=0800000265EF945676BB95FD49D876F47614929E1714CD21&portal=010000010D2C4E505C1D98B221E222CABE4E167BECB2D669_010000020D2C4E505C1D98B221E222CABE4E167BECB2D669) no-repeat 50% 0;	
+}
+
+.os_page_container
+{	
+	background:url(/main/resources?file=080000025179029A9235C928364B5E616AEA6737A4213DC9&portal=010000010D2C4E505C1D98B221E222CABE4E167BECB2D669_010000020D2C4E505C1D98B221E222CABE4E167BECB2D669) repeat-y fixed 50% 0;	
+}
+
+.os_page
+{
+	margin:auto;	
+	width:1024px;	
+}
+
+
+body,
+.os_root, 
+input, 
+select, 
+textarea,
+.os_message_body
+{	
+	font: 0.85em/1.5em "DejaVu Sans","Bitstream Vera Sans",Verdana,sans-serif;	
+	font-size: 12px;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6
+{	
+	text-shadow: 0px 0px 0px black;	
+}
+
+h1
+{
+	color: #f48b00;
+	font-weight: normal;
+	border-bottom:1px solid #FCC728;		
+	text-shadow: gray 1px 1px 1px;
+}
+
+h2
+{
+	color: #F48B00;	
+	text-shadow: gray 1px 1px 1px;
+}
+
+a:link,
+a:visited,
+a:active
+{	
+}
+
+a:hover
+{
+	background-image: none;
+}
+
+
+
+
+
+
+
+
+
+.heading
+{
+color:white;
+font-weight:bold;
+font-size:14px;
+background-image:url(/main/resources?file=08010002C0A653A686EC8764B36F9F4846C2308DA227A3E8&portal=010000010D2C4E505C1D98B221E222CABE4E167BECB2D669_010000020D2C4E505C1D98B221E222CABE4E167BECB2D669);
+background-repeat=repeat-x;
+}
+
+.heading_list
+{
+margin-top:60px;
+display:block;
+float:right; 
+width:600px;
+}
+
+.heading a
+{
+color:black;
+float:right;
+display:block;
+height:20px;
+padding:2px;
+padding-left:10px;
+padding-right:10px;
+margin:2px;
+text-decoration:none;
+text-align:center;
+border-bottom:2px solid transparent;
+}
+
+.heading a:hover
+{
+text-shadow: 0px 0px 2px white;
+border-bottom:2px solid white;
+}
+
+.link_box
+{
+margin:10px;
+float:left;
+width:30%;
+}
+
+a.link_box_title,
+span.link_box_title
+{
+display:block;
+color: #f48b00;
+font-weight: normal;
+font-size:1.2em;
+text-shadow: gray 1px 1px 1px;
+background-image:none;
+}
+
+.homeslide_item
+{
+	width:550px;
+	margin-left:20px;
+	margin-top:100px;
+	color:white;
+	text-shadow: black 0px 0px 2px;
+}
+
+.homeslide_item_title
+{
+	font-size:2em;
+}
+
+.homeslide_item_sub
+{
+	font-size:1.2em;
+	line-height:1em;
+	padding-top:5px;
+}
+
+.homeslide_item_sub2
+{
+font-size:0.8em;
+line-height:1em;
+text-align:right;
+font-style:italic;
+padding-top:5px;
+text-shadow: black 0px 0px 1px;
+}
+
+a.homeslide_download
+{
+display:block;
+width:243px;
+height:79px;
+background:url(/main/resources?file=08000002368807FA696AFB01D6E3EB00D32E24ED4E331588&portal=010000010D2C4E505C1D98B221E222CABE4E167BECB2D669_010000020D2C4E505C1D98B221E222CABE4E167BECB2D669) no-repeat;
+}
+
+a.homeslide_download:hover
+{
+display:block;
+width:243px;
+height:79px;
+background:url(/main/resources?file=08000002A9BF27CFAD70555CDB35A6BC0216EA1B63BFCB76&portal=010000010D2C4E505C1D98B221E222CABE4E167BECB2D669_010000020D2C4E505C1D98B221E222CABE4E167BECB2D669) no-repeat;
+}
+
+.footer
+{
+text-align:center;
+background:#F0B500 url(/main/resources?file=080000027CA87F1D7CA8C9829BDFA06BA9654B65C2E0C509&portal=010000010D2C4E505C1D98B221E222CABE4E167BECB2D669_010000020D2C4E505C1D98B221E222CABE4E167BECB2D669) repeat-x scroll 0 0;
+}
+
+.footer_block
+{
+float:left;
+margin:20px;
+font-size:10px;
+text-align:left;
+}
+
+.footer_block a
+{
+color:black;
+}
+
+.footer_block a:hover
+{
+text-shadow: 0px 0px 1px white;
+border-bottom:1px solid white;
+}</style>
+	</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div style="clear:both"></div>
+</div>
+<div class="os_page_content">
+<div class="os_layout">
+<div class="os_pathway">
+<a href="/main/home"><img style="margin-top:6px;" src="/htdocs/images/pathway_home.png" alt=""></a><img src="/htdocs/images/pathway_sep.png" alt=""><a href="/portals/view?portal=010000010D2C4E505C1D98B221E222CABE4E167BECB2D669_010000020D2C4E505C1D98B221E222CABE4E167BECB2D669" data-os-objectId="">dgdfgdfg</a>
+</div>
+<div style="overflow:auto;">
+<div class="os_area_content_top"><div>
+		<div style="position:relative;top:0px;left:0px;">
+<div data-os-objectId="040000025860D483270C88C1F17F484C693F535FEB0FB747" style="">	<div class="os_block_none">	<div class="os_modules_text" style="margin:0px;padding:0px;">
+<div class='os_oml'><div style="position:relative"><div style="position:absolute;z-index:1000;left:544px;width:470px;"><div style="font-size:1.7em;color:white;padding:10px;text-align:center;line-height:1.2em;text-shadow: black 0px 0px 2px;">Software for decentralized portal, managed and shared via P2P between members.</div><div style="text-align:right"><a style="color:white;text-shadow: black 0px 0px 1px;" href="/portals/view?id=0300000265FEF2640A89C24EF2D945AA2E9A8C035810BB7D&amp;portal=010000010D2C4E505C1D98B221E222CABE4E167BECB2D669&amp;user=010000020D2C4E505C1D98B221E222CABE4E167BECB2D669">Discover more ...</a></div><a style="margin-left:150px;margin-top:5px;" class="homeslide_download" href="/portals/view?id=030000029B0E95AA882AE17137D76906363794F362671AD2&amp;portal=010000010D2C4E505C1D98B221E222CABE4E167BECB2D669&amp;user=010000020D2C4E505C1D98B221E222CABE4E167BECB2D669"></a></div></div><div id="rotator_CF9FE78FAEF6E21D0CA2F5553864C922794DB81C"><div style="position:absolute;background-image:url(/main/resources?file=08000002AED2F8B974CA43A42FF909E17B1B2B3B70BE21C0&portal=010000010D2C4E505C1D98B221E222CABE4E167BECB2D669_010000020D2C4E505C1D98B221E222CABE4E167BECB2D669);width:1024px;height:180px;"><div class="homeslide_item"><div class="homeslide_item_title">Free</div><div class="homeslide_item_sub">Free software. Free creation of portals.<br />No cost for hosting, bandwidth, hardware, domains.</div></div></div><div style="display:none;position:absolute;background-image:url(/main/resources?file=08000002E22966DFE4473C269B46001B6E71508A3D25218F&portal=010000010D2C4E505C1D98B221E222CABE4E167BECB2D669_010000020D2C4E505C1D98B221E222CABE4E167BECB2D669);width:1024px;height:180px;"><div class="homeslide_item"><div class="homeslide_item_title">Powerful &amp; User-Friendly</div><div class="homeslide_item_sub">Web interface, guides, extensions, skins.<br />This portal is created with Osiris and displayed with Isis.</div></div></div><div style="display:none;position:absolute;background-image:url(/main/resources?file=08000002C644966C7D34EA3FF88208837BE06FCE2C1C6798&portal=010000010D2C4E505C1D98B221E222CABE4E167BECB2D669_010000020D2C4E505C1D98B221E222CABE4E167BECB2D669);width:1024px;height:180px;"><div class="homeslide_item"><div class="homeslide_item_title">Performance</div><div class="homeslide_item_sub">Local navigation, also without internet connection.<br />Pages generated locally by your pc, only for you.</div></div></div><div style="display:none;position:absolute;background-image:url(/main/resources?file=080000022E89267E9FEC65BD1CF2E27A39FCEC6BC931DD97&portal=010000010D2C4E505C1D98B221E222CABE4E167BECB2D669_010000020D2C4E505C1D98B221E222CABE4E167BECB2D669);width:1024px;height:180px;"><div class="homeslide_item"><div class="homeslide_item_title">Physical decentralization</div><div class="homeslide_item_sub">Every node shares via P2P copies of portals.<br />No central point to obscure, filter, limit or attack.</div></div></div><div style="display:none;position:absolute;background-image:url(/main/resources?file=08000002358BCA994D62B0869BA4F4634D223A3EB44BFAEA&portal=010000010D2C4E505C1D98B221E222CABE4E167BECB2D669_010000020D2C4E505C1D98B221E222CABE4E167BECB2D669);width:1024px;height:180px;"><div class="homeslide_item"><div class="homeslide_item_title">Administration decentralization</div><div class="homeslide_item_sub">Any user can <em>mod</em> or <em>fork</em> an existing portal, to ensure indistructibility to users also from an unwanted portal staff.</div></div></div><div style="display:none;position:absolute;background-image:url(/main/resources?file=08000002C8CE0DF75F06BCA129720E90FC07952135B48F26&portal=010000010D2C4E505C1D98B221E222CABE4E167BECB2D669_010000020D2C4E505C1D98B221E222CABE4E167BECB2D669);width:1024px;height:180px;"><div class="homeslide_item"><div class="homeslide_item_title">Unbreakable</div><div class="homeslide_item_sub">A portal exists until users share it.<br />Redundancy avoids DDOS problems and more.</div></div></div><div style="display:none;position:absolute;background-image:url(/main/resources?file=080000024A5B25C9E6EB21CAFD23A108446155941F09F8A5&portal=010000010D2C4E505C1D98B221E222CABE4E167BECB2D669_010000020D2C4E505C1D98B221E222CABE4E167BECB2D669);width:1024px;height:180px;"><div class="homeslide_item"><div class="homeslide_item_title">Anonymous</div><div class="homeslide_item_sub">Impossible to associate an IP address to a user, or to know the complete lists of peers that share a portal. TOR-friendly.</div></div></div><div style="display:none;position:absolute;background-image:url(/main/resources?file=08000002244C6B782D7BDB5DBF1E04934B9FE46B89D609A9&portal=010000010D2C4E505C1D98B221E222CABE4E167BECB2D669_010000020D2C4E505C1D98B221E222CABE4E167BECB2D669);width:1024px;height:180px;"><div class="homeslide_item"><div class="homeslide_item_title">Network &amp; Security</div><div class="homeslide_item_sub">Serverless protocol / Obfuscation / DHT<br />Users content signed with RSA 2048 bit.</div></div></div><div style="display:none;position:absolute;background-image:url(/main/resources?file=080000025D98E10B27A48C860E407453F9044C538D602B18&portal=010000010D2C4E505C1D98B221E222CABE4E167BECB2D669_010000020D2C4E505C1D98B221E222CABE4E167BECB2D669);width:1024px;height:180px;"><div class="homeslide_item"><div class="homeslide_item_title">Soon Open Source</div><div class="homeslide_item_sub">Free, soon Open Source (GPL), community driven,<br />skin &amp; extensions with Python support.</div></div></div><div style="display:none;position:absolute;background-image:url(/main/resources?file=0800000270E08376B74B208DC3EAA9AAE64DFCD990326667&portal=010000010D2C4E505C1D98B221E222CABE4E167BECB2D669_010000020D2C4E505C1D98B221E222CABE4E167BECB2D669);width:1024px;height:180px;"><div class="homeslide_item"><div class="homeslide_item_title">Multiplatform</div><div class="homeslide_item_sub">Available for Windows, Linux, Mac / 32 bit or 64 bit<br />Installer or Portable versions / No software prerequisites.</div><div class="homeslide_item_sub2">Mac OSX version and Win-64bit will be available soon.</div></div></div><div style="display:none;position:absolute;background-image:url(/main/resources?file=0800000292526ABCC549FF1B91C70B02A47D88EE23A0B7AC&portal=010000010D2C4E505C1D98B221E222CABE4E167BECB2D669_010000020D2C4E505C1D98B221E222CABE4E167BECB2D669);width:1024px;height:180px;"><div class="homeslide_item"><div class="homeslide_item_title">Multilanguage</div><div class="homeslide_item_sub">Supports languages, cultures, charset, date formats, etc.<br />It's possibile to write content in portals in many languages.</div></div></div><div style="display:none;position:absolute;background-image:url(/main/resources?file=0800000277353BAD21639392FDB0AA05EBF7342C3CCBB229&portal=010000010D2C4E505C1D98B221E222CABE4E167BECB2D669_010000020D2C4E505C1D98B221E222CABE4E167BECB2D669);width:1024px;height:180px;"><div class="homeslide_item"><div class="homeslide_item_title">Standard validation</div><div class="homeslide_item_sub">HTML5 &amp; CSS3 validation, data with XML, checking with XSD, transformations with XSLT, cultures on RFC &amp; ISO standard, etc.</div></div></div></div><script type="text/javascript">Rotator.init('rotator_CF9FE78FAEF6E21D0CA2F5553864C922794DB81C');</script><div style="background-color: white;width:1024px;height:180px;"></div></div><div class="os_oml_footer"></div>	</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="os_area_content"><div>
+		<div style="position:relative;top:0px;left:0px;">
+<div data-os-objectId="0400000218913F882B1927FAF5EB3B396625E13B411108B1" style="float:left;width:750px">	<div class="os_block_big" data-os-otype="roller" data-os-allowClose="true">
+<div class="os_block_big_collapse" data-os-roller="header" data-os-class_collapse="os_block_big_collapse" data-os-class_expand="os_block_big_expand"></div>
+<div class="os_block_big_title">News / Blog</div>
+<div class="os_block_big_body" data-os-roller="body" style="clear:both;">	<div id="page-0400000218913F882B1927FAF5EB3B396625E13B411108B1">
+				<div data-os-objectId="0500000276929A3EC56D817A4C05F5EC0237CF705E394FA1" class="">
+<div class="os_object_blog">
+<div class="os_object_blog_title">
+<h1>
+<a href="/portals/view?id=0500000276929A3EC56D817A4C05F5EC0237CF705E394FA1&amp;portal=010000010D2C4E505C1D98B221E222CABE4E167BECB2D669_010000020D2C4E505C1D98B221E222CABE4E167BECB2D669">Osiris 0.15</a>
+</h1>
+</div>
+<div class="os_object_description"><div class='os_oml'></div><div class="os_oml_footer"></div></div>
+<div class="os_object_blog_details_left">{Written by} <a class="os_button_link os_user_row" href="/portals/user?id=010000023CCB3260950B80505CBB062C0B9B65E7028BD53F&amp;portal=010000010D2C4E505C1D98B221E222CABE4E167BECB2D669_010000020D2C4E505C1D98B221E222CABE4E167BECB2D669"><img style="max-width:16px;max-height:16px;" class="os_avatar_box" alt="avatar" src="/htdocs/images/avatar.png"><span style="margin-left:10px">Clodo</span></a> , Friday, November 18, 2011 11:00:16 PM</div>
+<div class="os_object_blog_details_right">0 {comments}</div>
+<div class="os_object_blog_details_right">
+<div class="os_rating_bg" data-os-tooltip="{total votes}: 0, {average}: 0">
+<div class="os_rating_fg" style="width:0px;"></div>
+</div>
+</div>
+<div class="os_clear"></div>
+<div class="os_object_blog_content"><div class='os_oml'>The Osiris Team is happy to announce a new version of Osiris.<br />Osiris 0.15 it's mainly a bugfix release.<br /><br />This is a new release of series 0.X of the Osiris project.<br />We hope to freeze features and resolve bug-fixes with release of other version of this series, in short release cycle.<br />In the meantime, we are working on the new series 1.X, that will be totally Open Source, released under GPL.<br /><br /><br />A special thanks is given to all the support team for the contribution to the release of this version, thanks!<br /><br /><br /><br /></div><div class="os_oml_footer"><div class="os_oml_actions"><a href="/portals/view?id=0500000276929A3EC56D817A4C05F5EC0237CF705E394FA1&portal=010000010D2C4E505C1D98B221E222CABE4E167BECB2D669_010000020D2C4E505C1D98B221E222CABE4E167BECB2D669"><img src="/htdocs/images/oml/show_more.png" title="{Read more}" />{Read more}</a></div></div></div>
+</div>
+</div>
+<div data-os-objectId="0500000236A5F84C562E8BEB95BFF8CE3C370A8603CEA29D" class="">
+<div class="os_object_blog">
+<div class="os_object_blog_title">
+<h1>
+<a href="/portals/view?id=0500000236A5F84C562E8BEB95BFF8CE3C370A8603CEA29D&amp;portal=010000010D2C4E505C1D98B221E222CABE4E167BECB2D669_010000020D2C4E505C1D98B221E222CABE4E167BECB2D669">[press] Article about Osiris &amp; Isis (in Italian)</a>
+</h1>
+</div>
+<div class="os_object_description"><div class='os_oml'></div><div class="os_oml_footer"></div></div>
+<div class="os_object_blog_details_left">{Written by} <a class="os_button_link os_user_row" href="/portals/user?id=010000023CCB3260950B80505CBB062C0B9B65E7028BD53F&amp;portal=010000010D2C4E505C1D98B221E222CABE4E167BECB2D669_010000020D2C4E505C1D98B221E222CABE4E167BECB2D669"><img style="max-width:16px;max-height:16px;" class="os_avatar_box" alt="avatar" src="/htdocs/images/avatar.png"><span style="margin-left:10px">Clodo</span></a> , Sunday, October 09, 2011 3:51:32 PM</div>
+<div class="os_object_blog_details_right">0 {comments}</div>
+<div class="os_object_blog_details_right">
+<div class="os_rating_bg" data-os-tooltip="{total votes}: 0, {average}: 0">
+<div class="os_rating_fg" style="width:0px;"></div>
+</div>
+</div>
+<div class="os_clear"></div>
+<div class="os_object_blog_content"><div class='os_oml'>Aggirare la censura con Osiris e Isis<br /><br /><a class="" href="http://it.paperblog.com/aggirare-la-censura-con-osiris-e-isis-618246/" target="_blank">http://it.paperblog.com/aggirare-la-censura-con-osiris-e-isis-618246/</a></div><div class="os_oml_footer"></div></div>
+</div>
+</div>
+<div data-os-objectId="05000002AFD2BC94DEFE270E23757E4EB3102B49430B0B78" class="">
+<div class="os_object_blog">
+<div class="os_object_blog_title">
+<h1>
+<a href="/portals/view?id=05000002AFD2BC94DEFE270E23757E4EB3102B49430B0B78&amp;portal=010000010D2C4E505C1D98B221E222CABE4E167BECB2D669_010000020D2C4E505C1D98B221E222CABE4E167BECB2D669">Osiris 0.14</a>
+</h1>
+</div>
+<div class="os_object_description"><div class='os_oml'></div><div class="os_oml_footer"></div></div>
+<div class="os_object_blog_details_left">{Written by} <a class="os_button_link os_user_row" href="/portals/user?id=010000023CCB3260950B80505CBB062C0B9B65E7028BD53F&amp;portal=010000010D2C4E505C1D98B221E222CABE4E167BECB2D669_010000020D2C4E505C1D98B221E222CABE4E167BECB2D669"><img style="max-width:16px;max-height:16px;" class="os_avatar_box" alt="avatar" src="/htdocs/images/avatar.png"><span style="margin-left:10px">Clodo</span></a> , Thursday, September 29, 2011 1:05:46 PM</div>
+<div class="os_object_blog_details_right">0 {comments}</div>
+<div class="os_object_blog_details_right">
+<div class="os_rating_bg" data-os-tooltip="{total votes}: 0, {average}: 0">
+<div class="os_rating_fg" style="width:0px;"></div>
+</div>
+</div>
+<div class="os_clear"></div>
+<div class="os_object_blog_content"><div class='os_oml'>The Osiris Team is happy to announce a new version of Osiris.<br />Osiris 0.14 gives many new improvements over every features: features, security, speed, stability.<br /><br />Osiris is a freeware software made to build completely shared portals through p2p ( serverless ).<br /><br /><br /><br />This release features a new Extensions System (with automatic repository for downloading and updating directly from Osiris), DHT bootstrap, general user interface redesign, skin support, etc.<br />This is also the first release available also for Windows 64-bit and Mac-OSX, in addition to Windows 32-bit and Linux (32 and 64 bit).<br /><br />For a quick introduction, look our <a class="" href="http://www.osiris-sps.org/videotutorial/" target="_blank">Video Tutorials</a>.<br /><br />We kindly ask to report any problems on the official forum.<br /><br /><br />This is a new release of series 0.X of the Osiris project.<br />We hope to freeze features and resolve bug-fixes with release of other version of this series, in short release cycle.<br />In the meantime, we are working on the new series 1.X, that will be totally Open Source, released under GPL.<br /><br /><br />A special thanks is given to all the support team for the contribution to the release of this version, thanks!<br /><br /></div><div class="os_oml_footer"></div></div>
+</div>
+</div>
+<div data-os-objectId="05000002A2BF36903F9901EEC7ED2E38CE0F0AFA35FC0BC2" class="">
+<div class="os_object_blog">
+<div class="os_object_blog_title">
+<h1>
+<a href="/portals/view?id=05000002A2BF36903F9901EEC7ED2E38CE0F0AFA35FC0BC2&amp;portal=010000010D2C4E505C1D98B221E222CABE4E167BECB2D669_010000020D2C4E505C1D98B221E222CABE4E167BECB2D669">Pubblicazione nuovo portale</a>
+</h1>
+</div>
+<div class="os_object_description"><div class='os_oml'></div><div class="os_oml_footer"></div></div>
+<div class="os_object_blog_details_left">{Written by} <a class="os_button_link os_user_row" href="/portals/user?id=010000023CCB3260950B80505CBB062C0B9B65E7028BD53F&amp;portal=010000010D2C4E505C1D98B221E222CABE4E167BECB2D669_010000020D2C4E505C1D98B221E222CABE4E167BECB2D669"><img style="max-width:16px;max-height:16px;" class="os_avatar_box" alt="avatar" src="/htdocs/images/avatar.png"><span style="margin-left:10px">Clodo</span></a> , Thursday, May 12, 2011 9:50:53 PM</div>
+<div class="os_object_blog_details_right">0 {comments}</div>
+<div class="os_object_blog_details_right">
+<div class="os_rating_bg" data-os-tooltip="{total votes}: 0, {average}: 0">
+<div class="os_rating_fg" style="width:0px;"></div>
+</div>
+</div>
+<div class="os_clear"></div>
+<div class="os_object_blog_content"><div class='os_oml'>Usando un nuovo server, abbiamo pubblicato questo nuovo portale (realizzato con Osiris &amp; Isis), in concomitanza con il nuovo dominio: <a class="" href="http://www.osiris-sps.org" target="_blank">http://www.osiris-sps.org</a> .<br /><br />Il nuovo dominio &egrave; anche accessibile in modalit&agrave; cifrata e sicura via SSL: <a class="" href="https://www.osiris-sps.org" target="_blank">https://www.osiris-sps.org</a> .<br /><br />Ci scusiamo per il down di questi giorni del server del progetto, problemi tecnici.<br /><br />Ulteriori informazioni sono in <a class="" href="http://www.osiris-sps.org/forums/index.php?showtopic=1649" target="_blank">questo topic</a>. Ogni feedback &egrave; gradito.</div><div class="os_oml_footer"></div></div>
+</div>
+</div>
+<div data-os-objectId="05000002931F9245E3CDE8C326CC4ED9837300A6B99EA405" class="">
+<div class="os_object_blog">
+<div class="os_object_blog_title">
+<h1>
+<a href="/portals/view?id=05000002931F9245E3CDE8C326CC4ED9837300A6B99EA405&amp;portal=010000010D2C4E505C1D98B221E222CABE4E167BECB2D669_010000020D2C4E505C1D98B221E222CABE4E167BECB2D669">Articolo su Repubblica</a>
+</h1>
+</div>
+<div class="os_object_description"><div class='os_oml'></div><div class="os_oml_footer"></div></div>
+<div class="os_object_blog_details_left">{Written by} <a class="os_button_link os_user_row" href="/portals/user?id=010000023CCB3260950B80505CBB062C0B9B65E7028BD53F&amp;portal=010000010D2C4E505C1D98B221E222CABE4E167BECB2D669_010000020D2C4E505C1D98B221E222CABE4E167BECB2D669"><img style="max-width:16px;max-height:16px;" class="os_avatar_box" alt="avatar" src="/htdocs/images/avatar.png"><span style="margin-left:10px">Clodo</span></a> , Tuesday, April 26, 2011 0:10:41 AM</div>
+<div class="os_object_blog_details_right">0 {comments}</div>
+<div class="os_object_blog_details_right">
+<div class="os_rating_bg" data-os-tooltip="{total votes}: 0, {average}: 0">
+<div class="os_rating_fg" style="width:0px;"></div>
+</div>
+</div>
+<div class="os_clear"></div>
+<div class="os_object_blog_content"><div class='os_oml'>Il 23 febbraio 2011, Repubblica.it ha riportato un articolo intitolato:<br /><div class="os_oml_center"><a class="" href="http://www.repubblica.it/tecnologia/2011/02/23/news/web_rivolte-12769492" target="_blank">Se il regime spegne il web - Cos&igrave; la protesta supera i divieti - I trucchi e i software per aggirare i filtri</a></div><br /><br />in cui cita Osiris:<br /><div class="os_oml_quote_top"></div><div class="os_oml_quote_main">Molti dei servizi che usiamo sono censurabili proprio perch&eacute; centralizzati e per questo cominciano a spopolare i sistemi di pubblicazione distribuiti sui computer degli utenti. In Bahrein,  Yemen, Siria, ma anche in altri stati spopola un software per Windows e Linux, semplice da usare, tutto italiano, che consente la creazione di &quot;siti web&quot;, al di fuori del web, portali con forum e blog che non necessitano di alcun server centrale - il portale si propaga in peer to peer (p2p) e si duplica integralmente nel computer di ogni singolo <a class="" href="http://osiris.kodeware.net" target="_blank">nodo collegato. </a></div><br /><br />Abbiamo catturato uno <a class="" href="http://osiris.kodeware.net/host/index.php?id=35ed70d95d49ffb69996261411fffdcfb58262e5.png" target="_blank">screenshot</a> dell'articolo.</div><div class="os_oml_footer"></div></div>
+</div>
+</div>
+<div data-os-objectId="0500000221BC0939BF44E4FA2DBF713D0C71C541C95A0AAA" class="">
+<div class="os_object_blog">
+<div class="os_object_blog_title">
+<h1>
+<a href="/portals/view?id=0500000221BC0939BF44E4FA2DBF713D0C71C541C95A0AAA&amp;portal=010000010D2C4E505C1D98B221E222CABE4E167BECB2D669_010000020D2C4E505C1D98B221E222CABE4E167BECB2D669">Osiris su Internet Magazine (Edizioni Master) di Giugno 2010</a>
+</h1>
+</div>
+<div class="os_object_description"><div class='os_oml'></div><div class="os_oml_footer"></div></div>
+<div class="os_object_blog_details_left">{Written by} <a class="os_button_link os_user_row" href="/portals/user?id=010000023CCB3260950B80505CBB062C0B9B65E7028BD53F&amp;portal=010000010D2C4E505C1D98B221E222CABE4E167BECB2D669_010000020D2C4E505C1D98B221E222CABE4E167BECB2D669"><img style="max-width:16px;max-height:16px;" class="os_avatar_box" alt="avatar" src="/htdocs/images/avatar.png"><span style="margin-left:10px">Clodo</span></a> , Tuesday, April 26, 2011 0:05:20 AM</div>
+<div class="os_object_blog_details_right">0 {comments}</div>
+<div class="os_object_blog_details_right">
+<div class="os_rating_bg" data-os-tooltip="{total votes}: 0, {average}: 0">
+<div class="os_rating_fg" style="width:0px;"></div>
+</div>
+</div>
+<div class="os_clear"></div>
+<div class="os_object_blog_content"><div class='os_oml'>Su Internet Magazine (Edizioni Master) di Giugno 2010, <a class="" href="http://www.edmaster.it/index.php?p=prodotti&amp;sez=magazine&amp;cat=3&amp;prod=3" target="_blank">questo</a>, c'&egrave; un bellissimo articolo di 4 pagine su Osiris, oltre al client &amp; tutorial allegato nel CD.<br />Visto che sono passati diversi mesi dalla pubblicazione, pubblichiamo qui l'articolo.<br /></div><div class="os_oml_footer"><div class="os_oml_actions"><a href="/portals/view?id=0500000221BC0939BF44E4FA2DBF713D0C71C541C95A0AAA&portal=010000010D2C4E505C1D98B221E222CABE4E167BECB2D669_010000020D2C4E505C1D98B221E222CABE4E167BECB2D669"><img src="/htdocs/images/oml/show_more.png" title="{Read more}" />{Read more}</a></div></div></div>
+</div>
+</div>
+<div class="os_results_info">
+<img src="/htdocs/images/dot.png"><a class="os_nolink" href="/portals/view?id=0400000218913F882B1927FAF5EB3B396625E13B411108B1&amp;portal=010000010D2C4E505C1D98B221E222CABE4E167BECB2D669_010000020D2C4E505C1D98B221E222CABE4E167BECB2D669&amp;mode=rss"><img src="/htdocs/images/feed.png"></a>
+</div>
+
+			<input id="page-0400000218913F882B1927FAF5EB3B396625E13B411108B1-search-filterAlphabetic" id="page-0400000218913F882B1927FAF5EB3B396625E13B411108B1-search-filterAlphabetic" name="page-0400000218913F882B1927FAF5EB3B396625E13B411108B1-search-filterAlphabetic" value="*" type="hidden" />
+	</div>
+</div>
+</div>
+<div style="clear:both;"></div>
+</div>
+</div>
+		<div style="position:relative;top:0px;left:0px;">
+<div data-os-objectId="0400000237147619F62C980270F58CC63E301B1DCB259D6A" style="clear:right;float:right;width:250px;">	<div class="os_block_small">
+<div class="os_block_small_title">Sponsors</div>
+<div style="clear:both;"></div>
+<div class="os_block_small_body">	<div class="os_modules_text">
+<div class='os_oml'>We are looking for <a class="" href="/portals/view?id=030000026855B2C8512AB19CC3E2F3E55A6C4C408D3130DB&amp;portal=010000010D2C4E505C1D98B221E222CABE4E167BECB2D669&amp;user=010000020D2C4E505C1D98B221E222CABE4E167BECB2D669" target="_self">Sponsors</a> or people that want to contribute. Read <a class="" href="/portals/view?id=03000002C6B12993B627D6080141BA098C40EC09FCCF6EE7&amp;portal=010000010D2C4E505C1D98B221E222CABE4E167BECB2D669&amp;user=010000020D2C4E505C1D98B221E222CABE4E167BECB2D669" target="_self">How to contribute</a> for more informations. Thanks!</div><div class="os_oml_footer"></div>	</div>
+</div>
+</div>
+<div style="clear:both;"></div>
+</div>
+</div>
+		<div style="position:relative;top:0px;left:0px;">
+<div data-os-objectId="0400000248A72986FFEACEA4ED0A71510D636DF7EB906662" style="clear:right;float:right;width:250px;">	<div class="os_block_small">
+<div class="os_block_small_title">Community portals</div>
+<div style="clear:both;"></div>
+<div class="os_block_small_body">	<div class="os_modules_text">
+<div class='os_oml'>We host a public, read-only access to our community portals made with Osiris, with our official Isis Gateway. Discover <a class="" href="/portals/view?id=030000023FFDBA78260E39A41FEA8DE492FB650FD1DE8222&amp;portal=010000010D2C4E505C1D98B221E222CABE4E167BECB2D669&amp;user=010000020D2C4E505C1D98B221E222CABE4E167BECB2D669" target="_self">Isis here.</a> <br /><a style="display:block;padding:10px;border:1px solid gray;font-size:1.5em;text-align:center;" href="https://www.osiris-sps.org/isis">Community Portals</a></div><div class="os_oml_footer"></div>	</div>
+</div>
+</div>
+<div style="clear:both;"></div>
+</div>
+</div>
+		<div style="position:relative;top:0px;left:0px;">
+<div data-os-objectId="0400000290DFE2D2276078F8D708E02EB86161AC647CD895" style="clear:right;float:right;width:250px;">	<div class="os_block_small">
+<div class="os_block_small_title">Open Source or not?</div>
+<div style="clear:both;"></div>
+<div class="os_block_small_body">	<div class="os_modules_text">
+<div class='os_oml'>Read <a class="" href="/portals/view?id=030000024BBB6F3AF466D5DA3FBD89340D30B275130DA692&amp;portal=010000010D2C4E505C1D98B221E222CABE4E167BECB2D669&amp;user=010000020D2C4E505C1D98B221E222CABE4E167BECB2D669" target="_self">here</a></div><div class="os_oml_footer"></div>	</div>
+</div>
+</div>
+<div style="clear:both;"></div>
+</div>
+</div>
+		<div style="position:relative;top:0px;left:0px;">
+<div data-os-objectId="0400000279F99829F413CD0E52B4BC21126B8E7C80EBF071" style="clear:right;float:right;width:250px;">	<div class="os_block_small">
+<div class="os_block_small_title">Lastest forum topics</div>
+<div style="clear:both;"></div>
+<div class="os_block_small_body">	<div id="page-0400000279F99829F413CD0E52B4BC21126B8E7C80EBF071">
+		<div>
+<div data-os-wait="center" data-os-url="/portals/view?id=0400000279F99829F413CD0E52B4BC21126B8E7C80EBF071&portal=010000010D2C4E505C1D98B221E222CABE4E167BECB2D669_010000020D2C4E505C1D98B221E222CABE4E167BECB2D669&mode=content"></div>		</div>
+	</div>
+</div>
+</div>
+<div style="clear:both;"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="os_clear"></div>
+<div class="os_area_bottom"><div>
+		<div style="position:relative;top:0px;left:0px;">
+<div data-os-objectId="040000027FC994F0479F7264F27CB1280E35E26F0C9D37B2" style="margin-top:80px">	<div class="os_block_none">	<div class="os_modules_text" style="padding:0px;margin:0px;">
+<div class='os_oml'><div class="footer"><div style="margin-top:20px;float:left"><img alt="{Image}" title="{Image}" src="/htdocs/images/logo/logo1.png"></div><div class="footer_block"><h6><a class="" href="/portals/view?id=0300000265FEF2640A89C24EF2D945AA2E9A8C035810BB7D&amp;portal=010000010D2C4E505C1D98B221E222CABE4E167BECB2D669&amp;user=010000020D2C4E505C1D98B221E222CABE4E167BECB2D669" target="_self">Start</a></h6><a class="" href="/portals/view?id=040000026868C210481E8F01ABC8B2C87CD9EF24B32F2F7A&amp;portal=010000010D2C4E505C1D98B221E222CABE4E167BECB2D669&amp;user=010000020D2C4E505C1D98B221E222CABE4E167BECB2D669" target="_self">What is Osiris</a><br /><a class="" href="/portals/view?id=040000020000BE8D01C437E6EEC7A626272532E3D343FF0E&amp;portal=010000010D2C4E505C1D98B221E222CABE4E167BECB2D669&amp;user=010000020D2C4E505C1D98B221E222CABE4E167BECB2D669" target="_self">Features</a><br /><a class="" href="/portals/view?id=040000023B925186FECA996DF535C5D2939B2C9AAF754AE1&amp;portal=010000010D2C4E505C1D98B221E222CABE4E167BECB2D669&amp;user=010000020D2C4E505C1D98B221E222CABE4E167BECB2D669" target="_self">Video Tutorials</a><br /><a class="" href="/portals/view?id=0300000239C852A5D1789E1D3B337DB84137C04B004E3662&amp;portal=010000010D2C4E505C1D98B221E222CABE4E167BECB2D669&amp;user=010000020D2C4E505C1D98B221E222CABE4E167BECB2D669" target="_self">FAQ</a><br /><a class="" href="/portals/view?id=040000021D149574CCF2B9A66EE1074D2C65491CBD1E69E9&amp;portal=010000010D2C4E505C1D98B221E222CABE4E167BECB2D669&amp;user=010000020D2C4E505C1D98B221E222CABE4E167BECB2D669" target="_self">Wiki</a><br /></div><div class="footer_block"><h6><a class="" href="/portals/view?id=030000027A8E610E6DD06B90C97B23AD75B49935E3C9EA1E&amp;portal=010000010D2C4E505C1D98B221E222CABE4E167BECB2D669&amp;user=010000020D2C4E505C1D98B221E222CABE4E167BECB2D669" target="_self">Developers Area</a></h6><a class="" href="/portals/view?id=03000002FD8985DB35E97F13E343515E1CE719BF54CBBFDB&amp;portal=010000010D2C4E505C1D98B221E222CABE4E167BECB2D669&amp;user=010000020D2C4E505C1D98B221E222CABE4E167BECB2D669" target="_self">Changelogs</a><br /><a class="" href="/portals/view?id=030000024BBB6F3AF466D5DA3FBD89340D30B275130DA692&amp;portal=010000010D2C4E505C1D98B221E222CABE4E167BECB2D669&amp;user=010000020D2C4E505C1D98B221E222CABE4E167BECB2D669" target="_self">Roadmap</a><br /><a class="" href="/portals/view?id=030000024E7D1ACD306EEBB90BC26071A07588A01C42A4BA&amp;portal=010000010D2C4E505C1D98B221E222CABE4E167BECB2D669&amp;user=010000020D2C4E505C1D98B221E222CABE4E167BECB2D669" target="_self">Translate</a><br /><a class="" href="/portals/view?id=040000024A5D24DA79AF53EEE5E6B8D7D8101697536BD120&amp;portal=010000010D2C4E505C1D98B221E222CABE4E167BECB2D669&amp;user=010000020D2C4E505C1D98B221E222CABE4E167BECB2D669" target="_self">Bug Report</a><br /><a class="" href="/portals/view?id=03000002E4ECEF31C20991EC52978E689023ACC203955841&amp;portal=010000010D2C4E505C1D98B221E222CABE4E167BECB2D669&amp;user=010000020D2C4E505C1D98B221E222CABE4E167BECB2D669" target="_self">Developers FAQ</a><br /><a class="" href="/portals/view?id=0500000240FF08F80D034F235A2606E1AE93775B760D8FB0&amp;portal=010000010D2C4E505C1D98B221E222CABE4E167BECB2D669&amp;user=010000020D2C4E505C1D98B221E222CABE4E167BECB2D669" target="_self">Developing Extensions</a><br /><a class="" href="/portals/view?id=05000002E578239DDD04161AF71B006E72D996E8FBD9B889&amp;portal=010000010D2C4E505C1D98B221E222CABE4E167BECB2D669&amp;user=010000020D2C4E505C1D98B221E222CABE4E167BECB2D669" target="_self">Developing Skins</a><br /><a class="" href="/portals/view?id=03000002592175A011ED0B7DC082D4037D05D84A57EFA73D&amp;portal=010000010D2C4E505C1D98B221E222CABE4E167BECB2D669&amp;user=010000020D2C4E505C1D98B221E222CABE4E167BECB2D669" target="_self">Developers Articles</a><br /><a class="" href="/portals/view?id=0300000248F0AD7913BB91ACB4216932DE951ED679FCD4A3&amp;portal=010000010D2C4E505C1D98B221E222CABE4E167BECB2D669&amp;user=010000020D2C4E505C1D98B221E222CABE4E167BECB2D669" target="_self">SVN Web Interface</a></div><div class="footer_block"><h6><a class="" href="/portals/view?id=03000002C6B12993B627D6080141BA098C40EC09FCCF6EE7&amp;portal=010000010D2C4E505C1D98B221E222CABE4E167BECB2D669&amp;user=010000020D2C4E505C1D98B221E222CABE4E167BECB2D669" target="_self">How to contribute</a></h6><a class="" href="/portals/view?id=030000026855B2C8512AB19CC3E2F3E55A6C4C408D3130DB&amp;portal=010000010D2C4E505C1D98B221E222CABE4E167BECB2D669&amp;user=010000020D2C4E505C1D98B221E222CABE4E167BECB2D669" target="_self">Our sponsors / Donations</a><br /><a class="" href="/portals/view?id=040000026F6AB9081FF950DDDC09D73438BBC90AFB0D27ED&amp;portal=010000010D2C4E505C1D98B221E222CABE4E167BECB2D669&amp;user=010000020D2C4E505C1D98B221E222CABE4E167BECB2D669" target="_self">Advertising</a><br /><a class="" href="/portals/view?id=0400000291CAA6C0CBCBF9F1D0BC6DE0D1E6DEF20189803F&amp;portal=010000010D2C4E505C1D98B221E222CABE4E167BECB2D669&amp;user=010000020D2C4E505C1D98B221E222CABE4E167BECB2D669" target="_self">Promote</a><br /><a class="" href="/portals/view?id=040000024A5D24DA79AF53EEE5E6B8D7D8101697536BD120&amp;portal=010000010D2C4E505C1D98B221E222CABE4E167BECB2D669&amp;user=010000020D2C4E505C1D98B221E222CABE4E167BECB2D669" target="_self">Forums</a><br /><a class="" href="/portals/view?id=030000024E7D1ACD306EEBB90BC26071A07588A01C42A4BA&amp;portal=010000010D2C4E505C1D98B221E222CABE4E167BECB2D669&amp;user=010000020D2C4E505C1D98B221E222CABE4E167BECB2D669" target="_self">Translate</a><br /><a class="" href="/portals/view?id=040000024A5D24DA79AF53EEE5E6B8D7D8101697536BD120&amp;portal=010000010D2C4E505C1D98B221E222CABE4E167BECB2D669&amp;user=010000020D2C4E505C1D98B221E222CABE4E167BECB2D669" target="_self">Testing</a><br /><a class="" href="/portals/view?id=03000002556E491051D09E161532E46C63E6F193FD5E794D&amp;portal=010000010D2C4E505C1D98B221E222CABE4E167BECB2D669&amp;user=010000020D2C4E505C1D98B221E222CABE4E167BECB2D669" target="_self">Contact us</a><br /></div><div class="footer_block"><h6><a href="/portals/view?id=030000025A08ABABD14A590162B8839E94F3C105E65F79BA&amp;portal=010000010D2C4E505C1D98B221E222CABE4E167BECB2D669&amp;user=010000020D2C4E505C1D98B221E222CABE4E167BECB2D669">Support</a></h6><a class="" href="/portals/view?id=0300000265FEF2640A89C24EF2D945AA2E9A8C035810BB7D&amp;portal=010000010D2C4E505C1D98B221E222CABE4E167BECB2D669&amp;user=010000020D2C4E505C1D98B221E222CABE4E167BECB2D669" target="_self">Start</a><br /><a class="" href="/portals/view?id=040000024A5D24DA79AF53EEE5E6B8D7D8101697536BD120&amp;portal=010000010D2C4E505C1D98B221E222CABE4E167BECB2D669&amp;user=010000020D2C4E505C1D98B221E222CABE4E167BECB2D669" target="_self">Forums</a><br /><a class="" href="/portals/view?id=030000020E4B0DDBE999DB9FB727884FDC679B6694DFA493&amp;portal=010000010D2C4E505C1D98B221E222CABE4E167BECB2D669&amp;user=010000020D2C4E505C1D98B221E222CABE4E167BECB2D669" target="_self">IRC Chat</a><br /><a class="" href="/portals/view?id=040000021D149574CCF2B9A66EE1074D2C65491CBD1E69E9&amp;portal=010000010D2C4E505C1D98B221E222CABE4E167BECB2D669&amp;user=010000020D2C4E505C1D98B221E222CABE4E167BECB2D669" target="_self">Wiki</a><br /><a class="" href="/portals/view?id=040000024A5D24DA79AF53EEE5E6B8D7D8101697536BD120&amp;portal=010000010D2C4E505C1D98B221E222CABE4E167BECB2D669&amp;user=010000020D2C4E505C1D98B221E222CABE4E167BECB2D669" target="_self">Bug Report</a><br /><a class="" href="/portals/view?id=040000024A5D24DA79AF53EEE5E6B8D7D8101697536BD120&amp;portal=010000010D2C4E505C1D98B221E222CABE4E167BECB2D669&amp;user=010000020D2C4E505C1D98B221E222CABE4E167BECB2D669" target="_self">Feature Requests</a><br /><a class="" href="/portals/view?id=040000024A5D24DA79AF53EEE5E6B8D7D8101697536BD120&amp;portal=010000010D2C4E505C1D98B221E222CABE4E167BECB2D669&amp;user=010000020D2C4E505C1D98B221E222CABE4E167BECB2D669" target="_self">Website Feedback</a><br /></div><div style="clear:both;"></div><!--{__Isis_Area_Custom_Footer__}--></div></div><div class="os_oml_footer"></div>	</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="os_clear"></div>
+</div>
+</div>
+<a id="bottom" href="#bottom" accesskey="z" title="{Bottom of the page}"></a>	<div id="assistant" class="os_assistant" style="display:none;" data-os-drag="drag">
+<table style="width:100%" id="assistantDragArea" class="os_assistant_header">
+<tr>
+<td style="width:100%;text-align:center"><span>{Assistant}</span></td><td><img class="os_assistant_closeDetail" onclick="javascript:Osiris.Assistant.toggle();" src="/htdocs/images/close_panel.gif"></td>
+</tr>
+</table>
+<div id="assistant_tab" class="os_assistant_tab" data-os-storage="assistant" data-os-tabSize="80">
+<div class="os_assistant_quickactions">   <a id="os_assistant_quickactions_view" data-os-tooltip="{Click here, and after click an object to view it.}" href="javascript:Osiris.Assistant.objectPicker('onObjectView')"><img src="/htdocs/images/icons/16x16/view.png"></a> <a id="os_assistant_quickactions_edit" data-os-tooltip="{Click here, and after click an object to edit it.}" href="javascript:Osiris.Assistant.objectPicker('onObjectEdit')"><img src="/htdocs/images/icons/16x16/edit.png"></a>
+</div>
+<div data-os-tabType="header">{Info}</div>
+<div data-os-tabType="header">{Search}</div>
+<div data-os-tabType="body">
+<div class="os_content">
+<fieldset>
+<legend><b>{Context}</b></legend>
+<div data-os-objectId="" class="">
+<div class="os_content">
+<div style="float:right">
+<img data-os-tooltip="{Section}" title="{Section}" width="48" src="/htdocs/images/objects/special_root.png"></div>
+<table class="os_table_properties">
+<tr>
+<td style="text-align:right;vertical-align:middle;">{Title}:        
+      </td><td style="text-align:left;vertical-align:middle;width:100%;">Home</td>
+</tr>
+<tr>
+<td style="text-align:right;vertical-align:middle;">{Type}:        
+      </td><td style="text-align:left;vertical-align:middle;width:100%;">{Section}</td>
+</tr>
+<tr>
+<td style="text-align:right;vertical-align:middle;">{Creation date}:        
+      </td><td style="text-align:left;vertical-align:middle;width:100%;"><span class="os_unspecified">{Not specified}</span></td>
+</tr>
+</table>
+<div class="os_commands_right">
+<a class="os_button_link" href="javascript:osCopyClipboard('{Press Ctrl+C to copy text to the clipboard}','%5Biurl%3D%22osiris%3A%3Ftype%3Durl%26portal%3D010000010D2C4E505C1D98B221E222CABE4E167BECB2D669%26url%3D%252Fportals%252Fview%22%5DHome%5B%2Fiurl%5D','{Close}')"><img src="/htdocs/images/small/edit.gif">{OML}</a>
+</div>
+<div style="clear:both"></div>
+</div>
+</div>
+</fieldset>
+<div class="os_action_row">
+<div style="margin:3px;margin-right:15px;float:left;">
+<img src="/htdocs/images/icons/32x32/view.png"></div>
+<a href="/portals/view?portal=010000010D2C4E505C1D98B221E222CABE4E167BECB2D669_010000020D2C4E505C1D98B221E222CABE4E167BECB2D669"><img style="float:right;margin:3px;margin-left:10px;" src="/htdocs/images/icons/32x32/go.png"><span style="font-size:1.2em;">{View}</span></a>
+<br>
+<span style="color:gray;font-size:0.9em">{View objects}</span>
+<div class="os_clear"></div>
+</div>
+<div class="os_action_row">
+<div style="margin:3px;margin-right:15px;float:left;">
+<img src="/htdocs/images/icons/32x32/edit.png"></div>
+<a href="/portals/edit?portal=010000010D2C4E505C1D98B221E222CABE4E167BECB2D669_010000020D2C4E505C1D98B221E222CABE4E167BECB2D669"><img style="float:right;margin:3px;margin-left:10px;" src="/htdocs/images/icons/32x32/go.png"><span style="font-size:1.2em;">{Edit}</span></a>
+<br>
+<span style="color:gray;font-size:0.9em">{Manage objects}</span>
+<div class="os_clear"></div>
+</div>
+<div class="os_action_row">
+<div style="margin:3px;margin-right:15px;float:left;">
+<img src="/htdocs/images/icons/32x32/more.png"></div>
+<a href="javascript:void(0);" onclick="osAjax_CallUrl('/portals/more?mode=dialog&amp;portal=010000010D2C4E505C1D98B221E222CABE4E167BECB2D669_010000020D2C4E505C1D98B221E222CABE4E167BECB2D669');"><img style="float:right;margin:3px;margin-left:10px;" src="/htdocs/images/icons/32x32/go.png"><span style="font-size:1.2em;">{More actions}</span></a>
+<br>
+<span style="color:gray;font-size:0.9em">{Other pages or useful commands}</span>
+<div class="os_clear"></div>
+</div>
+</div>
+</div>
+<div data-os-tabType="body">
+<div class="os_content">
+<table>
+<tr>
+<td style="width:100%;"><input style="width:100%" id="assistant_search" value="{Search}" onfocus="javascript:if (this.value == '{Search}') this.value = '';" Onkeypress="javascript:if (osGetEvent(event).keyCode != 13)  return true; Osiris.Assistant.doSearch('assistant_search', '/portals/search?portal=010000010D2C4E505C1D98B221E222CABE4E167BECB2D669_010000020D2C4E505C1D98B221E222CABE4E167BECB2D669','{Search}',true); return false;"></td><td style="vertical-align:middle;"><img style="padding-left:10px;cursor:pointer;" src="/htdocs/images/quick_search.gif" onclick="javascript:Osiris.Assistant.doSearch('assistant_search', '/portals/search?portal=010000010D2C4E505C1D98B221E222CABE4E167BECB2D669_010000020D2C4E505C1D98B221E222CABE4E167BECB2D669','{Search}',true);"></td>
+</tr>
+</table>
+<div class="os_assistant_actions">
+<a class="os_button_link" href="/portals/search?portal=010000010D2C4E505C1D98B221E222CABE4E167BECB2D669_010000020D2C4E505C1D98B221E222CABE4E167BECB2D669"><img src="/htdocs/images/small/related.gif"><span data-os-tooltip="{Advanced search with many parameters}">{Advanced search}</span></a>
+</div>
+<div id="assistant_search_results" style="overflow:auto;max-height:500px;"></div>
+</div>
+</div>
+</div>
+</div>
+	<script type="text/javascript">Osiris.Assistant.init('010000010D2C4E505C1D98B221E222CABE4E167BECB2D669');</script>
+
+                  <!--{__Isis_Area_Footer__}-->
+                  </div>
+</div>
+</div>
+</div>
+</div>
+</form>
+</body></html>

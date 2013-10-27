@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<template name="Skin" description="A minimal skin" author="Osiris Team">
+	<files>
+		<file target="scripts/script.py" source="script.py" script="true" macro="false"/>
+		<file target="logo.png" source="logo.png" script="false" macro="false"/>
+		<file target="icon.png" source="icon.png" script="false" macro="false"/>
+		<file target="skin.xml" source="skin.xml" script="false" macro="true"/>
+    <file target="htdocs/css/skin.css" source="skin.css" script="false" macro="false"/>
+	</files>
+</template>

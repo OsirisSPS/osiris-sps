@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<options>
+  <option name="folders.share" value="../Resources/share"/>
+  <option name="folders.data" value="$HOME/Library/Application Support/Osiris"/>
+  <option name="folders.temp" value="$HOME/Library/Application Support/Osiris/temp"/>
+  <option name="folders.log" value="$HOME/Library/Application Support/Osiris/log"/>
+</options>

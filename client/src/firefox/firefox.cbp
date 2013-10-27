@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="Firefox" />
+		<Option pch_mode="2" />
+		<Option compiler="gcc" />
+		<Build>
+			<Target title="debug linux-i386">
+				<Option platforms="Unix;" />
+				<Option output="../../bin/linux/i386/gcc/debug/libfirefox" prefix_auto="1" extension_auto="1" />
+				<Option object_output="../../obj/linux/i386/gcc/firefox/debug" />
+				<Option type="3" />
+				<Option compiler="gcc" />
+				<Option createDefFile="1" />
+				<Option createStaticLib="1" />
+				<Compiler>
+					<Add option="-W" />
+					<Add option="-g" />
+					<Add option="-D_DEBUG" />
+					<Add option="-DOS_FIREFOX_LIB" />
+					<Add option="-DUNICODE" />
+					<Add directory="../../dependencies/include" />
+					<Add directory="../core" />
+					<Add directory="../net" />
+					<Add directory="../http" />
+					<Add directory="../../dependencies/include/linux-i386" />
+					<Add directory="../sdk" />
+					<Add directory="./xulrunner-1.9.2/linux-i386/include" />
+				</Compiler>
+				<ResourceCompiler>
+					<Add directory="../../dependencies/include" />
+					<Add directory="../core" />
+				</ResourceCompiler>
+				<Linker>
+					<Add option="-Wl,-z,defs,-rpath=./" />
+					<Add library="libboost_thread-gcc44-mt-d-1_41" />
+					<Add library="libpthread" />
+					<Add library="libdl" />
+					<Add library="libnspr4" />
+					<Add library="libxpcomglue_s" />
+					<Add library="libxpcom" />
+					<Add library="libboost_system-gcc44-mt-d-1_41" />
+					<Add library="libboost_filesystem-gcc44-mt-d-1_41" />
+					<Add directory="../../lib/linux/i386/gcc/debug" />
+					<Add directory="../../dependencies/lib/linux/i386/gcc/debug" />
+					<Add directory="../../bin/linux/i386/gcc/debug" />
+					<Add directory="./xulrunner-1.9.2/linux-i386/lib" />
+				</Linker>
+			</Target>
+			<Target title="release linux-i386">
+				<Option platforms="Unix;" />
+				<Option output="../../bin/linux/i386/gcc/release/libfirefox" prefix_auto="1" extension_auto="1" />
+				<Option object_output="../../obj/linux/i386/gcc/firefox/release" />
+				<Option type="3" />
+				<Option compiler="gcc" />
+				<Option createDefFile="1" />
+				<Option createStaticLib="1" />
+				<Compiler>
+					<Add option="-O2" />
+					<Add option="-W" />
+					<Add option="-DNDEBUG" />
+					<Add option="-DOS_FIREFOX_LIB" />
+					<Add option="-DUNICODE" />
+					<Add directory="../../dependencies/include" />
+					<Add directory="../core" />
+					<Add directory="../net" />
+					<Add directory="../http" />
+					<Add directory="../../dependencies/include/linux-i386" />
+					<Add directory="../sdk" />
+					<Add directory="./xulrunner-1.9.2/linux-i386/include" />
+				</Compiler>
+				<ResourceCompiler>
+					<Add directory="../../dependencies/include" />
+					<Add directory="../core" />
+				</ResourceCompiler>
+				<Linker>
+					<Add option="-s" />
+					<Add option="-Wl,-z,defs,-rpath=./" />
+					<Add library="libboost_thread-gcc44-mt-1_41" />
+					<Add library="libpthread" />
+					<Add library="libdl" />
+					<Add library="libnspr4" />
+					<Add library="libxpcomglue_s" />
+					<Add library="libxpcom" />
+					<Add library="libboost_system-gcc44-mt-1_41" />
+					<Add library="libboost_filesystem-gcc44-mt-1_41" />
+					<Add directory="../../lib/linux/i386/gcc/release" />
+					<Add directory="../../dependencies/lib/linux/i386/gcc/release" />
+					<Add directory="../../bin/linux/i386/gcc/release" />
+					<Add directory="./xulrunner-1.9.2/linux-i386/lib" />
+				</Linker>
+			</Target>
+			<Target title="debug mac-x86_64">
+				<Option platforms="Mac;" />
+				<Option output="../../bin/macosx/x86_64/gcc/debug/Osiris.app/Contents/MacOS/libfirefox" prefix_auto="1" extension_auto="1" />
+				<Option object_output="../../obj/macosx/x86_64/gcc/firefox/debug" />
+				<Option type="3" />
+				<Option compiler="gcc" />
+				<Option createDefFile="1" />
+				<Option createStaticLib="1" />
+				<Compiler>
+					<Add option="-W" />
+					<Add option="-g" />
+					<Add option="-D_DEBUG" />
+					<Add option="-DOS_FIREFOX_LIB" />
+					<Add option="-DUNICODE" />
+					<Add directory="../../dependencies/include" />
+					<Add directory="../core" />
+					<Add directory="../net" />
+					<Add directory="../http" />
+					<Add directory="../../dependencies/include/mac-x86_64" />
+					<Add directory="../sdk" />
+					<Add directory="./xulrunner-1.9.2/mac-i386/include" />
+				</Compiler>
+				<ResourceCompiler>
+					<Add directory="../../dependencies/include" />
+					<Add directory="../core" />
+				</ResourceCompiler>
+				<Linker>
+					<Add option="-dynamiclib" />
+					<Add library="libboost_thread-xgcc42-mt-d-1_41" />
+					<Add directory="../../lib/macosx/x86_64/gcc/debug" />
+					<Add directory="../../dependencies/lib/macosx/x86_64/gcc/debug" />
+					<Add directory="../../bin/macosx/x86_64/gcc/debug/Osiris.app/Contents/MacOS" />
+				</Linker>
+				<ExtraCommands>
+					<Add after="../postbuild_osx.sh $(TARGET_OUTPUT_BASENAME).dylib $(TARGET_OUTPUT_DIR)" />
+				</ExtraCommands>
+			</Target>
+			<Target title="release mac-x86_64">
+				<Option platforms="Mac;" />
+				<Option output="../../bin/macosx/x86_64/gcc/release/Osiris.app/Contents/MacOS/libfirefox" prefix_auto="1" extension_auto="1" />
+				<Option object_output="../../obj/macosx/x86_64/gcc/firefox/release" />
+				<Option type="3" />
+				<Option compiler="gcc" />
+				<Option createDefFile="1" />
+				<Option createStaticLib="1" />
+				<Compiler>
+					<Add option="-O2" />
+					<Add option="-W" />
+					<Add option="-DNDEBUG" />
+					<Add option="-DOS_FIREFOX_LIB" />
+					<Add option="-DUNICODE" />
+					<Add directory="../../dependencies/include" />
+					<Add directory="../core" />
+					<Add directory="../net" />
+					<Add directory="../http" />
+					<Add directory="../../dependencies/include/mac-x86_64" />
+					<Add directory="../sdk" />
+					<Add directory="./xulrunner-1.9.2/mac-i386/include" />
+				</Compiler>
+				<ResourceCompiler>
+					<Add directory="../../dependencies/include" />
+					<Add directory="../core" />
+				</ResourceCompiler>
+				<Linker>
+					<Add option="-s" />
+					<Add option="-dynamiclib" />
+					<Add library="libboost_thread-xgcc42-mt-1_41" />
+					<Add library="libdl" />
+					<Add library="libnspr4" />
+					<Add library="libxpcomglue_s" />
+					<Add library="libxpcom" />
+					<Add library="libboost_system-xgcc42-mt-1_41" />
+					<Add library="libboost_filesystem-xgcc42-mt-1_41" />
+					<Add directory="../../lib/macosx/x86_64/gcc/release" />
+					<Add directory="../../dependencies/lib/macosx/x86_64/gcc/release" />
+					<Add directory="../../bin/macosx/x86_64/gcc/release/Osiris.app/Contents/MacOS" />
+				</Linker>
+				<ExtraCommands>
+					<Add after="../postbuild_osx.sh $(TARGET_OUTPUT_BASENAME).dylib $(TARGET_OUTPUT_DIR)" />
+				</ExtraCommands>
+			</Target>
+		</Build>
+		<Unit filename="firefox.cpp" />
+		<Unit filename="iosiris.h" />
+		<Unit filename="osirisimpl.cpp" />
+		<Unit filename="osirisimpl.h" />
+		<Unit filename="stdafx.cpp" />
+		<Unit filename="stdafx.h" />
+		<Extensions>
+			<code_completion />
+			<envvars />
+			<debugger />
+		</Extensions>
+	</Project>
+</CodeBlocks_project_file>

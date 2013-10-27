@@ -1,0 +1,403 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="debug|Win32">
+      <Configuration>debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="debug|x64">
+      <Configuration>debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="release|Win32">
+      <Configuration>release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="release|x64">
+      <Configuration>release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectName>Core</ProjectName>
+    <ProjectGuid>{DF5EDB66-966D-4514-8100-F82D9CF39002}</ProjectGuid>
+    <RootNamespace>core</RootNamespace>
+    <Keyword>Win32Proj</Keyword>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='release|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <CharacterSet>NotSet</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='debug|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <CharacterSet>NotSet</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='release|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <CharacterSet>NotSet</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='debug|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <CharacterSet>NotSet</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='release|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(VCTargetsPath)Microsoft.CPP.UpgradeFromVC71.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='debug|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(VCTargetsPath)Microsoft.CPP.UpgradeFromVC71.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='release|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(VCTargetsPath)Microsoft.CPP.UpgradeFromVC71.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='debug|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(VCTargetsPath)Microsoft.CPP.UpgradeFromVC71.props" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>10.0.30319.1</_ProjectFileVersion>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">../../bin/windows/i386/vc10/$(Configuration)\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">../../obj/windows/i386/vc10/$(TargetName)/$(Configuration)\</IntDir>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</LinkIncremental>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='debug|x64'">../../bin/windows/x86_64/vc10/$(Configuration)\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='debug|x64'">../../obj/windows/x86_64/vc10/$(TargetName)/$(Configuration)\</IntDir>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='debug|x64'">true</LinkIncremental>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='release|Win32'">../../bin/windows/i386/vc10/$(Configuration)\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='release|Win32'">../../obj/windows/i386/vc10/$(TargetName)/$(Configuration)\</IntDir>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='release|Win32'">false</LinkIncremental>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='release|x64'">../../bin/windows/x86_64/vc10/$(Configuration)\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='release|x64'">../../obj/windows/x86_64/vc10/$(TargetName)/$(Configuration)\</IntDir>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='release|x64'">false</LinkIncremental>
+    <CodeAnalysisRuleSet Condition="'$(Configuration)|$(Platform)'=='debug|Win32'">AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRules Condition="'$(Configuration)|$(Platform)'=='debug|Win32'" />
+    <CodeAnalysisRuleAssemblies Condition="'$(Configuration)|$(Platform)'=='debug|Win32'" />
+    <CodeAnalysisRuleSet Condition="'$(Configuration)|$(Platform)'=='debug|x64'">AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRules Condition="'$(Configuration)|$(Platform)'=='debug|x64'" />
+    <CodeAnalysisRuleAssemblies Condition="'$(Configuration)|$(Platform)'=='debug|x64'" />
+    <CodeAnalysisRuleSet Condition="'$(Configuration)|$(Platform)'=='release|Win32'">AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRules Condition="'$(Configuration)|$(Platform)'=='release|Win32'" />
+    <CodeAnalysisRuleAssemblies Condition="'$(Configuration)|$(Platform)'=='release|Win32'" />
+    <CodeAnalysisRuleSet Condition="'$(Configuration)|$(Platform)'=='release|x64'">AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRules Condition="'$(Configuration)|$(Platform)'=='release|x64'" />
+    <CodeAnalysisRuleAssemblies Condition="'$(Configuration)|$(Platform)'=='release|x64'" />
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>../../dependencies/include/common;../../dependencies/include/windows;./;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;_USRDLL;OS_CORE_LIB;UNICODE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MinimalRebuild>false</MinimalRebuild>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>Iphlpapi.lib;Psapi.lib;shlwapi.lib;DbgHelp.Lib;icuucd.lib;icuiod.lib;cryptlib.lib;FreeImaged.lib;nedmalloc.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>../../bin/windows/i386/vc10/$(Configuration)/core.dll</OutputFile>
+      <AdditionalLibraryDirectories>../../dependencies/lib/windows/i386/vc10/$(Configuration);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <IgnoreAllDefaultLibraries>false</IgnoreAllDefaultLibraries>
+      <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <ProgramDatabaseFile>$(IntDir)$(TargetName).pdb</ProgramDatabaseFile>
+      <SubSystem>Windows</SubSystem>
+      <TargetMachine>MachineX86</TargetMachine>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='debug|x64'">
+    <Midl>
+      <TargetEnvironment>X64</TargetEnvironment>
+    </Midl>
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>../../dependencies/include/common;../../dependencies/include/windows;./;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;_USRDLL;OS_CORE_LIB;UNICODE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MinimalRebuild>true</MinimalRebuild>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>Iphlpapi.lib;Psapi.lib;shlwapi.lib;DbgHelp.Lib;icuucd.lib;icuiod.lib;cryptlib.lib;FreeImaged.lib;nedmalloc.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>../../bin/windows/x86_64/vc10/$(Configuration)/core.dll</OutputFile>
+      <AdditionalLibraryDirectories>../../dependencies/lib/windows/x86_64/vc10/$(Configuration);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <IgnoreAllDefaultLibraries>false</IgnoreAllDefaultLibraries>
+      <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <ProgramDatabaseFile>$(IntDir)$(TargetName).pdb</ProgramDatabaseFile>
+      <SubSystem>Windows</SubSystem>
+      <TargetMachine>MachineX64</TargetMachine>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='release|Win32'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>../../dependencies/include/common;../../dependencies/include/windows;./;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_USRDLL;OS_CORE_LIB;UNICODE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>Iphlpapi.lib;Psapi.lib;shlwapi.lib;DbgHelp.Lib;icuuc.lib;icuio.lib;cryptlib.lib;FreeImage.lib;nedmalloc.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>../../bin/windows/i386/vc10/$(Configuration)/core.dll</OutputFile>
+      <AdditionalLibraryDirectories>../../dependencies/lib/windows/i386/vc10/$(Configuration);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <ProgramDatabaseFile>$(IntDir)$(TargetName).pdb</ProgramDatabaseFile>
+      <SubSystem>Windows</SubSystem>
+      <OptimizeReferences>true</OptimizeReferences>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <TargetMachine>MachineX86</TargetMachine>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='release|x64'">
+    <Midl>
+      <TargetEnvironment>X64</TargetEnvironment>
+    </Midl>
+    <ClCompile>
+      <AdditionalIncludeDirectories>../../dependencies/include/common;../../dependencies/include/windows;./;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_USRDLL;OS_CORE_LIB;UNICODE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>Iphlpapi.lib;Psapi.lib;shlwapi.lib;DbgHelp.Lib;icuuc.lib;icuio.lib;cryptlib.lib;FreeImage.lib;nedmalloc.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>../../bin/windows/x86_64/vc10/$(Configuration)/core.dll</OutputFile>
+      <AdditionalLibraryDirectories>../../dependencies/lib/windows/x86_64/vc10/$(Configuration);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <ProgramDatabaseFile>$(IntDir)$(TargetName).pdb</ProgramDatabaseFile>
+      <SubSystem>Windows</SubSystem>
+      <OptimizeReferences>true</OptimizeReferences>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <TargetMachine>MachineX64</TargetMachine>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="algorithms.cpp" />
+    <ClCompile Include="boost.cpp" />
+    <ClCompile Include="buffer.cpp" />
+    <ClCompile Include="collections.cpp" />
+    <ClCompile Include="condition.cpp" />
+    <ClCompile Include="constants.cpp" />
+    <ClCompile Include="conversions.cpp" />
+    <ClCompile Include="core.cpp" />
+    <ClCompile Include="cryptkey.cpp" />
+    <ClCompile Include="cryptkeyagreement.cpp" />
+    <ClCompile Include="cryptmanager.cpp" />
+    <ClCompile Include="dataitem.cpp" />
+    <ClCompile Include="datatable.cpp" />
+    <ClCompile Include="datatree.cpp" />
+    <ClCompile Include="datetime.cpp" />
+    <ClCompile Include="dynlib.cpp" />
+    <ClCompile Include="eventcallback.cpp" />
+    <ClCompile Include="eventsource.cpp" />
+    <ClCompile Include="file.cpp" />
+    <ClCompile Include="filelogger.cpp" />
+    <ClCompile Include="filesystem.cpp" />
+    <ClCompile Include="fixedallocator.cpp" />
+    <ClCompile Include="hash.cpp" />
+    <ClCompile Include="iculayer.cpp" />
+    <ClCompile Include="ievent.cpp" />
+    <ClCompile Include="ieventcallback.cpp" />
+    <ClCompile Include="ijob.cpp" />
+    <ClCompile Include="image.cpp" />
+    <ClCompile Include="ioptionvalidator.cpp" />
+    <ClCompile Include="irunnable.cpp" />
+    <ClCompile Include="istream.cpp" />
+    <ClCompile Include="istreamlayer.cpp" />
+    <ClCompile Include="jobspool.cpp" />
+    <ClCompile Include="log.cpp">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)%(Filename)1.obj</ObjectFileName>
+      <XMLDocumentationFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)%(Filename)1.xdc</XMLDocumentationFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='debug|x64'">$(IntDir)%(Filename)1.obj</ObjectFileName>
+      <XMLDocumentationFileName Condition="'$(Configuration)|$(Platform)'=='debug|x64'">$(IntDir)%(Filename)1.xdc</XMLDocumentationFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='release|Win32'">$(IntDir)%(Filename)1.obj</ObjectFileName>
+      <XMLDocumentationFileName Condition="'$(Configuration)|$(Platform)'=='release|Win32'">$(IntDir)%(Filename)1.xdc</XMLDocumentationFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='release|x64'">$(IntDir)%(Filename)1.obj</ObjectFileName>
+      <XMLDocumentationFileName Condition="'$(Configuration)|$(Platform)'=='release|x64'">$(IntDir)%(Filename)1.xdc</XMLDocumentationFileName>
+    </ClCompile>
+    <ClCompile Include="logger.cpp" />
+    <ClCompile Include="logmanager.cpp" />
+    <ClCompile Include="logmessage.cpp" />
+    <ClCompile Include="memfile.cpp" />
+    <ClCompile Include="memorytracker.cpp" />
+    <ClCompile Include="mimemanager.cpp" />
+    <ClCompile Include="multilock.cpp" />
+    <ClCompile Include="ned.cpp" />
+    <ClCompile Include="option.cpp" />
+    <ClCompile Include="path.cpp" />
+    <ClCompile Include="platformmanager.cpp" />
+    <ClCompile Include="platformwin.cpp" />
+    <ClCompile Include="randomnumbergenerator.cpp" />
+    <ClCompile Include="realtimestats.cpp" />
+    <ClCompile Include="regex.cpp" />
+    <ClCompile Include="regexmanager.cpp" />
+    <ClCompile Include="schedulablethread.cpp" />
+    <ClCompile Include="stdafx.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='debug|x64'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='release|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='release|x64'">Create</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="streamfilter.cpp" />
+    <ClCompile Include="streamlayergzip.cpp" />
+    <ClCompile Include="streamlayerzlib.cpp" />
+    <ClCompile Include="stringutf16.cpp" />
+    <ClCompile Include="taskthread.cpp" />
+    <ClCompile Include="temporaryfile.cpp" />
+    <ClCompile Include="textfile.cpp" />
+    <ClCompile Include="thirdpartylibrariesreporter.cpp" />
+    <ClCompile Include="thirdpartylibrary.cpp" />
+    <ClCompile Include="thread.cpp" />
+    <ClCompile Include="timerperformance.cpp" />
+    <ClCompile Include="uniqueid.cpp" />
+    <ClCompile Include="utils.cpp" />
+    <ClCompile Include="version.cpp" />
+    <ClCompile Include="workerthread.cpp" />
+    <ClCompile Include="base\exception.cpp" />
+    <ClCompile Include="base\object.cpp" />
+    <ClCompile Include="base\string.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="algorithms.h" />
+    <ClInclude Include="allocators.h" />
+    <ClInclude Include="allocwrapper.h" />
+    <ClInclude Include="basicallocator.h" />
+    <ClInclude Include="boost.h" />
+    <ClInclude Include="boostregex.h" />
+    <ClInclude Include="boostthread.h" />
+    <ClInclude Include="buffer.h" />
+    <ClInclude Include="buildoptions.h" />
+    <ClInclude Include="charset.h" />
+    <ClInclude Include="collections.h" />
+    <ClInclude Include="condition.h" />
+    <ClInclude Include="constants.h" />
+    <ClInclude Include="conversions.h" />
+    <ClInclude Include="coreconfig.h" />
+    <ClInclude Include="crypt.h" />
+    <ClInclude Include="cryptkey.h" />
+    <ClInclude Include="cryptkeyagreement.h" />
+    <ClInclude Include="cryptmanager.h" />
+    <ClInclude Include="crypto++.h" />
+    <ClInclude Include="dataitem.h" />
+    <ClInclude Include="datatable.h" />
+    <ClInclude Include="datatree.h" />
+    <ClInclude Include="datetime.h" />
+    <ClInclude Include="dynlib.h" />
+    <ClInclude Include="enable_this_ptr.h" />
+    <ClInclude Include="enable_this_ptr_support.h" />
+    <ClInclude Include="environment.h" />
+    <ClInclude Include="eventcallback.h" />
+    <ClInclude Include="eventsource.h" />
+    <ClInclude Include="eventssource.h" />
+    <ClInclude Include="file.h" />
+    <ClInclude Include="filelogger.h" />
+    <ClInclude Include="filesystem.h" />
+    <ClInclude Include="fixedallocator.h" />
+    <ClInclude Include="format.h" />
+    <ClInclude Include="growablecache.h" />
+    <ClInclude Include="hash.h" />
+    <ClInclude Include="icache.h" />
+    <ClInclude Include="iculayer.h" />
+    <ClInclude Include="ievent.h" />
+    <ClInclude Include="ieventcallback.h" />
+    <ClInclude Include="ijob.h" />
+    <ClInclude Include="iloghandler.h" />
+    <ClInclude Include="image.h" />
+    <ClInclude Include="io.h" />
+    <ClInclude Include="ioptionvalidator.h" />
+    <ClInclude Include="irunnable.h" />
+    <ClInclude Include="istream.h" />
+    <ClInclude Include="istreamlayer.h" />
+    <ClInclude Include="jobcallback.h" />
+    <ClInclude Include="jobspool.h" />
+    <ClInclude Include="lock.h" />
+    <ClInclude Include="locked.h" />
+    <ClInclude Include="log.h" />
+    <ClInclude Include="logger.h" />
+    <ClInclude Include="logmanager.h" />
+    <ClInclude Include="logmessage.h" />
+    <ClInclude Include="macros.h" />
+    <ClInclude Include="memfile.h" />
+    <ClInclude Include="memorytracker.h" />
+    <ClInclude Include="mimemanager.h" />
+    <ClInclude Include="mpl.h" />
+    <ClInclude Include="multiindexwrappers.h" />
+    <ClInclude Include="multilock.h" />
+    <ClInclude Include="ned.h" />
+    <ClInclude Include="nedallocator.h" />
+    <ClInclude Include="noninstantiable.h" />
+    <ClInclude Include="option.h" />
+    <ClInclude Include="ordered_map.h" />
+    <ClInclude Include="path.h" />
+    <ClInclude Include="pimpl_ptr.h" />
+    <ClInclude Include="platformmanager.h" />
+    <ClInclude Include="platformwin.h" />
+    <ClInclude Include="pools.h" />
+    <ClInclude Include="prerequisites.h" />
+    <ClInclude Include="randomnumbergenerator.h" />
+    <ClInclude Include="range.h" />
+    <ClInclude Include="realtimestats.h" />
+    <ClInclude Include="regex.h" />
+    <ClInclude Include="regexmanager.h" />
+    <ClInclude Include="safe_bool.h" />
+    <ClInclude Include="safevar.h" />
+    <ClInclude Include="schedulablethread.h" />
+    <ClInclude Include="scoped_array.h" />
+    <ClInclude Include="scoped_ptr.h" />
+    <ClInclude Include="sealed.h" />
+    <ClInclude Include="singleton.h" />
+    <ClInclude Include="stdafx.h" />
+    <ClInclude Include="stdallocator.h" />
+    <ClInclude Include="stdwrappers.h" />
+    <ClInclude Include="streamfilter.h" />
+    <ClInclude Include="streamlayergzip.h" />
+    <ClInclude Include="streamlayerzlib.h" />
+    <ClInclude Include="stringutf16.h" />
+    <ClInclude Include="syncpolicies.h" />
+    <ClInclude Include="sysallocator.h" />
+    <ClInclude Include="taskthread.h" />
+    <ClInclude Include="temporaryfile.h" />
+    <ClInclude Include="textfile.h" />
+    <ClInclude Include="thirdpartylibrariesreporter.h" />
+    <ClInclude Include="thirdpartylibrary.h" />
+    <ClInclude Include="thread.h" />
+    <ClInclude Include="threads.h" />
+    <ClInclude Include="threadsgroup.h" />
+    <ClInclude Include="timerperformance.h" />
+    <ClInclude Include="types.h" />
+    <ClInclude Include="typetraits.h" />
+    <ClInclude Include="unicode.h" />
+    <ClInclude Include="uniqueid.h" />
+    <ClInclude Include="unorderedwrappers.h" />
+    <ClInclude Include="utils.h" />
+    <ClInclude Include="version.h" />
+    <ClInclude Include="workerthread.h" />
+    <ClInclude Include="base\exception.h" />
+    <ClInclude Include="base\object.h" />
+    <ClInclude Include="base\string.h" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

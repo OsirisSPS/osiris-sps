@@ -1,0 +1,47 @@
+.os_mcp_container
+{
+	text-align: center;
+}
+
+.os_mcp_panel
+{
+	margin:auto;
+	margin-top:50px;
+	padding:0px;
+	background-color:Red;
+	background:url('/htdocs/images/logo/logo1.png') no-repeat top,
+	url('/htdocs/images/utils/black50_linear.png') repeat-x;
+	width:387px;
+	
+	border:1px inset #eeeeee;
+	
+	/* CSS3 */
+	border-radius: 2em;
+	/* Mozilla equivalent */
+	-moz-border-radius: 2em;
+	/* WebKit equivalent */
+	-webkit-border-radius: 2em;
+}
+
+.os_mcp_wrong
+{
+	background-color:#ff4444;
+	padding:5px;
+	color:White;
+	border:1px inset red;
+	
+	/* CSS3 */
+	border-radius: 1em;
+	/* Mozilla equivalent */
+	-moz-border-radius: 1em;
+	/* WebKit equivalent */
+	-webkit-border-radius: 1em;
+}
+
+.os_mcp_panel2
+{
+	padding:30px;
+	padding-top:100px;
+	font-size:1.2em;
+}
+    

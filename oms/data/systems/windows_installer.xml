@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<options>
+  <option name="folders.share" value="./share"/>
+  <option name="folders.data" value="%appdata%/Osiris"/>
+  <option name="folders.temp" value="%temp%/Osiris"/>
+  <option name="folders.log" value="%appdata%/Osiris/log"/>
+</options>

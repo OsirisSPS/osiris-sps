@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!--Created with Kodeware Tools.-->
+<language id="it">
+<key name="extension.4A7F130B4A5C42CC5D928D157641596A89543C65.group.python" value="Sviluppo Python" auto="false" />
+<key name="extension.4A7F130B4A5C42CC5D928D157641596A89543C65.group.resources" value="Risorse" auto="false" />
+<key name="extension.4A7F130B4A5C42CC5D928D157641596A89543C65.group.testing_pages" value="Pagine per test" auto="false" />
+<key name="extension.4A7F130B4A5C42CC5D928D157641596A89543C65.htmltest.description" value="Pagina per provare codice HTML." auto="false" />
+<key name="extension.4A7F130B4A5C42CC5D928D157641596A89543C65.htmltest.title" value="Html Tester" auto="false" />
+<key name="extension.4A7F130B4A5C42CC5D928D157641596A89543C65.images.description" value="Mostra tutte le immagini nella directory di risorse base." auto="false" />
+<key name="extension.4A7F130B4A5C42CC5D928D157641596A89543C65.images.title" value="Immagini" auto="false" />
+<key name="extension.4A7F130B4A5C42CC5D928D157641596A89543C65.omltest.description" value="Pagina per provare codice OML (Osiris Markup Language)." auto="false" />
+<key name="extension.4A7F130B4A5C42CC5D928D157641596A89543C65.omltest.title" value="OML Tester" auto="false" />
+<key name="extension.4A7F130B4A5C42CC5D928D157641596A89543C65.pythondoc.description" value="Documentazione Python di riferimento per lo sviluppo di extension" auto="false" />
+<key name="extension.4A7F130B4A5C42CC5D928D157641596A89543C65.pythondoc.title" value="Documentazione Python" auto="false" />
+<key name="extension.4A7F130B4A5C42CC5D928D157641596A89543C65.regextest.description" value="Pagina per provare le espressioni regolari" auto="false" />
+<key name="extension.4A7F130B4A5C42CC5D928D157641596A89543C65.regextest.title" value="Espressioni Regolari" auto="false" />
+<key name="main.pages.developer_tools.help" value="[h1]Developer Tools[/h1]&#xD;&#xA;Qui potete trovare degli strumenti per sviluppare o per testing avanzato." auto="false" />
+<key name="main.pages.developer_tools.title" value="Developer Tools" auto="false" />
+</language>

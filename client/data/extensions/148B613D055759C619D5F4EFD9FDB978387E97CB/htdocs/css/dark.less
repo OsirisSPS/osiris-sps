@@ -1,0 +1,21 @@
+/*
+Additional CSS for dark themes.
+
+Dev note: Limit the use of this, by using for example
+lighten(@os-color-bg, (@os-color-delta * -5%));
+*/
+
+ins {
+	background-color: #002200;
+}
+
+del {
+	background-color: #220000;
+}
+
+a:link,
+a:visited,
+a:active,
+a:hover {	
+	text-shadow: 0 0 5px @os-color-link;
+}

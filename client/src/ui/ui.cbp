@@ -1,0 +1,496 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="UI" />
+		<Option pch_mode="2" />
+		<Option compiler="gcc" />
+		<Build>
+			<Target title="debug linux-i386">
+				<Option platforms="Unix;" />
+				<Option output="../../bin/linux/i386/gcc/debug/libui" prefix_auto="1" extension_auto="1" />
+				<Option object_output="../../obj/linux/i386/gcc/ui/debug" />
+				<Option type="3" />
+				<Option compiler="gcc" />
+				<Option createDefFile="1" />
+				<Option createStaticLib="1" />
+				<Compiler>
+					<Add option="-g" />
+					<Add option="-W" />
+					<Add option="-D_DEBUG" />
+					<Add option="-DOS_UI_LIB" />
+					<Add option="-DUNICODE" />
+					<Add option="-D__WXDEBUG__" />
+					<Add option="-D__WXGTK__" />
+					<Add option="-D_FILE_OFFSET_BITS=64" />
+					<Add directory="../../dependencies/include" />
+					<Add directory="../core" />
+					<Add directory="../xml" />
+					<Add directory="../engine" />
+					<Add directory="../lang" />
+					<Add directory="../net" />
+					<Add directory="../skin" />
+					<Add directory="../upnp" />
+					<Add directory="../../dependencies/include/wxwidgets_ds/setup/linux-i386/debug" />
+					<Add directory="../../dependencies/include/wxwidgets_ds" />
+					<Add directory="../../dependencies/include/linux-i386" />
+					<Add directory="../http" />
+					<Add directory="../irc" />
+					<Add directory="../db" />
+					<Add directory="../web" />
+				</Compiler>
+				<ResourceCompiler>
+					<Add directory="../../dependencies/include" />
+					<Add directory="../core" />
+					<Add directory="../xml" />
+				</ResourceCompiler>
+				<Linker>
+					<Add option="-Wl,-z,defs,-rpath=./" />
+					<Add option="-static-libstdc++" />
+					<Add option="-static-libgcc" />
+					<Add library="libcore" />
+					<Add library="libirc" />
+					<Add library="liblang" />
+					<Add library="libengine" />
+					<Add library="libpthread" />
+					<Add library="libboost_signals-gcc44-mt-d-1_41" />
+					<Add library="libxml" />
+					<Add library="libboost_regex-gcc44-mt-d-1_41" />
+					<Add library="libnet" />
+					<Add library="libssl" />
+					<Add library="libcrypto" />
+					<Add library="libhttp" />
+					<Add library="libupnp" />
+					<Add library="libwx_gtk2u-2.9" />
+					<Add directory="../../dependencies/lib/linux/i386/gcc/debug" />
+					<Add directory="../../bin/linux/i386/gcc/debug" />
+				</Linker>
+			</Target>
+			<Target title="release linux-i386">
+				<Option platforms="Unix;" />
+				<Option output="../../bin/linux/i386/gcc/release/libui" prefix_auto="1" extension_auto="1" />
+				<Option object_output="../../obj/linux/i386/gcc/ui/release" />
+				<Option type="3" />
+				<Option compiler="gcc" />
+				<Option createDefFile="1" />
+				<Option createStaticLib="1" />
+				<Compiler>
+					<Add option="-O2" />
+					<Add option="-W" />
+					<Add option="-DNDEBUG" />
+					<Add option="-DOS_UI_LIB" />
+					<Add option="-DUNICODE" />
+					<Add option="-D__WXGTK__" />
+					<Add option="-D_FILE_OFFSET_BITS=64" />
+					<Add directory="../../dependencies/include" />
+					<Add directory="../core" />
+					<Add directory="../xml" />
+					<Add directory="../engine" />
+					<Add directory="../lang" />
+					<Add directory="../net" />
+					<Add directory="../skin" />
+					<Add directory="../upnp" />
+					<Add directory="../../dependencies/include/wxwidgets_ds/setup/linux-i386/release" />
+					<Add directory="../../dependencies/include/wxwidgets_ds" />
+					<Add directory="../../dependencies/include/linux-i386" />
+					<Add directory="../http" />
+					<Add directory="../irc" />
+					<Add directory="../db" />
+					<Add directory="../web" />
+				</Compiler>
+				<ResourceCompiler>
+					<Add directory="../../dependencies/include" />
+					<Add directory="../core" />
+					<Add directory="../xml" />
+				</ResourceCompiler>
+				<Linker>
+					<Add option="-s" />
+					<Add option="-Wl,-z,defs,-rpath=./" />
+					<Add option="-static-libstdc++" />
+					<Add option="-static-libgcc" />
+					<Add library="libcore" />
+					<Add library="libirc" />
+					<Add library="liblang" />
+					<Add library="libengine" />
+					<Add library="libpthread" />
+					<Add library="libboost_signals-gcc44-mt-1_41" />
+					<Add library="libxml" />
+					<Add library="libboost_regex-gcc44-mt-1_41" />
+					<Add library="libnet" />
+					<Add library="libssl" />
+					<Add library="libcrypto" />
+					<Add library="libhttp" />
+					<Add library="libupnp" />
+					<Add library="libwx_gtk2u-2.9" />
+					<Add directory="../../dependencies/lib/linux/i386/gcc/release" />
+					<Add directory="../../bin/linux/i386/gcc/release" />
+				</Linker>
+			</Target>
+			<Target title="debug mac-x86_64">
+				<Option platforms="Mac;" />
+				<Option output="../../bin/macosx/x86_64/gcc/debug/Osiris.app/Contents/MacOS/libui" prefix_auto="1" extension_auto="1" />
+				<Option object_output="../../obj/macosx/x86_64/gcc/ui/debug" />
+				<Option type="3" />
+				<Option compiler="gcc" />
+				<Option createDefFile="1" />
+				<Option createStaticLib="1" />
+				<Compiler>
+					<Add option="-W" />
+					<Add option="-g" />
+					<Add option="-D_DEBUG" />
+					<Add option="-DOS_UI_LIB" />
+					<Add option="-DUNICODE" />
+					<Add option="-D__WXDEBUG__" />
+					<Add option="-D__WXMAC__" />
+					<Add directory="../../dependencies/include" />
+					<Add directory="../core" />
+					<Add directory="../xml" />
+					<Add directory="../engine" />
+					<Add directory="../lang" />
+					<Add directory="../net" />
+					<Add directory="../skin" />
+					<Add directory="../upnp" />
+					<Add directory="../../dependencies/include/wxwidgets/setup/mac-x86_64/debug" />
+					<Add directory="../../dependencies/include/wxwidgets" />
+					<Add directory="../http" />
+					<Add directory="../../dependencies/include/mac-x86_64" />
+					<Add directory="../irc" />
+					<Add directory="../db" />
+					<Add directory="../web" />
+				</Compiler>
+				<ResourceCompiler>
+					<Add directory="../../dependencies/include" />
+					<Add directory="../core" />
+					<Add directory="../xml" />
+				</ResourceCompiler>
+				<Linker>
+					<Add option="-dynamiclib -framework Cocoa" />
+					<Add library="core" />
+					<Add library="engine" />
+					<Add library="net" />
+					<Add library="libwx_baseud-2.9" />
+					<Add library="libwx_baseud_net-2.9" />
+					<Add library="libwx_baseud_xml-2.9" />
+					<Add library="libwx_osx_cocoaud_core-2.9" />
+					<Add library="libwx_osx_cocoaud_aui-2.9" />
+					<Add library="libwx_osx_cocoaud_adv-2.9" />
+					<Add library="libwx_osx_cocoaud_html-2.9" />
+					<Add library="libwx_osx_cocoaud_qa-2.9" />
+					<Add library="libwx_osx_cocoaud_richtext-2.9" />
+					<Add library="libwx_osx_cocoaud_xrc-2.9" />
+					<Add library="lang" />
+					<Add library="xml" />
+					<Add library="web" />
+					<Add library="libcrypto" />
+					<Add library="libssl" />
+					<Add library="libboost_regex-xgcc42-mt-d-1_41" />
+					<Add library="http" />
+					<Add library="libirc" />
+					<Add library="upnp" />
+					<Add library="libwx_osx_cocoaud_stc-2.9" />
+					<Add library="libwx_osx_cocoaud_media-2.9" />
+					<Add library="libwx_osx_cocoaud_propgrid-2.9" />
+					<Add directory="../../lib/macosx/x86_64/gcc/debug" />
+					<Add directory="../../dependencies/lib/macosx/x86_64/gcc/debug" />
+					<Add directory="../../bin/macosx/x86_64/gcc/debug/Osiris.app/Contents/MacOS" />
+				</Linker>
+				<ExtraCommands>
+					<Add after="../postbuild_osx.sh $(TARGET_OUTPUT_BASENAME).dylib $(TARGET_OUTPUT_DIR)" />
+				</ExtraCommands>
+			</Target>
+			<Target title="release mac-x86_64">
+				<Option platforms="Mac;" />
+				<Option output="../../bin/macosx/x86_64/gcc/release/Osiris.app/Contents/MacOS/libui" prefix_auto="1" extension_auto="1" />
+				<Option object_output="../../obj/macosx/x86_64/gcc/ui/release" />
+				<Option type="3" />
+				<Option compiler="gcc" />
+				<Option createDefFile="1" />
+				<Option createStaticLib="1" />
+				<Compiler>
+					<Add option="-O2" />
+					<Add option="-W" />
+					<Add option="-DNDEBUG" />
+					<Add option="-DOS_UI_LIB" />
+					<Add option="-DUNICODE" />
+					<Add option="-D__WXMAC__" />
+					<Add directory="../../dependencies/include" />
+					<Add directory="../core" />
+					<Add directory="../xml" />
+					<Add directory="../engine" />
+					<Add directory="../lang" />
+					<Add directory="../net" />
+					<Add directory="../skin" />
+					<Add directory="../upnp" />
+					<Add directory="../../dependencies/include/wxwidgets/setup/mac-x86_64/release" />
+					<Add directory="../../dependencies/include/wxwidgets" />
+					<Add directory="../http" />
+					<Add directory="../../dependencies/include/mac-x86_64" />
+					<Add directory="../irc" />
+					<Add directory="../db" />
+					<Add directory="../web" />
+				</Compiler>
+				<ResourceCompiler>
+					<Add directory="../../dependencies/include" />
+					<Add directory="../core" />
+					<Add directory="../xml" />
+				</ResourceCompiler>
+				<Linker>
+					<Add option="-s" />
+					<Add option="-dynamiclib -framework Carbon" />
+					<Add library="core" />
+					<Add library="engine" />
+					<Add library="net" />
+					<Add library="libwx_baseu-2.9" />
+					<Add library="libwx_baseu_net-2.9" />
+					<Add library="libwx_baseu_xml-2.9" />
+					<Add library="libwx_osx_cocoau_core-2.9" />
+					<Add library="libwx_osx_cocoau_aui-2.9" />
+					<Add library="libwx_osx_cocoau_adv-2.9" />
+					<Add library="libwx_osx_cocoau_html-2.9" />
+					<Add library="libwx_osx_cocoau_qa-2.9" />
+					<Add library="libwx_osx_cocoau_richtext-2.9" />
+					<Add library="libwx_osx_cocoau_xrc-2.9" />
+					<Add library="lang" />
+					<Add library="xml" />
+					<Add library="web" />
+					<Add library="libcrypto" />
+					<Add library="libssl" />
+					<Add library="libboost_regex-xgcc42-mt-1_41" />
+					<Add library="http" />
+					<Add library="libirc" />
+					<Add library="upnp" />
+					<Add library="libwx_osx_cocoau_stc-2.9" />
+					<Add library="libwx_osx_cocoau_media-2.9" />
+					<Add library="libwx_osx_cocoau_propgrid-2.9" />
+					<Add directory="../../lib/macosx/x86_64/gcc/release" />
+					<Add directory="../../dependencies/lib/macosx/x86_64/gcc/release" />
+					<Add directory="../../bin/macosx/x86_64/gcc/release/Osiris.app/Contents/MacOS" />
+				</Linker>
+				<ExtraCommands>
+					<Add after="../postbuild_osx.sh $(TARGET_OUTPUT_BASENAME).dylib $(TARGET_OUTPUT_DIR)" />
+				</ExtraCommands>
+			</Target>
+			<Target title="debug linux-x86_64">
+				<Option platforms="Unix;" />
+				<Option output="../../bin/linux/x86_64/gcc/debug/libui" prefix_auto="1" extension_auto="1" />
+				<Option object_output="../../obj/linux/x86_64/gcc/ui/debug" />
+				<Option type="3" />
+				<Option compiler="gcc" />
+				<Option createDefFile="1" />
+				<Option createStaticLib="1" />
+				<Compiler>
+					<Add option="-g" />
+					<Add option="-W" />
+					<Add option="-fPIC" />
+					<Add option="-D_DEBUG" />
+					<Add option="-DOS_UI_LIB" />
+					<Add option="-DUNICODE" />
+					<Add option="-D__WXDEBUG__" />
+					<Add option="-D__WXGTK__" />
+					<Add directory="../../dependencies/include" />
+					<Add directory="../core" />
+					<Add directory="../xml" />
+					<Add directory="../engine" />
+					<Add directory="../lang" />
+					<Add directory="../net" />
+					<Add directory="../skin" />
+					<Add directory="../upnp" />
+					<Add directory="../../dependencies/include/wxwidgets_ds/setup/linux-x86_64/debug" />
+					<Add directory="../../dependencies/include/wxwidgets_ds" />
+					<Add directory="../../dependencies/include/linux-x86_64" />
+					<Add directory="../http" />
+					<Add directory="../irc" />
+					<Add directory="../db" />
+					<Add directory="../web" />
+				</Compiler>
+				<ResourceCompiler>
+					<Add directory="../../dependencies/include" />
+					<Add directory="../core" />
+					<Add directory="../xml" />
+				</ResourceCompiler>
+				<Linker>
+					<Add option="-Wl,-z,defs,-rpath=./ -lX11" />
+					<Add library="libcore" />
+					<Add library="libirc" />
+					<Add library="liblang" />
+					<Add library="libengine" />
+					<Add library="libpthread" />
+					<Add library="libboost_signals-gcc44-mt-d-1_41" />
+					<Add library="libxml" />
+					<Add library="libboost_regex-gcc44-mt-d-1_41" />
+					<Add library="libnet" />
+					<Add library="libssl" />
+					<Add library="libcrypto" />
+					<Add library="libhttp" />
+					<Add library="libupnp" />
+					<Add library="libwx_gtk2u-2.9" />
+					<Add directory="../../dependencies/lib/linux/x86_64/gcc/debug" />
+					<Add directory="../../bin/linux/x86_64/gcc/debug" />
+				</Linker>
+			</Target>
+			<Target title="release linux-x86_64">
+				<Option platforms="Unix;" />
+				<Option output="../../bin/linux/x86_64/gcc/release/libui" prefix_auto="1" extension_auto="1" />
+				<Option object_output="../../obj/linux/x86_64/gcc/ui/release" />
+				<Option type="3" />
+				<Option compiler="gcc" />
+				<Option createDefFile="1" />
+				<Option createStaticLib="1" />
+				<Compiler>
+					<Add option="-O2" />
+					<Add option="-W" />
+					<Add option="-fPIC" />
+					<Add option="-DNDEBUG" />
+					<Add option="-DOS_UI_LIB" />
+					<Add option="-DUNICODE" />
+					<Add option="-D__WXGTK__" />
+					<Add directory="../../dependencies/include" />
+					<Add directory="../core" />
+					<Add directory="../xml" />
+					<Add directory="../engine" />
+					<Add directory="../lang" />
+					<Add directory="../net" />
+					<Add directory="../skin" />
+					<Add directory="../upnp" />
+					<Add directory="../../dependencies/include/wxwidgets_ds/setup/linux-x86_64/release" />
+					<Add directory="../../dependencies/include/wxwidgets_ds" />
+					<Add directory="../../dependencies/include/linux-x86_64" />
+					<Add directory="../http" />
+					<Add directory="../irc" />
+					<Add directory="../db" />
+					<Add directory="../web" />
+				</Compiler>
+				<ResourceCompiler>
+					<Add directory="../../dependencies/include" />
+					<Add directory="../core" />
+					<Add directory="../xml" />
+				</ResourceCompiler>
+				<Linker>
+					<Add option="-s" />
+					<Add option="-Wl,-z,defs,-rpath=./" />
+					<Add library="libcore" />
+					<Add library="libirc" />
+					<Add library="liblang" />
+					<Add library="libengine" />
+					<Add library="libpthread" />
+					<Add library="libboost_signals-gcc44-mt-1_41" />
+					<Add library="libxml" />
+					<Add library="libboost_regex-gcc44-mt-1_41" />
+					<Add library="libnet" />
+					<Add library="libssl" />
+					<Add library="libcrypto" />
+					<Add library="libhttp" />
+					<Add library="libupnp" />
+					<Add library="libwx_gtk2u-2.9" />
+					<Add directory="../../dependencies/lib/linux/x86_64/gcc/release" />
+					<Add directory="../../bin/linux/x86_64/gcc/release" />
+				</Linker>
+			</Target>
+		</Build>
+		<Unit filename="application.cpp" />
+		<Unit filename="application.h" />
+		<Unit filename="chartpanel.cpp" />
+		<Unit filename="chartpanel.h" />
+		<Unit filename="commands.h" />
+		<Unit filename="connectioninfo.cpp" />
+		<Unit filename="connectioninfo.h" />
+		<Unit filename="downloadevent.cpp" />
+		<Unit filename="downloadevent.h" />
+		<Unit filename="downloadthread.cpp" />
+		<Unit filename="downloadthread.h" />
+		<Unit filename="extensionswizard.cpp" />
+		<Unit filename="extensionswizard.h" />
+		<Unit filename="extensionswizardpagefinish.cpp" />
+		<Unit filename="extensionswizardpagefinish.h" />
+		<Unit filename="extensionswizardpagegeneral.cpp" />
+		<Unit filename="extensionswizardpagegeneral.h" />
+		<Unit filename="extensionswizardpagetemplate.cpp" />
+		<Unit filename="extensionswizardpagetemplate.h" />
+		<Unit filename="framerenderer.cpp" />
+		<Unit filename="framerenderer.h" />
+		<Unit filename="iircpage.cpp" />
+		<Unit filename="iircpage.h" />
+		<Unit filename="iircroompage.cpp" />
+		<Unit filename="iircroompage.h" />
+		<Unit filename="ioptionswizardpage.cpp" />
+		<Unit filename="ioptionswizardpage.h" />
+		<Unit filename="ircchannelpage.cpp" />
+		<Unit filename="ircchannelpage.h" />
+		<Unit filename="ircconfigwindow.cpp" />
+		<Unit filename="ircconfigwindow.h" />
+		<Unit filename="ircserverpage.cpp" />
+		<Unit filename="ircserverpage.h" />
+		<Unit filename="irctextctrl.cpp" />
+		<Unit filename="irctextctrl.h" />
+		<Unit filename="ircuserpage.cpp" />
+		<Unit filename="ircuserpage.h" />
+		<Unit filename="ircwindow.cpp" />
+		<Unit filename="ircwindow.h" />
+		<Unit filename="isisconnectionswindow.cpp" />
+		<Unit filename="isisconnectionswindow.h" />
+		<Unit filename="listctrlrenderer.cpp" />
+		<Unit filename="listctrlrenderer.h" />
+		<Unit filename="logwindow.cpp" />
+		<Unit filename="logwindow.h" />
+		<Unit filename="mainwindow.cpp" />
+		<Unit filename="mainwindow.h" />
+		<Unit filename="multilanguagewindow.cpp" />
+		<Unit filename="multilanguagewindow.h" />
+		<Unit filename="multilanguagewizard.cpp" />
+		<Unit filename="multilanguagewizard.h" />
+		<Unit filename="optionswizard.cpp" />
+		<Unit filename="optionswizard.h" />
+		<Unit filename="optionswizardpagefinish.cpp" />
+		<Unit filename="optionswizardpagefinish.h" />
+		<Unit filename="optionswizardpagegeneral.cpp" />
+		<Unit filename="optionswizardpagegeneral.h" />
+		<Unit filename="optionswizardpagenetwork.cpp" />
+		<Unit filename="optionswizardpagenetwork.h" />
+		<Unit filename="optionswizardpageproxy.cpp" />
+		<Unit filename="optionswizardpageproxy.h" />
+		<Unit filename="optionswizardpagewelcome.cpp" />
+		<Unit filename="optionswizardpagewelcome.h" />
+		<Unit filename="p2pconnectionswindow.cpp" />
+		<Unit filename="p2pconnectionswindow.h" />
+		<Unit filename="skinconfig.h" />
+		<Unit filename="skinnedframe.h" />
+		<Unit filename="skinnedwindow.h" />
+		<Unit filename="skinprerequisites.h" />
+		<Unit filename="skinsmanager.cpp" />
+		<Unit filename="skinsmanager.h" />
+		<Unit filename="skintemplate.cpp" />
+		<Unit filename="skintemplate.h" />
+		<Unit filename="soundmanager.cpp" />
+		<Unit filename="soundmanager.h" />
+		<Unit filename="splashscreen.cpp" />
+		<Unit filename="splashscreen.h" />
+		<Unit filename="statisticswindow.cpp" />
+		<Unit filename="statisticswindow.h" />
+		<Unit filename="stdafx.cpp" />
+		<Unit filename="stdafx.h" />
+		<Unit filename="taskbaricon.cpp" />
+		<Unit filename="taskbaricon.h" />
+		<Unit filename="togglebitmapbutton.cpp" />
+		<Unit filename="togglebitmapbutton.h" />
+		<Unit filename="ui.cpp" />
+		<Unit filename="ui.h" />
+		<Unit filename="uiapi.cpp" />
+		<Unit filename="uiapi.h" />
+		<Unit filename="uiconfig.h" />
+		<Unit filename="uistandards.h" />
+		<Unit filename="windowrenderer.cpp" />
+		<Unit filename="windowrenderer.h" />
+		<Unit filename="wxcustomclientdata.h" />
+		<Unit filename="wxskinbutton.cpp" />
+		<Unit filename="wxskinbutton.h" />
+		<Unit filename="wxskinwindow.cpp" />
+		<Unit filename="wxskinwindow.h" />
+		<Unit filename="wxwidgets.cpp" />
+		<Unit filename="wxwidgets.h" />
+		<Extensions>
+			<code_completion />
+			<envvars />
+			<debugger />
+		</Extensions>
+	</Project>
+</CodeBlocks_project_file>

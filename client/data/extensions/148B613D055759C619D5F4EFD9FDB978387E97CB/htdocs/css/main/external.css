@@ -1,0 +1,32 @@
+.os_external_confirm, .os_external_redirect
+{
+  text-align:center;
+  margin:0px;
+  padding:0px;  
+  border:1px solid transparent;
+}
+
+.os_external_warning
+{
+	font-size:1.3em;
+	padding:20px;
+}
+
+.os_external_confirm
+{
+	background:url('/htdocs/images/external_confirm.png') no-repeat 50% 80px;
+}
+
+.os_external_redirect
+{
+	background:url('/htdocs/images/external_redirect.gif') no-repeat 50% 20px;
+}
+
+.os_external_url
+{
+  padding:5px;
+  margin:80px;
+  border:1px solid gray;
+  background:url('/htdocs/images/utils/white75.png');
+  word-wrap: break-word;
+}

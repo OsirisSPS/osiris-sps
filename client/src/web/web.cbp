@@ -1,0 +1,348 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="Web" />
+		<Option pch_mode="2" />
+		<Option compiler="gcc" />
+		<Build>
+			<Target title="debug linux-i386">
+				<Option platforms="Unix;" />
+				<Option output="../../bin/linux/i386/gcc/debug/libweb" prefix_auto="1" extension_auto="1" />
+				<Option object_output="../../obj/linux/i386/gcc/web/debug" />
+				<Option type="3" />
+				<Option compiler="gcc" />
+				<Option createDefFile="1" />
+				<Option createStaticLib="1" />
+				<Compiler>
+					<Add option="-g" />
+					<Add option="-W" />
+					<Add option="-D_DEBUG" />
+					<Add option="-DOS_WEB_LIB" />
+					<Add option="-DUNICODE" />
+					<Add directory="../../dependencies/include" />
+					<Add directory="../xml" />
+					<Add directory="../core" />
+					<Add directory="../net" />
+					<Add directory="../http" />
+				</Compiler>
+				<ResourceCompiler>
+					<Add directory="../../dependencies/include" />
+					<Add directory="../xml" />
+					<Add directory="../core" />
+					<Add directory="../net" />
+				</ResourceCompiler>
+				<Linker>
+					<Add option="-Wl,-z,defs,-rpath=./" />
+					<Add option="-static-libstdc++" />
+					<Add option="-static-libgcc" />
+					<Add library="libcore" />
+					<Add library="libhttp" />
+					<Add library="libxml" />
+					<Add library="libpthread" />
+					<Add directory="../../bin/linux/i386/gcc/debug" />
+					<Add directory="../../dependencies/lib/linux/i386/gcc/debug" />
+				</Linker>
+			</Target>
+			<Target title="release linux-i386">
+				<Option platforms="Unix;" />
+				<Option output="../../bin/linux/i386/gcc/release/libweb" prefix_auto="1" extension_auto="1" />
+				<Option object_output="../../obj/linux/i386/gcc/web/release" />
+				<Option type="3" />
+				<Option compiler="gcc" />
+				<Option createDefFile="1" />
+				<Option createStaticLib="1" />
+				<Compiler>
+					<Add option="-O2" />
+					<Add option="-W" />
+					<Add option="-DNDEBUG" />
+					<Add option="-DOS_WEB_LIB" />
+					<Add option="-DUNICODE" />
+					<Add directory="../../dependencies/include" />
+					<Add directory="../xml" />
+					<Add directory="../core" />
+					<Add directory="../net" />
+					<Add directory="../http" />
+				</Compiler>
+				<ResourceCompiler>
+					<Add directory="../../dependencies/include" />
+					<Add directory="../xml" />
+					<Add directory="../core" />
+					<Add directory="../net" />
+				</ResourceCompiler>
+				<Linker>
+					<Add option="-s" />
+					<Add option="-Wl,-z,defs,-rpath=./" />
+					<Add option="-static-libstdc++" />
+					<Add option="-static-libgcc" />
+					<Add library="libcore" />
+					<Add library="libhttp" />
+					<Add library="libxml" />
+					<Add library="libpthread" />
+					<Add directory="../../bin/linux/i386/gcc/release" />
+					<Add directory="../../dependencies/lib/linux/i386/gcc/release" />
+				</Linker>
+			</Target>
+			<Target title="debug mac-x86_64">
+				<Option platforms="Mac;" />
+				<Option output="../../bin/macosx/x86_64/gcc/debug/Osiris.app/Contents/MacOS/libweb" prefix_auto="1" extension_auto="1" />
+				<Option object_output="../../obj/macosx/x86_64/gcc/web/debug" />
+				<Option type="3" />
+				<Option compiler="gcc" />
+				<Option createDefFile="1" />
+				<Option createStaticLib="1" />
+				<Compiler>
+					<Add option="-W" />
+					<Add option="-g" />
+					<Add option="-D_DEBUG" />
+					<Add option="-DOS_WEB_LIB" />
+					<Add option="-DUNICODE" />
+					<Add directory="../../dependencies/include" />
+					<Add directory="../xml" />
+					<Add directory="../core" />
+					<Add directory="../net" />
+					<Add directory="../http" />
+				</Compiler>
+				<ResourceCompiler>
+					<Add directory="../../dependencies/include" />
+					<Add directory="../xml" />
+					<Add directory="../core" />
+					<Add directory="../net" />
+				</ResourceCompiler>
+				<Linker>
+					<Add option="-dynamiclib " />
+					<Add library="core" />
+					<Add library="net" />
+					<Add library="http" />
+					<Add library="xml" />
+					<Add directory="../../lib/macosx/x86_64/gcc/debug" />
+					<Add directory="../../dependencies/lib/macosx/x86_64/gcc/debug" />
+					<Add directory="../../bin/macosx/x86_64/gcc/debug/Osiris.app/Contents/MacOS" />
+				</Linker>
+				<ExtraCommands>
+					<Add after="../postbuild_osx.sh $(TARGET_OUTPUT_BASENAME).dylib $(TARGET_OUTPUT_DIR)" />
+				</ExtraCommands>
+			</Target>
+			<Target title="release mac-x86_64">
+				<Option platforms="Mac;" />
+				<Option output="../../bin/macosx/x86_64/gcc/release/Osiris.app/Contents/MacOS/libweb" prefix_auto="1" extension_auto="1" />
+				<Option object_output="../../obj/macosx/x86_64/gcc/web/release" />
+				<Option type="3" />
+				<Option compiler="gcc" />
+				<Option createDefFile="1" />
+				<Option createStaticLib="1" />
+				<Compiler>
+					<Add option="-O2" />
+					<Add option="-W" />
+					<Add option="-DNDEBUG" />
+					<Add option="-DOS_WEB_LIB" />
+					<Add option="-DUNICODE" />
+					<Add directory="../../dependencies/include" />
+					<Add directory="../xml" />
+					<Add directory="../core" />
+					<Add directory="../net" />
+					<Add directory="../http" />
+				</Compiler>
+				<ResourceCompiler>
+					<Add directory="../../dependencies/include" />
+					<Add directory="../xml" />
+					<Add directory="../core" />
+					<Add directory="../net" />
+				</ResourceCompiler>
+				<Linker>
+					<Add option="-s" />
+					<Add option="-dynamiclib " />
+					<Add library="core" />
+					<Add library="net" />
+					<Add library="http" />
+					<Add library="xml" />
+					<Add directory="../../lib/macosx/x86_64/gcc/release" />
+					<Add directory="../../dependencies/lib/macosx/x86_64/gcc/release" />
+					<Add directory="../../bin/macosx/x86_64/gcc/release/Osiris.app/Contents/MacOS" />
+				</Linker>
+				<ExtraCommands>
+					<Add after="../postbuild_osx.sh $(TARGET_OUTPUT_BASENAME).dylib $(TARGET_OUTPUT_DIR)" />
+				</ExtraCommands>
+			</Target>
+			<Target title="debug linux-x86_64">
+				<Option platforms="Unix;" />
+				<Option output="../../bin/linux/x86_64/gcc/debug/libweb" prefix_auto="1" extension_auto="1" />
+				<Option object_output="../../obj/linux/x86_64/gcc/web/debug" />
+				<Option type="3" />
+				<Option compiler="gcc" />
+				<Option createDefFile="1" />
+				<Option createStaticLib="1" />
+				<Compiler>
+					<Add option="-W" />
+					<Add option="-g" />
+					<Add option="-fPIC" />
+					<Add option="-D_DEBUG" />
+					<Add option="-DOS_WEB_LIB" />
+					<Add option="-DUNICODE" />
+					<Add directory="../../dependencies/include" />
+					<Add directory="../xml" />
+					<Add directory="../core" />
+					<Add directory="../net" />
+					<Add directory="../http" />
+				</Compiler>
+				<ResourceCompiler>
+					<Add directory="../../dependencies/include" />
+					<Add directory="../xml" />
+					<Add directory="../core" />
+					<Add directory="../net" />
+				</ResourceCompiler>
+				<Linker>
+					<Add option="-Wl,-z,defs,-rpath=./" />
+					<Add library="libcore" />
+					<Add library="libhttp" />
+					<Add library="libxml" />
+					<Add library="libpthread" />
+					<Add directory="../../bin/linux/x86_64/gcc/debug" />
+					<Add directory="../../dependencies/lib/linux/x86_64/gcc/debug" />
+				</Linker>
+			</Target>
+			<Target title="release linux-x86_64">
+				<Option platforms="Unix;" />
+				<Option output="../../bin/linux/x86_64/gcc/release/libweb" prefix_auto="1" extension_auto="1" />
+				<Option object_output="../../obj/linux/x86_64/gcc/web/release" />
+				<Option type="3" />
+				<Option compiler="gcc" />
+				<Option createDefFile="1" />
+				<Option createStaticLib="1" />
+				<Compiler>
+					<Add option="-O2" />
+					<Add option="-W" />
+					<Add option="-fPIC" />
+					<Add option="-DNDEBUG" />
+					<Add option="-DOS_WEB_LIB" />
+					<Add option="-DUNICODE" />
+					<Add directory="../../dependencies/include" />
+					<Add directory="../xml" />
+					<Add directory="../core" />
+					<Add directory="../net" />
+					<Add directory="../http" />
+				</Compiler>
+				<ResourceCompiler>
+					<Add directory="../../dependencies/include" />
+					<Add directory="../xml" />
+					<Add directory="../core" />
+					<Add directory="../net" />
+				</ResourceCompiler>
+				<Linker>
+					<Add option="-s" />
+					<Add option="-Wl,-z,defs,-rpath=./" />
+					<Add library="libcore" />
+					<Add library="libhttp" />
+					<Add library="libxml" />
+					<Add library="libpthread" />
+					<Add directory="../../bin/linux/x86_64/gcc/release" />
+					<Add directory="../../dependencies/lib/linux/x86_64/gcc/release" />
+				</Linker>
+			</Target>
+		</Build>
+		<Unit filename="css.h" />
+		<Unit filename="htmlattribute.cpp" />
+		<Unit filename="htmlattribute.h" />
+		<Unit filename="htmlattributes.cpp" />
+		<Unit filename="htmlattributes.h" />
+		<Unit filename="htmlbr.cpp" />
+		<Unit filename="htmlbr.h" />
+		<Unit filename="htmlbutton.cpp" />
+		<Unit filename="htmlbutton.h" />
+		<Unit filename="htmlcheckbox.cpp" />
+		<Unit filename="htmlcheckbox.h" />
+		<Unit filename="htmlcombobox.cpp" />
+		<Unit filename="htmlcombobox.h" />
+		<Unit filename="htmlcontrols.cpp" />
+		<Unit filename="htmlcontrols.h" />
+		<Unit filename="htmldiv.cpp" />
+		<Unit filename="htmldiv.h" />
+		<Unit filename="htmlevent.cpp" />
+		<Unit filename="htmlevent.h" />
+		<Unit filename="htmlfilebrowser.cpp" />
+		<Unit filename="htmlfilebrowser.h" />
+		<Unit filename="htmlimage.cpp" />
+		<Unit filename="htmlimage.h" />
+		<Unit filename="htmllink.cpp" />
+		<Unit filename="htmllink.h" />
+		<Unit filename="htmllinkbutton.cpp" />
+		<Unit filename="htmllinkbutton.h" />
+		<Unit filename="htmllinktag.cpp" />
+		<Unit filename="htmllinktag.h" />
+		<Unit filename="htmllistbox.cpp" />
+		<Unit filename="htmllistbox.h" />
+		<Unit filename="htmlliteral.cpp" />
+		<Unit filename="htmlliteral.h" />
+		<Unit filename="htmlmetatag.cpp" />
+		<Unit filename="htmlmetatag.h" />
+		<Unit filename="htmloption.cpp" />
+		<Unit filename="htmloption.h" />
+		<Unit filename="htmloptiongroup.cpp" />
+		<Unit filename="htmloptiongroup.h" />
+		<Unit filename="htmlpage.cpp" />
+		<Unit filename="htmlpage.h" />
+		<Unit filename="htmlpager.cpp" />
+		<Unit filename="htmlpager.h" />
+		<Unit filename="htmlpanel.cpp" />
+		<Unit filename="htmlpanel.h" />
+		<Unit filename="htmlparagraph.cpp" />
+		<Unit filename="htmlparagraph.h" />
+		<Unit filename="htmlparser.cpp" />
+		<Unit filename="htmlparser.h" />
+		<Unit filename="htmlpopup.cpp" />
+		<Unit filename="htmlpopup.h" />
+		<Unit filename="htmlroller.cpp" />
+		<Unit filename="htmlroller.h" />
+		<Unit filename="htmlscript.cpp" />
+		<Unit filename="htmlscript.h" />
+		<Unit filename="htmlspace.cpp" />
+		<Unit filename="htmlspace.h" />
+		<Unit filename="htmlspan.cpp" />
+		<Unit filename="htmlspan.h" />
+		<Unit filename="htmltab.cpp" />
+		<Unit filename="htmltab.h" />
+		<Unit filename="htmltabctrl.cpp" />
+		<Unit filename="htmltabctrl.h" />
+		<Unit filename="htmltable.cpp" />
+		<Unit filename="htmltable.h" />
+		<Unit filename="htmltablecell.cpp" />
+		<Unit filename="htmltablecell.h" />
+		<Unit filename="htmltableheader.cpp" />
+		<Unit filename="htmltableheader.h" />
+		<Unit filename="htmltablerow.cpp" />
+		<Unit filename="htmltablerow.h" />
+		<Unit filename="htmltabpage.cpp" />
+		<Unit filename="htmltabpage.h" />
+		<Unit filename="htmltext.cpp" />
+		<Unit filename="htmltext.h" />
+		<Unit filename="htmltextarea.cpp" />
+		<Unit filename="htmltextarea.h" />
+		<Unit filename="htmltextbox.cpp" />
+		<Unit filename="htmltextbox.h" />
+		<Unit filename="htmltooltip.cpp" />
+		<Unit filename="htmltooltip.h" />
+		<Unit filename="htmlunit.cpp" />
+		<Unit filename="htmlunit.h" />
+		<Unit filename="htmlvirtualpage.h" />
+		<Unit filename="htmlwriter.cpp" />
+		<Unit filename="htmlwriter.h" />
+		<Unit filename="htmlxslcontrol.cpp" />
+		<Unit filename="htmlxslcontrol.h" />
+		<Unit filename="ihtmlcontrol.cpp" />
+		<Unit filename="ihtmlcontrol.h" />
+		<Unit filename="ihtmlinput.cpp" />
+		<Unit filename="ihtmlinput.h" />
+		<Unit filename="ihtmlselect.cpp" />
+		<Unit filename="ihtmlselect.h" />
+		<Unit filename="stdafx.cpp" />
+		<Unit filename="stdafx.h" />
+		<Unit filename="web.cpp" />
+		<Unit filename="webconfig.h" />
+		<Extensions>
+			<code_completion />
+			<envvars />
+			<lib_finder disable_auto="1" />
+			<debugger />
+		</Extensions>
+	</Project>
+</CodeBlocks_project_file>

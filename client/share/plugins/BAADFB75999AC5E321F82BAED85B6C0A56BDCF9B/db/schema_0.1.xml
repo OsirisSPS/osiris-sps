@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<schema version="0.1">
+  <tables>
+    <table name="os_forums_forum_stats">
+      <fields>
+        <field name="profile" type="varchar" size="48" primary="true" />
+        <field name="reference" type="varchar" size="48" primary="true" />
+        <field name="topics" type="uint" size="4" null="true" />
+        <field name="posts" type="uint" size="4" null="true" />
+        <field name="last_topic" type="varchar" size="48" null="true" />
+        <field name="last_message" type="varchar" size="48" null="true" />
+        <field name="last_message_date" type="varchar" size="14" null="true" />		
+      </fields>
+    </table>
+    <table name="os_forums_section_stats">
+      <fields>
+        <field name="profile" type="varchar" size="48" primary="true" />
+        <field name="reference" type="varchar" size="48" primary="true" />
+        <field name="topics" type="uint" size="4" null="true" />
+        <field name="posts" type="uint" size="4" null="true" />
+        <field name="last_topic" type="varchar" size="48" null="true" />
+        <field name="last_message" type="varchar" size="48" null="true" />
+        <field name="last_message_date" type="varchar" size="14" null="true" />
+      </fields>
+    </table>
+  </tables>
+</schema>

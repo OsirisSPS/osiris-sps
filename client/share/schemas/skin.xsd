@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="skin">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="styles">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element maxOccurs="unbounded" name="style">
+                <xs:complexType>
+                  <xs:attribute name="css" type="xs:string" use="required" />
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element minOccurs="0" name="scripts">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="script">
+                <xs:complexType>
+                  <xs:attribute name="js" type="xs:string" use="required" />
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+      <xs:attribute name="id" type="xs:string" use="required" />
+      <xs:attribute name="name" type="xs:string" use="required" />
+      <xs:attribute name="description" type="xs:string" use="optional" />
+      <xs:attribute name="preview" type="xs:string" use="optional" />
+      <xs:attribute name="version" type="xs:decimal" use="optional" />
+      <xs:attribute name="author" type="xs:string" use="optional" />
+      <xs:attribute name="compatibility" type="xs:decimal" use="optional" />
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

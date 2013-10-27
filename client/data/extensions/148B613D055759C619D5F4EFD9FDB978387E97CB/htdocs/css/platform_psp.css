@@ -1,0 +1,18 @@
+/*
+PSP - Playstation Portable Stylesheet
+User-Agent: Mozilla/4.0 (PSP (PlayStation Portable); 2.00)
+*/
+
+body
+{
+	width:480px;
+	/*height:272px;*/	
+	font-family: serif; /* serif / sans-serif */
+	font-size: 5px; /* 5px / 6px / 7px*/
+	html:not(:nth-child(n)) body { font-size:125%; }
+}
+
+.os_banner
+{
+	display: none;	
+}

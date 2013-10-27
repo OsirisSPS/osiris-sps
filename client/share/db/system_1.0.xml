@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<schema version="0.1">
+  <tables>
+	<table name="os_accounts">
+      <fields>
+        <field name="id" type="varchar" size="40" primary="true" />
+        <field name="username" type="varchar" size="32" />
+        <field name="description" type="text" />
+        <field name="password" type="varchar" size="64" />
+        <field name="real_password" type="varchar" size="32" null="true" />
+        <field name="public_key" type="blob" />
+        <field name="private_key" type="blob" />
+        <field name="secret_question" type="text" null="true" />
+        <field name="secret_response" type="blob" null="true" />
+        <field name="last_access_date" type="varchar" size="14" null="true" />
+        <field name="reference_date" type="varchar" size="14" null="true" />
+        <field name="options" type="text" null="true" />
+      </fields>
+    </table>
+    <table name="os_machines">
+      <fields>
+        <field name="id" type="varchar" size="40" primary="true" />
+        <field name="public_key" type="blob" />        
+      </fields>    
+    </table>
+  </tables>
+</schema>

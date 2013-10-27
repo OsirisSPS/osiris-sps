@@ -1,0 +1,13 @@
+isis/1.0 response
+200
+HTTP/1.1 200
+Connection: keep-alive
+Content-Type: text/css
+Content-Length: 60
+Set-Cookie: os_session=07070E25978494B9B23CA98B1CA5FE6BE09B32B3; expires=Tue, 01 Jan 2030 00:00:00 GMT; path=/;
+Last-Modified: Sun, 13 May 2012 14:40:49 GMT
+Allow: GET, HEAD, DELETE
+Server: Osiris/1.0
+Date: Tue, 15 May 2012 00:39:16 GMT
+
+/* The base skin use only the default.less configuration. */

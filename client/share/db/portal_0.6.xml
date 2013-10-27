@@ -1,0 +1,762 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<schema version="0.6" prev_version="0.5">
+  <tables>
+    <table name="os_accounts">
+      <fields>
+        <field name="id" type="varchar" size="40" primary="true" />
+        <field name="username" type="varchar" size="32" />
+        <field name="password" type="varchar" size="64" />        
+        <field name="real_password" type="varchar" size="32" null="true" />
+        <field name="public_key" type="blob" />
+        <field name="private_key" type="blob" />
+        <field name="secret_question" type="text" null="true" />
+        <field name="secret_response" type="blob" null="true" />
+        <field name="last_access_date" type="varchar" size="14" null="true" />
+        <field name="reference_date" type="varchar" size="14" null="true" />	        
+        <field name="identity" type="blob" null="true" />
+        <field name="invite" type="varchar" size="48" null="true" />
+        <field name="options" type="text" null="true" />        
+      </fields>    
+    </table>
+    <table name="os_attributes">
+      <fields>
+        <field name="id" type="varchar" size="48" primary="true" />
+        <field name="author" type="varchar" size="48" />
+        <field name="submit_date" type="varchar" size="14" />
+        <field name="version" type="uint" size="2" />
+        <field name="signature" type="blob" />
+        <field name="reference" type="varchar" size="48" />
+        <field name="type" type="uint" size="4" />
+        <field name="value" type="uint" size="4" />
+      </fields>
+      <indexes>
+        <index>
+          <field name="author"/>
+        </index>
+        <index>
+          <field name="reference"/>
+        </index>
+        <index>
+          <field name="type"/>
+        </index>
+      </indexes>
+    </table>
+    <table name="os_avatars">
+      <fields>
+        <field name="id" type="varchar" size="48" primary="true" />
+        <field name="author" type="varchar" size="48" />
+        <field name="submit_date" type="varchar" size="14" />
+        <field name="version" type="uint" size="2" />
+        <field name="signature" type="blob" />
+        <field name="file_name" type="varchar" size="48" />
+        <field name="file_data" type="blob" />
+        <field name="file_type" type="varchar" size="48" />
+        <field name="file_size" type="uint" size="4" />
+      </fields>
+      <indexes>
+        <index>
+          <field name="author"/>
+        </index>
+      </indexes>
+    </table>
+    <table name="os_calendar_events">
+      <fields>
+        <field name="id" type="varchar" size="48" primary="true" />
+        <field name="parent" type="varchar" size="48" />
+        <field name="revision" type="varchar" size="48" />
+        <field name="author" type="varchar" size="48" />
+        <field name="submit_date" type="varchar" size="14" />
+        <field name="version" type="uint" size="2" />
+        <field name="visible" type="bool" />
+        <field name="position" type="double" />
+        <field name="comment" type="text" null="true" />
+        <field name="signature" type="blob" />
+        <field name="title" type="text" />
+        <field name="description" type="text" null="true" />
+        <field name="content" type="text" null="true" />
+        <field name="model" type="varchar" size="48" null="true" />
+        <field name="pinned" type="bool" null="true" />
+        <field name="closed_date" type="varchar" size="14" null="true" />
+        <field name="start_date" type="varchar" size="14" />
+        <field name="end_date" type="varchar" size="14" />
+        <field name="repeat_mode" type="uint" size="2" />
+        <field name="expiration_date" type="varchar" size="14" />
+      </fields>
+      <indexes>
+        <index>
+          <field name="parent" />
+        </index>
+        <index>        
+          <field name="revision" />
+        </index>
+        <index>
+          <field name="author" />
+        </index>
+        <index>
+          <field name="model" />
+        </index>
+        <index>
+          <field name="pinned" />
+        </index>
+      </indexes>
+    </table>
+    <table name="os_discussions_stats">
+      <fields>
+        <field name="profile" type="varchar" size="40" primary="true" />
+        <field name="reference" type="varchar" size="48" primary="true" />
+        <field name="posts" type="uint" size="4" null="true" />	
+        <field name="votes" type="uint" size="4" null="true" />
+        <field name="votes_average" type="double" null="true" />
+        <field name="last_entry" type="varchar" size="48" null="true" />
+        <field name="last_entry_date" type="varchar" size="14" null="true" />	
+        <field name="pinned" type="bool" null="true" />	
+      </fields>
+      <indexes>
+        <index>
+          <field name="pinned" />
+        </index>
+      </indexes>
+    </table>
+    <table name="os_files">
+      <fields>
+        <field name="id" type="varchar" size="48" primary="true" />
+        <field name="parent" type="varchar" size="48" />
+        <field name="revision" type="varchar" size="48" />
+        <field name="author" type="varchar" size="48" />
+        <field name="submit_date" type="varchar" size="14" />
+        <field name="version" type="uint" size="2" />
+        <field name="visible" type="bool" />
+        <field name="position" type="double" />
+        <field name="comment" type="text" null="true" />
+        <field name="signature" type="blob" />
+        <field name="title" type="text" />
+        <field name="description" type="text" null="true" />
+        <field name="content" type="text" null="true" />
+        <field name="model" type="varchar" size="48" null="true" />
+        <field name="pinned" type="bool" null="true" />
+        <field name="closed_date" type="varchar" size="14" null="true" />	
+        <field name="file_name" type="varchar" size="48" />
+        <field name="file_data" type="blob" />
+        <field name="file_type" type="varchar" size="48" />
+        <field name="file_size" type="uint" size="4" />
+      </fields>
+      <indexes>
+        <index>
+          <field name="parent" />
+        </index>
+        <index>
+          <field name="revision" />
+        </index>
+        <index>
+          <field name="author" />
+        </index>
+        <index>
+          <field name="model" />
+        </index>
+        <index>
+          <field name="pinned" />
+        </index>
+      </indexes>
+    </table>    
+    <table name="os_entries">
+      <fields>
+        <field name="id" type="varchar" size="48" primary="true" />
+        <field name="parent" type="varchar" size="48" null="true" />
+        <field name="revision" type="varchar" size="48" null="true" />
+        <field name="author" type="varchar" size="48" null="true" />
+        <field name="submit_date" type="varchar" size="14" />
+        <field name="insert_date" type="varchar" size="14" />
+        <field name="type" type="uint" size="4" />
+        <field name="rank" type="uint" size="4" />
+      </fields>
+      <indexes>
+        <index>
+          <field name="parent" />
+        </index>
+        <index>
+          <field name="revision" />
+        </index>
+        <index>
+          <field name="author" />
+        </index>
+        <index>
+          <field name="submit_date" />
+        </index>
+        <index>
+          <field name="type" />
+        </index>
+        <index>
+          <field name="rank" order="asc"/>
+          <field name="submit_date" order="desc"/>
+        </index>
+      </indexes>
+    </table>
+    <table name="os_extensions">
+      <fields>
+        <field name="id" type="varchar" size="48" primary="true" />
+        <field name="version" type="varchar" size="8" null="true" />
+        <field name="data" type="text" null="true" />
+      </fields>
+    </table>
+    <table name="os_instances">
+      <fields>
+        <field name="id" type="varchar" size="48" primary="true" />
+        <field name="parent" type="varchar" size="48" />
+        <field name="revision" type="varchar" size="48" />
+        <field name="author" type="varchar" size="48" />
+        <field name="submit_date" type="varchar" size="14" />
+        <field name="version" type="uint" size="2" />
+        <field name="visible" type="bool" />
+        <field name="position" type="double" />
+        <field name="comment" type="text" null="true" />
+        <field name="signature" type="blob" />
+        <field name="title" type="text" />
+        <field name="area" type="uint" size="2" />
+        <field name="inherit" type="uint" size="2" />
+        <field name="module" type="varchar" size="48" null="true" />
+        <field name="data" type="text" null="true" />
+        <field name="block" type="uint" size="2" null="true" />
+        <field name="style" type="text" null="true" />
+      </fields>
+      <indexes>
+        <index>
+          <field name="parent" />
+        </index>
+        <index>
+          <field name="revision" />
+        </index>
+        <index>
+          <field name="author" />
+        </index>
+      </indexes>
+    </table>
+    <table name="os_instances_cache">
+      <fields>
+        <field name="profile" type="varchar" size="40" primary="true" />
+        <field name="reference" type="varchar" size="48" primary="true" />
+        <field name="cache" type="text" null="true" />
+        <field name="cache_date" type="varchar" size="14" null="true" />			
+      </fields>
+    </table>
+    <table name="os_local_messages">
+      <fields>
+        <field name="profile" type="varchar" size="40" primary="true" />
+        <field name="id" type="varchar" size="48" primary="true" />
+        <field name="author" type="varchar" size="48" />
+        <field name="session" type="blob" />
+        <field name="content" type="blob" />
+        <field name="submit_date" type="varchar" size="14" null="true" />
+        <field name="read_date" type="varchar" size="14" null="true" />
+        <field name="status" type="uint" size="2" />
+        <field name="folder" type="uint" size="2" />
+      </fields>
+      <indexes>
+        <index>
+          <field name="author" />
+        </index>
+        <index>
+          <field name="submit_date" />
+        </index>
+        <index>
+          <field name="read_date" />
+        </index>
+      </indexes>
+    </table>
+    <table name="os_models">
+      <fields>
+        <field name="id" type="varchar" size="48" primary="true" />
+        <field name="parent" type="varchar" size="48" />
+        <field name="revision" type="varchar" size="48" />
+        <field name="author" type="varchar" size="48" />
+        <field name="submit_date" type="varchar" size="14" />
+        <field name="version" type="uint" size="2" />
+        <field name="visible" type="bool" />
+        <field name="position" type="double" />
+        <field name="comment" type="text" null="true" />
+        <field name="signature" type="blob" />
+        <field name="title" type="text" />
+        <field name="description" type="text" null="true" />
+        <field name="content" type="text" null="true" />
+        <field name="model" type="varchar" size="48" null="true" />
+        <field name="pinned" type="bool" null="true" />
+        <field name="closed_date" type="varchar" size="14" null="true" />	
+        <field name="schema" type="text" />
+        <field name="stylesheet" type="text" />
+        <field name="sample" type="text" null="true" />
+      </fields>
+      <indexes>
+        <index>
+          <field name="parent" />
+        </index>
+        <index>
+          <field name="revision" />
+        </index>
+        <index>
+          <field name="author" />
+        </index>
+        <index>
+          <field name="model" />
+        </index>
+        <index>
+          <field name="pinned" />
+        </index>
+      </indexes>
+    </table>    
+    <table name="os_peers">
+      <fields>
+        <field name="ip" type="varchar" size="16" primary="true" />
+        <field name="port" type="uint" size="2" />
+        <field name="retries" type="uint" size="4" />
+        <field name="rank" type="uint" size="4" />
+      </fields>
+      <indexes>
+        <index>
+          <field name="retries" />
+          <field name="rank" />
+        </index>
+        <index>
+          <field name="rank" />
+        </index>
+      </indexes>
+    </table>
+    <table name="os_polls">
+      <fields>
+        <field name="id" type="varchar" size="48" primary="true" />
+        <field name="parent" type="varchar" size="48" />
+        <field name="revision" type="varchar" size="48" />
+        <field name="author" type="varchar" size="48" />
+        <field name="submit_date" type="varchar" size="14" />
+        <field name="version" type="uint" size="2" />
+        <field name="visible" type="bool" />
+        <field name="position" type="double" />
+        <field name="comment" type="text" null="true" />
+        <field name="signature" type="blob" />
+        <field name="title" type="text" />
+        <field name="description" type="text" null="true" />
+        <field name="content" type="text" null="true" />
+        <field name="model" type="varchar" size="48" null="true" />
+        <field name="pinned" type="bool" null="true" />
+        <field name="closed_date" type="varchar" size="14" null="true" />	
+        <field name="type" type="uint" size="2" null="true" />	
+      </fields>
+      <indexes>
+        <index>
+          <field name="parent" />
+        </index>
+        <index>
+          <field name="revision" />  
+        </index>
+        <index>
+          <field name="author" />  
+        </index>
+        <index>
+          <field name="model" />
+        </index>
+        <index>
+          <field name="pinned" />
+        </index>
+      </indexes>
+    </table>
+    <table name="os_polls_stats">
+      <fields>
+        <field name="profile" type="varchar" size="40" primary="true" />
+        <field name="reference" type="varchar" size="48" primary="true" />
+        <field name="poll_votes" type="uint" size="4" null="true" />	
+      </fields>
+    </table>
+    <table name="os_polls_options">
+      <fields>
+        <field name="id" type="varchar" size="48" primary="true" />
+        <field name="parent" type="varchar" size="48" />
+        <field name="revision" type="varchar" size="48" />
+        <field name="author" type="varchar" size="48" />
+        <field name="submit_date" type="varchar" size="14" />
+        <field name="version" type="uint" size="2" />
+        <field name="visible" type="bool" />
+        <field name="position" type="double" />
+        <field name="comment" type="text" null="true" />
+        <field name="signature" type="blob" />
+        <field name="title" type="text" />
+      </fields>
+      <indexes>
+        <index>
+          <field name="parent" />
+        </index>
+        <index>
+          <field name="revision" />
+        </index>
+        <index>
+          <field name="author" />
+        </index>
+      </indexes>
+    </table>
+    <table name="os_polls_options_stats">
+      <fields>
+        <field name="profile" type="varchar" size="40" primary="true" />
+        <field name="reference" type="varchar" size="48" primary="true" />
+        <field name="votes" type="uint" size="4" null="true" />
+        <field name="votes_average" type="double" null="true" />	
+      </fields>
+    </table>
+    <table name="os_polls_votes">
+      <fields>
+        <field name="id" type="varchar" size="48" primary="true" />
+        <field name="author" type="varchar" size="48" />
+        <field name="submit_date" type="varchar" size="14" />
+        <field name="version" type="uint" size="2" />
+        <field name="signature" type="blob" />
+        <field name="parent" type="varchar" size="48" />
+        <field name="reference" type="varchar" size="48" null="true" />
+        <field name="score" type="uint" size="4" null="true" />
+      </fields>
+      <indexes>
+        <index>
+          <field name="author" />
+        </index>
+        <index>
+          <field name="parent" />
+        </index>
+        <index>
+          <field name="reference" />
+        </index>
+      </indexes>
+    </table>  
+    <table name="os_posts">
+      <fields>
+        <field name="id" type="varchar" size="48" primary="true" />
+        <field name="parent" type="varchar" size="48" />
+        <field name="revision" type="varchar" size="48" />
+        <field name="author" type="varchar" size="48" />
+        <field name="submit_date" type="varchar" size="14" />
+        <field name="version" type="uint" size="2" />
+        <field name="visible" type="bool" />
+        <field name="position" type="double" />
+        <field name="comment" type="text" null="true" />
+        <field name="signature" type="blob" />
+        <field name="title" type="text" />
+        <field name="content" type="text" />        
+        <field name="reference" type="varchar" size="48" null="true" />	
+      </fields>
+      <indexes>
+        <index>
+          <field name="revision" />
+        </index>
+        <index>
+          <field name="parent" />
+        </index>
+        <index>
+          <field name="author" />
+        </index>
+        <index>
+          <field name="reference" />
+        </index>
+      </indexes>
+    </table>
+    <table name="os_private_messages">
+      <fields>
+        <field name="id" type="varchar" size="48" primary="true" />
+        <field name="author" type="varchar" size="48" />
+        <field name="submit_date" type="varchar" size="14" />
+        <field name="version" type="uint" size="2" />
+        <field name="signature" type="blob" />
+        <field name="adressee" type="varchar" size="48" />
+        <field name="session" type="blob" />
+        <field name="content" type="blob" />
+      </fields>
+      <indexes>
+        <index>
+          <field name="author" />
+        </index>
+        <index>
+          <field name="adressee" />
+        </index>
+      </indexes>
+    </table>
+    <table name="os_reputations">
+      <fields>
+        <field name="id" type="varchar" size="48" primary="true" />
+        <field name="author" type="varchar" size="48" />
+        <field name="reference" type="varchar" size="48" />
+        <field name="score" type="double" />
+        <field name="description" type="text" null="true" />
+        <field name="follow" type="bool" null="true" />
+        <field name="submit_date" type="varchar" size="14" />
+        <field name="version" type="uint" size="2" />
+        <field name="signature" type="blob" />
+      </fields>
+      <indexes>
+        <index>
+          <field name="author" />
+        </index>
+        <index>
+          <field name="reference" />
+        </index>
+        <index>
+          <field name="score" />
+        </index>
+        <index>
+          <field name="author" />
+          <field name="follow" />
+          <field name="score" />
+        </index>
+      </indexes>
+    </table>
+    <table name="os_sections">
+      <fields>
+        <field name="id" type="varchar" size="48" primary="true" />
+        <field name="parent" type="varchar" size="48" />
+        <field name="revision" type="varchar" size="48" />
+        <field name="author" type="varchar" size="48" />
+        <field name="submit_date" type="varchar" size="14" />
+        <field name="version" type="uint" size="2" />
+        <field name="visible" type="bool" />
+        <field name="position" type="double" />
+        <field name="comment" type="text" null="true" />	
+        <field name="signature" type="blob" />
+        <field name="title" type="text" />
+        <field name="description" type="text" null="true" />
+        <field name="component" type="varchar" size="48" null="true" />
+        <field name="data" type="text" null="true" />
+      </fields>
+      <indexes>
+        <index>
+          <field name="parent" />
+        </index>
+        <index>
+          <field name="revision" />
+        </index>
+        <index>
+          <field name="author" />
+        </index>
+        <index>
+          <field name="component" />
+        </index>
+      </indexes>
+    </table>    
+    <table name="os_snapshot_objects">
+      <fields>
+        <field name="profile" type="varchar" size="40" primary="true" />
+        <field name="reference" type="varchar" size="48" primary="true" />
+        <field name="type" type="uint" size="4" />
+        <field name="submit_date" type="varchar" size="14" />
+        <field name="parent" type="varchar" size="48" />
+        <field name="section" type="varchar" size="48" null="true" />
+        <field name="current" type="varchar" size="48" null="true" />
+        <field name="visible" type="bool" />
+        <field name="position" type="double" />
+        <field name="score" type="double" null="true" />
+        <field name="depth" type="uint" size="4" />
+        <field name="insert_date" type="varchar" size="14" null="true" />
+        <field name="stability_date" type="varchar" size="14" null="true" />
+        <field name="stats_date" type="varchar" size="14" null="true" />        
+        <field name="search_date" type="varchar" size="14" null="true" />        
+      </fields>
+      <indexes>
+        <index>
+          <field name="profile" />
+          <field name="type" />
+        </index>
+        <index>
+          <field name="profile" />
+          <field name="parent" />
+        </index>
+        <index>
+          <field name="profile" />
+          <field name="section" />
+        </index>
+        <index>
+          <field name="profile" />
+          <field name="visible" />
+        </index>
+        <index>
+          <field name="profile" />
+          <field name="position" />
+        </index>
+        <index>
+          <field name="profile" />
+          <field name="depth" />
+        </index>
+        <index>
+          <field name="profile" />
+          <field name="insert_date" />
+        </index>
+        <index>
+          <field name="profile" />
+          <field name="stability_date" />
+        </index>
+        <index>
+          <field name="profile" />
+          <field name="stats_date" />
+        </index>
+        <index>
+          <field name="profile" />
+          <field name="search_date" />
+        </index>
+      </indexes>
+    </table>
+    <table name="os_snapshot_profiles">
+      <fields>
+        <field name="profile" type="varchar" size="40" primary="true" />
+        <field name="initialized" type="bool" null="true" />
+      </fields>
+    </table>
+    <table name="os_snapshot_users">
+      <fields>
+        <field name="profile" type="varchar" size="40" primary="true" />
+        <field name="reference" type="varchar" size="48" primary="true" />
+        <field name="score" type="double" />
+        <field name="description" type="text" null="true" />
+        <field name="follow" type="bool" null="true" />
+        <field name="stability_date" type="varchar" size="14" null="true" />
+        <field name="stats_date" type="varchar" size="14" null="true" />
+      </fields>
+      <indexes>
+        <index>
+          <field name="profile" />
+          <field name="score" />
+        </index>
+        <index>
+          <field name="profile" />
+          <field name="reference" />
+          <field name="score" />
+        </index>
+        <index>
+          <field name="profile" />
+          <field name="stability_date" />
+        </index>
+        <index>
+          <field name="profile" />
+          <field name="stats_date" />
+        </index>
+      </indexes>
+    </table>
+    <table name="os_tags">
+      <fields>
+        <field name="id" type="varchar" size="48" primary="true" />
+        <field name="parent" type="varchar" size="48" />
+        <field name="revision" type="varchar" size="48" />
+        <field name="author" type="varchar" size="48" />
+        <field name="submit_date" type="varchar" size="14" />
+        <field name="version" type="uint" size="2" />
+        <field name="visible" type="bool" />
+        <field name="position" type="double" />
+        <field name="comment" type="text" null="true" />
+        <field name="signature" type="blob" />
+        <field name="name" type="varchar" size="32" />
+      </fields>
+      <indexes>
+        <index>
+          <field name="parent" />
+        </index>
+        <index>
+          <field name="revision" />
+        </index>
+        <index>
+          <field name="author" />
+        </index>
+        <index>
+          <field name="name" />
+        </index>
+      </indexes>
+    </table>
+    <table name="os_texts">
+      <fields>
+        <field name="id" type="varchar" size="48" primary="true" />
+        <field name="parent" type="varchar" size="48" />
+        <field name="revision" type="varchar" size="48" />
+        <field name="author" type="varchar" size="48" />
+        <field name="submit_date" type="varchar" size="14" />
+        <field name="version" type="uint" size="2" />
+        <field name="visible" type="bool" />
+        <field name="position" type="double" />
+        <field name="comment" type="text" null="true" />
+        <field name="signature" type="blob" />
+        <field name="title" type="text" />
+        <field name="description" type="text" null="true" />
+        <field name="content" type="text" null="true" />
+        <field name="model" type="varchar" size="48" null="true" />
+        <field name="pinned" type="bool" null="true" />
+        <field name="closed_date" type="varchar" size="14" null="true" />	
+      </fields>
+      <indexes>
+        <index>
+          <field name="parent" />
+        </index>
+        <index>
+          <field name="revision" />
+        </index>
+        <index>
+          <field name="author" />
+        </index>
+        <index>
+          <field name="model" />
+        </index>
+        <index>
+          <field name="pinned" />
+        </index>
+      </indexes>
+    </table>
+    <table name="os_users">
+      <fields>
+        <field name="id" type="varchar" size="48" primary="true" />
+        <field name="submit_date" type="varchar" size="14" />
+        <field name="version" type="uint" size="2" />
+        <field name="signature" type="blob" />
+        <field name="public_key" type="blob" />
+        <field name="name" type="varchar" size="32" />
+        <field name="description" type="varchar" size="32" null="true" />
+        <field name="authors_threshold" type="uint" size="2" />
+        <field name="editors_threshold" type="uint" size="2" />
+        <field name="join_date" type="varchar" size="14" />
+        <field name="birth_date" type="varchar" size="14" null="true" />
+        <field name="gender" type ="uint" size="1" null="true" />
+        <field name="location" type="varchar" size="128" null="true" />
+        <field name="time_offset" type="int" size="4" null="true" />
+        <field name="language" type="varchar" size="8" null="true" />
+        <field name="misc" type="text" null="true" />
+        <field name="mark" type="text" null="true" />
+        <field name="show_mark" type="bool" null="true" />
+        <field name="show_avatar" type="bool" null="true" />
+        <field name="email" type="varchar" size="64" null="true" />
+        <field name="website" type="varchar" size="128" null="true" />
+        <field name="contacts" type="text" null="true" />
+      </fields>
+      <indexes>
+        <index>
+          <field name="name" />
+        </index>
+        <index>
+          <field name="join_date" />
+        </index>
+      </indexes>
+    </table>
+    <table name="os_users_stats">
+      <fields>
+        <field name="profile" type="varchar" size="40" primary="true" />
+        <field name="reference" type="varchar" size="48" primary="true" />
+        <field name="objects" type="uint" size="4" null="true" />
+        <field name="revisions" type="uint" size="4" null="true" />	
+        <field name="progressive_number" type="uint" size="4" null="true" />	
+      </fields>
+    </table>
+    <table name="os_votes">
+      <fields>
+        <field name="id" type="varchar" size="48" primary="true" />
+        <field name="author" type="varchar" size="48" />
+        <field name="submit_date" type="varchar" size="14" />
+        <field name="version" type="uint" size="2" />
+        <field name="signature" type="blob" />
+        <field name="reference" type="varchar" size="48" />
+        <field name="score" type="uint" size="4" null="true" />
+      </fields>
+      <indexes>
+        <index>
+          <field name="author" />
+        </index>
+        <index>
+          <field name="reference" />
+        </index>
+      </indexes>
+    </table>
+  </tables>
+</schema>

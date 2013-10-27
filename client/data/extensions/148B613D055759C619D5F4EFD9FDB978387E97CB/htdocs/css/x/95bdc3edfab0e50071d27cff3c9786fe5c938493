@@ -1,0 +1,29 @@
+isis/1.0 response
+200
+HTTP/1.1 200
+Connection: keep-alive
+Content-Type: text/javascript
+Content-Length: 334
+Set-Cookie: os_session=2606414482A2C51F51CE25BD72A28FC38DA5AD1B; expires=Tue, 01 Jan 2030 00:00:00 GMT; path=/;
+Last-Modified: Thu, 22 Mar 2012 02:21:21 GMT
+Allow: GET, HEAD, DELETE
+Server: Osiris/1.0
+Date: Tue, 15 May 2012 00:38:49 GMT
+
+jQuery(function($) {
+	$.colorpicker.regional['en'] = {
+		done:			'Done',
+		none:			'None',
+		revert:			'Color',
+		button:			'Color',
+		title:			'Pick a color',
+		transparent:	'Transparent',
+		hueShort:		'H',
+		saturationShort:'S',
+		valueShort:		'V',
+		redShort:		'R',
+		greenShort:		'G',
+		blueShort:		'B',
+		alphaShort:		'A'
+	};
+});

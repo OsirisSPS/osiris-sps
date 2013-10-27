@@ -1,0 +1,8 @@
+page.onInit = function()
+{
+	var portal = page.getPortalFromUrl();
+	if(portal != null)
+		portalsSystem.removePortal(portal.id);
+	
+	page.redirect(portalsSystem.getLink("home"));	
+}

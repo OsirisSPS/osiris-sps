@@ -1,0 +1,430 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="Components" />
+		<Option pch_mode="2" />
+		<Option compiler="gcc" />
+		<Build>
+			<Target title="debug linux-i386">
+				<Option platforms="Unix;" />
+				<Option output="../../../bin/linux/i386/gcc/debug/components" prefix_auto="1" extension_auto="1" />
+				<Option object_output="../../../obj/linux/i386/gcc/plugins/components/debug" />
+				<Option type="3" />
+				<Option compiler="gcc" />
+				<Option createDefFile="1" />
+				<Option createStaticLib="1" />
+				<Compiler>
+					<Add option="-g" />
+					<Add option="-W" />
+					<Add option="-D_DEBUG" />
+					<Add option="-DUNICODE" />
+					<Add directory="../../../dependencies/include" />
+					<Add directory="../../core" />
+					<Add directory="../../xml" />
+					<Add directory="../../web" />
+					<Add directory="../../lang" />
+					<Add directory="../../net" />
+					<Add directory="../../engine" />
+					<Add directory="./" />
+					<Add directory="../../../dependencies/include/linux-i386" />
+					<Add directory="../../http" />
+					<Add directory="../../db" />
+				</Compiler>
+				<ResourceCompiler>
+					<Add directory="../../../dependencies/include" />
+					<Add directory="../../core" />
+					<Add directory="../../xml" />
+					<Add directory="../../web" />
+					<Add directory="../../lang" />
+					<Add directory="../../net" />
+					<Add directory="../../engine" />
+					<Add directory="./" />
+				</ResourceCompiler>
+				<Linker>
+					<Add option="-Wl,-z,defs,-rpath=./" />
+					<Add option="-static-libstdc++" />
+					<Add option="-static-libgcc" />
+					<Add library="libcore" />
+					<Add library="libweb" />
+					<Add library="libengine" />
+					<Add library="libxml" />
+					<Add library="libdb" />
+					<Add library="libhttp" />
+					<Add library="libpthread" />
+					<Add library="liblang" />
+					<Add library="libnet" />
+					<Add directory="../../../bin/linux/i386/gcc/debug" />
+					<Add directory="../../../dependencies/lib/linux/i386/gcc/debug" />
+				</Linker>
+			</Target>
+			<Target title="release linux-i386">
+				<Option platforms="Unix;" />
+				<Option output="../../../bin/linux/i386/gcc/release/components" prefix_auto="1" extension_auto="1" />
+				<Option object_output="../../../obj/linux/i386/gcc/plugins/components/release" />
+				<Option type="3" />
+				<Option compiler="gcc" />
+				<Option createDefFile="1" />
+				<Option createStaticLib="1" />
+				<Compiler>
+					<Add option="-O2" />
+					<Add option="-W" />
+					<Add option="-DNDEBUG" />
+					<Add option="-DUNICODE" />
+					<Add directory="../../../dependencies/include" />
+					<Add directory="../../core" />
+					<Add directory="../../xml" />
+					<Add directory="../../web" />
+					<Add directory="../../lang" />
+					<Add directory="../../net" />
+					<Add directory="../../engine" />
+					<Add directory="./" />
+					<Add directory="../../../dependencies/include/linux-i386" />
+					<Add directory="../../http" />
+					<Add directory="../../db" />
+				</Compiler>
+				<ResourceCompiler>
+					<Add directory="../../../dependencies/include" />
+					<Add directory="../../core" />
+					<Add directory="../../xml" />
+					<Add directory="../../web" />
+					<Add directory="../../lang" />
+					<Add directory="../../net" />
+					<Add directory="../../engine" />
+					<Add directory="./" />
+				</ResourceCompiler>
+				<Linker>
+					<Add option="-s" />
+					<Add option="-Wl,-z,defs,-rpath=./" />
+					<Add option="-static-libstdc++" />
+					<Add option="-static-libgcc" />
+					<Add library="libcore" />
+					<Add library="libweb" />
+					<Add library="libengine" />
+					<Add library="libxml" />
+					<Add library="libdb" />
+					<Add library="libhttp" />
+					<Add library="libpthread" />
+					<Add library="liblang" />
+					<Add library="libnet" />
+					<Add directory="../../../bin/linux/i386/gcc/release" />
+					<Add directory="../../../dependencies/lib/linux/i386/gcc/release" />
+				</Linker>
+			</Target>
+			<Target title="debug mac-x86_64">
+				<Option platforms="Mac;" />
+				<Option output="../../../bin/macosx/x86_64/gcc/debug/Osiris.app/Contents/MacOS/components" prefix_auto="1" extension_auto="1" />
+				<Option object_output="../../../obj/macosx/x86_64/gcc/plugins/components/debug" />
+				<Option type="3" />
+				<Option compiler="gcc" />
+				<Option createDefFile="1" />
+				<Option createStaticLib="1" />
+				<Compiler>
+					<Add option="-W" />
+					<Add option="-g" />
+					<Add option="-D_DEBUG" />
+					<Add option="-DUNICODE" />
+					<Add directory="../../../dependencies/include" />
+					<Add directory="../../core" />
+					<Add directory="../../xml" />
+					<Add directory="../../web" />
+					<Add directory="../../lang" />
+					<Add directory="../../net" />
+					<Add directory="../../engine" />
+					<Add directory="./" />
+					<Add directory="../../../dependencies/include/mac-x86_64" />
+					<Add directory="../../http" />
+					<Add directory="../../db" />
+				</Compiler>
+				<ResourceCompiler>
+					<Add directory="../../../dependencies/include" />
+					<Add directory="../../core" />
+					<Add directory="../../xml" />
+					<Add directory="../../web" />
+					<Add directory="../../lang" />
+					<Add directory="../../net" />
+					<Add directory="../../engine" />
+					<Add directory="./" />
+				</ResourceCompiler>
+				<Linker>
+					<Add option="-dynamiclib " />
+					<Add library="core" />
+					<Add library="http" />
+					<Add library="lang" />
+					<Add library="xml" />
+					<Add library="web" />
+					<Add library="engine" />
+					<Add library="libboost_signals-xgcc42-mt-d-1_41" />
+					<Add library="db" />
+					<Add library="net" />
+					<Add directory="../../../lib/macosx/x86_64/gcc/debug" />
+					<Add directory="../../../dependencies/lib/macosx/x86_64/gcc/debug" />
+					<Add directory="../../../bin/macosx/x86_64/gcc/debug/Osiris.app/Contents/MacOS" />
+				</Linker>
+				<ExtraCommands>
+					<Add after="../../postbuild_osx.sh $(TARGET_OUTPUT_BASENAME).dylib $(TARGET_OUTPUT_DIR)" />
+				</ExtraCommands>
+			</Target>
+			<Target title="release mac-x86_64">
+				<Option platforms="Mac;" />
+				<Option output="../../../bin/macosx/x86_64/gcc/release/Osiris.app/Contents/MacOS/components" prefix_auto="1" extension_auto="1" />
+				<Option object_output="../../../obj/macosx/x86_64/gcc/plugins/components/release" />
+				<Option type="3" />
+				<Option compiler="gcc" />
+				<Option createDefFile="1" />
+				<Option createStaticLib="1" />
+				<Compiler>
+					<Add option="-O2" />
+					<Add option="-W" />
+					<Add option="-DNDEBUG" />
+					<Add option="-DUNICODE" />
+					<Add directory="../../../dependencies/include" />
+					<Add directory="../../core" />
+					<Add directory="../../xml" />
+					<Add directory="../../web" />
+					<Add directory="../../lang" />
+					<Add directory="../../net" />
+					<Add directory="../../engine" />
+					<Add directory="./" />
+					<Add directory="../../../dependencies/include/mac-x86_64" />
+					<Add directory="../../http" />
+					<Add directory="../../db" />
+				</Compiler>
+				<ResourceCompiler>
+					<Add directory="../../../dependencies/include" />
+					<Add directory="../../core" />
+					<Add directory="../../xml" />
+					<Add directory="../../web" />
+					<Add directory="../../lang" />
+					<Add directory="../../net" />
+					<Add directory="../../engine" />
+					<Add directory="./" />
+				</ResourceCompiler>
+				<Linker>
+					<Add option="-s" />
+					<Add option="-dynamiclib" />
+					<Add library="core" />
+					<Add library="http" />
+					<Add library="lang" />
+					<Add library="xml" />
+					<Add library="web" />
+					<Add library="engine" />
+					<Add library="libboost_signals-xgcc42-mt-1_41" />
+					<Add library="db" />
+					<Add library="net" />
+					<Add directory="../../../lib/macosx/x86_64/gcc/release" />
+					<Add directory="../../../dependencies/lib/macosx/x86_64/gcc/release" />
+					<Add directory="../../../bin/macosx/x86_64/gcc/release/Osiris.app/Contents/MacOS" />
+				</Linker>
+				<ExtraCommands>
+					<Add after="../../postbuild_osx.sh $(TARGET_OUTPUT_BASENAME).dylib $(TARGET_OUTPUT_DIR)" />
+				</ExtraCommands>
+			</Target>
+			<Target title="debug linux-x86_64">
+				<Option platforms="Unix;" />
+				<Option output="../../../bin/linux/x86_64/gcc/debug/components" prefix_auto="1" extension_auto="1" />
+				<Option object_output="../../../obj/linux/x86_64/gcc/plugins/components/debug" />
+				<Option type="3" />
+				<Option compiler="gcc" />
+				<Option createDefFile="1" />
+				<Option createStaticLib="1" />
+				<Compiler>
+					<Add option="-W" />
+					<Add option="-g" />
+					<Add option="-fPIC" />
+					<Add option="-D_DEBUG" />
+					<Add option="-DUNICODE" />
+					<Add directory="../../../dependencies/include" />
+					<Add directory="../../core" />
+					<Add directory="../../xml" />
+					<Add directory="../../web" />
+					<Add directory="../../lang" />
+					<Add directory="../../net" />
+					<Add directory="../../engine" />
+					<Add directory="./" />
+					<Add directory="../../../dependencies/include/linux-x86_64" />
+					<Add directory="../../http" />
+					<Add directory="../../db" />
+				</Compiler>
+				<ResourceCompiler>
+					<Add directory="../../../dependencies/include" />
+					<Add directory="../../core" />
+					<Add directory="../../xml" />
+					<Add directory="../../web" />
+					<Add directory="../../lang" />
+					<Add directory="../../net" />
+					<Add directory="../../engine" />
+					<Add directory="./" />
+				</ResourceCompiler>
+				<Linker>
+					<Add option="-Wl,-z,defs,-rpath=./" />
+					<Add library="libcore" />
+					<Add library="libweb" />
+					<Add library="libengine" />
+					<Add library="libxml" />
+					<Add library="libdb" />
+					<Add library="libhttp" />
+					<Add library="libpthread" />
+					<Add library="liblang" />
+					<Add library="libnet" />
+					<Add directory="../../../bin/linux/x86_64/gcc/debug" />
+					<Add directory="../../../dependencies/lib/linux/x86_64/gcc/debug" />
+				</Linker>
+			</Target>
+			<Target title="release linux-x86_64">
+				<Option platforms="Unix;" />
+				<Option output="../../../bin/linux/x86_64/gcc/release/components" prefix_auto="1" extension_auto="1" />
+				<Option object_output="../../../obj/linux/x86_64/gcc/plugins/components/release" />
+				<Option type="3" />
+				<Option compiler="gcc" />
+				<Option createDefFile="1" />
+				<Option createStaticLib="1" />
+				<Compiler>
+					<Add option="-O2" />
+					<Add option="-W" />
+					<Add option="-fPIC" />
+					<Add option="-DNDEBUG" />
+					<Add option="-DUNICODE" />
+					<Add directory="../../../dependencies/include" />
+					<Add directory="../../core" />
+					<Add directory="../../xml" />
+					<Add directory="../../web" />
+					<Add directory="../../lang" />
+					<Add directory="../../net" />
+					<Add directory="../../engine" />
+					<Add directory="./" />
+					<Add directory="../../../dependencies/include/linux-x86_64" />
+					<Add directory="../../http" />
+					<Add directory="../../db" />
+				</Compiler>
+				<ResourceCompiler>
+					<Add directory="../../../dependencies/include" />
+					<Add directory="../../core" />
+					<Add directory="../../xml" />
+					<Add directory="../../web" />
+					<Add directory="../../lang" />
+					<Add directory="../../net" />
+					<Add directory="../../engine" />
+					<Add directory="./" />
+				</ResourceCompiler>
+				<Linker>
+					<Add option="-s" />
+					<Add option="-Wl,-z,defs,-rpath=./" />
+					<Add library="libcore" />
+					<Add library="libweb" />
+					<Add library="libengine" />
+					<Add library="libxml" />
+					<Add library="libdb" />
+					<Add library="libhttp" />
+					<Add library="libpthread" />
+					<Add library="liblang" />
+					<Add library="libnet" />
+					<Add directory="../../../bin/linux/x86_64/gcc/release" />
+					<Add directory="../../../dependencies/lib/linux/x86_64/gcc/release" />
+				</Linker>
+			</Target>
+		</Build>
+		<Unit filename="blogblog.h" />
+		<Unit filename="blogblogconfig.h" />
+		<Unit filename="blogblogeditor.h" />
+		<Unit filename="blogblogviewer.h" />
+		<Unit filename="components.cpp" />
+		<Unit filename="componentsconfig.h" />
+		<Unit filename="componentsextension.cpp" />
+		<Unit filename="componentsextension.h" />
+		<Unit filename="documentationdocumentation.cpp" />
+		<Unit filename="documentationdocumentation.h" />
+		<Unit filename="documentationdocumentationconfig.h" />
+		<Unit filename="documentationdocumentationeditor.cpp" />
+		<Unit filename="documentationdocumentationeditor.h" />
+		<Unit filename="documentationdocumentationviewer.cpp" />
+		<Unit filename="documentationdocumentationviewer.h" />
+		<Unit filename="forumforum.cpp" />
+		<Unit filename="forumforum.h" />
+		<Unit filename="forumforumconfig.h" />
+		<Unit filename="forumforumeditor.cpp" />
+		<Unit filename="forumforumeditor.h" />
+		<Unit filename="forumforummanager.cpp" />
+		<Unit filename="forumforummanager.h" />
+		<Unit filename="forumforumstats.cpp" />
+		<Unit filename="forumforumstats.h" />
+		<Unit filename="forumforumviewer.cpp" />
+		<Unit filename="forumforumviewer.h" />
+		<Unit filename="forumsection.cpp" />
+		<Unit filename="forumsection.h" />
+		<Unit filename="forumsectioneditor.cpp" />
+		<Unit filename="forumsectioneditor.h" />
+		<Unit filename="forumsectionstats.cpp" />
+		<Unit filename="forumsectionstats.h" />
+		<Unit filename="forumsectionviewer.cpp" />
+		<Unit filename="forumsectionviewer.h" />
+		<Unit filename="forumtopicviewer.cpp" />
+		<Unit filename="forumtopicviewer.h" />
+		<Unit filename="galleryalbum.h" />
+		<Unit filename="galleryalbumeditor.h" />
+		<Unit filename="galleryalbumviewer.h" />
+		<Unit filename="gallerygalleryconfig.h" />
+		<Unit filename="gallerygallerymanager.h" />
+		<Unit filename="gallerysection.h" />
+		<Unit filename="gallerysectioneditor.h" />
+		<Unit filename="gallerysectionviewer.h" />
+		<Unit filename="modulesfeed.cpp" />
+		<Unit filename="modulesfeed.h" />
+		<Unit filename="modulesfeededitor.cpp" />
+		<Unit filename="modulesfeededitor.h" />
+		<Unit filename="modulesfeedviewer.cpp" />
+		<Unit filename="modulesfeedviewer.h" />
+		<Unit filename="moduleslanguageswitcher.cpp" />
+		<Unit filename="moduleslanguageswitcher.h" />
+		<Unit filename="moduleslanguageswitchereditor.cpp" />
+		<Unit filename="moduleslanguageswitchereditor.h" />
+		<Unit filename="moduleslanguageswitcherviewer.cpp" />
+		<Unit filename="moduleslanguageswitcherviewer.h" />
+		<Unit filename="modulesmirror.cpp" />
+		<Unit filename="modulesmirror.h" />
+		<Unit filename="modulesmirroreditor.cpp" />
+		<Unit filename="modulesmirroreditor.h" />
+		<Unit filename="modulesmirrorviewer.cpp" />
+		<Unit filename="modulesmirrorviewer.h" />
+		<Unit filename="modulesmodulesconfig.h" />
+		<Unit filename="modulesquicksearch.cpp" />
+		<Unit filename="modulesquicksearch.h" />
+		<Unit filename="modulesquicksearcheditor.cpp" />
+		<Unit filename="modulesquicksearcheditor.h" />
+		<Unit filename="modulesquicksearchviewer.cpp" />
+		<Unit filename="modulesquicksearchviewer.h" />
+		<Unit filename="modulessearch.cpp" />
+		<Unit filename="modulessearch.h" />
+		<Unit filename="modulessearcheditor.cpp" />
+		<Unit filename="modulessearcheditor.h" />
+		<Unit filename="modulessearchviewer.cpp" />
+		<Unit filename="modulessearchviewer.h" />
+		<Unit filename="modulestext.cpp" />
+		<Unit filename="modulestext.h" />
+		<Unit filename="modulestexteditor.cpp" />
+		<Unit filename="modulestexteditor.h" />
+		<Unit filename="modulestextviewer.cpp" />
+		<Unit filename="modulestextviewer.h" />
+		<Unit filename="modulesxslttransform.cpp" />
+		<Unit filename="modulesxslttransform.h" />
+		<Unit filename="modulesxslttransformeditor.cpp" />
+		<Unit filename="modulesxslttransformeditor.h" />
+		<Unit filename="modulesxslttransformviewer.cpp" />
+		<Unit filename="modulesxslttransformviewer.h" />
+		<Unit filename="repositoryfolder.h" />
+		<Unit filename="repositoryfoldereditor.h" />
+		<Unit filename="repositoryfolderviewer.h" />
+		<Unit filename="repositoryrepositoryconfig.h" />
+		<Unit filename="repositorysection.h" />
+		<Unit filename="repositorysectioneditor.h" />
+		<Unit filename="repositorysectionviewer.h" />
+		<Unit filename="stdafx.cpp" />
+		<Unit filename="stdafx.h" />
+		<Extensions>
+			<code_completion />
+			<envvars />
+			<lib_finder disable_auto="1" />
+			<debugger />
+		</Extensions>
+	</Project>
+</CodeBlocks_project_file>
