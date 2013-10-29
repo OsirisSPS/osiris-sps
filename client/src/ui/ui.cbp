@@ -23,7 +23,7 @@
 					<Add option="-D__WXDEBUG__" />
 					<Add option="-D__WXGTK__" />
 					<Add option="-D_FILE_OFFSET_BITS=64" />
-					<Add directory="../../dependencies/include" />
+					<Add directory="../../dependencies/include/common" />
 					<Add directory="../core" />
 					<Add directory="../xml" />
 					<Add directory="../engine" />
@@ -40,7 +40,7 @@
 					<Add directory="../web" />
 				</Compiler>
 				<ResourceCompiler>
-					<Add directory="../../dependencies/include" />
+					<Add directory="../../dependencies/include/common" />
 					<Add directory="../core" />
 					<Add directory="../xml" />
 				</ResourceCompiler>
@@ -82,7 +82,7 @@
 					<Add option="-DUNICODE" />
 					<Add option="-D__WXGTK__" />
 					<Add option="-D_FILE_OFFSET_BITS=64" />
-					<Add directory="../../dependencies/include" />
+					<Add directory="../../dependencies/include/common" />
 					<Add directory="../core" />
 					<Add directory="../xml" />
 					<Add directory="../engine" />
@@ -99,7 +99,7 @@
 					<Add directory="../web" />
 				</Compiler>
 				<ResourceCompiler>
-					<Add directory="../../dependencies/include" />
+					<Add directory="../../dependencies/include/common" />
 					<Add directory="../core" />
 					<Add directory="../xml" />
 				</ResourceCompiler>
@@ -142,7 +142,7 @@
 					<Add option="-DUNICODE" />
 					<Add option="-D__WXDEBUG__" />
 					<Add option="-D__WXMAC__" />
-					<Add directory="../../dependencies/include" />
+					<Add directory="../../dependencies/include/common" />
 					<Add directory="../core" />
 					<Add directory="../xml" />
 					<Add directory="../engine" />
@@ -159,7 +159,7 @@
 					<Add directory="../web" />
 				</Compiler>
 				<ResourceCompiler>
-					<Add directory="../../dependencies/include" />
+					<Add directory="../../dependencies/include/common" />
 					<Add directory="../core" />
 					<Add directory="../xml" />
 				</ResourceCompiler>
@@ -213,7 +213,7 @@
 					<Add option="-DOS_UI_LIB" />
 					<Add option="-DUNICODE" />
 					<Add option="-D__WXMAC__" />
-					<Add directory="../../dependencies/include" />
+					<Add directory="../../dependencies/include/common" />
 					<Add directory="../core" />
 					<Add directory="../xml" />
 					<Add directory="../engine" />
@@ -230,7 +230,7 @@
 					<Add directory="../web" />
 				</Compiler>
 				<ResourceCompiler>
-					<Add directory="../../dependencies/include" />
+					<Add directory="../../dependencies/include/common" />
 					<Add directory="../core" />
 					<Add directory="../xml" />
 				</ResourceCompiler>
@@ -287,7 +287,7 @@
 					<Add option="-DUNICODE" />
 					<Add option="-D__WXDEBUG__" />
 					<Add option="-D__WXGTK__" />
-					<Add directory="../../dependencies/include" />
+					<Add directory="../../dependencies/include/common" />
 					<Add directory="../core" />
 					<Add directory="../xml" />
 					<Add directory="../engine" />
@@ -304,7 +304,7 @@
 					<Add directory="../web" />
 				</Compiler>
 				<ResourceCompiler>
-					<Add directory="../../dependencies/include" />
+					<Add directory="../../dependencies/include/common" />
 					<Add directory="../core" />
 					<Add directory="../xml" />
 				</ResourceCompiler>
@@ -344,7 +344,7 @@
 					<Add option="-DOS_UI_LIB" />
 					<Add option="-DUNICODE" />
 					<Add option="-D__WXGTK__" />
-					<Add directory="../../dependencies/include" />
+					<Add directory="../../dependencies/include/common" />
 					<Add directory="../core" />
 					<Add directory="../xml" />
 					<Add directory="../engine" />
@@ -361,7 +361,7 @@
 					<Add directory="../web" />
 				</Compiler>
 				<ResourceCompiler>
-					<Add directory="../../dependencies/include" />
+					<Add directory="../../dependencies/include/common" />
 					<Add directory="../core" />
 					<Add directory="../xml" />
 				</ResourceCompiler>

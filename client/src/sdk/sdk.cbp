@@ -20,7 +20,7 @@
 					<Add option="-D_DEBUG" />
 					<Add option="-DOS_SDK_LIB" />
 					<Add option="-DUNICODE" />
-					<Add directory="../../dependencies/include" />
+					<Add directory="../../dependencies/include/common" />
 					<Add directory="../core" />
 					<Add directory="../../dependencies/include/linux-i386" />
 					<Add directory="../engine" />
@@ -28,7 +28,7 @@
 					<Add directory="../net" />
 				</Compiler>
 				<ResourceCompiler>
-					<Add directory="../../dependencies/include" />
+					<Add directory="../../dependencies/include/common" />
 					<Add directory="../core" />
 				</ResourceCompiler>
 				<Linker>
@@ -57,7 +57,7 @@
 					<Add option="-DNDEBUG" />
 					<Add option="-DOS_SDK_LIB" />
 					<Add option="-DUNICODE" />
-					<Add directory="../../dependencies/include" />
+					<Add directory="../../dependencies/include/common" />
 					<Add directory="../core" />
 					<Add directory="../../dependencies/include/linux-i386" />
 					<Add directory="../engine" />
@@ -65,7 +65,7 @@
 					<Add directory="../net" />
 				</Compiler>
 				<ResourceCompiler>
-					<Add directory="../../dependencies/include" />
+					<Add directory="../../dependencies/include/common" />
 					<Add directory="../core" />
 				</ResourceCompiler>
 				<Linker>
@@ -95,7 +95,7 @@
 					<Add option="-D_DEBUG" />
 					<Add option="-DOS_SDK_LIB" />
 					<Add option="-DUNICODE" />
-					<Add directory="../../dependencies/include" />
+					<Add directory="../../dependencies/include/common" />
 					<Add directory="../core" />
 					<Add directory="../../dependencies/include/mac-x86_64" />
 					<Add directory="../engine" />
@@ -103,7 +103,7 @@
 					<Add directory="../net" />
 				</Compiler>
 				<ResourceCompiler>
-					<Add directory="../../dependencies/include" />
+					<Add directory="../../dependencies/include/common" />
 					<Add directory="../core" />
 				</ResourceCompiler>
 				<Linker>
@@ -133,7 +133,7 @@
 					<Add option="-DNDEBUG" />
 					<Add option="-DOS_SDK_LIB" />
 					<Add option="-DUNICODE" />
-					<Add directory="../../dependencies/include" />
+					<Add directory="../../dependencies/include/common" />
 					<Add directory="../core" />
 					<Add directory="../../dependencies/include/mac-x86_64" />
 					<Add directory="../engine" />
@@ -141,7 +141,7 @@
 					<Add directory="../net" />
 				</Compiler>
 				<ResourceCompiler>
-					<Add directory="../../dependencies/include" />
+					<Add directory="../../dependencies/include/common" />
 					<Add directory="../core" />
 				</ResourceCompiler>
 				<Linker>
@@ -173,7 +173,7 @@
 					<Add option="-D_DEBUG" />
 					<Add option="-DOS_SDK_LIB" />
 					<Add option="-DUNICODE" />
-					<Add directory="../../dependencies/include" />
+					<Add directory="../../dependencies/include/common" />
 					<Add directory="../core" />
 					<Add directory="../../dependencies/include/linux-x86_64" />
 					<Add directory="../engine" />
@@ -181,7 +181,7 @@
 					<Add directory="../net" />
 				</Compiler>
 				<ResourceCompiler>
-					<Add directory="../../dependencies/include" />
+					<Add directory="../../dependencies/include/common" />
 					<Add directory="../core" />
 				</ResourceCompiler>
 				<Linker>
@@ -209,7 +209,7 @@
 					<Add option="-DNDEBUG" />
 					<Add option="-DOS_SDK_LIB" />
 					<Add option="-DUNICODE" />
-					<Add directory="../../dependencies/include" />
+					<Add directory="../../dependencies/include/common" />
 					<Add directory="../core" />
 					<Add directory="../../dependencies/include/linux-x86_64" />
 					<Add directory="../engine" />
@@ -217,7 +217,7 @@
 					<Add directory="../net" />
 				</Compiler>
 				<ResourceCompiler>
-					<Add directory="../../dependencies/include" />
+					<Add directory="../../dependencies/include/common" />
 					<Add directory="../core" />
 				</ResourceCompiler>
 				<Linker>
