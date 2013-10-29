@@ -20,7 +20,7 @@
 					<Add option="-D_DEBUG" />
 					<Add option="-DOS_ENGINE_LIB" />
 					<Add option="-DUNICODE" />
-					<Add directory="../../dependencies/include" />
+					<Add directory="../../dependencies/include/common" />
 					<Add directory="../archives" />
 					<Add directory="../core" />
 					<Add directory="../xml" />
@@ -34,7 +34,7 @@
 					<Add directory="../db" />
 				</Compiler>
 				<ResourceCompiler>
-					<Add directory="../../dependencies/include" />
+					<Add directory="../../dependencies/include/common" />
 					<Add directory="../archives" />
 					<Add directory="../core" />
 					<Add directory="../xml" />
@@ -78,7 +78,7 @@
 					<Add option="-DNDEBUG" />
 					<Add option="-DOS_ENGINE_LIB" />
 					<Add option="-DUNICODE" />
-					<Add directory="../../dependencies/include" />
+					<Add directory="../../dependencies/include/common" />
 					<Add directory="../archives" />
 					<Add directory="../core" />
 					<Add directory="../xml" />
@@ -92,7 +92,7 @@
 					<Add directory="../db" />
 				</Compiler>
 				<ResourceCompiler>
-					<Add directory="../../dependencies/include" />
+					<Add directory="../../dependencies/include/common" />
 					<Add directory="../archives" />
 					<Add directory="../core" />
 					<Add directory="../xml" />
@@ -137,7 +137,7 @@
 					<Add option="-D_DEBUG" />
 					<Add option="-DOS_ENGINE_LIB" />
 					<Add option="-DUNICODE" />
-					<Add directory="../../dependencies/include" />
+					<Add directory="../../dependencies/include/common" />
 					<Add directory="../archives" />
 					<Add directory="../core" />
 					<Add directory="../xml" />
@@ -151,7 +151,7 @@
 					<Add directory="../db" />
 				</Compiler>
 				<ResourceCompiler>
-					<Add directory="../../dependencies/include" />
+					<Add directory="../../dependencies/include/common" />
 					<Add directory="../archives" />
 					<Add directory="../core" />
 					<Add directory="../xml" />
@@ -197,7 +197,7 @@
 					<Add option="-DNDEBUG" />
 					<Add option="-DOS_ENGINE_LIB" />
 					<Add option="-DUNICODE" />
-					<Add directory="../../dependencies/include" />
+					<Add directory="../../dependencies/include/common" />
 					<Add directory="../archives" />
 					<Add directory="../core" />
 					<Add directory="../xml" />
@@ -211,7 +211,7 @@
 					<Add directory="../db" />
 				</Compiler>
 				<ResourceCompiler>
-					<Add directory="../../dependencies/include" />
+					<Add directory="../../dependencies/include/common" />
 					<Add directory="../archives" />
 					<Add directory="../core" />
 					<Add directory="../xml" />
@@ -259,7 +259,7 @@
 					<Add option="-D_DEBUG" />
 					<Add option="-DOS_ENGINE_LIB" />
 					<Add option="-DUNICODE" />
-					<Add directory="../../dependencies/include" />
+					<Add directory="../../dependencies/include/common" />
 					<Add directory="../archives" />
 					<Add directory="../core" />
 					<Add directory="../xml" />
@@ -273,7 +273,7 @@
 					<Add directory="../db" />
 				</Compiler>
 				<ResourceCompiler>
-					<Add directory="../../dependencies/include" />
+					<Add directory="../../dependencies/include/common" />
 					<Add directory="../archives" />
 					<Add directory="../core" />
 					<Add directory="../xml" />
@@ -316,7 +316,7 @@
 					<Add option="-DNDEBUG" />
 					<Add option="-DOS_ENGINE_LIB" />
 					<Add option="-DUNICODE" />
-					<Add directory="../../dependencies/include" />
+					<Add directory="../../dependencies/include/common" />
 					<Add directory="../archives" />
 					<Add directory="../core" />
 					<Add directory="../xml" />
@@ -330,7 +330,7 @@
 					<Add directory="../db" />
 				</Compiler>
 				<ResourceCompiler>
-					<Add directory="../../dependencies/include" />
+					<Add directory="../../dependencies/include/common" />
 					<Add directory="../archives" />
 					<Add directory="../core" />
 					<Add directory="../xml" />

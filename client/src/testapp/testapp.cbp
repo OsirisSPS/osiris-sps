@@ -18,7 +18,7 @@
 					<Add option="-D_DEBUG" />
 					<Add option="-D_CONSOLE" />
 					<Add option="-DUNICODE" />
-					<Add directory="../../dependencies/include" />
+					<Add directory="../../dependencies/include/common" />
 					<Add directory="../../dependencies/include/wxwidgets" />
 					<Add directory="../core" />
 					<Add directory="../xml" />
@@ -33,7 +33,7 @@
 					<Add directory="../sdk" />
 				</Compiler>
 				<ResourceCompiler>
-					<Add directory="../../dependencies/include" />
+					<Add directory="../../dependencies/include/common" />
 					<Add directory="../../dependencies/include/wxwidgets" />
 					<Add directory="../../dependencies/include/wxwidgets/setup/mswud" />
 					<Add directory="../core" />
@@ -88,7 +88,7 @@
 					<Add option="-DNDEBUG" />
 					<Add option="-D_CONSOLE" />
 					<Add option="-DUNICODE" />
-					<Add directory="../../dependencies/include" />
+					<Add directory="../../dependencies/include/common" />
 					<Add directory="../../dependencies/include/wxwidgets" />
 					<Add directory="../core" />
 					<Add directory="../xml" />
@@ -103,7 +103,7 @@
 					<Add directory="../sdk" />
 				</Compiler>
 				<ResourceCompiler>
-					<Add directory="../../dependencies/include" />
+					<Add directory="../../dependencies/include/common" />
 					<Add directory="../../dependencies/include/wxwidgets" />
 					<Add directory="../../dependencies/include/wxwidgets/setup/mswu" />
 					<Add directory="../core" />
@@ -159,7 +159,7 @@
 					<Add option="-D_DEBUG" />
 					<Add option="-D_CONSOLE" />
 					<Add option="-DUNICODE" />
-					<Add directory="../../dependencies/include" />
+					<Add directory="../../dependencies/include/common" />
 					<Add directory="../../dependencies/include/wxwidgets" />
 					<Add directory="../../dependencies/include/wxwidgets/setup/mswud" />
 					<Add directory="../core" />
@@ -175,7 +175,7 @@
 					<Add directory="../sdk" />
 				</Compiler>
 				<ResourceCompiler>
-					<Add directory="../../dependencies/include" />
+					<Add directory="../../dependencies/include/common" />
 					<Add directory="../../dependencies/include/wxwidgets" />
 					<Add directory="../../dependencies/include/wxwidgets/setup/mswud" />
 					<Add directory="../core" />
@@ -225,7 +225,7 @@
 					<Add option="-DNDEBUG" />
 					<Add option="-D_CONSOLE" />
 					<Add option="-DUNICODE" />
-					<Add directory="../../dependencies/include" />
+					<Add directory="../../dependencies/include/common" />
 					<Add directory="../../dependencies/include/wxwidgets" />
 					<Add directory="../../dependencies/include/wxwidgets/setup/mswu" />
 					<Add directory="../core" />
@@ -241,7 +241,7 @@
 					<Add directory="../sdk" />
 				</Compiler>
 				<ResourceCompiler>
-					<Add directory="../../dependencies/include" />
+					<Add directory="../../dependencies/include/common" />
 					<Add directory="../../dependencies/include/wxwidgets" />
 					<Add directory="../../dependencies/include/wxwidgets/setup/mswu" />
 					<Add directory="../core" />
@@ -294,7 +294,7 @@
 					<Add option="-D_DEBUG" />
 					<Add option="-D_CONSOLE" />
 					<Add option="-DUNICODE" />
-					<Add directory="../../dependencies/include" />
+					<Add directory="../../dependencies/include/common" />
 					<Add directory="../../dependencies/include/wxwidgets" />
 					<Add directory="../core" />
 					<Add directory="../xml" />
@@ -309,7 +309,7 @@
 					<Add directory="../sdk" />
 				</Compiler>
 				<ResourceCompiler>
-					<Add directory="../../dependencies/include" />
+					<Add directory="../../dependencies/include/common" />
 					<Add directory="../../dependencies/include/wxwidgets" />
 					<Add directory="../../dependencies/include/wxwidgets/setup/mswud" />
 					<Add directory="../core" />
@@ -363,7 +363,7 @@
 					<Add option="-DNDEBUG" />
 					<Add option="-D_CONSOLE" />
 					<Add option="-DUNICODE" />
-					<Add directory="../../dependencies/include" />
+					<Add directory="../../dependencies/include/common" />
 					<Add directory="../../dependencies/include/wxwidgets" />
 					<Add directory="../core" />
 					<Add directory="../xml" />
@@ -378,7 +378,7 @@
 					<Add directory="../sdk" />
 				</Compiler>
 				<ResourceCompiler>
-					<Add directory="../../dependencies/include" />
+					<Add directory="../../dependencies/include/common" />
 					<Add directory="../../dependencies/include/wxwidgets" />
 					<Add directory="../../dependencies/include/wxwidgets/setup/mswu" />
 					<Add directory="../core" />

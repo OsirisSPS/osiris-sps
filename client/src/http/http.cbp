@@ -20,13 +20,13 @@
 					<Add option="-D_DEBUG" />
 					<Add option="-DOS_HTTP_LIB" />
 					<Add option="-DUNICODE" />
-					<Add directory="../../dependencies/include" />
+					<Add directory="../../dependencies/include/common" />
 					<Add directory="../core" />
 					<Add directory="../net" />
 					<Add directory="../../dependencies/include/linux-i386" />
 				</Compiler>
 				<ResourceCompiler>
-					<Add directory="../../dependencies/include" />
+					<Add directory="../../dependencies/include/common" />
 					<Add directory="../core" />
 					<Add directory="../xml" />
 				</ResourceCompiler>
@@ -57,14 +57,14 @@
 					<Add option="-DNDEBUG" />
 					<Add option="-DOS_HTTP_LIB" />
 					<Add option="-DUNICODE" />
-					<Add directory="../../dependencies/include" />
+					<Add directory="../../dependencies/include/common" />
 					<Add directory="../core" />
 					<Add directory="../net" />
 					<Add directory="../http/" />
 					<Add directory="../../dependencies/include/linux-i386" />
 				</Compiler>
 				<ResourceCompiler>
-					<Add directory="../../dependencies/include" />
+					<Add directory="../../dependencies/include/common" />
 					<Add directory="../core" />
 					<Add directory="../xml" />
 				</ResourceCompiler>
@@ -96,14 +96,14 @@
 					<Add option="-D_DEBUG" />
 					<Add option="-DOS_HTTP_LIB" />
 					<Add option="-DUNICODE" />
-					<Add directory="../../dependencies/include" />
+					<Add directory="../../dependencies/include/common" />
 					<Add directory="../core" />
 					<Add directory="../net" />
 					<Add directory="../../dependencies/include/mac-x86_64" />
 					<Add directory="../http/" />
 				</Compiler>
 				<ResourceCompiler>
-					<Add directory="../../dependencies/include" />
+					<Add directory="../../dependencies/include/common" />
 					<Add directory="../core" />
 					<Add directory="../xml" />
 				</ResourceCompiler>
@@ -135,14 +135,14 @@
 					<Add option="-DNDEBUG" />
 					<Add option="-DOS_HTTP_LIB" />
 					<Add option="-DUNICODE" />
-					<Add directory="../../dependencies/include" />
+					<Add directory="../../dependencies/include/common" />
 					<Add directory="../core" />
 					<Add directory="../net" />
 					<Add directory="../http/" />
 					<Add directory="../../dependencies/include/mac-x86_64" />
 				</Compiler>
 				<ResourceCompiler>
-					<Add directory="../../dependencies/include" />
+					<Add directory="../../dependencies/include/common" />
 					<Add directory="../core" />
 					<Add directory="../xml" />
 				</ResourceCompiler>
@@ -176,13 +176,13 @@
 					<Add option="-D_DEBUG" />
 					<Add option="-DOS_HTTP_LIB" />
 					<Add option="-DUNICODE" />
-					<Add directory="../../dependencies/include" />
+					<Add directory="../../dependencies/include/common" />
 					<Add directory="../core" />
 					<Add directory="../net" />
 					<Add directory="../../dependencies/include/linux-x86_64" />
 				</Compiler>
 				<ResourceCompiler>
-					<Add directory="../../dependencies/include" />
+					<Add directory="../../dependencies/include/common" />
 					<Add directory="../core" />
 					<Add directory="../xml" />
 				</ResourceCompiler>
@@ -212,14 +212,14 @@
 					<Add option="-DNDEBUG" />
 					<Add option="-DOS_HTTP_LIB" />
 					<Add option="-DUNICODE" />
-					<Add directory="../../dependencies/include" />
+					<Add directory="../../dependencies/include/common" />
 					<Add directory="../core" />
 					<Add directory="../net" />
 					<Add directory="../http/" />
 					<Add directory="../../dependencies/include/linux-x86_64" />
 				</Compiler>
 				<ResourceCompiler>
-					<Add directory="../../dependencies/include" />
+					<Add directory="../../dependencies/include/common" />
 					<Add directory="../core" />
 					<Add directory="../xml" />
 				</ResourceCompiler>

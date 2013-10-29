@@ -20,13 +20,13 @@
 					<Add option="-D_DEBUG" />
 					<Add option="-DOS_LANG_LIB" />
 					<Add option="-DUNICODE" />
-					<Add directory="../../dependencies/include" />
+					<Add directory="../../dependencies/include/common" />
 					<Add directory="../core" />
 					<Add directory="../xml" />
 					<Add directory="../net" />
 				</Compiler>
 				<ResourceCompiler>
-					<Add directory="../../dependencies/include" />
+					<Add directory="../../dependencies/include/common" />
 					<Add directory="../core" />
 					<Add directory="../xml" />
 				</ResourceCompiler>
@@ -54,13 +54,13 @@
 					<Add option="-DNDEBUG" />
 					<Add option="-DOS_LANG_LIB" />
 					<Add option="-DUNICODE" />
-					<Add directory="../../dependencies/include" />
+					<Add directory="../../dependencies/include/common" />
 					<Add directory="../core" />
 					<Add directory="../xml" />
 					<Add directory="../net" />
 				</Compiler>
 				<ResourceCompiler>
-					<Add directory="../../dependencies/include" />
+					<Add directory="../../dependencies/include/common" />
 					<Add directory="../core" />
 					<Add directory="../xml" />
 				</ResourceCompiler>
@@ -89,13 +89,13 @@
 					<Add option="-D_DEBUG" />
 					<Add option="-DOS_LANG_LIB" />
 					<Add option="-DUNICODE" />
-					<Add directory="../../dependencies/include" />
+					<Add directory="../../dependencies/include/common" />
 					<Add directory="../core" />
 					<Add directory="../xml" />
 					<Add directory="../net" />
 				</Compiler>
 				<ResourceCompiler>
-					<Add directory="../../dependencies/include" />
+					<Add directory="../../dependencies/include/common" />
 					<Add directory="../core" />
 					<Add directory="../xml" />
 				</ResourceCompiler>
@@ -125,13 +125,13 @@
 					<Add option="-DNDEBUG" />
 					<Add option="-DOS_LANG_LIB" />
 					<Add option="-DUNICODE" />
-					<Add directory="../../dependencies/include" />
+					<Add directory="../../dependencies/include/common" />
 					<Add directory="../core" />
 					<Add directory="../xml" />
 					<Add directory="../net" />
 				</Compiler>
 				<ResourceCompiler>
-					<Add directory="../../dependencies/include" />
+					<Add directory="../../dependencies/include/common" />
 					<Add directory="../core" />
 					<Add directory="../xml" />
 				</ResourceCompiler>
@@ -163,13 +163,13 @@
 					<Add option="-D_DEBUG" />
 					<Add option="-DOS_LANG_LIB" />
 					<Add option="-DUNICODE" />
-					<Add directory="../../dependencies/include" />
+					<Add directory="../../dependencies/include/common" />
 					<Add directory="../core" />
 					<Add directory="../xml" />
 					<Add directory="../net" />
 				</Compiler>
 				<ResourceCompiler>
-					<Add directory="../../dependencies/include" />
+					<Add directory="../../dependencies/include/common" />
 					<Add directory="../core" />
 					<Add directory="../xml" />
 				</ResourceCompiler>
@@ -196,13 +196,13 @@
 					<Add option="-DNDEBUG" />
 					<Add option="-DOS_LANG_LIB" />
 					<Add option="-DUNICODE" />
-					<Add directory="../../dependencies/include" />
+					<Add directory="../../dependencies/include/common" />
 					<Add directory="../core" />
 					<Add directory="../xml" />
 					<Add directory="../net" />
 				</Compiler>
 				<ResourceCompiler>
-					<Add directory="../../dependencies/include" />
+					<Add directory="../../dependencies/include/common" />
 					<Add directory="../core" />
 					<Add directory="../xml" />
 				</ResourceCompiler>

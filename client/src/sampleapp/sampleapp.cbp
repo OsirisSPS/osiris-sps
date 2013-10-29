@@ -21,7 +21,7 @@
 					<Add option="-D__WXDEBUG__" />
 					<Add option="-DUNICODE" />
 					<Add option="-D__WXGTK__" />
-					<Add directory="../../dependencies/include" />
+					<Add directory="../../dependencies/include/common" />
 					<Add directory="../../dependencies/include/wxwidgets" />
 					<Add directory="../../dependencies/include/wxwidgets/setup/gtkud" />
 					<Add directory="../../dependencies/include/linux-i386" />
@@ -36,7 +36,7 @@
 					<Add directory="../http" />
 				</Compiler>
 				<ResourceCompiler>
-					<Add directory="../../dependencies/include" />
+					<Add directory="../../dependencies/include/common" />
 					<Add directory="../../dependencies/include/wxwidgets" />
 					<Add directory="../../dependencies/include/wxwidgets/setup/mswud" />
 					<Add directory="../core" />
@@ -87,7 +87,7 @@
 					<Add option="-DNDEBUG" />
 					<Add option="-DUNICODE" />
 					<Add option="-D__WXGTK__" />
-					<Add directory="../../dependencies/include" />
+					<Add directory="../../dependencies/include/common" />
 					<Add directory="../../dependencies/include/wxwidgets" />
 					<Add directory="../../dependencies/include/wxwidgets/setup/gtku" />
 					<Add directory="../../dependencies/include/linux-i386" />
@@ -102,7 +102,7 @@
 					<Add directory="../http" />
 				</Compiler>
 				<ResourceCompiler>
-					<Add directory="../../dependencies/include" />
+					<Add directory="../../dependencies/include/common" />
 					<Add directory="../../dependencies/include/wxwidgets" />
 					<Add directory="../../dependencies/include/wxwidgets/setup/mswu" />
 					<Add directory="../core" />
@@ -156,7 +156,7 @@
 					<Add option="-D__WXDEBUG__" />
 					<Add option="-DUNICODE" />
 					<Add option="-D__WXGTK__" />
-					<Add directory="../../dependencies/include" />
+					<Add directory="../../dependencies/include/common" />
 					<Add directory="../../dependencies/include/wxwidgets" />
 					<Add directory="../../dependencies/include/wxwidgets/setup/gtkud" />
 					<Add directory="../core" />
@@ -171,7 +171,7 @@
 					<Add directory="../archives" />
 				</Compiler>
 				<ResourceCompiler>
-					<Add directory="../../dependencies/include" />
+					<Add directory="../../dependencies/include/common" />
 					<Add directory="../../dependencies/include/wxwidgets" />
 					<Add directory="../../dependencies/include/wxwidgets/setup/mswud" />
 					<Add directory="../core" />
@@ -214,7 +214,7 @@
 					<Add option="-DNDEBUG" />
 					<Add option="-DUNICODE" />
 					<Add option="-D__WXGTK__" />
-					<Add directory="../../dependencies/include" />
+					<Add directory="../../dependencies/include/common" />
 					<Add directory="../../dependencies/include/wxwidgets" />
 					<Add directory="../../dependencies/include/wxwidgets/setup/gtku" />
 					<Add directory="../core" />
@@ -229,7 +229,7 @@
 					<Add directory="../archives" />
 				</Compiler>
 				<ResourceCompiler>
-					<Add directory="../../dependencies/include" />
+					<Add directory="../../dependencies/include/common" />
 					<Add directory="../../dependencies/include/wxwidgets" />
 					<Add directory="../../dependencies/include/wxwidgets/setup/mswu" />
 					<Add directory="../core" />
@@ -276,7 +276,7 @@
 					<Add option="-D__WXDEBUG__" />
 					<Add option="-DUNICODE" />
 					<Add option="-D__WXGTK__" />
-					<Add directory="../../dependencies/include" />
+					<Add directory="../../dependencies/include/common" />
 					<Add directory="../../dependencies/include/wxwidgets" />
 					<Add directory="../../dependencies/include/wxwidgets/setup/linux-x86_64/debug" />
 					<Add directory="../../dependencies/include/linux-x86_64" />
@@ -291,7 +291,7 @@
 					<Add directory="../http" />
 				</Compiler>
 				<ResourceCompiler>
-					<Add directory="../../dependencies/include" />
+					<Add directory="../../dependencies/include/common" />
 					<Add directory="../../dependencies/include/wxwidgets" />
 					<Add directory="../../dependencies/include/wxwidgets/setup/mswud" />
 					<Add directory="../core" />
@@ -341,7 +341,7 @@
 					<Add option="-DNDEBUG" />
 					<Add option="-DUNICODE" />
 					<Add option="-D__WXGTK__" />
-					<Add directory="../../dependencies/include" />
+					<Add directory="../../dependencies/include/common" />
 					<Add directory="../../dependencies/include/wxwidgets" />
 					<Add directory="../../dependencies/include/wxwidgets/setup/linux-x86_64/release" />
 					<Add directory="../../dependencies/include/linux-x86_64" />
@@ -356,7 +356,7 @@
 					<Add directory="../http" />
 				</Compiler>
 				<ResourceCompiler>
-					<Add directory="../../dependencies/include" />
+					<Add directory="../../dependencies/include/common" />
 					<Add directory="../../dependencies/include/wxwidgets" />
 					<Add directory="../../dependencies/include/wxwidgets/setup/mswu" />
 					<Add directory="../core" />
