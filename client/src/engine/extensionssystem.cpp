@@ -424,11 +424,9 @@ void ExtensionsSystem::uninstall(const ExtensionID &id)
 void ExtensionsSystem::installShare(bool recovery)
 {	
 	OS_LOCK(m_cs);
-
-	// Se l'extension "Core" è già installata, la prima inizializzazione è stata fatta.
-	// Altrimenti, c'è da verificare i giri per chiamarla quando viene creata la "data", però in quel punto l'ExtensionsSystem non è ancora stato inizializzato.	
-	// Oppure potrei settare un'opzione, ma mi pare inutile.
-	// In ogni caso, le scorro per installare le obbligatorie che non sono installate. E' capitato ad esempio con "Osiris Advertising".	
+	
+	if(FileSystem::instance()->fileExists(utils::makeFilePath(getDataPath(), _S("dev.txt"))))
+		return;
 
 	bool force = recovery;
 
@@ -466,16 +464,7 @@ void ExtensionsSystem::installShare(bool recovery)
 		{
 			NotificationsManager::instance()->notify(String::format(_S("Installing default extensions, %d/%d").c_str(), index, extensions.size()));
 
-			// Development Check.
-			// This to avoid that can destroy ".svn" data.
-			if(FileSystem::instance()->directoryExists(utils::makeFolderPath(getDataPath(), path + _S("/.svn"))))
-			{
-				OS_LOG_INFO(_S("Installing extension skipped, .svn directory found."));
-			}
-			else
-			{
-				install(id, fullPath, false);
-			}
+			install(id, fullPath, false);			
 		}
 	}	
 }
