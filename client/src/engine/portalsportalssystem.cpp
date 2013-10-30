@@ -869,7 +869,7 @@ bool PortalsSystem::installPortals()
 	String path = utils::makeFolderPath(Options::instance()->getSharePath(), OS_PORTALS_PATH);
 
 	if(FileSystem::instance()->directoryExists(path) == false)
-		return false;
+		return true;
 
 	StringList portals;
 	if(FileSystem::instance()->getFiles(path, portals, false) == false)

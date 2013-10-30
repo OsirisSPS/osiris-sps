@@ -1,0 +1,2165 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="wrappers">
+      <UniqueIdentifier>{2e8120e8-b46f-40db-a0d2-0c4690d6b168}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="wrappers\indexing_suite">
+      <UniqueIdentifier>{aa9230f7-0185-472d-ba8d-016caf899910}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="boostpython.h" />
+    <ClInclude Include="gccxml.h" />
+    <ClInclude Include="patchlevel.h" />
+    <ClInclude Include="pyplusplusaliases.h" />
+    <ClInclude Include="pypluspluscommon.h" />
+    <ClInclude Include="pyplusplusmanualtemplates.h" />
+    <ClInclude Include="Python.h" />
+    <ClInclude Include="pythoncodecontext.h" />
+    <ClInclude Include="pythoncodeprovider.h" />
+    <ClInclude Include="pythoncommon.h" />
+    <ClInclude Include="pythonconverters.h" />
+    <ClInclude Include="pythonengine.h" />
+    <ClInclude Include="pythoninterpreter.h" />
+    <ClInclude Include="pythonmanualwrappers.h" />
+    <ClInclude Include="pythonmethodresult.h" />
+    <ClInclude Include="pythonoverride.h" />
+    <ClInclude Include="pythonstate.h" />
+    <ClInclude Include="pythonthreadsaver.h" />
+    <ClInclude Include="pythonwrapper.h" />
+    <ClInclude Include="stdafx.h" />
+    <ClInclude Include="wrappers.h" />
+    <ClInclude Include="wrappers\__call_policies.pypp.hpp">
+      <Filter>wrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="wrappers\_dataitem__value_traits.pypp.hpp">
+      <Filter>wrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="wrappers\_idbdriverptr__value_traits.pypp.hpp">
+      <Filter>wrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="wrappers\_idbparameterptr__value_traits.pypp.hpp">
+      <Filter>wrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="wrappers\_isearchoptionsptr__value_traits.pypp.hpp">
+      <Filter>wrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="wrappers\_languagefolderptr__value_traits.pypp.hpp">
+      <Filter>wrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="wrappers\_omlemoticonptr__value_traits.pypp.hpp">
+      <Filter>wrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="wrappers\_omlitemptr__value_traits.pypp.hpp">
+      <Filter>wrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="wrappers\_portalptr__value_traits.pypp.hpp">
+      <Filter>wrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="wrappers\buffer.pypp.hpp">
+      <Filter>wrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="wrappers\cryptmanager.pypp.hpp">
+      <Filter>wrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="wrappers\cryptmanagersingleton.pypp.hpp">
+      <Filter>wrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="wrappers\databasessystem.pypp.hpp">
+      <Filter>wrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="wrappers\databasessystemsingleton.pypp.hpp">
+      <Filter>wrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="wrappers\dataitem.pypp.hpp">
+      <Filter>wrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="wrappers\dataitemvector.pypp.hpp">
+      <Filter>wrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="wrappers\datatable.pypp.hpp">
+      <Filter>wrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="wrappers\datetime.pypp.hpp">
+      <Filter>wrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="wrappers\engine.pypp.hpp">
+      <Filter>wrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="wrappers\enginesingleton.pypp.hpp">
+      <Filter>wrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="wrappers\eventsource.pypp.hpp">
+      <Filter>wrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="wrappers\extensionscomponentcontrol.pypp.hpp">
+      <Filter>wrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="wrappers\extensionscomponenteditor.pypp.hpp">
+      <Filter>wrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="wrappers\extensionscomponentviewer.pypp.hpp">
+      <Filter>wrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="wrappers\extensionsextension.pypp.hpp">
+      <Filter>wrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="wrappers\extensionsinvalidcomponent.pypp.hpp">
+      <Filter>wrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="wrappers\extensionsinvalidmodule.pypp.hpp">
+      <Filter>wrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="wrappers\extensionsmodulecontrol.pypp.hpp">
+      <Filter>wrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="wrappers\extensionsmoduleeditor.pypp.hpp">
+      <Filter>wrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="wrappers\extensionsmoduleviewer.pypp.hpp">
+      <Filter>wrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="wrappers\extensionsmoduleviewerhidden.pypp.hpp">
+      <Filter>wrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="wrappers\extensionssystem.pypp.hpp">
+      <Filter>wrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="wrappers\extensionssystemsingleton.pypp.hpp">
+      <Filter>wrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="wrappers\file.pypp.hpp">
+      <Filter>wrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="wrappers\filelogger.pypp.hpp">
+      <Filter>wrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="wrappers\filesystem.pypp.hpp">
+      <Filter>wrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="wrappers\filesystemsingleton.pypp.hpp">
+      <Filter>wrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="wrappers\hash.pypp.hpp">
+      <Filter>wrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="wrappers\htmlattribute.pypp.hpp">
+      <Filter>wrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="wrappers\htmlattributes.pypp.hpp">
+      <Filter>wrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="wrappers\htmlbr.pypp.hpp">
+      <Filter>wrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="wrappers\htmlbutton.pypp.hpp">
+      <Filter>wrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="wrappers\htmlcheckbox.pypp.hpp">
+      <Filter>wrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="wrappers\htmlcombobox.pypp.hpp">
+      <Filter>wrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="wrappers\htmlcontrols.pypp.hpp">
+      <Filter>wrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="wrappers\htmldiv.pypp.hpp">
+      <Filter>wrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="wrappers\htmlevent.pypp.hpp">
+      <Filter>wrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="wrappers\htmlevents.pypp.hpp">
+      <Filter>wrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="wrappers\htmlfilebrowser.pypp.hpp">
+      <Filter>wrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="wrappers\htmlimage.pypp.hpp">
+      <Filter>wrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="wrappers\htmllink.pypp.hpp">
+      <Filter>wrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="wrappers\htmllinkbutton.pypp.hpp">
+      <Filter>wrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="wrappers\htmllinktag.pypp.hpp">
+      <Filter>wrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="wrappers\htmllistbox.pypp.hpp">
+      <Filter>wrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="wrappers\htmlliteral.pypp.hpp">
+      <Filter>wrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="wrappers\htmlmetatag.pypp.hpp">
+      <Filter>wrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="wrappers\htmloption.pypp.hpp">
+      <Filter>wrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="wrappers\htmloptiongroup.pypp.hpp">
+      <Filter>wrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="wrappers\htmlpage.pypp.hpp">
+      <Filter>wrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="wrappers\htmlpager.pypp.hpp">
+      <Filter>wrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="wrappers\htmlpanel.pypp.hpp">
+      <Filter>wrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="wrappers\htmlparagraph.pypp.hpp">
+      <Filter>wrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="wrappers\htmlparser.pypp.hpp">
+      <Filter>wrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="wrappers\htmlparsersingleton.pypp.hpp">
+      <Filter>wrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="wrappers\htmlpopup.pypp.hpp">
+      <Filter>wrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="wrappers\htmlroller.pypp.hpp">
+      <Filter>wrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="wrappers\htmlscript.pypp.hpp">
+      <Filter>wrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="wrappers\htmlspace.pypp.hpp">
+      <Filter>wrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="wrappers\htmlspan.pypp.hpp">
+      <Filter>wrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="wrappers\htmltab.pypp.hpp">
+      <Filter>wrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="wrappers\htmltabctrl.pypp.hpp">
+      <Filter>wrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="wrappers\htmltable.pypp.hpp">
+      <Filter>wrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="wrappers\htmltablecell.pypp.hpp">
+      <Filter>wrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="wrappers\htmltableheader.pypp.hpp">
+      <Filter>wrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="wrappers\htmltablerow.pypp.hpp">
+      <Filter>wrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="wrappers\htmltabpage.pypp.hpp">
+      <Filter>wrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="wrappers\htmltext.pypp.hpp">
+      <Filter>wrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="wrappers\htmltextarea.pypp.hpp">
+      <Filter>wrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="wrappers\htmltextbox.pypp.hpp">
+      <Filter>wrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="wrappers\htmltooltip.pypp.hpp">
+      <Filter>wrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="wrappers\htmlunit.pypp.hpp">
+      <Filter>wrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="wrappers\htmlwriter.pypp.hpp">
+      <Filter>wrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="wrappers\htmlxslcontrol.pypp.hpp">
+      <Filter>wrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="wrappers\httpclient.pypp.hpp">
+      <Filter>wrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="wrappers\httpcontent.pypp.hpp">
+      <Filter>wrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="wrappers\httpcookie.pypp.hpp">
+      <Filter>wrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="wrappers\httpcookies.pypp.hpp">
+      <Filter>wrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="wrappers\httpdata.pypp.hpp">
+      <Filter>wrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="wrappers\httpparser.pypp.hpp">
+      <Filter>wrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="wrappers\httppath.pypp.hpp">
+      <Filter>wrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="wrappers\httpphysicaldirectory.pypp.hpp">
+      <Filter>wrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="wrappers\httppostparam.pypp.hpp">
+      <Filter>wrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="wrappers\httpproxy.pypp.hpp">
+      <Filter>wrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="wrappers\httprequest.pypp.hpp">
+      <Filter>wrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="wrappers\httpresponse.pypp.hpp">
+      <Filter>wrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="wrappers\httprootdirectory.pypp.hpp">
+      <Filter>wrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="wrappers\httpsession.pypp.hpp">
+      <Filter>wrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="wrappers\httpsessionstate.pypp.hpp">
+      <Filter>wrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="wrappers\httpurl.pypp.hpp">
+      <Filter>wrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="wrappers\httpvirtualdirectory.pypp.hpp">
+      <Filter>wrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="wrappers\ibackgroundjob.pypp.hpp">
+      <Filter>wrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="wrappers\id.pypp.hpp">
+      <Filter>wrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="wrappers\idbconnection.pypp.hpp">
+      <Filter>wrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="wrappers\idbdriverlist.pypp.hpp">
+      <Filter>wrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="wrappers\idboptions.pypp.hpp">
+      <Filter>wrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="wrappers\idbparameter.pypp.hpp">
+      <Filter>wrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="wrappers\idbparameterdeque.pypp.hpp">
+      <Filter>wrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="wrappers\idbresult.pypp.hpp">
+      <Filter>wrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="wrappers\idbstatement.pypp.hpp">
+      <Filter>wrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="wrappers\ideassistant.pypp.hpp">
+      <Filter>wrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="wrappers\ideblock.pypp.hpp">
+      <Filter>wrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="wrappers\idebutton.pypp.hpp">
+      <Filter>wrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="wrappers\idehelpbox.pypp.hpp">
+      <Filter>wrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="wrappers\idemailbox.pypp.hpp">
+      <Filter>wrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="wrappers\ideomleditor.pypp.hpp">
+      <Filter>wrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="wrappers\idepathway.pypp.hpp">
+      <Filter>wrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="wrappers\idepickerbool.pypp.hpp">
+      <Filter>wrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="wrappers\idepickercomponent.pypp.hpp">
+      <Filter>wrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="wrappers\idepickerculture.pypp.hpp">
+      <Filter>wrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="wrappers\idepickerdatetime.pypp.hpp">
+      <Filter>wrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="wrappers\idepickerdatetimespecial.pypp.hpp">
+      <Filter>wrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="wrappers\idepickernumber.pypp.hpp">
+      <Filter>wrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="wrappers\idepickerobject.pypp.hpp">
+      <Filter>wrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="wrappers\idepickersections.pypp.hpp">
+      <Filter>wrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="wrappers\idepickerselect.pypp.hpp">
+      <Filter>wrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="wrappers\idepickerskin.pypp.hpp">
+      <Filter>wrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="wrappers\idepositioneditor.pypp.hpp">
+      <Filter>wrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="wrappers\idesearchglobalparams.pypp.hpp">
+      <Filter>wrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="wrappers\idesearchparam.pypp.hpp">
+      <Filter>wrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="wrappers\idesearchquery.pypp.hpp">
+      <Filter>wrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="wrappers\idesearchresults.pypp.hpp">
+      <Filter>wrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="wrappers\ideskin.pypp.hpp">
+      <Filter>wrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="wrappers\ideskinsimple.pypp.hpp">
+      <Filter>wrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="wrappers\idesystem.pypp.hpp">
+      <Filter>wrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="wrappers\idesystemsingleton.pypp.hpp">
+      <Filter>wrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="wrappers\idetablequery.pypp.hpp">
+      <Filter>wrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="wrappers\idevoteeditor.pypp.hpp">
+      <Filter>wrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="wrappers\idexslresolver.pypp.hpp">
+      <Filter>wrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="wrappers\ievent.pypp.hpp">
+      <Filter>wrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="wrappers\ieventcallback.pypp.hpp">
+      <Filter>wrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="wrappers\iextensionscomponent.pypp.hpp">
+      <Filter>wrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="wrappers\iextensionsextension.pypp.hpp">
+      <Filter>wrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="wrappers\iextensionsmodule.pypp.hpp">
+      <Filter>wrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="wrappers\ihtmlcontrol.pypp.hpp">
+      <Filter>wrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="wrappers\ihtmlinput.pypp.hpp">
+      <Filter>wrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="wrappers\ihtmlselect.pypp.hpp">
+      <Filter>wrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="wrappers\ihttpclient.pypp.hpp">
+      <Filter>wrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="wrappers\ihttpdirectory.pypp.hpp">
+      <Filter>wrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="wrappers\ihttpdirectoryhandler.pypp.hpp">
+      <Filter>wrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="wrappers\ihttpdirectoryhandlerlist.pypp.hpp">
+      <Filter>wrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="wrappers\ihttpdirectoryregexhandler.pypp.hpp">
+      <Filter>wrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="wrappers\ihttpmethod.pypp.hpp">
+      <Filter>wrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="wrappers\ihttpserver.pypp.hpp">
+      <Filter>wrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="wrappers\iidepageable.pypp.hpp">
+      <Filter>wrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="wrappers\ijob.pypp.hpp">
+      <Filter>wrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="wrappers\image.pypp.hpp">
+      <Filter>wrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="wrappers\imainpage.pypp.hpp">
+      <Filter>wrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="wrappers\iomlcode.pypp.hpp">
+      <Filter>wrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="wrappers\iomlxsl.pypp.hpp">
+      <Filter>wrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="wrappers\ioptionvalidator.pypp.hpp">
+      <Filter>wrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="wrappers\ipaddress.pypp.hpp">
+      <Filter>wrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="wrappers\ipage.pypp.hpp">
+      <Filter>wrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="wrappers\ipagehtmlcontrol.pypp.hpp">
+      <Filter>wrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="wrappers\ipagehtmldiv.pypp.hpp">
+      <Filter>wrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="wrappers\ipagexslrendererhtmlcontrol.pypp.hpp">
+      <Filter>wrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="wrappers\iportalbackgroundjob.pypp.hpp">
+      <Filter>wrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="wrappers\iportaldatabase.pypp.hpp">
+      <Filter>wrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="wrappers\iportalpage.pypp.hpp">
+      <Filter>wrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="wrappers\iportalpagehtmlcontrol.pypp.hpp">
+      <Filter>wrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="wrappers\iportalpagehtmldiv.pypp.hpp">
+      <Filter>wrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="wrappers\iportalpagexslrendererhtmlcontrol.pypp.hpp">
+      <Filter>wrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="wrappers\isearchoptions.pypp.hpp">
+      <Filter>wrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="wrappers\isearchresults.pypp.hpp">
+      <Filter>wrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="wrappers\iserver.pypp.hpp">
+      <Filter>wrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="wrappers\isisendpoint.pypp.hpp">
+      <Filter>wrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="wrappers\istream.pypp.hpp">
+      <Filter>wrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="wrappers\ivirtualmainpage.pypp.hpp">
+      <Filter>wrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="wrappers\ixmlfunction.pypp.hpp">
+      <Filter>wrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="wrappers\ixmlhandler.pypp.hpp">
+      <Filter>wrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="wrappers\ixmlresolver.pypp.hpp">
+      <Filter>wrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="wrappers\ixmlserializable.pypp.hpp">
+      <Filter>wrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="wrappers\languageculture.pypp.hpp">
+      <Filter>wrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="wrappers\languagefolder.pypp.hpp">
+      <Filter>wrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="wrappers\languagefolderlist.pypp.hpp">
+      <Filter>wrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="wrappers\languagefolderlistener.pypp.hpp">
+      <Filter>wrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="wrappers\languagemanager.pypp.hpp">
+      <Filter>wrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="wrappers\languagemanagersingleton.pypp.hpp">
+      <Filter>wrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="wrappers\languageresult.pypp.hpp">
+      <Filter>wrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="wrappers\languagevocabolary.pypp.hpp">
+      <Filter>wrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="wrappers\logmanager.pypp.hpp">
+      <Filter>wrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="wrappers\logmanagersingleton.pypp.hpp">
+      <Filter>wrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="wrappers\mainaddonsjob.pypp.hpp">
+      <Filter>wrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="wrappers\networksystem.pypp.hpp">
+      <Filter>wrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="wrappers\networksystemsingleton.pypp.hpp">
+      <Filter>wrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="wrappers\omlanchor.pypp.hpp">
+      <Filter>wrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="wrappers\omlcode.pypp.hpp">
+      <Filter>wrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="wrappers\omlcontext.pypp.hpp">
+      <Filter>wrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="wrappers\omldate.pypp.hpp">
+      <Filter>wrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="wrappers\omldebug.pypp.hpp">
+      <Filter>wrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="wrappers\omlemail.pypp.hpp">
+      <Filter>wrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="wrappers\omlemoticon.pypp.hpp">
+      <Filter>wrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="wrappers\omlemoticonlist.pypp.hpp">
+      <Filter>wrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="wrappers\omlgoto.pypp.hpp">
+      <Filter>wrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="wrappers\omlhtml.pypp.hpp">
+      <Filter>wrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="wrappers\omlitem.pypp.hpp">
+      <Filter>wrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="wrappers\omlitemlist.pypp.hpp">
+      <Filter>wrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="wrappers\omllang.pypp.hpp">
+      <Filter>wrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="wrappers\omlless.pypp.hpp">
+      <Filter>wrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="wrappers\omllist.pypp.hpp">
+      <Filter>wrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="wrappers\omlmanager.pypp.hpp">
+      <Filter>wrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="wrappers\omlmanagersingleton.pypp.hpp">
+      <Filter>wrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="wrappers\omlmore.pypp.hpp">
+      <Filter>wrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="wrappers\omlnobr.pypp.hpp">
+      <Filter>wrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="wrappers\omlnoparse.pypp.hpp">
+      <Filter>wrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="wrappers\omlobject.pypp.hpp">
+      <Filter>wrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="wrappers\omlpopup.pypp.hpp">
+      <Filter>wrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="wrappers\omlquote.pypp.hpp">
+      <Filter>wrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="wrappers\omlreplace.pypp.hpp">
+      <Filter>wrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="wrappers\omlsize.pypp.hpp">
+      <Filter>wrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="wrappers\omlsystem.pypp.hpp">
+      <Filter>wrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="wrappers\omltab.pypp.hpp">
+      <Filter>wrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="wrappers\omltext.pypp.hpp">
+      <Filter>wrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="wrappers\omlurl.pypp.hpp">
+      <Filter>wrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="wrappers\omluser.pypp.hpp">
+      <Filter>wrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="wrappers\omlview.pypp.hpp">
+      <Filter>wrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="wrappers\options.pypp.hpp">
+      <Filter>wrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="wrappers\optionssingleton.pypp.hpp">
+      <Filter>wrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="wrappers\osirislib_enumerations.pypp.hpp">
+      <Filter>wrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="wrappers\portal.pypp.hpp">
+      <Filter>wrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="wrappers\portallist.pypp.hpp">
+      <Filter>wrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="wrappers\portaloptions.pypp.hpp">
+      <Filter>wrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="wrappers\portalsimporterjob.pypp.hpp">
+      <Filter>wrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="wrappers\portalsoptionsshared.pypp.hpp">
+      <Filter>wrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="wrappers\portalspeer.pypp.hpp">
+      <Filter>wrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="wrappers\portalspeerlist.pypp.hpp">
+      <Filter>wrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="wrappers\portalspeersmanager.pypp.hpp">
+      <Filter>wrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="wrappers\portalsstabilityjob.pypp.hpp">
+      <Filter>wrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="wrappers\portalssystem.pypp.hpp">
+      <Filter>wrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="wrappers\portalssystemsingleton.pypp.hpp">
+      <Filter>wrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="wrappers\regexmanager.pypp.hpp">
+      <Filter>wrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="wrappers\regexmanagersingleton.pypp.hpp">
+      <Filter>wrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="wrappers\reputationsmanager.pypp.hpp">
+      <Filter>wrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="wrappers\reputationsscore.pypp.hpp">
+      <Filter>wrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="wrappers\searchattachmentoptions.pypp.hpp">
+      <Filter>wrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="wrappers\searchcalendareventoptions.pypp.hpp">
+      <Filter>wrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="wrappers\searchfileoptions.pypp.hpp">
+      <Filter>wrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="wrappers\searchinstanceoptions.pypp.hpp">
+      <Filter>wrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="wrappers\searchmodeloptions.pypp.hpp">
+      <Filter>wrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="wrappers\searchpolloptionoptions.pypp.hpp">
+      <Filter>wrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="wrappers\searchpolloptions.pypp.hpp">
+      <Filter>wrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="wrappers\searchpostoptions.pypp.hpp">
+      <Filter>wrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="wrappers\searchquery.pypp.hpp">
+      <Filter>wrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="wrappers\searchqueryoptions.pypp.hpp">
+      <Filter>wrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="wrappers\searchresult.pypp.hpp">
+      <Filter>wrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="wrappers\searchresultsdatabase.pypp.hpp">
+      <Filter>wrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="wrappers\searchresultslucene.pypp.hpp">
+      <Filter>wrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="wrappers\searchsectionoptions.pypp.hpp">
+      <Filter>wrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="wrappers\searchtagoptions.pypp.hpp">
+      <Filter>wrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="wrappers\searchtextoptions.pypp.hpp">
+      <Filter>wrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="wrappers\stringlist.pypp.hpp">
+      <Filter>wrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="wrappers\stringmap.pypp.hpp">
+      <Filter>wrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="wrappers\stringvector.pypp.hpp">
+      <Filter>wrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="wrappers\textfile.pypp.hpp">
+      <Filter>wrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="wrappers\thirdpartylibrariesreporter.pypp.hpp">
+      <Filter>wrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="wrappers\thirdpartylibrariesreportersingleton.pypp.hpp">
+      <Filter>wrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="wrappers\thirdpartylibrary.pypp.hpp">
+      <Filter>wrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="wrappers\uniqueid.pypp.hpp">
+      <Filter>wrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="wrappers\version.pypp.hpp">
+      <Filter>wrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="wrappers\xmlattribute.pypp.hpp">
+      <Filter>wrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="wrappers\xmlattributes.pypp.hpp">
+      <Filter>wrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="wrappers\xmldocument.pypp.hpp">
+      <Filter>wrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="wrappers\xmlmanager.pypp.hpp">
+      <Filter>wrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="wrappers\xmlmanagersingleton.pypp.hpp">
+      <Filter>wrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="wrappers\xmlnode.pypp.hpp">
+      <Filter>wrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="wrappers\xmlnodes.pypp.hpp">
+      <Filter>wrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="wrappers\xmlschema.pypp.hpp">
+      <Filter>wrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="wrappers\xmlstylesheet.pypp.hpp">
+      <Filter>wrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="wrappers\xmlwriter.pypp.hpp">
+      <Filter>wrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="wrappers\indexing_suite\algorithms.hpp">
+      <Filter>wrappers\indexing_suite</Filter>
+    </ClInclude>
+    <ClInclude Include="wrappers\indexing_suite\container_proxy.hpp">
+      <Filter>wrappers\indexing_suite</Filter>
+    </ClInclude>
+    <ClInclude Include="wrappers\indexing_suite\container_suite.hpp">
+      <Filter>wrappers\indexing_suite</Filter>
+    </ClInclude>
+    <ClInclude Include="wrappers\indexing_suite\container_traits.hpp">
+      <Filter>wrappers\indexing_suite</Filter>
+    </ClInclude>
+    <ClInclude Include="wrappers\indexing_suite\deque.hpp">
+      <Filter>wrappers\indexing_suite</Filter>
+    </ClInclude>
+    <ClInclude Include="wrappers\indexing_suite\element_proxy.hpp">
+      <Filter>wrappers\indexing_suite</Filter>
+    </ClInclude>
+    <ClInclude Include="wrappers\indexing_suite\element_proxy_traits.hpp">
+      <Filter>wrappers\indexing_suite</Filter>
+    </ClInclude>
+    <ClInclude Include="wrappers\indexing_suite\int_slice_helper.hpp">
+      <Filter>wrappers\indexing_suite</Filter>
+    </ClInclude>
+    <ClInclude Include="wrappers\indexing_suite\iterator_range.hpp">
+      <Filter>wrappers\indexing_suite</Filter>
+    </ClInclude>
+    <ClInclude Include="wrappers\indexing_suite\iterator_traits.hpp">
+      <Filter>wrappers\indexing_suite</Filter>
+    </ClInclude>
+    <ClInclude Include="wrappers\indexing_suite\list.hpp">
+      <Filter>wrappers\indexing_suite</Filter>
+    </ClInclude>
+    <ClInclude Include="wrappers\indexing_suite\map.hpp">
+      <Filter>wrappers\indexing_suite</Filter>
+    </ClInclude>
+    <ClInclude Include="wrappers\indexing_suite\methods.hpp">
+      <Filter>wrappers\indexing_suite</Filter>
+    </ClInclude>
+    <ClInclude Include="wrappers\indexing_suite\multimap.hpp">
+      <Filter>wrappers\indexing_suite</Filter>
+    </ClInclude>
+    <ClInclude Include="wrappers\indexing_suite\pair.hpp">
+      <Filter>wrappers\indexing_suite</Filter>
+    </ClInclude>
+    <ClInclude Include="wrappers\indexing_suite\proxy_iterator.hpp">
+      <Filter>wrappers\indexing_suite</Filter>
+    </ClInclude>
+    <ClInclude Include="wrappers\indexing_suite\python_iterator.hpp">
+      <Filter>wrappers\indexing_suite</Filter>
+    </ClInclude>
+    <ClInclude Include="wrappers\indexing_suite\registry_utils.hpp">
+      <Filter>wrappers\indexing_suite</Filter>
+    </ClInclude>
+    <ClInclude Include="wrappers\indexing_suite\set.hpp">
+      <Filter>wrappers\indexing_suite</Filter>
+    </ClInclude>
+    <ClInclude Include="wrappers\indexing_suite\shared_proxy_impl.hpp">
+      <Filter>wrappers\indexing_suite</Filter>
+    </ClInclude>
+    <ClInclude Include="wrappers\indexing_suite\slice.hpp">
+      <Filter>wrappers\indexing_suite</Filter>
+    </ClInclude>
+    <ClInclude Include="wrappers\indexing_suite\slice_handler.hpp">
+      <Filter>wrappers\indexing_suite</Filter>
+    </ClInclude>
+    <ClInclude Include="wrappers\indexing_suite\suite_utils.hpp">
+      <Filter>wrappers\indexing_suite</Filter>
+    </ClInclude>
+    <ClInclude Include="wrappers\indexing_suite\value_traits.hpp">
+      <Filter>wrappers\indexing_suite</Filter>
+    </ClInclude>
+    <ClInclude Include="wrappers\indexing_suite\vector.hpp">
+      <Filter>wrappers\indexing_suite</Filter>
+    </ClInclude>
+    <ClInclude Include="wrappers\indexing_suite\visitor.hpp">
+      <Filter>wrappers\indexing_suite</Filter>
+    </ClInclude>
+    <ClInclude Include="wrappers\indexing_suite\workaround.hpp">
+      <Filter>wrappers\indexing_suite</Filter>
+    </ClInclude>
+    <ClInclude Include="wrappers\idbdriver.pypp.hpp">
+      <Filter>wrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="wrappers\omla.pypp.hpp">
+      <Filter>wrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="wrappers\omlhtmlwrapper.pypp.hpp">
+      <Filter>wrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="wrappers\omlimg.pypp.hpp">
+      <Filter>wrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="wrappers\ideaccount.pypp.hpp">
+      <Filter>wrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="wrappers\ideaccountsmanager.pypp.hpp">
+      <Filter>wrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="wrappers\idesession.pypp.hpp">
+      <Filter>wrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="wrappers\ideaccountslist.pypp.hpp">
+      <Filter>wrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="wrappers\dataaccount.pypp.hpp">
+      <Filter>wrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="wrappers\idesessionportal.pypp.hpp">
+      <Filter>wrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="wrappers\portalstransaction.pypp.hpp">
+      <Filter>wrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="wrappers\cachesystem.pypp.hpp">
+      <Filter>wrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="wrappers\ideaccountsmanagersingleton.pypp.hpp">
+      <Filter>wrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="wrappers\isissystem.pypp.hpp">
+      <Filter>wrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="wrappers\cachesystemsingleton.pypp.hpp">
+      <Filter>wrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="wrappers\isissystemsingleton.pypp.hpp">
+      <Filter>wrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="wrappers\omlif.pypp.hpp">
+      <Filter>wrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="wrappers\timeduration.pypp.hpp">
+      <Filter>wrappers</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="plugin.cpp" />
+    <ClCompile Include="pythoncodecontext.cpp" />
+    <ClCompile Include="pythoncodeprovider.cpp" />
+    <ClCompile Include="pythonconverters.cpp" />
+    <ClCompile Include="pythonengine.cpp" />
+    <ClCompile Include="pythoninterpreter.cpp" />
+    <ClCompile Include="pythonmanualwrappers.cpp" />
+    <ClCompile Include="pythonmethodresult.cpp" />
+    <ClCompile Include="pythonoverride.cpp" />
+    <ClCompile Include="pythonstate.cpp" />
+    <ClCompile Include="pythonthreadsaver.cpp" />
+    <ClCompile Include="stdafx.cpp" />
+    <ClCompile Include="wrappers\buffer.pypp.cpp">
+      <Filter>wrappers</Filter>
+    </ClCompile>
+    <ClCompile Include="wrappers\cryptmanager.pypp.cpp">
+      <Filter>wrappers</Filter>
+    </ClCompile>
+    <ClCompile Include="wrappers\cryptmanagersingleton.pypp.cpp">
+      <Filter>wrappers</Filter>
+    </ClCompile>
+    <ClCompile Include="wrappers\databasessystem.pypp.cpp">
+      <Filter>wrappers</Filter>
+    </ClCompile>
+    <ClCompile Include="wrappers\databasessystemsingleton.pypp.cpp">
+      <Filter>wrappers</Filter>
+    </ClCompile>
+    <ClCompile Include="wrappers\dataitem.pypp.cpp">
+      <Filter>wrappers</Filter>
+    </ClCompile>
+    <ClCompile Include="wrappers\dataitemvector.pypp.cpp">
+      <Filter>wrappers</Filter>
+    </ClCompile>
+    <ClCompile Include="wrappers\datatable.pypp.cpp">
+      <Filter>wrappers</Filter>
+    </ClCompile>
+    <ClCompile Include="wrappers\datetime.pypp.cpp">
+      <Filter>wrappers</Filter>
+    </ClCompile>
+    <ClCompile Include="wrappers\engine.pypp.cpp">
+      <Filter>wrappers</Filter>
+    </ClCompile>
+    <ClCompile Include="wrappers\enginesingleton.pypp.cpp">
+      <Filter>wrappers</Filter>
+    </ClCompile>
+    <ClCompile Include="wrappers\eventsource.pypp.cpp">
+      <Filter>wrappers</Filter>
+    </ClCompile>
+    <ClCompile Include="wrappers\extensionscomponentcontrol.pypp.cpp">
+      <Filter>wrappers</Filter>
+    </ClCompile>
+    <ClCompile Include="wrappers\extensionscomponenteditor.pypp.cpp">
+      <Filter>wrappers</Filter>
+    </ClCompile>
+    <ClCompile Include="wrappers\extensionscomponentviewer.pypp.cpp">
+      <Filter>wrappers</Filter>
+    </ClCompile>
+    <ClCompile Include="wrappers\extensionsextension.pypp.cpp">
+      <Filter>wrappers</Filter>
+    </ClCompile>
+    <ClCompile Include="wrappers\extensionsinvalidcomponent.pypp.cpp">
+      <Filter>wrappers</Filter>
+    </ClCompile>
+    <ClCompile Include="wrappers\extensionsinvalidmodule.pypp.cpp">
+      <Filter>wrappers</Filter>
+    </ClCompile>
+    <ClCompile Include="wrappers\extensionsmodulecontrol.pypp.cpp">
+      <Filter>wrappers</Filter>
+    </ClCompile>
+    <ClCompile Include="wrappers\extensionsmoduleeditor.pypp.cpp">
+      <Filter>wrappers</Filter>
+    </ClCompile>
+    <ClCompile Include="wrappers\extensionsmoduleviewer.pypp.cpp">
+      <Filter>wrappers</Filter>
+    </ClCompile>
+    <ClCompile Include="wrappers\extensionsmoduleviewerhidden.pypp.cpp">
+      <Filter>wrappers</Filter>
+    </ClCompile>
+    <ClCompile Include="wrappers\extensionssystem.pypp.cpp">
+      <Filter>wrappers</Filter>
+    </ClCompile>
+    <ClCompile Include="wrappers\extensionssystemsingleton.pypp.cpp">
+      <Filter>wrappers</Filter>
+    </ClCompile>
+    <ClCompile Include="wrappers\file.pypp.cpp">
+      <Filter>wrappers</Filter>
+    </ClCompile>
+    <ClCompile Include="wrappers\filelogger.pypp.cpp">
+      <Filter>wrappers</Filter>
+    </ClCompile>
+    <ClCompile Include="wrappers\filesystem.pypp.cpp">
+      <Filter>wrappers</Filter>
+    </ClCompile>
+    <ClCompile Include="wrappers\filesystemsingleton.pypp.cpp">
+      <Filter>wrappers</Filter>
+    </ClCompile>
+    <ClCompile Include="wrappers\hash.pypp.cpp">
+      <Filter>wrappers</Filter>
+    </ClCompile>
+    <ClCompile Include="wrappers\htmlattribute.pypp.cpp">
+      <Filter>wrappers</Filter>
+    </ClCompile>
+    <ClCompile Include="wrappers\htmlattributes.pypp.cpp">
+      <Filter>wrappers</Filter>
+    </ClCompile>
+    <ClCompile Include="wrappers\htmlbr.pypp.cpp">
+      <Filter>wrappers</Filter>
+    </ClCompile>
+    <ClCompile Include="wrappers\htmlbutton.pypp.cpp">
+      <Filter>wrappers</Filter>
+    </ClCompile>
+    <ClCompile Include="wrappers\htmlcheckbox.pypp.cpp">
+      <Filter>wrappers</Filter>
+    </ClCompile>
+    <ClCompile Include="wrappers\htmlcombobox.pypp.cpp">
+      <Filter>wrappers</Filter>
+    </ClCompile>
+    <ClCompile Include="wrappers\htmlcontrols.pypp.cpp">
+      <Filter>wrappers</Filter>
+    </ClCompile>
+    <ClCompile Include="wrappers\htmldiv.pypp.cpp">
+      <Filter>wrappers</Filter>
+    </ClCompile>
+    <ClCompile Include="wrappers\htmlevent.pypp.cpp">
+      <Filter>wrappers</Filter>
+    </ClCompile>
+    <ClCompile Include="wrappers\htmlevents.pypp.cpp">
+      <Filter>wrappers</Filter>
+    </ClCompile>
+    <ClCompile Include="wrappers\htmlfilebrowser.pypp.cpp">
+      <Filter>wrappers</Filter>
+    </ClCompile>
+    <ClCompile Include="wrappers\htmlimage.pypp.cpp">
+      <Filter>wrappers</Filter>
+    </ClCompile>
+    <ClCompile Include="wrappers\htmllink.pypp.cpp">
+      <Filter>wrappers</Filter>
+    </ClCompile>
+    <ClCompile Include="wrappers\htmllinkbutton.pypp.cpp">
+      <Filter>wrappers</Filter>
+    </ClCompile>
+    <ClCompile Include="wrappers\htmllinktag.pypp.cpp">
+      <Filter>wrappers</Filter>
+    </ClCompile>
+    <ClCompile Include="wrappers\htmllistbox.pypp.cpp">
+      <Filter>wrappers</Filter>
+    </ClCompile>
+    <ClCompile Include="wrappers\htmlliteral.pypp.cpp">
+      <Filter>wrappers</Filter>
+    </ClCompile>
+    <ClCompile Include="wrappers\htmlmetatag.pypp.cpp">
+      <Filter>wrappers</Filter>
+    </ClCompile>
+    <ClCompile Include="wrappers\htmloption.pypp.cpp">
+      <Filter>wrappers</Filter>
+    </ClCompile>
+    <ClCompile Include="wrappers\htmloptiongroup.pypp.cpp">
+      <Filter>wrappers</Filter>
+    </ClCompile>
+    <ClCompile Include="wrappers\htmlpage.pypp.cpp">
+      <Filter>wrappers</Filter>
+    </ClCompile>
+    <ClCompile Include="wrappers\htmlpager.pypp.cpp">
+      <Filter>wrappers</Filter>
+    </ClCompile>
+    <ClCompile Include="wrappers\htmlpanel.pypp.cpp">
+      <Filter>wrappers</Filter>
+    </ClCompile>
+    <ClCompile Include="wrappers\htmlparagraph.pypp.cpp">
+      <Filter>wrappers</Filter>
+    </ClCompile>
+    <ClCompile Include="wrappers\htmlparser.pypp.cpp">
+      <Filter>wrappers</Filter>
+    </ClCompile>
+    <ClCompile Include="wrappers\htmlparsersingleton.pypp.cpp">
+      <Filter>wrappers</Filter>
+    </ClCompile>
+    <ClCompile Include="wrappers\htmlpopup.pypp.cpp">
+      <Filter>wrappers</Filter>
+    </ClCompile>
+    <ClCompile Include="wrappers\htmlroller.pypp.cpp">
+      <Filter>wrappers</Filter>
+    </ClCompile>
+    <ClCompile Include="wrappers\htmlscript.pypp.cpp">
+      <Filter>wrappers</Filter>
+    </ClCompile>
+    <ClCompile Include="wrappers\htmlspace.pypp.cpp">
+      <Filter>wrappers</Filter>
+    </ClCompile>
+    <ClCompile Include="wrappers\htmlspan.pypp.cpp">
+      <Filter>wrappers</Filter>
+    </ClCompile>
+    <ClCompile Include="wrappers\htmltab.pypp.cpp">
+      <Filter>wrappers</Filter>
+    </ClCompile>
+    <ClCompile Include="wrappers\htmltabctrl.pypp.cpp">
+      <Filter>wrappers</Filter>
+    </ClCompile>
+    <ClCompile Include="wrappers\htmltable.pypp.cpp">
+      <Filter>wrappers</Filter>
+    </ClCompile>
+    <ClCompile Include="wrappers\htmltablecell.pypp.cpp">
+      <Filter>wrappers</Filter>
+    </ClCompile>
+    <ClCompile Include="wrappers\htmltableheader.pypp.cpp">
+      <Filter>wrappers</Filter>
+    </ClCompile>
+    <ClCompile Include="wrappers\htmltablerow.pypp.cpp">
+      <Filter>wrappers</Filter>
+    </ClCompile>
+    <ClCompile Include="wrappers\htmltabpage.pypp.cpp">
+      <Filter>wrappers</Filter>
+    </ClCompile>
+    <ClCompile Include="wrappers\htmltext.pypp.cpp">
+      <Filter>wrappers</Filter>
+    </ClCompile>
+    <ClCompile Include="wrappers\htmltextarea.pypp.cpp">
+      <Filter>wrappers</Filter>
+    </ClCompile>
+    <ClCompile Include="wrappers\htmltextbox.pypp.cpp">
+      <Filter>wrappers</Filter>
+    </ClCompile>
+    <ClCompile Include="wrappers\htmltooltip.pypp.cpp">
+      <Filter>wrappers</Filter>
+    </ClCompile>
+    <ClCompile Include="wrappers\htmlunit.pypp.cpp">
+      <Filter>wrappers</Filter>
+    </ClCompile>
+    <ClCompile Include="wrappers\htmlwriter.pypp.cpp">
+      <Filter>wrappers</Filter>
+    </ClCompile>
+    <ClCompile Include="wrappers\htmlxslcontrol.pypp.cpp">
+      <Filter>wrappers</Filter>
+    </ClCompile>
+    <ClCompile Include="wrappers\httpclient.pypp.cpp">
+      <Filter>wrappers</Filter>
+    </ClCompile>
+    <ClCompile Include="wrappers\httpcontent.pypp.cpp">
+      <Filter>wrappers</Filter>
+    </ClCompile>
+    <ClCompile Include="wrappers\httpcookie.pypp.cpp">
+      <Filter>wrappers</Filter>
+    </ClCompile>
+    <ClCompile Include="wrappers\httpcookies.pypp.cpp">
+      <Filter>wrappers</Filter>
+    </ClCompile>
+    <ClCompile Include="wrappers\httpdata.pypp.cpp">
+      <Filter>wrappers</Filter>
+    </ClCompile>
+    <ClCompile Include="wrappers\httpparser.pypp.cpp">
+      <Filter>wrappers</Filter>
+    </ClCompile>
+    <ClCompile Include="wrappers\httppath.pypp.cpp">
+      <Filter>wrappers</Filter>
+    </ClCompile>
+    <ClCompile Include="wrappers\httpphysicaldirectory.pypp.cpp">
+      <Filter>wrappers</Filter>
+    </ClCompile>
+    <ClCompile Include="wrappers\httppostparam.pypp.cpp">
+      <Filter>wrappers</Filter>
+    </ClCompile>
+    <ClCompile Include="wrappers\httpproxy.pypp.cpp">
+      <Filter>wrappers</Filter>
+    </ClCompile>
+    <ClCompile Include="wrappers\httprequest.pypp.cpp">
+      <Filter>wrappers</Filter>
+    </ClCompile>
+    <ClCompile Include="wrappers\httpresponse.pypp.cpp">
+      <Filter>wrappers</Filter>
+    </ClCompile>
+    <ClCompile Include="wrappers\httprootdirectory.pypp.cpp">
+      <Filter>wrappers</Filter>
+    </ClCompile>
+    <ClCompile Include="wrappers\httpsession.pypp.cpp">
+      <Filter>wrappers</Filter>
+    </ClCompile>
+    <ClCompile Include="wrappers\httpsessionstate.pypp.cpp">
+      <Filter>wrappers</Filter>
+    </ClCompile>
+    <ClCompile Include="wrappers\httpurl.pypp.cpp">
+      <Filter>wrappers</Filter>
+    </ClCompile>
+    <ClCompile Include="wrappers\httpvirtualdirectory.pypp.cpp">
+      <Filter>wrappers</Filter>
+    </ClCompile>
+    <ClCompile Include="wrappers\ibackgroundjob.pypp.cpp">
+      <Filter>wrappers</Filter>
+    </ClCompile>
+    <ClCompile Include="wrappers\id.pypp.cpp">
+      <Filter>wrappers</Filter>
+    </ClCompile>
+    <ClCompile Include="wrappers\idbconnection.pypp.cpp">
+      <Filter>wrappers</Filter>
+    </ClCompile>
+    <ClCompile Include="wrappers\idbdriverlist.pypp.cpp">
+      <Filter>wrappers</Filter>
+    </ClCompile>
+    <ClCompile Include="wrappers\idboptions.pypp.cpp">
+      <Filter>wrappers</Filter>
+    </ClCompile>
+    <ClCompile Include="wrappers\idbparameter.pypp.cpp">
+      <Filter>wrappers</Filter>
+    </ClCompile>
+    <ClCompile Include="wrappers\idbparameterdeque.pypp.cpp">
+      <Filter>wrappers</Filter>
+    </ClCompile>
+    <ClCompile Include="wrappers\idbresult.pypp.cpp">
+      <Filter>wrappers</Filter>
+    </ClCompile>
+    <ClCompile Include="wrappers\idbstatement.pypp.cpp">
+      <Filter>wrappers</Filter>
+    </ClCompile>
+    <ClCompile Include="wrappers\ideassistant.pypp.cpp">
+      <Filter>wrappers</Filter>
+    </ClCompile>
+    <ClCompile Include="wrappers\ideblock.pypp.cpp">
+      <Filter>wrappers</Filter>
+    </ClCompile>
+    <ClCompile Include="wrappers\idebutton.pypp.cpp">
+      <Filter>wrappers</Filter>
+    </ClCompile>
+    <ClCompile Include="wrappers\idehelpbox.pypp.cpp">
+      <Filter>wrappers</Filter>
+    </ClCompile>
+    <ClCompile Include="wrappers\idemailbox.pypp.cpp">
+      <Filter>wrappers</Filter>
+    </ClCompile>
+    <ClCompile Include="wrappers\ideomleditor.pypp.cpp">
+      <Filter>wrappers</Filter>
+    </ClCompile>
+    <ClCompile Include="wrappers\idepathway.pypp.cpp">
+      <Filter>wrappers</Filter>
+    </ClCompile>
+    <ClCompile Include="wrappers\idepickerbool.pypp.cpp">
+      <Filter>wrappers</Filter>
+    </ClCompile>
+    <ClCompile Include="wrappers\idepickercomponent.pypp.cpp">
+      <Filter>wrappers</Filter>
+    </ClCompile>
+    <ClCompile Include="wrappers\idepickerculture.pypp.cpp">
+      <Filter>wrappers</Filter>
+    </ClCompile>
+    <ClCompile Include="wrappers\idepickerdatetime.pypp.cpp">
+      <Filter>wrappers</Filter>
+    </ClCompile>
+    <ClCompile Include="wrappers\idepickerdatetimespecial.pypp.cpp">
+      <Filter>wrappers</Filter>
+    </ClCompile>
+    <ClCompile Include="wrappers\idepickernumber.pypp.cpp">
+      <Filter>wrappers</Filter>
+    </ClCompile>
+    <ClCompile Include="wrappers\idepickerobject.pypp.cpp">
+      <Filter>wrappers</Filter>
+    </ClCompile>
+    <ClCompile Include="wrappers\idepickersections.pypp.cpp">
+      <Filter>wrappers</Filter>
+    </ClCompile>
+    <ClCompile Include="wrappers\idepickerselect.pypp.cpp">
+      <Filter>wrappers</Filter>
+    </ClCompile>
+    <ClCompile Include="wrappers\idepickerskin.pypp.cpp">
+      <Filter>wrappers</Filter>
+    </ClCompile>
+    <ClCompile Include="wrappers\idepositioneditor.pypp.cpp">
+      <Filter>wrappers</Filter>
+    </ClCompile>
+    <ClCompile Include="wrappers\idesearchglobalparams.pypp.cpp">
+      <Filter>wrappers</Filter>
+    </ClCompile>
+    <ClCompile Include="wrappers\idesearchparam.pypp.cpp">
+      <Filter>wrappers</Filter>
+    </ClCompile>
+    <ClCompile Include="wrappers\idesearchquery.pypp.cpp">
+      <Filter>wrappers</Filter>
+    </ClCompile>
+    <ClCompile Include="wrappers\idesearchresults.pypp.cpp">
+      <Filter>wrappers</Filter>
+    </ClCompile>
+    <ClCompile Include="wrappers\ideskin.pypp.cpp">
+      <Filter>wrappers</Filter>
+    </ClCompile>
+    <ClCompile Include="wrappers\ideskinsimple.pypp.cpp">
+      <Filter>wrappers</Filter>
+    </ClCompile>
+    <ClCompile Include="wrappers\idesystem.pypp.cpp">
+      <Filter>wrappers</Filter>
+    </ClCompile>
+    <ClCompile Include="wrappers\idesystemsingleton.pypp.cpp">
+      <Filter>wrappers</Filter>
+    </ClCompile>
+    <ClCompile Include="wrappers\idetablequery.pypp.cpp">
+      <Filter>wrappers</Filter>
+    </ClCompile>
+    <ClCompile Include="wrappers\idevoteeditor.pypp.cpp">
+      <Filter>wrappers</Filter>
+    </ClCompile>
+    <ClCompile Include="wrappers\idexslresolver.pypp.cpp">
+      <Filter>wrappers</Filter>
+    </ClCompile>
+    <ClCompile Include="wrappers\ievent.pypp.cpp">
+      <Filter>wrappers</Filter>
+    </ClCompile>
+    <ClCompile Include="wrappers\ieventcallback.pypp.cpp">
+      <Filter>wrappers</Filter>
+    </ClCompile>
+    <ClCompile Include="wrappers\iextensionscomponent.pypp.cpp">
+      <Filter>wrappers</Filter>
+    </ClCompile>
+    <ClCompile Include="wrappers\iextensionsextension.pypp.cpp">
+      <Filter>wrappers</Filter>
+    </ClCompile>
+    <ClCompile Include="wrappers\iextensionsmodule.pypp.cpp">
+      <Filter>wrappers</Filter>
+    </ClCompile>
+    <ClCompile Include="wrappers\ihtmlcontrol.pypp.cpp">
+      <Filter>wrappers</Filter>
+    </ClCompile>
+    <ClCompile Include="wrappers\ihtmlinput.pypp.cpp">
+      <Filter>wrappers</Filter>
+    </ClCompile>
+    <ClCompile Include="wrappers\ihtmlselect.pypp.cpp">
+      <Filter>wrappers</Filter>
+    </ClCompile>
+    <ClCompile Include="wrappers\ihttpclient.pypp.cpp">
+      <Filter>wrappers</Filter>
+    </ClCompile>
+    <ClCompile Include="wrappers\ihttpdirectory.pypp.cpp">
+      <Filter>wrappers</Filter>
+    </ClCompile>
+    <ClCompile Include="wrappers\ihttpdirectoryhandler.pypp.cpp">
+      <Filter>wrappers</Filter>
+    </ClCompile>
+    <ClCompile Include="wrappers\ihttpdirectoryhandlerlist.pypp.cpp">
+      <Filter>wrappers</Filter>
+    </ClCompile>
+    <ClCompile Include="wrappers\ihttpdirectoryregexhandler.pypp.cpp">
+      <Filter>wrappers</Filter>
+    </ClCompile>
+    <ClCompile Include="wrappers\ihttpmethod.pypp.cpp">
+      <Filter>wrappers</Filter>
+    </ClCompile>
+    <ClCompile Include="wrappers\ihttpserver.pypp.cpp">
+      <Filter>wrappers</Filter>
+    </ClCompile>
+    <ClCompile Include="wrappers\iidepageable.pypp.cpp">
+      <Filter>wrappers</Filter>
+    </ClCompile>
+    <ClCompile Include="wrappers\ijob.pypp.cpp">
+      <Filter>wrappers</Filter>
+    </ClCompile>
+    <ClCompile Include="wrappers\image.pypp.cpp">
+      <Filter>wrappers</Filter>
+    </ClCompile>
+    <ClCompile Include="wrappers\imainpage.pypp.cpp">
+      <Filter>wrappers</Filter>
+    </ClCompile>
+    <ClCompile Include="wrappers\iomlcode.pypp.cpp">
+      <Filter>wrappers</Filter>
+    </ClCompile>
+    <ClCompile Include="wrappers\iomlxsl.pypp.cpp">
+      <Filter>wrappers</Filter>
+    </ClCompile>
+    <ClCompile Include="wrappers\ioptionvalidator.pypp.cpp">
+      <Filter>wrappers</Filter>
+    </ClCompile>
+    <ClCompile Include="wrappers\ipaddress.pypp.cpp">
+      <Filter>wrappers</Filter>
+    </ClCompile>
+    <ClCompile Include="wrappers\ipage.pypp.cpp">
+      <Filter>wrappers</Filter>
+    </ClCompile>
+    <ClCompile Include="wrappers\ipagehtmlcontrol.pypp.cpp">
+      <Filter>wrappers</Filter>
+    </ClCompile>
+    <ClCompile Include="wrappers\ipagehtmldiv.pypp.cpp">
+      <Filter>wrappers</Filter>
+    </ClCompile>
+    <ClCompile Include="wrappers\ipagexslrendererhtmlcontrol.pypp.cpp">
+      <Filter>wrappers</Filter>
+    </ClCompile>
+    <ClCompile Include="wrappers\iportalbackgroundjob.pypp.cpp">
+      <Filter>wrappers</Filter>
+    </ClCompile>
+    <ClCompile Include="wrappers\iportaldatabase.pypp.cpp">
+      <Filter>wrappers</Filter>
+    </ClCompile>
+    <ClCompile Include="wrappers\iportalpage.pypp.cpp">
+      <Filter>wrappers</Filter>
+    </ClCompile>
+    <ClCompile Include="wrappers\iportalpagehtmlcontrol.pypp.cpp">
+      <Filter>wrappers</Filter>
+    </ClCompile>
+    <ClCompile Include="wrappers\iportalpagehtmldiv.pypp.cpp">
+      <Filter>wrappers</Filter>
+    </ClCompile>
+    <ClCompile Include="wrappers\iportalpagexslrendererhtmlcontrol.pypp.cpp">
+      <Filter>wrappers</Filter>
+    </ClCompile>
+    <ClCompile Include="wrappers\isearchoptions.pypp.cpp">
+      <Filter>wrappers</Filter>
+    </ClCompile>
+    <ClCompile Include="wrappers\isearchresults.pypp.cpp">
+      <Filter>wrappers</Filter>
+    </ClCompile>
+    <ClCompile Include="wrappers\iserver.pypp.cpp">
+      <Filter>wrappers</Filter>
+    </ClCompile>
+    <ClCompile Include="wrappers\isisendpoint.pypp.cpp">
+      <Filter>wrappers</Filter>
+    </ClCompile>
+    <ClCompile Include="wrappers\istream.pypp.cpp">
+      <Filter>wrappers</Filter>
+    </ClCompile>
+    <ClCompile Include="wrappers\ivirtualmainpage.pypp.cpp">
+      <Filter>wrappers</Filter>
+    </ClCompile>
+    <ClCompile Include="wrappers\ixmlfunction.pypp.cpp">
+      <Filter>wrappers</Filter>
+    </ClCompile>
+    <ClCompile Include="wrappers\ixmlhandler.pypp.cpp">
+      <Filter>wrappers</Filter>
+    </ClCompile>
+    <ClCompile Include="wrappers\ixmlresolver.pypp.cpp">
+      <Filter>wrappers</Filter>
+    </ClCompile>
+    <ClCompile Include="wrappers\ixmlserializable.pypp.cpp">
+      <Filter>wrappers</Filter>
+    </ClCompile>
+    <ClCompile Include="wrappers\languageculture.pypp.cpp">
+      <Filter>wrappers</Filter>
+    </ClCompile>
+    <ClCompile Include="wrappers\languagefolder.pypp.cpp">
+      <Filter>wrappers</Filter>
+    </ClCompile>
+    <ClCompile Include="wrappers\languagefolderlist.pypp.cpp">
+      <Filter>wrappers</Filter>
+    </ClCompile>
+    <ClCompile Include="wrappers\languagefolderlistener.pypp.cpp">
+      <Filter>wrappers</Filter>
+    </ClCompile>
+    <ClCompile Include="wrappers\languagemanager.pypp.cpp">
+      <Filter>wrappers</Filter>
+    </ClCompile>
+    <ClCompile Include="wrappers\languagemanagersingleton.pypp.cpp">
+      <Filter>wrappers</Filter>
+    </ClCompile>
+    <ClCompile Include="wrappers\languageresult.pypp.cpp">
+      <Filter>wrappers</Filter>
+    </ClCompile>
+    <ClCompile Include="wrappers\languagevocabolary.pypp.cpp">
+      <Filter>wrappers</Filter>
+    </ClCompile>
+    <ClCompile Include="wrappers\logmanager.pypp.cpp">
+      <Filter>wrappers</Filter>
+    </ClCompile>
+    <ClCompile Include="wrappers\logmanagersingleton.pypp.cpp">
+      <Filter>wrappers</Filter>
+    </ClCompile>
+    <ClCompile Include="wrappers\mainaddonsjob.pypp.cpp">
+      <Filter>wrappers</Filter>
+    </ClCompile>
+    <ClCompile Include="wrappers\networksystem.pypp.cpp">
+      <Filter>wrappers</Filter>
+    </ClCompile>
+    <ClCompile Include="wrappers\networksystemsingleton.pypp.cpp">
+      <Filter>wrappers</Filter>
+    </ClCompile>
+    <ClCompile Include="wrappers\omlanchor.pypp.cpp">
+      <Filter>wrappers</Filter>
+    </ClCompile>
+    <ClCompile Include="wrappers\omlcode.pypp.cpp">
+      <Filter>wrappers</Filter>
+    </ClCompile>
+    <ClCompile Include="wrappers\omlcontext.pypp.cpp">
+      <Filter>wrappers</Filter>
+    </ClCompile>
+    <ClCompile Include="wrappers\omldate.pypp.cpp">
+      <Filter>wrappers</Filter>
+    </ClCompile>
+    <ClCompile Include="wrappers\omldebug.pypp.cpp">
+      <Filter>wrappers</Filter>
+    </ClCompile>
+    <ClCompile Include="wrappers\omlemail.pypp.cpp">
+      <Filter>wrappers</Filter>
+    </ClCompile>
+    <ClCompile Include="wrappers\omlemoticon.pypp.cpp">
+      <Filter>wrappers</Filter>
+    </ClCompile>
+    <ClCompile Include="wrappers\omlemoticonlist.pypp.cpp">
+      <Filter>wrappers</Filter>
+    </ClCompile>
+    <ClCompile Include="wrappers\omlgoto.pypp.cpp">
+      <Filter>wrappers</Filter>
+    </ClCompile>
+    <ClCompile Include="wrappers\omlhtml.pypp.cpp">
+      <Filter>wrappers</Filter>
+    </ClCompile>
+    <ClCompile Include="wrappers\omlitem.pypp.cpp">
+      <Filter>wrappers</Filter>
+    </ClCompile>
+    <ClCompile Include="wrappers\omlitemlist.pypp.cpp">
+      <Filter>wrappers</Filter>
+    </ClCompile>
+    <ClCompile Include="wrappers\omllang.pypp.cpp">
+      <Filter>wrappers</Filter>
+    </ClCompile>
+    <ClCompile Include="wrappers\omlless.pypp.cpp">
+      <Filter>wrappers</Filter>
+    </ClCompile>
+    <ClCompile Include="wrappers\omllist.pypp.cpp">
+      <Filter>wrappers</Filter>
+    </ClCompile>
+    <ClCompile Include="wrappers\omlmanager.pypp.cpp">
+      <Filter>wrappers</Filter>
+    </ClCompile>
+    <ClCompile Include="wrappers\omlmanagersingleton.pypp.cpp">
+      <Filter>wrappers</Filter>
+    </ClCompile>
+    <ClCompile Include="wrappers\omlmore.pypp.cpp">
+      <Filter>wrappers</Filter>
+    </ClCompile>
+    <ClCompile Include="wrappers\omlnobr.pypp.cpp">
+      <Filter>wrappers</Filter>
+    </ClCompile>
+    <ClCompile Include="wrappers\omlnoparse.pypp.cpp">
+      <Filter>wrappers</Filter>
+    </ClCompile>
+    <ClCompile Include="wrappers\omlobject.pypp.cpp">
+      <Filter>wrappers</Filter>
+    </ClCompile>
+    <ClCompile Include="wrappers\omlpopup.pypp.cpp">
+      <Filter>wrappers</Filter>
+    </ClCompile>
+    <ClCompile Include="wrappers\omlquote.pypp.cpp">
+      <Filter>wrappers</Filter>
+    </ClCompile>
+    <ClCompile Include="wrappers\omlreplace.pypp.cpp">
+      <Filter>wrappers</Filter>
+    </ClCompile>
+    <ClCompile Include="wrappers\omlsize.pypp.cpp">
+      <Filter>wrappers</Filter>
+    </ClCompile>
+    <ClCompile Include="wrappers\omlsystem.pypp.cpp">
+      <Filter>wrappers</Filter>
+    </ClCompile>
+    <ClCompile Include="wrappers\omltab.pypp.cpp">
+      <Filter>wrappers</Filter>
+    </ClCompile>
+    <ClCompile Include="wrappers\omltext.pypp.cpp">
+      <Filter>wrappers</Filter>
+    </ClCompile>
+    <ClCompile Include="wrappers\omlurl.pypp.cpp">
+      <Filter>wrappers</Filter>
+    </ClCompile>
+    <ClCompile Include="wrappers\omluser.pypp.cpp">
+      <Filter>wrappers</Filter>
+    </ClCompile>
+    <ClCompile Include="wrappers\omlview.pypp.cpp">
+      <Filter>wrappers</Filter>
+    </ClCompile>
+    <ClCompile Include="wrappers\options.pypp.cpp">
+      <Filter>wrappers</Filter>
+    </ClCompile>
+    <ClCompile Include="wrappers\optionssingleton.pypp.cpp">
+      <Filter>wrappers</Filter>
+    </ClCompile>
+    <ClCompile Include="wrappers\osirislib.main.cpp">
+      <Filter>wrappers</Filter>
+    </ClCompile>
+    <ClCompile Include="wrappers\osirislib_enumerations.pypp.cpp">
+      <Filter>wrappers</Filter>
+    </ClCompile>
+    <ClCompile Include="wrappers\portal.pypp.cpp">
+      <Filter>wrappers</Filter>
+    </ClCompile>
+    <ClCompile Include="wrappers\portallist.pypp.cpp">
+      <Filter>wrappers</Filter>
+    </ClCompile>
+    <ClCompile Include="wrappers\portaloptions.pypp.cpp">
+      <Filter>wrappers</Filter>
+    </ClCompile>
+    <ClCompile Include="wrappers\portalsimporterjob.pypp.cpp">
+      <Filter>wrappers</Filter>
+    </ClCompile>
+    <ClCompile Include="wrappers\portalsoptionsshared.pypp.cpp">
+      <Filter>wrappers</Filter>
+    </ClCompile>
+    <ClCompile Include="wrappers\portalspeer.pypp.cpp">
+      <Filter>wrappers</Filter>
+    </ClCompile>
+    <ClCompile Include="wrappers\portalspeerlist.pypp.cpp">
+      <Filter>wrappers</Filter>
+    </ClCompile>
+    <ClCompile Include="wrappers\portalspeersmanager.pypp.cpp">
+      <Filter>wrappers</Filter>
+    </ClCompile>
+    <ClCompile Include="wrappers\portalsstabilityjob.pypp.cpp">
+      <Filter>wrappers</Filter>
+    </ClCompile>
+    <ClCompile Include="wrappers\portalssystem.pypp.cpp">
+      <Filter>wrappers</Filter>
+    </ClCompile>
+    <ClCompile Include="wrappers\portalssystemsingleton.pypp.cpp">
+      <Filter>wrappers</Filter>
+    </ClCompile>
+    <ClCompile Include="wrappers\regexmanager.pypp.cpp">
+      <Filter>wrappers</Filter>
+    </ClCompile>
+    <ClCompile Include="wrappers\regexmanagersingleton.pypp.cpp">
+      <Filter>wrappers</Filter>
+    </ClCompile>
+    <ClCompile Include="wrappers\reputationsmanager.pypp.cpp">
+      <Filter>wrappers</Filter>
+    </ClCompile>
+    <ClCompile Include="wrappers\reputationsscore.pypp.cpp">
+      <Filter>wrappers</Filter>
+    </ClCompile>
+    <ClCompile Include="wrappers\searchattachmentoptions.pypp.cpp">
+      <Filter>wrappers</Filter>
+    </ClCompile>
+    <ClCompile Include="wrappers\searchcalendareventoptions.pypp.cpp">
+      <Filter>wrappers</Filter>
+    </ClCompile>
+    <ClCompile Include="wrappers\searchfileoptions.pypp.cpp">
+      <Filter>wrappers</Filter>
+    </ClCompile>
+    <ClCompile Include="wrappers\searchinstanceoptions.pypp.cpp">
+      <Filter>wrappers</Filter>
+    </ClCompile>
+    <ClCompile Include="wrappers\searchmodeloptions.pypp.cpp">
+      <Filter>wrappers</Filter>
+    </ClCompile>
+    <ClCompile Include="wrappers\searchpolloptionoptions.pypp.cpp">
+      <Filter>wrappers</Filter>
+    </ClCompile>
+    <ClCompile Include="wrappers\searchpolloptions.pypp.cpp">
+      <Filter>wrappers</Filter>
+    </ClCompile>
+    <ClCompile Include="wrappers\searchpostoptions.pypp.cpp">
+      <Filter>wrappers</Filter>
+    </ClCompile>
+    <ClCompile Include="wrappers\searchquery.pypp.cpp">
+      <Filter>wrappers</Filter>
+    </ClCompile>
+    <ClCompile Include="wrappers\searchqueryoptions.pypp.cpp">
+      <Filter>wrappers</Filter>
+    </ClCompile>
+    <ClCompile Include="wrappers\searchresult.pypp.cpp">
+      <Filter>wrappers</Filter>
+    </ClCompile>
+    <ClCompile Include="wrappers\searchresultsdatabase.pypp.cpp">
+      <Filter>wrappers</Filter>
+    </ClCompile>
+    <ClCompile Include="wrappers\searchresultslucene.pypp.cpp">
+      <Filter>wrappers</Filter>
+    </ClCompile>
+    <ClCompile Include="wrappers\searchsectionoptions.pypp.cpp">
+      <Filter>wrappers</Filter>
+    </ClCompile>
+    <ClCompile Include="wrappers\searchtagoptions.pypp.cpp">
+      <Filter>wrappers</Filter>
+    </ClCompile>
+    <ClCompile Include="wrappers\searchtextoptions.pypp.cpp">
+      <Filter>wrappers</Filter>
+    </ClCompile>
+    <ClCompile Include="wrappers\stringlist.pypp.cpp">
+      <Filter>wrappers</Filter>
+    </ClCompile>
+    <ClCompile Include="wrappers\stringmap.pypp.cpp">
+      <Filter>wrappers</Filter>
+    </ClCompile>
+    <ClCompile Include="wrappers\stringvector.pypp.cpp">
+      <Filter>wrappers</Filter>
+    </ClCompile>
+    <ClCompile Include="wrappers\textfile.pypp.cpp">
+      <Filter>wrappers</Filter>
+    </ClCompile>
+    <ClCompile Include="wrappers\thirdpartylibrariesreporter.pypp.cpp">
+      <Filter>wrappers</Filter>
+    </ClCompile>
+    <ClCompile Include="wrappers\thirdpartylibrariesreportersingleton.pypp.cpp">
+      <Filter>wrappers</Filter>
+    </ClCompile>
+    <ClCompile Include="wrappers\thirdpartylibrary.pypp.cpp">
+      <Filter>wrappers</Filter>
+    </ClCompile>
+    <ClCompile Include="wrappers\uniqueid.pypp.cpp">
+      <Filter>wrappers</Filter>
+    </ClCompile>
+    <ClCompile Include="wrappers\version.pypp.cpp">
+      <Filter>wrappers</Filter>
+    </ClCompile>
+    <ClCompile Include="wrappers\xmlattribute.pypp.cpp">
+      <Filter>wrappers</Filter>
+    </ClCompile>
+    <ClCompile Include="wrappers\xmlattributes.pypp.cpp">
+      <Filter>wrappers</Filter>
+    </ClCompile>
+    <ClCompile Include="wrappers\xmldocument.pypp.cpp">
+      <Filter>wrappers</Filter>
+    </ClCompile>
+    <ClCompile Include="wrappers\xmlmanager.pypp.cpp">
+      <Filter>wrappers</Filter>
+    </ClCompile>
+    <ClCompile Include="wrappers\xmlmanagersingleton.pypp.cpp">
+      <Filter>wrappers</Filter>
+    </ClCompile>
+    <ClCompile Include="wrappers\xmlnode.pypp.cpp">
+      <Filter>wrappers</Filter>
+    </ClCompile>
+    <ClCompile Include="wrappers\xmlnodes.pypp.cpp">
+      <Filter>wrappers</Filter>
+    </ClCompile>
+    <ClCompile Include="wrappers\xmlschema.pypp.cpp">
+      <Filter>wrappers</Filter>
+    </ClCompile>
+    <ClCompile Include="wrappers\xmlstylesheet.pypp.cpp">
+      <Filter>wrappers</Filter>
+    </ClCompile>
+    <ClCompile Include="wrappers\xmlwriter.pypp.cpp">
+      <Filter>wrappers</Filter>
+    </ClCompile>
+    <ClCompile Include="wrappers\idbdriver.pypp.cpp">
+      <Filter>wrappers</Filter>
+    </ClCompile>
+    <ClCompile Include="wrappers\omla.pypp.cpp">
+      <Filter>wrappers</Filter>
+    </ClCompile>
+    <ClCompile Include="wrappers\omlhtmlwrapper.pypp.cpp">
+      <Filter>wrappers</Filter>
+    </ClCompile>
+    <ClCompile Include="wrappers\omlimg.pypp.cpp">
+      <Filter>wrappers</Filter>
+    </ClCompile>
+    <ClCompile Include="wrappers\ideaccount.pypp.cpp">
+      <Filter>wrappers</Filter>
+    </ClCompile>
+    <ClCompile Include="wrappers\ideaccountsmanager.pypp.cpp">
+      <Filter>wrappers</Filter>
+    </ClCompile>
+    <ClCompile Include="wrappers\idesession.pypp.cpp">
+      <Filter>wrappers</Filter>
+    </ClCompile>
+    <ClCompile Include="wrappers\ideaccountslist.pypp.cpp">
+      <Filter>wrappers</Filter>
+    </ClCompile>
+    <ClCompile Include="wrappers\dataaccount.pypp.cpp">
+      <Filter>wrappers</Filter>
+    </ClCompile>
+    <ClCompile Include="wrappers\idesessionportal.pypp.cpp">
+      <Filter>wrappers</Filter>
+    </ClCompile>
+    <ClCompile Include="wrappers\portalstransaction.pypp.cpp">
+      <Filter>wrappers</Filter>
+    </ClCompile>
+    <ClCompile Include="wrappers\cachesystem.pypp.cpp">
+      <Filter>wrappers</Filter>
+    </ClCompile>
+    <ClCompile Include="wrappers\ideaccountsmanagersingleton.pypp.cpp">
+      <Filter>wrappers</Filter>
+    </ClCompile>
+    <ClCompile Include="wrappers\isissystem.pypp.cpp">
+      <Filter>wrappers</Filter>
+    </ClCompile>
+    <ClCompile Include="wrappers\cachesystemsingleton.pypp.cpp">
+      <Filter>wrappers</Filter>
+    </ClCompile>
+    <ClCompile Include="wrappers\isissystemsingleton.pypp.cpp">
+      <Filter>wrappers</Filter>
+    </ClCompile>
+    <ClCompile Include="wrappers\omlif.pypp.cpp">
+      <Filter>wrappers</Filter>
+    </ClCompile>
+    <ClCompile Include="wrappers\timeduration.pypp.cpp">
+      <Filter>wrappers</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="wrappers\exposed_decl.pypp.txt">
+      <Filter>wrappers</Filter>
+    </None>
+    <None Include="wrappers\extensionscomponentcontrol.pypp.cpp~">
+      <Filter>wrappers</Filter>
+    </None>
+    <None Include="wrappers\extensionsmodulecontrol.pypp.cpp~">
+      <Filter>wrappers</Filter>
+    </None>
+    <None Include="wrappers\extensionsmoduleviewer.pypp.cpp~">
+      <Filter>wrappers</Filter>
+    </None>
+    <None Include="wrappers\extensionssystem.pypp.cpp~">
+      <Filter>wrappers</Filter>
+    </None>
+    <None Include="wrappers\htmldiv.pypp.cpp.mine">
+      <Filter>wrappers</Filter>
+    </None>
+    <None Include="wrappers\htmldiv.pypp.cpp.r70">
+      <Filter>wrappers</Filter>
+    </None>
+    <None Include="wrappers\htmldiv.pypp.cpp.r75">
+      <Filter>wrappers</Filter>
+    </None>
+    <None Include="wrappers\htmldiv.pypp.cpp~">
+      <Filter>wrappers</Filter>
+    </None>
+    <None Include="wrappers\htmlpage.pypp.cpp~">
+      <Filter>wrappers</Filter>
+    </None>
+    <None Include="wrappers\ibackgroundjob.pypp.cpp.mine">
+      <Filter>wrappers</Filter>
+    </None>
+    <None Include="wrappers\ibackgroundjob.pypp.cpp.r75">
+      <Filter>wrappers</Filter>
+    </None>
+    <None Include="wrappers\ibackgroundjob.pypp.cpp.r76">
+      <Filter>wrappers</Filter>
+    </None>
+    <None Include="wrappers\id.pypp.cpp.mine">
+      <Filter>wrappers</Filter>
+    </None>
+    <None Include="wrappers\id.pypp.cpp.r75">
+      <Filter>wrappers</Filter>
+    </None>
+    <None Include="wrappers\id.pypp.cpp.r76">
+      <Filter>wrappers</Filter>
+    </None>
+    <None Include="wrappers\id.pypp.cpp~">
+      <Filter>wrappers</Filter>
+    </None>
+    <None Include="wrappers\idepickernumber.pypp.cpp~">
+      <Filter>wrappers</Filter>
+    </None>
+    <None Include="wrappers\idepickerskin.pypp.cpp~">
+      <Filter>wrappers</Filter>
+    </None>
+    <None Include="wrappers\iextensionscomponent.pypp.cpp.mine">
+      <Filter>wrappers</Filter>
+    </None>
+    <None Include="wrappers\iextensionscomponent.pypp.cpp.r201">
+      <Filter>wrappers</Filter>
+    </None>
+    <None Include="wrappers\iextensionscomponent.pypp.cpp.r206">
+      <Filter>wrappers</Filter>
+    </None>
+    <None Include="wrappers\ihtmlcontrol.pypp.cpp.mine">
+      <Filter>wrappers</Filter>
+    </None>
+    <None Include="wrappers\ihtmlcontrol.pypp.cpp.r70">
+      <Filter>wrappers</Filter>
+    </None>
+    <None Include="wrappers\ihtmlcontrol.pypp.cpp.r75">
+      <Filter>wrappers</Filter>
+    </None>
+    <None Include="wrappers\ihtmlcontrol.pypp.cpp~">
+      <Filter>wrappers</Filter>
+    </None>
+    <None Include="wrappers\ihtmlinput.pypp.cpp.mine">
+      <Filter>wrappers</Filter>
+    </None>
+    <None Include="wrappers\ihtmlinput.pypp.cpp.r156">
+      <Filter>wrappers</Filter>
+    </None>
+    <None Include="wrappers\ihtmlinput.pypp.cpp.r189">
+      <Filter>wrappers</Filter>
+    </None>
+    <None Include="wrappers\ihtmlinput.pypp.cpp~">
+      <Filter>wrappers</Filter>
+    </None>
+    <None Include="wrappers\ihtmlselect.pypp.cpp~">
+      <Filter>wrappers</Filter>
+    </None>
+    <None Include="wrappers\ihttpdirectory.pypp.cpp.mine">
+      <Filter>wrappers</Filter>
+    </None>
+    <None Include="wrappers\ihttpdirectory.pypp.cpp.r86">
+      <Filter>wrappers</Filter>
+    </None>
+    <None Include="wrappers\ihttpdirectory.pypp.cpp.r137">
+      <Filter>wrappers</Filter>
+    </None>
+    <None Include="wrappers\ihttpdirectory.pypp.cpp~">
+      <Filter>wrappers</Filter>
+    </None>
+    <None Include="wrappers\ihttpmethod.pypp.cpp~">
+      <Filter>wrappers</Filter>
+    </None>
+    <None Include="wrappers\ijob.pypp.cpp.mine">
+      <Filter>wrappers</Filter>
+    </None>
+    <None Include="wrappers\ijob.pypp.cpp.r75">
+      <Filter>wrappers</Filter>
+    </None>
+    <None Include="wrappers\ijob.pypp.cpp.r76">
+      <Filter>wrappers</Filter>
+    </None>
+    <None Include="wrappers\iomlcode.pypp.cpp.mine">
+      <Filter>wrappers</Filter>
+    </None>
+    <None Include="wrappers\iomlcode.pypp.cpp.r70">
+      <Filter>wrappers</Filter>
+    </None>
+    <None Include="wrappers\iomlcode.pypp.cpp.r75">
+      <Filter>wrappers</Filter>
+    </None>
+    <None Include="wrappers\iomlcode.pypp.cpp~">
+      <Filter>wrappers</Filter>
+    </None>
+    <None Include="wrappers\ipage.pypp.cpp~">
+      <Filter>wrappers</Filter>
+    </None>
+    <None Include="wrappers\ipagehtmlcontrol.pypp.cpp.mine">
+      <Filter>wrappers</Filter>
+    </None>
+    <None Include="wrappers\ipagehtmlcontrol.pypp.cpp.r70">
+      <Filter>wrappers</Filter>
+    </None>
+    <None Include="wrappers\ipagehtmlcontrol.pypp.cpp.r75">
+      <Filter>wrappers</Filter>
+    </None>
+    <None Include="wrappers\ipagehtmlcontrol.pypp.cpp~">
+      <Filter>wrappers</Filter>
+    </None>
+    <None Include="wrappers\ipagehtmldiv.pypp.cpp.mine">
+      <Filter>wrappers</Filter>
+    </None>
+    <None Include="wrappers\ipagehtmldiv.pypp.cpp.r70">
+      <Filter>wrappers</Filter>
+    </None>
+    <None Include="wrappers\ipagehtmldiv.pypp.cpp.r75">
+      <Filter>wrappers</Filter>
+    </None>
+    <None Include="wrappers\ipagehtmldiv.pypp.cpp~">
+      <Filter>wrappers</Filter>
+    </None>
+    <None Include="wrappers\ipagexslrendererhtmlcontrol.pypp.cpp.mine">
+      <Filter>wrappers</Filter>
+    </None>
+    <None Include="wrappers\ipagexslrendererhtmlcontrol.pypp.cpp.r75">
+      <Filter>wrappers</Filter>
+    </None>
+    <None Include="wrappers\ipagexslrendererhtmlcontrol.pypp.cpp.r76">
+      <Filter>wrappers</Filter>
+    </None>
+    <None Include="wrappers\ipagexslrendererhtmlcontrol.pypp.cpp~">
+      <Filter>wrappers</Filter>
+    </None>
+    <None Include="wrappers\iportalbackgroundjob.pypp.cpp.mine">
+      <Filter>wrappers</Filter>
+    </None>
+    <None Include="wrappers\iportalbackgroundjob.pypp.cpp.r75">
+      <Filter>wrappers</Filter>
+    </None>
+    <None Include="wrappers\iportalbackgroundjob.pypp.cpp.r76">
+      <Filter>wrappers</Filter>
+    </None>
+    <None Include="wrappers\iportalpagehtmlcontrol.pypp.cpp.mine">
+      <Filter>wrappers</Filter>
+    </None>
+    <None Include="wrappers\iportalpagehtmlcontrol.pypp.cpp.r70">
+      <Filter>wrappers</Filter>
+    </None>
+    <None Include="wrappers\iportalpagehtmlcontrol.pypp.cpp.r75">
+      <Filter>wrappers</Filter>
+    </None>
+    <None Include="wrappers\iportalpagehtmlcontrol.pypp.cpp~">
+      <Filter>wrappers</Filter>
+    </None>
+    <None Include="wrappers\iportalpagehtmldiv.pypp.cpp.mine">
+      <Filter>wrappers</Filter>
+    </None>
+    <None Include="wrappers\iportalpagehtmldiv.pypp.cpp.r70">
+      <Filter>wrappers</Filter>
+    </None>
+    <None Include="wrappers\iportalpagehtmldiv.pypp.cpp.r75">
+      <Filter>wrappers</Filter>
+    </None>
+    <None Include="wrappers\iportalpagehtmldiv.pypp.cpp~">
+      <Filter>wrappers</Filter>
+    </None>
+    <None Include="wrappers\iportalpagexslrendererhtmlcontrol.pypp.cpp.mine">
+      <Filter>wrappers</Filter>
+    </None>
+    <None Include="wrappers\iportalpagexslrendererhtmlcontrol.pypp.cpp.r70">
+      <Filter>wrappers</Filter>
+    </None>
+    <None Include="wrappers\iportalpagexslrendererhtmlcontrol.pypp.cpp.r75">
+      <Filter>wrappers</Filter>
+    </None>
+    <None Include="wrappers\iportalpagexslrendererhtmlcontrol.pypp.cpp~">
+      <Filter>wrappers</Filter>
+    </None>
+    <None Include="wrappers\isearchoptions.pypp.cpp.mine">
+      <Filter>wrappers</Filter>
+    </None>
+    <None Include="wrappers\isearchoptions.pypp.cpp.r70">
+      <Filter>wrappers</Filter>
+    </None>
+    <None Include="wrappers\isearchoptions.pypp.cpp.r75">
+      <Filter>wrappers</Filter>
+    </None>
+    <None Include="wrappers\isearchoptions.pypp.cpp~">
+      <Filter>wrappers</Filter>
+    </None>
+    <None Include="wrappers\isearchresults.pypp.cpp~">
+      <Filter>wrappers</Filter>
+    </None>
+    <None Include="wrappers\languageculture.pypp.cpp~">
+      <Filter>wrappers</Filter>
+    </None>
+    <None Include="wrappers\languagemanager.pypp.cpp~">
+      <Filter>wrappers</Filter>
+    </None>
+    <None Include="wrappers\named_tuple.py">
+      <Filter>wrappers</Filter>
+    </None>
+    <None Include="wrappers\options.pypp.cpp.mine">
+      <Filter>wrappers</Filter>
+    </None>
+    <None Include="wrappers\options.pypp.cpp.r70">
+      <Filter>wrappers</Filter>
+    </None>
+    <None Include="wrappers\options.pypp.cpp.r75">
+      <Filter>wrappers</Filter>
+    </None>
+    <None Include="wrappers\osirislib.main.cpp~">
+      <Filter>wrappers</Filter>
+    </None>
+    <None Include="wrappers\portal.pypp.cpp.mine">
+      <Filter>wrappers</Filter>
+    </None>
+    <None Include="wrappers\portal.pypp.cpp.r156">
+      <Filter>wrappers</Filter>
+    </None>
+    <None Include="wrappers\portal.pypp.cpp.r189">
+      <Filter>wrappers</Filter>
+    </None>
+    <None Include="wrappers\portal.pypp.cpp~">
+      <Filter>wrappers</Filter>
+    </None>
+    <None Include="wrappers\portaloptions.pypp.cpp~">
+      <Filter>wrappers</Filter>
+    </None>
+    <None Include="wrappers\portalssystem.pypp.cpp.mine">
+      <Filter>wrappers</Filter>
+    </None>
+    <None Include="wrappers\portalssystem.pypp.cpp.r86">
+      <Filter>wrappers</Filter>
+    </None>
+    <None Include="wrappers\portalssystem.pypp.cpp.r137">
+      <Filter>wrappers</Filter>
+    </None>
+    <None Include="wrappers\portalssystem.pypp.cpp~">
+      <Filter>wrappers</Filter>
+    </None>
+    <None Include="wrappers\regexmanager.pypp.cpp~">
+      <Filter>wrappers</Filter>
+    </None>
+    <None Include="wrappers\wrappers.xml">
+      <Filter>wrappers</Filter>
+    </None>
+  </ItemGroup>
+</Project>
