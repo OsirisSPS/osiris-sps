@@ -214,6 +214,10 @@
             <xsl:value-of select="lang:text('main.pages.home.actions.create')"/>
           </a>
         </xsl:if>
+        <a class="os_button" href="{actions/action[@name='import']/@href}" data-os-tooltip="{lang:text('main.pages.import.description')}">
+          <img src="{system:resource-url('images/icons/16x16/import.png')}" />
+          <xsl:value-of select="lang:text('main.pages.home.actions.import')"/>
+        </a>
         <a class="os_button" href="{actions/action[@name='subscribe']/@href}" data-os-tooltip="{lang:text('main.pages.subscribe.description')}">
         	<img src="{system:resource-url('images/icons/16x16/subscribe.png')}" />
           <xsl:value-of select="lang:text('main.pages.home.actions.subscribe')"/>

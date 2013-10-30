@@ -1,0 +1,179 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="iirccommand.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="iirctarget.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ircchannel.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="irccommandchannel.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="irccommandendofnames.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="irccommandjoin.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="irccommandkick.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="irccommandmessage.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="irccommandmode.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="irccommandnames.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="irccommandnick.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="irccommandpart.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="irccommandping.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="irccommandpong.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="irccommandquit.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="irccommandraw.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="irccommandservermessage.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="irccommandserverresponse.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="irccommandtopic.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ircconnection.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ircparser.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ircroom.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ircservice.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ircsession.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ircuser.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="stdafx.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="iirccommand.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="iirctarget.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="irc.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ircchannel.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="irccommandchannel.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="irccommandendofnames.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="irccommandjoin.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="irccommandkick.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="irccommandmessage.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="irccommandmode.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="irccommandnames.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="irccommandnick.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="irccommandpart.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="irccommandping.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="irccommandpong.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="irccommandquit.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="irccommandraw.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="irccommandservermessage.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="irccommandserverresponse.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="irccommandtopic.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ircconfig.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ircconnection.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ircparser.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ircroom.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ircservice.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ircsession.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ircuser.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="stdafx.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

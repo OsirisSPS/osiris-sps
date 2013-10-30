@@ -1,0 +1,311 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="htmlattribute.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="htmlattributes.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="htmlbr.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="htmlbutton.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="htmlcheckbox.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="htmlcombobox.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="htmlcontrols.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="htmldiv.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="htmlevent.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="htmlfilebrowser.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="htmlimage.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="htmllink.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="htmllinkbutton.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="htmllinktag.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="htmllistbox.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="htmlliteral.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="htmlmetatag.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="htmloption.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="htmloptiongroup.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="htmlpage.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="htmlpager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="htmlpanel.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="htmlparagraph.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="htmlparser.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="htmlpopup.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="htmlroller.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="htmlscript.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="htmlspace.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="htmlspan.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="htmltab.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="htmltabctrl.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="htmltable.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="htmltablecell.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="htmltableheader.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="htmltablerow.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="htmltabpage.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="htmltext.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="htmltextarea.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="htmltextbox.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="htmltooltip.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="htmlunit.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="htmlwriter.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="htmlxslcontrol.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ihtmlcontrol.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ihtmlinput.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ihtmlselect.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="stdafx.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="web.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="css.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="htmlattribute.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="htmlattributes.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="htmlbr.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="htmlbutton.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="htmlcheckbox.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="htmlcombobox.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="htmlcontrols.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="htmldiv.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="htmlevent.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="htmlfilebrowser.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="htmlimage.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="htmllink.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="htmllinkbutton.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="htmllinktag.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="htmllistbox.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="htmlliteral.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="htmlmetatag.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="htmloption.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="htmloptiongroup.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="htmlpage.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="htmlpager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="htmlpanel.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="htmlparagraph.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="htmlparser.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="htmlpopup.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="htmlroller.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="htmlscript.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="htmlspace.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="htmlspan.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="htmltab.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="htmltabctrl.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="htmltable.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="htmltablecell.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="htmltableheader.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="htmltablerow.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="htmltabpage.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="htmltext.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="htmltextarea.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="htmltextbox.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="htmltooltip.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="htmlunit.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="htmlvirtualpage.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="htmlwriter.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="htmlxslcontrol.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ihtmlcontrol.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ihtmlinput.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ihtmlselect.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="stdafx.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="webconfig.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

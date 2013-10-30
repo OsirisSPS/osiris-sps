@@ -271,7 +271,10 @@ var Osiris =
 	    if(effect == null)
 	        effect = "none";
 	        
-	    Osiris.notify("warning", url);    
+	    src.waitStyle = wait;
+	    
+	    //alert('warning, ' + url);    
+	    //Osiris.notify("warning", url);    
 	    
 	    if(wait == "progress")
 	    {
@@ -285,6 +288,7 @@ var Osiris =
 	    }
 	    else if(wait == "notify")
     	{
+    		// TOCLEAN alert('wait, ' + url);
     		Osiris.notify("wait");
     	}
 	    
@@ -293,7 +297,10 @@ var Osiris =
 	     url: fullUrl,
 	     success: function(response) 
 	     {
-	     		Osiris.notify("clean");
+	     		// TOCLEAN alert('clean, ' + url);
+	     		// TOCLEAN alert(src.waitStyle);
+	     		if(src.waitStyle != "none")
+	     			Osiris.notify("clean");
 	     		
 	        if(src.onAjaxSuccess)
 	            src.onAjaxSuccess();
@@ -352,6 +359,7 @@ var Osiris =
 	     {
 	        var msg = "Ajax error, status = " + xhr.status + " - url = " + url;
 	        
+	        // TOCLEAN alert('error, ' + url);
 	        Osiris.notify("warning",msg);
 	     }
 	    });  

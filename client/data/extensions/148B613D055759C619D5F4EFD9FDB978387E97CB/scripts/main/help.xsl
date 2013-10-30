@@ -40,7 +40,7 @@
         <br/>
         <xsl:value-of select="@version"/>
         <p>
-          <a class="os_button" title="{lang:text('systembar.actions.help.about')}" href="javascript:void(0);" onclick="Osiris.loadUrl('/main/about?mode=dialog&amp;filter=general')">
+          <a class="os_button" title="{lang:text('systembar.actions.help.about')}" href="{@href_about}">
             <xsl:value-of select="lang:text('systembar.actions.help.about')"/>
           </a>
           <xsl:call-template name="separator" />

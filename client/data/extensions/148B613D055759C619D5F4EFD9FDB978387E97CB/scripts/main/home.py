@@ -76,9 +76,9 @@ class Page(osiris.IMainPage):
 			actionCreatePortal.attributes.set("name", "create")
 			actionCreatePortal.attributes.set("href", osiris.PortalsSystem.instance().getMainLink("create"))		
 		
-		actionNetwork = nodeActions.nodes.add("action")
-		actionNetwork.attributes.set("name", "network")
-		actionNetwork.attributes.set("href", osiris.PortalsSystem.instance().getMainLink("network"))		
+		#actionNetwork = nodeActions.nodes.add("action")
+		#actionNetwork.attributes.set("name", "network")
+		#actionNetwork.attributes.set("href", osiris.PortalsSystem.instance().getMainLink("network"))		
 		
 		actionIsis = nodeActions.nodes.add("action")
 		actionIsis.attributes.set("name", "isis")

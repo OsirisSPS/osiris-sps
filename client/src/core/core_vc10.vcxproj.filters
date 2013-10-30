@@ -1,0 +1,584 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Source Files\base">
+      <UniqueIdentifier>{3461adbc-ee2d-4184-9fab-6a7287475a38}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Header Files\base">
+      <UniqueIdentifier>{8665960e-4d9d-47d6-8e39-df7b49f9a923}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="algorithms.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="boost.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="buffer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="collections.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="condition.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="constants.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="conversions.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="core.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="cryptkey.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="cryptkeyagreement.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="cryptmanager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="dataitem.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="datatable.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="datatree.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="datetime.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="dynlib.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="eventcallback.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="eventsource.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="file.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="filelogger.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="filesystem.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="fixedallocator.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="hash.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="iculayer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ievent.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ieventcallback.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ijob.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="image.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ioptionvalidator.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="irunnable.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="istream.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="istreamlayer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="jobspool.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="log.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="logger.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="logmanager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="logmessage.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="memfile.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="memorytracker.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="mimemanager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="multilock.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ned.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="option.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="path.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="platformmanager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="platformwin.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="randomnumbergenerator.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="realtimestats.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="regex.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="regexmanager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="schedulablethread.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="stdafx.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="streamfilter.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="streamlayergzip.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="streamlayerzlib.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="stringutf16.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="taskthread.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="temporaryfile.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="textfile.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="thirdpartylibrariesreporter.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="thirdpartylibrary.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="thread.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="timerperformance.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="uniqueid.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="utils.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="version.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="workerthread.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="base\exception.cpp">
+      <Filter>Source Files\base</Filter>
+    </ClCompile>
+    <ClCompile Include="base\object.cpp">
+      <Filter>Source Files\base</Filter>
+    </ClCompile>
+    <ClCompile Include="base\string.cpp">
+      <Filter>Source Files\base</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="algorithms.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="allocators.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="allocwrapper.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="basicallocator.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="boost.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="boostregex.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="boostthread.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="buffer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="buildoptions.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="charset.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="collections.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="condition.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="constants.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="conversions.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="coreconfig.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="crypt.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="cryptkey.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="cryptkeyagreement.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="cryptmanager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="crypto++.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="dataitem.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="datatable.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="datatree.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="datetime.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="dynlib.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="enable_this_ptr.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="enable_this_ptr_support.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="environment.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="eventcallback.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="eventsource.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="eventssource.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="file.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="filelogger.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="filesystem.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="fixedallocator.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="format.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="growablecache.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="hash.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="icache.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="iculayer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ievent.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ieventcallback.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ijob.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="iloghandler.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="image.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="io.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ioptionvalidator.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="irunnable.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="istream.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="istreamlayer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="jobcallback.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="jobspool.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="lock.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="locked.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="log.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="logger.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="logmanager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="logmessage.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="macros.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="memfile.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="memorytracker.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="mimemanager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="mpl.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="multiindexwrappers.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="multilock.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ned.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="nedallocator.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="noninstantiable.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="option.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ordered_map.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="path.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="pimpl_ptr.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="platformmanager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="platformwin.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="pools.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="prerequisites.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="randomnumbergenerator.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="range.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="realtimestats.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="regex.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="regexmanager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="safe_bool.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="safevar.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="schedulablethread.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="scoped_array.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="scoped_ptr.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="sealed.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="singleton.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="stdafx.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="stdallocator.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="stdwrappers.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="streamfilter.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="streamlayergzip.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="streamlayerzlib.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="stringutf16.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="syncpolicies.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="sysallocator.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="taskthread.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="temporaryfile.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="textfile.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdpartylibrariesreporter.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdpartylibrary.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="thread.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="threads.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="threadsgroup.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="timerperformance.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="types.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="typetraits.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="unicode.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="uniqueid.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="unorderedwrappers.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="utils.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="version.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="workerthread.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="base\exception.h">
+      <Filter>Header Files\base</Filter>
+    </ClInclude>
+    <ClInclude Include="base\object.h">
+      <Filter>Header Files\base</Filter>
+    </ClInclude>
+    <ClInclude Include="base\string.h">
+      <Filter>Header Files\base</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
