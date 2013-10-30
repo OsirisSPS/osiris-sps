@@ -425,9 +425,8 @@ void ExtensionsSystem::installShare(bool recovery)
 {	
 	OS_LOCK(m_cs);
 	
-	if(FileSystem::instance()->fileExists(utils::makeFilePath(getDataPath(), _S("dev.txt"))))
-		return;
-
+	bool developingEnvironment = (FileSystem::instance()->fileExists(utils::makeFilePath(getDataPath(), _S("dev.txt"))));
+	
 	bool force = recovery;
 
 	if(Options::instance()->isLastVersionCurrent() == false)
@@ -459,6 +458,9 @@ void ExtensionsSystem::installShare(bool recovery)
 		bool needInstall = force;
 		if( (FileSystem::instance()->directoryExists(utils::makeFolderPath(getDataPath(), path)) == false) && required)
 			needInstall = true;
+		else
+			if(developingEnvironment)
+				needInstall = false;
 
 		if(needInstall)
 		{
