@@ -14,6 +14,8 @@ class Page(osiris.IPortalPage):
 	def onLoad(self):
 		osiris.IPortalPage.onLoad(self)		
 		
+		osiris.events.connect(self.events.get("onPortalRemove"), self.onPortalRemove)
+		
 		document = osiris.XMLDocument()
 		self.root = document.create("info")
 		template = osiris.HtmlXSLControl()
@@ -35,13 +37,13 @@ class Page(osiris.IPortalPage):
 		nodeAction.attributes.set("name", "home")
 		nodeAction.attributes.set("href", self.portal.getLink("view"))
 		
-		nodeAction = nodeActions.nodes.add("action")
-		nodeAction.attributes.set("name", "info")
-		nodeAction.attributes.set("href", self.portal.getLink("info"))
+		#nodeAction = nodeActions.nodes.add("action")
+		#nodeAction.attributes.set("name", "info")
+		#nodeAction.attributes.set("href", self.portal.getLink("info"))
 		
-		nodeAction = nodeActions.nodes.add("action")
-		nodeAction.attributes.set("name", "accounts")
-		nodeAction.attributes.set("href", osiris.PortalsSystem.instance().getMainLink("accounts?portal=" + self.portal.getFullPovID()))
+		#nodeAction = nodeActions.nodes.add("action")
+		#nodeAction.attributes.set("name", "accounts")
+		#nodeAction.attributes.set("href", osiris.PortalsSystem.instance().getMainLink("accounts?portal=" + self.portal.getFullPovID()))
 		
 		nodeAction = nodeActions.nodes.add("action")
 		nodeAction.attributes.set("name", "settings")
@@ -103,27 +105,34 @@ class Page(osiris.IPortalPage):
 		
 		# Stats
 		
-		self.query = osiris.IdeTableQuery()
-		self.query.id = "stats_table"
+		#self.query = osiris.IdeTableQuery()
+		#self.query.id = "stats_table"
 		
-		sql = "select "
-		sql += "(select count(*) from os_entries) as objects_total, "
-		sql += "(select count(*) from os_snapshot_objects) as entities_total, "
-		sql += "(select count(*) from os_snapshot_objects where visible=0) as entities_invisible, "
-		sql += "(select count(*) from os_entries where rank<0) as objects_trash, "
-		sql += "(select min(stability_date) from os_snapshot_objects) as min_stab, "
-		sql += "(select max(stability_date) from os_snapshot_objects) as max_stab "
+		#sql = "select "
+		#sql += "(select count(*) from os_entries) as objects_total, "
+		#sql += "(select count(*) from os_snapshot_objects) as entities_total, "
+		#sql += "(select count(*) from os_snapshot_objects where visible=0) as entities_invisible, "
+		#sql += "(select count(*) from os_entries where rank<0) as objects_trash, "
+		#sql += "(select min(stability_date) from os_snapshot_objects) as min_stab, "
+		#sql += "(select max(stability_date) from os_snapshot_objects) as max_stab "
 		
-		self.query.setSql(sql)
-		self.query.setColumnType(0,osiris.IdeTableQuery.ctString)
-		self.query.setColumnType(1,osiris.IdeTableQuery.ctString)
-		self.query.setColumnType(2,osiris.IdeTableQuery.ctString)
-		self.query.setColumnType(3,osiris.IdeTableQuery.ctString)
-		self.query.setColumnType(4,osiris.IdeTableQuery.ctShortDateTime)		
-		self.query.setColumnType(5,osiris.IdeTableQuery.ctShortDateTime)		
-		template.addChildParam(self.query)	
+		#self.query.setSql(sql)
+		#self.query.setColumnType(0,osiris.IdeTableQuery.ctString)
+		#self.query.setColumnType(1,osiris.IdeTableQuery.ctString)
+		#self.query.setColumnType(2,osiris.IdeTableQuery.ctString)
+		#self.query.setColumnType(3,osiris.IdeTableQuery.ctString)
+		#self.query.setColumnType(4,osiris.IdeTableQuery.ctShortDateTime)		
+		#self.query.setColumnType(5,osiris.IdeTableQuery.ctShortDateTime)		
+		#template.addChildParam(self.query)	
 			
+	def onPortalRemove(self, args):		
+		#self.showMessage(args[0])					
 		
+		#portal = osiris.PortalsSystem.instance().getPortalByFullPov(args[0]);
+		#if portal:
+		osiris.PortalsSystem.instance().removePortal(self.portal.portalID, self.portal.povID)		
+		
+		self.redirect(osiris.PortalsSystem.instance().getMainLink("home"))
 		
 	def onPreRender(self):
 		osiris.IPortalPage.onPreRender(self)		

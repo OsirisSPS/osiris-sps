@@ -48,20 +48,11 @@ namespace OMS
         {
             get
             {
-                DirectoryInfo di = new DirectoryInfo(Environment.CurrentDirectory + "/../../../../../osiris");                
+                DirectoryInfo di = new DirectoryInfo(Environment.CurrentDirectory + "/../../../../../osiris-sps");                
                 return Helper.FileSystem.NormalizePath(di.FullName);
             }
         }
 
-        static public string PathProjectRazor
-        {
-            get
-            {
-                DirectoryInfo di = new DirectoryInfo(Environment.CurrentDirectory + "/../../../../../osiris-sps");
-                return Helper.FileSystem.NormalizePath(di.FullName);
-            }
-        }
-                
         static public string PathShare
         {
             get
@@ -75,7 +66,7 @@ namespace OMS
         {
             get
             {
-                DirectoryInfo di = new DirectoryInfo(PathProjectRazor + "/client/src");
+                DirectoryInfo di = new DirectoryInfo(PathProject + "/client/src");
                 return Helper.FileSystem.NormalizePath(di.FullName);
             }
         }

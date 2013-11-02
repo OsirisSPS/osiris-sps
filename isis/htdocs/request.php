@@ -59,13 +59,13 @@ function main()
 		$ip = $_SERVER['REMOTE_ADDR'];
 		$userAgent = $_SERVER['HTTP_USER_AGENT'];
 		$portal = $_POST["portal"];
-		$user = $_POST["user"];
+		$pov = $_POST["pov"];
 		$password = $_POST["password"];
 		$system = $_POST["system"];		
 					
-		allowedPortal($portal, $user);
+		allowedPortal($portal, $pov);
 				
-		$id = composePovId($portal, $user);
+		$id = composePovId($portal, $pov);
 						
 		commonPeerChecks($id, $password);
 				
@@ -180,7 +180,7 @@ function main()
 	}
 	else
 	{
-		$output = "<isis type=\"request\" error_code=\"$error_code\" portal=\"" . htmlencode($portal) ."\" user=\"" . htmlencode($user) ."\" isis_version=\"" . getOption("product.version") . "\" request_id=\"" . htmlencode($request_id) . "\" priority=\"" . htmlencode($request_priority) . "\" verb=\"" . htmlencode($request_verb) . "\" url=\"" . htmlencode($request_url) . "\" user_agent=\"" . htmlencode($request_user_agent) . "\" culture=\"" . htmlencode($request_culture) . "\" if_modified_since=\"" . htmlencode($request_http_if_modified_since) . "\" content_type=\"" . htmlencode($request_content_type) . "\" post_data=\"" . htmlencode($request_post_data) . "\"></isis>\r\n";		
+		$output = "<isis type=\"request\" error_code=\"$error_code\" portal=\"" . htmlencode($portal) ."\" pov=\"" . htmlencode($pov) ."\" isis_version=\"" . getOption("product.version") . "\" request_id=\"" . htmlencode($request_id) . "\" priority=\"" . htmlencode($request_priority) . "\" verb=\"" . htmlencode($request_verb) . "\" url=\"" . htmlencode($request_url) . "\" user_agent=\"" . htmlencode($request_user_agent) . "\" culture=\"" . htmlencode($request_culture) . "\" if_modified_since=\"" . htmlencode($request_http_if_modified_since) . "\" content_type=\"" . htmlencode($request_content_type) . "\" post_data=\"" . htmlencode($request_post_data) . "\"></isis>\r\n";		
 	}
 
 	echo $output;		

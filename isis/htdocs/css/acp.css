@@ -95,7 +95,7 @@ input.is_button_200, input.is_button_100
 
 .is_settings tr
 {
-	border:1px solid gray;
+	/*border:1px solid gray;*/
 }
 
 .is_settings_changed, .is_settings_default
@@ -129,7 +129,7 @@ td.is_settings_info
 {
 	/*float: left;	*/
 	width: 250px;
-	border-right: 1px solid gray;
+	border-right: 1px solid #CCCCCC;
 	padding-right: 10px;
 }
 
@@ -137,7 +137,7 @@ td.is_settings_override
 {
 	/*float:left;*/
 	width: 20px;
-	border-right: 1px solid gray;	
+	border-right: 1px solid #CCCCCC;	
 }
 
 td.is_settings_input

@@ -1,7 +1,7 @@
 body
 {
 	margin:0px;
-	padding:0px;
+	padding:10px;
 	background-color: #FFFFFF;
 	background-image: url(../images/gradient1.png);
 	background-position: top left;
@@ -59,7 +59,7 @@ img
 table
 {
 	border-collapse:collapse;
-	border:1px solid gray;
+	/*border:1px solid gray;*/
 	width: 100%;
 }
 
@@ -322,13 +322,16 @@ a.is_tab_focus
 .is_main_titlebox
 {
 	margin: 5px;
-	padding: 5px;
-	border:1px solid gray;
+	padding: 5px;	
 	background-color: #FFFFFF;
 	
 	background-image: url(../images/gradient2.png);
 	background-position:top left;
 	background-repeat: repeat-x;
+	
+	-moz-box-shadow: 0 0 5px #888;
+	-webkit-box-shadow: 0 0 5px#888;
+	box-shadow: 0 0 5px #888;
 	
 	/* CSS3 */
 	border-radius: 0.6em;
@@ -364,7 +367,9 @@ a.is_tab_focus
 	background-position:top left;
 	background-repeat: repeat-x;
 		
-	border:1px solid gray;
+	-moz-box-shadow: 0 0 5px #888;
+	-webkit-box-shadow: 0 0 5px#888;
+	box-shadow: 0 0 5px #888;
 	
 	/* CSS3 */
 	border-radius: 0.6em;
@@ -398,9 +403,12 @@ a.is_tab_focus
 	background-image: url(../images/gradient2.png);
 	background-position:top left;
 	background-repeat: repeat-x;
-	
-	border:1px solid gray;
+		
 	background-color:#FFFFFF;
+	
+	-moz-box-shadow: 0 0 5px #888;
+	-webkit-box-shadow: 0 0 5px#888;
+	box-shadow: 0 0 5px #888;
 	
 	/* CSS3 */
 	border-radius: 0.6em;
@@ -449,12 +457,12 @@ Pages - Redirect
 	
 	text-align:center;
 	
-	background-image: url(../images/gradient1.png);
+	background-image: url(../images/gradient3.png);
 	background-position:top left;
 	background-repeat: repeat-x;
 	
 	border:1px solid #CCCCCC;
-	background-color:#FFFFFF;
+	background-color:#DDDDDD;
 	
 	/* CSS3 */
 	border-radius: 0.9em;

@@ -200,10 +200,10 @@ document.cookie = name + "=" +escape( value ) +
 }
 	
 
-function doGuestPassword(portal)
+function doGuestPassword(pov)
 {
 	// TODO: Most strong method.
 	var password = document.getElementById('password').value;
-	SetCookie("os_isis_" + portal + "_pwd", password, 365, '/', '','');
+	SetCookie("isis_pwd_" + pov, password, 365, '/', '','');	
 	location.reload();
 }

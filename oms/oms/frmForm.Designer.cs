@@ -82,6 +82,7 @@ namespace OMS
             this.cmdStart = new System.Windows.Forms.Button();
             this.txtVersion = new System.Windows.Forms.TextBox();
             this.tabCommands = new System.Windows.Forms.TabPage();
+            this.cmdDeployExtensionsAnubis = new System.Windows.Forms.Button();
             this.cmdCommandUpdateLicenseInSources = new System.Windows.Forms.Button();
             this.cmdGenerateExtensions = new System.Windows.Forms.Button();
             this.tabLog = new System.Windows.Forms.TabPage();
@@ -91,7 +92,6 @@ namespace OMS
             this.splLogStatus = new System.Windows.Forms.SplitContainer();
             this.pgrProgress = new System.Windows.Forms.ProgressBar();
             this.lblLog = new System.Windows.Forms.Label();
-            this.cmdDeployExtensionsAnubis = new System.Windows.Forms.Button();
             this.tabMain.SuspendLayout();
             this.tabWelcome.SuspendLayout();
             this.tabSettings.SuspendLayout();
@@ -638,6 +638,16 @@ namespace OMS
             this.tabCommands.Text = "Other commands";
             this.tabCommands.UseVisualStyleBackColor = true;
             // 
+            // cmdDeployExtensionsAnubis
+            // 
+            this.cmdDeployExtensionsAnubis.Location = new System.Drawing.Point(8, 159);
+            this.cmdDeployExtensionsAnubis.Name = "cmdDeployExtensionsAnubis";
+            this.cmdDeployExtensionsAnubis.Size = new System.Drawing.Size(741, 116);
+            this.cmdDeployExtensionsAnubis.TabIndex = 2;
+            this.cmdDeployExtensionsAnubis.Text = "\r\n\r\nDownload Anubis extensions (language typically) and upload to Isis.";
+            this.cmdDeployExtensionsAnubis.UseVisualStyleBackColor = true;
+            this.cmdDeployExtensionsAnubis.Click += new System.EventHandler(this.cmdDeployExtensionsAnubis_Click);
+            // 
             // cmdCommandUpdateLicenseInSources
             // 
             this.cmdCommandUpdateLicenseInSources.Location = new System.Drawing.Point(8, 360);
@@ -728,7 +738,7 @@ namespace OMS
             // splLogStatus.Panel2
             // 
             this.splLogStatus.Panel2.Controls.Add(this.lblLog);
-            this.splLogStatus.Size = new System.Drawing.Size(757, 54);
+            this.splLogStatus.Size = new System.Drawing.Size(757, 48);
             this.splLogStatus.SplitterDistance = 25;
             this.splLogStatus.TabIndex = 0;
             // 
@@ -749,17 +759,6 @@ namespace OMS
             this.lblLog.Size = new System.Drawing.Size(757, 25);
             this.lblLog.TabIndex = 7;
             this.lblLog.Text = "Log";
-            // 
-            // cmdDeployExtensionsAnubis
-            // 
-            this.cmdDeployExtensionsAnubis.Location = new System.Drawing.Point(8, 159);
-            this.cmdDeployExtensionsAnubis.Name = "cmdDeployExtensionsAnubis";
-            this.cmdDeployExtensionsAnubis.Size = new System.Drawing.Size(741, 116);
-            this.cmdDeployExtensionsAnubis.TabIndex = 2;
-            this.cmdDeployExtensionsAnubis.Text = "Download extensions prepared from Anubis (language typically) and upload to Isis." +
-    "\r\n\r\n";
-            this.cmdDeployExtensionsAnubis.UseVisualStyleBackColor = true;
-            this.cmdDeployExtensionsAnubis.Click += new System.EventHandler(this.cmdDeployExtensionsAnubis_Click);
             // 
             // frmForm
             // 

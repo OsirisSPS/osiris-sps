@@ -47,7 +47,7 @@ function generateListFromSql($name, $database, &$nodeLists, &$nodeRepository, $s
 
 function addToRepository($row, &$nodeRepository)
 {
-	$id = $row["id"];	
+	$id = $row["id"];
 	if(isset($nodeRepository[$id]))
 		return;
 		
@@ -61,20 +61,22 @@ function generateAddon($row, $format)
 	$id = $row["id"];
 	
 	$download = "";	
-	$iconHref = "";	
-	$logoHref = "";		
+	$iconHref = "";		
+	$logoHref = "";	
+	
+	$catalogVersion = $row["catalog"];
 	
 	if($row)
 	{
-		$download = getOption('server.virtual_path') . "addons/files/" . urlencode($row['file']);			
+		$download = getOption('server.virtual_path') . "addons/" . $catalogVersion . "/files/" . urlencode($row['file']);			
 	
-		if(file_exists("./addons/icon/" . $id . ".png"))
-			$iconHref = getOption('server.virtual_path') . "addons/icon/" . $id . ".png";		
+		if(file_exists("./addons/" . $catalogVersion . "/icon/" . $id . ".png"))
+			$iconHref = getOption('server.virtual_path') . "addons/" . $catalogVersion . "/icon/" . $id . ".png";		
 		
-		if(file_exists("./addons/logo/" . $id . ".png"))
-			$logoHref = getOption('server.virtual_path') . "addons/logo/" . $id . ".png";
+		if(file_exists("./addons/" . $catalogVersion . "/logo/" . $id . ".png"))
+			$logoHref = getOption('server.virtual_path') . "addons/" . $catalogVersion . "/logo/" . $id . ".png";
 	}
-
+		
 	if($format == "html")
 	{
 		$output = "";
@@ -89,18 +91,21 @@ function generateAddon($row, $format)
 				$output .= ("<div class=\"is_addon_framed\">");
 			
 			$output .= ("<div class=\"is_addon_detail\" style=\"float:right;\">");
-			$output .= ("Category: <b>" . $row['category'] . "</b><br>");
-			$output .= ("Tags: <b>" . $row['tags'] . "</b><br>");
-			$output .= ("Version: <b>" . $row['version'] . "</b><br>");
 			$output .= ("Author: <b>" . $row['author'] . "</b><br>");
-			$output .= ("Compatibility: <b>" . $row['compatibility'] . "</b><br>");
+			if($row['category'] != "")
+				$output .= ("Category: <b>" . $row['category'] . "</b><br>");
+			if($row['tags'] != "")
+				$output .= ("Tags: <b>" . $row['tags'] . "</b><br>");
+			$output .= ("Version: <b>" . $row['version'] . "</b><br>");			
+			if(floatval($row['compatibility']) != 0)
+				$output .= ("Compatibility: <b>" . $row['compatibility'] . "</b><br>");
 			$output .= ("<div style=\"padding:10px;text-align:center;\">");
 			if($row['homepage'])
 			{
-				$output .= ("<a href=\"" . $row['homepage'] . "\">Home page</a>");
-				$output .= (" | ");
+				$output .= ("<a target=\"_blank\" href=\"" . $row['homepage'] . "\">Home page</a>");
+				//$output .= (" | ");
 			}
-			$output .= ("<a href=\"" . $download . "\">Download</a>");
+			//$output .= ("<a href=\"" . $download . "\">Download</a>");
 			$output .= ("</div>");
 			$output .= ("</div>");
 			
@@ -176,12 +181,23 @@ function main()
 		$format = getQueryParam("format","xml");
 		$action = getQueryParam("act","home");
 		
+		$osirisVersion = "0";	
+		$userAgent = "";
+		if(isset($_SERVER['HTTP_USER_AGENT']))
+			$userAgent = $_SERVER['HTTP_USER_AGENT'];
+		if(startsWith($userAgent,"Osiris/"))
+			$osirisVersion = str_replace("Osiris/","", $userAgent);
+			
+		$catalogVersion = $osirisVersion;
+		
+		$catalogVersion = "1.0"; // Last catalog version
+				
 		if($format == "xml")
 			xmlHeader();
 		else if($format == "html")
 			xhtmlHeader(false);
 			
-		
+		$debug = "";	
 	
 		if( ($action == "home") || ($action == "upgradable") )
 		{
@@ -196,8 +212,8 @@ function main()
 				$nodeLists = Array();
 				$nodeLists["__tag"] = "lists";
 						
-				generateListFromSql("recommended", $database, $nodeLists, $nodeRepository, "select * from isis_addons where available=1 and active=1 and private=0 and experimental=0 and recommended!=0 order by recommended desc, category, name");
-				generateListFromSql("catalog", $database, $nodeLists, $nodeRepository, "select * from isis_addons where available=1 and active=1 and private=0 order by category, name");
+				generateListFromSql("recommended", $database, $nodeLists, $nodeRepository, "select * from isis_addons where catalog='" . escapeSql($catalogVersion) . "' and available=1 and active=1 and private=0 and experimental=0 and recommended!=0 order by recommended desc, name");
+				generateListFromSql("catalog", $database, $nodeLists, $nodeRepository, "select * from isis_addons where catalog='" . escapeSql($catalogVersion) . "' and available=1 and active=1 and private=0 order by name");
 			}
 			
 			
@@ -211,20 +227,24 @@ function main()
 						
 				$count = 0;
 			
-				$currents = explode(";",$_POST["currents"]);
+				$currents = array_filter(explode(";",$_POST["currents"]));
 				foreach($currents as $item)
-				{
+				{					
 					$fields = explode(":",$item);
 					
 					$id = $fields[0];
-					$version = (float) $fields[1];
-					
-					$sql = "select version from isis_addons where id='" . escapeSql($id) . "'";
+					$version = floatval($fields[1]);
+										
+					$sql = "select * from isis_addons where catalog='" . escapeSql($catalogVersion) . "' and id='" . escapeSql($id) . "' and active=1";
 					$result = mysql_query($sql,$database) or error("Sql error: ".mysql_error());
 					$row=mysql_fetch_array($result);
 					if($row)
 					{
-						$repositoryVersion = (float) $row["version"];
+						addToRepository($row, $nodeRepository);
+						
+						$repositoryVersion = floatval($row["version"]);
+						
+						$debug .= $id . " = " . $version . "-" . $repositoryVersion . "\n\r";
 						
 						if($version < $repositoryVersion)
 						{
@@ -253,7 +273,10 @@ function main()
 				$data[] = $nodeRepository;			
 			}
 			
-			echo convertToFormat($data, $format);
+			$output = convertToFormat($data, $format);
+			echo $output;
+			
+			file_put_contents("addons/debug.txt",$debug);
 		}	
 		
 		/*
@@ -308,8 +331,8 @@ function main()
 		else if($action == "download")
 		{
 			$id = getQueryParam("id","");
-			
-			$download = getOption('server.virtual_path') . "addons/files/" . $id . ".osiris";
+						
+			$download = getOption('server.virtual_path') . "addons/" . $catalogVersion . "/files/" . $id . ".osiris";
 			
 			header("Location: " . $download);
 		}
@@ -317,10 +340,10 @@ function main()
 		{
 			$id = getQueryParam("id","");
 			
-			$sql = "select * from isis_addons where id='" . escapeSql($id) . "'";
+			$sql = "select * from isis_addons where catalog='" . escapeSql($catalogVersion) . "' and id='" . escapeSql($id) . "'";
 			$result = mysql_query($sql,$database) or error("Sql error: ".mysql_error());
 			$row=mysql_fetch_array($result);
-						
+			
 			$output = generateAddon($row, $format);
 			
 			if($format == "html")
@@ -345,7 +368,8 @@ function main()
 	
 	if($format == "html")
 	{
-    	xhtmlFooter();
+		$framed = (getQueryParam("framed","false") == "true");
+    xhtmlFooter($framed == false);
 	}
 }
 

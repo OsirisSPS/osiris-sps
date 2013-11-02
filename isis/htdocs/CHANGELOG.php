@@ -1,6 +1,46 @@
-1.0 - 01/01/2011
+1.0 - 02/11/2013
 - [new] Osiris 1.0 Support. NOTE: This version is compatible only with Osiris 1.0, previous version are rejected.
+- [bugfix] Fixed some wrong 304 errors.
 - [changes] HTTP error 503 instead of 200 if data isn't available.
+- [changes] A lot of minor changes.
+----------------------------------------------------------------
+0.15 - 
+- Improvement of logging system: skip php with @, filter options.
+- Fixes some PHP errors.
+- Support for "forwarding" http proxy.
+
+0.14 - 06/10/2011
+- Various bugfixes.
+
+0.13 - 29/09/2011
+- Changed default tuning settings
+- Isis Messages are now http-404 response
+- Fixed "checking.php"
+- Fixed default systembar options
+- Fixed related "Osiris Core Extension"
+- Fixed a performance bug
+- Fixed image url in "home" in SEO mode.
+- Log path are now always under data path
+- Checking if default "data" path are useful or not
+- HTAccess "data" protection & checking 
+- SEO rules testing and fixing
+- Allow move "data" directory to a path outside webserver
+
+0.12 - 27/09/2011
+- [changes] Tor Detection was temporarly disabled by tor-project.org. Detection of this situation implemented.
+- [bugfix] Some PHP warnings.
+- [changes] Addons improvements.
+- [new] Addons catalog support.
+- [changes] CSS fix for redirect.
+- [new] Custom portal options (for extensions).
+- [changes] SEO updates.
+- [bugfix] Osiris 0.14 compatibility
+- [bugfix] Many misc fixes.
+----------------------------------------------------------------
+0.11 - 20/07/2011
+- [changes] Various improvements
+- [new] addons system
+- [bugfix] Compatibility fixes for Osiris 0.14
 ----------------------------------------------------------------
 0.10 - 06/04/2010
 - [bugfix] Encoding problems on url, especially on RSS Feed.

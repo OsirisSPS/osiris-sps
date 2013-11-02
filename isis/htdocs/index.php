@@ -38,7 +38,7 @@ function seoAdjust($url)
 	// Do SEO transformations
 	if(getOptionBool("services.link.seo.enabled"))
 	{
-		$currentDomain = "http" . iif(getSSL(),"s") . "://" . $_SERVER["HTTP_HOST"];
+		$currentDomain = "http" . iif(getSSL(),"s") . "://" . getHttpHost();
 		
 		$seoPath = $currentDomain . getOption("services.link.seo.path");
 		
@@ -184,7 +184,7 @@ function seoAdjust($url)
 	return $url;
 }
 
-function newLinkAdjust($portalId, $userId, $url, $urlSuffix, $format)
+function newLinkAdjust($povId, $url, $urlSuffix, $format)
 {	
 	//echo $url . "<br/>";
 	
@@ -251,20 +251,9 @@ function newLinkAdjust($portalId, $userId, $url, $urlSuffix, $format)
 			$url .= "?";
 		else
 			$url .= "&";
-		$url .= "portal=" . $portalId;			
+		$url .= "portal=" . $povId;			
 	}
-	
-	$userIdPos = strpos($url,"user=");
-	if($userIdPos === false)
-	{	
-		$questionPos = strpos($url,"?");
-		if($questionPos === false)
-			$url .= "?";
-		else
-			$url .= "&";
-		$url .= "user=" . $userId;			
-	}
-	
+		
 	// TODO: ..
 	
 	$url = rawurlencode($url);	
@@ -281,7 +270,7 @@ function newLinkAdjust($portalId, $userId, $url, $urlSuffix, $format)
 	return $url;
 }
 
-function newLinksAdjust($portalId, $userId, $body, $before, $after, $urlSuffix = "", $format = "html")
+function newLinksAdjust($povId, $body, $before, $after, $urlSuffix = "", $format = "html")
 {	
 	$offsetPos = 0;
 	for(;;)
@@ -300,7 +289,7 @@ function newLinksAdjust($portalId, $userId, $body, $before, $after, $urlSuffix =
 		
 		//trace("url: " . $url);
 		
-		$url = newLinkAdjust($portalId, $userId, $url, $urlSuffix, $format);
+		$url = newLinkAdjust($povId, $url, $urlSuffix, $format);
 		
 		$body = substr($body, 0, $posStart + strlen($before)) . $url . substr($body, $posEnd);
 		$offsetPos = $posStart + strlen($before) + strlen($url) + strlen($after);					
@@ -366,6 +355,8 @@ function parseDocument($content, &$headers, &$body)
 
 function normalizeUserAgent($povId, $user_agent)
 {
+	if($user_agent == "")
+		return "";
 	// Cache files maybe user-agent specific, based on this selection to optimize resources.
 	
 	if(preg_match("/.*Windows CE.*/i",$user_agent))
@@ -440,20 +431,21 @@ function main()
 		$ip = $_SERVER['REMOTE_ADDR'];
 		$verb = $_SERVER["REQUEST_METHOD"];
 		
+		$force = false; // If true, always a peer request it's done.
+		
 		$url = "";
 		if(isset($_GET["url"]))
+		{
 			$url = $_GET["url"];		
+			if(isset($_GET["force"]))
+				$force = true;
+		}
 		else
 			$url = phpHttpParamDecode($_SERVER["QUERY_STRING"]);			
 		$url = rawurldecode($url);		
-		
-		$nocache = false;
-		if(strpos($url, "&noisiscache") !== false)
-		{
-			$nocache = true;
-			str_replace("&noisiscache","",$url);
-		}
-		
+				
+		$client_user_agent = "";
+		if(isset($_SERVER['HTTP_USER_AGENT']))
 		$client_user_agent = phpHttpParamDecode($_SERVER['HTTP_USER_AGENT']);
 		
 		$client_culture = "en-US";
@@ -493,7 +485,7 @@ function main()
 		$mode = "proxy";
 		
 		$http_result = 500;
-		$infoMessage = "";
+		$processMessage = "";
 		$error = "";		
 		$document_headers = null;
 		$document_body = null;
@@ -508,35 +500,27 @@ function main()
 			die();
 		}
 			
-		logMessage("notice","Realtime, guest requesting url: " . $url);
+		{
+			$msg = "Realtime, guest requesting url: " . $url;
+			if($client_if_modified_since != null)
+				$msg .= ", already have the copy of " . date(DATE_RFC822, $client_if_modified_since);
+			logMessage("notice",$msg);
+		}
+		
 		
 		$now = time();
 		$path_base = getOption("data.path");
 				
 		// Extract PortalID
-		$portalId = "";
-		$portalIdPos = strpos($url,"portal=");
-		if($portalIdPos != 0)
+		$povId = "";
+		$povIdPos = strpos($url,"portal=");
+		if($povIdPos != 0)
 		{
-			$portalId = substr($url,$portalIdPos+7,48);			
+			$povId = substr($url,$povIdPos+7,40+40+1);			
 		}
-		$portalId = validateID($portalId);
 		
-		// Extract UserID
-		$userId = "";
-		$userIdPos = strpos($url,"user=");
-		if($userIdPos != 0)
-		{
-			$userId = substr($url,$userIdPos+5,48);			
-		}
-		$userId = validateID($userId);
-		
-		// Checking portal
-		allowedPortal($portalId, $userId);		
-				
-		// Pov ID
-		$povId = composePovId($portalId, $userId);
-								
+		allowedPov($povId);		
+										
 		$portal_path = $path_base . "/portal_" . $povId;	
 		
 		if(file_exists($portal_path) == false)
@@ -549,7 +533,12 @@ function main()
 		$guestPassword = getOptionPortal("isis.guest.password", $povId);
 		if( ($guestPassword != ".*") && ($guestPassword != "*") )
 		{			
-			$guestCurrentPassword = $_COOKIE["os_isis_" . $povId . "_pwd"];
+			$guestCurrentPassword = "";
+			$cookie = "isis_pwd_" . sha1($povId);
+			if(isset($_COOKIE[$cookie]))
+			{
+				$guestCurrentPassword = $_COOKIE[$cookie];
+			}
 			
 			if(matchOptionPortal("isis.guest.password", $guestCurrentPassword, $povId) == false)
 				throw new Exception("Login required.");			
@@ -588,15 +577,7 @@ function main()
 			{							
 				$path_cache_info = $portal_path . "/cache_info/" . $cache_id;
 				$path_cache_data = $portal_path . "/cache_data/" . $cache_id;
-				
-				if($nocache)
-				{
-					if(file_exists($path_cache_info))
-						unlink($path_cache_info);
-					if(file_exists($path_cache_data))
-						unlink($path_cache_data);
-				}
-				
+								
 				if(file_exists($path_cache_info))
 				{
 					$cache_exists = true;
@@ -604,26 +585,39 @@ function main()
 					$cache_header = "";
 					$data_cache_info = file_get_contents($path_cache_info);			
 					list($cache_header, $cache_last_check, $cache_last_modification) = explode("\n", $data_cache_info);			
-										
-					if(getOptionPortal("isis.cache.always", $povId))
+					
+					if(regexMatch(getOptionPortal("isis.cache.url.always", $povId), $url))
 					{
 						$ask_to_peers = false;
-					} /*
-					else if ($nOsirisNodes == 0) // If not nodes are waiting, return directly the cache copy.
+						$processMessage = "Cache, Always used";
+					}
+					else if(regexMatch(getOptionPortal("isis.cache.url.never", $povId), $url))
 					{
-						$ask_to_peers = false;
-					}*/
+						$ask_to_peers = true;
+						$processMessage = "Never use cache";
+					}					
 					else
 					{
 						$ask_to_peers = needAskToNode($povId, $cache_last_modification, $cache_last_check);
+						
+						if($ask_to_peers == false)
+						{
+							$processMessage = "Cache, Reccomended"; // Cache reccomended by various params.
+						}
 					}
 				}
+			}
+			
+			if($force)
+			{
+				$ask_to_peers = true;
+				$processMessage = "Forced request";				
 			}
 			
 			$nOsirisNodes = -1;
 			if($ask_to_peers == true)
 			{
-				$nOsirisNodes = getPortalNodesCount($portal_id);
+				$nOsirisNodes = getPortalNodesCount($povId);
 								
 				if($nOsirisNodes == 0)
 				{
@@ -634,6 +628,7 @@ function main()
 						if($delay > getOptionDouble("tuning.request.timeout"))
 						{
 							$ask_to_peers = false;		
+							$processMessage = "Cache, No peers and latest is too old.";
 						}		
 					}
 					else
@@ -758,7 +753,7 @@ function main()
 				// In every case, if still exists, delete the request.
 				if(file_exists($path_request))
 					unlink($path_request);
-				
+								
 				if($http_result != 500)
 				{	
 					if( ($http_result == 304) && ($cache_last_modification != null) )
@@ -768,6 +763,7 @@ function main()
 					else
 						$document_last_modification = null;
 					
+					
 					// If "Last-Modified" header is missing, normally document doesn't need to be stored in cache.
 					// But if "cache_realtime_force" are enabled, cache file are builded.
 					if( ($document_last_modification == null) && (getOptionPortalBool("isis.cache.store.dynamic", $povId)) )
@@ -776,74 +772,93 @@ function main()
 					}
 					
 					if($cache_enabled == true)
-					{
-						$cacheable = ($document_last_modification != null);
-					
-						if($cacheable)
+					{						
+						
+						// The browser have a old cache copy. Isis have a newest cache copy. Isis do the request. Osiris return a 304 (because request is based on Isis cache data).
+						// Without this, the browser receive the 304 and maintain they old cache copy.
+						if( ($http_result == 304) && ($cache_exists) && ($client_if_modified_since != null) && ($cache_last_modification != null) && ($client_if_modified_since != $cache_last_modification) )
 						{
-							$last_check = time();
-							$file_cache_info = fopen($path_cache_info, 'w');
-							writeFileHeader($file_cache_info, "cache info");
-							
-							fwrite($file_cache_info, $last_check . "\n");
-							fwrite($file_cache_info, $document_last_modification . "\n");							
-							
-							fwrite($file_cache_info, $verb . "\n");
-							fwrite($file_cache_info, $url . "\n");
-							fwrite($file_cache_info, $cache_user_agent . "\n");
-							fwrite($file_cache_info, $client_culture . "\n");
-							fwrite($file_cache_info, $client_content_type . "\n");
-							fwrite($file_cache_info, $client_post_data . "\n");							
-							
-							fclose($file_cache_info);	
-							
-							// Move "response" to "data"
-							if ($http_result != 304) // 0.3
+							$http_result = 500;
+						}
+						
+						// Like above, the browser don't have a cache copy. Isis have. Osiris return a 304.
+						// Without this, the browser receive the 304 and nothing are showed.
+						if( ($http_result == 304) && ($client_if_modified_since == null) )
+						{
+							$http_result = 500;
+						}
+						
+						if($http_result != 500)
+						{						
+							$cacheable = ($document_last_modification != null);
+						
+							if($cacheable)
 							{
-								if(file_exists($path_cache_data))
-									unlink($path_cache_data);
-								rename($path_response,$path_cache_data);							
+								$last_check = time();
+								$file_cache_info = fopen($path_cache_info, 'w');
+								writeFileHeader($file_cache_info, "cache info");
+								
+								fwrite($file_cache_info, $last_check . "\n");
+								fwrite($file_cache_info, $document_last_modification . "\n");							
+								
+								fwrite($file_cache_info, $verb . "\n");
+								fwrite($file_cache_info, $url . "\n");
+								fwrite($file_cache_info, $cache_user_agent . "\n");
+								fwrite($file_cache_info, $client_culture . "\n");
+								fwrite($file_cache_info, $client_content_type . "\n");
+								fwrite($file_cache_info, $client_post_data . "\n");							
+								
+								fclose($file_cache_info);	
+								
+								// Move "response" to "data"
+								if ($http_result != 304) // 0.3
+								{
+									if(file_exists($path_cache_data))
+										unlink($path_cache_data);
+									rename($path_response,$path_cache_data);							
+								}
+								else
+								{
+									// We update only the info, not the data.
+									unlink($path_response);
+								}
 							}
 							else
 							{
-								// We update only the info, not the data.
-								unlink($path_response);
+								// Maybe a url that are previously cached, but not from now.
+								if(file_exists($path_cache_info))
+									unlink($path_cache_info);
+								if(file_exists($path_cache_data))
+									unlink($path_cache_data);							
 							}
-						}
-						else
-						{
-							// Maybe a url that are previously cached, but not from now.
-							if(file_exists($path_cache_info))
-								unlink($path_cache_info);
-							if(file_exists($path_cache_data))
-								unlink($path_cache_data);							
 						}
 					}
 										
 					if( ($http_result == 200) && 
 					    ($client_if_modified_since != null) && 
 					    ($document_last_modification != null) &&
-					    ($client_if_modified_since<=$document_last_modification) 
+					    ($client_if_modified_since == $document_last_modification) 
 					    )
 					{
 						// A request to peers are made, but client version still up-to-date.
-						$http_result = 304;
+						$http_result = 304;												
 					}
 				}
 
 				// In every case, if still exists, delete the response.
 				if(file_exists($path_response))
 					unlink($path_response);
-			}
-			
+			}			
+						
 			if($http_result == 500)
 			{	
 				if($cache_exists == true)
 				{
 					// No peers need to be contacted, or no peers give a valid response (cached version is better than nothing)
-					if( ($client_if_modified_since != null) && ($client_if_modified_since<=$cache_last_modification) )
+					//if( ($client_if_modified_since != null) && ($client_if_modified_since<=$cache_last_modification) )
+					if( ($client_if_modified_since != null) && ($client_if_modified_since == $cache_last_modification) )
 					{
-						// Valid cache available, and client version of document is up-to-date.
+						// Valid cache available, and client version of document is up-to-date.						
 						$http_result = 304;
 					}
 					else
@@ -856,7 +871,7 @@ function main()
 						}
 						else
 						{
-							$infoMessage = "Cache: " . relativeTime($cache_last_modification);
+							//$infoMessage = "Cache: " . relativeTime($cache_last_modification);
 						}
 					}
 				}
@@ -864,21 +879,23 @@ function main()
 				{				
 					if($ask_to_peers == true)
 					{
+						$processMessage .= ", No cache available and no peers are available";
 						throw new Exception("No data available and no peers are available. Please retry later.");
 					}
 					else
 					{
+						$processMessage .= ", No cache available. Unknown reason.";
 						throw new Exception("No data available. Please retry later.");
 					}
 				}
 			}
 			else
 			{
-				$infoMessage = "Realtime";
+				$processMessage .= ", Realtime";				
 			}
 		}
-		
-		logMessage("notice","Sending answer " . $http_result . " for url: " . $url);
+				
+		logMessage("notice","Processing: " . $processMessage . "; HTTP Answer: " . $http_result . "; Url: " . $url);
 	}
 	catch(Exception $e)
 	{
@@ -965,6 +982,7 @@ function main()
 				}
 				else if($key == "Content-Type")
 				{					
+					logMessage("notice", "CT:" . $url . " , " . $value);
 					if(strpos($value,"text/html") !== false)
 						$processType = "html";
 					else if(strpos($value,"text/css") !== false)
@@ -1000,107 +1018,111 @@ function main()
 			if( ($processType == "html") || ($processType == "rss/xml") )
 			{
 				// Transformations
-				$body = str_replace("href=\"/main/home\"","href=\"" . getOption("server.virtual_path") . "\"",$body);
+				if(getOptionPortal("isis.home", $povId) == "")
+					$body = str_replace("href=\"/main/home\"","href=\"" . getOption("server.virtual_path") . "\"",$body);
+				else
+					$body = str_replace("href=\"/main/home\"","href=\"" . getOptionPortal("isis.home", $povId) . "\"",$body); 
 				
 				// TODO: Here, hacks... Maybe Osiris return urls in form {url:..} ?
+				$body = newLinksAdjust($povId, $body, "src=\"", "\"", "", $processType);
+				$body = newLinksAdjust($povId, $body, "href=\"", "\"", "", $processType);
+				$body = newLinksAdjust($povId, $body, "action=\"", "\"", "", $processType);
+				$body = newLinksAdjust($povId, $body, "url(\"", "\")", "", $processType);					
 				
-				$body = newLinksAdjust($portalId, $userId, $body, "src=\"", "\"", "", $processType);
-				$body = newLinksAdjust($portalId, $userId, $body, "href=\"", "\"", "", $processType);
-				$body = newLinksAdjust($portalId, $userId, $body, "action=\"", "\"", "", $processType);
-				$body = newLinksAdjust($portalId, $userId, $body, "url(\"", "\")", "", $processType);					
-				
-				$body = newLinksAdjust($portalId, $userId, $body, "value=\"", "\"", "", $processType);
+				$body = newLinksAdjust($povId, $body, "value=\"", "\"", "", $processType);
 				
 				// Replaces								
 				$customAreaSystem = strpos($body, "<!--{__Isis_Area_Custom_System__}-->");
 				if($customAreaSystem !== false)
 				{
-					$body = str_replace_once("<!--{__Isis_Area_Custom_System__}-->", getOptionPortal("isis.output.area.systembar", $portal_id), $body);
+					$body = str_replace_once("<!--{__Isis_Area_Custom_System__}-->", getOptionPortal("isis.output.area.systembar", $povId), $body);
 					$body = str_replace("<!--{__Isis_Area_Custom_System__}-->", "", $body);
 				}
 				else
 				{
-					$body = str_replace_once("<!--{__Isis_Area_System__}-->", getOptionPortal("isis.output.area.systembar", $portal_id), $body);
+					$body = str_replace_once("<!--{__Isis_Area_System__}-->", getOptionPortal("isis.output.area.systembar", $povId), $body);
 					$body = str_replace("<!--{__Isis_Area_System__}-->", "", $body);
 				}
 				$customAreaFooter = strpos($body, "<!--{__Isis_Area_Custom_Footer__}-->");
 				if($customAreaFooter !== false)
 				{
-					$body = str_replace_once("<!--{__Isis_Area_Custom_Footer__}-->", getOptionPortal("isis.output.area.footer", $portal_id), $body);
+					$body = str_replace_once("<!--{__Isis_Area_Custom_Footer__}-->", getOptionPortal("isis.output.area.footer", $povId), $body);
 					$body = str_replace("<!--{__Isis_Area_Custom_Footer__}-->", "", $body);
 				}
 				else
 				{
-					$body = str_replace_once("<!--{__Isis_Area_Footer__}-->", getOptionPortal("isis.output.area.footer", $portal_id), $body);
+					$body = str_replace_once("<!--{__Isis_Area_Footer__}-->", getOptionPortal("isis.output.area.footer", $povId), $body);
 					$body = str_replace("<!--{__Isis_Area_Footer__}-->", "", $body);
 				}				
 				
 				// Isis ACP variables
-				$body = str_replace("{$isis_info}", $infoMessage, $body);
-				$body = str_replace("{$isis_path}", getOption("server.virtual_path"), $body);
+				$body = str_replace("{@isis_info}", $processMessage, $body);
+				$body = str_replace("{@isis_path}", getOption("server.virtual_path"), $body);
 				
-				$list = getOptionPortal("isis.output.replaces",$portal_id);
+				$list = getOptionPortal("isis.output.replaces",$povId);
 				$lines = explode("\n", $list);
 				foreach($lines as $line)
 				{
-					//$values = explode("|", $line);
-					$values = explode("|", $line);
+					$line2 = trim($line);
+					if( ($line2 != "") && (substr($line2,0,1) != "#") && (substr($line2,0,2) != "//") )
+					{
+						//$values = explode("|", $line);
+						$values = explode("|", $line2);
+							
+						//$regex = '/\b' . trim($values[0]) . '\b/i';
+						$regex = '/' . trim($values[0]) . '/';
 						
-					//$regex = '/\b' . trim($values[0]) . '\b/i';
-					$regex = '/' . trim($values[0]) . '/';
-					
-					$replace = "";
-					if(count($values)>=2)
-						$replace = trim($values[1]);
-						
-					if (preg_match($regex, $body))
-						$body = preg_replace($regex, $replace, $body);
+						$replace = "";
+						if(count($values)>=2)
+							$replace = trim($values[1]);
+							
+						if (preg_match($regex, $body))
+						{
+							$body = preg_replace($regex, $replace, $body);
+						}
+						else
+						{							
+						}
+					}
 				}
 				
 				// Se è sotto SSL, converte i link assoluti dello stesso dominio di Isis da http:// a https://.
 				// Necessario per permettere nel portale ufficiale di Osiris, di mostrare correttamente Anubis come <iframe> (senza errori di cross-domain).
 				if(getSSL())
-					$body = str_replace("http://" . $_SERVER["HTTP_HOST"], "https://" . $_SERVER["HTTP_HOST"], $body);
+					$body = str_replace("http://" . getHttpHost(), "https://" . getHttpHost(), $body);
 				else
-					$body = str_replace("https://" . $_SERVER["HTTP_HOST"], "http://" . $_SERVER["HTTP_HOST"], $body);
+					$body = str_replace("https://" . getHttpHost(), "http://" . getHttpHost(), $body);
 			}
 			
 			if ($processType == "html")
 			{
-				/*
-				// Hack: scriptaculus library don't want extra-parameters. So i redirect the osiris-library to isis-library.
-				//$body = preg_replace("/\"\?%2Fskins%2F[0-9A-F]*?%2Fjs%2Fscriptaculous%2Fscriptaculous.js%3Fportal%3D(.*?)\"/", 
-				$body = preg_replace("/\"\?%2Fskins%2F[0-9A-F]*?%2Fjs%2Fscriptaculous\"/", "\"js/scriptaculous/scriptaculous.js\"", $body);										
-				*/
-					
 				$body = str_replace("</body>", getOption("layout.footer") . "</body>",$body);
 			}
 			
 			if ($processType == "rss/xml")
 			{
-				$body = newLinksAdjust($portalId, $userId, $body, "<link>", "</link>", "", $processType);
+				$body = newLinksAdjust($povId, $body, "<link>", "</link>", "", $processType);
 			}
-			
+						
 			if( ($processType == "css") || ($processType == "html") )
-			{				
+			{	
 				// Transformations
 				// Hack: Osiris must be return, in CSS, the already-absolute urls.
 				
 				$pos = strrpos($url, "/");
 				if($pos !== false)
 				{
-					//$relativeUrl = substr($url,0,$pos+1);
-						$body = newLinksAdjust($portalId, $body, "url(\"", "\")", "", $processType);				
-						$body = newLinksAdjust($portalId, $body, "url('", "')", "", $processType);				
+						$body = newLinksAdjust($povId, $body, "url(\"", "\")", "", $processType);				
+						$body = newLinksAdjust($povId, $body, "url('", "')", "", $processType);				
 												
 						// jQuery Skin don't use the " in url()
-						$body = newLinksAdjust($portalId, $body, "url(", ")", "", $processType);									
-				}					
+						$body = newLinksAdjust($povId, $body, "url(", ")", "", $processType);									
+				}									
 			}
 			
 			if ($processType == "js")
 			{
-				$body = newLinksAdjust($portal_id, $body, "Osiris.adjustStaticUrl(\"", "\")", "", $processType);
+				$body = newLinksAdjust($povId, $body, "Osiris.adjustStaticUrl(\"", "\")", "", $processType);
 				if(strpos($url,"osiris.js"))
 				{
 					$body = str_replace("// {FullUrl Isis Adjustment}","fullUrl=\"" . getOption("server.virtual_path") . "?\" + encodeURIComponent(url);",$body);
@@ -1117,9 +1139,6 @@ function main()
 				
 			if($error == "")
 				$error = "Error code: " . $http_result;
-				
-			if($error != "Login required.")
-				header("HTTP/1.0 503 Service Unavailable");
 				
 			// Start xhtml output
 			//xhtmlHeader();
@@ -1143,11 +1162,11 @@ function main()
 			
 			if($error == "Login required.")
 			{
-				echocr("		<div style=\"margin:30px;font-size:1.5em;\">" . bbencode(getOptionPortal("isis.guest.message", $portal_id)) . "</div>");
+				echocr("		<div style=\"margin:30px;font-size:1.5em;\">" . bbencode(getOptionPortal("isis.guest.message", $povId)) . "</div>");
 				echocr("<br />");
 				echocr("<br />");
 				echocr("<input id='password' type='password'/>");
-				echocr("<input style=\"width:120px\" type=button value=\"Login\" onClick=\"javascript:doGuestPassword('" . htmlencode($portal_id) . "');\">");
+				echocr("<input style=\"width:120px\" type=button value=\"Login\" onClick=\"javascript:doGuestPassword('" . htmlencode(sha1($povId)) . "');\">");
 			}
 			else
 			{

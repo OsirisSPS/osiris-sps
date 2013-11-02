@@ -29,7 +29,12 @@ class Link
 		$this->parse($link);
 	}
 	
-	function get($key)
+	function hasParam($key)
+	{
+		return(isset($this->data[$key]));
+	}
+	
+	function getParam($key)
 	{
 		if(isset($this->data[$key]))
 			return $this->data[$key];
@@ -37,9 +42,10 @@ class Link
 			return "";
 	}
 	
-	function set($key, $value)
+	function setParam($key, $value)
 	{
-		$this->data[$key] = $value;
+		if($value != "")
+			$this->data[$key] = $value;
 	}
 	
 	function parse($link)
@@ -60,11 +66,11 @@ class Link
 			// Old format.
 			$array1 = explode("|",$link);
 			
-			$this->data["type"] = $array1[1];
+			$this->setParam("type", $array1[1]);
 			
-			if( ($this->data["type"] == "portal") || ($this->data["type"] == "isis") )
+			if( ($this->getParam("type") == "portal") || ($this->getParam("type") == "isis") )
 			{
-				$this->data["portal"] = $array1[2];			
+				$this->setParam("portal", $array1[2]);			
 				for($i=3;$i<count($array1);$i++)
 				{
 					$keyval = $array1[$i];
@@ -75,15 +81,17 @@ class Link
 						$value = urldecode(trim($array2[1]));
 						
 					if($key != "")
-						$this->data[$key] = $value;
+					{							
+						$this->setParam($key, $value);
+					}
 				}				
 			}
-			else if ($this->data["type"] == "file")
+			else if ($this->getParam("type") == "file")
 			{
 				// Done, but not used by Isis.
-				$this->data['id'] = $array1[2];
+				$this->setParam("id", $array1[2]);
 			}
-			else if ($this->data["type"] == "url")
+			else if ($this->getParam("type") == "url")
 			{
 				// Partially done, but not used by Isis. Need fix.
 				$url = urldecode($array1[2]);				
@@ -91,12 +99,12 @@ class Link
 				
 				if($params != "")
 					$url = $url . "?" . $params;
-				$this->data['url'] = $url;			
+				$this->setParam("url", $url);			
 			}
-			else if ($this->data["type"] == "skin")
+			else if ($this->getParam("type") == "skin")
 			{
 				// Done, but not used by Isis.
-				$this->data['path'] = urldecode($array1[2]);
+				$this->setParam("path", urldecode($array1[2]));
 			}
 			else
 			{
@@ -114,7 +122,7 @@ class Link
 				$value = "";
 				if(isset($array2[1]))
 					$value = urldecode($array2[1]);
-				$this->data[$key] = $value;
+				$this->setParam($key, $value);
 			}
 		}
 		else
@@ -123,7 +131,7 @@ class Link
 		}
 	}
 		
-	function export($format = "old")
+	function export($format = "new")
 	{
 		if($this->valid == false)
 			return "{invalid}";
@@ -133,42 +141,62 @@ class Link
 			$out = "";
 			foreach($this->data as $key => $value)
 			{
-				if($out != "")
-					$out .= "&";
-				$out .= $key . "=" . rawurlencode($value);
+				if($value != "")
+				{
+					if($out != "")
+						$out .= "&";
+					$out .= $key . "=" . rawurlencode($value);
+				}
 			}			
 			return "osiris:?" . $out;
 		}
 		else
 		{
 			// Old format
-			if($this->get("type") == "portal")
+			if($this->getParam("type") == "portal")
 			{
-				return "osiris://|portal|" . rawurlencode($this->get("portal")) . "|name=" . rawurlencode($this->get("name")) . "|description=" . rawurlencode($this->get("description")) . "|user=" . rawurlencode($this->get("user")) . "|";
+				// Hack! Compatibilità 0.14, che non prende gli url osiris:// senza descrizione....
+				if($this->hasParam("description") == false)
+					$this->setParam("description",".");
+				
+				
+				$out = "osiris://|portal|" . rawurlencode($this->getParam("portal")) . "|";
+				if($this->hasParam("name"))
+					$out .= "name=" . rawurlencode($this->getParam("name")) . "|";
+				if($this->hasParam("description"))
+					$out .= "description=" . rawurlencode($this->getParam("description")) . "|";
+				if($this->hasParam("user"))
+					$out .= "user=" . rawurlencode($this->getParam("user")) . "|";
+				return $out;
 			}
-			else if($this->get("type") == "isis")
+			else if($this->getParam("type") == "isis")
 			{
-				return "osiris://|isis|" . rawurlencode($this->get("portal")) . "|name=" . rawurlencode($this->get("name")) . "|url=" . rawurlencode($this->get("url")) . "|";
+				$out = "osiris://|isis|" . rawurlencode($this->getParam("portal")) . "|";
+				if($this->hasParam("name"))
+					$out .= "name=" . rawurlencode($this->getParam("name")) . "|";
+				if($this->hasParam("url"))
+					$out .= "url=" . rawurlencode($this->getParam("url")) . "|";				
+				return $out;
 			}
-			else if($this->get("type") == "file")
+			else if($this->getParam("type") == "file")
 			{
 				// Done, but not used by Isis.
-				return "osiris://|file|" . rawurlencode($this->get("id")) . "|";
+				return "osiris://|file|" . rawurlencode($this->getParam("id")) . "|";
 			}
-			else if($this->get("type") == "url")
+			else if($this->getParam("type") == "url")
 			{
 				// Partially done, but not used by Isis. Need fix.
-				$x = explode("?",$this->get("url"));
+				$x = explode("?",$this->getParam("url"));
 				$url = $x[0];
 				$params = "";
 				if(isset($x[1]))
 					$params = $x[1];
 				return "osiris://|url|" . rawurlencode($url) . "|" . rawurlencode($params) . "|";
 			}
-			else if($this->get("type") == "skin")
+			else if($this->getParam("type") == "skin")
 			{
 				// Done, but not used by Isis.
-				return "osiris://|skin|" . rawurlencode($this->get("path")) . "|";
+				return "osiris://|skin|" . rawurlencode($this->getParam("path")) . "|";
 			}
 		}
 	}	

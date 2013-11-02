@@ -35,6 +35,7 @@ function resolve($id)
 		
 		$regex = '/\b' . trim($values[0]) . '\b/i';
 		$dest = trim($values[1]);
+		$flags = trim($values[2]);
 		
 		//$xx = "/\\bhelp_(.*?)\\b/i";
 		

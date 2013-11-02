@@ -48,8 +48,7 @@
           <xsl:value-of select="system:parse(@description, false(), false(), true())" disable-output-escaping="yes" />
         </span>
       </p>
-      <xsl:value-of select="$stats_table" disable-output-escaping="yes"/>
-
+      
       <xsl:call-template name="actions-row">
         <xsl:with-param name="prefix" select="'~portal.pages'"/>
       </xsl:call-template>

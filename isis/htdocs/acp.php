@@ -44,7 +44,7 @@ function timedReload()
 function postValueCheck($key)
 {
 	if(strlen($key)>=64)
-		message("error","Design error: Post key '" . $key. "' too length (" . strlen($key) . " chars), some hosting (ex. Netsons) refuse post key bigger than 64 chars.");
+		message("error","Design error: Post key '" . $key. "' too length (" . strlen($key) . " chars), some hosting (ex. Netsons) refuse post key bigger than 64 chars.");	
 }
 
 // -----------------------------------------
@@ -94,15 +94,37 @@ function homeBodyChecking()
 	if(getOption("server.acp.password") == "")
 		message("error","ACP (Administration Control Panel) password access not set. Go to 'settings' page and set it.");
 		
-	// Time check
-	if(getOptionBool("services.clock.enabled"))
-	{		
-		$serverTime = queryTimeServer(getOption("services.clock.server"));		
-		if($serverTime == 0)
-			message("warning","Unable to contact time server: " . getOption("services.clock.server"));
-		else
+	// If database is enabled, check it's work.
+	if(getOptionBool("server.database.enabled"))
+	{	
+		$connection = @mysql_connect(getOption("server.database.host"), getOption("server.database.login"), getOption("server.database.password"));
+		if(!$connection)
 		{
-			$timeDiff = time() - $serverTime;
+			message("error","Database connection error: " . mysql_error());
+		}
+		else
+		{		
+			$database = mysql_select_db(getOption("server.database.database"), $connection);
+			if(!$database)
+			{
+				message("error","Database connection error: " . mysql_error());
+			}
+		}
+			
+		if($connection != null)
+			mysql_close($connection);		
+	}
+		
+	// Time check
+	if(getOptionBool("services.manifest.enabled"))
+	{		
+		$serverTime = time();
+		$internetTime = queryTimeServer(getOption("services.manifest.clock.server"));		
+		if($internetTime == 0)
+			message("warning","Unable to contact time server: " . getOption("services.manifest.clock.server"));
+		else
+		{			
+			$timeDiff = $serverTime - $internetTime;
 			$msgType = "";
 			if(abs($timeDiff)>30)
 				$msgType = "warning";
@@ -110,7 +132,7 @@ function homeBodyChecking()
 				$msgType = "info";
 				
 			if($timeDiff != 0)
-				message($msgType,"Difference from time server (" . getOption("services.clock.server") . ") of " . $timeDiff . " seconds.");			
+				message($msgType,"Difference from time server (" . getOption("services.manifest.clock.server") . ") of " . $timeDiff . " seconds. Machine time: " . date(DATE_RFC822, $serverTime) . " , Internet time: " . date(DATE_RFC822, $internetTime));			
 		}
 	}
 	
@@ -125,10 +147,10 @@ function homeBodyChecking()
 			$url = getOption("server.virtual_path") . "data/index.html?r=" . time();
 			clearstatcache();
 			
-			$testData = file_get_contents($url);
+			$testData = @file_get_contents($url);
 						
 			if(strpos($http_response_header[0], "403 Forbidden") === false)
-				message("warning","HTAccess protection of 'data' directory don't work. Enable it in your web-server, or move the data directory in another place outside the web requests (by setting 'data.path' for example in /tmp/myisis).\nTest result: '" . $http_response_header[0] . "' for url '" . $url . "'");
+				message("warning","HTAccess protection of 'data' directory don't work. Enable it in your web-server, or move the data directory in another place outside the web requests (by setting 'data.path' for example in /tmp/myisis).Test result: '" . $http_response_header[0] . "' for url '" . $url . "'");
 		}
 	}
 		
@@ -178,7 +200,7 @@ function settingsDecodeId($id)
 	return str_replace("__",".",$id);
 }
 
-function settingsControlEx($key, $type, $title, $notes, $regexSample="")
+function settingsControlEx($key, $type, $title, $notes, $regexSample="", $enumArray = null)
 {
 	global $OPTIONS;	
 	
@@ -195,6 +217,7 @@ function settingsControlEx($key, $type, $title, $notes, $regexSample="")
 	
 	if($custom == false)
 	{
+		//message("info",$key);
 		// Non è stata fatta un'ensure sopra, e non è mai stata valorizzata (custom).
 		
 		// Se è di un portale, allora il default da mostrare è quello della base.
@@ -202,7 +225,7 @@ function settingsControlEx($key, $type, $title, $notes, $regexSample="")
 		{
 			if(substr($key,8,7) != "default")
 			{
-				$defaultSubKey = "portals.default." . substr($key,49);
+				$defaultSubKey = "portals.default." . substr($key,106);
 				$default = $OPTIONS[$defaultSubKey]["value"];				
 				ensureOption($key, $default);
 			}
@@ -243,7 +266,7 @@ function settingsControlEx($key, $type, $title, $notes, $regexSample="")
 	$pos2 = strpos($key,".",$pos1+1);
 	$str1 = substr($key,0,$pos1);
 	$str2 = substr($key,$pos1+1,$pos2-$pos1-1);
-	if( ($str1 == "portals") && (validateID($str2)) )
+	if( ($str1 == "portals") && (validatePovID($str2)) )
 	{
 		$key = str_replace($str2,"pid",$key);
 	}
@@ -295,7 +318,7 @@ function settingsControlEx($key, $type, $title, $notes, $regexSample="")
 		echo "Regex Test: ";
 		echo "<input style=\"width:50%\" type=\"text\" id=\"option_" . settingsEncodeId($key) . "_test\" value=\"" . htmlencode($regexSample) . "\" />";
 		echo " - <a href=\"javascript:void(regExTest(document.getElementById('option_" . settingsEncodeId($key) . "').value, document.getElementById('option_" . settingsEncodeId($key) . "_test').value))\">Test now</a>";
-		//.match(new Regexp('alfa'))
+	}
 	else if($type == "enum")
 	{
 		echo "<select name=\"" . $controlName . "\">";
@@ -305,6 +328,7 @@ function settingsControlEx($key, $type, $title, $notes, $regexSample="")
 		}		
 		echo "</select>";
 	}
+		//.match(new Regexp('alfa'))
 		/*
 		function regExTest(s, r)
 		{
@@ -356,10 +380,13 @@ function settingsBody()
 	if($group == null)
 		$group = "list";
 		
-	$portalId = validateID(getGetText("portal"));
+	$povId = getGetText("portal");
 	
-	if($portalId == "")
-		$portalId = "default";
+	if( ($povId != "") && (validatePovID($povId) == false) )
+		throw new Exception("Invalid portal.");
+	
+	if($povId == "")
+		$povId = "default";
 		
 	$action = validateAlphabetic(getPostText("action"));
 	
@@ -379,7 +406,7 @@ function settingsBody()
 			if(strpos($key2,".pid.") !== false)
 			{
 				//trace("from ".$key2);
-				$key2 = str_replace(".pid.","." . $portalId . ".",$key2);
+				$key2 = str_replace(".pid.","." . $povId . ".",$key2);
 				//trace("to ".$key2);
 			}
 			
@@ -479,6 +506,8 @@ function settingsBody()
 		settingsControl("log.prefix", "Prefix of the log file name.");
 		settingsControl("log.timestamp", "Timestamp of the log file name. Leave empty to have only one log file. Same syntax of PHP function date()");
 		settingsControl("log.suffix", "Suffix of the log file name.");
+		settingsControlEx("log.filter.notice", "bool", "log.filter.notice", "'Notice' level logged?");
+		settingsControlEx("log.filter.php", "bool", "log.filter.php", "PHP messages are logged?");
 		
 		message("info","Tuning settings");		
 		settingsControl("tuning.index.timeout", "Timeout (in second) for the main/guest page.");
@@ -506,17 +535,21 @@ function settingsBody()
 		message("info","Redirect");
 		settingsControlEx("services.redirect.enabled", "bool", "services.redirect.enabled", "Enabled");
 		
+		message("info","Manifest");
+		settingsControlEx("services.manifest.enabled", "bool", "services.manifest.enabled", "Enabled");
+		settingsControlEx("services.manifest.error", "text", "services.manifest.error", "If not empty, throw this error on Osiris interface.");
+		settingsControl("services.manifest.intervalUpdate", "Delay (in second) between request from Osiris client.");
+		settingsControlEx("services.manifest.clock.local", "bool", "services.clock.local", "Use local clock? (Otherwise, use time server)");
+		settingsControlEx("services.manifest.clock.server","text","services.clock.server", "Time server.");
+		settingsControlEx("services.manifest.osiris.version", "text", "services.manifest.version", "Latest available Osiris version");
+		settingsControlEx("services.manifest.osiris.notes", "text", "services.manifest.notes", "Notes about this version");
+		
 		message("info","Checking");
 		settingsControlEx("services.check.enabled", "bool", "services.check.enabled", "Enabled");
 		settingsControlEx("services.check.port.timeout", "text", "services.check.port.timeout", "Default timeout for port checking.");
 		settingsControlEx("services.check.tor.update_url", "text", "services.check.tor.update_url", "Update url for TOR Exit Nodes.");
 		settingsControlEx("services.check.tor.update_every", "text", "services.check.tor.update_every", "When update TOR Exit Nodes List, in seconds.");		
-		
-		message("info","For Osiris - Clock (require SSL)");
-		settingsControlEx("services.clock.enabled", "bool", "services.clock.enabled", "Enabled");
-		settingsControlEx("services.clock.local", "bool", "services.clock.local", "Use local clock? (Otherwise, use time server)");
-		settingsControlEx("services.clock.server","text","services.clock.server", "Time server.");
-		
+				
 		message("info","For Osiris - Update System (require SSL)");
 		settingsControlEx("services.update.enabled", "bool", "services.update.enabled", "Enabled");
 		settingsControlEx("services.update.redirect","text","services.update.redirect", "Delegate this service to another Isis.");
@@ -530,7 +563,7 @@ function settingsBody()
 	else if( ($group == "portals") || ($group == "portal") )
 	{
 		$suffix = "";
-		if( ($group == "portals") || ($portalId == null) )
+		if( ($group == "portals") || ($povId == null) )
 		{
 			message("info","Portals settings defaults");
 			$suffix = "default";
@@ -538,8 +571,8 @@ function settingsBody()
 		else
 		{
 			//message("info","Portal ID:" . $portalId);
-			portalBox($portalId);
-			$suffix = $portalId;			
+			portalBox($povId);
+			$suffix = $povId;			
 		}
 		
 		if($suffix != "default")
@@ -572,7 +605,8 @@ function settingsBody()
 
 		message("info","Cache settings");
 		settingsControlEx("portals." . $suffix . ".isis.cache.enabled", "bool", "isis.cache.enabled", "If caching system is enabled.");	
-		settingsControlEx("portals." . $suffix . ".isis.cache.always", "regex", "isis.cache.always", "If the url match, an already exists cache copy is returned without checking if need to be updated.");
+		settingsControlEx("portals." . $suffix . ".isis.cache.url.always", "regex", "isis.cache.url.always", "If the url match, an already exists cache copy is returned without checking if need to be updated.");
+		settingsControlEx("portals." . $suffix . ".isis.cache.url.never", "regex", "isis.cache.url.never", "If the url match, always request to Osiris node.");
 		settingsControlEx("portals." . $suffix . ".isis.cache.store.dynamic", "bool", "isis.cache.store.dynamic", "Jobs that normally aren't stored in cache (dynamically), are stored? Normally used with 'cache.realtime.forced'>0");	
 		settingsControlEx("portals." . $suffix . ".isis.cache.realtime.forced", "text", "isis.cache.realtime.forced", "If a jobs is requested to Osiris node at minimum X seconds ago, always the cache copy is returned.");
 		settingsControlEx("portals." . $suffix . ".isis.cache.realtime.deltaratio", "text", "isis.cache.realtime.deltaratio", "");
@@ -656,7 +690,6 @@ function settingsBody()
 		settingsControlEx("portals." . $suffix . ".url.protocols.collect", "text", "url.protocols.collect", "");
 		settingsControlEx("portals." . $suffix . ".privacy.allow_external_images", "bool", "privacy.allow_external_images", "");
 		settingsControlEx("portals." . $suffix . ".privacy.allow_external_urls", "bool", "privacy.allow_external_urls", "");
-		settingsControlEx("portals." . $suffix . ".anonymity.html_mode", "text", "anonymity.html_mode", "");
 		settingsControlEx("portals." . $suffix . ".anonymity.object_mode", "text", "anonymity.object_mode", "");
 		settingsControlEx("portals." . $suffix . ".anonymity.object_trusted_domains", "text", "anonymity.object_trusted_domains", "");
 		settingsControlEx("portals." . $suffix . ".anonymity.object_trusted_types", "text", "anonymity.object_trusted_types", "");
@@ -688,10 +721,10 @@ function statusJobs($title, $portal, $type, $notes)
 		{
 			if ($file != "." && $file != ".." && $file != "index.html" && $file != ".htaccess")
 			{
-				$count++;
 				$fullPath = getOption("data.path") . "/portal_" . $portal . "/" . $type . "/" . $file;
 				$strInfo = getFileInfo($fullPath);
-				echo "<div class=\"is_status_job\"><a href=\"?page=status&amp;portal=" . $portal . "&amp;job_type=" . $type . "&amp;job_id=" . $file . "\">" . $file . "</a> (" . $strInfo . ")</div>";
+				echo "<div class=\"is_status_job\"><a href=\"?page=status&amp;portal=" . $portal . "&amp;obj_type=" . $type . "&amp;obj_id=" . $file . "\">" . $file . "</a> (" . $strInfo . ")</div>";
+				$count++;
 			}
 		}
 	}
@@ -714,15 +747,20 @@ function statusBody()
 {
 	mainTitle("Status","Here you can view informations & statistics.","status");
 	
-	$portal = validateID(getGetText('portal'));
+	$pov = getGetText('portal');
+	if( ($pov != "") && (validatePovID($pov) == false) )
+	{
+		throw new Exception("Invalid portal.");
+	}
+		
 	$action = getGetText('act');
 	
-	if($portal == "")
+	if($pov == "")
 		$action = "general";
 	
-	if( ($action == "remove") && ($portal != "") )
+	if( ($action == "remove") && ($pov != "") )
 	{
-		$path = getOption("data.path") . "/portal_" . $portal . "/";		
+		$path = getOption("data.path") . "/portal_" . $pov . "/";		
 		
 		deleteDirectory($path);
 		
@@ -731,17 +769,17 @@ function statusBody()
 		$action = "general";
 	}
 	
-	if( ($action == "cacheclear") && ($portal != "") )
+	if( ($action == "cacheclear") && ($pov != "") )
 	{
 		$nfiles = 0;
-		foreach(portalFileList($portal, "cache_data") as $file)
+		foreach(portalFileList($pov, "cache_data") as $file)
 		{
 			message("info", "Cache data '" . $file . "' deleted.");
 			$nfiles++;
 			unlink($file);								
 		}
 		
-		foreach(portalFileList($portal, "cache_info") as $file)
+		foreach(portalFileList($pov, "cache_info") as $file)
 		{
 			message("info", "Cache info '" . $file . "' deleted.");
 			$nfiles++;
@@ -766,9 +804,9 @@ function statusBody()
 	if($action == "general")
 	{
 		// List
-		foreach(portalsList() as $id)
+		foreach(portalsList() as $pov)
 		{
-			portalBox($id);
+			portalBox($pov);
 			flush();
 		}
 		
@@ -788,7 +826,7 @@ function statusBody()
 	}
 	else
 	{
-		portalBox($portal);
+		portalBox($pov);
 		
 		$objID = validateID(getGetText('obj_id'));
 		if($objID != null)
@@ -797,15 +835,15 @@ function statusBody()
 			
 			if($objType == "cache")
 			{
-				$infoPath = getOption("data.path") . "/portal_" . $portal . "/cache_info/" . $objID;
-				$dataPath = getOption("data.path") . "/portal_" . $portal . "/cache_data/" . $objID;
+				$infoPath = getOption("data.path") . "/portal_" . $pov . "/cache_info/" . $objID;
+				$dataPath = getOption("data.path") . "/portal_" . $pov . "/cache_data/" . $objID;
 				
 				codeBox(file_get_contents($infoPath));
 				codeBox(file_get_contents($dataPath));
 			}
 			else
 			{
-				$job_path = getOption("data.path") . "/portal_" . $portal . "/" . $objType . "/" . $objID;
+				$job_path = getOption("data.path") . "/portal_" . $pov . "/" . $objType . "/" . $objID;
 			
 				if(file_exists($job_path))
 				{			
@@ -822,7 +860,7 @@ function statusBody()
 		
 		// Nodes
 		$output = "";
-		foreach(portalFileList($portal, "nodes") as $file)
+		foreach(portalFileList($pov, "nodes") as $file)
 		{				
 			$data = explode("\n",file_get_contents($file));
 			
@@ -831,14 +869,14 @@ function statusBody()
 			$output .= "</div>";
 		}
 		statusDetailBox("Nodes", "Nodes waiting for a job.", $output);
-		echo statusJobs("Nodes Jobs" , $portal, "nodes", "Jobs waiting, one for each node.");
+		echo statusJobs("Nodes Jobs" , $pov, "nodes", "Jobs waiting, one for each node.");
 		
 		// Others
-		echo statusJobs("Requests - Realtime" , $portal, "requests_realtime", "Jobs requested from a client, realtime, waiting for Osiris node");
-		echo statusJobs("Requests - Background" , $portal, "requests_background", "Jobs requested from Isis, background, waiting for Osiris node");		
-		echo statusJobs("Accepteds" , $portal, "accepteds", "Jobs accepted by Osiris node, Isis is waiting for reponses.");
-		echo statusJobs("Incomings" , $portal, "incomings", "Incoming jobs from Isis");
-		echo statusJobs("Responses" , $portal, "responses", "Jobs executed by Osiris node, but not yet sended to client.");		
+		echo statusJobs("Requests - Realtime" , $pov, "requests_realtime", "Jobs requested from a client, realtime, waiting for Osiris node");
+		echo statusJobs("Requests - Background" , $pov, "requests_background", "Jobs requested from Isis, background, waiting for Osiris node");		
+		echo statusJobs("Accepteds" , $pov, "accepteds", "Jobs accepted by Osiris node, Isis is waiting for reponses.");
+		echo statusJobs("Incomings" , $pov, "incomings", "Incoming jobs from Isis");
+		echo statusJobs("Responses" , $pov, "responses", "Jobs executed by Osiris node, but not yet sended to client.");		
 		
 		// Cache
 		$output = "<table>";
@@ -856,14 +894,14 @@ function statusBody()
 		
 		$now = time();
 			
-		foreach(portalFileList($portal, "cache_info") as $file)
+		foreach(portalFileList($pov, "cache_info") as $file)
 		{				
 			$fileData = str_replace("cache_info","cache_data",$file);
 			$data = explode("\n",file_get_contents($file));
 			
 			$id = extractStringReverseFind($file,"/");
 			
-			$link = "?page=status&amp;portal=" . $portal . "&amp;obj_type=cache&amp;obj_id=" . $id;
+			$link = "?page=status&amp;portal=" . $pov . "&amp;obj_type=cache&amp;obj_id=" . $id;
 			
 			$output .= "<tr class=\"is_status_item\">";			
 			
@@ -915,7 +953,7 @@ function jobsBody()
 					
 					if($jobToRun == "")
 					{
-						$autoRunPath = "./data/" . $name . ".jobneedrun";
+						$autoRunPath = getOption("data.path") . "/" . $name . ".jobneedrun";
 						if(file_exists($autoRunPath))
 						{
 							unlink($autoRunPath);
@@ -1323,25 +1361,34 @@ function generatePage()
 	// Start xhtml output
 	xhtmlHeaderEx("<link href=\"" . getOption("server.virtual_path") . "css/acp.css\" rel=\"stylesheet\" type=\"text/css\" /><script type=\"text/javascript\" src=\"js/acp.js\"></script>", "ACP");
 	
-	// Init language system
-	languageInit();	
-	
-	echo "<noscript>";
-	message('warning','You need to activate JavaScript to use this ACP.');
-	echo "</noscript>";
-	
-	// SSL Check
-	if( (getOptionBool("server.acp.only_ssl") == true) && (getSSL() == false) )
+	try
 	{
-		message('error',_LANG_NOSSL);		
+	
+		// Init language system
+		languageInit();	
+		
+		echo "<noscript>";
+		message('warning','You need to activate JavaScript to use this ACP.');
+		echo "</noscript>";
+		
+		// SSL Check
+		if( (getOptionBool("server.acp.only_ssl") == true) && (getSSL() == false) )
+		{
+			message('error',_LANG_NOSSL);		
+		}
+		else
+		{		
+			// Login check
+			if (loginLogged() == false)
+				loginBody();
+			else	
+				mainBody();		
+		}
 	}
-	else
-	{		
-		// Login check
-		if (loginLogged() == false)
-			loginBody();
-		else	
-			mainBody();		
+	catch(Exception $e)
+	{
+		$error_desc = htmlencode($e->getMessage());
+		message("error", $error_desc);
 	}
 	
 	// End xhtml output

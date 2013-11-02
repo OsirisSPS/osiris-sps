@@ -22,7 +22,7 @@
 define( '_VALID_ISIS', 1 );
 
 include("lib.php");	
-include("common.php");	
+include("classes/link.php");	
 
 function main()
 {
@@ -33,19 +33,36 @@ function main()
 		// Init language system
 		languageInit();	
 
-		$url = $_GET["url"];
-		$action = $_GET["action"];
+		$url = null;
+		$action = null;
 		
+		if(isset($_GET["url"]))
+			$url = $_GET["url"];
+			
+		if(isset($_GET["action"]))
+			$action = $_GET["action"];
 		
 		if( ($url == null) && ($action == null) )
+		{
 			$url = $_SERVER["QUERY_STRING"];
-				
+			
+			// Strange: sometime PHP don't recognize the "url" param.  For example with this url, RFC valid:
+			// https://www.osiris-sps.org/isis/invitelink.php?url=osiris%3A%2F%2F%7Cportal%7C01000001903517ECA4E4611A51A90F3151ACF09933E38BB0%7Cname%3DOsiris%2520Official%2520-%2520Encoding%2520Test%2520%25D0%2590%25D0%25B7%25D3%2599%25D1%2580%25D0%25B1%25D0%25B0%25D1%2598%25D2%25B9%25D0%25B0%25D0%25BD%2520%2528%25D0%2590%25D0%25B7%25D3%2599%25D1%2580%25D0%25B1%25D0%25B0%25D1%2598%25D2%25B9%25D0%25B0%25D0%25BD%2529%2520%2520%25E6%25BE%25B3%25E9%2596%2580%25E7%2589%25B9%25E5%2588%25AB%25E8%25A1%258C%25E6%2594%25BF%25E5%258D%2580%2520%253CBeta%253E%2520Gamma%2520%2527%2520Delta%2520%2522%2520Omega%2520%2521%2522%25C2%25A3%2524%2525%2526%252F%2528%2529%253D%2520-%2520%252521%252522%2525A3%252524%252525%252526%25252F%252528%252529%25253D%7Cdescription%3DOsiris%2520Official%2520-%2520Encoding%2520Test%2520%25D0%2590%25D0%25B7%25D3%2599%25D1%2580%25D0%25B1%25D0%25B0%25D1%2598%25D2%25B9%25D0%25B0%25D0%25BD%2520%2528%25D0%2590%25D0%25B7%25D3%2599%25D1%2580%25D0%25B1%25D0%25B0%25D1%2598%25D2%25B9%25D0%25B0%25D0%25BD%2529%2520%2520%25E6%25BE%25B3%25E9%2596%2580%25E7%2589%25B9%25E5%2588%25AB%25E8%25A1%258C%25E6%2594%25BF%25E5%258D%2580%2520%253CBeta%253E%2520Gamma%2520%2527%2520Delta%2520%2522%2520Omega%2520%2521%2522%25C2%25A3%2524%2525%2526%252F%2528%2529%253D%2520-%2520%252521%252522%2525A3%252524%252525%252526%25252F%252528%252529%25253D%7Cuser%3D%7C
+			if(substr($url,0,4) == "url=")
+			{
+				$url = urldecode(substr($url,4));			
+			}
+		}
+						
 		$url = phpHttpParamDecode($url);
 		
 		$url = str_replace("<br />","",$url); // Added by Invision Bulletin Board to link too much long.
+		$url = str_replace("osiris:// ","osiris://",$url); // Space added by some bulletin board, for example older IPB.
 		$url = str_replace("osiris:? ","osiris:?",$url); // Space added by some bulletin board, for example older IPB.
 		
-		$data = osirisLinkParser($url);
+		$link = new Link($url);
+		
+		// $url = urldecode($url); // Isis 0.10
 		
 		if( ($url == null) || ($action == _LANG_INVITELINK_SUBMIT) )
 		{
@@ -76,21 +93,25 @@ function main()
 				echocr("</code>");
 				echocr("</div>");
 			}
-		}	
-		else if( ($data != null) && ($data["type"] == "portal") )
+		}
+		//else if (substr($url,0,17)=='osiris://|portal|')
+		else if($link->getParam("type") == "portal")
 		{
 			echocr("<div class=\"main\">");
 			echocr(_LANG_INVITELINK_PORTAL_INFO);			
-			echocr("<br /><br />");			
-			echocr("<a href=\"".htmlencode($url)."\">".htmlencode($url)."</a>");
+			echocr("<br /><br /><br /><br />");			
+			//$url = "ed2k://|file|[%E5%8A%A8%E7%94%BB][%E7%81%AB%E5%BD%B1%E5%BF%8D%E8%80%85%E7%96%BE%E9%A3%8E%E4%BC%A0][Naruto][253][%E7%8C%AA%E7%8C%AA%E5%AD%97%E5%B9%95%E7%BB%84][Jp_Cn][Xvid_BF][KPAP].rmvb|113559299|CC37803AF9684B19FB2FC7BDFB256512|/";
+			echocr("<a style=\"font-size:1.4em;\" href=\"".htmlencode($link->export())."\">".htmlencode($link->getParam("name"))."</a>");
+			//echocr("<a href=\"" . "ed2k://|file|[BDRip][1080p][AAC.Ita-Eng]Monster&co_by_Fle33iX.mkv|8500393358|0557F9A70A871B951B82EEAA114F504B|h=FG7VEIOTVTM6G4B54ZJXCO3NYQI3MWWS|/" . "\">test</a>");
 			echocr("</div>");
 		}
-		else if( ($data != null) && ($data["type"] == "isis") )
+		//else if (substr($url,0,15)=='osiris://|isis|')
+		else if($link->getParam("type") == "isis")
 		{
 			echocr("<div class=\"main\">");
 			echocr(_LANG_INVITELINK_ISIS_INFO);			
 			echocr("<br /><br />");			
-			echocr("<a href=\"".htmlencode($url)."\">".htmlencode($url)."</a>");
+			echocr("<a href=\"".htmlencode($link->export())."\">".htmlencode($link->getParam("name"))." - " . htmlencode($link->getParam("url")) . "</a>");
 			echocr("</div>");
 		}
 		else	

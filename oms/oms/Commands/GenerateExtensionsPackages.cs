@@ -102,7 +102,7 @@ namespace OMS.Commands
             CopyToPreinstalled("148B613D055759C619D5F4EFD9FDB978387E97CB"); // Web Interface
             CopyToPreinstalled("AF4E66017B2F4E240E47EA9240F6F7E8C9EF7D78"); // Advertising
             CopyToPreinstalled("9A53510BB471C48AF9B7954466D123438C387368"); // Html Snippet
-            CopyToPreinstalled("FBB11DCD3134703D1A2179451C5898B5E3A1DCBB"); // Custom CSS
+            //CopyToPreinstalled("FBB11DCD3134703D1A2179451C5898B5E3A1DCBB"); // Custom CSS
            
             Engine.Form.AddLog(Engine.LogType.ltInfo, "Done.");
         }

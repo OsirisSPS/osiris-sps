@@ -171,8 +171,14 @@ function main()
 				
 		$testPort = !(isset($_GET["notest"]));
 			
-		$port = validateNumeric($_GET["port"]);
-		$timeout = validateNumeric($_GET["timeout"]);
+		$port = null;
+		if(isset($_GET["port"]))
+			$port = validateNumeric($_GET["port"]);
+			
+		$timeout = null;		
+		if(isset($_GET["timeout"]))
+			$timeout = validateNumeric($_GET["timeout"]);
+			
 		if ($port == null) { $port=6060; }
 		if ($timeout == null) { $timeout=getOptionInt("services.check.port.timeout"); }
 		if ($timeout<1) { $timeout=1; }
