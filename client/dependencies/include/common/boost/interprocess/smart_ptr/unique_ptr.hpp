@@ -5,7 +5,7 @@
 // This file is the adaptation for Interprocess of
 // Howard Hinnant's unique_ptr emulation code.
 //
-// (C) Copyright Ion Gaztanaga 2006. Distributed under the Boost
+// (C) Copyright Ion Gaztanaga 2006-2012. Distributed under the Boost
 // Software License, Version 1.0. (See accompanying file
 // LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
 //
@@ -21,7 +21,7 @@
 #include <boost/assert.hpp>
 #include <boost/interprocess/detail/utilities.hpp>
 #include <boost/interprocess/detail/pointer_type.hpp>
-#include <boost/interprocess/detail/move.hpp>
+#include <boost/move/move.hpp>
 #include <boost/compressed_pair.hpp>
 #include <boost/static_assert.hpp>
 #include <boost/interprocess/detail/mpl.hpp>
@@ -82,7 +82,9 @@ template <class T, class D>
 class unique_ptr
 {
    /// @cond
-   struct nat {int for_bool_;};
+   struct nat  {int for_bool;};
+   struct nat2 {int for_nullptr;};
+   typedef int nat2::*nullptr_t;
    typedef typename ipcdetail::add_reference<D>::type deleter_reference;
    typedef typename ipcdetail::add_reference<const D>::type deleter_const_reference;
    /// @endcond
@@ -143,7 +145,7 @@ class unique_ptr
    //!
    //!After the construction, u no longer owns a pointer.
    //![ Note: The deleter constructor can be implemented with
-   //!   boost::interprocess::forward<D>. -end note ]
+   //!   boost::forward<D>. -end note ]
    //!
    //!Postconditions: get() == value u.get() had before the construction.
    //!get_deleter() returns a reference to the internally stored deleter which
@@ -152,7 +154,7 @@ class unique_ptr
    //!
    //!Throws: nothing.
    unique_ptr(BOOST_RV_REF(unique_ptr) u)
-      : ptr_(u.release(), boost::interprocess::forward<D>(u.get_deleter()))
+      : ptr_(u.release(), boost::forward<D>(u.get_deleter()))
    {}
 
    //!Requires: If D is not a reference type, construction of the deleter
@@ -175,7 +177,7 @@ class unique_ptr
    //!
    //!Throws: nothing.
    template <class U, class E>
-   unique_ptr(BOOST_RV_REF_2_TEMPL_ARGS(unique_ptr, U, E) u,
+   unique_ptr(BOOST_RV_REF_BEG unique_ptr<U, E> BOOST_RV_REF_END u,
       typename ipcdetail::enable_if_c<
             ipcdetail::is_convertible<typename unique_ptr<U, E>::pointer, pointer>::value &&
             ipcdetail::is_convertible<E, D>::value &&
@@ -186,7 +188,7 @@ class unique_ptr
             ,
             nat
             >::type = nat())
-      : ptr_(const_cast<unique_ptr<U,E>&>(u).release(), boost::interprocess::move<D>(u.get_deleter()))
+      : ptr_(const_cast<unique_ptr<U,E>&>(u).release(), boost::move<D>(u.get_deleter()))
    {}
 
    //!Effects: If get() == 0 there are no effects. Otherwise get_deleter()(get()).
@@ -211,7 +213,7 @@ class unique_ptr
    unique_ptr& operator=(BOOST_RV_REF(unique_ptr) u)
    {
       reset(u.release());
-      ptr_.second() = boost::interprocess::move(u.get_deleter());
+      ptr_.second() = boost::move(u.get_deleter());
       return *this;
    }
 
@@ -230,10 +232,10 @@ class unique_ptr
    //!
    //!Throws: nothing.
    template <class U, class E>
-   unique_ptr& operator=(BOOST_RV_REF_2_TEMPL_ARGS(unique_ptr, U, E) u)
+   unique_ptr& operator=(BOOST_RV_REF_BEG unique_ptr<U, E> BOOST_RV_REF_END u)
    {
       reset(u.release());
-      ptr_.second() = boost::interprocess::move(u.get_deleter());
+      ptr_.second() = boost::move(u.get_deleter());
       return *this;
    }
 
@@ -246,7 +248,7 @@ class unique_ptr
    //!Returns: *this.
    //!
    //!Throws: nothing.
-   unique_ptr& operator=(int nat::*)
+   unique_ptr& operator=(nullptr_t)
    {
       reset();
       return *this;
@@ -272,21 +274,21 @@ class unique_ptr
    //!Returns: A reference to the stored deleter.
    //!
    //!Throws: nothing.
-   deleter_reference       get_deleter()       
+   deleter_reference       get_deleter()
    {  return ptr_.second();   }
 
    //!Returns: A const reference to the stored deleter.
    //!
    //!Throws: nothing.
-   deleter_const_reference get_deleter() const 
+   deleter_const_reference get_deleter() const
    {  return ptr_.second();   }
 
    //!Returns: An unspecified value that, when used in boolean
    //!contexts, is equivalent to get() != 0.
    //!
    //!Throws: nothing.
-   operator int nat::*() const 
-   {  return ptr_.first() ? &nat::for_bool_ : 0;   }
+   operator int nat::*() const
+   {  return ptr_.first() ? &nat::for_bool : 0;   }
 
    //!Postcondition: get() == 0.
    //!
@@ -328,7 +330,7 @@ class unique_ptr
    BOOST_MOVABLE_BUT_NOT_COPYABLE(unique_ptr)
    template <class U, class E> unique_ptr(unique_ptr<U, E>&);
    template <class U> unique_ptr(U&, typename ipcdetail::unique_ptr_error<U>::type = 0);
-   
+
    template <class U, class E> unique_ptr& operator=(unique_ptr<U, E>&);
    template <class U> typename ipcdetail::unique_ptr_error<U>::type operator=(U&);
    /// @endcond
@@ -457,7 +459,7 @@ public:
     pointer get()        const {return ptr_.first();}
     deleter_reference       get_deleter()       {return ptr_.second();}
     deleter_const_reference get_deleter() const {return ptr_.second();}
-    operator int nat::*() const {return ptr_.first() ? &nat::for_bool_ : 0;}
+    operator int nat::*() const {return ptr_.first() ? &nat::for_bool : 0;}
 
     // modifiers
     pointer release()
@@ -539,7 +541,7 @@ template<class T, class ManagedMemory>
 inline typename managed_unique_ptr<T, ManagedMemory>::type
    make_managed_unique_ptr(T *constructed_object, ManagedMemory &managed_memory)
 {
-   return typename managed_unique_ptr<T, ManagedMemory>::type 
+   return typename managed_unique_ptr<T, ManagedMemory>::type
       (constructed_object, managed_memory.template get_deleter<T>());
 }
 

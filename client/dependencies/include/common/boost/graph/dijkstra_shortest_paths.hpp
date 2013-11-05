@@ -30,6 +30,7 @@
 #include <boost/property_map/property_map.hpp>
 #include <boost/property_map/vector_property_map.hpp>
 #include <boost/type_traits.hpp>
+#include <boost/concept/assert.hpp>
 
 #ifdef BOOST_GRAPH_DIJKSTRA_TESTING
 #  include <boost/pending/mutable_queue.hpp>
@@ -68,7 +69,7 @@ namespace boost {
   template <class Visitor, class Graph>
   struct DijkstraVisitorConcept {
     void constraints() {
-      function_requires< CopyConstructibleConcept<Visitor> >();
+      BOOST_CONCEPT_ASSERT(( CopyConstructibleConcept<Visitor> ));
       vis.initialize_vertex(u, g);
       vis.discover_vertex(u, g);
       vis.examine_vertex(u, g);
@@ -158,7 +159,11 @@ namespace boost {
       void examine_vertex(Vertex u, Graph& g) { m_vis.examine_vertex(u, g); }
       template <class Edge, class Graph>
       void examine_edge(Edge e, Graph& g) {
-        if (m_compare(get(m_weight, e), m_zero))
+        // Comparison needs to be more complicated because distance and weight
+        // types may not be the same; see bug 8398
+        // (https://svn.boost.org/trac/boost/ticket/8398)
+        D source_dist = get(m_distance, source(e, g));
+        if (m_compare(m_combine(source_dist, get(m_weight, e)), source_dist))
             boost::throw_exception(negative_edge());
         m_vis.examine_edge(e, g);
       }
