@@ -1,6 +1,6 @@
 // Boost.Geometry (aka GGL, Generic Geometry Library)
 
-// Copyright (c) 2007-2011 Barend Gehrels, Amsterdam, the Netherlands.
+// Copyright (c) 2007-2012 Barend Gehrels, Amsterdam, the Netherlands.
 
 // Use, modification and distribution is subject to the Boost Software License,
 // Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
@@ -100,14 +100,14 @@ on a perfect sphere using haversine
 \tparam CalculationType \tparam_calculation
 \author Adapted from: http://williams.best.vwh.net/avform.htm
 \see http://en.wikipedia.org/wiki/Great-circle_distance
-\note It says: <em>The great circle distance d between two
+\note (from Wiki:) The great circle distance d between two
 points with coordinates {lat1,lon1} and {lat2,lon2} is given by:
     d=acos(sin(lat1)*sin(lat2)+cos(lat1)*cos(lat2)*cos(lon1-lon2))
 A mathematically equivalent formula, which is less subject
     to rounding error for short distances is:
-    d=2*asin(sqrt((sin((lat1-lat2)/2))^2
-    + cos(lat1)*cos(lat2)*(sin((lon1-lon2)/2))^2))
-    </em>
+    d=2*asin(sqrt((sin((lat1-lat2) / 2))^2
+    + cos(lat1)*cos(lat2)*(sin((lon1-lon2) / 2))^2))
+    
 
 \qbk{
 [heading See also]
