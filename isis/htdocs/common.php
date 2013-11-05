@@ -20,6 +20,8 @@
 
 defined( '_VALID_ISIS' ) or die( 'Direct Access to this location is not allowed.' );
 
+include("classes/link.php");
+
 function getOptionPortal($name, $id)
 {
 	$val = getOption("portals." . $id . "." . $name);
@@ -51,20 +53,6 @@ function matchOptionPortal($name, $value, $id)
 	return regex_match($val, $value);
 }
 
-function checkPortalUser($portal, $user)
-{
-	if(checkID($portal) == false)
-		return false;
-	if(strlen($portal) != 48)
-		return false;
-	if(checkID($user) == false)
-		return false;
-	if(strlen($user) != 48)
-		return false;
-		
-	return true;
-}
-
 function commonPeerChecks($id, $password)
 {
 	// Checking IP
@@ -81,35 +69,30 @@ function commonPeerChecks($id, $password)
 	allowedValueListEx($userAgent, getOptionPortal("isis.peers.version.allowed", $id), getOptionPortal("isis.peers.version.blocked", $id), "Version");	
 }
 
-function allowedPortal($portal, $user)
-{	
-	if(checkPortalUser($portal, $user) == false)
-		throw new Exception("Portal not found or invalid.");
+function allowedPov($povId)
+{
+	if(validatePovID($povId) == false)
+		throw new Exception("Invalid portal.");
 		
-	$id = composePovId($portal, $user);
-		
-	allowedValueList($id, "portals.general.allowed", "portals.general.blocked", "Portal");
+	allowedValueList($povId, "portals.general.allowed", "portals.general.blocked", "Portal");
 	
-	if(existsOption("portals." . $id . ".portal") == false)
-	{	
-		ensurePortalDirs($portal, $user, true);
-		
-		setOption("portals." . $id . ".portal", $portal);
-		setOption("portals." . $id . ".user", $user);
-		
-		settingsSave();
-	}
+	ensurePortalDirs($povId, true);	
 }
 
-function ensurePortalDirs($portal, $user, $fullCheck = false)
+function allowedPortal($portal, $pov) // TOCLEAN
+{	
+	$povId = composePovId($portal, $pov);
+		
+	allowedPov($povId);
+}
+
+function ensurePortalDirs($povId, $fullCheck = false)
 {
-	$id = composePovId($portal, $user);
-	
 	$path_base = getOption("data.path");
 	
 	ensureDir($path_base, 0777);	
 	
-	$path_portal = $path_base . "/portal_" . $id;
+	$path_portal = $path_base . "/portal_" . $povId;
 	
 	if( ($fullCheck == false) && (file_exists($path_portal)) )
 		return;
@@ -231,25 +214,26 @@ function getPortalNodesCount($povId)
 
 function portalBox($id, $acpDetails = true)
 {
-	//ensurePortalDirs($id, true);
-	
 	$class = "";
 	
 	$nNodes = getPortalNodesCount($id);
 	
 	$portalId = getOptionPortal("portal", $id);
-	$userId = getOptionPortal("user", $id);
+	$povId = getOptionPortal("pov", $id);
 		
 	$name = getOptionPortal("isis.info.name", $id);		
 	$titleName = $name;
 	if($titleName == "")
 		$titleName = "<no name>";
-		
+	
+	/*	
 	$description = getOptionPortal("isis.info.description", $id);
 	$titleDescription = $description;
 	if( ($acpDetails) && ($titleDescription == "") )
 		$titleDescription = "<no description>";
-		
+	*/
+	
+	/*	
 	$monarchist = ereg('.1..............................................',$portalId);
 	$public = ereg('0...............................................',$portalId);
 	$portalType = "";
@@ -262,7 +246,7 @@ function portalBox($id, $acpDetails = true)
 		$portalType .= "Public";
 	else
 		$portalType .= "Private";
-	
+	*/
 	$basePath = getOption("data.path") . "/portal_" . $id;	
 	//$infoNodes = getDirectorySize($basePath . "/nodes/");
 	$infoRequestsRealtime = getDirectorySize($basePath . "/requests_realtime/");
@@ -276,7 +260,7 @@ function portalBox($id, $acpDetails = true)
 	$hidden = getOptionPortalBool("isis.info.hidden", $id);
 	$closed = getOptionPortal("isis.closed_message", $id);
 		
-	$hrefView = getOption("server.virtual_path") . "?/portals/view?portal=" . $portalId . "&user=" . $userId;
+	$hrefView = getOption("server.virtual_path") . "?/portals/view?portal=" . $id;
 
 	$actions = "";
 	$acpActions = "";
@@ -304,18 +288,19 @@ function portalBox($id, $acpDetails = true)
 	}
 	
 	// Osiris subscription link
-		
-	/* Osiris != Razor
-	$hrefOsirisSubscription = "osiris://|portal|" . urlencode($portalId) . "|name=" . urlencode($name) . "|description=" . urlencode($description) . "";
-	if($isisUser != "")
-		$hrefOsirisSubscription .= "|user=" . urlencode($isisUser);
-	$hrefOsirisSubscription .= "|";
-	*/
-	$hrefOsirisSubscription = "osiris:?type=portal&portal=" . urlencode($portalId) . "&user=" . urlencode($userId);
-	if($name != "")
-		$hrefOsirisSubscription .= "&name=" . urlencode($name);	
-	if($description != "")
-		$hrefOsirisSubscription .= "&description=" . urlencode($description);	
+	// ex.
+	// osiris://|portal|0000000197DCF94088CEFBC0D8EBB4995087EE65B4805589|name=Serverless%20News|description=Portale%20dedicato%20a%20notizie%20rilasciate%20sotto%20licenza%20Creative%20Commons|user=010000023CCB3260950B80505CBB062C0B9B65E7028BD53F|	
+	
+	$link = new Link();
+	$link->setParam("type","portal");
+	$link->setParam("portal",$portalId);
+	$link->setParam("pov",$povId);	
+	$link->setParam("name",$name);
+	$link->setParam("description",$description);
+	
+	//$hrefOsirisSubscription = "osiris://|portal|" . urlencode($portalId) . "|name=" . urlencode($name) . "|description=" . urlencode($description) . "";
+	
+	$hrefOsirisSubscription = $link->export();
 	
 	$hrefOsirisSubscriptionWithIsis = "invitelink.php?url=" . urlencode($hrefOsirisSubscription);
 	
@@ -323,6 +308,8 @@ function portalBox($id, $acpDetails = true)
 	$actions .= "<a href=\"" . htmlencode($hrefOsirisSubscriptionWithIsis) . "\">Subscribe with Osiris</a>";
 	
 	// Isis subscription link
+	// ex.
+	// http://isisdev.kodeware.net/invitelink.php?url=osiris://|isis|0000000197DCF94088CEFBC0D8EBB4995087EE65B4805589|name=Isis%20Dev|url=http://isisdev.kodeware.net/|
 	$isisVisible = true;
 	$customPassword = (getOptionPortal("isis.peers.password", $id) != ".*");
 	if($customPassword) // If password are set, link are visible only from acp.
@@ -330,12 +317,15 @@ function portalBox($id, $acpDetails = true)
 	if($isisVisible)
 	{
 		$isisUrl = getOption("server.virtual_path");		
-		
-		/* Osiris != Razor
-		$hrefIsisSubscription = "osiris://|isis|" . urlencode . "|name=" . urlencode(getOption("server.name")) . "|url=" . urlencode($isisUrl);		
-		$hrefIsisSubscription .= "|";
-		*/
-		$hrefIsisSubscription = "osiris:?type=isis&name=" . urlencode(getOption("server.name")) . "&url=" . urlencode($isisUrl);		
+		//$hrefIsisSubscription = "osiris://|isis|" . urlencode($portalId) . "|name=" . urlencode(getOption("server.name")) . "|url=" . urlencode($isisUrl);		
+		//$hrefIsisSubscription .= "|";
+		$link = new Link();
+		$link->setParam("type","isis");
+		$link->setParam("portal",$portalId);
+		$link->setParam("pov",$povId);	
+		$link->setParam("name",getOption("server.name"));
+		$link->setParam("url",$isisUrl);
+		$hrefIsisSubscription = $link->export();
 		
 		$hrefIsisSubscriptionWithIsis = "invitelink.php?url=" . urlencode($hrefIsisSubscription);
 		
@@ -371,8 +361,9 @@ function portalBox($id, $acpDetails = true)
 	$html .= "</div>";
 			
 	$html .= "<span style=\"font-size:1.3em;font-weight:bold;\">" . htmlencode($titleName) . "</span><br />";
-	$html .= htmlencode($titleDescription) . "<br />";	
-	$html .= "<span style=\"font-size: 0.8em;color:gray;\"><b>" . $portalType . "</b> , Portal ID: <b>" . htmlencode($portalId) . "</b> , User ID: <b>" . htmlencode($userId) . "</b></span><br />";
+	//$html .= htmlencode($titleDescription) . "<br />";	
+	//$html .= "<span style=\"font-size: 0.8em;color:gray;\"><b>" . $portalType . "</b> , Portal ID: <b>" . htmlencode($portalId) . "</b> , Pov ID: <b>" . htmlencode($povId) . "</b></span><br />";
+	$html .= "<span style=\"font-size: 0.8em;color:gray;\">Portal ID: <b>" . htmlencode($portalId) . "</b> , Pov ID: <b>" . htmlencode($povId) . "</b></span><br />";
 	if($acpDetails)
 	{
 		$acpNotes = getOptionPortal("isis.info.acp.notes", $id);
@@ -399,130 +390,64 @@ function cleaningZombieNodes()
 	
 }
 
-function composePovId($portal, $user)
+function validatePovID($id)
 {
-	//return $portal . "_" . $user;
-	return hash("sha1",$portal . $user);
+	$portal = substr($id,0,40);
+	$pov = substr($id,41);
+	
+	if(validateID($portal) == false)
+		return false;
+	if(validateID($pov) == false)
+		return false;
+	
+	return true;	
 }
 
-// Build an Osiris link, from an array.
-function osirisLinkGenerate($data)
+function composePovId($portal, $pov)
 {
-	return "osiris:?TODO";
-}
-
-// Parse an Osiris link, and return an array.
-function osirisLinkParser($link)
-{	
-	$result = array();
-	
-	if(substr($link,0,8) == "osiris:?")
-	{
-		
-		
-		$params = substr($link,8);
-		$array1 = explode("&",$params);
-		for($i=0;$i<count($array1);$i++)
-		{
-			$keyval = $array1[$i];
-			$array2 = explode("=",$keyval);
-			$key = trim($array2[0]);
-			$value = urldecode(trim($array2[1]));
-				
-			if($key != "")
-			{
-				$result[$key] = $value;				
-			}
-		}
-		
-		// Check validity
-		if($result["type"] == "portal")
-		{
-			if(checkID($result["portal"]) == false)
-				return null;
-			if(checkID($result["user"]) == false)
-				return null;			
-		}		
-		else if($result["type"] == "isis")
-		{
-			if($result["name"] == null)			
-				return null;
-			if($result["url"] == null)			
-				return null;
-		}
-	}
-	else if(substr($link,0,9) == "osiris://") // Osiris != Razor
-	{
-		// Old format.
-		$array1 = explode("|",$link);
-		if($array1[0] != "osiris://")
-			return null;					
-		$result["type"] = $array1[1];
-		
-		if( ($result["type"] == "portal") || ($result["type"] == "isis") )
-		{
-			$result["portal"] = $array1[2];			
-			for($i=3;$i<count($array1);$i++)
-			{
-				$keyval = $array1[$i];
-				$array2 = explode("=",$keyval);
-				$key = trim($array2[0]);
-				$value = urldecode(trim($array2[1]));
-					
-				if($key != "")
-					$result[$key] = $value;
-			}
-		}
-		else if ($result["type"] == "file")
-		{
-			$result['id'] = $array1[2];
-		}
-		else if ($result["type"] == "url")
-		{
-			$url = urldecode($array1[2]);
-			$params = urldecode($array1[3]);
-			
-			if($params != "")
-				$url = $url . "?" . $params;
-			$result['url'] = $url;			
-		}
-		else if ($result["type"] == "skin")
-		{
-			$result['url'] = urldecode($array1[2]);
-		}
-	}	
-	else
-		return null;
-	
-	return $result;
+	return $portal . "_" . $pov;
+	//return hash("sha1",$portal . $user);
 }
 
 function pasteLinks($pasteLinks)
 {
-	$linksA = explode("\r", $pasteLinks);
+	$linksA = array_filter(explode("\r", $pasteLinks));
 	foreach($linksA as $link)
 	{			
 		$link2 = trim($link);			
 		if($link2 != "")
 		{			
-			$params = osirisLinkParser($link2);
+			//$params = osirisLinkParser($link2);
 			
-			if( ($params != null) && ( ($params["type"] == "portal") || ($params["type"] == "isis") ) )
+			// Detect if is a Isis http link
+			if(strpos($link2,"invitelink.php") !== false)
 			{
-				$portal = $params["portal"];
-				$user = $params["user"];
+				$link2 = urldecode(substr($link2,4+strpos($link2,"url=")));
+			}
+						
+			$l = new Link($link2);
+			
+			if( ($l->getParam("type") == "portal") || ($l->getParam("type") == "isis") )
+			{
+				$portal = $l->getParam("portal");
+				$pov = $l->getParam("pov");
+				
+				$id = composePovId($portal, $pov);
 				
 				// Checking portal
-				allowedPortal($portal, $user);
+				allowedPortal($portal, $pov);
 				
-				if(isset($params["name"]))
-					setOption("portals." . $id . ".isis.info.name", $params["name"]);
-				if(isset($params["description"]))
-					setOption("portals." . $id . ".isis.info.description", $params["description"]);				
-				
+				if($l->hasParam("name"))
+					setOption("portals." . $id . ".isis.info.name", $l->getParam("name"));
+				if($l->hasParam("description"))
+					setOption("portals." . $id . ".isis.info.description", $l->getParam("description"));				
+					
+				setOption("portals." . $id . ".portal", $portal);
+				setOption("portals." . $id . ".pov", $pov);
+	
 				settingsSave();
 				
-				message("info","Portal Imported: " . $params["name"]);
+				message("info","Portal Imported: " . $l->getParam("name"));
 			}
 			else
 			{
@@ -530,6 +455,111 @@ function pasteLinks($pasteLinks)
 			}
 		}				
 	}
+}
+
+function generateSeoRules() // TODO: sotto in saveSettings, pulire e chiamare questa. Chiamare questa da ACP per nginx.
+{
+	$format = "nginx";
+	
+	$output = "";
+	
+	$output .= "# Generated by Isis ACP\r\n\r\n";
+	if($format == "htaccess")
+	{
+		$output .= "Options +FollowSymLinks\r\n";
+		$output .= "RewriteEngine on\r\n";
+	}
+	
+	$output .= "\r\n# Service Link List\r\n";
+	$list = getOption("services.link.list");
+	$lines = multilineFillArray($list);
+	foreach($lines as $line)
+	{			
+		$values = explode(" ", $line);
+					
+		$key = trim($values[0]);
+		$dest = trim(urldecode($values[1]));
+		
+		$flags = "";
+		if(isset($values[2]))
+			$flags = trim($values[2]);
+		
+		if(strpos($flags,"S"))
+			$output .= "RewriteRule ^" . $key . iif($key != "","\/","") . "$ " . $dest . " [NC]\r\n";
+	}
+	
+	$output .= "\r\n# Portals aliases\r\n";
+	foreach(portalsList() as $portal)
+	{
+		$alias = getOptionPortal("isis.info.alias", $portal);
+		if($alias != "")
+			$output .= "RewriteRule ^portals\/" . strtolower($alias) . "\/(.*?)$ " . $seoPath . "portals/" . $portal . "/$1 [NC]\r\n";
+	}
+	
+	if(getOption("services.link.seo.home_portal") != "")
+	{
+		$output .= "\r\n# General SEO for portal " . getOption("services.link.seo.home_portal") . "\r\n";			
+		$output .= "RewriteRule ^$ " . getCurrentHttpPath(true) . "?/portals/view?portal=" . getOption("services.link.seo.home_portal") . " [NC]\r\n";
+		$output .= "RewriteRule ^([a-zA-Z0-9]{48,48}?)\/$ " . getCurrentHttpPath(true) . "?/portals/view?id=$1&portal=" . getOption("services.link.seo.home_portal") . " [NC]\r\n";
+		$output .= "RewriteRule ^resources\/([a-zA-Z0-9]{48,48}?)\/$ " . getCurrentHttpPath(true) . "?/main/resources?file=$1&portal=" . getOption("services.link.seo.home_portal") . " [NC]\r\n";
+		$output .= "RewriteRule ^users\/([a-zA-Z0-9]{48,48}?)\/$ " . getCurrentHttpPath(true) . "?/portals/user?id=$1&portal=" . getOption("services.link.seo.home_portal") . " [NC]\r\n";
+		$output .= "RewriteRule ^(users|changes|latest_discussions|search|edit|about)\/$ " . getCurrentHttpPath(true) . "?/portals/$1?portal=" . getOption("services.link.seo.home_portal") . " [NC]\r\n";
+		$output .= "RewriteRule ^htdocs\/(.*?)$ " . getCurrentHttpPath(true) . "?/htdocs/$1?portal=" . getOption("services.link.seo.home_portal") . " [NC]\r\n";
+		
+		// Commented, for issue with CSS
+		//fwrite($fhtaccess, "RewriteRule ^htdocs\/(.*?)$ /isis/?/htdocs/$1?portal=" . getOption("services.link.seo.home_portal") . " [NC]\r\n");
+	}
+	$output .= "\r\n# General SEO\r\n";
+	$output .= "RewriteRule ^portals\/$ " . getCurrentHttpPath(true) . "/home.php [NC]\r\n";
+	$output .= "RewriteRule ^portals\/([a-zA-Z0-9]{48,48}?)\/$ " . getCurrentHttpPath(true) . "?/portals/view?portal=$1 [NC]\r\n";
+	$output .= "RewriteRule ^portals\/([a-zA-Z0-9]{48,48}?)\/([a-zA-Z0-9]{48,48}?)\/$ " . getCurrentHttpPath(true) . "?/portals/view?id=$2&portal=$1 [NC]\r\n";
+	$output .= "RewriteRule ^portals\/([a-zA-Z0-9]{48,48}?)\/resources\/([a-zA-Z0-9]{48,48}?)\/$ " . getCurrentHttpPath(true) . "?/main/resources?file=$2&portal=$1 [NC]\r\n";
+	$output .= "RewriteRule ^portals\/([a-zA-Z0-9]{48,48}?)\/users\/([a-zA-Z0-9]{48,48}?)\/$ " . getCurrentHttpPath(true) . "?/portals/user?id=$2&portal=$1 [NC]\r\n";
+	$output .= "RewriteRule ^portals\/([a-zA-Z0-9]{48,48}?)\/(users|changes|latest_discussions|search|edit|about)\/$ " . getCurrentHttpPath(true) . "?/portals/$2?portal=$1 [NC]\r\n";
+	$output .= "RewriteRule ^portals\/([a-zA-Z0-9]{48,48}?)\/htdocs\/(.*?)$ " . getCurrentHttpPath(true) . "?/htdocs/$2?portal=$1 [NC]\r\n";
+	
+	// Commented, for issue with CSS
+	//fwrite($fhtaccess, "RewriteRule ^([A-Z0-9]*?)\/htdocs\/(.*?)$ /isis/?/htdocs/$2?portal=$1 [NC]\r\n");
+	
+	$output .= "\r\n# General redirect, if the page name it's written without final slash.\r\n";
+	$output .= "RewriteRule ^([a-zA-Z0-9_]+?)$ " . $seoPath . "$1/ [R=301]\r\n";
+	if(getOption("services.link.seo.home_portal") != "")		{			
+		
+		$output .= "RewriteRule ^resources\/([a-zA-Z0-9]{48,48}?)$ " . $seoPath . "resources/$1/ [R=301]\r\n";
+		$output .= "RewriteRule ^users\/([a-zA-Z0-9]{48,48}?)$ " . $seoPath . "users/$1/ [R=301]\r\n";
+		$output .= "RewriteRule ^(users|changes|latest_discussions|search|edit|about)$ " . $seoPath . "$1/ [R=301]\r\n";
+		$output .= "\r\n";
+	}
+	
+	$output .= "RewriteRule ^portals$ " . $seoPath . "portals/ [R=301]\r\n";
+	$output .= "RewriteRule ^portals\/([a-zA-Z0-9_]+?)$ " . $seoPath . "portals/$1/ [R=301]\r\n";
+	$output .= "RewriteRule ^portals\/([a-zA-Z0-9]{48,48}?)$ " . $seoPath . "portals/$1/ [R=301]\r\n";
+	$output .= "RewriteRule ^portals\/([a-zA-Z0-9]{48,48}?)\/([a-zA-Z0-9]{48,48}?)$ " . $seoPath . "portals/$1/$2/ [R=301]\r\n";
+	$output .= "RewriteRule ^portals\/([a-zA-Z0-9]{48,48}?)\/resources\/([a-zA-Z0-9]{48,48}?)$ " . $seoPath . "portals/$1/resources/$2/ [R=301]\r\n";
+	$output .= "RewriteRule ^portals\/([a-zA-Z0-9]{48,48}?)\/users\/([a-zA-Z0-9]{48,48}?)$ " . $seoPath . "portals/$1/users/$1/ [R=301]\r\n";
+	$output .= "RewriteRule ^portals\/([a-zA-Z0-9]{48,48}?)\/(users|changes|latest_discussions|search|edit|about)$ " . $seoPath . "portals/$1/$2/ [R=301]\r\n";
+	
+	
+	$output .= "\r\n# Compatibility rules (with Isis 0.11)\r\n";
+	$output .= "RewriteRule ^view\/([a-zA-Z0-9]{48,48}?)\/$ /$1/ [R=301]\r\n";
+	$output .= "RewriteRule ^([a-zA-Z0-9]{48,48}?)\/view\/([A-Z0-9]*?)\/$ /portals/$1/$2/ [R=301]\r\n";
+	$output .= "RewriteRule ^([a-zA-Z0-9]{48,48}?)\/resources\/([A-Z0-9]*?)\/$ /portals/$1/resources/$2/ [R=301]\r\n";
+	
+	$output .= "\r\n# Compatibility rules (with Isis 0.11) - General redirect, if the page name it's written without final slash.\r\n";
+	$output .= "RewriteRule ^view\/([a-zA-Z0-9]{48,48}?)$ /$1/ [R=301]\r\n";
+	$output .= "RewriteRule ^([a-zA-Z0-9]{48,48}?)\/view\/([A-Z0-9]*?)$ /portals/$1/$2/ [R=301]\r\n";
+	$output .= "RewriteRule ^([a-zA-Z0-9]{48,48}?)\/resources\/([A-Z0-9]*?)$ /portals/$1/resources/$2/ [R=301]\r\n";
+	
+	
+	if($format == "nginx")
+	{
+		$output = str_replace("RewriteRule ^", "rewrite \"^/", $output);
+		$output = str_replace("$ ", "$\" ", $output);
+		$output = str_replace("[NC]", "break;", $output);
+		$output = str_replace("[R=301]", "permanent;", $output);
+	}	
+	
+	return $output;
 }
 
 function settingsSave()
@@ -565,13 +595,15 @@ function settingsSave()
 		
 		fwrite($fhtaccess, "\r\n# Service Link List\r\n");
 		$list = getOption("services.link.list");
-		$lines = explode("\n", $list);
+		$lines = multilineFillArray($list);
 		foreach($lines as $line)
 		{
 			$values = explode(" ", $line);
 			
 			$key = trim($values[0]);
 			$dest = trim(urldecode($values[1]));
+			$flags = "";
+			if(isset($values[2]))
 			$flags = trim($values[2]);
 			
 			if(strpos($flags,"S"))

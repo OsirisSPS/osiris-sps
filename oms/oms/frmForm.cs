@@ -161,7 +161,7 @@ namespace OMS
             }
 
             if (ServerName == "Orange")
-                PathTo = "/home/var/www/osiris-sps" + PathTo + "/" + NameTo;
+                PathTo = "/home/www/osiris-sps" + PathTo + "/" + NameTo;
             if (ServerName == "Blue")
                 PathTo = "/home" + PathTo + "/" + NameTo;
 

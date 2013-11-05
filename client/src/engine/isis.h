@@ -3,7 +3,7 @@
 
 //////////////////////////////////////////////////////////////////////
 
-#define OS_ISIS_DEFAULT_URL	    					"isis.osiris-sps.org"
+#define OS_ISIS_DEFAULT_URL	    					"www.osiris-sps.org/isis-razor"
 #define OS_ISIS_DEFAULT_PORT						80
 #define OS_ISIS_DEFAULT_PORT_SSL					443 
 #define OS_ISIS_DIRECTORY_DB						"db"

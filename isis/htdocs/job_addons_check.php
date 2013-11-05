@@ -53,14 +53,18 @@ function job_addons_check_run()
 	if($checking)
 	{
 		// Set all addons to "no available". Not scanned ".osiris" will be results unavailable.
+		// TODO: Sistemare per la "$catalogVersion".
 		$sql = "update isis_addons set available=0";
 		$result = mysql_query($sql,$database) or error("Sql error: ".mysql_error());
 	}
 	
-	$repositoryPath = "./addons";
+	$catalogVersion = "1.0"; // TODO, finire...
+	// Qui la logica deve essere: Per ogni extension file trovato, scorro tutti i repo maggiori o uguali alla 'compatibility_version'.
 	
-	$filesNewPath = getCurrentPhysicalPath() . "/addons/new/";
-	$filesRepoPath = getCurrentPhysicalPath() . "/addons/files/";
+	$repositoryPath = "./addons/" . $catalogVersion;
+	
+	$filesNewPath = getOption("data.path") . "/addons_new/";
+	$filesRepoPath = getCurrentPhysicalPath() . "/addons/" . $catalogVersion . "/files/";
 	
 	$filesToCheck = $filesNewPath;
 	if($checking)                 
@@ -87,7 +91,7 @@ function job_addons_check_run()
 				$valid = false;
 				
 				if(file_exists($tmpPath . "/manifest.xml") == false)
-					error("manifest.xml missing");
+					error("manifest.xml missing (or unable to decompress... is corrupted? is 7za installed?)");
 					
 				
 				$xml = file_get_contents($tmpPath . "/manifest.xml");
@@ -108,14 +112,16 @@ function job_addons_check_run()
 				$compatibility = (double) $doc['compatibility'];
 				$homepage = $doc['homepage'];
 				
+				/*
 				if($compatibility == 0)
 					$compatibility = 0.14;
+				*/
 					
 				$finalPath = $filesRepoPath . $id . ".osiris";
 														
 				message("info","Type:[b]" . $type . "[/b], Name: [b]" . $name . "[/b], ID:[b]" . $id . "[/b]");
 				
-				$sql = "select version from isis_addons where id='" . escapeSql($id) . "'";
+				$sql = "select version from isis_addons where catalog='" . escapeSql($catalogVersion) . "' and id='" . escapeSql($id) . "'";
 				$result = mysql_query($sql,$database) or error("Sql error: ".mysql_error());
 				$row = mysql_fetch_array($result);
 				
@@ -135,7 +141,7 @@ function job_addons_check_run()
 		
 				if(!$row)
 				{
-					$sql = "insert into isis_addons (id) values ('" . escapeSql($id) . "')";
+					$sql = "insert into isis_addons (catalog, id) values ('" . escapeSql($catalogVersion) . "','" . escapeSql($id) . "')";
 					$result = mysql_query($sql,$database) or error("Sql error: ".mysql_error());					
 				}
 				
@@ -159,7 +165,7 @@ function job_addons_check_run()
 																
 				$sql .= " last_scan=now(), available=1";
 				// TODO: Missing "last_update", that must be the lastest modification date of the ".osiris" file.
-				$sql .= " where id='" . escapeSql($id) . "'";
+				$sql .= " where catalog='" . escapeSql($catalogVersion) . "' and id='" . escapeSql($id) . "'";
 				$result = mysql_query($sql,$database) or error("Sql error: ".mysql_error());									
 				
 				$logo = $doc["logo"];
@@ -185,7 +191,7 @@ function job_addons_check_run()
 				if($finalPath != $currentPath)
 				{
 					if(file_exists($finalPath))
-						unlink($finalPath);
+						unlink($finalPath);						
 					rename($currentPath, $finalPath);
 				}
 					

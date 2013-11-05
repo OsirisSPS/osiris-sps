@@ -40,12 +40,25 @@ function getPostBackUrl()
 	return htmlentities($_SERVER["REQUEST_URI"], ENT_QUOTES); 
 }
 
+function getHttpHost()
+{
+	if(isset($_SERVER["HTTP_HOST"]))
+		return $_SERVER["HTTP_HOST"];
+	else
+	{
+		logMessage("debug","Warning: HTTP_HOST missing.");
+		logMessage("debug","[HTTP_X_FORWARDED_FOR] = " . $_SERVER["HTTP_X_FORWARDED_FOR"]);
+		logMessage("debug","[HTTP_X_FORWARDED_HOST] = " . $_SERVER["HTTP_X_FORWARDED_HOST"]);
+		logMessage("debug","[HTTP_X_FORWARDED_SERVER] = " . $_SERVER["HTTP_X_FORWARDED_SERVER"]);
+	}
+}
+
 function getCurrentHttpPath($withoutDomain = false)
 {	
 	$val = $_SERVER["PHP_SELF"];		
 	$val = substr($val, 0, strrpos($val, '/')+1);							
 	if($withoutDomain == false)
-		$val = "http" . iif(getSSL(),"s") . "://" . $_SERVER["HTTP_HOST"] . $val;
+		$val = "http" . iif(getSSL(),"s") . "://" . getHttpHost() . $val;
 	return $val;	
 }
 
@@ -82,6 +95,17 @@ function randomString($length = 10)
 	} 
 
 	return $s; 
+}
+
+function endsWith($haystack, $needle)
+{
+    $length = strlen($needle);
+    if ($length == 0) {
+        return true;
+    }
+
+    $start  = $length * -1; //negative
+    return (substr($haystack, $start) === $needle);
 }
 
 function randomId()
@@ -126,6 +150,12 @@ function ensureDir($path, $access = null)
 	return true;
 }
 
+function multilineFillArray($str)
+{
+	$str = str_replace("\r","",$str);
+	return array_filter(explode("\n", $str));
+}
+
 function setTimeLimit($sec)
 {
 	if(getOptionBool("compatibility.use_set_time_limit"))
@@ -149,11 +179,27 @@ function createDir($path, $access)
 		throw new Exception("Unable to create a directory: " . $path);
 }
 
-function regex_match($regex, $value)
+function startsWith($Haystack, $Needle)
+{
+    // Recommended version, using strpos
+    return strpos($Haystack, $Needle) === 0;
+}
+
+function regexMatch($regex, $value)
 {
 	if( ($regex == null) || ($regex == "") )
 		return false;
-	return preg_match("/".$regex."/i", $value);
+	
+	$result = preg_match("/".$regex."/i", $value);
+	if($result === false)
+		throw new Exception("Syntax error in '" . $regex . "' regex.");		
+	else
+		return $result;		
+}
+
+function regex_match($regex, $value)
+{
+	return regexMatch($regex, $value);
 }
 
 function regexMatchReplace($val, $regex, $replace)
@@ -300,11 +346,6 @@ Options Functions
 
 $OPTIONS = array();
 
-function existsOption($name)
-{
-	global $OPTIONS;
-	return array_key_exists($name,$OPTIONS);
-}
 
 function ensureOption($name, $default)
 {
@@ -486,7 +527,7 @@ function queryTimeServer($timeserver, $port=37)
 
 function dateIsEmpty($date)
 {
-	// Questa è sbagliata, è da pulire.
+	// Questa æŸ³bagliata, æŸ¤a pulire.
 	if(empty($date))
 		return true;
 	if ($date == "0000-00-00 00:00:00")
@@ -597,6 +638,13 @@ function logMessage($msgType, $msgDesc)
 		if($msgDesc == null)
 			$msgDesc = "";
 			
+		$process = true;
+		
+		if( ($msgType == "notice") && (getOptionBool("log.filter.notice") == false) )
+			$process = false;
+			
+		if($process)
+		{
 		try
 		{
 			$logPath = getOption("data.path") . "/logs";
@@ -622,11 +670,17 @@ function logMessage($msgType, $msgDesc)
 			// Last resort: dump in page
 			echo $e->getMessage();
 		}
+}
 	}
 }
 
 function isisErrorHandler($errno, $errstr, $errfile, $errline)
 {
+	// if error has been supressed with an @
+  if (error_reporting() == 0)
+      return;
+  
+  if(getOptionBool("log.filter.php"))  
 	logMessage("php " . $errno, $errstr . " in " . $errfile . " (line " . $errline . ")");
 }
 
@@ -718,7 +772,7 @@ function allowedValueList($value, $optionRegexWhite, $optionRegexBlack, $desc)
 	}
 }
 
-function allowedValueListEx($value, $regexWhite, $regexBlack, $desc)
+function allowedValueListEx($value, $regexWhite, $regexBlack, $desc, $exception = true)
 {
 	$regex = $regexWhite;
 	if( ($regex != null) && ($regex != "") )
@@ -727,7 +781,12 @@ function allowedValueListEx($value, $regexWhite, $regexBlack, $desc)
 		if($result === false)
 			throw new Exception("Syntax error in '" . $regexWhite . "' regex.");		
 		if($result == 0)
-			throw new Exception($desc . " not in whitelist.");		
+		{
+			if($exception)
+				throw new Exception($desc . " not in whitelist.");		
+			else
+				return false;
+		}
 	}
 	
 	$regex = $regexBlack;
@@ -737,8 +796,15 @@ function allowedValueListEx($value, $regexWhite, $regexBlack, $desc)
 		if($result === false)
 			throw new Exception("Syntax error in '" . $regexBlack . "' regex.");		
 		if($result != 0)
-			throw new Exception($desc . " in blacklist.");		
+		{
+			if($exception)
+				throw new Exception($desc . " in blacklist.");		
+			else
+				return false;
+		}
 	}
+	
+	return true;
 }
 
 function allowedIP()
@@ -779,6 +845,22 @@ function escapeSql($text)
 	return mysql_real_escape_string($text);
 }
 
+function executeSql($connection, $sql)
+{
+	$result = mysql_query($sql, $connection) or error("Sql error: ".mysql_error());
+	return $result;
+}
+
+function getSqlField($connection, $sql, $default = null)
+{
+	$result = executeSql($connection, $sql);
+	$row = mysql_fetch_array($result);
+	if($row == null)
+		return $default;
+	else
+		return $row[0];
+}
+
 /* -------------------------------
 General Helper Functions
 ------------------------------- */
@@ -804,6 +886,60 @@ function htmldecode($str)
 	$str = html_entity_decode($str, ENT_QUOTES, 'UTF-8');
 	return $str;
 }
+
+
+function xmlencode($v)
+{
+	$t = gettype($v);
+	if($t == "string")
+	{
+		$out = "";
+		$len = strlen($v);
+		for($i = 0; $i<$len; $i++)
+		{
+			$chr = $v[$i];
+			$ascii = ord($chr);
+			
+			if($ascii == 9)
+				$out .= "&#9;";
+			else if($ascii == 10)
+				$out .= "&#10;";
+			else if($ascii == 13)
+				$out .= "&#13;";		
+			else if($ascii == 38) // &
+				$out .= "&amp;";
+			else if($ascii == 34) // "
+				$out .= "&quot;";
+			else if($ascii == 60) // <
+				$out .= "&lt;";
+			else if($ascii == 62) // >
+				$out .= "&gt;";
+			else if($ascii >= 32)
+				$out .= $chr;
+		}
+		return $out;
+	}
+	else if($t == "boolean")
+	{
+		if($v)
+			return "true";
+		else
+			return "false";
+	}
+	else if($t == "integer")
+	{
+		return $v;
+	}
+	else if($t == "double")
+	{
+		return $v;
+	}
+	else
+	{
+		error("Unknown type '" . $t . "' in xml encoding.");
+	}
+}
+
 
 function bbencode($str)
 {	
@@ -850,6 +986,61 @@ function echojs($code)
 	echocr($code);
 	echocr("</script>");
 }
+
+function echoxml($tag, $attr, $close = true)
+{
+	$out = "<" . $tag;
+	
+	$out_attr = "";
+	$out_nodes = "";
+			
+	foreach ($attr as $name => $value)
+	{
+		$skip = false;
+		
+		$t = gettype($value);	
+		
+		if(endsWith($name, "_asNode") == true)
+			$skip = true;
+			
+		if( ($t == "string") && ($value == "") )
+			$skip = true;
+			
+		if($t == "NULL")
+			$skip = true;
+			
+		if($skip == false)
+		{
+			$nameAsNode = $name . "_asNode";
+			if( (isset($attr[$nameAsNode])) && ($attr[$nameAsNode] == true) )
+				$out_nodes .= "<" . $name . ">" . xmlencode($value) . "</" . $name . ">\r\n";
+			else
+				$out_attr .= " " . $name . "=\"" . xmlencode($value) . "\"";
+		}
+	}
+	
+	if($out_attr != "")
+		$out .= " " . trim($out_attr);
+	if($out_nodes != "")
+	{
+		$out .= ">\r\n" . trim($out_nodes) . "\r\n";
+		
+		if($close)
+			$out .= "</" . $tag . ">\r\n";		
+	}
+	else
+	{	
+		if($close)
+			$out .= " />\r\n";
+		else
+			$out .= " >\r\n";	
+	}
+	
+	echo $out;
+		
+	return $out;
+}
+
 
 function echoHtmlVar($var)
 { 

@@ -38,12 +38,12 @@ function main()
 			throw new Exception("Invalid verb.");
 		
 		$portal = $_POST["portal"];
-		$user = $_POST["user"];
+		$pov = $_POST["pov"];
 		$password = $_POST["password"];
 		
-		allowedPortal($portal,$user);
+		allowedPortal($portal,$pov);
 		
-		$id = composePovId($portal, $user);
+		$id = composePovId($portal, $pov);
 		
 		commonPeerChecks($id, $password);
 				

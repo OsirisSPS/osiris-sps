@@ -139,16 +139,16 @@ function main()
 			throw new Exception("Invalid verb.");
 			
 		$portal = $_POST["portal"];		
-		$user = $_POST["user"];
+		$pov = $_POST["pov"];
 		$password = $_POST["password"];
 		$status = $_POST["status"];	
 		$response_id = $_POST["request"];	
 				
 		logMessage("notice", "Incoming job response ( " . $response_id . " )");
 		
-		allowedPortal($portal, $user);
+		allowedPortal($portal, $pov);
 		
-		$id = composePovId($portal, $user);
+		$id = composePovId($portal, $pov);
 		
 		commonPeerChecks($id, $password);
 		
