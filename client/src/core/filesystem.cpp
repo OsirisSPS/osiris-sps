@@ -35,7 +35,7 @@ OS_NAMESPACE_BEGIN()
 
 static boost::filesystem::wpath createPath(const String &path)
 {
-	return boost::filesystem::wpath(path.to_wide(), boost::filesystem::native);
+	return boost::filesystem::wpath(path.to_wide()/*, boost::filesystem::native*/);
 }
 
 //////////////////////////////////////////////////////////////////////

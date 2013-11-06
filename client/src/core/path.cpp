@@ -31,7 +31,7 @@ OS_NAMESPACE_BEGIN()
 struct Path::impl
 {
 	inline impl() { }
-	inline impl(const String &src) : path(src.to_wide(), boost::filesystem::native) { }
+	inline impl(const String &src) : path(src.to_wide()/*, boost::filesystem::native*/) { }
 	inline impl(const boost::filesystem::wpath &second) : path(second) { }
 
     boost::filesystem::wpath path;
