@@ -2,6 +2,11 @@ import os
 import osiris
 import sys
 
+# enable debugger
+#import ptvsd
+#ptvsd.enable_attach(secret = '')	# optionally define a password
+#ptvsd.wait_for_attach()		# optional
+
 import globalvars
 
 # "Main" pages
