@@ -36,7 +36,7 @@ class CommonTest(seq_tests.CommonTest):
 
         self.assertEqual(str(a0), str(l0))
         self.assertEqual(repr(a0), repr(l0))
-        self.assertEqual(`a2`, `l2`)
+        self.assertEqual(repr(a2), repr(l2))
         self.assertEqual(str(a2), "[0, 1, 2]")
         self.assertEqual(repr(a2), "[0, 1, 2]")
 
@@ -57,13 +57,11 @@ class CommonTest(seq_tests.CommonTest):
         d.append(d)
         d.append(400)
         try:
-            fo = open(test_support.TESTFN, "wb")
-            print >> fo, d,
-            fo.close()
-            fo = open(test_support.TESTFN, "rb")
-            self.assertEqual(fo.read(), repr(d))
+            with open(test_support.TESTFN, "wb") as fo:
+                print >> fo, d,
+            with open(test_support.TESTFN, "rb") as fo:
+                self.assertEqual(fo.read(), repr(d))
         finally:
-            fo.close()
             os.remove(test_support.TESTFN)
 
     def test_set_subscript(self):
@@ -332,7 +330,7 @@ class CommonTest(seq_tests.CommonTest):
         self.assertRaises(BadExc, d.remove, 'c')
         for x, y in zip(d, e):
             # verify that original order and values are retained.
-            self.assert_(x is y)
+            self.assertIs(x, y)
 
     def test_count(self):
         a = self.type2test([0, 1, 2])*3
@@ -421,6 +419,11 @@ class CommonTest(seq_tests.CommonTest):
         self.assertRaises(TypeError, u.reverse, 42)
 
     def test_sort(self):
+        with test_support.check_py3k_warnings(
+                ("the cmp argument is not supported", DeprecationWarning)):
+            self._test_sort()
+
+    def _test_sort(self):
         u = self.type2test([1, 0])
         u.sort()
         self.assertEqual(u, [0, 1])
@@ -463,7 +466,7 @@ class CommonTest(seq_tests.CommonTest):
         u = self.type2test([0, 1])
         u2 = u
         u += [2, 3]
-        self.assert_(u is u2)
+        self.assertIs(u, u2)
 
         u = self.type2test("spam")
         u += "eggs"
@@ -519,6 +522,9 @@ class CommonTest(seq_tests.CommonTest):
         a = self.type2test(range(10))
         a[::2] = tuple(range(5))
         self.assertEqual(a, self.type2test([0, 1, 1, 3, 2, 5, 3, 7, 4, 9]))
+        # test issue7788
+        a = self.type2test(range(10))
+        del a[9::1<<333]
 
     def test_constructor_exception_handling(self):
         # Bug #1242657

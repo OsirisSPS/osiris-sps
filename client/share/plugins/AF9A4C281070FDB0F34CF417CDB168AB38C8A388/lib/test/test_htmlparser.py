@@ -208,6 +208,23 @@ DOCTYPE html [
             ("starttag", "a", [("href", "mailto:xyz@example.com")]),
             ])
 
+    def test_attr_nonascii(self):
+        # see issue 7311
+        self._run_check(u"<img src=/foo/bar.png alt=\u4e2d\u6587>", [
+            ("starttag", "img", [("src", "/foo/bar.png"),
+                                 ("alt", u"\u4e2d\u6587")]),
+            ])
+        self._run_check(u"<a title='\u30c6\u30b9\u30c8' "
+                        u"href='\u30c6\u30b9\u30c8.html'>", [
+            ("starttag", "a", [("title", u"\u30c6\u30b9\u30c8"),
+                               ("href", u"\u30c6\u30b9\u30c8.html")]),
+            ])
+        self._run_check(u'<a title="\u30c6\u30b9\u30c8" '
+                        u'href="\u30c6\u30b9\u30c8.html">', [
+            ("starttag", "a", [("title", u"\u30c6\u30b9\u30c8"),
+                               ("href", u"\u30c6\u30b9\u30c8.html")]),
+            ])
+
     def test_attr_entity_replacement(self):
         self._run_check("""<a b='&amp;&gt;&lt;&quot;&apos;'>""", [
             ("starttag", "a", [("b", "&><\"'")]),
@@ -312,6 +329,18 @@ DOCTYPE html [
         self._run_check("<html foo='&euro;&amp;&#97;&#x61;&unsupported;'>", [
                 ("starttag", "html", [("foo", u"\u20AC&aa&unsupported;")])
                 ])
+
+    def test_malformatted_charref(self):
+        self._run_check("<p>&#bad;</p>", [
+            ("starttag", "p", []),
+            ("data", "&#bad;"),
+            ("endtag", "p"),
+        ])
+
+    def test_unescape_function(self):
+        parser = HTMLParser.HTMLParser()
+        self.assertEqual(parser.unescape('&#bad;'),'&#bad;')
+        self.assertEqual(parser.unescape('&#0038;'),'&')
 
 
 def test_main():

@@ -1,9 +1,7 @@
 import unittest
-from test.test_support import check_syntax_error, run_unittest
+from test.test_support import check_syntax_error, check_py3k_warnings, \
+                              check_warnings, run_unittest
 
-import warnings
-warnings.filterwarnings("ignore", r"import \*", SyntaxWarning, "<test string>")
-warnings.filterwarnings("ignore", r"import \*", SyntaxWarning, "<string>")
 
 class ScopeTests(unittest.TestCase):
 
@@ -289,19 +287,8 @@ def noproblem3():
             inner()
             y = 1
 
-        try:
-            errorInOuter()
-        except UnboundLocalError:
-            pass
-        else:
-            self.fail()
-
-        try:
-            errorInInner()
-        except NameError:
-            pass
-        else:
-            self.fail()
+        self.assertRaises(UnboundLocalError, errorInOuter)
+        self.assertRaises(NameError, errorInInner)
 
         # test for bug #1501934: incorrect LOAD/STORE_GLOBAL generation
         exec """
@@ -332,11 +319,14 @@ else:
 
         self.assertEqual(makeReturner2(a=11)()['a'], 11)
 
-        def makeAddPair((a, b)):
-            def addPair((c, d)):
-                return (a + c, b + d)
-            return addPair
-
+        with check_py3k_warnings(("tuple parameter unpacking has been removed",
+                                  SyntaxWarning)):
+            exec """\
+def makeAddPair((a, b)):
+    def addPair((c, d)):
+        return (a + c, b + d)
+    return addPair
+""" in locals()
         self.assertEqual(makeAddPair((1, 2))((100, 200)), (101,202))
 
     def testScopeOfGlobalStmt(self):
@@ -467,7 +457,7 @@ class X:
     locals()['looked_up_by_load_name'] = True
     passed = looked_up_by_load_name
 
-self.assert_(X.passed)
+self.assertTrue(X.passed)
 """
 
     def testLocalsFunction(self):
@@ -482,7 +472,7 @@ self.assert_(X.passed)
             return g
 
         d = f(2)(4)
-        self.assert_(d.has_key('h'))
+        self.assertIn('h', d)
         del d['h']
         self.assertEqual(d, {'x': 2, 'y': 7, 'w': 6})
 
@@ -516,8 +506,8 @@ self.assert_(X.passed)
             return C
 
         varnames = f(1).z
-        self.assert_("x" not in varnames)
-        self.assert_("y" in varnames)
+        self.assertNotIn("x", varnames)
+        self.assertIn("y", varnames)
 
     def testLocalsClass_WithTrace(self):
         # Issue23728: after the trace function returns, the locals()
@@ -533,7 +523,7 @@ self.assert_(X.passed)
                 def f(self):
                     return x
 
-            self.assertEquals(x, 12) # Used to raise UnboundLocalError
+            self.assertEqual(x, 12) # Used to raise UnboundLocalError
         finally:
             sys.settrace(None)
 
@@ -657,9 +647,18 @@ result2 = h()
         self.assertEqual(2, global_ns["result2"])
         self.assertEqual(9, global_ns["result9"])
 
+    def testTopIsNotSignificant(self):
+        # See #9997.
+        def top(a):
+            pass
+        def b():
+            global a
+
 
 def test_main():
-    run_unittest(ScopeTests)
+    with check_warnings(("import \* only allowed at module level",
+                         SyntaxWarning)):
+        run_unittest(ScopeTests)
 
 if __name__ == '__main__':
     test_main()

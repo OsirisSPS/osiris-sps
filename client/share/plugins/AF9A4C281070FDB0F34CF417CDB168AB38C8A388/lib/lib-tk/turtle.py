@@ -1,8 +1,8 @@
 #
 # turtle.py: a Tkinter based turtle graphics module for Python
-# Version 1.0b1 - 31. 5. 2008
+# Version 1.0.1 - 24. 9. 2009
 #
-# Copyright (C) 2006 - 2008  Gregor Lingl
+# Copyright (C) 2006 - 2010  Gregor Lingl
 # email: glingl@aon.at
 #
 # This software is provided 'as-is', without any express or implied
@@ -335,10 +335,10 @@ def __forwardmethods(fromClass, toClass, toPart, exclude = ()):
         if ex[:1] == '_' or ex[-1:] == '_':
             del _dict[ex]
     for ex in exclude:
-        if _dict.has_key(ex):
+        if ex in _dict:
             del _dict[ex]
     for ex in __methods(fromClass):
-        if _dict.has_key(ex):
+        if ex in _dict:
             del _dict[ex]
 
     for method, func in _dict.items():
@@ -783,7 +783,7 @@ class TurtleScreenBase(object):
         # needs amendment
         if not isinstance(self.cv, ScrolledCanvas):
             return self.canvwidth, self.canvheight
-        if canvwidth is None and canvheight is None and bg is None:
+        if canvwidth is canvheight is bg is None:
             return self.cv.canvwidth, self.cv.canvheight
         if canvwidth is not None:
             self.canvwidth = canvwidth
@@ -999,7 +999,7 @@ class TurtleScreen(TurtleScreenBase):
         >>> mode()
         'logo'
         """
-        if mode == None:
+        if mode is None:
             return self._mode
         mode = mode.lower()
         if mode not in ["standard", "logo", "world"]:
@@ -1244,9 +1244,12 @@ class TurtleScreen(TurtleScreenBase):
     def update(self):
         """Perform a TurtleScreen update.
         """
+        tracing = self._tracing
+        self._tracing = True
         for t in self.turtles():
             t._update_data()
             t._drawturtle()
+        self._tracing = tracing
         self._update()
 
     def window_width(self):
@@ -1336,8 +1339,9 @@ class TurtleScreen(TurtleScreenBase):
         ### repeatedly pressing the up-arrow key,
         ### consequently drawing a hexagon
         """
-        if fun == None:
-            self._keys.remove(key)
+        if fun is None:
+            if key in self._keys:
+                self._keys.remove(key)
         elif key not in self._keys:
             self._keys.append(key)
         self._onkey(fun, key)
@@ -1381,7 +1385,7 @@ class TurtleScreen(TurtleScreenBase):
         Optional argument:
         picname -- a string, name of a gif-file or "nopic".
 
-        If picname is a filename, set the corresponing image as background.
+        If picname is a filename, set the corresponding image as background.
         If picname is "nopic", delete backgroundimage, if present.
         If picname is None, return the filename of the current backgroundimage.
 
@@ -1405,7 +1409,7 @@ class TurtleScreen(TurtleScreenBase):
         Optional arguments:
         canvwidth -- positive integer, new width of canvas in pixels
         canvheight --  positive integer, new height of canvas in pixels
-        bg -- colorstring or color-tupel, new backgroundcolor
+        bg -- colorstring or color-tuple, new backgroundcolor
         If no arguments are given, return current (canvaswidth, canvasheight)
 
         Do not alter the drawing window. To observe hidden parts of
@@ -1456,7 +1460,7 @@ class TNavigator(object):
     def _setmode(self, mode=None):
         """Set turtle-mode to 'standard', 'world' or 'logo'.
         """
-        if mode == None:
+        if mode is None:
             return self._mode
         if mode not in ["standard", "logo", "world"]:
             return
@@ -1491,7 +1495,10 @@ class TNavigator(object):
         >>> turtle.left(90)
         >>> turtle.heading()
         90
-        >>> turtle.degrees(400.0)  # angle measurement in gon
+
+        Change angle measurement unit to grad (also known as gon,
+        grade, or gradian and equals 1/100-th of the right angle.)
+        >>> turtle.degrees(400.0)
         >>> turtle.heading()
         100
 
@@ -2700,7 +2707,7 @@ class RawTurtle(TPen, TNavigator):
         >>> turtle.shapesize(5, 5, 12)
         >>> turtle.shapesize(outline=8)
         """
-        if stretch_wid is None and stretch_len is None and outline == None:
+        if stretch_wid is stretch_len is outline is None:
             stretch_wid, stretch_len = self._stretchfactor
             return stretch_wid, stretch_len, self._outlinewidth
         if stretch_wid is not None:
@@ -2794,7 +2801,7 @@ class RawTurtle(TPen, TNavigator):
 
     def _drawturtle(self):
         """Manages the correct rendering of the turtle with respect to
-        its shape, resizemode, strech and tilt etc."""
+        its shape, resizemode, stretch and tilt etc."""
         screen = self.screen
         shape = screen._shapes[self.turtle.shapeIndex]
         ttype = shape._type
@@ -3072,9 +3079,9 @@ class RawTurtle(TPen, TNavigator):
                                                fill="", width=ps)
         # Turtle now at position old,
         self._position = old
-        ##  if undo is done during crating a polygon, the last vertex
-        ##  will be deleted. if the polygon is entirel deleted,
-        ##  creatigPoly will be set to False.
+        ##  if undo is done during creating a polygon, the last vertex
+        ##  will be deleted. if the polygon is entirely deleted,
+        ##  creatingPoly will be set to False.
         ##  Polygons created before the last one will not be affected by undo()
         if self._creatingPoly:
             if len(self._poly) > 0:
@@ -3214,7 +3221,7 @@ class RawTurtle(TPen, TNavigator):
     def dot(self, size=None, *color):
         """Draw a dot with diameter size, using color.
 
-        Optional argumentS:
+        Optional arguments:
         size -- an integer >= 1 (if given)
         color -- a colorstring or a numeric color tuple
 
@@ -3574,8 +3581,8 @@ class _Screen(TurtleScreen):
             topbottom = _CFG["topbottom"]
             self._root.setupcanvas(width, height, canvwidth, canvheight)
             _Screen._canvas = self._root._getcanvas()
+            TurtleScreen.__init__(self, _Screen._canvas)
             self.setup(width, height, leftright, topbottom)
-        TurtleScreen.__init__(self, _Screen._canvas)
 
     def setup(self, width=_CFG["width"], height=_CFG["height"],
               startx=_CFG["leftright"], starty=_CFG["topbottom"]):
@@ -3615,6 +3622,7 @@ class _Screen(TurtleScreen):
         if starty is None:
             starty = (sh - height) / 2
         self._root.set_geometry(width, height, startx, starty)
+        self.update()
 
     def title(self, titlestring):
         """Set title of turtle-window
@@ -3683,7 +3691,7 @@ class _Screen(TurtleScreen):
 
 
 class Turtle(RawTurtle):
-    """RawTurtle auto-crating (scrolled) canvas.
+    """RawTurtle auto-creating (scrolled) canvas.
 
     When a Turtle object is created or a function derived from some
     Turtle method is called a TurtleScreen object is automatically created.
@@ -3723,7 +3731,7 @@ def write_docstringdict(filename="turtle_docstringdict"):
     filename -- a string, used as filename
                 default value is turtle_docstringdict
 
-    Has to be called explicitely, (not used by the turtle-graphics classes)
+    Has to be called explicitly, (not used by the turtle-graphics classes)
     The docstring dictionary will be written to the Python script <filname>.py
     It is intended to serve as a template for translation of the docstrings
     into different languages.

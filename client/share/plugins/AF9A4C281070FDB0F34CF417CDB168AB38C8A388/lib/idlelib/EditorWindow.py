@@ -2,25 +2,36 @@ import sys
 import os
 import re
 import imp
-from itertools import count
 from Tkinter import *
 import tkSimpleDialog
 import tkMessageBox
-from MultiCall import MultiCallCreator
-
 import webbrowser
-import idlever
-import WindowList
-import SearchDialog
-import GrepDialog
-import ReplaceDialog
-import PyParse
-from configHandler import idleConf
-import aboutDialog, textView, configDialog
-import macosxSupport
+
+from idlelib.MultiCall import MultiCallCreator
+from idlelib import idlever
+from idlelib import WindowList
+from idlelib import SearchDialog
+from idlelib import GrepDialog
+from idlelib import ReplaceDialog
+from idlelib import PyParse
+from idlelib.configHandler import idleConf
+from idlelib import aboutDialog, textView, configDialog
+from idlelib import macosxSupport
 
 # The default tab setting for a Text widget, in average-width characters.
 TK_TABWIDTH_DEFAULT = 8
+
+def _sphinx_version():
+    "Format sys.version_info to produce the Sphinx version string used to install the chm docs"
+    major, minor, micro, level, serial = sys.version_info
+    release = '%s%s' % (major, minor)
+    if micro:
+        release += '%s' % (micro,)
+    if level == 'candidate':
+        release += 'rc%s' % (serial,)
+    elif level != 'final':
+        release += '%s%s' % (level[0], serial)
+    return release
 
 def _find_module(fullname, path=None):
     """Version of imp.find_module() that handles hierarchical module names"""
@@ -37,16 +48,31 @@ def _find_module(fullname, path=None):
             path = module.__path__
         except AttributeError:
             raise ImportError, 'No source for module ' + module.__name__
+    if descr[2] != imp.PY_SOURCE:
+        # If all of the above fails and didn't raise an exception,fallback
+        # to a straight import which can find __init__.py in a package.
+        m = __import__(fullname)
+        try:
+            filename = m.__file__
+        except AttributeError:
+            pass
+        else:
+            file = None
+            base, ext = os.path.splitext(filename)
+            if ext == '.pyc':
+                ext = '.py'
+            filename = base + ext
+            descr = filename, None, imp.PY_SOURCE
     return file, filename, descr
 
 class EditorWindow(object):
-    from Percolator import Percolator
-    from ColorDelegator import ColorDelegator
-    from UndoDelegator import UndoDelegator
-    from IOBinding import IOBinding, filesystemencoding, encoding
-    import Bindings
+    from idlelib.Percolator import Percolator
+    from idlelib.ColorDelegator import ColorDelegator
+    from idlelib.UndoDelegator import UndoDelegator
+    from idlelib.IOBinding import IOBinding, filesystemencoding, encoding
+    from idlelib import Bindings
     from Tkinter import Toplevel
-    from MultiStatusBar import MultiStatusBar
+    from idlelib.MultiStatusBar import MultiStatusBar
 
     help_url = None
 
@@ -64,15 +90,13 @@ class EditorWindow(object):
                                            'Doc', 'index.html')
             elif sys.platform[:3] == 'win':
                 chmfile = os.path.join(sys.prefix, 'Doc',
-                                       'Python%d%d.chm' % sys.version_info[:2])
+                                       'Python%s.chm' % _sphinx_version())
                 if os.path.isfile(chmfile):
                     dochome = chmfile
-
             elif macosxSupport.runningAsOSXApp():
                 # documentation is stored inside the python framework
                 dochome = os.path.join(sys.prefix,
                         'Resources/English.lproj/Documentation/index.html')
-
             dochome = os.path.normpath(dochome)
             if os.path.isfile(dochome):
                 EditorWindow.help_url = dochome
@@ -80,7 +104,7 @@ class EditorWindow(object):
                     # Safari requires real file:-URLs
                     EditorWindow.help_url = 'file://' + EditorWindow.help_url
             else:
-                EditorWindow.help_url = "http://www.python.org/doc/current"
+                EditorWindow.help_url = "http://docs.python.org/%d.%d" % sys.version_info[:2]
         currentTheme=idleConf.CurrentTheme()
         self.flist = flist
         root = root or flist.root
@@ -93,8 +117,8 @@ class EditorWindow(object):
         self.top = top = WindowList.ListedToplevel(root, menu=self.menubar)
         if flist:
             self.tkinter_vars = flist.vars
-            #self.top.instance_dict makes flist.inversedict avalable to
-            #configDialog.py so it can access all EditorWindow instaces
+            #self.top.instance_dict makes flist.inversedict available to
+            #configDialog.py so it can access all EditorWindow instances
             self.top.instance_dict = flist.inversedict
         else:
             self.tkinter_vars = {}  # keys: Tkinter event names
@@ -105,10 +129,18 @@ class EditorWindow(object):
         self.text_frame = text_frame = Frame(top)
         self.vbar = vbar = Scrollbar(text_frame, name='vbar')
         self.width = idleConf.GetOption('main','EditorWindow','width')
-        self.text = text = MultiCallCreator(Text)(
-                text_frame, name='text', padx=5, wrap='none',
-                width=self.width,
-                height=idleConf.GetOption('main','EditorWindow','height') )
+        text_options = {
+                'name': 'text',
+                'padx': 5,
+                'wrap': 'none',
+                'width': self.width,
+                'height': idleConf.GetOption('main', 'EditorWindow', 'height')}
+        if TkVersion >= 8.5:
+            # Starting with tk 8.5 we have to set the new tabstyle option
+            # to 'wordprocessor' to achieve the same display of tabs as in
+            # older tk versions.
+            text_options['tabstyle'] = 'wordprocessor'
+        self.text = text = MultiCallCreator(Text)(text_frame, **text_options)
         self.top.focused_widget = self.text
 
         self.createmenubar()
@@ -119,6 +151,14 @@ class EditorWindow(object):
         if macosxSupport.runningAsOSXApp():
             # Command-W on editorwindows doesn't work without this.
             text.bind('<<close-window>>', self.close_event)
+            # Some OS X systems have only one mouse button,
+            # so use control-click for pulldown menus there.
+            #  (Note, AquaTk defines <2> as the right button if
+            #   present and the Tk Text widget already binds <2>.)
+            text.bind("<Control-Button-1>",self.right_menu_event)
+        else:
+            # Elsewhere, use right-click for pulldown menus.
+            text.bind("<3>",self.right_menu_event)
         text.bind("<<cut>>", self.cut)
         text.bind("<<copy>>", self.copy)
         text.bind("<<paste>>", self.paste)
@@ -137,7 +177,6 @@ class EditorWindow(object):
         text.bind("<<find-selection>>", self.find_selection_event)
         text.bind("<<replace>>", self.replace_event)
         text.bind("<<goto-line>>", self.goto_line_event)
-        text.bind("<3>", self.right_menu_event)
         text.bind("<<smart-backspace>>",self.smart_backspace_event)
         text.bind("<<newline-and-indent>>",self.newline_and_indent_event)
         text.bind("<<smart-indent>>",self.smart_indent_event)
@@ -283,13 +322,13 @@ class EditorWindow(object):
         return "break"
 
     def home_callback(self, event):
-        if (event.state & 12) != 0 and event.keysym == "Home":
-            # state&1==shift, state&4==control, state&8==alt
-            return # <Modifier-Home>; fall back to class binding
-
+        if (event.state & 4) != 0 and event.keysym == "Home":
+            # state&4==Control. If <Control-Home>, use the Tk binding.
+            return
         if self.text.index("iomark") and \
            self.text.compare("iomark", "<=", "insert lineend") and \
            self.text.compare("insert linestart", "<=", "iomark"):
+            # In Shell on input line, go to just after prompt
             insertpt = int(self.text.index("iomark").split(".")[1])
         else:
             line = self.text.get("insert linestart", "insert lineend")
@@ -298,30 +337,27 @@ class EditorWindow(object):
                     break
             else:
                 insertpt=len(line)
-
         lineat = int(self.text.index("insert").split('.')[1])
-
         if insertpt == lineat:
             insertpt = 0
-
         dest = "insert linestart+"+str(insertpt)+"c"
-
         if (event.state&1) == 0:
-            # shift not pressed
+            # shift was not pressed
             self.text.tag_remove("sel", "1.0", "end")
         else:
             if not self.text.index("sel.first"):
-                self.text.mark_set("anchor","insert")
-
+                self.text.mark_set("my_anchor", "insert")  # there was no previous selection
+            else:
+                if self.text.compare(self.text.index("sel.first"), "<", self.text.index("insert")):
+                    self.text.mark_set("my_anchor", "sel.first") # extend back
+                else:
+                    self.text.mark_set("my_anchor", "sel.last") # extend forward
             first = self.text.index(dest)
-            last = self.text.index("anchor")
-
+            last = self.text.index("my_anchor")
             if self.text.compare(first,">",last):
                 first,last = last,first
-
             self.text.tag_remove("sel", "1.0", "end")
             self.text.tag_add("sel", first, last)
-
         self.text.mark_set("insert", dest)
         self.text.see("insert")
         return "break"
@@ -368,7 +404,7 @@ class EditorWindow(object):
             menudict[name] = menu = Menu(mbar, name=name)
             mbar.add_cascade(label=label, menu=menu, underline=underline)
 
-        if macosxSupport.runningAsOSXApp():
+        if macosxSupport.isCarbonAquaTk(self.root):
             # Insert the application menu
             menudict['application'] = menu = Menu(mbar, name='apple')
             mbar.add_cascade(label='IDLE', menu=menu)
@@ -428,7 +464,11 @@ class EditorWindow(object):
 
     def python_docs(self, event=None):
         if sys.platform[:3] == 'win':
-            os.startfile(self.help_url)
+            try:
+                os.startfile(self.help_url)
+            except WindowsError as why:
+                tkMessageBox.showerror(title='Document Start Failure',
+                    message=str(why), parent=self.text)
         else:
             webbrowser.open(self.help_url)
         return "break"
@@ -563,11 +603,11 @@ class EditorWindow(object):
             return None
         head, tail = os.path.split(filename)
         base, ext = os.path.splitext(tail)
-        import ClassBrowser
+        from idlelib import ClassBrowser
         ClassBrowser.ClassBrowser(self.flist, base, [head])
 
     def open_path_browser(self, event=None):
-        import PathBrowser
+        from idlelib import PathBrowser
         PathBrowser.PathBrowser(self.flist)
 
     def gotoline(self, lineno):
@@ -688,8 +728,8 @@ class EditorWindow(object):
                     if accel:
                         itemName = menu.entrycget(index, 'label')
                         event = ''
-                        if menuEventDict.has_key(menubarItem):
-                            if menuEventDict[menubarItem].has_key(itemName):
+                        if menubarItem in menuEventDict:
+                            if itemName in menuEventDict[menubarItem]:
                                 event = menuEventDict[menubarItem][itemName]
                         if event:
                             accel = get_accelerator(keydefs, event)
@@ -723,9 +763,13 @@ class EditorWindow(object):
         "Create a callback with the helpfile value frozen at definition time"
         def display_extra_help(helpfile=helpfile):
             if not helpfile.startswith(('www', 'http')):
-                url = os.path.normpath(helpfile)
+                helpfile = os.path.normpath(helpfile)
             if sys.platform[:3] == 'win':
-                os.startfile(helpfile)
+                try:
+                    os.startfile(helpfile)
+                except WindowsError as why:
+                    tkMessageBox.showerror(title='Document Start Failure',
+                        message=str(why), parent=self.text)
             else:
                 webbrowser.open(helpfile)
         return display_extra_help
@@ -761,8 +805,8 @@ class EditorWindow(object):
         for instance in self.top.instance_dict.keys():
             menu = instance.recent_files_menu
             menu.delete(1, END)  # clear, and rebuild:
-            for i, file in zip(count(), rf_list):
-                file_name = file[0:-1]  # zap \n
+            for i, file_name in enumerate(rf_list):
+                file_name = file_name.rstrip()  # zap \n
                 # make unicode string to display non-ASCII chars correctly
                 ufile_name = self._filename_to_unicode(file_name)
                 callback = instance.__recent_file_callback(file_name)
@@ -1177,7 +1221,7 @@ class EditorWindow(object):
             if not self.context_use_ps1:
                 for context in self.num_context_lines:
                     startat = max(lno - context, 1)
-                    startatindex = `startat` + ".0"
+                    startatindex = repr(startat) + ".0"
                     rawtext = text.get(startatindex, "insert")
                     y.set_str(rawtext)
                     bod = y.find_good_parse_start(
@@ -1509,7 +1553,12 @@ keynames = {
 
 def get_accelerator(keydefs, eventname):
     keylist = keydefs.get(eventname)
-    if not keylist:
+    # issue10940: temporary workaround to prevent hang with OS X Cocoa Tk 8.5
+    # if not keylist:
+    if (not keylist) or (macosxSupport.runningAsOSXApp() and eventname in {
+                            "<<open-module>>",
+                            "<<goto-line>>",
+                            "<<change-indentwidth>>"}):
         return ""
     s = keylist[0]
     s = re.sub(r"-[a-z]\b", lambda m: m.group().upper(), s)

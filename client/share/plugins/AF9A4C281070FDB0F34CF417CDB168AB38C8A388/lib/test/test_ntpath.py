@@ -1,7 +1,7 @@
 import ntpath
 import os
-from test.test_support import verbose, TestFailed
-import test.test_support as test_support
+from test.test_support import TestFailed
+from test import test_support, test_genericpath
 import unittest
 
 
@@ -123,13 +123,15 @@ class TestNtpath(unittest.TestCase):
         tester("ntpath.normpath('C:////a/b')", r'C:\a\b')
         tester("ntpath.normpath('//machine/share//a/b')", r'\\machine\share\a\b')
 
+        tester("ntpath.normpath('\\\\.\\NUL')", r'\\.\NUL')
+        tester("ntpath.normpath('\\\\?\\D:/XY\\Z')", r'\\?\D:/XY\Z')
+
     def test_expandvars(self):
-        oldenv = os.environ.copy()
-        try:
-            os.environ.clear()
-            os.environ["foo"] = "bar"
-            os.environ["{foo"] = "baz1"
-            os.environ["{foo}"] = "baz2"
+        with test_support.EnvironmentVarGuard() as env:
+            env.clear()
+            env["foo"] = "bar"
+            env["{foo"] = "baz1"
+            env["{foo}"] = "baz2"
             tester('ntpath.expandvars("foo")', "foo")
             tester('ntpath.expandvars("$foo bar")', "bar bar")
             tester('ntpath.expandvars("${foo}bar")', "barbar")
@@ -149,9 +151,6 @@ class TestNtpath(unittest.TestCase):
             tester('ntpath.expandvars("%?bar%")', "%?bar%")
             tester('ntpath.expandvars("%foo%%bar")', "bar%bar")
             tester('ntpath.expandvars("\'%foo%\'%bar")', "\'%foo%\'%bar")
-        finally:
-            os.environ.clear()
-            os.environ.update(oldenv)
 
     def test_abspath(self):
         # ntpath.abspath() can only be used on a system with the "nt" module
@@ -159,10 +158,12 @@ class TestNtpath(unittest.TestCase):
         # the rest of the tests for the ntpath module to be run to completion
         # on any platform, since most of the module is intended to be usable
         # from any platform.
+        # XXX this needs more tests
         try:
             import nt
         except ImportError:
-            pass
+            # check that the function is there even if we are not on Windows
+            ntpath.abspath
         else:
             tester('ntpath.abspath("C:\\")', "C:\\")
 
@@ -177,10 +178,25 @@ class TestNtpath(unittest.TestCase):
         tester('ntpath.relpath("a", "b/c")', '..\\..\\a')
         tester('ntpath.relpath("//conky/mountpoint/a", "//conky/mountpoint/b/c")', '..\\..\\a')
         tester('ntpath.relpath("a", "a")', '.')
+        tester('ntpath.relpath("/foo/bar/bat", "/x/y/z")', '..\\..\\..\\foo\\bar\\bat')
+        tester('ntpath.relpath("/foo/bar/bat", "/foo/bar")', 'bat')
+        tester('ntpath.relpath("/foo/bar/bat", "/")', 'foo\\bar\\bat')
+        tester('ntpath.relpath("/", "/foo/bar/bat")', '..\\..\\..')
+        tester('ntpath.relpath("/foo/bar/bat", "/x")', '..\\foo\\bar\\bat')
+        tester('ntpath.relpath("/x", "/foo/bar/bat")', '..\\..\\..\\x')
+        tester('ntpath.relpath("/", "/")', '.')
+        tester('ntpath.relpath("/a", "/a")', '.')
+        tester('ntpath.relpath("/a/b", "/a/b")', '.')
+        tester('ntpath.relpath("c:/foo", "C:/FOO")', '.')
+
+
+class NtCommonTest(test_genericpath.CommonTest):
+    pathmodule = ntpath
+    attributes = ['relpath', 'splitunc']
 
 
 def test_main():
-    test_support.run_unittest(TestNtpath)
+    test_support.run_unittest(TestNtpath, NtCommonTest)
 
 
 if __name__ == "__main__":

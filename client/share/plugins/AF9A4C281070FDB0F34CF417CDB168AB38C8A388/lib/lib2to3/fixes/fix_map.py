@@ -26,6 +26,7 @@ from ..fixer_util import Name, Call, ListComp, in_special_context
 from ..pygram import python_symbols as syms
 
 class FixMap(fixer_base.ConditionalFix):
+    BM_compatible = True
 
     PATTERN = """
     map_none=power<
@@ -49,8 +50,7 @@ class FixMap(fixer_base.ConditionalFix):
     >
     |
     power<
-        'map'
-        args=trailer< '(' [any] ')' >
+        'map' trailer< '(' [arglist=any] ')' >
     >
     """
 
@@ -63,20 +63,29 @@ class FixMap(fixer_base.ConditionalFix):
         if node.parent.type == syms.simple_stmt:
             self.warning(node, "You should use a for loop here")
             new = node.clone()
-            new.set_prefix("")
-            new = Call(Name("list"), [new])
+            new.prefix = u""
+            new = Call(Name(u"list"), [new])
         elif "map_lambda" in results:
-            new = ListComp(results.get("xp").clone(),
-                           results.get("fp").clone(),
-                           results.get("it").clone())
+            new = ListComp(results["xp"].clone(),
+                           results["fp"].clone(),
+                           results["it"].clone())
         else:
             if "map_none" in results:
                 new = results["arg"].clone()
             else:
+                if "arglist" in results:
+                    args = results["arglist"]
+                    if args.type == syms.arglist and \
+                       args.children[0].type == token.NAME and \
+                       args.children[0].value == "None":
+                        self.warning(node, "cannot convert map(None, ...) "
+                                     "with multiple arguments because map() "
+                                     "now truncates to the shortest sequence")
+                        return
                 if in_special_context(node):
                     return None
                 new = node.clone()
-            new.set_prefix("")
-            new = Call(Name("list"), [new])
-        new.set_prefix(node.get_prefix())
+            new.prefix = u""
+            new = Call(Name(u"list"), [new])
+        new.prefix = node.prefix
         return new

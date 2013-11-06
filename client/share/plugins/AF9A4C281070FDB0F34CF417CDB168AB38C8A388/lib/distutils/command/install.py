@@ -6,7 +6,7 @@ from distutils import log
 
 # This module should be kept compatible with Python 2.1.
 
-__revision__ = "$Id: install.py 62788 2008-05-06 22:41:46Z christian.heimes $"
+__revision__ = "$Id$"
 
 import sys, os, string
 from types import *
@@ -67,20 +67,6 @@ INSTALL_SCHEMES = {
         'platlib': '$usersite',
         'headers': '$userbase/Python$py_version_nodot/Include/$dist_name',
         'scripts': '$userbase/Scripts',
-        'data'   : '$userbase',
-        },
-    'mac': {
-        'purelib': '$base/Lib/site-packages',
-        'platlib': '$base/Lib/site-packages',
-        'headers': '$base/Include/$dist_name',
-        'scripts': '$base/Scripts',
-        'data'   : '$base',
-        },
-    'mac_user': {
-        'purelib': '$usersite',
-        'platlib': '$usersite',
-        'headers': '$userbase/$py_version_short/include/$dist_name',
-        'scripts': '$userbase/bin',
         'data'   : '$userbase',
         },
     'os2': {

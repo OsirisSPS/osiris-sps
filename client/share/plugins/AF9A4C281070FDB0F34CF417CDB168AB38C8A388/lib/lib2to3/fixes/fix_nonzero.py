@@ -6,6 +6,7 @@ from .. import fixer_base
 from ..fixer_util import Name, syms
 
 class FixNonzero(fixer_base.BaseFix):
+    BM_compatible = True
     PATTERN = """
     classdef< 'class' any+ ':'
               suite< any*
@@ -16,5 +17,5 @@ class FixNonzero(fixer_base.BaseFix):
 
     def transform(self, node, results):
         name = results["name"]
-        new = Name("__bool__", prefix=name.get_prefix())
+        new = Name(u"__bool__", prefix=name.prefix)
         name.replace(new)
