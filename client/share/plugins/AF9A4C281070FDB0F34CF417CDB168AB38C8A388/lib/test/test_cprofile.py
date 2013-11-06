@@ -9,6 +9,7 @@ from test.test_profile import ProfileTest, regenerate_expected_output
 
 class CProfileTest(ProfileTest):
     profilerclass = cProfile.Profile
+    expected_list_sort_output = "{method 'sort' of 'list' objects}"
 
     # Issue 3895.
     def test_bad_counter_during_dealloc(self):
@@ -38,7 +39,7 @@ def main():
 # Don't remove this comment. Everything below it is auto-generated.
 #--cut--------------------------------------------------------------------------
 CProfileTest.expected_output['print_stats'] = """\
-         126 function calls (106 primitive calls) in 1.000 CPU seconds
+         126 function calls (106 primitive calls) in 1.000 seconds
 
    Ordered by: standard name
 

@@ -5,7 +5,7 @@
 # Copyright (C) 2002, 2003 Python Software Foundation.
 # Written by Greg Ward <gward@python.net>
 
-__revision__ = "$Id: textwrap.py 68135 2009-01-01 15:46:10Z georg.brandl $"
+__revision__ = "$Id$"
 
 import string, re
 
@@ -156,7 +156,7 @@ class TextWrapper:
         """_split(text : string) -> [string]
 
         Split the text to wrap into indivisible chunks.  Chunks are
-        not quite the same as words; see wrap_chunks() for full
+        not quite the same as words; see _wrap_chunks() for full
         details.  As an example, the text
           Look, goof-ball -- use the -b option!
         breaks into the following chunks:
@@ -191,9 +191,9 @@ class TextWrapper:
         space to two.
         """
         i = 0
-        pat = self.sentence_end_re
+        patsearch = self.sentence_end_re.search
         while i < len(chunks)-1:
-            if chunks[i+1] == " " and pat.search(chunks[i]):
+            if chunks[i+1] == " " and patsearch(chunks[i]):
                 chunks[i+1] = "  "
                 i += 2
             else:

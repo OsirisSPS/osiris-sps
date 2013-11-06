@@ -6,6 +6,19 @@ Originally distributed as Optik.
 
 For support, use the optik-users@lists.sourceforge.net mailing list
 (http://lists.sourceforge.net/lists/listinfo/optik-users).
+
+Simple usage example:
+
+   from optparse import OptionParser
+
+   parser = OptionParser()
+   parser.add_option("-f", "--file", dest="filename",
+                     help="write report to FILE", metavar="FILE")
+   parser.add_option("-q", "--quiet",
+                     action="store_false", dest="verbose", default=True,
+                     help="don't print status messages to stdout")
+
+   (options, args) = parser.parse_args()
 """
 
 __version__ = "1.5.3"
@@ -800,7 +813,7 @@ class Option:
             parser.print_version()
             parser.exit()
         else:
-            raise RuntimeError, "unknown action %r" % self.action
+            raise ValueError("unknown action %r" % self.action)
 
         return 1
 
@@ -1118,6 +1131,11 @@ class OptionParser (OptionContainer):
       prog : string
         the name of the current program (to override
         os.path.basename(sys.argv[0])).
+      description : string
+        A paragraph of text giving a brief overview of your program.
+        optparse reformats this paragraph to fit the current terminal
+        width and prints it when the user requests help (after usage,
+        but before the list of options).
       epilog : string
         paragraph of help text to print after option help
 
@@ -1575,7 +1593,7 @@ class OptionParser (OptionContainer):
         """print_usage(file : file = stdout)
 
         Print the usage message for the current program (self.usage) to
-        'file' (default stdout).  Any occurence of the string "%prog" in
+        'file' (default stdout).  Any occurrence of the string "%prog" in
         self.usage is replaced with the name of the current program
         (basename of sys.argv[0]).  Does nothing if self.usage is empty
         or not defined.
@@ -1593,7 +1611,7 @@ class OptionParser (OptionContainer):
         """print_version(file : file = stdout)
 
         Print the version message for this program (self.version) to
-        'file' (default stdout).  As with print_usage(), any occurence
+        'file' (default stdout).  As with print_usage(), any occurrence
         of "%prog" in self.version is replaced by the current program's
         name.  Does nothing if self.version is empty or undefined.
         """

@@ -19,10 +19,10 @@ except (ImportError, AttributeError):
         return s
 else:
     def convert_path(s):
-        if isinstance(s, str):
-            s = s.decode("mbcs")
+        assert isinstance(s, str)   # sys.prefix contains only bytes
+        udir = s.decode("mbcs")
         hdir = ctypes.windll.kernel32.\
-            CreateFileW(s, 0x80,    # FILE_READ_ATTRIBUTES
+            CreateFileW(udir, 0x80, # FILE_READ_ATTRIBUTES
                         1,          # FILE_SHARE_READ
                         None, 3,    # OPEN_EXISTING
                         0x02000000, # FILE_FLAG_BACKUP_SEMANTICS
@@ -38,10 +38,12 @@ else:
         if res == 0:
             # Conversion failed (e.g. network location)
             return s
-        s = buf[:res]
+        s = buf[:res].encode("mbcs")
         # Ignore leading \\?\
-        if s.startswith(u"\\\\?\\"):
+        if s.startswith("\\\\?\\"):
             s = s[4:]
+        if s.startswith("UNC"):
+            s = "\\" + s[3:]
         return s
 
 prefix = os.path.join(sys.prefix,"tcl")
@@ -52,7 +54,7 @@ if not os.path.exists(prefix):
 # if this does not exist, no further search is needed
 if os.path.exists(prefix):
     prefix = convert_path(prefix)
-    if not os.environ.has_key("TCL_LIBRARY"):
+    if "TCL_LIBRARY" not in os.environ:
         for name in os.listdir(prefix):
             if name.startswith("tcl"):
                 tcldir = os.path.join(prefix,name)
@@ -62,13 +64,13 @@ if os.path.exists(prefix):
     # as Tcl
     import _tkinter
     ver = str(_tkinter.TCL_VERSION)
-    if not os.environ.has_key("TK_LIBRARY"):
+    if "TK_LIBRARY" not in os.environ:
         v = os.path.join(prefix, 'tk'+ver)
         if os.path.exists(os.path.join(v, "tclIndex")):
             os.environ['TK_LIBRARY'] = v
     # We don't know the Tix version, so we must search the entire
     # directory
-    if not os.environ.has_key("TIX_LIBRARY"):
+    if "TIX_LIBRARY" not in os.environ:
         for name in os.listdir(prefix):
             if name.startswith("tix"):
                 tixdir = os.path.join(prefix,name)

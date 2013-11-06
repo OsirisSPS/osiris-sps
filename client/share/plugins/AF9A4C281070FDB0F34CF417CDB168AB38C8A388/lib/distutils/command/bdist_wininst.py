@@ -3,17 +3,19 @@
 Implements the Distutils 'bdist_wininst' command: create a windows installer
 exe-program."""
 
-# This module should be kept compatible with Python 2.1.
+__revision__ = "$Id$"
 
-__revision__ = "$Id: bdist_wininst.py 71422 2009-04-09 22:48:19Z tarek.ziade $"
+import sys
+import os
+import string
 
-import sys, os, string
+from sysconfig import get_python_version
+
 from distutils.core import Command
-from distutils.util import get_platform
-from distutils.dir_util import create_tree, remove_tree
-from distutils.errors import *
-from distutils.sysconfig import get_python_version
+from distutils.dir_util import remove_tree
+from distutils.errors import DistutilsOptionError, DistutilsPlatformError
 from distutils import log
+from distutils.util import get_platform
 
 class bdist_wininst (Command):
 
@@ -93,7 +95,7 @@ class bdist_wininst (Command):
             short_version = get_python_version()
             if self.target_version and self.target_version != short_version:
                 raise DistutilsOptionError, \
-                      "target version can only be %s, or the '--skip_build'" \
+                      "target version can only be %s, or the '--skip-build'" \
                       " option must be specified" % (short_version,)
             self.target_version = short_version
 
@@ -354,5 +356,9 @@ class bdist_wininst (Command):
             sfix = ''
 
         filename = os.path.join(directory, "wininst-%.1f%s.exe" % (bv, sfix))
-        return open(filename, "rb").read()
+        f = open(filename, "rb")
+        try:
+            return f.read()
+        finally:
+            f.close()
 # class bdist_wininst

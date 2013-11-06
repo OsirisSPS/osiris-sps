@@ -5,6 +5,7 @@ import httplib
 import unittest
 from test import test_support
 import os
+import sys
 import mimetools
 import tempfile
 import StringIO
@@ -44,7 +45,7 @@ class urlopen_FileTests(unittest.TestCase):
         # Make sure object returned by urlopen() has the specified methods
         for attr in ("read", "readline", "readlines", "fileno",
                      "close", "info", "geturl", "getcode", "__iter__"):
-            self.assert_(hasattr(self.returned_obj, attr),
+            self.assertTrue(hasattr(self.returned_obj, attr),
                          "object returned by urlopen() lacks %s attribute" %
                          attr)
 
@@ -66,8 +67,7 @@ class urlopen_FileTests(unittest.TestCase):
 
     def test_fileno(self):
         file_num = self.returned_obj.fileno()
-        self.assert_(isinstance(file_num, int),
-                     "fileno() did not return an int")
+        self.assertIsInstance(file_num, int, "fileno() did not return an int")
         self.assertEqual(os.read(file_num, len(self.text)), self.text,
                          "Reading on the file descriptor returned by fileno() "
                          "did not return the expected text")
@@ -78,7 +78,7 @@ class urlopen_FileTests(unittest.TestCase):
         self.returned_obj.close()
 
     def test_info(self):
-        self.assert_(isinstance(self.returned_obj.info(), mimetools.Message))
+        self.assertIsInstance(self.returned_obj.info(), mimetools.Message)
 
     def test_geturl(self):
         self.assertEqual(self.returned_obj.geturl(), self.pathname)
@@ -94,27 +94,26 @@ class urlopen_FileTests(unittest.TestCase):
         for line in self.returned_obj.__iter__():
             self.assertEqual(line, self.text)
 
-
 class ProxyTests(unittest.TestCase):
 
     def setUp(self):
-        # Save all proxy related env vars
-        self._saved_environ = dict([(k, v) for k, v in os.environ.iteritems()
-                                    if k.lower().find('proxy') >= 0])
+        # Records changes to env vars
+        self.env = test_support.EnvironmentVarGuard()
         # Delete all proxy related env vars
-        for k in self._saved_environ:
-            del os.environ[k]
+        for k in os.environ.keys():
+            if 'proxy' in k.lower():
+                self.env.unset(k)
 
     def tearDown(self):
         # Restore all proxy related env vars
-        for k, v in self._saved_environ.iteritems():
-            os.environ[k] = v
+        self.env.__exit__()
+        del self.env
 
     def test_getproxies_environment_keep_no_proxies(self):
-        os.environ['NO_PROXY'] = 'localhost'
+        self.env.set('NO_PROXY', 'localhost')
         proxies = urllib.getproxies_environment()
         # getproxies_environment use lowered case truncated (no '_proxy') keys
-        self.assertEquals('localhost', proxies['no'])
+        self.assertEqual('localhost', proxies['no'])
 
 
 class urlopen_HttpTests(unittest.TestCase):
@@ -150,6 +149,16 @@ class urlopen_HttpTests(unittest.TestCase):
         finally:
             self.unfakehttp()
 
+    def test_url_fragment(self):
+        # Issue #11703: geturl() omits fragments in the original URL.
+        url = 'http://docs.python.org/library/urllib.html#OK'
+        self.fakehttp('Hello!')
+        try:
+            fp = urllib.urlopen(url)
+            self.assertEqual(fp.geturl(), url)
+        finally:
+            self.unfakehttp()
+
     def test_read_bogus(self):
         # urlopen() should raise IOError for many error codes.
         self.fakehttp('''HTTP/1.1 401 Authentication Required
@@ -158,6 +167,20 @@ Server: Apache/1.3.33 (Debian GNU/Linux) mod_ssl/2.8.22 OpenSSL/0.9.7e
 Connection: close
 Content-Type: text/html; charset=iso-8859-1
 ''')
+        try:
+            self.assertRaises(IOError, urllib.urlopen, "http://python.org/")
+        finally:
+            self.unfakehttp()
+
+    def test_invalid_redirect(self):
+        # urlopen() should raise IOError for many error codes.
+        self.fakehttp("""HTTP/1.1 302 Found
+Date: Wed, 02 Jan 2008 03:03:54 GMT
+Server: Apache/1.3.33 (Debian GNU/Linux) mod_ssl/2.8.22 OpenSSL/0.9.7e
+Location: file:README
+Connection: close
+Content-Type: text/html; charset=iso-8859-1
+""")
         try:
             self.assertRaises(IOError, urllib.urlopen, "http://python.org/")
         finally:
@@ -229,9 +252,9 @@ class urlretrieve_FileTests(unittest.TestCase):
         # a headers value is returned.
         result = urllib.urlretrieve("file:%s" % test_support.TESTFN)
         self.assertEqual(result[0], test_support.TESTFN)
-        self.assert_(isinstance(result[1], mimetools.Message),
-                     "did not get a mimetools.Message instance as second "
-                     "returned value")
+        self.assertIsInstance(result[1], mimetools.Message,
+                              "did not get a mimetools.Message instance as "
+                              "second returned value")
 
     def test_copy(self):
         # Test that setting the filename argument works.
@@ -240,7 +263,7 @@ class urlretrieve_FileTests(unittest.TestCase):
         result = urllib.urlretrieve(self.constructLocalFileUrl(
             test_support.TESTFN), second_temp)
         self.assertEqual(second_temp, result[0])
-        self.assert_(os.path.exists(second_temp), "copy of the file was not "
+        self.assertTrue(os.path.exists(second_temp), "copy of the file was not "
                                                   "made")
         FILE = file(second_temp, 'rb')
         try:
@@ -254,9 +277,9 @@ class urlretrieve_FileTests(unittest.TestCase):
     def test_reporthook(self):
         # Make sure that the reporthook works.
         def hooktester(count, block_size, total_size, count_holder=[0]):
-            self.assert_(isinstance(count, int))
-            self.assert_(isinstance(block_size, int))
-            self.assert_(isinstance(total_size, int))
+            self.assertIsInstance(count, int)
+            self.assertIsInstance(block_size, int)
+            self.assertIsInstance(total_size, int)
             self.assertEqual(count, count_holder[0])
             count_holder[0] = count_holder[0] + 1
         second_temp = "%s.2" % test_support.TESTFN
@@ -383,6 +406,7 @@ class QuotingTests(unittest.TestCase):
                          "using quote(): %s != %s" % (expected, result))
         self.assertEqual(expected, result,
                          "using quote_plus(): %s != %s" % (expected, result))
+        self.assertRaises(TypeError, urllib.quote, None)
 
     def test_quoting_space(self):
         # Make sure quote() and quote_plus() handle spaces as specified in
@@ -441,6 +465,32 @@ class UnquotingTests(unittest.TestCase):
                          "using unquote(): not all characters escaped: "
                          "%s" % result)
 
+    def test_unquoting_badpercent(self):
+        # Test unquoting on bad percent-escapes
+        given = '%xab'
+        expect = given
+        result = urllib.unquote(given)
+        self.assertEqual(expect, result, "using unquote(): %r != %r"
+                         % (expect, result))
+        given = '%x'
+        expect = given
+        result = urllib.unquote(given)
+        self.assertEqual(expect, result, "using unquote(): %r != %r"
+                         % (expect, result))
+        given = '%'
+        expect = given
+        result = urllib.unquote(given)
+        self.assertEqual(expect, result, "using unquote(): %r != %r"
+                         % (expect, result))
+
+    def test_unquoting_mixed_case(self):
+        # Test unquoting on mixed-case hex digits in the percent-escapes
+        given = '%Ab%eA'
+        expect = '\xab\xea'
+        result = urllib.unquote(given)
+        self.assertEqual(expect, result, "using unquote(): %r != %r"
+                         % (expect, result))
+
     def test_unquoting_parts(self):
         # Make sure unquoting works when have non-quoted characters
         # interspersed
@@ -487,7 +537,7 @@ class urlencode_Tests(unittest.TestCase):
         expect_somewhere = ["1st=1", "2nd=2", "3rd=3"]
         result = urllib.urlencode(given)
         for expected in expect_somewhere:
-            self.assert_(expected in result,
+            self.assertIn(expected, result,
                          "testing %s: %s not found in %s" %
                          (test_type, expected, result))
         self.assertEqual(result.count('&'), 2,
@@ -496,7 +546,7 @@ class urlencode_Tests(unittest.TestCase):
         amp_location = result.index('&')
         on_amp_left = result[amp_location - 1]
         on_amp_right = result[amp_location + 1]
-        self.assert_(on_amp_left.isdigit() and on_amp_right.isdigit(),
+        self.assertTrue(on_amp_left.isdigit() and on_amp_right.isdigit(),
                      "testing %s: '&' not located in proper place in %s" %
                      (test_type, result))
         self.assertEqual(len(result), (5 * 3) + 2, #5 chars per thing and amps
@@ -534,8 +584,7 @@ class urlencode_Tests(unittest.TestCase):
         result = urllib.urlencode(given, True)
         for value in given["sequence"]:
             expect = "sequence=%s" % value
-            self.assert_(expect in result,
-                         "%s not found in %s" % (expect, result))
+            self.assertIn(expect, result)
         self.assertEqual(result.count('&'), 2,
                          "Expected 2 '&'s, got %s" % result.count('&'))
 
@@ -582,9 +631,59 @@ class Pathname_Tests(unittest.TestCase):
                          "url2pathname() failed; %s != %s" %
                          (expect, result))
 
+    @unittest.skipUnless(sys.platform == 'win32',
+                         'test specific to the nturl2path library')
+    def test_ntpath(self):
+        given = ('/C:/', '///C:/', '/C|//')
+        expect = 'C:\\'
+        for url in given:
+            result = urllib.url2pathname(url)
+            self.assertEqual(expect, result,
+                             'nturl2path.url2pathname() failed; %s != %s' %
+                             (expect, result))
+        given = '///C|/path'
+        expect = 'C:\\path'
+        result = urllib.url2pathname(given)
+        self.assertEqual(expect, result,
+                         'nturl2path.url2pathname() failed; %s != %s' %
+                         (expect, result))
+
+class Utility_Tests(unittest.TestCase):
+    """Testcase to test the various utility functions in the urllib."""
+
+    def test_splitpasswd(self):
+        """Some of the password examples are not sensible, but it is added to
+        confirming to RFC2617 and addressing issue4675.
+        """
+        self.assertEqual(('user', 'ab'),urllib.splitpasswd('user:ab'))
+        self.assertEqual(('user', 'a\nb'),urllib.splitpasswd('user:a\nb'))
+        self.assertEqual(('user', 'a\tb'),urllib.splitpasswd('user:a\tb'))
+        self.assertEqual(('user', 'a\rb'),urllib.splitpasswd('user:a\rb'))
+        self.assertEqual(('user', 'a\fb'),urllib.splitpasswd('user:a\fb'))
+        self.assertEqual(('user', 'a\vb'),urllib.splitpasswd('user:a\vb'))
+        self.assertEqual(('user', 'a:b'),urllib.splitpasswd('user:a:b'))
+
+
+class URLopener_Tests(unittest.TestCase):
+    """Testcase to test the open method of URLopener class."""
+
+    def test_quoted_open(self):
+        class DummyURLopener(urllib.URLopener):
+            def open_spam(self, url):
+                return url
+
+        self.assertEqual(DummyURLopener().open(
+            'spam://example/ /'),'//example/%20/')
+
+        # test the safe characters are not quoted by urlopen
+        self.assertEqual(DummyURLopener().open(
+            "spam://c:|windows%/:=&?~#+!$,;'@()*[]|/path/"),
+            "//c:|windows%/:=&?~#+!$,;'@()*[]|/path/")
+
+
 # Just commented them out.
 # Can't really tell why keep failing in windows and sparc.
-# Everywhere else they work ok, but on those machines, someteimes
+# Everywhere else they work ok, but on those machines, sometimes
 # fail in one of the tests, sometimes in other. I have a linux, and
 # the tests go ok.
 # If anybody has one of the problematic enviroments, please help!
@@ -633,7 +732,7 @@ class Pathname_Tests(unittest.TestCase):
 #     def testTimeoutNone(self):
 #         # global default timeout is ignored
 #         import socket
-#         self.assert_(socket.getdefaulttimeout() is None)
+#         self.assertTrue(socket.getdefaulttimeout() is None)
 #         socket.setdefaulttimeout(30)
 #         try:
 #             ftp = urllib.ftpwrapper("myuser", "mypass", "localhost", 9093, [])
@@ -645,7 +744,7 @@ class Pathname_Tests(unittest.TestCase):
 #     def testTimeoutDefault(self):
 #         # global default timeout is used
 #         import socket
-#         self.assert_(socket.getdefaulttimeout() is None)
+#         self.assertTrue(socket.getdefaulttimeout() is None)
 #         socket.setdefaulttimeout(30)
 #         try:
 #             ftp = urllib.ftpwrapper("myuser", "mypass", "localhost", 9093, [])
@@ -676,6 +775,8 @@ def test_main():
             UnquotingTests,
             urlencode_Tests,
             Pathname_Tests,
+            Utility_Tests,
+            URLopener_Tests,
             #FTPWrapperTests,
         )
 

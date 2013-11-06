@@ -1,10 +1,11 @@
+# -*- coding: utf-8 -*-
 """
 Test script for doctest.
 """
 
+import sys
 from test import test_support
 import doctest
-import warnings
 
 # NOTE: There are some additional tests relating to interaction with
 #       zipimport in the test_zipimport_support test module.
@@ -372,7 +373,7 @@ We'll simulate a __file__ attr that ends in pyc:
     >>> tests = finder.find(sample_func)
 
     >>> print tests  # doctest: +ELLIPSIS
-    [<DocTest sample_func from ...:16 (1 example)>]
+    [<DocTest sample_func from ...:17 (1 example)>]
 
 The exact name depends on how test_doctest was invoked, so allow for
 leading path components.
@@ -498,6 +499,8 @@ If a single object is listed twice (under different names), then tests
 will only be generated for it once:
 
     >>> from test import doctest_aliases
+    >>> assert doctest_aliases.TwoNames.f
+    >>> assert doctest_aliases.TwoNames.g
     >>> tests = excl_empty_finder.find(doctest_aliases)
     >>> print len(tests)
     2
@@ -862,6 +865,77 @@ detail:
     >>> doctest.DocTestRunner(verbose=False).run(test)
     TestResults(failed=0, attempted=1)
 
+IGNORE_EXCEPTION_DETAIL also ignores difference in exception formatting
+between Python versions. For example, in Python 3.x, the module path of
+the exception is in the output, but this will fail under Python 2:
+
+    >>> def f(x):
+    ...     r'''
+    ...     >>> from httplib import HTTPException
+    ...     >>> raise HTTPException('message')
+    ...     Traceback (most recent call last):
+    ...     httplib.HTTPException: message
+    ...     '''
+    >>> test = doctest.DocTestFinder().find(f)[0]
+    >>> doctest.DocTestRunner(verbose=False).run(test)
+    ... # doctest: +ELLIPSIS
+    **********************************************************************
+    File ..., line 4, in f
+    Failed example:
+        raise HTTPException('message')
+    Expected:
+        Traceback (most recent call last):
+        httplib.HTTPException: message
+    Got:
+        Traceback (most recent call last):
+        ...
+        HTTPException: message
+    TestResults(failed=1, attempted=2)
+
+But in Python 2 the module path is not included, an therefore a test must look
+like the following test to succeed in Python 2. But that test will fail under
+Python 3.
+
+    >>> def f(x):
+    ...     r'''
+    ...     >>> from httplib import HTTPException
+    ...     >>> raise HTTPException('message')
+    ...     Traceback (most recent call last):
+    ...     HTTPException: message
+    ...     '''
+    >>> test = doctest.DocTestFinder().find(f)[0]
+    >>> doctest.DocTestRunner(verbose=False).run(test)
+    TestResults(failed=0, attempted=2)
+
+However, with IGNORE_EXCEPTION_DETAIL, the module name of the exception
+(if any) will be ignored:
+
+    >>> def f(x):
+    ...     r'''
+    ...     >>> from httplib import HTTPException
+    ...     >>> raise HTTPException('message') #doctest: +IGNORE_EXCEPTION_DETAIL
+    ...     Traceback (most recent call last):
+    ...     HTTPException: message
+    ...     '''
+    >>> test = doctest.DocTestFinder().find(f)[0]
+    >>> doctest.DocTestRunner(verbose=False).run(test)
+    TestResults(failed=0, attempted=2)
+
+The module path will be completely ignored, so two different module paths will
+still pass if IGNORE_EXCEPTION_DETAIL is given. This is intentional, so it can
+be used when exceptions have changed module.
+
+    >>> def f(x):
+    ...     r'''
+    ...     >>> from httplib import HTTPException
+    ...     >>> raise HTTPException('message') #doctest: +IGNORE_EXCEPTION_DETAIL
+    ...     Traceback (most recent call last):
+    ...     foo.bar.HTTPException: message
+    ...     '''
+    >>> test = doctest.DocTestFinder().find(f)[0]
+    >>> doctest.DocTestRunner(verbose=False).run(test)
+    TestResults(failed=0, attempted=2)
+
 But IGNORE_EXCEPTION_DETAIL does not allow a mismatch in the exception type:
 
     >>> def f(x):
@@ -906,6 +980,35 @@ unexpected exception:
         ...
         ZeroDivisionError: integer division or modulo by zero
     TestResults(failed=1, attempted=1)
+"""
+    def displayhook(): r"""
+Test that changing sys.displayhook doesn't matter for doctest.
+
+    >>> import sys
+    >>> orig_displayhook = sys.displayhook
+    >>> def my_displayhook(x):
+    ...     print('hi!')
+    >>> sys.displayhook = my_displayhook
+    >>> def f():
+    ...     '''
+    ...     >>> 3
+    ...     3
+    ...     '''
+    >>> test = doctest.DocTestFinder().find(f)[0]
+    >>> r = doctest.DocTestRunner(verbose=False).run(test)
+    >>> post_displayhook = sys.displayhook
+
+    We need to restore sys.displayhook now, so that we'll be able to test
+    results.
+
+    >>> sys.displayhook = orig_displayhook
+
+    Ok, now we can check that everything is ok.
+
+    >>> r
+    TestResults(failed=0, attempted=1)
+    >>> post_displayhook is my_displayhook
+    True
 """
     def optionflags(): r"""
 Tests of `DocTestRunner`'s option flag handling.
@@ -1189,7 +1292,7 @@ marking, as well as interline differences.
         ?     +              ++    ^
     TestResults(failed=1, attempted=1)
 
-The REPORT_ONLY_FIRST_FAILURE supresses result output after the first
+The REPORT_ONLY_FIRST_FAILURE suppresses result output after the first
 failing example:
 
     >>> def f(x):
@@ -1219,7 +1322,7 @@ failing example:
         2
     TestResults(failed=3, attempted=5)
 
-However, output from `report_start` is not supressed:
+However, output from `report_start` is not suppressed:
 
     >>> doctest.DocTestRunner(verbose=True, optionflags=flags).run(test)
     ... # doctest: +ELLIPSIS
@@ -1507,7 +1610,33 @@ source:
     >>> test = doctest.DocTestParser().get_doctest(s, {}, 's', 's.py', 0)
     Traceback (most recent call last):
     ValueError: line 0 of the doctest for s has an option directive on a line with no example: '# doctest: +ELLIPSIS'
-"""
+
+    """
+
+    def test_unicode_output(self): r"""
+
+Check that unicode output works:
+
+    >>> u'\xe9'
+    u'\xe9'
+
+If we return unicode, SpoofOut's buf variable becomes automagically
+converted to unicode. This means all subsequent output becomes converted
+to unicode, and if the output contains non-ascii characters that failed.
+It used to be that this state change carried on between tests, meaning
+tests would fail if unicode has been output previously in the testrun.
+This test tests that this is no longer so:
+
+    >>> print u'abc'
+    abc
+
+And then return a string with non-ascii characters:
+
+    >>> print u'\xe9'.encode('utf-8')
+    é
+
+    """
+
 
 def test_testsource(): r"""
 Unit tests for `testsource()`.
@@ -1592,10 +1721,13 @@ def test_pdb_set_trace():
 
       >>> doc = '''
       ... >>> x = 42
+      ... >>> raise Exception('clé')
+      ... Traceback (most recent call last):
+      ... Exception: clé
       ... >>> import pdb; pdb.set_trace()
       ... '''
       >>> parser = doctest.DocTestParser()
-      >>> test = parser.get_doctest(doc, {}, "foo", "foo.py", 0)
+      >>> test = parser.get_doctest(doc, {}, "foo-bär@baz", "foo-bär@baz.py", 0)
       >>> runner = doctest.DocTestRunner(verbose=False)
 
     To demonstrate this, we'll create a fake standard input that
@@ -1611,12 +1743,12 @@ def test_pdb_set_trace():
       >>> try: runner.run(test)
       ... finally: sys.stdin = real_stdin
       --Return--
-      > <doctest foo[1]>(1)<module>()->None
+      > <doctest foo-bär@baz[2]>(1)<module>()->None
       -> import pdb; pdb.set_trace()
       (Pdb) print x
       42
       (Pdb) continue
-      TestResults(failed=0, attempted=2)
+      TestResults(failed=0, attempted=3)
 
       You can also put pdb.set_trace in a function called from a test:
 
@@ -1628,7 +1760,7 @@ def test_pdb_set_trace():
       ... >>> x=1
       ... >>> calls_set_trace()
       ... '''
-      >>> test = parser.get_doctest(doc, globals(), "foo", "foo.py", 0)
+      >>> test = parser.get_doctest(doc, globals(), "foo-bär@baz", "foo-bär@baz.py", 0)
       >>> real_stdin = sys.stdin
       >>> sys.stdin = _FakeInput([
       ...    'print y',  # print data defined in the function
@@ -1647,7 +1779,7 @@ def test_pdb_set_trace():
       (Pdb) print y
       2
       (Pdb) up
-      > <doctest foo[1]>(1)<module>()
+      > <doctest foo-bär@baz[1]>(1)<module>()
       -> calls_set_trace()
       (Pdb) print x
       1
@@ -1665,7 +1797,7 @@ def test_pdb_set_trace():
       ... ...     import pdb; pdb.set_trace()
       ... >>> f(3)
       ... '''
-      >>> test = parser.get_doctest(doc, globals(), "foo", "foo.py", 0)
+      >>> test = parser.get_doctest(doc, globals(), "foo-bär@baz", "foo-bär@baz.py", 0)
       >>> real_stdin = sys.stdin
       >>> sys.stdin = _FakeInput([
       ...    'list',     # list source from example 2
@@ -1679,7 +1811,7 @@ def test_pdb_set_trace():
       ... finally: sys.stdin = real_stdin
       ... # doctest: +NORMALIZE_WHITESPACE
       --Return--
-      > <doctest foo[1]>(3)g()->None
+      > <doctest foo-bär@baz[1]>(3)g()->None
       -> import pdb; pdb.set_trace()
       (Pdb) list
         1     def g(x):
@@ -1688,7 +1820,7 @@ def test_pdb_set_trace():
       [EOF]
       (Pdb) next
       --Return--
-      > <doctest foo[0]>(2)f()->None
+      > <doctest foo-bär@baz[0]>(2)f()->None
       -> g(x*2)
       (Pdb) list
         1     def f(x):
@@ -1696,14 +1828,14 @@ def test_pdb_set_trace():
       [EOF]
       (Pdb) next
       --Return--
-      > <doctest foo[2]>(1)<module>()->None
+      > <doctest foo-bär@baz[2]>(1)<module>()->None
       -> f(3)
       (Pdb) list
         1  -> f(3)
       [EOF]
       (Pdb) continue
       **********************************************************************
-      File "foo.py", line 7, in foo
+      File "foo-bär@baz.py", line 7, in foo-bär@baz
       Failed example:
           f(3)
       Expected nothing
@@ -1737,7 +1869,7 @@ def test_pdb_set_trace_nested():
     ... '''
     >>> parser = doctest.DocTestParser()
     >>> runner = doctest.DocTestRunner(verbose=False)
-    >>> test = parser.get_doctest(doc, globals(), "foo", "foo.py", 0)
+    >>> test = parser.get_doctest(doc, globals(), "foo-bär@baz", "foo-bär@baz.py", 0)
     >>> real_stdin = sys.stdin
     >>> sys.stdin = _FakeInput([
     ...    'print y',  # print data defined in the function
@@ -1789,7 +1921,7 @@ def test_pdb_set_trace_nested():
     (Pdb) print y
     1
     (Pdb) up
-    > <doctest foo[1]>(1)<module>()
+    > <doctest foo-bär@baz[1]>(1)<module>()
     -> calls_set_trace()
     (Pdb) print foo
     *** NameError: name 'foo' is not defined
@@ -1807,19 +1939,19 @@ def test_DocTestSuite():
          >>> import test.sample_doctest
          >>> suite = doctest.DocTestSuite(test.sample_doctest)
          >>> suite.run(unittest.TestResult())
-         <unittest.TestResult run=9 errors=0 failures=4>
+         <unittest.result.TestResult run=9 errors=0 failures=4>
 
        We can also supply the module by name:
 
          >>> suite = doctest.DocTestSuite('test.sample_doctest')
          >>> suite.run(unittest.TestResult())
-         <unittest.TestResult run=9 errors=0 failures=4>
+         <unittest.result.TestResult run=9 errors=0 failures=4>
 
        We can use the current module:
 
          >>> suite = test.sample_doctest.test_suite()
          >>> suite.run(unittest.TestResult())
-         <unittest.TestResult run=9 errors=0 failures=4>
+         <unittest.result.TestResult run=9 errors=0 failures=4>
 
        We can supply global variables.  If we pass globs, they will be
        used instead of the module globals.  Here we'll pass an empty
@@ -1827,7 +1959,7 @@ def test_DocTestSuite():
 
          >>> suite = doctest.DocTestSuite('test.sample_doctest', globs={})
          >>> suite.run(unittest.TestResult())
-         <unittest.TestResult run=9 errors=0 failures=5>
+         <unittest.result.TestResult run=9 errors=0 failures=5>
 
        Alternatively, we can provide extra globals.  Here we'll make an
        error go away by providing an extra global variable:
@@ -1835,7 +1967,7 @@ def test_DocTestSuite():
          >>> suite = doctest.DocTestSuite('test.sample_doctest',
          ...                              extraglobs={'y': 1})
          >>> suite.run(unittest.TestResult())
-         <unittest.TestResult run=9 errors=0 failures=3>
+         <unittest.result.TestResult run=9 errors=0 failures=3>
 
        You can pass option flags.  Here we'll cause an extra error
        by disabling the blank-line feature:
@@ -1843,7 +1975,7 @@ def test_DocTestSuite():
          >>> suite = doctest.DocTestSuite('test.sample_doctest',
          ...                      optionflags=doctest.DONT_ACCEPT_BLANKLINE)
          >>> suite.run(unittest.TestResult())
-         <unittest.TestResult run=9 errors=0 failures=5>
+         <unittest.result.TestResult run=9 errors=0 failures=5>
 
        You can supply setUp and tearDown functions:
 
@@ -1860,7 +1992,7 @@ def test_DocTestSuite():
          >>> suite = doctest.DocTestSuite('test.sample_doctest',
          ...      setUp=setUp, tearDown=tearDown)
          >>> suite.run(unittest.TestResult())
-         <unittest.TestResult run=9 errors=0 failures=3>
+         <unittest.result.TestResult run=9 errors=0 failures=3>
 
        But the tearDown restores sanity:
 
@@ -1878,7 +2010,7 @@ def test_DocTestSuite():
 
          >>> suite = doctest.DocTestSuite('test.sample_doctest', setUp=setUp)
          >>> suite.run(unittest.TestResult())
-         <unittest.TestResult run=9 errors=0 failures=3>
+         <unittest.result.TestResult run=9 errors=0 failures=3>
 
        Here, we didn't need to use a tearDown function because we
        modified the test globals, which are a copy of the
@@ -1897,7 +2029,7 @@ def test_DocFileSuite():
          ...                              'test_doctest2.txt',
          ...                              'test_doctest4.txt')
          >>> suite.run(unittest.TestResult())
-         <unittest.TestResult run=3 errors=0 failures=3>
+         <unittest.result.TestResult run=3 errors=0 failures=3>
 
        The test files are looked for in the directory containing the
        calling module.  A package keyword argument can be provided to
@@ -1909,7 +2041,7 @@ def test_DocFileSuite():
          ...                              'test_doctest4.txt',
          ...                              package='test')
          >>> suite.run(unittest.TestResult())
-         <unittest.TestResult run=3 errors=0 failures=3>
+         <unittest.result.TestResult run=3 errors=0 failures=3>
 
        Support for using a package's __loader__.get_data() is also
        provided.
@@ -1928,14 +2060,14 @@ def test_DocFileSuite():
          ... finally:
          ...     if added_loader:
          ...         del test.__loader__
-         <unittest.TestResult run=3 errors=0 failures=3>
+         <unittest.result.TestResult run=3 errors=0 failures=3>
 
        '/' should be used as a path separator.  It will be converted
        to a native separator at run time:
 
          >>> suite = doctest.DocFileSuite('../test/test_doctest.txt')
          >>> suite.run(unittest.TestResult())
-         <unittest.TestResult run=1 errors=0 failures=1>
+         <unittest.result.TestResult run=1 errors=0 failures=1>
 
        If DocFileSuite is used from an interactive session, then files
        are resolved relative to the directory of sys.argv[0]:
@@ -1960,7 +2092,7 @@ def test_DocFileSuite():
 
          >>> suite = doctest.DocFileSuite(test_file, module_relative=False)
          >>> suite.run(unittest.TestResult())
-         <unittest.TestResult run=1 errors=0 failures=1>
+         <unittest.result.TestResult run=1 errors=0 failures=1>
 
        It is an error to specify `package` when `module_relative=False`:
 
@@ -1976,7 +2108,7 @@ def test_DocFileSuite():
          ...                              'test_doctest4.txt',
          ...                              globs={'favorite_color': 'blue'})
          >>> suite.run(unittest.TestResult())
-         <unittest.TestResult run=3 errors=0 failures=2>
+         <unittest.result.TestResult run=3 errors=0 failures=2>
 
        In this case, we supplied a missing favorite color. You can
        provide doctest options:
@@ -1987,7 +2119,7 @@ def test_DocFileSuite():
          ...                         optionflags=doctest.DONT_ACCEPT_BLANKLINE,
          ...                              globs={'favorite_color': 'blue'})
          >>> suite.run(unittest.TestResult())
-         <unittest.TestResult run=3 errors=0 failures=3>
+         <unittest.result.TestResult run=3 errors=0 failures=3>
 
        And, you can provide setUp and tearDown functions:
 
@@ -2006,7 +2138,7 @@ def test_DocFileSuite():
          ...                              'test_doctest4.txt',
          ...                              setUp=setUp, tearDown=tearDown)
          >>> suite.run(unittest.TestResult())
-         <unittest.TestResult run=3 errors=0 failures=2>
+         <unittest.result.TestResult run=3 errors=0 failures=2>
 
        But the tearDown restores sanity:
 
@@ -2025,7 +2157,7 @@ def test_DocFileSuite():
 
          >>> suite = doctest.DocFileSuite('test_doctest.txt', setUp=setUp)
          >>> suite.run(unittest.TestResult())
-         <unittest.TestResult run=1 errors=0 failures=0>
+         <unittest.result.TestResult run=1 errors=0 failures=0>
 
        Here, we didn't need to use a tearDown function because we
        modified the test globals.  The test globals are
@@ -2037,7 +2169,7 @@ def test_DocFileSuite():
 
          >>> suite = doctest.DocFileSuite('test_doctest3.txt')
          >>> suite.run(unittest.TestResult())
-         <unittest.TestResult run=1 errors=0 failures=0>
+         <unittest.result.TestResult run=1 errors=0 failures=0>
 
        If the tests contain non-ASCII characters, we have to specify which
        encoding the file is encoded with. We do so by using the `encoding`
@@ -2048,7 +2180,7 @@ def test_DocFileSuite():
          ...                              'test_doctest4.txt',
          ...                              encoding='utf-8')
          >>> suite.run(unittest.TestResult())
-         <unittest.TestResult run=3 errors=0 failures=2>
+         <unittest.result.TestResult run=3 errors=0 failures=2>
 
        """
 
@@ -2143,6 +2275,13 @@ doctest examples in a given file.  In its simple invokation, it is
 called with the name of a file, which is taken to be relative to the
 calling module.  The return value is (#failures, #tests).
 
+We don't want `-v` in sys.argv for these tests.
+
+    >>> save_argv = sys.argv
+    >>> if '-v' in sys.argv:
+    ...     sys.argv = [arg for arg in save_argv if arg != '-v']
+
+
     >>> doctest.testfile('test_doctest.txt') # doctest: +ELLIPSIS
     **********************************************************************
     File "...", line 6, in test_doctest.txt
@@ -2159,7 +2298,7 @@ calling module.  The return value is (#failures, #tests).
     >>> doctest.master = None  # Reset master.
 
 (Note: we'll be clearing doctest.master after each call to
-`doctest.testfile`, to supress warnings about multiple tests with the
+`doctest.testfile`, to suppress warnings about multiple tests with the
 same name.)
 
 Globals may be specified with the `globs` and `extraglobs` parameters:
@@ -2195,7 +2334,7 @@ optional `module_relative` parameter:
     TestResults(failed=0, attempted=2)
     >>> doctest.master = None  # Reset master.
 
-Verbosity can be increased with the optional `verbose` paremter:
+Verbosity can be increased with the optional `verbose` parameter:
 
     >>> doctest.testfile('test_doctest.txt', globs=globs, verbose=True)
     Trying:
@@ -2232,7 +2371,7 @@ parameter:
     TestResults(failed=1, attempted=2)
     >>> doctest.master = None  # Reset master.
 
-The summary report may be supressed with the optional `report`
+The summary report may be suppressed with the optional `report`
 parameter:
 
     >>> doctest.testfile('test_doctest.txt', report=False)
@@ -2282,17 +2421,46 @@ using the optional keyword argument `encoding`:
     >>> doctest.testfile('test_doctest4.txt', encoding='utf-8')
     TestResults(failed=0, attempted=4)
     >>> doctest.master = None  # Reset master.
+
+Switch the module encoding to 'utf-8' to test the verbose output without
+bothering with the current sys.stdout encoding.
+
+    >>> doctest._encoding, saved_encoding = 'utf-8', doctest._encoding
+    >>> doctest.testfile('test_doctest4.txt', encoding='utf-8', verbose=True)
+    Trying:
+        u'föö'
+    Expecting:
+        u'f\xf6\xf6'
+    ok
+    Trying:
+        u'bąr'
+    Expecting:
+        u'b\u0105r'
+    ok
+    Trying:
+        'föö'
+    Expecting:
+        'f\xc3\xb6\xc3\xb6'
+    ok
+    Trying:
+        'bąr'
+    Expecting:
+        'b\xc4\x85r'
+    ok
+    1 items passed all tests:
+       4 tests in test_doctest4.txt
+    4 tests in 1 items.
+    4 passed and 0 failed.
+    Test passed.
+    TestResults(failed=0, attempted=4)
+    >>> doctest._encoding = saved_encoding
+    >>> doctest.master = None  # Reset master.
+    >>> sys.argv = save_argv
 """
 
 # old_test1, ... used to live in doctest.py, but cluttered it.  Note
 # that these use the deprecated doctest.Tester, so should go away (or
 # be rewritten) someday.
-
-# Ignore all warnings about the use of class Tester in this module.
-# Note that the name of this module may differ depending on how it's
-# imported, so the use of __name__ is important.
-warnings.filterwarnings("ignore", "class Tester", DeprecationWarning,
-                        __name__, 0)
 
 def old_test1(): r"""
 >>> from doctest import Tester
@@ -2417,12 +2585,21 @@ def old_test4(): """
 def test_main():
     # Check the doctest cases in doctest itself:
     test_support.run_doctest(doctest, verbosity=True)
-    # Check the doctest cases defined here:
-    from test import test_doctest
-    test_support.run_doctest(test_doctest, verbosity=True)
 
-import trace, sys
+    from test import test_doctest
+
+    # Ignore all warnings about the use of class Tester in this module.
+    deprecations = [("class Tester is deprecated", DeprecationWarning)]
+    if sys.py3kwarning:
+        deprecations += [("backquote not supported", SyntaxWarning),
+                         ("execfile.. not supported", DeprecationWarning)]
+    with test_support.check_warnings(*deprecations):
+        # Check the doctest cases defined here:
+        test_support.run_doctest(test_doctest, verbosity=True)
+
+import sys
 def test_coverage(coverdir):
+    trace = test_support.import_module('trace')
     tracer = trace.Trace(ignoredirs=[sys.prefix, sys.exec_prefix,],
                          trace=0, count=1)
     tracer.run('reload(doctest); test_main()')

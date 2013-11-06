@@ -9,7 +9,7 @@ Written by:   Fred L. Drake, Jr.
 Email:        <fdrake@acm.org>
 """
 
-__revision__ = "$Id: sysconfig.py 69486 2009-02-10 12:33:42Z tarek.ziade $"
+__revision__ = "$Id$"
 
 import os
 import re
@@ -71,24 +71,23 @@ def get_python_inc(plat_specific=0, prefix=None):
     """
     if prefix is None:
         prefix = plat_specific and EXEC_PREFIX or PREFIX
+
     if os.name == "posix":
         if python_build:
-            base = os.path.dirname(os.path.abspath(sys.executable))
+            buildir = os.path.dirname(sys.executable)
             if plat_specific:
-                inc_dir = base
+                # python.h is located in the buildir
+                inc_dir = buildir
             else:
-                inc_dir = os.path.join(base, "Include")
-                if not os.path.exists(inc_dir):
-                    inc_dir = os.path.join(os.path.dirname(base), "Include")
+                # the source dir is relative to the buildir
+                srcdir = os.path.abspath(os.path.join(buildir,
+                                         get_config_var('srcdir')))
+                # Include is located in the srcdir
+                inc_dir = os.path.join(srcdir, "Include")
             return inc_dir
         return os.path.join(prefix, "include", "python" + get_python_version())
     elif os.name == "nt":
         return os.path.join(prefix, "include")
-    elif os.name == "mac":
-        if plat_specific:
-            return os.path.join(prefix, "Mac", "Include")
-        else:
-            return os.path.join(prefix, "Include")
     elif os.name == "os2":
         return os.path.join(prefix, "Include")
     else:
@@ -128,18 +127,6 @@ def get_python_lib(plat_specific=0, standard_lib=0, prefix=None):
         else:
             if get_python_version() < "2.2":
                 return prefix
-            else:
-                return os.path.join(prefix, "Lib", "site-packages")
-
-    elif os.name == "mac":
-        if plat_specific:
-            if standard_lib:
-                return os.path.join(prefix, "Lib", "lib-dynload")
-            else:
-                return os.path.join(prefix, "Lib", "site-packages")
-        else:
-            if standard_lib:
-                return os.path.join(prefix, "Lib")
             else:
                 return os.path.join(prefix, "Lib", "site-packages")
 
@@ -275,18 +262,25 @@ def parse_makefile(fn, g=None):
 
     while 1:
         line = fp.readline()
-        if line is None:                # eof
+        if line is None:  # eof
             break
         m = _variable_rx.match(line)
         if m:
             n, v = m.group(1, 2)
-            v = string.strip(v)
-            if "$" in v:
+            v = v.strip()
+            # `$$' is a literal `$' in make
+            tmpv = v.replace('$$', '')
+
+            if "$" in tmpv:
                 notdone[n] = v
             else:
-                try: v = int(v)
-                except ValueError: pass
-                done[n] = v
+                try:
+                    v = int(v)
+                except ValueError:
+                    # insert literal `$'
+                    done[n] = v.replace('$$', '$')
+                else:
+                    done[n] = v
 
     # do variable interpolation here
     while notdone:
@@ -314,7 +308,7 @@ def parse_makefile(fn, g=None):
                     else:
                         try: value = int(value)
                         except ValueError:
-                            done[name] = string.strip(value)
+                            done[name] = value.strip()
                         else:
                             done[name] = value
                         del notdone[name]
@@ -323,6 +317,11 @@ def parse_makefile(fn, g=None):
                 del notdone[name]
 
     fp.close()
+
+    # strip spurious spaces
+    for k, v in done.items():
+        if isinstance(v, str):
+            done[k] = v.strip()
 
     # save the results in the global dictionary
     g.update(done)
@@ -390,7 +389,7 @@ def _init_posix():
         cur_target = os.getenv('MACOSX_DEPLOYMENT_TARGET', '')
         if cur_target == '':
             cur_target = cfg_target
-            os.putenv('MACOSX_DEPLOYMENT_TARGET', cfg_target)
+            os.environ['MACOSX_DEPLOYMENT_TARGET'] = cfg_target
         elif map(int, cfg_target.split('.')) > map(int, cur_target.split('.')):
             my_msg = ('$MACOSX_DEPLOYMENT_TARGET mismatch: now "%s" but "%s" during configure'
                 % (cur_target, cfg_target))
@@ -454,32 +453,6 @@ def _init_nt():
     _config_vars = g
 
 
-def _init_mac():
-    """Initialize the module as appropriate for Macintosh systems"""
-    g = {}
-    # set basic install directories
-    g['LIBDEST'] = get_python_lib(plat_specific=0, standard_lib=1)
-    g['BINLIBDEST'] = get_python_lib(plat_specific=1, standard_lib=1)
-
-    # XXX hmmm.. a normal install puts include files here
-    g['INCLUDEPY'] = get_python_inc(plat_specific=0)
-
-    import MacOS
-    if not hasattr(MacOS, 'runtimemodel'):
-        g['SO'] = '.ppc.slb'
-    else:
-        g['SO'] = '.%s.slb' % MacOS.runtimemodel
-
-    # XXX are these used anywhere?
-    g['install_lib'] = os.path.join(EXEC_PREFIX, "Lib")
-    g['install_platlib'] = os.path.join(EXEC_PREFIX, "Mac", "Lib")
-
-    # These are used by the extension module build
-    g['srcdir'] = ':'
-    global _config_vars
-    _config_vars = g
-
-
 def _init_os2():
     """Initialize the module as appropriate for OS/2"""
     g = {}
@@ -530,7 +503,7 @@ def get_config_vars(*args):
                 # are in CFLAGS or LDFLAGS and remove them if they are.
                 # This is needed when building extensions on a 10.3 system
                 # using a universal build of python.
-                for key in ('LDFLAGS', 'BASECFLAGS',
+                for key in ('LDFLAGS', 'BASECFLAGS', 'LDSHARED',
                         # a number of derived variables. These need to be
                         # patched up as well.
                         'CFLAGS', 'PY_CFLAGS', 'BLDSHARED'):
@@ -549,7 +522,7 @@ def get_config_vars(*args):
 
                 if 'ARCHFLAGS' in os.environ:
                     arch = os.environ['ARCHFLAGS']
-                    for key in ('LDFLAGS', 'BASECFLAGS',
+                    for key in ('LDFLAGS', 'BASECFLAGS', 'LDSHARED',
                         # a number of derived variables. These need to be
                         # patched up as well.
                         'CFLAGS', 'PY_CFLAGS', 'BLDSHARED'):
@@ -558,6 +531,29 @@ def get_config_vars(*args):
                         flags = re.sub('-arch\s+\w+\s', ' ', flags)
                         flags = flags + ' ' + arch
                         _config_vars[key] = flags
+
+                # If we're on OSX 10.5 or later and the user tries to
+                # compiles an extension using an SDK that is not present
+                # on the current machine it is better to not use an SDK
+                # than to fail.
+                #
+                # The major usecase for this is users using a Python.org
+                # binary installer  on OSX 10.6: that installer uses
+                # the 10.4u SDK, but that SDK is not installed by default
+                # when you install Xcode.
+                #
+                m = re.search('-isysroot\s+(\S+)', _config_vars['CFLAGS'])
+                if m is not None:
+                    sdk = m.group(1)
+                    if not os.path.exists(sdk):
+                        for key in ('LDFLAGS', 'BASECFLAGS', 'LDSHARED',
+                             # a number of derived variables. These need to be
+                             # patched up as well.
+                            'CFLAGS', 'PY_CFLAGS', 'BLDSHARED'):
+
+                            flags = _config_vars[key]
+                            flags = re.sub('-isysroot\s+\S+(\s|$)', ' ', flags)
+                            _config_vars[key] = flags
 
     if args:
         vals = []

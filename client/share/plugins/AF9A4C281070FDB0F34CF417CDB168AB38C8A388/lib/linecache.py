@@ -72,14 +72,14 @@ def updatecache(filename, module_globals=None):
 
     if filename in cache:
         del cache[filename]
-    if not filename or filename[0] + filename[-1] == '<>':
+    if not filename or (filename.startswith('<') and filename.endswith('>')):
         return []
 
     fullname = filename
     try:
         stat = os.stat(fullname)
-    except os.error, msg:
-        basename = os.path.split(filename)[1]
+    except OSError:
+        basename = filename
 
         # Try for a __loader__, if available
         if module_globals and '__loader__' in module_globals:
@@ -103,7 +103,10 @@ def updatecache(filename, module_globals=None):
                     )
                     return cache[filename][2]
 
-        # Try looking through the module search path.
+        # Try looking through the module search path, which is only useful
+        # when handling a relative filename.
+        if os.path.isabs(filename):
+            return []
 
         for dirname in sys.path:
             # When using imputil, sys.path may contain things other than
@@ -112,24 +115,21 @@ def updatecache(filename, module_globals=None):
                 fullname = os.path.join(dirname, basename)
             except (TypeError, AttributeError):
                 # Not sufficiently string-like to do anything useful with.
+                continue
+            try:
+                stat = os.stat(fullname)
+                break
+            except os.error:
                 pass
-            else:
-                try:
-                    stat = os.stat(fullname)
-                    break
-                except os.error:
-                    pass
         else:
-            # No luck
-##          print '*** Cannot stat', filename, ':', msg
             return []
     try:
-        fp = open(fullname, 'rU')
-        lines = fp.readlines()
-        fp.close()
-    except IOError, msg:
-##      print '*** Cannot open', fullname, ':', msg
+        with open(fullname, 'rU') as fp:
+            lines = fp.readlines()
+    except IOError:
         return []
+    if lines and not lines[-1].endswith('\n'):
+        lines[-1] += '\n'
     size, mtime = stat.st_size, stat.st_mtime
     cache[filename] = size, mtime, lines, fullname
     return lines

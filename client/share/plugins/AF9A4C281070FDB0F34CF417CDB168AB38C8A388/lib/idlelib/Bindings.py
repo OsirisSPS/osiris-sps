@@ -9,8 +9,8 @@ windows.
 
 """
 import sys
-from configHandler import idleConf
-import macosxSupport
+from idlelib.configHandler import idleConf
+from idlelib import macosxSupport
 
 menudefs = [
  # underscore prefixes character to underscore
@@ -97,14 +97,6 @@ if macosxSupport.runningAsOSXApp():
     # Remove the 'About' entry from the help menu, it is in the application
     # menu
     del menudefs[-1][1][0:2]
-
-    menudefs.insert(0,
-            ('application', [
-                ('About IDLE', '<<about-idle>>'),
-                None,
-                ('_Preferences....', '<<open-config-dialog>>'),
-            ]))
-
 
 default_keydefs = idleConf.GetCurrentKeySet()
 

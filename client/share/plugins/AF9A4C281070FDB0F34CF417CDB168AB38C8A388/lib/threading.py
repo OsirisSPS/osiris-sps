@@ -10,7 +10,6 @@ except ImportError:
 
 import warnings
 
-from functools import wraps
 from time import time as _time, sleep as _sleep
 from traceback import format_exc as _format_exc
 from collections import deque
@@ -64,8 +63,14 @@ if __debug__:
         def _note(self, format, *args):
             if self.__verbose:
                 format = format % args
-                format = "%s: %s\n" % (
-                    current_thread().name, format)
+                # Issue #4188: calling current_thread() can incur an infinite
+                # recursion if it has to create a DummyThread on the fly.
+                ident = _get_ident()
+                try:
+                    name = _active[ident].name
+                except KeyError:
+                    name = "<OS thread %d>" % ident
+                format = "%s: %s\n" % (name, format)
                 _sys.stderr.write(format)
 
 else:
@@ -106,14 +111,16 @@ class _RLock(_Verbose):
 
     def __repr__(self):
         owner = self.__owner
-        return "<%s(%s, %d)>" % (
-                self.__class__.__name__,
-                owner and owner.name,
-                self.__count)
+        try:
+            owner = _active[owner].name
+        except KeyError:
+            pass
+        return "<%s owner=%r count=%d>" % (
+                self.__class__.__name__, owner, self.__count)
 
     def acquire(self, blocking=1):
-        me = current_thread()
-        if self.__owner is me:
+        me = _get_ident()
+        if self.__owner == me:
             self.__count = self.__count + 1
             if __debug__:
                 self._note("%s.acquire(%s): recursive success", self, blocking)
@@ -132,8 +139,8 @@ class _RLock(_Verbose):
     __enter__ = acquire
 
     def release(self):
-        if self.__owner is not current_thread():
-            raise RuntimeError("cannot release un-aquired lock")
+        if self.__owner != _get_ident():
+            raise RuntimeError("cannot release un-acquired lock")
         self.__count = count = self.__count - 1
         if not count:
             self.__owner = None
@@ -168,7 +175,7 @@ class _RLock(_Verbose):
         return (count, owner)
 
     def _is_owned(self):
-        return self.__owner is current_thread()
+        return self.__owner == _get_ident()
 
 
 def Condition(*args, **kwargs):
@@ -227,7 +234,7 @@ class _Condition(_Verbose):
 
     def wait(self, timeout=None):
         if not self._is_owned():
-            raise RuntimeError("cannot wait on un-aquired lock")
+            raise RuntimeError("cannot wait on un-acquired lock")
         waiter = _allocate_lock()
         waiter.acquire()
         self.__waiters.append(waiter)
@@ -269,7 +276,7 @@ class _Condition(_Verbose):
 
     def notify(self, n=1):
         if not self._is_owned():
-            raise RuntimeError("cannot notify on un-aquired lock")
+            raise RuntimeError("cannot notify on un-acquired lock")
         __waiters = self.__waiters
         waiters = __waiters[:n]
         if not waiters:
@@ -366,6 +373,10 @@ class _Event(_Verbose):
         self.__cond = Condition(Lock())
         self.__flag = False
 
+    def _reset_internal_locks(self):
+        # private!  called by Thread._reset_internal_locks by _after_fork()
+        self.__cond.__init__()
+
     def isSet(self):
         return self.__flag
 
@@ -391,6 +402,7 @@ class _Event(_Verbose):
         try:
             if not self.__flag:
                 self.__cond.wait(timeout)
+            return self.__flag
         finally:
             self.__cond.release()
 
@@ -441,6 +453,18 @@ class Thread(_Verbose):
         # sys.exc_info since it can be changed between instances
         self.__stderr = _sys.stderr
 
+    def _reset_internal_locks(self):
+        # private!  Called by _after_fork() to reset our internal locks as
+        # they may be in an invalid state leading to a deadlock or crash.
+        if hasattr(self, '_Thread__block'):  # DummyThread deletes self.__block
+            self.__block.__init__()
+        self.__started._reset_internal_locks()
+
+    @property
+    def _block(self):
+        # used by a unittest
+        return self.__block
+
     def _set_daemon(self):
         # Overridden in _MainThread and _DummyThread
         return current_thread().daemon
@@ -462,13 +486,17 @@ class Thread(_Verbose):
         if not self.__initialized:
             raise RuntimeError("thread.__init__() not called")
         if self.__started.is_set():
-            raise RuntimeError("thread already started")
+            raise RuntimeError("threads can only be started once")
         if __debug__:
             self._note("%s.start(): starting thread", self)
-        _active_limbo_lock.acquire()
-        _limbo[self] = self
-        _active_limbo_lock.release()
-        _start_new_thread(self.__bootstrap, ())
+        with _active_limbo_lock:
+            _limbo[self] = self
+        try:
+            _start_new_thread(self.__bootstrap, ())
+        except Exception:
+            with _active_limbo_lock:
+                del _limbo[self]
+            raise
         self.__started.wait()
 
     def run(self):
@@ -507,10 +535,9 @@ class Thread(_Verbose):
         try:
             self._set_ident()
             self.__started.set()
-            _active_limbo_lock.acquire()
-            _active[self.__ident] = self
-            del _limbo[self]
-            _active_limbo_lock.release()
+            with _active_limbo_lock:
+                _active[self.__ident] = self
+                del _limbo[self]
             if __debug__:
                 self._note("%s.__bootstrap(): thread started", self)
 
@@ -738,9 +765,8 @@ class _MainThread(Thread):
         Thread.__init__(self, name="MainThread")
         self._Thread__started.set()
         self._set_ident()
-        _active_limbo_lock.acquire()
-        _active[_get_ident()] = self
-        _active_limbo_lock.release()
+        with _active_limbo_lock:
+            _active[_get_ident()] = self
 
     def _set_daemon(self):
         return False
@@ -785,9 +811,8 @@ class _DummyThread(Thread):
 
         self._Thread__started.set()
         self._set_ident()
-        _active_limbo_lock.acquire()
-        _active[_get_ident()] = self
-        _active_limbo_lock.release()
+        with _active_limbo_lock:
+            _active[_get_ident()] = self
 
     def _set_daemon(self):
         return True
@@ -808,18 +833,18 @@ def currentThread():
 current_thread = currentThread
 
 def activeCount():
-    _active_limbo_lock.acquire()
-    count = len(_active) + len(_limbo)
-    _active_limbo_lock.release()
-    return count
+    with _active_limbo_lock:
+        return len(_active) + len(_limbo)
 
 active_count = activeCount
 
+def _enumerate():
+    # Same as enumerate(), but without the lock. Internal use only.
+    return _active.values() + _limbo.values()
+
 def enumerate():
-    _active_limbo_lock.acquire()
-    active = _active.values() + _limbo.values()
-    _active_limbo_lock.release()
-    return active
+    with _active_limbo_lock:
+        return _active.values() + _limbo.values()
 
 from thread import stack_size
 
@@ -858,6 +883,10 @@ def _after_fork():
                 # its new value since it can have changed.
                 ident = _get_ident()
                 thread._Thread__ident = ident
+                # Any condition variables hanging off of the active thread may
+                # be in an invalid state, so we reinitialize them.
+                if hasattr(thread, '_reset_internal_locks'):
+                    thread._reset_internal_locks()
                 new_active[ident] = thread
             else:
                 # All the others are already stopped.

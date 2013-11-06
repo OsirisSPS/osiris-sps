@@ -37,7 +37,7 @@ Reference Manual pages.
 __author__ = "Ka-Ping Yee <ping@lfw.org>"
 __date__ = "26 February 2001"
 
-__version__ = "$Revision: 71447 $"
+__version__ = "$Revision$"
 __credits__ = """Guido van Rossum, for an excellent programming language.
 Tommy Burnette, the original creator of manpy.
 Paul Prescod, for all his work on onlinehelp.
@@ -55,6 +55,7 @@ Richard Chamberlain, for the first implementation of textdoc.
 import sys, imp, os, re, types, inspect, __builtin__, pkgutil
 from repr import Repr
 from string import expandtabs, find, join, lower, split, strip, rfind, rstrip
+from traceback import extract_tb
 try:
     from collections import deque
 except ImportError:
@@ -123,9 +124,7 @@ _re_stripid = re.compile(r' at 0x[0-9a-f]{6,16}(>+)$', re.IGNORECASE)
 def stripid(text):
     """Remove the hexadecimal id from a Python object representation."""
     # The behaviour of %p is implementation-dependent in terms of case.
-    if _re_stripid.search(repr(Exception)):
-        return _re_stripid.sub(r'\1', text)
-    return text
+    return _re_stripid.sub(r'\1', text)
 
 def _is_some_method(obj):
     return inspect.ismethod(obj) or inspect.ismethoddescriptor(obj)
@@ -157,7 +156,7 @@ def _split_list(s, predicate):
             no.append(x)
     return yes, no
 
-def visiblename(name, all=None):
+def visiblename(name, all=None, obj=None):
     """Decide whether to show documentation on a variable."""
     # Certain special names are redundant.
     _hidden_names = ('__builtins__', '__doc__', '__file__', '__path__',
@@ -165,6 +164,9 @@ def visiblename(name, all=None):
     if name in _hidden_names: return 0
     # Private names are hidden, but special names are displayed.
     if name.startswith('__') and name.endswith('__'): return 1
+    # Namedtuples have public fields and methods with a single leading underscore
+    if name.startswith('_') and hasattr(obj, '_fields'):
+        return 1
     if all is not None:
         # only document that which the programmer exported in __all__
         return name in all
@@ -299,9 +301,9 @@ def safeimport(path, forceload=0, cache={}):
         elif exc is SyntaxError:
             # A SyntaxError occurred before we could execute the module.
             raise ErrorDuringImport(value.filename, info)
-        elif exc is ImportError and \
-             split(lower(str(value)))[:2] == ['no', 'module']:
-            # The module was not found.
+        elif exc is ImportError and extract_tb(tb)[-1][2]=='safeimport':
+            # The import error occurred directly in this function,
+            # which means there is no such module in the path.
             return None
         else:
             # Some other error occurred during the importing process.
@@ -357,7 +359,8 @@ class Doc:
                                  'marshal', 'posix', 'signal', 'sys',
                                  'thread', 'zipimport') or
              (file.startswith(basedir) and
-              not file.startswith(os.path.join(basedir, 'site-packages'))))):
+              not file.startswith(os.path.join(basedir, 'site-packages')))) and
+            object.__name__ not in ('xml.etree', 'test.pydoc_mod')):
             if docloc.startswith("http://"):
                 docloc = "%s/%s" % (docloc.rstrip("/"), object.__name__)
             else:
@@ -475,9 +478,9 @@ class HTMLDoc(Doc):
     def multicolumn(self, list, format, cols=4):
         """Format a list of items into a multi-column list."""
         result = ''
-        rows = (len(list)+cols-1)/cols
+        rows = (len(list)+cols-1)//cols
         for col in range(cols):
-            result = result + '<td width="%d%%" valign=top>' % (100/cols)
+            result = result + '<td width="%d%%" valign=top>' % (100//cols)
             for i in range(rows*col, rows*col+rows):
                 if i < len(list):
                     result = result + format(list[i]) + '<br>\n'
@@ -627,7 +630,7 @@ class HTMLDoc(Doc):
             # if __all__ exists, believe it.  Otherwise use old heuristic.
             if (all is not None or
                 (inspect.getmodule(value) or object) is object):
-                if visiblename(key, all):
+                if visiblename(key, all, object):
                     classes.append((key, value))
                     cdict[key] = cdict[value] = '#' + key
         for key, value in classes:
@@ -643,13 +646,13 @@ class HTMLDoc(Doc):
             # if __all__ exists, believe it.  Otherwise use old heuristic.
             if (all is not None or
                 inspect.isbuiltin(value) or inspect.getmodule(value) is object):
-                if visiblename(key, all):
+                if visiblename(key, all, object):
                     funcs.append((key, value))
                     fdict[key] = '#-' + key
                     if inspect.isfunction(value): fdict[value] = fdict[key]
         data = []
         for key, value in inspect.getmembers(object, isdata):
-            if visiblename(key, all):
+            if visiblename(key, all, object):
                 data.append((key, value))
 
         doc = self.markup(getdoc(object), self.preformat, fdict, cdict)
@@ -773,7 +776,7 @@ class HTMLDoc(Doc):
                     push('\n')
             return attrs
 
-        attrs = filter(lambda data: visiblename(data[0]),
+        attrs = filter(lambda data: visiblename(data[0], obj=object),
                        classify_class_attrs(object))
         mdict = {}
         for key, kind, homecls, value in attrs:
@@ -1042,18 +1045,18 @@ class TextDoc(Doc):
             # if __all__ exists, believe it.  Otherwise use old heuristic.
             if (all is not None
                 or (inspect.getmodule(value) or object) is object):
-                if visiblename(key, all):
+                if visiblename(key, all, object):
                     classes.append((key, value))
         funcs = []
         for key, value in inspect.getmembers(object, inspect.isroutine):
             # if __all__ exists, believe it.  Otherwise use old heuristic.
             if (all is not None or
                 inspect.isbuiltin(value) or inspect.getmodule(value) is object):
-                if visiblename(key, all):
+                if visiblename(key, all, object):
                     funcs.append((key, value))
         data = []
         for key, value in inspect.getmembers(object, isdata):
-            if visiblename(key, all):
+            if visiblename(key, all, object):
                 data.append((key, value))
 
         modpkgs = []
@@ -1113,7 +1116,7 @@ class TextDoc(Doc):
             result = result + self.section('CREDITS', str(object.__credits__))
         return result
 
-    def docclass(self, object, name=None, mod=None):
+    def docclass(self, object, name=None, mod=None, *ignored):
         """Produce text documentation for a given class object."""
         realname = object.__name__
         name = name or realname
@@ -1186,7 +1189,7 @@ class TextDoc(Doc):
                                        name, mod, maxlen=70, doc=doc) + '\n')
             return attrs
 
-        attrs = filter(lambda data: visiblename(data[0]),
+        attrs = filter(lambda data: visiblename(data[0], obj=object),
                        classify_class_attrs(object))
         while attrs:
             if mro:
@@ -1533,11 +1536,11 @@ class Helper:
     # These dictionaries map a topic name to either an alias, or a tuple
     # (label, seealso-items).  The "label" is the label of the corresponding
     # section in the .rst file under Doc/ and an index into the dictionary
-    # in pydoc_topics.py.
+    # in pydoc_data/topics.py.
     #
     # CAUTION: if you change one of these dictionaries, be sure to adapt the
     #          list of needed labels in Doc/tools/sphinxext/pyspecific.py and
-    #          regenerate the pydoc_topics.py file by running
+    #          regenerate the pydoc_data/topics.py file by running
     #              make pydoc-topics
     #          in Doc/ and copying the output file into the Lib/ directory.
 
@@ -1705,9 +1708,12 @@ class Helper:
         'CONTEXTMANAGERS': ('context-managers', 'with'),
     }
 
-    def __init__(self, input, output):
-        self.input = input
-        self.output = output
+    def __init__(self, input=None, output=None):
+        self._input = input
+        self._output = output
+
+    input  = property(lambda self: self._input or sys.stdin)
+    output = property(lambda self: self._output or sys.stdout)
 
     def __repr__(self):
         if inspect.stack()[1][3] == '?':
@@ -1715,8 +1721,9 @@ class Helper:
             return ''
         return '<pydoc.Helper instance>'
 
-    def __call__(self, request=None):
-        if request is not None:
+    _GoInteractive = object()
+    def __call__(self, request=_GoInteractive):
+        if request is not self._GoInteractive:
             self.help(request)
         else:
             self.intro()
@@ -1751,6 +1758,7 @@ has the same effect as typing a particular string at the help> prompt.
 
     def help(self, request):
         if type(request) is type(''):
+            request = request.strip()
             if request == 'help': self.intro()
             elif request == 'keywords': self.listkeywords()
             elif request == 'symbols': self.listsymbols()
@@ -1821,11 +1829,11 @@ Here is a list of available topics.  Enter any topic name to get more help.
 
     def showtopic(self, topic, more_xrefs=''):
         try:
-            import pydoc_topics
+            import pydoc_data.topics
         except ImportError:
             self.output.write('''
 Sorry, topic and keyword documentation is not available because the
-module "pydoc_topics" could not be found.
+module "pydoc_data.topics" could not be found.
 ''')
             return
         target = self.topics.get(topic, self.keywords.get(topic))
@@ -1837,7 +1845,7 @@ module "pydoc_topics" could not be found.
 
         label, xrefs = target
         try:
-            doc = pydoc_topics.topics[label]
+            doc = pydoc_data.topics.topics[label]
         except KeyError:
             self.output.write('no documentation found for %s\n' % repr(topic))
             return
@@ -1883,7 +1891,7 @@ Enter any module name to get more help.  Or, type "modules spam" to search
 for modules whose descriptions contain the word "spam".
 ''')
 
-help = Helper(sys.stdin, sys.stdout)
+help = Helper()
 
 class Scanner:
     """A generic tree iterator."""
@@ -2027,8 +2035,8 @@ pydoc</strong> by Ka-Ping Yee &lt;ping@lfw.org&gt;</font>'''
 
     class DocServer(BaseHTTPServer.HTTPServer):
         def __init__(self, port, callback):
-            host = (sys.platform == 'mac') and '127.0.0.1' or 'localhost'
-            self.address = ('', port)
+            host = 'localhost'
+            self.address = (host, port)
             self.url = 'http://%s:%d/' % (host, port)
             self.callback = callback
             self.base.__init__(self, self.address, self.handler)
@@ -2144,10 +2152,6 @@ def gui():
             except ImportError: # pre-webbrowser.py compatibility
                 if sys.platform == 'win32':
                     os.system('start "%s"' % url)
-                elif sys.platform == 'mac':
-                    try: import ic
-                    except ImportError: pass
-                    else: ic.launchurl(url)
                 else:
                     rc = os.system('netscape -remote "openURL(%s)" &' % url)
                     if rc: os.system('netscape "%s" &' % url)
@@ -2252,11 +2256,13 @@ def cli():
     import getopt
     class BadUsage: pass
 
-    # Scripts don't get the current directory in their path by default.
-    scriptdir = os.path.dirname(sys.argv[0])
-    if scriptdir in sys.path:
-        sys.path.remove(scriptdir)
-    sys.path.insert(0, '.')
+    # Scripts don't get the current directory in their path by default
+    # unless they are run with the '-m' switch
+    if '' not in sys.path:
+        scriptdir = os.path.dirname(sys.argv[0])
+        if scriptdir in sys.path:
+            sys.path.remove(scriptdir)
+        sys.path.insert(0, '.')
 
     try:
         opts, args = getopt.getopt(sys.argv[1:], 'gk:p:w')

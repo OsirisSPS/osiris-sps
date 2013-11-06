@@ -5,7 +5,6 @@
 #
 
 from test import test_support
-from test import test_multibytecodec_support
 from test.test_support import TESTFN
 import unittest, StringIO, codecs, sys, os
 import _multibytecodec
@@ -47,12 +46,9 @@ class Test_MultibyteCodec(unittest.TestCase):
                           'apple\x92ham\x93spam', 'test.cjktest')
 
     def test_codingspec(self):
-        try:
-            for enc in ALL_CJKENCODINGS:
-                print >> open(TESTFN, 'w'), '# coding:', enc
-                exec open(TESTFN)
-        finally:
-            os.unlink(TESTFN)
+        for enc in ALL_CJKENCODINGS:
+            code = '# coding: {}\n'.format(enc)
+            exec code
 
     def test_init_segfault(self):
         # bug #3305: this used to segfault
@@ -108,6 +104,10 @@ class Test_IncrementalEncoder(unittest.TestCase):
         self.assertRaises(UnicodeEncodeError, encoder.encode, u'\u0123')
         self.assertEqual(encoder.encode(u'', True), '\xa9\xdc')
 
+    def test_issue5640(self):
+        encoder = codecs.getincrementalencoder('shift-jis')('backslashreplace')
+        self.assertEqual(encoder.encode(u'\xff'), b'\\xff')
+        self.assertEqual(encoder.encode(u'\n'), b'\n')
 
 class Test_IncrementalDecoder(unittest.TestCase):
 
@@ -222,10 +222,10 @@ class Test_ISO2022(unittest.TestCase):
         self.assertEqual(iso2022jp2.decode('iso2022-jp-2'), uni)
 
     def test_iso2022_jp_g0(self):
-        self.failIf('\x0e' in u'\N{SOFT HYPHEN}'.encode('iso-2022-jp-2'))
+        self.assertNotIn('\x0e', u'\N{SOFT HYPHEN}'.encode('iso-2022-jp-2'))
         for encoding in ('iso-2022-jp-2004', 'iso-2022-jp-3'):
             e = u'\u3406'.encode(encoding)
-            self.failIf(filter(lambda x: x >= '\x80', e))
+            self.assertFalse(filter(lambda x: x >= '\x80', e))
 
     def test_bug1572832(self):
         if sys.maxunicode >= 0x10000:
@@ -236,6 +236,36 @@ class Test_ISO2022(unittest.TestCase):
         for x in xrange(0x10000, 0x110000):
             # Any ISO 2022 codec will cause the segfault
             myunichr(x).encode('iso_2022_jp', 'ignore')
+
+class TestStateful(unittest.TestCase):
+    text = u'\u4E16\u4E16'
+    encoding = 'iso-2022-jp'
+    expected = b'\x1b$B@$@$'
+    expected_reset = b'\x1b$B@$@$\x1b(B'
+
+    def test_encode(self):
+        self.assertEqual(self.text.encode(self.encoding), self.expected_reset)
+
+    def test_incrementalencoder(self):
+        encoder = codecs.getincrementalencoder(self.encoding)()
+        output = b''.join(
+            encoder.encode(char)
+            for char in self.text)
+        self.assertEqual(output, self.expected)
+
+    def test_incrementalencoder_final(self):
+        encoder = codecs.getincrementalencoder(self.encoding)()
+        last_index = len(self.text) - 1
+        output = b''.join(
+            encoder.encode(char, index == last_index)
+            for index, char in enumerate(self.text))
+        self.assertEqual(output, self.expected_reset)
+
+class TestHZStateful(TestStateful):
+    text = u'\u804a\u804a'
+    encoding = 'hz'
+    expected = b'~{ADAD'
+    expected_reset = b'~{ADAD~}'
 
 def test_main():
     test_support.run_unittest(__name__)

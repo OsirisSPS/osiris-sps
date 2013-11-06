@@ -42,11 +42,7 @@
 	#define OS_PYTHON_PATH_DELIMITER				":"
 #endif
 
-#if (_MSC_VER >= 1600 ) // VS2010
-	#define OS_PYTHON_FOLDER_LIB						"lib2.7.2"
-#else
-	#define OS_PYTHON_FOLDER_LIB						"lib"
-#endif
+#define OS_PYTHON_FOLDER_LIB						"lib"
 
 #define OS_PYTHON_FOLDER_SITE_PACKAGES				"site-packages"
 

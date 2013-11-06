@@ -37,6 +37,7 @@ from ..fixer_util import Name, parenthesize
 
 
 class FixHasKey(fixer_base.BaseFix):
+    BM_compatible = True
 
     PATTERN = """
     anchor=power<
@@ -78,7 +79,7 @@ class FixHasKey(fixer_base.BaseFix):
             return None
         negation = results.get("negation")
         anchor = results["anchor"]
-        prefix = node.get_prefix()
+        prefix = node.prefix
         before = [n.clone() for n in results["before"]]
         arg = results["arg"].clone()
         after = results.get("after")
@@ -91,10 +92,10 @@ class FixHasKey(fixer_base.BaseFix):
             before = before[0]
         else:
             before = pytree.Node(syms.power, before)
-        before.set_prefix(" ")
-        n_op = Name("in", prefix=" ")
+        before.prefix = u" "
+        n_op = Name(u"in", prefix=u" ")
         if negation:
-            n_not = Name("not", prefix=" ")
+            n_not = Name(u"not", prefix=u" ")
             n_op = pytree.Node(syms.comp_op, (n_not, n_op))
         new = pytree.Node(syms.comparison, (arg, n_op, before))
         if after:
@@ -105,5 +106,5 @@ class FixHasKey(fixer_base.BaseFix):
                                 syms.arith_expr, syms.term,
                                 syms.factor, syms.power):
             new = parenthesize(new)
-        new.set_prefix(prefix)
+        new.prefix = prefix
         return new

@@ -13,11 +13,12 @@ MAP = {
     }
 
 class FixMethodattrs(fixer_base.BaseFix):
+    BM_compatible = True
     PATTERN = """
     power< any+ trailer< '.' attr=('im_func' | 'im_self' | 'im_class') > any* >
     """
 
     def transform(self, node, results):
         attr = results["attr"][0]
-        new = MAP[attr.value]
-        attr.replace(Name(new, prefix=attr.get_prefix()))
+        new = unicode(MAP[attr.value])
+        attr.replace(Name(new, prefix=attr.prefix))
