@@ -358,6 +358,7 @@ PythonEngine::PythonEngine() : m_globalState(null),
 
 PythonEngine::~PythonEngine()
 {
+	cleanup();
 	OS_ASSERT(m_globalState == null);
 }
 

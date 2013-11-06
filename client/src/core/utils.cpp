@@ -144,7 +144,7 @@ String makeUrlFolderPath(const String &url, const String &folder)
 boost::xtime xtime_seconds(size_t seconds)
 {
 	boost::xtime xt;
-	boost::xtime_get(&xt, boost::TIME_UTC);
+	boost::xtime_get(&xt, boost::TIME_UTC_);
 	xt.sec += static_cast<boost::xtime::xtime_sec_t>(seconds);
 
 	return xt;
@@ -153,7 +153,7 @@ boost::xtime xtime_seconds(size_t seconds)
 boost::xtime xtime_millisec(size_t millisec)
 {
 	boost::xtime xt;
-	boost::xtime_get(&xt, boost::TIME_UTC);
+	boost::xtime_get(&xt, boost::TIME_UTC_);
 	xt.sec += static_cast<boost::xtime::xtime_sec_t>(millisec / 1000);
 	xt.nsec += static_cast<boost::xtime::xtime_nsec_t>(millisec % 1000) * 1000000;
 
