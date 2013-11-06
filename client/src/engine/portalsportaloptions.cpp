@@ -680,7 +680,7 @@ void PortalOptions::writeIsisOptions() const
 
 		m_portalOptions.ensureOption(isisServer + ISIS_NAME, isisEndpoint->getName(), String::EMPTY, false);
 		m_portalOptions.ensureOption(isisServer + ISIS_URL, String(isisEndpoint->getUrl().toString()), String::EMPTY, false);
-		m_portalOptions.ensureOption(isisServer + ISIS_ENABLED, isisEndpoint->getEnabled(), true, false);
+		m_portalOptions.ensureOption(isisServer + ISIS_ENABLED, isisEndpoint->getEnabled(), true, false, null);
 		m_portalOptions.ensureOption(isisServer + ISIS_PASSWORD, isisEndpoint->getPassword(), String::EMPTY, false);
 		//m_portalOptions.ensureOption(isisServer + ISIS_USER, isisEndpoint->getUser().toUTF16(), ObjectID::EMPTY.toUTF16(), false);
 		//m_portalOptions.ensureOption(isisServer + ISIS_LAST_EVENT, isisEndpoint->getLastEvent(), String::EMPTY, false);
