@@ -473,10 +473,15 @@ LanguageResult ObjectsIObject::acceptable(shared_ptr<IPortalDatabase> database) 
 	{
 		DateTime now = IsisSystem::instance()->getInternetDateTime();
 		if(now.isNull())
-			return LanguageResult("no_clock_sync");
-
-		if(submit_date > now)
-			return LanguageResult("object_in_future");
+		{
+			// ToFix, Clock maybe not available but can return available later...
+			// return LanguageResult("no_clock_sync");
+		}
+		else
+		{
+			if(submit_date > now)
+				return LanguageResult("object_in_future");
+		}
 	}
 
 	// Object not signed

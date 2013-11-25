@@ -63,7 +63,7 @@ IsisEndpoint::IsisEndpoint(const PortalID &portalID, const PovID &povID) : m_por
 	//m_isisOptions.ensureOption(Options::anonymity_options::object_trusted_types, String::EMPTY);
 
 	//m_isisOptions.ensureOption(Options::web_options::redirect_url, _S("http://anonym.to/?#url#"));
-	m_isisOptions.ensureOption(Options::web_options::redirect_url, _S("https://isis.osiris-sps.org/redirect.php?#url#"), false);	
+	m_isisOptions.ensureOption(Options::web_options::redirect_url, _S("https://www.osiris-sps.org/isis/redirect.php?#url#"), false);	
 }
 
 IsisEndpoint::~IsisEndpoint()

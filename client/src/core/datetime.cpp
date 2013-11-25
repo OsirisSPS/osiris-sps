@@ -72,10 +72,10 @@ DateTime::DateTime(const String &str)
     *this = str;
 }
 
-DateTime::DateTime(const uint32 &unix)
+DateTime::DateTime(const uint32 &unix_time)
 {
 	_construct();
-    *this = unix;
+    *this = unix_time;
 }
 
 DateTime::~DateTime()
@@ -239,12 +239,12 @@ DateTime & DateTime::operator =(const String &str)
 	return *this;
 }
 
-DateTime & DateTime::operator =(const uint32 &unix)
+DateTime & DateTime::operator =(const uint32 &unix_time)
 {
-	if(unix == 0)
+	if(unix_time == 0)
 		clear();
 	else
-		fromUnix(unix);
+		fromUnix(unix_time);
 	return *this;
 }
 
@@ -418,9 +418,9 @@ uint32 DateTime::toUnix() const
 	return uint32(toTime_t());
 }
 
-bool DateTime::fromUnix(const uint32 &unix)
+bool DateTime::fromUnix(const uint32 &unix_time)
 {
-	return fromTime_t(unix);
+	return fromTime_t(unix_time);
 }
 
 /*

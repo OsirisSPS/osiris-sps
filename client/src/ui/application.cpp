@@ -799,7 +799,7 @@ bool Application::OnInit()
 	MainWindow::create();	// Va creata prima per mostrare il wizard in caso di primo avvio
 
 	scoped_ptr<SplashScreen> splash;
-//#ifndef OS_DEBUG	 // CLODOURGENT rimettere
+#ifndef OS_DEBUG
 	{
 		wxImage bitmap;
 		if(bitmap.LoadFile(conversions::from_utf16<wxString>(getResourcesFilePath(_S("splash.png"))), wxBITMAP_TYPE_PNG))
@@ -808,7 +808,7 @@ bool Application::OnInit()
 			splash->setStatus(_S("Initializing..."));
 		}
 	}
-//#endif // OS_DEBUG
+#endif // OS_DEBUG
 
 	initLibraries();
 

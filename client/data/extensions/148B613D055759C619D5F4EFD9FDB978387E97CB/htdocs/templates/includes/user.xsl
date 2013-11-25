@@ -28,7 +28,7 @@
         <div class="os_user_description">
           <xsl:value-of select="system:parse(@description, false(), false(), true())" disable-output-escaping="yes"/>
         </div>        
-      </xsl:if>
+      </xsl:if>			
       <xsl:call-template name="user-stats"/>
     </div>
   </xsl:template>
@@ -45,7 +45,7 @@
       
       <div class="os_user_description">
         <xsl:value-of select="system:parse(@description, false(), false(), true())" disable-output-escaping="yes"/>
-      </div>
+      </div>			
       <xsl:call-template name="user-stats"/>
     </div>
   </xsl:template>

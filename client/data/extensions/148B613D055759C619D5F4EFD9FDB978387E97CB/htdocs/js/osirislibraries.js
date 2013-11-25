@@ -63,7 +63,7 @@ var OsirisLibraries =
             ------------------------------------------------------------ */
                        
             $.getScript(Osiris.adjustStaticUrl("/htdocs/js/jquery/jquery.autoresize.js"));
-
+			
             /* ------------------------------------------------------------
             jQuery - DataTables
             ------------------------------------------------------------ */

@@ -109,7 +109,7 @@ public:
 	shared_ptr<BackgroundJobs> getBackgroundJobs() const;	
 	shared_ptr<Engine::BackgroundJobs> getLastCompletedBackgroundJobs() const;
 	void clearCompletedBackgroundJobs();	
-	uint32 peekBackgroundJobID(); // CLODOURGENT serve? è mai usato?
+	uint32 peekBackgroundJobID(); 
 	//shared_ptr<IBackgroundJob> getBackgroundPortalJob(PortalID portal) const;
 		
 	void startExtensionsJob(const String &jobType, const std::string &extensionID, const String &downloadUrl);	

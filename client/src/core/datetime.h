@@ -65,7 +65,7 @@ public:
 	DateTime(const DateTime &dt);
 	DateTime(const posix_time &pt);	
 	DateTime(const String &str);
-	DateTime(const uint32 &unix);
+	DateTime(const uint32 &unix_time);
 	~DateTime();
 
 private:
@@ -115,7 +115,7 @@ public:
 	DateTime & operator =(const DateTime &dt);
 	DateTime & operator =(const posix_time &pt);
 	DateTime & operator =(const String &str);	
-	DateTime & operator =(const uint32 &unix);	
+	DateTime & operator =(const uint32 &unix_time);	
 
 	bool operator <(const DateTime &dt) const;
 	bool operator <=(const DateTime &dt) const;
@@ -142,7 +142,7 @@ public:
 	bool fromPosixTime(const posix_time &time);
 
 	uint32 toUnix() const; // Use Time_t
-	bool fromUnix(const uint32 &unix);
+	bool fromUnix(const uint32 &unix_time);
 
 private:
 	static void _info(Part part, uint32 &min, uint32 &max, uint32 &length, uint32 &offset);

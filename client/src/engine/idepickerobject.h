@@ -19,9 +19,8 @@
 #ifndef _OS_ENGINE_IDEPICKEROBJECT_H
 #define _OS_ENGINE_IDEPICKEROBJECT_H
 
-#include "ideportalcontrol.h"
-#include "iidexslrenderer.h"
-#include "entitiesentities.h"
+#include "idecontrol.h"
+#include "ihtmlcontrol.h"
 
 //////////////////////////////////////////////////////////////////////
 
@@ -29,9 +28,13 @@ OS_NAMESPACE_BEGIN()
 
 //////////////////////////////////////////////////////////////////////
 
-class EngineExport IdePickerObject : public IXSLRenderer<IPortalPageControl<IHtmlControl> >
+class HtmlTextBox;
+
+//////////////////////////////////////////////////////////////////////
+
+class EngineExport IdePickerObject : public IPageControl<IHtmlControl>
 {
-	typedef IXSLRenderer<IPortalPageControl<IHtmlControl> > ControlBase;
+	typedef IPageControl<IHtmlControl> ControlBase;
 
 // Construction
 public:
@@ -40,50 +43,21 @@ public:
 
 // Attributes
 public:
-	inline bool getOnlyObjectsWithChilds() const;
-	inline void setOnlyObjectsWithChilds(bool value);
-	inline bool getMultipleSelection() const;
-	inline void setMultipleSelection(bool value);
-	virtual String getValue() const;
-	virtual void setValue(const String &id);
-
-
-// Events
-private:
-	void onOpen(IEvent *e);
-	void onSelect(IEvent *e);
-
-	static const String EVENT_OPEN;
-	static const String EVENT_SELECT;
-
-// Operations
-private:
-	void followParent(StringMap& opens, shared_ptr<EntitiesEntity> entity);
-	void exportObject(StringMap& opens, shared_ptr<EntitiesEntity> entity, shared_ptr<XMLNode> nodeParent);
-
+	virtual ObjectID getValue() const;
+	virtual void setValue(const ObjectID &object);
+		
 // IControl interface
-	virtual void onLoad();
-	virtual void onPreRender();
-	virtual void onLoadViewState(const DataTree &state);
-	virtual void onSaveViewState(DataTree &state);
-
-// IXSLRenderer interface
 public:
-	virtual String getTemplatePath();
+	virtual void onLoad();
 
 protected:
-	bool m_onlyObjectsWithChilds;
-	bool m_multipleSelection;
-	StringMap m_selected;
-	StringMap m_opens;
+	shared_ptr<HtmlTextBox> m_input;
 };
 
 //////////////////////////////////////////////////////////////////////
 
-inline bool IdePickerObject::getOnlyObjectsWithChilds() const { return m_onlyObjectsWithChilds; }
-inline void IdePickerObject::setOnlyObjectsWithChilds(bool value) { m_onlyObjectsWithChilds = value; }
-inline bool IdePickerObject::getMultipleSelection() const { return m_multipleSelection; }
-inline void IdePickerObject::setMultipleSelection(bool value) { m_multipleSelection = value; }
+
+//////////////////////////////////////////////////////////////////////
 
 OS_NAMESPACE_END()
 

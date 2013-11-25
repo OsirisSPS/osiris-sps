@@ -73,12 +73,12 @@
 
 // --------------------------------------------------------------------------------
 // DB 
-#include "IDbConnection.h"
-#include "IDbDriver.h"
-#include "IDbOptions.h"
-#include "IDbParameter.h"
-#include "IDbResult.h"
-#include "IDbStatement.h"
+#include "idbconnection.h"
+#include "idbdriver.h"
+#include "idboptions.h"
+#include "idbparameter.h"
+#include "idbresult.h"
+#include "idbstatement.h"
 
 // --------------------------------------------------------------------------------
 // Engine 
@@ -144,12 +144,14 @@
 
 // Engine - Pickers
 #include "idepickerbool.h"
+#include "idepickercolor.h"
 #include "idepickercomponent.h"
 #include "idepickerculture.h"
 #include "idepickerdatetime.h"
 #include "idepickerdatetimespecial.h"
 #include "idepickernumber.h"
 #include "idepickerobject.h"
+#include "idepickerobjectex.h"
 #include "idepickersections.h"
 #include "idepickerselect.h"
 #include "idepickerskin.h"

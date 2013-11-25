@@ -30,6 +30,7 @@
 	#define __try
 	#define __except(x)
 	#define __assume(x)
+	//#define __declspec(x)
 #endif
 
 //////////////////////////////////////////////////////////////////////

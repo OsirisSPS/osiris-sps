@@ -30,6 +30,8 @@ class Page(osiris.IPortalPage):
 		
 		
 		node = self.root
+
+		node.setAttributeString("mode", self.request.getUrlParam("mode"))
 		
 		nodeActions = node.nodes.add("actions")
 			

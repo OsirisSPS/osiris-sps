@@ -122,6 +122,24 @@ class Page(osiris.IMainPage):
 		node.attributes.set("name", portal.name)
 		if portal.optionsShared.portalDescription != "":
 			node.attributes.set("description", portal.optionsShared.portalDescription)
+		
+		if(portal.portalID.string == "A821539D0208E66DB84514DD79F51ECEED31E284"):
+			portal.optionsShared.layoutTileImage = osiris.UniqueID("D3AFFF234BDEC2F640A676D30D690B387B70DAB2")
+		
+		if portal.optionsShared.layoutTileImage.empty() == False:
+			node.attributes.set("tileHref", portal.getFileLink(portal.optionsShared.layoutTileImage));
+		
+		if portal.optionsShared.layoutTileColorBackground != "":
+			node.attributes.set("tileBackColor", portal.optionsShared.layoutTileColorBackground);
+		else:
+			node.attributes.set("tileBackColor", portal.portalID.getString()[3:6]);
+			
+		if portal.optionsShared.layoutTileColorForeground != "":
+			node.attributes.set("tileForeColor", portal.optionsShared.layoutTileColorForeground);
+		else:
+			node.attributes.set("tileForeColor", "000000");
+		
+		
 				
 		# Manca da wrappare ObjectID...	
 		#nodeUser = node.nodes.add("user")		
@@ -130,6 +148,8 @@ class Page(osiris.IMainPage):
 		#if(userObject):
 		#	exporter = osiris.XMLPortalExporter(nodeUser, self, "full", false)
 		#	userObject.exportXML(exporter)
+		
+		node.attributes.set("password", portal.options.password)
 			
 		node.attributes.set("exchangeEnabled", "true" if portal.options.exchangeEnabled else "false")
 						
@@ -140,8 +160,10 @@ class Page(osiris.IMainPage):
 		node.attributes.set("lastObjectDate", portal.options.lastObjectDate.toXML())
 		
 		href = 	portal.getLink("view")
-		node.attributes.set("href", href)
-				
+		node.attributes.set("viewHref", portal.getLink("view"))
+
+		node.attributes.set("infoHref", portal.getLink("info?mode=dialog"))
+						
 		nodeIsisEndpoints = node.nodes.add("isis")
 		isisEndpoints = portal.options.isisEndpoints;		
 		for isisEndpointID in isisEndpoints.keys():
@@ -150,37 +172,8 @@ class Page(osiris.IMainPage):
 			
 			nodeIsis.attributes.set("name",isisEndpoint.getName());
 			nodeIsis.attributes.set("url",isisEndpoint.url.toString());
-			nodeIsis.attributes.set("enabled",isisEndpoint.enabled);
+			nodeIsis.attributes.set("enabled",isisEndpoint.enabled);			
 			
-	
-		nodeActions = node.nodes.add("actions")
-			
-		nodeAction = nodeActions.nodes.add("action")
-		nodeAction.attributes.set("name", "enter")
-		nodeAction.attributes.set("href", href)
-		
-		nodeAction = nodeActions.nodes.add("action")
-		nodeAction.attributes.set("name", "info")
-		nodeAction.attributes.set("href", portal.getLink("info"))
-		
-		nodeAction = nodeActions.nodes.add("action")
-		nodeAction.attributes.set("name", "accounts")
-		nodeAction.attributes.set("href", osiris.PortalsSystem.instance().getMainLink("accounts?portal=" + portal.getFullPovID()))
-		
-		nodeAction = nodeActions.nodes.add("action")
-		nodeAction.attributes.set("name", "settings")
-		nodeAction.attributes.set("href", osiris.PortalsSystem.instance().getMainLink("settings?portal=" + portal.getFullPovID()))
-		
-		nodeAction = nodeActions.nodes.add("action")
-		nodeAction.attributes.set("name", "invite")
-		nodeAction.attributes.set("call", portal.getLink("invite?mode=dialog"))
-					
-		nodeAction = nodeActions.nodes.add("action")
-		nodeAction.attributes.set("name", "remove")
-		#nodeAction.attributes.set("href", osiris.PortalsSystem.instance().getMainLink("removeportal?portal=" + portal.getFullPovID()))
-		nodeAction.attributes.set("href", self.getEventCommand("onPortalRemove",portal.getFullPovID()))					
-		nodeAction.attributes.set("confirm", "true")
-		
 	def onPortalRemove(self, args):		
 		self.showMessage(args[0])					
 		

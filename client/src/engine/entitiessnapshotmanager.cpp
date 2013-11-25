@@ -1252,8 +1252,7 @@ bool EntitiesSnapshotManager::computeStabilityPrepare(const shared_ptr<IPortalDa
 		RealtimeStatsScopeTimer RSS2(_S("Debug"), _S("SnapshotManager::computeStabilityPrepare::objects enumeration"));
 #ifdef OS_TODOCIP
 		//String sql=String::format(_S("select distinct entity_id as id from os_entries where not exists(select reference from os_snapshot_objects where reference=entity_id) limit %d").c_str(),getObjectsStep());
-		// CLODOURGENT limit tolto, sennò ho entity_id duplicati
-		// CLODOURGENT è tutta scritta male.
+		
 		String sql=String::format(_S("select distinct entity_id as id from os_entries where entity_id is not null and not exists(select reference from os_snapshot_objects where reference=entity_id)").c_str());
 #else
 		String sql=String::format(_S("select id from os_entries where revision='' and not exists(select reference from os_snapshot_objects where reference=id) limit %d").c_str(),getObjectsStep());

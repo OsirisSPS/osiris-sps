@@ -173,9 +173,9 @@ static boost::python::object fromTm_212dd811a091e65d1947617856e6342f( ::osiris::
     return boost::python::object( result );
 }
 
-static boost::python::object fromUnix_341b5cc1aae6b40b23f9debccd7e33b7( ::osiris::DateTime & inst, ::osiris::uint32 const & unix ){
+static boost::python::object fromUnix_341b5cc1aae6b40b23f9debccd7e33b7( ::osiris::DateTime & inst, ::osiris::uint32 const & unix_time ){
     ::osiris::PythonThreadSaver __pythreadSaver;
-    bool result = inst.fromUnix(unix);
+    bool result = inst.fromUnix(unix_time);
     __pythreadSaver.restore();
     return boost::python::object( result );
 }
@@ -246,7 +246,7 @@ void register_DateTime_class(){
         ::boost::python::implicitly_convertible< ::boost::posix_time::ptime const &, ::osiris::DateTime >();
         DateTime_exposer.def( ::boost::python::init< ::osiris::String const & >(( ::boost::python::arg("str") )) );
         ::boost::python::implicitly_convertible< ::osiris::String const &, ::osiris::DateTime >();
-        DateTime_exposer.def( ::boost::python::init< ::osiris::uint32 const & >(( ::boost::python::arg("unix") )) );
+        DateTime_exposer.def( ::boost::python::init< ::osiris::uint32 const & >(( ::boost::python::arg("unix_time") )) );
         ::boost::python::implicitly_convertible< ::osiris::uint32 const &, ::osiris::DateTime >();
         { //::osiris::DateTime::applyTimeOffset
         
@@ -478,7 +478,7 @@ void register_DateTime_class(){
             DateTime_exposer.def( 
                 "fromUnix"
                 , fromUnix_function_type( &fromUnix_341b5cc1aae6b40b23f9debccd7e33b7 )
-                , ( ::boost::python::arg("inst"), ::boost::python::arg("unix") ) );
+                , ( ::boost::python::arg("inst"), ::boost::python::arg("unix_time") ) );
         
         }
         { //::osiris::DateTime::fromXML
@@ -535,7 +535,7 @@ void register_DateTime_class(){
             DateTime_exposer.def( 
                 "assign"
                 , assign_function_type( &::osiris::DateTime::operator= )
-                , ( ::boost::python::arg("unix") )
+                , ( ::boost::python::arg("unix_time") )
                 , bp::return_self< >() );
         
         }
