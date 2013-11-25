@@ -144,10 +144,17 @@
   font-family: Courier, Courier New, Verdana, Arial;
 }
 
-.os-transition() {
-  -webkit-transition: all 0.5s ease-out;
-  -moz-transition: all 0.5s ease-out;
-  transition: all 0.5s ease-out;  
+/*
+.os-transition(@prop: all, @speed: 0.5s) {
+  -webkit-transition: @prop @speed ease-out;
+  -moz-transition: @prop @speed ease-out;
+  transition: @prop @speed ease-out;  
+}
+*/
+.os-transition(@v: all 0.5s ease-out) {
+	-webkit-transition: @v;
+  -moz-transition: @v;
+  transition: @v;  
 }
 
 .os-focus() {

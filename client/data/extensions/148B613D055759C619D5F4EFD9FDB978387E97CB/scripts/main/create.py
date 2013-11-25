@@ -45,24 +45,13 @@ class Page(osiris.IMainPage):
 		
 		self.databaseDriver.value = osiris.DatabasesSystem.instance().defaultDriver.name
 		
-		#block = osiris.IdeBlock(self.getText("main.pages.create.title"))		
-		block = osiris.IdeBlock("main.pages.create")		
-		block.specialPage = True
+		block = osiris.IdeBlock(self.getText("main.pages.create.title"))		
+		#block = osiris.IdeBlock("main.pages.create")		
+		#block.specialPage = True
 		self.getArea(osiris.pageAreaContent).controls.add(block)
 		
 		block.body.controls.add(osiris.IdeHelpBox(self.getText("main.pages.create.help"), "2249AC226A955A36FEB8540ACD3BF856736541B2"))
 		
-		# Comandi
-		
-		divCommands = osiris.HtmlDiv()
-		divCommands.css = "os_commands_right";
-		block.body.controls.add(divCommands)
-				
-		cmdCreate = osiris.IdeButton(self.getText("main.pages.create.action.create"))
-		cmdCreate.id = "create"
-		cmdCreate.isDefault = True
-		osiris.events.connect(cmdCreate.eventClick, self.onCreate)
-		divCommands.controls.add(cmdCreate)			
 		
 		
 		
@@ -137,6 +126,20 @@ class Page(osiris.IMainPage):
 		driverRight = rowDriver.addCell()
 		driverRight.css = "os_value"
 		driverRight.controls.add(self.databaseDriver)	
+		
+		
+		# Comandi
+		
+		divCommands = osiris.HtmlDiv()
+		divCommands.css = "os_commands_center";
+		block.body.controls.add(divCommands)
+				
+		cmdCreate = osiris.IdeButton(self.getText("main.pages.create.action.create"))
+		cmdCreate.id = "create"
+		cmdCreate.isDefault = True
+		osiris.events.connect(cmdCreate.eventClick, self.onCreate)
+		divCommands.controls.add(cmdCreate)			
+		
 		
 	def onLoad(self):
 		osiris.IMainPage.onLoad(self)

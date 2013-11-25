@@ -30,8 +30,8 @@
   <xsl:template name="page">
     <xsl:choose>
       <xsl:when test="@filter = ''">
-        <xsl:call-template name="block_page">
-          <xsl:with-param name="prefix" select="'main.pages.about'"/>
+        <xsl:call-template name="block">
+          <xsl:with-param name="title" select="lang:text('main.pages.about.title')"/>
           <xsl:with-param name="content">
             <xsl:call-template name="pages"/>
           </xsl:with-param>

@@ -28,6 +28,7 @@
 #define OS_HTTP_CONTENT_TERMINATOR				"\r\n"
 
 #define OS_HTTP_301								"<html><head><title>Moved</title></head><body><h2>HTTP Code 301</h2><p><strong>File Moved</strong></p><p>The file you are looking for has moved.</p></body></html>"
+#define OS_HTTP_302								"<html><head><title>Moved</title></head><body><h2>HTTP Code 302</h2><p><strong>File Moved</strong></p><p>The file you are looking for has moved.</p></body></html>"
 #define OS_HTTP_400								"<html><head><title>Error 400 - Bad HttpRequest</title></head><body><h2>HTTP Error 400</h2><p><strong>400 Bad HttpRequest</strong></p><p>Due to malformed syntax, the request could not be understood by the server.The client should not repeat the request without modifications.</p></body></html>"
 #define OS_HTTP_401								"<html><head><title>Error 401 - Unauthorized</title></head><body><h2>HTTP Error 401</h2><p><strong>401 Unauthorized</strong></p><p>You are not authorized to perform this request.</p><p>Please ensure you have supplied the correct user credentials.</p></body></html>"
 #define OS_HTTP_403								"<html><head><title>Error 403 - Forbidden</title></head><body><h2>HTTP Error 403</h2><p><strong>403 Forbidden</strong></p><p>You don't have permission to access this resource.</p></body></html>"

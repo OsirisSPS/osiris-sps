@@ -22,8 +22,8 @@
   </xsl:template>
 
   <xsl:template match="/home">
-    <xsl:call-template name="block_page">
-      <xsl:with-param name="prefix" select="'main.pages.addons'"/>
+    <xsl:call-template name="block">
+      <xsl:with-param name="title" select="lang:text('main.pages.addons.title')"/>
       <xsl:with-param name="content">
         <xsl:if test="@online != 'true'">
           <xsl:call-template name="help-box">

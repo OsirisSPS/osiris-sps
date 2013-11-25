@@ -37,35 +37,18 @@ a:focus { -moz-outline-style: none; }
 a:link,
 a:visited,
 a:active,
-a:focus {	
+a:focus,
+a:hover {	
 	background-color: transparent;
 	color: @os-skin-link-fg;	
 	outline: 0;
-	
-	/*
-	text-decoration: none;
-	padding-bottom: 0px;
-	background-image: url("/htdocs/images/link.gif");
-	background-repeat: repeat-x;
-	background-attachment: scroll;
-	background-position: left bottom;	
-	*/
-
-	.os-transition();
+		
+	.os-transition(background-color 0.5s ease-out, color 0.5s ease-out);	
 }
 
 a:hover {
 	background-color: transparent;
-	color: lighten(@os-skin-link-fg, 20%);
-	
-	/*
-	text-decoration: none;	
-	padding-bottom: 0px;
-	background-image: url("/htdocs/images/link_flash.gif");
-	background-repeat: repeat-x;
-	background-attachment: scroll;
-	background-position: left bottom;
-	*/
+	color: lighten(@os-skin-link-fg, 20%);	
 }
 
 table {
@@ -148,8 +131,11 @@ input, select, textarea {
 	font-size: 12px;
 	vertical-align: middle;	
 	
-	border-radius: 0.3em;	
-	-webkit-border-radius: 0.3em;
+	.os-rounded(0.3em);	
+}
+
+textarea {
+	.os-transition(height 0.2s ease-out);
 }
 
 input:focus, select:focus, textarea:focus {
@@ -217,7 +203,9 @@ mark {
 /* ========================================================================================================== */
 
 .transitions-all {
-	.os-transition();
+	-webkit-transition: width 0.5s ease-out,height 0.5s ease-out,color 0.5s ease-out,background-color 0.5s ease-out,box-shadow 0.5s ease-out,text-shadow 0.5s ease-out,font-size 0.5s ease-out;
+  -moz-transition: width 0.5s ease-out,height 0.5s ease-out,color 0.5s ease-out,background-color 0.5s ease-out,box-shadow 0.5s ease-out,text-shadow 0.5s ease-out,font-size 0.5s ease-out;
+  transition: width 0.5s ease-out,height 0.5s ease-out,color 0.5s ease-out,background-color 0.5s ease-out,box-shadow 0.5s ease-out,text-shadow 0.5s ease-out,font-size 0.5s ease-out;  
 }
 
 .left {
@@ -877,8 +865,7 @@ a.os_userbox_notifications
 	background-color: @os-color-gray9;
 	border:1px solid @os-color-gray7;
 	
-	webkit-border-radius: 0.5em;	
-	border-radius: 0.5em;	
+	.os-rounded(0.5em);
 }
 
 a.os_userbox_notifications:hover
@@ -967,7 +954,9 @@ tr.os_current,
 .os_nowrap 
 {
 	white-space: nowrap;
+	text-overflow: ellipsis;
 }
+
 
 a.os_nolink,
 a.os_nolink:hover /* Annulla lo stile classico dei link A */
@@ -1021,6 +1010,7 @@ a.os_nolink:hover /* Annulla lo stile classico dei link A */
 	height:10px;
 }
 
+/*
 .os_divcell
 {
 	margin: 0px; 
@@ -1028,6 +1018,7 @@ a.os_nolink:hover /* Annulla lo stile classico dei link A */
 	padding: 3px;
 	vertical-align: top;
 }
+*/
 
 .os_parent
 {
@@ -1067,16 +1058,18 @@ a.os_nolink:hover /* Annulla lo stile classico dei link A */
 
 .os_table_none tr
 {
+	background-color: transparent !important;
 	border:0px;
 }
 
 .os_table_none tr:hover
 {
-	background:transparent;
+	background-color: transparent;
 }
 
 .os_table_none td
 {
+	background-color: transparent;
 	border:0px;
 }
 
@@ -1105,7 +1098,7 @@ table.data tr,
 {
 	background-color:@os-skin-content-bg;	
 	color:@os-skin-content-fg;	
-	.os-transition();
+	.os-transition(background-color 0.5s ease-out);
 }
 
 table.data tr:hover,
@@ -1166,7 +1159,7 @@ table.properties tr,
 .os_table_properties tr
 {
 	background-color:@os-skin-content-bg;	
-	.os-transition();
+	.os-transition(background-color 0.5s ease-out);
 }
 
 table.properties tr:hover,
@@ -1394,22 +1387,19 @@ td.os_menuitem
 
 .os_button_counter
 {
-	float:right;
+	display:inline-block;
+	position:absolute;
 	background-color: @os-skin-warning-bg;
 	padding:2px;
 	padding-left:5px;
 	padding-right:5px;
 	color: @os-skin-warning-fg;
-	font-weight: bold;
-	border:1px solid black;
 	text-align:center;
-	position:relative;
-	top:-10px;
+	top:-27px;
+	left:-20px;
 	
-	/* CSS3 */
-	border-radius: 1em;	
-	/* WebKit equivalent */
-	-webkit-border-radius: 1em;
+	.os-box-shadow(2px, 2px, 5px);
+	.os-rounded(1em);
 }
 
 .os_alpha_highlight
@@ -1422,7 +1412,8 @@ td.os_menuitem
 	.opacity(1.0);
 	
 	border:1px solid @os-color-gray5;
-	border-radius: 1em;
+	
+	.os-rounded(1em);
 }
 
 .os_more
@@ -1867,7 +1858,7 @@ a.os_actions_popup_action,
 a.os_actions_popup_default,
 div.os_actions_popup_open
 {
-	.os-box-shadow(2px, 2px, 2px);	
+	/*	.os-box-shadow(2px, 2px, 2px); */
 }
 
 a.os_actions_popup_default:hover,
@@ -2008,12 +1999,14 @@ td.os_commands, div.os_commands
 
 td.os_commands_left, div.os_commands_left
 {
+	float:left;
 	padding:10px;
 	text-align:left;
 }
 
 td.os_commands_right, div.os_commands_right
 {
+	float:right;
 	padding:10px;
 	text-align:right;
 }
@@ -2478,12 +2471,7 @@ a.os_button_link:hover
 	font-size:0.8em;
 	text-align:center;
 
-	/* CSS3 */
-	border-radius: 0.5em;
-	/* Mozilla equivalent */
-	-moz-border-radius: 0.5em;
-	/* WebKit equivalent */
-	-webkit-border-radius: 0.5em;
+	.os-rounded(0.5em);	
 }
 
 .os_modules_invalid
@@ -2546,7 +2534,7 @@ a.os_button_link:hover
 
 .os_message_nodata
 {
-	margin:30px;
+	padding:1em;
 	font-size:1.2em;
 	text-align:center;
 	font-style: italic;
@@ -2729,7 +2717,7 @@ img.os_reputation
 .os_notification
 {
 	display:block;
-    position:absolute;
+  position:absolute;
 	z-index:9999;
 
 	font-size: 1.5em;
@@ -2850,10 +2838,22 @@ div.os_tab_left_headers
 }
 
 div.os_tab_left_bodies
-{
-	overflow:auto;
+{	
 	border-left:3px solid @os-skin-current-bg;
 	min-height:450px;	
+	
+	overflow:auto;
+	/*
+	position:relative;
+	*/
+}
+
+div.os_tab_left_body
+{
+/*
+	width:100%;
+	position:absolute;
+	*/
 }
 
 /* a.* version below are used only in few old pages, need to be removed. */
@@ -3774,8 +3774,7 @@ a.os_oml_code_select
 
 .os_pager
 {
-	clear:both;
-	float:right;
+	clear:both;	
 	padding:4px;		
 }
 

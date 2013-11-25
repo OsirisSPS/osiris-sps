@@ -23,7 +23,7 @@
       <xsl:otherwise>
         <xsl:call-template name="block_page">
           <xsl:with-param name="prefix" select="'main.pages.help'"/>
-          <xsl:with-param name="content">
+          <xsl:with-param name="content">						
             <xsl:call-template name="page"/>
           </xsl:with-param>
         </xsl:call-template>
@@ -34,31 +34,32 @@
   
 
   <xsl:template name="page">
-    
-      <div style="float:right;text-align:center;">
-        <img src="{system:resource-url('images/logo/logo1.png')}" alt="Osiris"/>
-        <br/>
-        <xsl:value-of select="@version"/>
-        <p>
-          <a class="os_button" title="{lang:text('systembar.actions.help.about')}" href="{@href_about}">
-            <xsl:value-of select="lang:text('systembar.actions.help.about')"/>
-          </a>
-          <xsl:call-template name="separator" />
-          <a class="os_button" title="{lang:text('systembar.actions.help.homepage')}" href="{@href_home}" target="_blank">
-            <xsl:value-of select="lang:text('systembar.actions.help.homepage')"/>
-            <xsl:text> </xsl:text>
-            <img src="{system:resource-url('images/link_external.png')}" />
-          </a>
-          <xsl:call-template name="separator" />
-          <a class="os_button" title="{lang:text('systembar.actions.help.forum')}" href="{@href_forum}" target="_blank">
-            <xsl:value-of select="lang:text('systembar.actions.help.forum')"/>
-            <xsl:text> </xsl:text>
-            <img src="{system:resource-url('images/link_external.png')}" />
-          </a>
-        </p>
-      </div>
-        <xsl:value-of select="system:parse(lang:text('main.pages.help.body'))" disable-output-escaping="yes"/>
-    
+
+		<div class="os_padding">
+			<div style="float:right;text-align:center;">
+				<img src="{system:resource-url('images/logo/logo1.png')}" alt="Osiris"/>
+				<br/>
+				<xsl:value-of select="@version"/>
+				<p>
+					<a class="os_button" title="{lang:text('systembar.actions.help.about')}" href="{@href_about}">
+						<xsl:value-of select="lang:text('systembar.actions.help.about')"/>
+					</a>
+					<xsl:call-template name="separator" />
+					<a class="os_button" title="{lang:text('systembar.actions.help.homepage')}" href="{@href_home}" target="_blank">
+						<xsl:value-of select="lang:text('systembar.actions.help.homepage')"/>
+						<xsl:text> </xsl:text>
+						<img src="{system:resource-url('images/link_external.png')}" />
+					</a>
+					<xsl:call-template name="separator" />
+					<a class="os_button" title="{lang:text('systembar.actions.help.forum')}" href="{@href_forum}" target="_blank">
+						<xsl:value-of select="lang:text('systembar.actions.help.forum')"/>
+						<xsl:text> </xsl:text>
+						<img src="{system:resource-url('images/link_external.png')}" />
+					</a>
+				</p>
+			</div>
+			<xsl:value-of select="system:parse(lang:text('main.pages.help.body'))" disable-output-escaping="yes"/>
+		</div>
   </xsl:template>
 
   

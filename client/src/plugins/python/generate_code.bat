@@ -2,7 +2,7 @@ rem Remove temporary files
 del wrappers\*.*~
 
 rem Generate Python wrappers
-generate_code.py
+python generate_code.py
 
 rem Overwrite automatic wrappers with manual wrappers
 rem Not used, Fix 2 below.

@@ -610,12 +610,18 @@ bool CompatibilityManager::upgradeContentOML(const shared_ptr<IPortalDatabase> &
 		String oml = *row[_S("oml")];
 
 		String oldOml = oml;
+
+		// portal=0D2C4E505C1D98B221E222CABE4E167BECB2D669
 		
 #ifdef OS_NOOBJECTID
 		oml = RegexManager::instance()->replace(oml, _S("[0-1][0-9]0[0-1]000[0-4]([0-9A-F]{40})"), _S("$1"), false);
 #else
 		oml = RegexManager::instance()->replace(oml, _S("[0-1][0-9]0[0-1]000[2-4]([0-9A-F]{40})"), _S("$1"), false);
 #endif
+
+		
+
+		// Qui rilevo eventuale parametro 'portal' della 0.x. Lo converto nel nuovo ID.
 
 		if(oml != oldOml)
 		{
