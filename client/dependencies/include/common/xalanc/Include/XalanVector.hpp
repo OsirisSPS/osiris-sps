@@ -838,19 +838,10 @@ public:
                 }
 
                 // Copy everything that already exists...
-                /*
                 XALAN_STD_QUALIFIER copy(
                     theRHS.begin(),
                     theRHSCopyEnd,
                     begin());
-                */
-                if (m_size != 0 && theRHS.m_size != 0) 
- 								{ 
- 								XALAN_STD_QUALIFIER copy(
-                    theRHS.begin(),
-                    theRHSCopyEnd,
-                    begin());
-                }
             }
         }
 
@@ -928,8 +919,8 @@ private:
     {
         assert(m_allocation >= m_size);
         assert(
-            m_data == 0 && m_allocation == 0 ||
-            m_data != 0 && m_allocation != 0);
+            (m_data == 0 && m_allocation == 0) ||
+            (m_data != 0 && m_allocation != 0));
     }
 #endif
 
