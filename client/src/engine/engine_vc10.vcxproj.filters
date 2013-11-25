@@ -85,7 +85,6 @@
     <ClCompile Include="idepickerdatetime.cpp" />
     <ClCompile Include="idepickerdatetimespecial.cpp" />
     <ClCompile Include="idepickernumber.cpp" />
-    <ClCompile Include="idepickerobject.cpp" />
     <ClCompile Include="idepickersections.cpp" />
     <ClCompile Include="idepickerselect.cpp" />
     <ClCompile Include="idepickerskin.cpp" />
@@ -290,6 +289,9 @@
     <ClCompile Include="cachesystem.cpp" />
     <ClCompile Include="omlif.cpp" />
     <ClCompile Include="objectsobjectid.cpp" />
+    <ClCompile Include="idepickercolor.cpp" />
+    <ClCompile Include="idepickerobjectex.cpp" />
+    <ClCompile Include="idepickerobject.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="compatibilitymanager.h" />
@@ -383,7 +385,6 @@
     <ClInclude Include="idepickerdatetime.h" />
     <ClInclude Include="idepickerdatetimespecial.h" />
     <ClInclude Include="idepickernumber.h" />
-    <ClInclude Include="idepickerobject.h" />
     <ClInclude Include="idepickersections.h" />
     <ClInclude Include="idepickerselect.h" />
     <ClInclude Include="idepickerskin.h" />
@@ -599,5 +600,8 @@
     <ClInclude Include="omlif.h" />
     <ClInclude Include="isis.h" />
     <ClInclude Include="objectsobjectid.h" />
+    <ClInclude Include="idepickercolor.h" />
+    <ClInclude Include="idepickerobjectex.h" />
+    <ClInclude Include="idepickerobject.h" />
   </ItemGroup>
 </Project>

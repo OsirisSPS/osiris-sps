@@ -33,7 +33,7 @@ class settings:
 settings.root_dir = os.path.abspath(os.path.dirname(__file__))
 settings.working_directory = settings.root_dir
 
-if sys.platform == "linux":
+if sys.platform == "linux2":
 	settings.gccxml_path = os.path.join(settings.root_dir, "../../../../utils/gccxml/linux/bin")	
 	settings.include_paths.append(os.path.join(settings.root_dir, "../../../dependencies/include/common"))
 	settings.include_paths.append(os.path.join(settings.root_dir, "../../../dependencies/include/linux/i386"))

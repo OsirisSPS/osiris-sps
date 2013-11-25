@@ -482,12 +482,14 @@ exposed_classes =  {
 				   
 				   # Engine - Pickers
 				   "IdePickerBool" : ExposedClass("idepickerbool.h"),
+				   "IdePickerColor" : ExposedClass("idepickercolor.h"),
 				   "IdePickerComponent" : ExposedClass("idepickercomponent.h"),				   
 				   "IdePickerCulture" : ExposedClass("idepickerculture.h"),				   
 				   "IdePickerDateTime" : ExposedClass("idepickerdatetime.h"),
 				   "IdePickerDateTimeSpecial" : ExposedClass("idepickerdatetimespecial.h"),
 				   "IdePickerNumber" : ExposedClass("idepickernumber.h"),
 				   "IdePickerObject" : ExposedClass("idepickerobject.h"),
+				   "IdePickerObjectEx" : ExposedClass("idepickerobjectex.h"),
 				   "IdePickerSections" : ExposedClass("idepickersections.h"),
 				   "IdePickerSelect" : ExposedClass("idepickerselect.h"),
 				   "IdePickerSkin" : ExposedClass("idepickerskin.h"),

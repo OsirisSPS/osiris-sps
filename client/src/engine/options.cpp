@@ -249,7 +249,7 @@ Options::Options() : m_userOptions(OS_NEW XMLOptions()),
 	ensureUserOption<String>(web_options::browser, String::EMPTY, true);
 	ensureUserOption<uint32>(web_options::cache_size, OS_DEFAULT_CACHESIZE, true);
 	//ensureUserOption<String>(web_options::redirect_url, _S("http://anonym.to/?#url#"));
-	ensureUserOption<String>(web_options::redirect_url, _S("https://isis.osiris-sps.org/redirect.php?#url#"), true);	
+	ensureUserOption<String>(web_options::redirect_url, _S("https://www.osiris-sps.org/isis/redirect.php?#url#"), true);	
 	ensureUserOption<uint32>(web_options::server_port, OS_DEFAULT_WEB_PORT, true);
 	ensureUserOption<bool>(web_options::server_enable_upnp, false, true);
 	ensureUserOption<String>(web_options::server_bind_ip, String::EMPTY, true);

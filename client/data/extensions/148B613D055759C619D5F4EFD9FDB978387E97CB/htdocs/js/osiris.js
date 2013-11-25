@@ -16,7 +16,7 @@ var Osiris =
     is_ie: (navigator.userAgent.toLowerCase().indexOf("msie") != -1),
     is_moz: (navigator.userAgent.toLowerCase().indexOf("gecko") != -1),
     is_opera: (navigator.userAgent.toLowerCase().indexOf("opera") != -1),
-    effectsSpeedSlow: 1000,
+    effectsSpeedSlow: 400,
     effectsSpeedFast: 200,
     
     notificationElement: null,
@@ -65,7 +65,7 @@ var Osiris =
     },
     */
     
-    cloneVar: function (obj) {
+    cloneVar: function (obj) {    		
 		    // Handle the 3 simple types, and null or undefined
 		    if (null == obj || "object" != typeof obj) return obj;
 		
@@ -160,6 +160,16 @@ var Osiris =
 
 			var k = "osiris." + key;
       localStorage.setItem(k, JSON.stringify(val));
+    },
+    
+    storageRemove: function (key) {
+    	if ((key == null) || (key == ""))
+          return;
+      if (Osiris.storageAvailable() == false)
+          return;
+
+			var k = "osiris." + key;
+			localStorage.removeItem(k);
     },
 
     /**************************************************************************************************
@@ -317,7 +327,7 @@ var Osiris =
 	        }
 	                
 	        var html = response;
-	                
+	        
 	        arr = Osiris.extractJavascript(html);
 	        
 	        for(i=0;i<arr.length;i++)
@@ -456,11 +466,9 @@ var Osiris =
 			
 			if(style != "wait")
 			{
-				/*
 				Osiris.notificationElement.timer = setTimeout(function() {
 					Osiris.notificationElement.fadeOut(Osiris.effectsSpeedSlow);
-				}, 3000);			
-				*/
+				}, 3000);							
 			}
 			else
 			{
@@ -668,6 +676,17 @@ var Osiris =
     controlNumber: function (src) {
         // Note 02/03/2012: Wait jQuery 1.9
         //$(src).spinner({max: 3, min:0});
+    },
+    
+    controlSlider: function (src) {
+        src.slider = osCreate("div");
+        $(src.slider).slider({
+        	min: 5,
+        	max: 10,
+        	value: 2,
+        	slide: function( event, ui) {
+        	}
+        });
     },
 
     controlString: function (src, required) {
@@ -999,6 +1018,7 @@ function osMoveOnCursor(e,obj,offsetLeft,offsetTop)
 	// 0.12 - Window border adjust
 	var winDX = osGetWindowWidth()-30;
 	var winDY = osGetWindowHeight()-30;
+	//console.log(winDX);
 	if(newx + parseInt(obj.offsetWidth) > winDX)
 	    newx = winDX - parseInt(obj.offsetWidth);	
 	    
@@ -1520,7 +1540,7 @@ function osInitControls(src,debug)
                 }
 
                 if (otype == "dialog") {                    
-                    Osiris.dialog(src);     
+                    Osiris.dialog(src);                         
     								jQuery(src).dialog("open");
                 }
                                 
@@ -1530,6 +1550,10 @@ function osInitControls(src,debug)
 
                 if (otype == "number") {
                     Osiris.controlNumber(src);
+                }
+                
+                if (otype == "slider") {
+                    Osiris.controlSlider(src);
                 }
 
                 if (otype == "string") {
@@ -1963,6 +1987,8 @@ function osTooltipCreate()
 function osTooltipShow(e, objTooltip)
 {    
     globalTooltip.innerHTML = objTooltip.tooltip;
+    globalTooltip.left = 0;
+    globalTooltip.top = 0;
     
     osTooltipMove(e);
     
@@ -2448,18 +2474,22 @@ function osTabCreate(src)
 			{
 				if(objHeader.style.display != "none")
 				{
-					jQuery(objHeader).stop(true,true).slideUp(Osiris.effectsSpeedSlow);
+					//jQuery(objHeader).stop(true,true).slideUp(Osiris.effectsSpeedSlow);
+					//jQuery(objHeader).stop(true,true).fadeOut(Osiris.effectsSpeedSlow);
+					jQuery(objHeader).fadeOut( { queue: true, duration: Osiris.effectsSpeedSlow } );
 				}
 				if(objBody.style.display != "block")
 				{
-					jQuery(objBody).stop(true,true).slideDown(Osiris.effectsSpeedSlow);
+					//jQuery(objBody).stop(true,true).slideDown(Osiris.effectsSpeedSlow);
+					//jQuery(objBody).stop(true,true).fadeIn(Osiris.effectsSpeedSlow);
+					jQuery(objBody).fadeIn( { queue: true, duration: Osiris.effectsSpeedSlow } );
 				}
-				}
-				else
-				{
-					objHeader.style.display = "none";
-					objBody.style.display = "block";
-				}
+			}
+			else
+			{
+				objHeader.style.display = "none";
+				objBody.style.display = "block";
+			}
 		}
 		objTab.collapsed = false;
 	}
@@ -2475,7 +2505,9 @@ function osTabCreate(src)
 			if(objHeader.style.display != "block")
 			{
 				//Effect.BlindDown(objHeader, { queue: 'end', duration: 0.3 });			    	
-				jQuery(objHeader).stop(true,true).slideDown(Osiris.effectsSpeedSlow);
+				//jQuery(objHeader).stop(true,true).slideDown(Osiris.effectsSpeedSlow);
+				//jQuery(objHeader).stop(true,true).fadeIn(Osiris.effectsSpeedSlow);				
+				jQuery(objHeader).fadeIn( { queue: true, duration: Osiris.effectsSpeedSlow } );
 			}
 		}
 		
@@ -2493,6 +2525,34 @@ function osTabCreate(src)
 		return;
 		*/
 
+		// Chiudo il vecchio
+		for(var i=0;i<objTab.bodies.length;i++)
+		{	    		
+			var objHeader = this.headers[i];
+			var objBody = this.bodies[i];
+
+			if( (objBody.pageIndex != pageIndex) && (objBody.style.display != "none") )
+			{
+				if(objTab.tabLayout == "top")
+					objHeader.className = "os_tab_top_header";
+				else
+					objHeader.className = "os_tab_left_header";
+				if(withEffect)
+				{
+					if(objBody.style.display != "none")
+					{
+						//jQuery(objBody).stop(true,true).slideUp(Osiris.effectsSpeedSlow);
+						//jQuery(objBody).stop(true,true).fadeOut(Osiris.effectsSpeedSlow);
+						jQuery(objBody).fadeOut( { queue: true, duration: Osiris.effectsSpeedSlow } );
+					}
+				}
+				else
+				{
+					objBody.style.display = "none";
+				}
+			}	        
+		}		   
+		
 		// Apro il nuovo
 		for(var i=0;i<objTab.bodies.length;i++)
 		{	    		
@@ -2512,7 +2572,9 @@ function osTabCreate(src)
 					if(objBody.style.display != "block")
 					{
 						//Effect.BlindDown(objBody, { queue: 'end', duration: 0.3 });			    			    	    
-						jQuery(objBody).stop(true,true).slideDown(Osiris.effectsSpeedSlow);
+						//jQuery(objBody).stop(true,true).slideDown(Osiris.effectsSpeedSlow);
+						//jQuery(objBody).stop(true,true).fadeIn(Osiris.effectsSpeedSlow);
+						jQuery(objBody).fadeIn( { queue: true, duration: Osiris.effectsSpeedSlow } );
 					}
 				}
 				else
@@ -2520,33 +2582,7 @@ function osTabCreate(src)
 					objBody.style.display = "block";
 				}
 			}	        
-		}
-
-		// Chiudo il vecchio
-		for(var i=0;i<objTab.bodies.length;i++)
-		{	    		
-			var objHeader = this.headers[i];
-			var objBody = this.bodies[i];
-
-			if( (objBody.pageIndex != pageIndex) && (objBody.style.display != "none") )
-			{
-				if(objTab.tabLayout == "top")
-					objHeader.className = "os_tab_top_header";
-				else
-					objHeader.className = "os_tab_left_header";
-				if(withEffect)
-				{
-					if(objBody.style.display != "none")
-					{
-						jQuery(objBody).stop(true,true).slideUp(Osiris.effectsSpeedSlow);
-					}
-				}
-				else
-				{
-					objBody.style.display = "none";
-				}
-			}	        
-		}		    
+		} 
 
 		this.pageIndex = pageIndex;
 

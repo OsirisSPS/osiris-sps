@@ -48,7 +48,7 @@
       <xsl:for-each select="actions/action">
         <!-- L'azione di quote è già implementata dal template "message" -->        
         <xsl:if test="(@name != 'quote') and (@name != 'edit')">
-          <a class="os_button_big" href="{@href}">
+          <a class="os_button" href="{@href}">
             <xsl:value-of select="lang:text(concat('object.actions.', @name))"/>
           </a>
         </xsl:if>

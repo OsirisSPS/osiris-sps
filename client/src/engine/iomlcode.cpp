@@ -391,8 +391,11 @@ String IOMLCode::encodeBody(shared_ptr<OMLContext> context, const String& text, 
 			//String UrlMatch = _S("(")+protocolsFindLinkOption+_S(")://(\\w*:\\w*@)?[-\\w.]+(:\\d+)?(/([\\w/_.]*(\\?\\S+)?)?)?");
 
 			// 0.11:
-			String UrlMatch = _S("(") + protocolsFindLinkOption + _S(")://\\S+");
-
+			//String UrlMatch = _S("(") + protocolsFindLinkOption + _S(")://\\S+");
+			
+			// 1.0:
+			String UrlMatch = _S("(") + protocolsFindLinkOption + _S("):[/\?]\\S+");
+			
 			// La versione sotto sarebbe meglio, ma non funziona, ad esempio con il link seguente:
 			// skype:?chat&blob=iCnRW4EXR0H_funqp8i2FpbcobXxBfFkllPp0s2NMRd_sbDEOEr5Je-RzNUi
 			//String UrlMatch = _S("(")+protocolsFindLinkOption+_S("):\\S+");
@@ -538,17 +541,40 @@ String IOMLCode::encodeResourceUrlEx(shared_ptr<OMLContext> context, shared_ptr<
 		}
 		else if(osirisLink.getType() == OsirisLink::linkFile)
 		{
+			shared_ptr<Portal> portal = null;
+
 			shared_ptr<const IPortalPage> page = context->getPortalPage();
-			if(page != null)
+
+			if(osirisLink.hasParam("portal"))
+			{
+				PortalID portalID = osirisLink.getPortal();
+									
+				if( (page != null) && (portalID == page->getPortal()->getPortalID()) ) // Force the use of the current POV
+					portal = page->getPortal();
+				else
+				{
+					portal = PortalsSystem::instance()->getFirstPortal(portalID);
+				}
+			}
+			else
+			{
+				shared_ptr<const IPortalPage> page = context->getPortalPage();
+				if(page != null)
+				{
+					portal = page->getPortal();
+				}
+			}
+						
+			if(portal != null)
 			{
 				String id = osirisLink.getParam("id");
-				shared_ptr<EntitiesEntity> entity = page->getPortal()->getEntity(page->getDatabase(), EntityID(id.to_ascii()));
+				shared_ptr<EntitiesEntity> entity = portal->getEntity(page->getDatabase(), EntityID(id.to_ascii()));
 
 				shared_ptr<ObjectsIObject> current = entity ? entity->getCurrent() : null;
 
 				if( (current != null) && (current->getObjectType() == portalObjectTypeFile) )
 				{
-					src = page->getPortal()->getFileLink(current->id);					
+					src = portal->getFileLink(current->id);					
 					entityID = id.to_ascii();
 				}
 				else

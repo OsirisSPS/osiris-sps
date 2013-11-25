@@ -16,8 +16,8 @@
 <xsl:output method="html" indent="yes" omit-xml-declaration="yes"/>
 
   <xsl:template match="isis">
-    <xsl:call-template name="block_page">
-      <xsl:with-param name="prefix" select="'main.pages.isis'"/>
+    <xsl:call-template name="block">
+      <xsl:with-param name="title" select="lang:text('main.pages.isis.title')"/>
       <xsl:with-param name="content">
         
         <xsl:choose>

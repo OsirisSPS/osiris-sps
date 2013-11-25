@@ -84,11 +84,11 @@ void HttpSession::redirect(const std::string &url)
 	OS_ASSERT(getProcessed() == false);
 
     // Form the body of the response
-	std::string body = OS_HTTP_301;
+	std::string body = OS_HTTP_302;
 	uint32 length = static_cast<uint32>(body.size());
 
     // Form the header of the response
-	m_response->setStatusCode(httpStatusMovedPermanently);
+	m_response->setStatusCode(httpStatusMovedTemporarily);
 	m_response->setDateNow();
 	m_response->setServer(getServer()->getName());
 	m_response->setAllowMethods();

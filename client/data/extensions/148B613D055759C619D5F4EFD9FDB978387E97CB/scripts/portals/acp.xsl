@@ -18,10 +18,14 @@
 
   <xsl:param name="portalName"/>
   <xsl:param name="portalDescription"/>
-  
-  <xsl:param name="layoutComponent"/>
-  <xsl:param name="registerTerms"/>
-  <xsl:param name="layoutSkinParams"/>
+
+	<xsl:param name="registerTerms"/>
+	
+	<xsl:param name="layoutComponent"/>
+	<xsl:param name="layoutTileImage"/>
+	<xsl:param name="layoutTileColorBackground"/>
+	<xsl:param name="layoutTileColorForeground"/>
+	<xsl:param name="layoutSkinParams"/>
   <xsl:param name="layoutCss"/>
   <xsl:param name="layoutHeader"/>
 
@@ -122,6 +126,7 @@
                   <xsl:value-of select="$layoutComponent" disable-output-escaping="yes"/>
                 </td>
               </tr>
+							<!--
               <tr>
                 <td>
                   <xsl:value-of select="'registerTerms'"/>
@@ -131,6 +136,7 @@
                   <xsl:value-of select="$registerTerms" disable-output-escaping="yes"/>
                 </td>
               </tr>
+							-->
               <tr>
                 <td>
                   <xsl:value-of select="'layoutSkinParams'"/>
@@ -140,6 +146,18 @@
                   <xsl:value-of select="$layoutSkinParams" disable-output-escaping="yes"/>
                 </td>
               </tr>
+							<tr>
+								<td>
+									<xsl:value-of select="'tile'"/>
+									<xsl:text> :</xsl:text>
+								</td>
+								<td>
+									<xsl:value-of select="$layoutTileImage" disable-output-escaping="yes"/>
+									<br/>
+									BG: <xsl:value-of select="$layoutTileColorBackground" disable-output-escaping="yes"/>
+									FG: <xsl:value-of select="$layoutTileColorForeground" disable-output-escaping="yes"/>									
+								</td>
+							</tr>
               <tr>
                 <td>
                   <xsl:value-of select="'layoutCss'"/>
