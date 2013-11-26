@@ -21,10 +21,10 @@ struct DatabasesSystem_wrapper : ::osiris::DatabasesSystem, ::osiris::PythonWrap
 
     static boost::python::object getDrivers( ::osiris::DatabasesSystem const & inst ){
         ::osiris::PythonThreadSaver __pythreadSaver;
-        ::std::list<boost::shared_ptr<osiris::IDbDriver>, osiris::StdAllocator<boost::shared_ptr<osiris::IDbDriver>, osiris::NedAllocator<boost::shared_ptr<osiris::IDbDriver> > > > const & result = inst.getDrivers();
+        ::std::list<boost::shared_ptr<osiris::IDbDriver>, osiris::StdAllocator<boost::shared_ptr<osiris::IDbDriver>, osiris::SysAllocator<boost::shared_ptr<osiris::IDbDriver> > > > const & result = inst.getDrivers();
         __pythreadSaver.restore();
         typedef bp::return_value_policy< bp::copy_const_reference > call_policies_t;
-        return boost::python::object( pyplusplus::call_policies::make_object< call_policies_t, ::std::list<boost::shared_ptr<osiris::IDbDriver>, osiris::StdAllocator<boost::shared_ptr<osiris::IDbDriver>, osiris::NedAllocator<boost::shared_ptr<osiris::IDbDriver> > > > const & >( result ) );
+        return boost::python::object( pyplusplus::call_policies::make_object< call_policies_t, ::std::list<boost::shared_ptr<osiris::IDbDriver>, osiris::StdAllocator<boost::shared_ptr<osiris::IDbDriver>, osiris::SysAllocator<boost::shared_ptr<osiris::IDbDriver> > > > const & >( result ) );
     }
 
     static boost::python::object getDefaultDriver( ::osiris::DatabasesSystem const & inst ){
@@ -243,14 +243,14 @@ void register_DatabasesSystem_class(){
         }
         { //property "drivers"[fget=::osiris::DatabasesSystem::getDrivers]
         
-            typedef ::std::list<boost::shared_ptr<osiris::IDbDriver>, osiris::StdAllocator<boost::shared_ptr<osiris::IDbDriver>, osiris::NedAllocator<boost::shared_ptr<osiris::IDbDriver> > > > const & ( ::osiris::DatabasesSystem::*fget )(  ) const;
+            typedef ::std::list<boost::shared_ptr<osiris::IDbDriver>, osiris::StdAllocator<boost::shared_ptr<osiris::IDbDriver>, osiris::SysAllocator<boost::shared_ptr<osiris::IDbDriver> > > > const & ( ::osiris::DatabasesSystem::*fget )(  ) const;
             
             DatabasesSystem_exposer.add_property( 
                 "drivers"
                 , ::boost::python::make_function( 
                       fget( &::osiris::DatabasesSystem::getDrivers )
                     , bp::return_value_policy< bp::copy_const_reference >() ) 
-                , "get property, built on top of \"std::list<boost::shared_ptr<osiris::IDbDriver>, osiris::StdAllocator<boost::shared_ptr<osiris::IDbDriver>, osiris::NedAllocator<boost::shared_ptr<osiris::IDbDriver> > > > const & osiris::DatabasesSystem::getDrivers() const [member function]\"" );
+                , "get property, built on top of \"std::list<boost::shared_ptr<osiris::IDbDriver>, osiris::StdAllocator<boost::shared_ptr<osiris::IDbDriver>, osiris::SysAllocator<boost::shared_ptr<osiris::IDbDriver> > > > const & osiris::DatabasesSystem::getDrivers() const [member function]\"" );
         
         }
         { //property "defaultDriver"[fget=::osiris::DatabasesSystem::getDefaultDriver]

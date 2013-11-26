@@ -20,7 +20,7 @@ struct ThirdPartyLibrariesReporter_wrapper : ::osiris::ThirdPartyLibrariesReport
 
     static boost::python::object getLibraries( ::osiris::ThirdPartyLibrariesReporter const & inst ){
         ::osiris::PythonThreadSaver __pythreadSaver;
-        ::osiris::LockPtr<const std::list<boost::shared_ptr<osiris::ThirdPartyLibrary>, osiris::StdAllocator<boost::shared_ptr<osiris::ThirdPartyLibrary>, osiris::NedAllocator<boost::shared_ptr<osiris::ThirdPartyLibrary> > > >,boost::recursive_mutex,boost::unique_lock<boost::recursive_mutex> > result = inst.getLibraries();
+        ::osiris::LockPtr<const std::list<boost::shared_ptr<osiris::ThirdPartyLibrary>, osiris::StdAllocator<boost::shared_ptr<osiris::ThirdPartyLibrary>, osiris::SysAllocator<boost::shared_ptr<osiris::ThirdPartyLibrary> > > >,boost::recursive_mutex,boost::unique_lock<boost::recursive_mutex> > result = inst.getLibraries();
         __pythreadSaver.restore();
         return boost::python::object( result );
     }
@@ -61,12 +61,12 @@ void register_ThirdPartyLibrariesReporter_class(){
         }
         { //property "libraries"[fget=::osiris::ThirdPartyLibrariesReporter::getLibraries]
         
-            typedef ::osiris::LockPtr<const std::list<boost::shared_ptr<osiris::ThirdPartyLibrary>, osiris::StdAllocator<boost::shared_ptr<osiris::ThirdPartyLibrary>, osiris::NedAllocator<boost::shared_ptr<osiris::ThirdPartyLibrary> > > >,boost::recursive_mutex,boost::unique_lock<boost::recursive_mutex> > ( ::osiris::ThirdPartyLibrariesReporter::*fget )(  ) const;
+            typedef ::osiris::LockPtr<const std::list<boost::shared_ptr<osiris::ThirdPartyLibrary>, osiris::StdAllocator<boost::shared_ptr<osiris::ThirdPartyLibrary>, osiris::SysAllocator<boost::shared_ptr<osiris::ThirdPartyLibrary> > > >,boost::recursive_mutex,boost::unique_lock<boost::recursive_mutex> > ( ::osiris::ThirdPartyLibrariesReporter::*fget )(  ) const;
             
             ThirdPartyLibrariesReporter_exposer.add_property( 
                 "libraries"
                 , fget( &::osiris::ThirdPartyLibrariesReporter::getLibraries )
-                , "get property, built on top of \"osiris::LockPtr<const std::list<boost::shared_ptr<osiris::ThirdPartyLibrary>, osiris::StdAllocator<boost::shared_ptr<osiris::ThirdPartyLibrary>, osiris::NedAllocator<boost::shared_ptr<osiris::ThirdPartyLibrary> > > >,boost::recursive_mutex,boost::unique_lock<boost::recursive_mutex> > osiris::ThirdPartyLibrariesReporter::getLibraries() const [member function]\"" );
+                , "get property, built on top of \"osiris::LockPtr<const std::list<boost::shared_ptr<osiris::ThirdPartyLibrary>, osiris::StdAllocator<boost::shared_ptr<osiris::ThirdPartyLibrary>, osiris::SysAllocator<boost::shared_ptr<osiris::ThirdPartyLibrary> > > >,boost::recursive_mutex,boost::unique_lock<boost::recursive_mutex> > osiris::ThirdPartyLibrariesReporter::getLibraries() const [member function]\"" );
         
         }
     }

@@ -67,7 +67,7 @@ static boost::python::object get_2b1cad8c350fa72238f9d1c52c2cd738( ::osiris::Htm
     return boost::python::object( result );
 }
 
-static boost::python::object get_332a5b2de858df3f54347f364bfd6d5f( ::osiris::HtmlAttributes const & inst, ::size_t index ){
+static boost::python::object get_d34583970577b0ffe701e815a7b19fd4( ::osiris::HtmlAttributes const & inst, ::size_t index ){
     ::osiris::PythonThreadSaver __pythreadSaver;
     ::boost::shared_ptr<osiris::HtmlAttribute> result = inst.get(index);
     __pythreadSaver.restore();
@@ -176,7 +176,7 @@ void register_HtmlAttributes_class(){
             
             HtmlAttributes_exposer.def( 
                 "get"
-                , get_function_type( &get_332a5b2de858df3f54347f364bfd6d5f )
+                , get_function_type( &get_d34583970577b0ffe701e815a7b19fd4 )
                 , ( ::boost::python::arg("inst"), ::boost::python::arg("index") ) );
         
         }

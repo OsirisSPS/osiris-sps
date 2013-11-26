@@ -12,11 +12,11 @@ namespace bp = boost::python;
 
 void register_PortalList_class(){
 
-    { //::std::list<boost::shared_ptr<osiris::Portal>, osiris::StdAllocator<boost::shared_ptr<osiris::Portal>, osiris::NedAllocator<boost::shared_ptr<osiris::Portal> > > >
-        typedef ::boost::python::class_< ::std::list<boost::shared_ptr<osiris::Portal>, osiris::StdAllocator<boost::shared_ptr<osiris::Portal>, osiris::NedAllocator<boost::shared_ptr<osiris::Portal> > > > > PortalList_exposer_t;
+    { //::std::list<boost::shared_ptr<osiris::Portal>, osiris::StdAllocator<boost::shared_ptr<osiris::Portal>, osiris::SysAllocator<boost::shared_ptr<osiris::Portal> > > >
+        typedef ::boost::python::class_< ::std::list<boost::shared_ptr<osiris::Portal>, osiris::StdAllocator<boost::shared_ptr<osiris::Portal>, osiris::SysAllocator<boost::shared_ptr<osiris::Portal> > > > > PortalList_exposer_t;
         PortalList_exposer_t PortalList_exposer = PortalList_exposer_t( "PortalList" );
         ::boost::python::scope PortalList_scope( PortalList_exposer );
-        PortalList_exposer.def( ::boost::python::indexing::list_suite< ::std::list<boost::shared_ptr<osiris::Portal>, osiris::StdAllocator<boost::shared_ptr<osiris::Portal>, osiris::NedAllocator<boost::shared_ptr<osiris::Portal> > > > >() );
+        PortalList_exposer.def( ::boost::python::indexing::list_suite< ::std::list<boost::shared_ptr<osiris::Portal>, osiris::StdAllocator<boost::shared_ptr<osiris::Portal>, osiris::SysAllocator<boost::shared_ptr<osiris::Portal> > > > >() );
     }
 
 }

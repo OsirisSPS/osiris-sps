@@ -12,7 +12,7 @@ namespace bp = boost::python;
 
 void register_DataItemVector_class(){
 
-    ::boost::python::class_< ::std::vector<osiris::DataItem,osiris::StdAllocator<osiris::DataItem, osiris::NedAllocator<osiris::DataItem> > > >("DataItemVector")    
-        .def( ::boost::python::indexing::vector_suite< ::std::vector<osiris::DataItem,osiris::StdAllocator<osiris::DataItem, osiris::NedAllocator<osiris::DataItem> > > >() );
+    ::boost::python::class_< ::std::vector<osiris::DataItem,osiris::StdAllocator<osiris::DataItem, osiris::SysAllocator<osiris::DataItem> > > >("DataItemVector")    
+        .def( ::boost::python::indexing::vector_suite< ::std::vector<osiris::DataItem,osiris::StdAllocator<osiris::DataItem, osiris::SysAllocator<osiris::DataItem> > > >() );
 
 }

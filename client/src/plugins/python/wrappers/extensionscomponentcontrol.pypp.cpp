@@ -18,9 +18,9 @@
 #include "httprequest.h"
 #include "httpresponse.h"
 #include "httpsession.h"
+#include "extensionscomponenteditor.h"
 #include "extensionscomponentviewer.h"
 #include "extensionsinvalidcomponent.h"
-#include "extensionscomponenteditor.h"
 #include "extensionscomponentcontrol.pypp.hpp"
 
 namespace bp = boost::python;

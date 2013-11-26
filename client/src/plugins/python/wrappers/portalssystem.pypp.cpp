@@ -81,7 +81,7 @@ struct PortalsSystem_wrapper : ::osiris::PortalsSystem, ::osiris::PythonWrapper<
 
     static boost::python::object getPortals( ::osiris::PortalsSystem const & inst ){
         ::osiris::PythonThreadSaver __pythreadSaver;
-        ::std::list<boost::shared_ptr<osiris::Portal>, osiris::StdAllocator<boost::shared_ptr<osiris::Portal>, osiris::NedAllocator<boost::shared_ptr<osiris::Portal> > > > result = inst.getPortals();
+        ::std::list<boost::shared_ptr<osiris::Portal>, osiris::StdAllocator<boost::shared_ptr<osiris::Portal>, osiris::SysAllocator<boost::shared_ptr<osiris::Portal> > > > result = inst.getPortals();
         __pythreadSaver.restore();
         return boost::python::object( result );
     }
@@ -876,12 +876,12 @@ void register_PortalsSystem_class(){
         }
         { //property "portals"[fget=::osiris::PortalsSystem::getPortals]
         
-            typedef ::std::list<boost::shared_ptr<osiris::Portal>, osiris::StdAllocator<boost::shared_ptr<osiris::Portal>, osiris::NedAllocator<boost::shared_ptr<osiris::Portal> > > > ( ::osiris::PortalsSystem::*fget )(  ) const;
+            typedef ::std::list<boost::shared_ptr<osiris::Portal>, osiris::StdAllocator<boost::shared_ptr<osiris::Portal>, osiris::SysAllocator<boost::shared_ptr<osiris::Portal> > > > ( ::osiris::PortalsSystem::*fget )(  ) const;
             
             PortalsSystem_exposer.add_property( 
                 "portals"
                 , fget( &::osiris::PortalsSystem::getPortals )
-                , "get property, built on top of \"std::list<boost::shared_ptr<osiris::Portal>, osiris::StdAllocator<boost::shared_ptr<osiris::Portal>, osiris::NedAllocator<boost::shared_ptr<osiris::Portal> > > > osiris::PortalsSystem::getPortals() const [member function]\"" );
+                , "get property, built on top of \"std::list<boost::shared_ptr<osiris::Portal>, osiris::StdAllocator<boost::shared_ptr<osiris::Portal>, osiris::SysAllocator<boost::shared_ptr<osiris::Portal> > > > osiris::PortalsSystem::getPortals() const [member function]\"" );
         
         }
         { //property "portalsCount"[fget=::osiris::PortalsSystem::getPortalsCount]

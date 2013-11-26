@@ -76,7 +76,7 @@ struct IHttpServer_wrapper : ::osiris::IHttpServer, ::osiris::PythonWrapper< ::o
 
     static boost::python::object peekHttpBuffer( ::osiris::IHttpServer & inst ){
         ::osiris::PythonThreadSaver __pythreadSaver;
-        ::boost::shared_ptr<boost::array<char, 8192u> > result = inst.peekHttpBuffer();
+        ::boost::shared_ptr<boost::array<char, 8192ul> > result = inst.peekHttpBuffer();
         __pythreadSaver.restore();
         return boost::python::object( result );
     }

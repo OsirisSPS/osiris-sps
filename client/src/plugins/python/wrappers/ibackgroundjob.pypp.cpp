@@ -5,10 +5,10 @@
 #include "boost/python.hpp"
 #include "__call_policies.pypp.hpp"
 #include "ibackgroundjob.h"
-#include "mainaddonsjob.h"
 #include "iportalbackgroundjob.h"
 #include "portalsimporterjob.h"
 #include "portalsstabilityjob.h"
+#include "mainaddonsjob.h"
 #include "ibackgroundjob.pypp.hpp"
 
 namespace bp = boost::python;
@@ -289,7 +289,7 @@ void register_IBackgroundJob_class(){
             }
             ::boost::python::register_ptr_to_python< boost::shared_ptr< ::osiris::IBackgroundJob::Details > >();
             ::boost::python::implicitly_convertible< boost::shared_ptr< ::osiris::IBackgroundJob::Details >, boost::shared_ptr< ::osiris::Object > >();
-            ::boost::python::implicitly_convertible< boost::shared_ptr< ::osiris::IBackgroundJob::Details >, boost::shared_ptr< ::osiris::AllocWrapper< osiris::Object, osiris::NedAllocator< osiris::Object > > > >();
+            ::boost::python::implicitly_convertible< boost::shared_ptr< ::osiris::IBackgroundJob::Details >, boost::shared_ptr< ::osiris::AllocWrapper< osiris::Object, osiris::SysAllocator< osiris::Object > > > >();
         }
         { //::osiris::IBackgroundJob::getVisible
         
@@ -424,10 +424,10 @@ void register_IBackgroundJob_class(){
         ::boost::python::implicitly_convertible< boost::shared_ptr< ::osiris::IBackgroundJob >, boost::shared_ptr< ::osiris::enable_this_ptr< osiris::IJob > > >();
         ::boost::python::implicitly_convertible< boost::shared_ptr< ::osiris::IBackgroundJob >, boost::shared_ptr< ::boost::noncopyable_::noncopyable > >();
         ::boost::python::implicitly_convertible< boost::shared_ptr< ::osiris::IBackgroundJob >, boost::shared_ptr< ::osiris::Object > >();
-        ::boost::python::implicitly_convertible< boost::shared_ptr< ::osiris::MainAddonsJob >, boost::shared_ptr< ::osiris::IBackgroundJob > >();
         ::boost::python::implicitly_convertible< boost::shared_ptr< ::osiris::IPortalBackgroundJob >, boost::shared_ptr< ::osiris::IBackgroundJob > >();
         ::boost::python::implicitly_convertible< boost::shared_ptr< ::osiris::PortalsImporterJob >, boost::shared_ptr< ::osiris::IBackgroundJob > >();
         ::boost::python::implicitly_convertible< boost::shared_ptr< ::osiris::PortalsStabilityJob >, boost::shared_ptr< ::osiris::IBackgroundJob > >();
+        ::boost::python::implicitly_convertible< boost::shared_ptr< ::osiris::MainAddonsJob >, boost::shared_ptr< ::osiris::IBackgroundJob > >();
     }
 
 }

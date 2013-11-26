@@ -66,7 +66,7 @@ static boost::python::object find_981dbb4e0c25761bece5c543ec955f9e( ::osiris::XM
     return boost::python::object( result );
 }
 
-static boost::python::object find_72841a18dd0db318e7ff232bd742c5c3( ::osiris::XMLAttributes const & inst, ::size_t index ){
+static boost::python::object find_f566384adab53722dbbf56f49e0e8597( ::osiris::XMLAttributes const & inst, ::size_t index ){
     ::osiris::PythonThreadSaver __pythreadSaver;
     ::boost::shared_ptr<osiris::XMLAttribute> result = inst.find(index);
     __pythreadSaver.restore();
@@ -175,7 +175,7 @@ void register_XMLAttributes_class(){
             
             XMLAttributes_exposer.def( 
                 "find"
-                , find_function_type( &find_72841a18dd0db318e7ff232bd742c5c3 )
+                , find_function_type( &find_f566384adab53722dbbf56f49e0e8597 )
                 , ( ::boost::python::arg("inst"), ::boost::python::arg("index") ) );
         
         }

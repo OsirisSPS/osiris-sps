@@ -325,7 +325,7 @@ static boost::python::object writeString_81cc16ffcc81be891f14950ff4bb8f55( ::osi
     return boost::python::object( result );
 }
 
-static boost::python::object writeString_8b4e231e427e68dbd520b7069f6bd2e7( ::osiris::Buffer & inst, ::osiris::uchar const * str ){
+static boost::python::object writeString_4a13c7d4e67c5130fe0e7b515cebc8d0( ::osiris::Buffer & inst, ::osiris::uchar const * str ){
     ::osiris::PythonThreadSaver __pythreadSaver;
     bool result = inst.writeString(str);
     __pythreadSaver.restore();
@@ -782,7 +782,7 @@ void register_Buffer_class(){
             
             Buffer_exposer.def( 
                 "writeString"
-                , writeString_function_type( &writeString_8b4e231e427e68dbd520b7069f6bd2e7 )
+                , writeString_function_type( &writeString_4a13c7d4e67c5130fe0e7b515cebc8d0 )
                 , ( ::boost::python::arg("inst"), ::boost::python::arg("str") ) );
         
         }

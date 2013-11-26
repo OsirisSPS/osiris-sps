@@ -25,10 +25,10 @@ struct HttpVirtualDirectory_wrapper : ::osiris::HttpVirtualDirectory, ::osiris::
 
     static boost::python::object getHandlers( ::osiris::HttpVirtualDirectory const & inst ){
         ::osiris::PythonThreadSaver __pythreadSaver;
-        ::std::list<boost::shared_ptr<osiris::IHttpDirectoryHandler>, osiris::StdAllocator<boost::shared_ptr<osiris::IHttpDirectoryHandler>, osiris::NedAllocator<boost::shared_ptr<osiris::IHttpDirectoryHandler> > > > const & result = inst.getHandlers();
+        ::std::list<boost::shared_ptr<osiris::IHttpDirectoryHandler>, osiris::StdAllocator<boost::shared_ptr<osiris::IHttpDirectoryHandler>, osiris::SysAllocator<boost::shared_ptr<osiris::IHttpDirectoryHandler> > > > const & result = inst.getHandlers();
         __pythreadSaver.restore();
         typedef bp::return_value_policy< bp::copy_const_reference > call_policies_t;
-        return boost::python::object( pyplusplus::call_policies::make_object< call_policies_t, ::std::list<boost::shared_ptr<osiris::IHttpDirectoryHandler>, osiris::StdAllocator<boost::shared_ptr<osiris::IHttpDirectoryHandler>, osiris::NedAllocator<boost::shared_ptr<osiris::IHttpDirectoryHandler> > > > const & >( result ) );
+        return boost::python::object( pyplusplus::call_policies::make_object< call_policies_t, ::std::list<boost::shared_ptr<osiris::IHttpDirectoryHandler>, osiris::StdAllocator<boost::shared_ptr<osiris::IHttpDirectoryHandler>, osiris::SysAllocator<boost::shared_ptr<osiris::IHttpDirectoryHandler> > > > const & >( result ) );
     }
 
     virtual bool handle( ::boost::shared_ptr< osiris::HttpSession > session, ::osiris::HttpPath const & path ){
@@ -216,14 +216,14 @@ void register_HttpVirtualDirectory_class(){
         }
         { //property "handlers"[fget=::osiris::HttpVirtualDirectory::getHandlers]
         
-            typedef ::std::list<boost::shared_ptr<osiris::IHttpDirectoryHandler>, osiris::StdAllocator<boost::shared_ptr<osiris::IHttpDirectoryHandler>, osiris::NedAllocator<boost::shared_ptr<osiris::IHttpDirectoryHandler> > > > const & ( ::osiris::HttpVirtualDirectory::*fget )(  ) const;
+            typedef ::std::list<boost::shared_ptr<osiris::IHttpDirectoryHandler>, osiris::StdAllocator<boost::shared_ptr<osiris::IHttpDirectoryHandler>, osiris::SysAllocator<boost::shared_ptr<osiris::IHttpDirectoryHandler> > > > const & ( ::osiris::HttpVirtualDirectory::*fget )(  ) const;
             
             HttpVirtualDirectory_exposer.add_property( 
                 "handlers"
                 , ::boost::python::make_function( 
                       fget( &::osiris::HttpVirtualDirectory::getHandlers )
                     , bp::return_value_policy< bp::copy_const_reference >() ) 
-                , "get property, built on top of \"std::list<boost::shared_ptr<osiris::IHttpDirectoryHandler>, osiris::StdAllocator<boost::shared_ptr<osiris::IHttpDirectoryHandler>, osiris::NedAllocator<boost::shared_ptr<osiris::IHttpDirectoryHandler> > > > const & osiris::HttpVirtualDirectory::getHandlers() const [member function]\"" );
+                , "get property, built on top of \"std::list<boost::shared_ptr<osiris::IHttpDirectoryHandler>, osiris::StdAllocator<boost::shared_ptr<osiris::IHttpDirectoryHandler>, osiris::SysAllocator<boost::shared_ptr<osiris::IHttpDirectoryHandler> > > > const & osiris::HttpVirtualDirectory::getHandlers() const [member function]\"" );
         
         }
         ::boost::python::register_ptr_to_python< boost::shared_ptr< ::osiris::HttpVirtualDirectory > >();
