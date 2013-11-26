@@ -48,14 +48,14 @@ void IdePickerColor::onLoad()
 	getControls()->add(m_input);	
 }
 
-std::string IdePickerColor::getValue() const
+String IdePickerColor::getValue() const
 {	
-	return m_input->getValue().to_ascii();	
+	return m_input->getValue();	
 }
 
-void IdePickerColor::setValue(const std::string &value)
+void IdePickerColor::setValue(const String &value)
 {
-	m_input->setValue(conversions::to_string(value));
+	m_input->setValue(value);
 }
 
 //////////////////////////////////////////////////////////////////////

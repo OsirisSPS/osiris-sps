@@ -999,6 +999,12 @@
     <ClInclude Include="wrappers\timeduration.pypp.hpp">
       <Filter>wrappers</Filter>
     </ClInclude>
+    <ClInclude Include="wrappers\idepickercolor.pypp.hpp">
+      <Filter>wrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="wrappers\idepickerobjectex.pypp.hpp">
+      <Filter>wrappers</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="plugin.cpp" />
@@ -1875,6 +1881,12 @@
       <Filter>wrappers</Filter>
     </ClCompile>
     <ClCompile Include="wrappers\timeduration.pypp.cpp">
+      <Filter>wrappers</Filter>
+    </ClCompile>
+    <ClCompile Include="wrappers\idepickercolor.pypp.cpp">
+      <Filter>wrappers</Filter>
+    </ClCompile>
+    <ClCompile Include="wrappers\idepickerobjectex.pypp.cpp">
       <Filter>wrappers</Filter>
     </ClCompile>
   </ItemGroup>
