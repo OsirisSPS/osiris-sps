@@ -22,13 +22,13 @@ struct IDbDriver_wrapper : ::osiris::IDbDriver, ::osiris::PythonWrapper< ::osiri
     virtual ::std::string getName(  ) const {
         ::osiris::PythonState __pystate(getPythonThreadState());
         ::osiris::PythonOverride func_getName = this->get_override( "getName" );
-        return func_getName(  ).operator std::string();
+        return func_getName(  );
     }
 
     virtual ::std::string getDescription(  ) const {
         ::osiris::PythonState __pystate(getPythonThreadState());
         ::osiris::PythonOverride func_getDescription = this->get_override( "getDescription" );
-        return func_getDescription(  ).operator std::string();
+        return func_getDescription(  );
     }
 
     virtual ::boost::shared_ptr< osiris::IDbOptions > createOptions(  ){

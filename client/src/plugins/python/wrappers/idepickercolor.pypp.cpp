@@ -29,7 +29,7 @@ struct IdePickerColor_wrapper : ::osiris::IdePickerColor, ::osiris::PythonWrappe
     
     }
 
-    virtual ::std::string getValue(  ) const  {
+    virtual ::osiris::String getValue(  ) const  {
         ::osiris::PythonState __pystate(getPythonThreadState());
         if( ::osiris::PythonOverride func_getValue = this->get_override( "getValue" ) )
             return func_getValue(  );
@@ -39,7 +39,7 @@ struct IdePickerColor_wrapper : ::osiris::IdePickerColor, ::osiris::PythonWrappe
         }
     }
     
-    ::std::string default_getValue(  ) const  {
+    ::osiris::String default_getValue(  ) const  {
         ::osiris::PythonThreadSaver __pythreadSaver;
         return ::osiris::IdePickerColor::getValue( );
     }
@@ -59,19 +59,19 @@ struct IdePickerColor_wrapper : ::osiris::IdePickerColor, ::osiris::PythonWrappe
         ::osiris::IdePickerColor::onLoad( );
     }
 
-    virtual void setValue( ::std::string const & value ) {
+    virtual void setValue( ::osiris::String const & value ) {
         ::osiris::PythonState __pystate(getPythonThreadState());
         if( ::osiris::PythonOverride func_setValue = this->get_override( "setValue" ) )
-            func_setValue( value );
+            func_setValue( boost::ref(value) );
         else{
             __pystate.leave();
-            this->::osiris::IdePickerColor::setValue( value );
+            this->::osiris::IdePickerColor::setValue( boost::ref(value) );
         }
     }
     
-    void default_setValue( ::std::string const & value ) {
+    void default_setValue( ::osiris::String const & value ) {
         ::osiris::PythonThreadSaver __pythreadSaver;
-        ::osiris::IdePickerColor::setValue( value );
+        ::osiris::IdePickerColor::setValue( boost::ref(value) );
     }
 
     bool decodeEvent( ::osiris::String const & command, ::osiris::String & eventName, ::osiris::HtmlEvent & e ) const {
@@ -231,8 +231,8 @@ void register_IdePickerColor_class(){
         ::boost::python::scope IdePickerColor_scope( IdePickerColor_exposer );
         { //::osiris::IdePickerColor::getValue
         
-            typedef ::std::string ( ::osiris::IdePickerColor::*getValue_function_type )(  ) const;
-            typedef ::std::string ( IdePickerColor_wrapper::*default_getValue_function_type )(  ) const;
+            typedef ::osiris::String ( ::osiris::IdePickerColor::*getValue_function_type )(  ) const;
+            typedef ::osiris::String ( IdePickerColor_wrapper::*default_getValue_function_type )(  ) const;
             
             IdePickerColor_exposer.def( 
                 "getValue"
@@ -253,8 +253,8 @@ void register_IdePickerColor_class(){
         }
         { //::osiris::IdePickerColor::setValue
         
-            typedef void ( ::osiris::IdePickerColor::*setValue_function_type )( ::std::string const & ) ;
-            typedef void ( IdePickerColor_wrapper::*default_setValue_function_type )( ::std::string const & ) ;
+            typedef void ( ::osiris::IdePickerColor::*setValue_function_type )( ::osiris::String const & ) ;
+            typedef void ( IdePickerColor_wrapper::*default_setValue_function_type )( ::osiris::String const & ) ;
             
             IdePickerColor_exposer.def( 
                 "setValue"
@@ -388,14 +388,14 @@ void register_IdePickerColor_class(){
         }
         { //property "value"[fget=::osiris::IdePickerColor::getValue, fset=::osiris::IdePickerColor::setValue]
         
-            typedef ::std::string ( ::osiris::IdePickerColor::*fget )(  ) const;
-            typedef void ( ::osiris::IdePickerColor::*fset )( ::std::string const & ) ;
+            typedef ::osiris::String ( ::osiris::IdePickerColor::*fget )(  ) const;
+            typedef void ( ::osiris::IdePickerColor::*fset )( ::osiris::String const & ) ;
             
             IdePickerColor_exposer.add_property( 
                 "value"
                 , fget( &::osiris::IdePickerColor::getValue )
                 , fset( &::osiris::IdePickerColor::setValue )
-                , "get\\set property, built on top of \"std::string osiris::IdePickerColor::getValue() const [member function]\" and \"void osiris::IdePickerColor::setValue(std::string const & value) [member function]\"" );
+                , "get\\set property, built on top of \"osiris::String osiris::IdePickerColor::getValue() const [member function]\" and \"void osiris::IdePickerColor::setValue(osiris::String const & value) [member function]\"" );
         
         }
     }
