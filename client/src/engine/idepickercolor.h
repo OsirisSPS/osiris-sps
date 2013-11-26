@@ -43,8 +43,8 @@ public:
 
 // Attributes
 public:
-	virtual std::string getValue() const;
-	virtual void setValue(const std::string &value);
+	virtual String getValue() const;
+	virtual void setValue(const String &value);
 	
 // IControl interface
 public:
