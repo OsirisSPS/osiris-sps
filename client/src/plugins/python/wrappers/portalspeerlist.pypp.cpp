@@ -11,7 +11,7 @@ namespace bp = boost::python;
 
 void register_PortalsPeerList_class(){
 
-    ::boost::python::class_< ::std::list<boost::shared_ptr<osiris::PortalsPeer>,osiris::StdAllocator<boost::shared_ptr<osiris::PortalsPeer>, osiris::NedAllocator<boost::shared_ptr<osiris::PortalsPeer> > > > >("PortalsPeerList")    
-        .def( ::boost::python::indexing::list_suite< ::std::list<boost::shared_ptr<osiris::PortalsPeer>,osiris::StdAllocator<boost::shared_ptr<osiris::PortalsPeer>, osiris::NedAllocator<boost::shared_ptr<osiris::PortalsPeer> > > > >() );
+    ::boost::python::class_< ::std::list<boost::shared_ptr<osiris::PortalsPeer>,osiris::StdAllocator<boost::shared_ptr<osiris::PortalsPeer>, osiris::SysAllocator<boost::shared_ptr<osiris::PortalsPeer> > > > >("PortalsPeerList")    
+        .def( ::boost::python::indexing::list_suite< ::std::list<boost::shared_ptr<osiris::PortalsPeer>,osiris::StdAllocator<boost::shared_ptr<osiris::PortalsPeer>, osiris::SysAllocator<boost::shared_ptr<osiris::PortalsPeer> > > > >() );
 
 }

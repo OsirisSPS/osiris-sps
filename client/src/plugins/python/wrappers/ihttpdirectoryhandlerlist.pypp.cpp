@@ -11,11 +11,11 @@ namespace bp = boost::python;
 
 void register_IHttpDirectoryHandlerList_class(){
 
-    { //::std::list<boost::shared_ptr<osiris::IHttpDirectoryHandler>, osiris::StdAllocator<boost::shared_ptr<osiris::IHttpDirectoryHandler>, osiris::NedAllocator<boost::shared_ptr<osiris::IHttpDirectoryHandler> > > >
-        typedef ::boost::python::class_< ::std::list<boost::shared_ptr<osiris::IHttpDirectoryHandler>, osiris::StdAllocator<boost::shared_ptr<osiris::IHttpDirectoryHandler>, osiris::NedAllocator<boost::shared_ptr<osiris::IHttpDirectoryHandler> > > > > IHttpDirectoryHandlerList_exposer_t;
+    { //::std::list<boost::shared_ptr<osiris::IHttpDirectoryHandler>, osiris::StdAllocator<boost::shared_ptr<osiris::IHttpDirectoryHandler>, osiris::SysAllocator<boost::shared_ptr<osiris::IHttpDirectoryHandler> > > >
+        typedef ::boost::python::class_< ::std::list<boost::shared_ptr<osiris::IHttpDirectoryHandler>, osiris::StdAllocator<boost::shared_ptr<osiris::IHttpDirectoryHandler>, osiris::SysAllocator<boost::shared_ptr<osiris::IHttpDirectoryHandler> > > > > IHttpDirectoryHandlerList_exposer_t;
         IHttpDirectoryHandlerList_exposer_t IHttpDirectoryHandlerList_exposer = IHttpDirectoryHandlerList_exposer_t( "IHttpDirectoryHandlerList" );
         ::boost::python::scope IHttpDirectoryHandlerList_scope( IHttpDirectoryHandlerList_exposer );
-        IHttpDirectoryHandlerList_exposer.def( ::boost::python::indexing::list_suite< ::std::list<boost::shared_ptr<osiris::IHttpDirectoryHandler>, osiris::StdAllocator<boost::shared_ptr<osiris::IHttpDirectoryHandler>, osiris::NedAllocator<boost::shared_ptr<osiris::IHttpDirectoryHandler> > > > >() );
+        IHttpDirectoryHandlerList_exposer.def( ::boost::python::indexing::list_suite< ::std::list<boost::shared_ptr<osiris::IHttpDirectoryHandler>, osiris::StdAllocator<boost::shared_ptr<osiris::IHttpDirectoryHandler>, osiris::SysAllocator<boost::shared_ptr<osiris::IHttpDirectoryHandler> > > > >() );
     }
 
 }

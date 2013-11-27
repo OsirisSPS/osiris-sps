@@ -34,18 +34,18 @@ static boost::python::object getOutput_328ed3bb2e819fdabe1fe0e998577f1f( ::osiri
 
 static boost::python::object getWarnings_f1b274fe98b2f6a6b9ba2d5488a857ee( ::osiris::OMLContext const & inst ){
     ::osiris::PythonThreadSaver __pythreadSaver;
-    ::std::list<osiris::String, osiris::StdAllocator<osiris::String, osiris::NedAllocator<osiris::String> > > const & result = inst.getWarnings();
+    ::std::list<osiris::String, osiris::StdAllocator<osiris::String, osiris::SysAllocator<osiris::String> > > const & result = inst.getWarnings();
     __pythreadSaver.restore();
     typedef bp::return_value_policy< bp::copy_const_reference > call_policies_t;
-    return boost::python::object( pyplusplus::call_policies::make_object< call_policies_t, ::std::list<osiris::String, osiris::StdAllocator<osiris::String, osiris::NedAllocator<osiris::String> > > const & >( result ) );
+    return boost::python::object( pyplusplus::call_policies::make_object< call_policies_t, ::std::list<osiris::String, osiris::StdAllocator<osiris::String, osiris::SysAllocator<osiris::String> > > const & >( result ) );
 }
 
 static boost::python::object getUrls_0355619629aee0c23b6e47102e13cb19( ::osiris::OMLContext const & inst ){
     ::osiris::PythonThreadSaver __pythreadSaver;
-    ::std::list<osiris::String, osiris::StdAllocator<osiris::String, osiris::NedAllocator<osiris::String> > > const & result = inst.getUrls();
+    ::std::list<osiris::String, osiris::StdAllocator<osiris::String, osiris::SysAllocator<osiris::String> > > const & result = inst.getUrls();
     __pythreadSaver.restore();
     typedef bp::return_value_policy< bp::copy_const_reference > call_policies_t;
-    return boost::python::object( pyplusplus::call_policies::make_object< call_policies_t, ::std::list<osiris::String, osiris::StdAllocator<osiris::String, osiris::NedAllocator<osiris::String> > > const & >( result ) );
+    return boost::python::object( pyplusplus::call_policies::make_object< call_policies_t, ::std::list<osiris::String, osiris::StdAllocator<osiris::String, osiris::SysAllocator<osiris::String> > > const & >( result ) );
 }
 
 static boost::python::object getPage_9c2a73f39cdc92b9b3d6caf1fea14991( ::osiris::OMLContext const & inst ){
@@ -193,23 +193,23 @@ static void addUrl_b224d4103269dccc3ff89c5b13c732bd( ::osiris::OMLContext & inst
     __pythreadSaver.restore();
 }
 
-static boost::python::object findNotEscaped_4baefa9caec7861f4e764592f697bb09( ::std::wstring const & text, ::std::wstring const & what, ::size_t posStart ){
+static boost::python::object findNotEscaped_8801b9739a6274b44b670b1f13f8c001( ::std::wstring const & text, ::std::wstring const & what, ::std::size_t posStart ){
     ::osiris::PythonThreadSaver __pythreadSaver;
-    ::size_t result = ::osiris::OMLContext::findNotEscaped(text, what, posStart);
+    ::std::size_t result = ::osiris::OMLContext::findNotEscaped(text, what, posStart);
     __pythreadSaver.restore();
     return boost::python::object( result );
 }
 
-static boost::python::object findToken_761861eec204910eab078e6442508740( ::std::wstring const & text, ::std::wstring const & what, ::size_t posStart ){
+static boost::python::object findToken_5aa83a6e49c717b3a3c33f6dffa29b6a( ::std::wstring const & text, ::std::wstring const & what, ::std::size_t posStart ){
     ::osiris::PythonThreadSaver __pythreadSaver;
-    ::size_t result = ::osiris::OMLContext::findToken(text, what, posStart);
+    ::std::size_t result = ::osiris::OMLContext::findToken(text, what, posStart);
     __pythreadSaver.restore();
     return boost::python::object( result );
 }
 
-static boost::python::object findTokens_88b630bc0d27540239890ab0a4d83c09( ::std::wstring const & text, ::std::wstring const & tokens, ::size_t posStart ){
+static boost::python::object findTokens_c68a42b6614875fa54dc421433aa19fb( ::std::wstring const & text, ::std::wstring const & tokens, ::std::size_t posStart ){
     ::osiris::PythonThreadSaver __pythreadSaver;
-    ::size_t result = ::osiris::OMLContext::findTokens(text, tokens, posStart);
+    ::std::size_t result = ::osiris::OMLContext::findTokens(text, tokens, posStart);
     __pythreadSaver.restore();
     return boost::python::object( result );
 }
@@ -579,31 +579,31 @@ void register_OMLContext_class(){
         }
         { //::osiris::OMLContext::findNotEscaped
         
-            typedef boost::python::object ( *findNotEscaped_function_type )( ::std::wstring const &,::std::wstring const &,::size_t );
+            typedef boost::python::object ( *findNotEscaped_function_type )( ::std::wstring const &,::std::wstring const &,::std::size_t );
             
             OMLContext_exposer.def( 
                 "findNotEscaped"
-                , findNotEscaped_function_type( &findNotEscaped_4baefa9caec7861f4e764592f697bb09 )
+                , findNotEscaped_function_type( &findNotEscaped_8801b9739a6274b44b670b1f13f8c001 )
                 , ( ::boost::python::arg("text"), ::boost::python::arg("what"), ::boost::python::arg("posStart") ) );
         
         }
         { //::osiris::OMLContext::findToken
         
-            typedef boost::python::object ( *findToken_function_type )( ::std::wstring const &,::std::wstring const &,::size_t );
+            typedef boost::python::object ( *findToken_function_type )( ::std::wstring const &,::std::wstring const &,::std::size_t );
             
             OMLContext_exposer.def( 
                 "findToken"
-                , findToken_function_type( &findToken_761861eec204910eab078e6442508740 )
+                , findToken_function_type( &findToken_5aa83a6e49c717b3a3c33f6dffa29b6a )
                 , ( ::boost::python::arg("text"), ::boost::python::arg("what"), ::boost::python::arg("posStart") ) );
         
         }
         { //::osiris::OMLContext::findTokens
         
-            typedef boost::python::object ( *findTokens_function_type )( ::std::wstring const &,::std::wstring const &,::size_t );
+            typedef boost::python::object ( *findTokens_function_type )( ::std::wstring const &,::std::wstring const &,::std::size_t );
             
             OMLContext_exposer.def( 
                 "findTokens"
-                , findTokens_function_type( &findTokens_88b630bc0d27540239890ab0a4d83c09 )
+                , findTokens_function_type( &findTokens_c68a42b6614875fa54dc421433aa19fb )
                 , ( ::boost::python::arg("text"), ::boost::python::arg("tokens"), ::boost::python::arg("posStart") ) );
         
         }
@@ -902,26 +902,26 @@ void register_OMLContext_class(){
         }
         { //property "warnings"[fget=::osiris::OMLContext::getWarnings]
         
-            typedef ::std::list<osiris::String, osiris::StdAllocator<osiris::String, osiris::NedAllocator<osiris::String> > > const & ( ::osiris::OMLContext::*fget )(  ) const;
+            typedef ::std::list<osiris::String, osiris::StdAllocator<osiris::String, osiris::SysAllocator<osiris::String> > > const & ( ::osiris::OMLContext::*fget )(  ) const;
             
             OMLContext_exposer.add_property( 
                 "warnings"
                 , ::boost::python::make_function( 
                       fget( &::osiris::OMLContext::getWarnings )
                     , bp::return_value_policy< bp::copy_const_reference >() ) 
-                , "get property, built on top of \"std::list<osiris::String, osiris::StdAllocator<osiris::String, osiris::NedAllocator<osiris::String> > > const & osiris::OMLContext::getWarnings() const [member function]\"" );
+                , "get property, built on top of \"std::list<osiris::String, osiris::StdAllocator<osiris::String, osiris::SysAllocator<osiris::String> > > const & osiris::OMLContext::getWarnings() const [member function]\"" );
         
         }
         { //property "urls"[fget=::osiris::OMLContext::getUrls]
         
-            typedef ::std::list<osiris::String, osiris::StdAllocator<osiris::String, osiris::NedAllocator<osiris::String> > > const & ( ::osiris::OMLContext::*fget )(  ) const;
+            typedef ::std::list<osiris::String, osiris::StdAllocator<osiris::String, osiris::SysAllocator<osiris::String> > > const & ( ::osiris::OMLContext::*fget )(  ) const;
             
             OMLContext_exposer.add_property( 
                 "urls"
                 , ::boost::python::make_function( 
                       fget( &::osiris::OMLContext::getUrls )
                     , bp::return_value_policy< bp::copy_const_reference >() ) 
-                , "get property, built on top of \"std::list<osiris::String, osiris::StdAllocator<osiris::String, osiris::NedAllocator<osiris::String> > > const & osiris::OMLContext::getUrls() const [member function]\"" );
+                , "get property, built on top of \"std::list<osiris::String, osiris::StdAllocator<osiris::String, osiris::SysAllocator<osiris::String> > > const & osiris::OMLContext::getUrls() const [member function]\"" );
         
         }
         { //property "page"[fget=::osiris::OMLContext::getPage]

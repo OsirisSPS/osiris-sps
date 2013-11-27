@@ -159,7 +159,7 @@ static boost::python::object fromString_2e084c315d531b6ca5f426d4a293afa4( ::osir
     return boost::python::object( result );
 }
 
-static boost::python::object fromTime_t_f4e4539882dd128f9e38d20b79050632( ::osiris::DateTime & inst, ::time_t const & t ){
+static boost::python::object fromTime_t_ec8b8879ae1e1fb4afa297d029db62d2( ::osiris::DateTime & inst, ::time_t const & t ){
     ::osiris::PythonThreadSaver __pythreadSaver;
     bool result = inst.fromTime_t(t);
     __pythreadSaver.restore();
@@ -457,7 +457,7 @@ void register_DateTime_class(){
             
             DateTime_exposer.def( 
                 "fromTime_t"
-                , fromTime_t_function_type( &fromTime_t_f4e4539882dd128f9e38d20b79050632 )
+                , fromTime_t_function_type( &fromTime_t_ec8b8879ae1e1fb4afa297d029db62d2 )
                 , ( ::boost::python::arg("inst"), ::boost::python::arg("t") ) );
         
         }

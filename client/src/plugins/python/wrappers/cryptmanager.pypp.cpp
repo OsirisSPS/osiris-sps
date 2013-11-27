@@ -152,14 +152,14 @@ struct CryptManager_wrapper : ::osiris::CryptManager, ::osiris::PythonWrapper< :
         return boost::python::object( result );
     }
 
-    static boost::python::object detectCompressor_f3eb72cb5014751d202c25d918685da1( ::osiris::CryptManager & inst, void const * data, ::size_t size ){
+    static boost::python::object detectCompressor_fa6db49a19c136218c84537212780469( ::osiris::CryptManager & inst, void const * data, ::size_t size ){
         ::osiris::PythonThreadSaver __pythreadSaver;
         ::osiris::CompressorType result = inst.detectCompressor(data, size);
         __pythreadSaver.restore();
         return boost::python::object( result );
     }
 
-    static boost::python::object matchCompressor_eb94e867c47f5b9128f9965a770c5244( ::osiris::CryptManager & inst, void const * data, ::size_t size, ::osiris::CompressorType compressor ){
+    static boost::python::object matchCompressor_00307e534961602902013b865108f3ec( ::osiris::CryptManager & inst, void const * data, ::size_t size, ::osiris::CompressorType compressor ){
         ::osiris::PythonThreadSaver __pythreadSaver;
         bool result = inst.matchCompressor(data, size, compressor);
         __pythreadSaver.restore();
@@ -187,14 +187,14 @@ struct CryptManager_wrapper : ::osiris::CryptManager, ::osiris::PythonWrapper< :
         return boost::python::object( result );
     }
 
-    static boost::python::object encodeBase64_05716585158e428295584f2f88b4bad7( ::osiris::CryptManager & inst, void const * data, ::size_t size, ::osiris::String & encoded ){
+    static boost::python::object encodeBase64_f9218abbac278d5cd6937915e06bd355( ::osiris::CryptManager & inst, void const * data, ::size_t size, ::osiris::String & encoded ){
         ::osiris::PythonThreadSaver __pythreadSaver;
         bool result = inst.encodeBase64(data, size, encoded);
         __pythreadSaver.restore();
         return boost::python::object( result );
     }
 
-    static boost::python::object encodeBase64_1a3dcd520dd61d01fd55d4e2ff4722e7( ::osiris::CryptManager & inst, void const * data, ::size_t size, ::std::string & encoded ){
+    static boost::python::object encodeBase64_38ee4184ffeb0a19a7589a170ccc1d42( ::osiris::CryptManager & inst, void const * data, ::size_t size, ::std::string & encoded ){
         ::osiris::PythonThreadSaver __pythreadSaver;
         bool result = inst.encodeBase64(data, size, encoded);
         __pythreadSaver.restore();
@@ -208,14 +208,14 @@ struct CryptManager_wrapper : ::osiris::CryptManager, ::osiris::PythonWrapper< :
         return boost::python::object( result );
     }
 
-    static boost::python::object encodeHex_6cd809cf43fd6b88f1d03c6b994218a1( ::osiris::CryptManager & inst, void const * data, ::size_t size, ::osiris::String & encoded ){
+    static boost::python::object encodeHex_7b8750fe1349c168dd19acc78f4097a9( ::osiris::CryptManager & inst, void const * data, ::size_t size, ::osiris::String & encoded ){
         ::osiris::PythonThreadSaver __pythreadSaver;
         bool result = inst.encodeHex(data, size, encoded);
         __pythreadSaver.restore();
         return boost::python::object( result );
     }
 
-    static boost::python::object encodeHex_bd63a8b96df3581ee72f01441d40ea8b( ::osiris::CryptManager & inst, void const * data, ::size_t size, ::std::string & encoded ){
+    static boost::python::object encodeHex_58e8799e61ba13989814002e9750ba61( ::osiris::CryptManager & inst, void const * data, ::size_t size, ::std::string & encoded ){
         ::osiris::PythonThreadSaver __pythreadSaver;
         bool result = inst.encodeHex(data, size, encoded);
         __pythreadSaver.restore();
@@ -444,7 +444,7 @@ void register_CryptManager_class(){
             
             CryptManager_exposer.def( 
                 "detectCompressor"
-                , detectCompressor_function_type( &CryptManager_wrapper::detectCompressor_f3eb72cb5014751d202c25d918685da1 )
+                , detectCompressor_function_type( &CryptManager_wrapper::detectCompressor_fa6db49a19c136218c84537212780469 )
                 , ( ::boost::python::arg("inst"), ::boost::python::arg("data"), ::boost::python::arg("size") ) );
         
         }
@@ -454,7 +454,7 @@ void register_CryptManager_class(){
             
             CryptManager_exposer.def( 
                 "matchCompressor"
-                , matchCompressor_function_type( &CryptManager_wrapper::matchCompressor_eb94e867c47f5b9128f9965a770c5244 )
+                , matchCompressor_function_type( &CryptManager_wrapper::matchCompressor_00307e534961602902013b865108f3ec )
                 , ( ::boost::python::arg("inst"), ::boost::python::arg("data"), ::boost::python::arg("size"), ::boost::python::arg("compressor") ) );
         
         }
@@ -494,7 +494,7 @@ void register_CryptManager_class(){
             
             CryptManager_exposer.def( 
                 "encodeBase64"
-                , encodeBase64_function_type( &CryptManager_wrapper::encodeBase64_05716585158e428295584f2f88b4bad7 )
+                , encodeBase64_function_type( &CryptManager_wrapper::encodeBase64_f9218abbac278d5cd6937915e06bd355 )
                 , ( ::boost::python::arg("inst"), ::boost::python::arg("data"), ::boost::python::arg("size"), ::boost::python::arg("encoded") ) );
         
         }
@@ -504,7 +504,7 @@ void register_CryptManager_class(){
             
             CryptManager_exposer.def( 
                 "encodeBase64"
-                , encodeBase64_function_type( &CryptManager_wrapper::encodeBase64_1a3dcd520dd61d01fd55d4e2ff4722e7 )
+                , encodeBase64_function_type( &CryptManager_wrapper::encodeBase64_38ee4184ffeb0a19a7589a170ccc1d42 )
                 , ( ::boost::python::arg("inst"), ::boost::python::arg("data"), ::boost::python::arg("size"), ::boost::python::arg("encoded") ) );
         
         }
@@ -524,7 +524,7 @@ void register_CryptManager_class(){
             
             CryptManager_exposer.def( 
                 "encodeHex"
-                , encodeHex_function_type( &CryptManager_wrapper::encodeHex_6cd809cf43fd6b88f1d03c6b994218a1 )
+                , encodeHex_function_type( &CryptManager_wrapper::encodeHex_7b8750fe1349c168dd19acc78f4097a9 )
                 , ( ::boost::python::arg("inst"), ::boost::python::arg("data"), ::boost::python::arg("size"), ::boost::python::arg("encoded") ) );
         
         }
@@ -534,7 +534,7 @@ void register_CryptManager_class(){
             
             CryptManager_exposer.def( 
                 "encodeHex"
-                , encodeHex_function_type( &CryptManager_wrapper::encodeHex_bd63a8b96df3581ee72f01441d40ea8b )
+                , encodeHex_function_type( &CryptManager_wrapper::encodeHex_58e8799e61ba13989814002e9750ba61 )
                 , ( ::boost::python::arg("inst"), ::boost::python::arg("data"), ::boost::python::arg("size"), ::boost::python::arg("encoded") ) );
         
         }

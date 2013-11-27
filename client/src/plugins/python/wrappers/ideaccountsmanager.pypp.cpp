@@ -11,7 +11,7 @@ namespace bp = boost::python;
 
 static boost::python::object getAccounts_37d0513e5d32920c2ef158d1ea583aa0( ::osiris::IdeAccountsManager const & inst ){
     ::osiris::PythonThreadSaver __pythreadSaver;
-    ::std::list<boost::shared_ptr<osiris::IdeAccount>, osiris::StdAllocator<boost::shared_ptr<osiris::IdeAccount>, osiris::NedAllocator<boost::shared_ptr<osiris::IdeAccount> > > > result = inst.getAccounts();
+    ::std::list<boost::shared_ptr<osiris::IdeAccount>, osiris::StdAllocator<boost::shared_ptr<osiris::IdeAccount>, osiris::SysAllocator<boost::shared_ptr<osiris::IdeAccount> > > > result = inst.getAccounts();
     __pythreadSaver.restore();
     return boost::python::object( result );
 }
@@ -236,12 +236,12 @@ void register_IdeAccountsManager_class(){
         }
         { //property "accounts"[fget=::osiris::IdeAccountsManager::getAccounts]
         
-            typedef ::std::list<boost::shared_ptr<osiris::IdeAccount>, osiris::StdAllocator<boost::shared_ptr<osiris::IdeAccount>, osiris::NedAllocator<boost::shared_ptr<osiris::IdeAccount> > > > ( ::osiris::IdeAccountsManager::*fget )(  ) const;
+            typedef ::std::list<boost::shared_ptr<osiris::IdeAccount>, osiris::StdAllocator<boost::shared_ptr<osiris::IdeAccount>, osiris::SysAllocator<boost::shared_ptr<osiris::IdeAccount> > > > ( ::osiris::IdeAccountsManager::*fget )(  ) const;
             
             IdeAccountsManager_exposer.add_property( 
                 "accounts"
                 , fget( &::osiris::IdeAccountsManager::getAccounts )
-                , "get property, built on top of \"std::list<boost::shared_ptr<osiris::IdeAccount>, osiris::StdAllocator<boost::shared_ptr<osiris::IdeAccount>, osiris::NedAllocator<boost::shared_ptr<osiris::IdeAccount> > > > osiris::IdeAccountsManager::getAccounts() const [member function]\"" );
+                , "get property, built on top of \"std::list<boost::shared_ptr<osiris::IdeAccount>, osiris::StdAllocator<boost::shared_ptr<osiris::IdeAccount>, osiris::SysAllocator<boost::shared_ptr<osiris::IdeAccount> > > > osiris::IdeAccountsManager::getAccounts() const [member function]\"" );
         
         }
     }

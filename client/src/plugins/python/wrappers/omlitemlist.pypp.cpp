@@ -12,11 +12,11 @@ namespace bp = boost::python;
 
 void register_OMLItemList_class(){
 
-    { //::std::list<boost::shared_ptr<osiris::OMLItem>, osiris::StdAllocator<boost::shared_ptr<osiris::OMLItem>, osiris::NedAllocator<boost::shared_ptr<osiris::OMLItem> > > >
-        typedef ::boost::python::class_< ::std::list<boost::shared_ptr<osiris::OMLItem>, osiris::StdAllocator<boost::shared_ptr<osiris::OMLItem>, osiris::NedAllocator<boost::shared_ptr<osiris::OMLItem> > > > > OMLItemList_exposer_t;
+    { //::std::list<boost::shared_ptr<osiris::OMLItem>, osiris::StdAllocator<boost::shared_ptr<osiris::OMLItem>, osiris::SysAllocator<boost::shared_ptr<osiris::OMLItem> > > >
+        typedef ::boost::python::class_< ::std::list<boost::shared_ptr<osiris::OMLItem>, osiris::StdAllocator<boost::shared_ptr<osiris::OMLItem>, osiris::SysAllocator<boost::shared_ptr<osiris::OMLItem> > > > > OMLItemList_exposer_t;
         OMLItemList_exposer_t OMLItemList_exposer = OMLItemList_exposer_t( "OMLItemList" );
         ::boost::python::scope OMLItemList_scope( OMLItemList_exposer );
-        OMLItemList_exposer.def( ::boost::python::indexing::list_suite< ::std::list<boost::shared_ptr<osiris::OMLItem>, osiris::StdAllocator<boost::shared_ptr<osiris::OMLItem>, osiris::NedAllocator<boost::shared_ptr<osiris::OMLItem> > > > >() );
+        OMLItemList_exposer.def( ::boost::python::indexing::list_suite< ::std::list<boost::shared_ptr<osiris::OMLItem>, osiris::StdAllocator<boost::shared_ptr<osiris::OMLItem>, osiris::SysAllocator<boost::shared_ptr<osiris::OMLItem> > > > >() );
     }
 
 }

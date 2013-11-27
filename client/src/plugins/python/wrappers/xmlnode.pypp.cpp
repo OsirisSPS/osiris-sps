@@ -224,7 +224,7 @@ static boost::python::object getNode_16cba13112f166bc27c25000e1723f58( ::osiris:
     return boost::python::object( result );
 }
 
-static boost::python::object getNodeByIndex_a48ea762dbe8b0785ac92da3566966cc( ::osiris::XMLNode const & inst, ::size_t index ){
+static boost::python::object getNodeByIndex_09e20808e20d6aa615e0f38afb94e4cd( ::osiris::XMLNode const & inst, ::size_t index ){
     ::osiris::PythonThreadSaver __pythreadSaver;
     ::boost::shared_ptr<osiris::XMLNode> result = inst.getNodeByIndex(index);
     __pythreadSaver.restore();
@@ -568,7 +568,7 @@ void register_XMLNode_class(){
             
             XMLNode_exposer.def( 
                 "getNodeByIndex"
-                , getNodeByIndex_function_type( &getNodeByIndex_a48ea762dbe8b0785ac92da3566966cc )
+                , getNodeByIndex_function_type( &getNodeByIndex_09e20808e20d6aa615e0f38afb94e4cd )
                 , ( ::boost::python::arg("inst"), ::boost::python::arg("index") ) );
         
         }

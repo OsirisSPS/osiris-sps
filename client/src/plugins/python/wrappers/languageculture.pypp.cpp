@@ -86,10 +86,10 @@ static boost::python::object getParent_26ae642c2911eff34d042d04247dcf04( ::osiri
 
 static boost::python::object getCultures_1eaf3311369acf1b1987225bd3c8df74( ::osiris::LanguageCulture & inst ){
     ::osiris::PythonThreadSaver __pythreadSaver;
-    ::boost::unordered::unordered_map<osiris::String, boost::shared_ptr<osiris::LanguageCulture>, boost::hash<osiris::String>, std::equal_to<osiris::String>, osiris::StdAllocator<std::pair<osiris::String const, boost::shared_ptr<osiris::LanguageCulture> >, osiris::NedAllocator<std::pair<osiris::String const, boost::shared_ptr<osiris::LanguageCulture> > > > > & result = inst.getCultures();
+    ::boost::unordered::unordered_map<osiris::String, boost::shared_ptr<osiris::LanguageCulture>, boost::hash<osiris::String>, std::equal_to<osiris::String>, osiris::StdAllocator<std::pair<osiris::String const, boost::shared_ptr<osiris::LanguageCulture> >, osiris::SysAllocator<std::pair<osiris::String const, boost::shared_ptr<osiris::LanguageCulture> > > > > & result = inst.getCultures();
     __pythreadSaver.restore();
     typedef bp::return_value_policy< bp::reference_existing_object > call_policies_t;
-    return boost::python::object( pyplusplus::call_policies::make_object< call_policies_t, ::boost::unordered::unordered_map<osiris::String, boost::shared_ptr<osiris::LanguageCulture>, boost::hash<osiris::String>, std::equal_to<osiris::String>, osiris::StdAllocator<std::pair<osiris::String const, boost::shared_ptr<osiris::LanguageCulture> >, osiris::NedAllocator<std::pair<osiris::String const, boost::shared_ptr<osiris::LanguageCulture> > > > > & >( result ) );
+    return boost::python::object( pyplusplus::call_policies::make_object< call_policies_t, ::boost::unordered::unordered_map<osiris::String, boost::shared_ptr<osiris::LanguageCulture>, boost::hash<osiris::String>, std::equal_to<osiris::String>, osiris::StdAllocator<std::pair<osiris::String const, boost::shared_ptr<osiris::LanguageCulture> >, osiris::SysAllocator<std::pair<osiris::String const, boost::shared_ptr<osiris::LanguageCulture> > > > > & >( result ) );
 }
 
 static boost::python::object getTranslationDerivedAvaible_4eceba898de696aef49118b54c299e5b( ::osiris::LanguageCulture & inst ){

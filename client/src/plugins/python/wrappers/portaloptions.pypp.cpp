@@ -201,7 +201,7 @@ static boost::python::object getDatabaseVersion_b0d9eef850b9524f44e91a82ce229bf2
 
 static boost::python::object getIsisEndpoints_49b0f4045cf67f22bedc0c9f6e366d70( ::osiris::PortalOptions const & inst ){
     ::osiris::PythonThreadSaver __pythreadSaver;
-    ::osiris::LockPtr<const boost::unordered::unordered_map<unsigned int, boost::shared_ptr<osiris::IsisEndpoint>, boost::hash<unsigned int>, std::equal_to<unsigned int>, osiris::StdAllocator<std::pair<const unsigned int, boost::shared_ptr<osiris::IsisEndpoint> >, osiris::NedAllocator<std::pair<const unsigned int, boost::shared_ptr<osiris::IsisEndpoint> > > > >,boost::recursive_mutex,boost::unique_lock<boost::recursive_mutex> > result = inst.getIsisEndpoints();
+    ::osiris::LockPtr<const boost::unordered::unordered_map<unsigned int, boost::shared_ptr<osiris::IsisEndpoint>, boost::hash<unsigned int>, std::equal_to<unsigned int>, osiris::StdAllocator<std::pair<const unsigned int, boost::shared_ptr<osiris::IsisEndpoint> >, osiris::SysAllocator<std::pair<const unsigned int, boost::shared_ptr<osiris::IsisEndpoint> > > > >,boost::recursive_mutex,boost::unique_lock<boost::recursive_mutex> > result = inst.getIsisEndpoints();
     __pythreadSaver.restore();
     return boost::python::object( result );
 }
@@ -1392,12 +1392,12 @@ void register_PortalOptions_class(){
         }
         { //property "isisEndpoints"[fget=::osiris::PortalOptions::getIsisEndpoints]
         
-            typedef ::osiris::LockPtr<const boost::unordered::unordered_map<unsigned int, boost::shared_ptr<osiris::IsisEndpoint>, boost::hash<unsigned int>, std::equal_to<unsigned int>, osiris::StdAllocator<std::pair<const unsigned int, boost::shared_ptr<osiris::IsisEndpoint> >, osiris::NedAllocator<std::pair<const unsigned int, boost::shared_ptr<osiris::IsisEndpoint> > > > >,boost::recursive_mutex,boost::unique_lock<boost::recursive_mutex> > ( ::osiris::PortalOptions::*fget )(  ) const;
+            typedef ::osiris::LockPtr<const boost::unordered::unordered_map<unsigned int, boost::shared_ptr<osiris::IsisEndpoint>, boost::hash<unsigned int>, std::equal_to<unsigned int>, osiris::StdAllocator<std::pair<const unsigned int, boost::shared_ptr<osiris::IsisEndpoint> >, osiris::SysAllocator<std::pair<const unsigned int, boost::shared_ptr<osiris::IsisEndpoint> > > > >,boost::recursive_mutex,boost::unique_lock<boost::recursive_mutex> > ( ::osiris::PortalOptions::*fget )(  ) const;
             
             PortalOptions_exposer.add_property( 
                 "isisEndpoints"
                 , fget( &::osiris::PortalOptions::getIsisEndpoints )
-                , "get property, built on top of \"osiris::LockPtr<const boost::unordered::unordered_map<unsigned int, boost::shared_ptr<osiris::IsisEndpoint>, boost::hash<unsigned int>, std::equal_to<unsigned int>, osiris::StdAllocator<std::pair<const unsigned int, boost::shared_ptr<osiris::IsisEndpoint> >, osiris::NedAllocator<std::pair<const unsigned int, boost::shared_ptr<osiris::IsisEndpoint> > > > >,boost::recursive_mutex,boost::unique_lock<boost::recursive_mutex> > osiris::PortalOptions::getIsisEndpoints() const [member function]\"" );
+                , "get property, built on top of \"osiris::LockPtr<const boost::unordered::unordered_map<unsigned int, boost::shared_ptr<osiris::IsisEndpoint>, boost::hash<unsigned int>, std::equal_to<unsigned int>, osiris::StdAllocator<std::pair<const unsigned int, boost::shared_ptr<osiris::IsisEndpoint> >, osiris::SysAllocator<std::pair<const unsigned int, boost::shared_ptr<osiris::IsisEndpoint> > > > >,boost::recursive_mutex,boost::unique_lock<boost::recursive_mutex> > osiris::PortalOptions::getIsisEndpoints() const [member function]\"" );
         
         }
         ::boost::python::register_ptr_to_python< boost::shared_ptr< ::osiris::PortalOptions > >();

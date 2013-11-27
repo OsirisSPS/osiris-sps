@@ -5,7 +5,6 @@
 #include "boost/python.hpp"
 #include "__call_policies.pypp.hpp"
 #include "idepickerobject.h"
-#include "xmlstylesheet.h"
 #include "ideskin.h"
 #include "idesession.h"
 #include "datatree.h"
@@ -30,21 +29,7 @@ struct IdePickerObject_wrapper : ::osiris::IdePickerObject, ::osiris::PythonWrap
     
     }
 
-    static boost::python::object getOnlyObjectsWithChilds( ::osiris::IdePickerObject const & inst ){
-        ::osiris::PythonThreadSaver __pythreadSaver;
-        bool result = inst.getOnlyObjectsWithChilds();
-        __pythreadSaver.restore();
-        return boost::python::object( result );
-    }
-
-    static boost::python::object getMultipleSelection( ::osiris::IdePickerObject const & inst ){
-        ::osiris::PythonThreadSaver __pythreadSaver;
-        bool result = inst.getMultipleSelection();
-        __pythreadSaver.restore();
-        return boost::python::object( result );
-    }
-
-    virtual ::osiris::String getValue(  ) const  {
+    virtual ::osiris::UniqueID getValue(  ) const  {
         ::osiris::PythonState __pystate(getPythonThreadState());
         if( ::osiris::PythonOverride func_getValue = this->get_override( "getValue" ) )
             return func_getValue(  );
@@ -54,51 +39,39 @@ struct IdePickerObject_wrapper : ::osiris::IdePickerObject, ::osiris::PythonWrap
         }
     }
     
-    ::osiris::String default_getValue(  ) const  {
+    ::osiris::UniqueID default_getValue(  ) const  {
         ::osiris::PythonThreadSaver __pythreadSaver;
         return ::osiris::IdePickerObject::getValue( );
     }
 
-    virtual ::osiris::String getTemplatePath(  ) {
+    virtual void onLoad(  ) {
         ::osiris::PythonState __pystate(getPythonThreadState());
-        if( ::osiris::PythonOverride func_getTemplatePath = this->get_override( "getTemplatePath" ) )
-            return func_getTemplatePath(  );
+        if( ::osiris::PythonOverride func_onLoad = this->get_override( "onLoad" ) )
+            func_onLoad(  );
         else{
             __pystate.leave();
-            return this->::osiris::IdePickerObject::getTemplatePath(  );
+            this->::osiris::IdePickerObject::onLoad(  );
         }
     }
     
-    ::osiris::String default_getTemplatePath(  ) {
+    void default_onLoad(  ) {
         ::osiris::PythonThreadSaver __pythreadSaver;
-        return ::osiris::IdePickerObject::getTemplatePath( );
+        ::osiris::IdePickerObject::onLoad( );
     }
 
-    static void setMultipleSelection( ::osiris::IdePickerObject & inst, bool value ){
-        ::osiris::PythonThreadSaver __pythreadSaver;
-        inst.setMultipleSelection(value);
-        __pythreadSaver.restore();
-    }
-
-    static void setOnlyObjectsWithChilds( ::osiris::IdePickerObject & inst, bool value ){
-        ::osiris::PythonThreadSaver __pythreadSaver;
-        inst.setOnlyObjectsWithChilds(value);
-        __pythreadSaver.restore();
-    }
-
-    virtual void setValue( ::osiris::String const & id ) {
+    virtual void setValue( ::osiris::UniqueID const & object ) {
         ::osiris::PythonState __pystate(getPythonThreadState());
         if( ::osiris::PythonOverride func_setValue = this->get_override( "setValue" ) )
-            func_setValue( boost::ref(id) );
+            func_setValue( boost::ref(object) );
         else{
             __pystate.leave();
-            this->::osiris::IdePickerObject::setValue( boost::ref(id) );
+            this->::osiris::IdePickerObject::setValue( boost::ref(object) );
         }
     }
     
-    void default_setValue( ::osiris::String const & id ) {
+    void default_setValue( ::osiris::UniqueID const & object ) {
         ::osiris::PythonThreadSaver __pythreadSaver;
-        ::osiris::IdePickerObject::setValue( boost::ref(id) );
+        ::osiris::IdePickerObject::setValue( boost::ref(object) );
     }
 
     bool decodeEvent( ::osiris::String const & command, ::osiris::String & eventName, ::osiris::HtmlEvent & e ) const {
@@ -145,28 +118,43 @@ struct IdePickerObject_wrapper : ::osiris::IdePickerObject, ::osiris::PythonWrap
             func_onInit(  );
         else{
             __pystate.leave();
-            this->::osiris::IXSLRenderer< osiris::IPortalPageControl< osiris::IHtmlControl > >::onInit(  );
+            this->::osiris::IHtmlControl::onInit(  );
         }
     }
     
     virtual void default_onInit(  ){
         ::osiris::PythonThreadSaver __pythreadSaver;
-        ::osiris::IXSLRenderer< osiris::IPortalPageControl< osiris::IHtmlControl > >::onInit( );
+        ::osiris::IHtmlControl::onInit( );
     }
 
-    virtual void onInitStylesheet(  ){
+    virtual void onLoadViewState( ::osiris::DataTree const & state ){
         ::osiris::PythonState __pystate(getPythonThreadState());
-        if( ::osiris::PythonOverride func_onInitStylesheet = this->get_override( "onInitStylesheet" ) )
-            func_onInitStylesheet(  );
+        if( ::osiris::PythonOverride func_onLoadViewState = this->get_override( "onLoadViewState" ) )
+            func_onLoadViewState( boost::ref(state) );
         else{
             __pystate.leave();
-            this->::osiris::IXSLRenderer< osiris::IPortalPageControl< osiris::IHtmlControl > >::onInitStylesheet(  );
+            this->::osiris::IHtmlControl::onLoadViewState( boost::ref(state) );
         }
     }
     
-    virtual void default_onInitStylesheet(  ){
+    virtual void default_onLoadViewState( ::osiris::DataTree const & state ){
         ::osiris::PythonThreadSaver __pythreadSaver;
-        ::osiris::IXSLRenderer< osiris::IPortalPageControl< osiris::IHtmlControl > >::onInitStylesheet( );
+        ::osiris::IHtmlControl::onLoadViewState( boost::ref(state) );
+    }
+
+    virtual void onPreRender(  ){
+        ::osiris::PythonState __pystate(getPythonThreadState());
+        if( ::osiris::PythonOverride func_onPreRender = this->get_override( "onPreRender" ) )
+            func_onPreRender(  );
+        else{
+            __pystate.leave();
+            this->::osiris::IHtmlControl::onPreRender(  );
+        }
+    }
+    
+    virtual void default_onPreRender(  ){
+        ::osiris::PythonThreadSaver __pythreadSaver;
+        ::osiris::IHtmlControl::onPreRender( );
     }
 
     virtual void onRender( ::osiris::HtmlWriter & writer ){
@@ -182,6 +170,21 @@ struct IdePickerObject_wrapper : ::osiris::IdePickerObject, ::osiris::PythonWrap
     virtual void default_onRender( ::osiris::HtmlWriter & writer ){
         ::osiris::PythonThreadSaver __pythreadSaver;
         ::osiris::IHtmlControl::onRender( boost::ref(writer) );
+    }
+
+    virtual void onSaveViewState( ::osiris::DataTree & state ){
+        ::osiris::PythonState __pystate(getPythonThreadState());
+        if( ::osiris::PythonOverride func_onSaveViewState = this->get_override( "onSaveViewState" ) )
+            func_onSaveViewState( boost::ref(state) );
+        else{
+            __pystate.leave();
+            this->::osiris::IHtmlControl::onSaveViewState( boost::ref(state) );
+        }
+    }
+    
+    virtual void default_onSaveViewState( ::osiris::DataTree & state ){
+        ::osiris::PythonThreadSaver __pythreadSaver;
+        ::osiris::IHtmlControl::onSaveViewState( boost::ref(state) );
     }
 
     virtual void renderAttributes( ::osiris::HtmlWriter & writer ) {
@@ -223,31 +226,13 @@ struct IdePickerObject_wrapper : ::osiris::IdePickerObject, ::osiris::PythonWrap
 void register_IdePickerObject_class(){
 
     { //::osiris::IdePickerObject
-        typedef ::boost::python::class_< IdePickerObject_wrapper, ::boost::python::bases< ::osiris::IXSLRenderer< osiris::IPortalPageControl< osiris::IHtmlControl > > >, ::boost::noncopyable > IdePickerObject_exposer_t;
+        typedef ::boost::python::class_< IdePickerObject_wrapper, ::boost::python::bases< ::osiris::IPageControl< osiris::IHtmlControl > >, ::boost::noncopyable > IdePickerObject_exposer_t;
         IdePickerObject_exposer_t IdePickerObject_exposer = IdePickerObject_exposer_t( "IdePickerObject", ::boost::python::init< >() );
         ::boost::python::scope IdePickerObject_scope( IdePickerObject_exposer );
-        { //::osiris::IdePickerObject::getOnlyObjectsWithChilds
-        
-            typedef boost::python::object ( *getOnlyObjectsWithChilds_function_type )( ::osiris::IdePickerObject const & );
-            
-            IdePickerObject_exposer.def( 
-                "getOnlyObjectsWithChilds"
-                , getOnlyObjectsWithChilds_function_type( &IdePickerObject_wrapper::getOnlyObjectsWithChilds ) );
-        
-        }
-        { //::osiris::IdePickerObject::getMultipleSelection
-        
-            typedef boost::python::object ( *getMultipleSelection_function_type )( ::osiris::IdePickerObject const & );
-            
-            IdePickerObject_exposer.def( 
-                "getMultipleSelection"
-                , getMultipleSelection_function_type( &IdePickerObject_wrapper::getMultipleSelection ) );
-        
-        }
         { //::osiris::IdePickerObject::getValue
         
-            typedef ::osiris::String ( ::osiris::IdePickerObject::*getValue_function_type )(  ) const;
-            typedef ::osiris::String ( IdePickerObject_wrapper::*default_getValue_function_type )(  ) const;
+            typedef ::osiris::UniqueID ( ::osiris::IdePickerObject::*getValue_function_type )(  ) const;
+            typedef ::osiris::UniqueID ( IdePickerObject_wrapper::*default_getValue_function_type )(  ) const;
             
             IdePickerObject_exposer.def( 
                 "getValue"
@@ -255,47 +240,27 @@ void register_IdePickerObject_class(){
                 , default_getValue_function_type(&IdePickerObject_wrapper::default_getValue) );
         
         }
-        { //::osiris::IdePickerObject::getTemplatePath
+        { //::osiris::IdePickerObject::onLoad
         
-            typedef ::osiris::String ( ::osiris::IdePickerObject::*getTemplatePath_function_type )(  ) ;
-            typedef ::osiris::String ( IdePickerObject_wrapper::*default_getTemplatePath_function_type )(  ) ;
+            typedef void ( ::osiris::IdePickerObject::*onLoad_function_type )(  ) ;
+            typedef void ( IdePickerObject_wrapper::*default_onLoad_function_type )(  ) ;
             
             IdePickerObject_exposer.def( 
-                "getTemplatePath"
-                , getTemplatePath_function_type(&::osiris::IdePickerObject::getTemplatePath)
-                , default_getTemplatePath_function_type(&IdePickerObject_wrapper::default_getTemplatePath) );
-        
-        }
-        { //::osiris::IdePickerObject::setMultipleSelection
-        
-            typedef void ( *setMultipleSelection_function_type )( ::osiris::IdePickerObject &,bool );
-            
-            IdePickerObject_exposer.def( 
-                "setMultipleSelection"
-                , setMultipleSelection_function_type( &IdePickerObject_wrapper::setMultipleSelection )
-                , ( ::boost::python::arg("inst"), ::boost::python::arg("value") ) );
-        
-        }
-        { //::osiris::IdePickerObject::setOnlyObjectsWithChilds
-        
-            typedef void ( *setOnlyObjectsWithChilds_function_type )( ::osiris::IdePickerObject &,bool );
-            
-            IdePickerObject_exposer.def( 
-                "setOnlyObjectsWithChilds"
-                , setOnlyObjectsWithChilds_function_type( &IdePickerObject_wrapper::setOnlyObjectsWithChilds )
-                , ( ::boost::python::arg("inst"), ::boost::python::arg("value") ) );
+                "onLoad"
+                , onLoad_function_type(&::osiris::IdePickerObject::onLoad)
+                , default_onLoad_function_type(&IdePickerObject_wrapper::default_onLoad) );
         
         }
         { //::osiris::IdePickerObject::setValue
         
-            typedef void ( ::osiris::IdePickerObject::*setValue_function_type )( ::osiris::String const & ) ;
-            typedef void ( IdePickerObject_wrapper::*default_setValue_function_type )( ::osiris::String const & ) ;
+            typedef void ( ::osiris::IdePickerObject::*setValue_function_type )( ::osiris::UniqueID const & ) ;
+            typedef void ( IdePickerObject_wrapper::*default_setValue_function_type )( ::osiris::UniqueID const & ) ;
             
             IdePickerObject_exposer.def( 
                 "setValue"
                 , setValue_function_type(&::osiris::IdePickerObject::setValue)
                 , default_setValue_function_type(&IdePickerObject_wrapper::default_setValue)
-                , ( ::boost::python::arg("id") ) );
+                , ( ::boost::python::arg("object") ) );
         
         }
         { //::osiris::IHtmlControl::decodeEvent
@@ -339,9 +304,8 @@ void register_IdePickerObject_class(){
                 , ( ::boost::python::arg("name"), ::boost::python::arg("e")=(osiris::null) ) );
         
         }
-        { //::osiris::IXSLRenderer< osiris::IPortalPageControl< osiris::IHtmlControl > >::onInit
+        { //::osiris::IHtmlControl::onInit
         
-            typedef ::osiris::IdePickerObject exported_class_t;
             typedef void ( IdePickerObject_wrapper::*onInit_function_type )(  ) ;
             
             IdePickerObject_exposer.def( 
@@ -349,14 +313,23 @@ void register_IdePickerObject_class(){
                 , onInit_function_type( &IdePickerObject_wrapper::default_onInit ) );
         
         }
-        { //::osiris::IXSLRenderer< osiris::IPortalPageControl< osiris::IHtmlControl > >::onInitStylesheet
+        { //::osiris::IHtmlControl::onLoadViewState
         
-            typedef ::osiris::IdePickerObject exported_class_t;
-            typedef void ( IdePickerObject_wrapper::*onInitStylesheet_function_type )(  ) ;
+            typedef void ( IdePickerObject_wrapper::*onLoadViewState_function_type )( ::osiris::DataTree const & ) ;
             
             IdePickerObject_exposer.def( 
-                "onInitStylesheet"
-                , onInitStylesheet_function_type( &IdePickerObject_wrapper::default_onInitStylesheet ) );
+                "onLoadViewState"
+                , onLoadViewState_function_type( &IdePickerObject_wrapper::default_onLoadViewState )
+                , ( ::boost::python::arg("state") ) );
+        
+        }
+        { //::osiris::IHtmlControl::onPreRender
+        
+            typedef void ( IdePickerObject_wrapper::*onPreRender_function_type )(  ) ;
+            
+            IdePickerObject_exposer.def( 
+                "onPreRender"
+                , onPreRender_function_type( &IdePickerObject_wrapper::default_onPreRender ) );
         
         }
         { //::osiris::IHtmlControl::onRender
@@ -367,6 +340,16 @@ void register_IdePickerObject_class(){
                 "onRender"
                 , onRender_function_type( &IdePickerObject_wrapper::default_onRender )
                 , ( ::boost::python::arg("writer") ) );
+        
+        }
+        { //::osiris::IHtmlControl::onSaveViewState
+        
+            typedef void ( IdePickerObject_wrapper::*onSaveViewState_function_type )( ::osiris::DataTree & ) ;
+            
+            IdePickerObject_exposer.def( 
+                "onSaveViewState"
+                , onSaveViewState_function_type( &IdePickerObject_wrapper::default_onSaveViewState )
+                , ( ::boost::python::arg("state") ) );
         
         }
         { //::osiris::IHtmlControl::renderAttributes
@@ -403,40 +386,16 @@ void register_IdePickerObject_class(){
                 , ( ::boost::python::arg("states") ) );
         
         }
-        { //property "onlyObjectsWithChilds"[fget=::osiris::IdePickerObject::getOnlyObjectsWithChilds, fset=::osiris::IdePickerObject::setOnlyObjectsWithChilds]
-        
-            typedef bool ( ::osiris::IdePickerObject::*fget )(  ) const;
-            typedef void ( ::osiris::IdePickerObject::*fset )( bool ) ;
-            
-            IdePickerObject_exposer.add_property( 
-                "onlyObjectsWithChilds"
-                , fget( &::osiris::IdePickerObject::getOnlyObjectsWithChilds )
-                , fset( &::osiris::IdePickerObject::setOnlyObjectsWithChilds )
-                , "get\\set property, built on top of \"bool osiris::IdePickerObject::getOnlyObjectsWithChilds() const [member function]\" and \"void osiris::IdePickerObject::setOnlyObjectsWithChilds(bool value) [member function]\"" );
-        
-        }
-        { //property "multipleSelection"[fget=::osiris::IdePickerObject::getMultipleSelection, fset=::osiris::IdePickerObject::setMultipleSelection]
-        
-            typedef bool ( ::osiris::IdePickerObject::*fget )(  ) const;
-            typedef void ( ::osiris::IdePickerObject::*fset )( bool ) ;
-            
-            IdePickerObject_exposer.add_property( 
-                "multipleSelection"
-                , fget( &::osiris::IdePickerObject::getMultipleSelection )
-                , fset( &::osiris::IdePickerObject::setMultipleSelection )
-                , "get\\set property, built on top of \"bool osiris::IdePickerObject::getMultipleSelection() const [member function]\" and \"void osiris::IdePickerObject::setMultipleSelection(bool value) [member function]\"" );
-        
-        }
         { //property "value"[fget=::osiris::IdePickerObject::getValue, fset=::osiris::IdePickerObject::setValue]
         
-            typedef ::osiris::String ( ::osiris::IdePickerObject::*fget )(  ) const;
-            typedef void ( ::osiris::IdePickerObject::*fset )( ::osiris::String const & ) ;
+            typedef ::osiris::UniqueID ( ::osiris::IdePickerObject::*fget )(  ) const;
+            typedef void ( ::osiris::IdePickerObject::*fset )( ::osiris::UniqueID const & ) ;
             
             IdePickerObject_exposer.add_property( 
                 "value"
                 , fget( &::osiris::IdePickerObject::getValue )
                 , fset( &::osiris::IdePickerObject::setValue )
-                , "get\\set property, built on top of \"osiris::String osiris::IdePickerObject::getValue() const [member function]\" and \"void osiris::IdePickerObject::setValue(osiris::String const & id) [member function]\"" );
+                , "get\\set property, built on top of \"osiris::UniqueID osiris::IdePickerObject::getValue() const [member function]\" and \"void osiris::IdePickerObject::setValue(osiris::UniqueID const & object) [member function]\"" );
         
         }
     }

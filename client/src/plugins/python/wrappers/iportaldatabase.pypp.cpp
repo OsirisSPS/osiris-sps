@@ -114,7 +114,7 @@ struct IPortalDatabase_wrapper : ::osiris::IPortalDatabase, ::osiris::PythonWrap
         return boost::python::object( result );
     }
 
-    static boost::python::object recordExists_ef2b34532f93c4f095ed6767213371d4( ::osiris::IPortalDatabase const & inst, ::osiris::String const & table, ::osiris::StringMap const & conditions ){
+    static boost::python::object recordExists_e0f24196901f388625e97cce2d5e133f( ::osiris::IPortalDatabase const & inst, ::osiris::String const & table, ::osiris::StringMap const & conditions ){
         ::osiris::PythonThreadSaver __pythreadSaver;
         bool result = inst.recordExists(table, conditions);
         __pythreadSaver.restore();
@@ -707,7 +707,7 @@ void register_IPortalDatabase_class(){
             
             IPortalDatabase_exposer.def( 
                 "recordExists"
-                , recordExists_function_type( &IPortalDatabase_wrapper::recordExists_ef2b34532f93c4f095ed6767213371d4 )
+                , recordExists_function_type( &IPortalDatabase_wrapper::recordExists_e0f24196901f388625e97cce2d5e133f )
                 , ( ::boost::python::arg("inst"), ::boost::python::arg("table"), ::boost::python::arg("conditions") ) );
         
         }

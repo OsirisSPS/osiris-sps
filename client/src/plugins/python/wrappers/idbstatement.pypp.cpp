@@ -20,10 +20,10 @@ struct IDbStatement_wrapper : ::osiris::IDbStatement, ::osiris::PythonWrapper< :
 
     static boost::python::object getParameters( ::osiris::IDbStatement const & inst ){
         ::osiris::PythonThreadSaver __pythreadSaver;
-        ::std::deque<boost::shared_ptr<osiris::IDbParameter>, osiris::StdAllocator<boost::shared_ptr<osiris::IDbParameter>, osiris::NedAllocator<boost::shared_ptr<osiris::IDbParameter> > > > const & result = inst.getParameters();
+        ::std::deque<boost::shared_ptr<osiris::IDbParameter>, osiris::StdAllocator<boost::shared_ptr<osiris::IDbParameter>, osiris::SysAllocator<boost::shared_ptr<osiris::IDbParameter> > > > const & result = inst.getParameters();
         __pythreadSaver.restore();
         typedef bp::return_value_policy< bp::copy_const_reference > call_policies_t;
-        return boost::python::object( pyplusplus::call_policies::make_object< call_policies_t, ::std::deque<boost::shared_ptr<osiris::IDbParameter>, osiris::StdAllocator<boost::shared_ptr<osiris::IDbParameter>, osiris::NedAllocator<boost::shared_ptr<osiris::IDbParameter> > > > const & >( result ) );
+        return boost::python::object( pyplusplus::call_policies::make_object< call_policies_t, ::std::deque<boost::shared_ptr<osiris::IDbParameter>, osiris::StdAllocator<boost::shared_ptr<osiris::IDbParameter>, osiris::SysAllocator<boost::shared_ptr<osiris::IDbParameter> > > > const & >( result ) );
     }
 
     static boost::python::object addParameter( ::osiris::IDbStatement & inst ){
@@ -154,14 +154,14 @@ void register_IDbStatement_class(){
         }
         { //property "parameters"[fget=::osiris::IDbStatement::getParameters]
         
-            typedef ::std::deque<boost::shared_ptr<osiris::IDbParameter>, osiris::StdAllocator<boost::shared_ptr<osiris::IDbParameter>, osiris::NedAllocator<boost::shared_ptr<osiris::IDbParameter> > > > const & ( ::osiris::IDbStatement::*fget )(  ) const;
+            typedef ::std::deque<boost::shared_ptr<osiris::IDbParameter>, osiris::StdAllocator<boost::shared_ptr<osiris::IDbParameter>, osiris::SysAllocator<boost::shared_ptr<osiris::IDbParameter> > > > const & ( ::osiris::IDbStatement::*fget )(  ) const;
             
             IDbStatement_exposer.add_property( 
                 "parameters"
                 , ::boost::python::make_function( 
                       fget( &::osiris::IDbStatement::getParameters )
                     , bp::return_value_policy< bp::copy_const_reference >() ) 
-                , "get property, built on top of \"std::deque<boost::shared_ptr<osiris::IDbParameter>, osiris::StdAllocator<boost::shared_ptr<osiris::IDbParameter>, osiris::NedAllocator<boost::shared_ptr<osiris::IDbParameter> > > > const & osiris::IDbStatement::getParameters() const [member function]\"" );
+                , "get property, built on top of \"std::deque<boost::shared_ptr<osiris::IDbParameter>, osiris::StdAllocator<boost::shared_ptr<osiris::IDbParameter>, osiris::SysAllocator<boost::shared_ptr<osiris::IDbParameter> > > > const & osiris::IDbStatement::getParameters() const [member function]\"" );
         
         }
         ::boost::python::register_ptr_to_python< boost::shared_ptr< ::osiris::IDbStatement > >();

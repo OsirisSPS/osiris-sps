@@ -12,7 +12,11 @@ namespace bp = boost::python;
 
 void register_SearchQueryOptions_class(){
 
-    ::boost::python::class_< ::std::map<osiris::PortalObjectType, boost::shared_ptr<osiris::ISearchOptions>, std::less<osiris::PortalObjectType>, osiris::StdAllocator<std::pair<osiris::PortalObjectType const, boost::shared_ptr<osiris::ISearchOptions> >, osiris::NedAllocator<std::pair<osiris::PortalObjectType const, boost::shared_ptr<osiris::ISearchOptions> > > > > >( "SearchQueryOptions" )    
-        .def( ::boost::python::indexing::map_suite< ::std::map<osiris::PortalObjectType, boost::shared_ptr<osiris::ISearchOptions>, std::less<osiris::PortalObjectType>, osiris::StdAllocator<std::pair<osiris::PortalObjectType const, boost::shared_ptr<osiris::ISearchOptions> >, osiris::NedAllocator<std::pair<osiris::PortalObjectType const, boost::shared_ptr<osiris::ISearchOptions> > > > > >() );
+    { //::std::map<osiris::PortalObjectType, boost::shared_ptr<osiris::ISearchOptions>, std::less<osiris::PortalObjectType>, osiris::StdAllocator<std::pair<osiris::PortalObjectType const, boost::shared_ptr<osiris::ISearchOptions> >, osiris::SysAllocator<std::pair<osiris::PortalObjectType const, boost::shared_ptr<osiris::ISearchOptions> > > > >
+        typedef ::boost::python::class_< ::std::map<osiris::PortalObjectType, boost::shared_ptr<osiris::ISearchOptions>, std::less<osiris::PortalObjectType>, osiris::StdAllocator<std::pair<osiris::PortalObjectType const, boost::shared_ptr<osiris::ISearchOptions> >, osiris::SysAllocator<std::pair<osiris::PortalObjectType const, boost::shared_ptr<osiris::ISearchOptions> > > > > > SearchQueryOptions_exposer_t;
+        SearchQueryOptions_exposer_t SearchQueryOptions_exposer = SearchQueryOptions_exposer_t( "SearchQueryOptions" );
+        ::boost::python::scope SearchQueryOptions_scope( SearchQueryOptions_exposer );
+        SearchQueryOptions_exposer.def( ::boost::python::indexing::map_suite< ::std::map<osiris::PortalObjectType, boost::shared_ptr<osiris::ISearchOptions>, std::less<osiris::PortalObjectType>, osiris::StdAllocator<std::pair<osiris::PortalObjectType const, boost::shared_ptr<osiris::ISearchOptions> >, osiris::SysAllocator<std::pair<osiris::PortalObjectType const, boost::shared_ptr<osiris::ISearchOptions> > > > > >() );
+    }
 
 }

@@ -34,17 +34,17 @@ static boost::python::object getRootFolder_64f5026cb0721f4559c025390f208cc7( ::o
 
 static boost::python::object getFolders_6f410da03f6d520955b2ca1f5ded8b57( ::osiris::LanguageManager const & inst ){
     ::osiris::PythonThreadSaver __pythreadSaver;
-    ::std::list<boost::shared_ptr<osiris::LanguageFolder>, osiris::StdAllocator<boost::shared_ptr<osiris::LanguageFolder>, osiris::NedAllocator<boost::shared_ptr<osiris::LanguageFolder> > > > result = inst.getFolders();
+    ::std::list<boost::shared_ptr<osiris::LanguageFolder>, osiris::StdAllocator<boost::shared_ptr<osiris::LanguageFolder>, osiris::SysAllocator<boost::shared_ptr<osiris::LanguageFolder> > > > result = inst.getFolders();
     __pythreadSaver.restore();
     return boost::python::object( result );
 }
 
 static boost::python::object getCultures_ad0e9e448e35c3a9633218cfdb7d58c5( ::osiris::LanguageManager & inst ){
     ::osiris::PythonThreadSaver __pythreadSaver;
-    ::boost::unordered::unordered_map<osiris::String, boost::shared_ptr<osiris::LanguageCulture>, boost::hash<osiris::String>, std::equal_to<osiris::String>, osiris::StdAllocator<std::pair<osiris::String const, boost::shared_ptr<osiris::LanguageCulture> >, osiris::NedAllocator<std::pair<osiris::String const, boost::shared_ptr<osiris::LanguageCulture> > > > > & result = inst.getCultures();
+    ::boost::unordered::unordered_map<osiris::String, boost::shared_ptr<osiris::LanguageCulture>, boost::hash<osiris::String>, std::equal_to<osiris::String>, osiris::StdAllocator<std::pair<osiris::String const, boost::shared_ptr<osiris::LanguageCulture> >, osiris::SysAllocator<std::pair<osiris::String const, boost::shared_ptr<osiris::LanguageCulture> > > > > & result = inst.getCultures();
     __pythreadSaver.restore();
     typedef bp::return_value_policy< bp::reference_existing_object > call_policies_t;
-    return boost::python::object( pyplusplus::call_policies::make_object< call_policies_t, ::boost::unordered::unordered_map<osiris::String, boost::shared_ptr<osiris::LanguageCulture>, boost::hash<osiris::String>, std::equal_to<osiris::String>, osiris::StdAllocator<std::pair<osiris::String const, boost::shared_ptr<osiris::LanguageCulture> >, osiris::NedAllocator<std::pair<osiris::String const, boost::shared_ptr<osiris::LanguageCulture> > > > > & >( result ) );
+    return boost::python::object( pyplusplus::call_policies::make_object< call_policies_t, ::boost::unordered::unordered_map<osiris::String, boost::shared_ptr<osiris::LanguageCulture>, boost::hash<osiris::String>, std::equal_to<osiris::String>, osiris::StdAllocator<std::pair<osiris::String const, boost::shared_ptr<osiris::LanguageCulture> >, osiris::SysAllocator<std::pair<osiris::String const, boost::shared_ptr<osiris::LanguageCulture> > > > > & >( result ) );
 }
 
 static void clear_4b74f324801acef930d55cdc8bba5852( ::osiris::LanguageManager & inst ){
@@ -394,12 +394,12 @@ void register_LanguageManager_class(){
         }
         { //property "folders"[fget=::osiris::LanguageManager::getFolders]
         
-            typedef ::std::list<boost::shared_ptr<osiris::LanguageFolder>, osiris::StdAllocator<boost::shared_ptr<osiris::LanguageFolder>, osiris::NedAllocator<boost::shared_ptr<osiris::LanguageFolder> > > > ( ::osiris::LanguageManager::*fget )(  ) const;
+            typedef ::std::list<boost::shared_ptr<osiris::LanguageFolder>, osiris::StdAllocator<boost::shared_ptr<osiris::LanguageFolder>, osiris::SysAllocator<boost::shared_ptr<osiris::LanguageFolder> > > > ( ::osiris::LanguageManager::*fget )(  ) const;
             
             LanguageManager_exposer.add_property( 
                 "folders"
                 , fget( &::osiris::LanguageManager::getFolders )
-                , "get property, built on top of \"std::list<boost::shared_ptr<osiris::LanguageFolder>, osiris::StdAllocator<boost::shared_ptr<osiris::LanguageFolder>, osiris::NedAllocator<boost::shared_ptr<osiris::LanguageFolder> > > > osiris::LanguageManager::getFolders() const [member function]\"" );
+                , "get property, built on top of \"std::list<boost::shared_ptr<osiris::LanguageFolder>, osiris::StdAllocator<boost::shared_ptr<osiris::LanguageFolder>, osiris::SysAllocator<boost::shared_ptr<osiris::LanguageFolder> > > > osiris::LanguageManager::getFolders() const [member function]\"" );
         
         }
     }

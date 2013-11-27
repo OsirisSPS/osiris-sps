@@ -39,10 +39,10 @@ static boost::python::object getEndPos_a050c3d00b71c028c73dc89df0aa553d( ::osiri
 
 static boost::python::object getChilds_e9940fd1c137ecfce8d2ab9bf04472fe( ::osiris::OMLItem const & inst ){
     ::osiris::PythonThreadSaver __pythreadSaver;
-    ::std::list<boost::shared_ptr<osiris::OMLItem>, osiris::StdAllocator<boost::shared_ptr<osiris::OMLItem>, osiris::NedAllocator<boost::shared_ptr<osiris::OMLItem> > > > const & result = inst.getChilds();
+    ::std::list<boost::shared_ptr<osiris::OMLItem>, osiris::StdAllocator<boost::shared_ptr<osiris::OMLItem>, osiris::SysAllocator<boost::shared_ptr<osiris::OMLItem> > > > const & result = inst.getChilds();
     __pythreadSaver.restore();
     typedef bp::return_value_policy< bp::copy_const_reference > call_policies_t;
-    return boost::python::object( pyplusplus::call_policies::make_object< call_policies_t, ::std::list<boost::shared_ptr<osiris::OMLItem>, osiris::StdAllocator<boost::shared_ptr<osiris::OMLItem>, osiris::NedAllocator<boost::shared_ptr<osiris::OMLItem> > > > const & >( result ) );
+    return boost::python::object( pyplusplus::call_policies::make_object< call_policies_t, ::std::list<boost::shared_ptr<osiris::OMLItem>, osiris::StdAllocator<boost::shared_ptr<osiris::OMLItem>, osiris::SysAllocator<boost::shared_ptr<osiris::OMLItem> > > > const & >( result ) );
 }
 
 static boost::python::object getPostProcess_3aa531dbf35df429a9e582b0c270a14e( ::osiris::OMLItem const & inst ){
@@ -94,16 +94,16 @@ static boost::python::object getSingleText_f183a441d4322bf5921e60a5e5349a23( ::o
     return boost::python::object( result );
 }
 
-static boost::python::object extract_46b6ced7a647ce2b0d0f099b9297f310( ::osiris::OMLItem & inst, ::std::wstring const & text, ::std::wstring const & textLower, ::size_t posStart, ::size_t posEnd=std::basic_string<wchar_t, std::char_traits<wchar_t>, std::allocator<wchar_t> >::npos ){
+static boost::python::object extract_88741ade76ebdc58ff0b73adb4c63078( ::osiris::OMLItem & inst, ::std::wstring const & text, ::std::wstring const & textLower, ::std::size_t posStart, ::std::size_t posEnd=std::basic_string<wchar_t, std::char_traits<wchar_t>, std::allocator<wchar_t> >::npos ){
     ::osiris::PythonThreadSaver __pythreadSaver;
-    ::size_t result = inst.extract(text, textLower, posStart, posEnd);
+    ::std::size_t result = inst.extract(text, textLower, posStart, posEnd);
     __pythreadSaver.restore();
     return boost::python::object( result );
 }
 
-static boost::python::object extract2_017a18328c61546fa01f59c174d1474d( ::osiris::OMLItem & inst, ::std::wstring const & text, ::std::wstring const & textLower, ::size_t posStart, ::size_t posEnd=std::basic_string<wchar_t, std::char_traits<wchar_t>, std::allocator<wchar_t> >::npos ){
+static boost::python::object extract2_be7d41110081c46e60d73d326fc84cd8( ::osiris::OMLItem & inst, ::std::wstring const & text, ::std::wstring const & textLower, ::std::size_t posStart, ::std::size_t posEnd=std::basic_string<wchar_t, std::char_traits<wchar_t>, std::allocator<wchar_t> >::npos ){
     ::osiris::PythonThreadSaver __pythreadSaver;
-    ::size_t result = inst.extract2(text, textLower, posStart, posEnd);
+    ::std::size_t result = inst.extract2(text, textLower, posStart, posEnd);
     __pythreadSaver.restore();
     return boost::python::object( result );
 }
@@ -169,7 +169,7 @@ static void removeParam_a439de55e0f9d9f75644ea04c11c1f3a( ::osiris::OMLItem & in
     __pythreadSaver.restore();
 }
 
-static void setEndPos_3083adad5c4278c4ef793abea110fd85( ::osiris::OMLItem & inst, ::size_t pos ){
+static void setEndPos_a93dddf1bd17a8e8bb220ee74e39c450( ::osiris::OMLItem & inst, ::size_t pos ){
     ::osiris::PythonThreadSaver __pythreadSaver;
     inst.setEndPos(pos);
     __pythreadSaver.restore();
@@ -305,22 +305,22 @@ void register_OMLItem_class(){
         }
         { //::osiris::OMLItem::extract
         
-            typedef boost::python::object ( *extract_function_type )( ::osiris::OMLItem &,::std::wstring const &,::std::wstring const &,::size_t,::size_t );
+            typedef boost::python::object ( *extract_function_type )( ::osiris::OMLItem &,::std::wstring const &,::std::wstring const &,::std::size_t,::std::size_t );
             
             OMLItem_exposer.def( 
                 "extract"
-                , extract_function_type( &extract_46b6ced7a647ce2b0d0f099b9297f310 )
-                , ( ::boost::python::arg("inst"), ::boost::python::arg("text"), ::boost::python::arg("textLower"), ::boost::python::arg("posStart"), ::boost::python::arg("posEnd")=(::size_t)(std::basic_string<wchar_t, std::char_traits<wchar_t>, std::allocator<wchar_t> >::npos) ) );
+                , extract_function_type( &extract_88741ade76ebdc58ff0b73adb4c63078 )
+                , ( ::boost::python::arg("inst"), ::boost::python::arg("text"), ::boost::python::arg("textLower"), ::boost::python::arg("posStart"), ::boost::python::arg("posEnd")=(::std::size_t)(std::basic_string<wchar_t, std::char_traits<wchar_t>, std::allocator<wchar_t> >::npos) ) );
         
         }
         { //::osiris::OMLItem::extract2
         
-            typedef boost::python::object ( *extract2_function_type )( ::osiris::OMLItem &,::std::wstring const &,::std::wstring const &,::size_t,::size_t );
+            typedef boost::python::object ( *extract2_function_type )( ::osiris::OMLItem &,::std::wstring const &,::std::wstring const &,::std::size_t,::std::size_t );
             
             OMLItem_exposer.def( 
                 "extract2"
-                , extract2_function_type( &extract2_017a18328c61546fa01f59c174d1474d )
-                , ( ::boost::python::arg("inst"), ::boost::python::arg("text"), ::boost::python::arg("textLower"), ::boost::python::arg("posStart"), ::boost::python::arg("posEnd")=(::size_t)(std::basic_string<wchar_t, std::char_traits<wchar_t>, std::allocator<wchar_t> >::npos) ) );
+                , extract2_function_type( &extract2_be7d41110081c46e60d73d326fc84cd8 )
+                , ( ::boost::python::arg("inst"), ::boost::python::arg("text"), ::boost::python::arg("textLower"), ::boost::python::arg("posStart"), ::boost::python::arg("posEnd")=(::std::size_t)(std::basic_string<wchar_t, std::char_traits<wchar_t>, std::allocator<wchar_t> >::npos) ) );
         
         }
         { //::osiris::OMLItem::add
@@ -419,7 +419,7 @@ void register_OMLItem_class(){
             
             OMLItem_exposer.def( 
                 "setEndPos"
-                , setEndPos_function_type( &setEndPos_3083adad5c4278c4ef793abea110fd85 )
+                , setEndPos_function_type( &setEndPos_a93dddf1bd17a8e8bb220ee74e39c450 )
                 , ( ::boost::python::arg("inst"), ::boost::python::arg("pos") ) );
         
         }
@@ -515,14 +515,14 @@ void register_OMLItem_class(){
         }
         { //property "childs"[fget=::osiris::OMLItem::getChilds]
         
-            typedef ::std::list<boost::shared_ptr<osiris::OMLItem>, osiris::StdAllocator<boost::shared_ptr<osiris::OMLItem>, osiris::NedAllocator<boost::shared_ptr<osiris::OMLItem> > > > const & ( ::osiris::OMLItem::*fget )(  ) const;
+            typedef ::std::list<boost::shared_ptr<osiris::OMLItem>, osiris::StdAllocator<boost::shared_ptr<osiris::OMLItem>, osiris::SysAllocator<boost::shared_ptr<osiris::OMLItem> > > > const & ( ::osiris::OMLItem::*fget )(  ) const;
             
             OMLItem_exposer.add_property( 
                 "childs"
                 , ::boost::python::make_function( 
                       fget( &::osiris::OMLItem::getChilds )
                     , bp::return_value_policy< bp::copy_const_reference >() ) 
-                , "get property, built on top of \"std::list<boost::shared_ptr<osiris::OMLItem>, osiris::StdAllocator<boost::shared_ptr<osiris::OMLItem>, osiris::NedAllocator<boost::shared_ptr<osiris::OMLItem> > > > const & osiris::OMLItem::getChilds() const [member function]\"" );
+                , "get property, built on top of \"std::list<boost::shared_ptr<osiris::OMLItem>, osiris::StdAllocator<boost::shared_ptr<osiris::OMLItem>, osiris::SysAllocator<boost::shared_ptr<osiris::OMLItem> > > > const & osiris::OMLItem::getChilds() const [member function]\"" );
         
         }
         { //property "directClose"[fget=::osiris::OMLItem::getDirectClose]

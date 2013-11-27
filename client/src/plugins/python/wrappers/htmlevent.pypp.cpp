@@ -50,7 +50,7 @@ static void decode_ed3ee07b8dfbe686fe4d1468f7ddb26a( ::osiris::HtmlEvent & inst,
     __pythreadSaver.restore();
 }
 
-static boost::python::object get_fdf65d578983a4168dd2c52894f922b5( ::osiris::HtmlEvent const & inst, ::size_t index ){
+static boost::python::object get_82c090f38182cc8d7c490f24ccc8f5c4( ::osiris::HtmlEvent const & inst, ::size_t index ){
     ::osiris::PythonThreadSaver __pythreadSaver;
     ::osiris::String const & result = inst.get(index);
     __pythreadSaver.restore();
@@ -128,7 +128,7 @@ void register_HtmlEvent_class(){
             
             HtmlEvent_exposer.def( 
                 "get"
-                , get_function_type( &get_fdf65d578983a4168dd2c52894f922b5 )
+                , get_function_type( &get_82c090f38182cc8d7c490f24ccc8f5c4 )
                 , ( ::boost::python::arg("inst"), ::boost::python::arg("index") ) );
         
         }

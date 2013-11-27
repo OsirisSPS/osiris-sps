@@ -11,11 +11,11 @@ namespace bp = boost::python;
 
 void register_StringList_class(){
 
-    { //::std::list<osiris::String, osiris::StdAllocator<osiris::String, osiris::NedAllocator<osiris::String> > >
-        typedef ::boost::python::class_< ::std::list<osiris::String, osiris::StdAllocator<osiris::String, osiris::NedAllocator<osiris::String> > > > StringList_exposer_t;
+    { //::std::list<osiris::String, osiris::StdAllocator<osiris::String, osiris::SysAllocator<osiris::String> > >
+        typedef ::boost::python::class_< ::std::list<osiris::String, osiris::StdAllocator<osiris::String, osiris::SysAllocator<osiris::String> > > > StringList_exposer_t;
         StringList_exposer_t StringList_exposer = StringList_exposer_t( "StringList" );
         ::boost::python::scope StringList_scope( StringList_exposer );
-        StringList_exposer.def( ::boost::python::indexing::list_suite< ::std::list<osiris::String, osiris::StdAllocator<osiris::String, osiris::NedAllocator<osiris::String> > > >() );
+        StringList_exposer.def( ::boost::python::indexing::list_suite< ::std::list<osiris::String, osiris::StdAllocator<osiris::String, osiris::SysAllocator<osiris::String> > > >() );
     }
 
 }

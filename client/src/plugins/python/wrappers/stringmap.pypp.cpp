@@ -11,7 +11,11 @@ namespace bp = boost::python;
 
 void register_StringMap_class(){
 
-    ::boost::python::class_< ::std::map<osiris::String, osiris::String, std::less<osiris::String>, osiris::StdAllocator<std::pair<osiris::String const, osiris::String>, osiris::NedAllocator<std::pair<osiris::String const, osiris::String> > > > >( "StringMap" )    
-        .def( ::boost::python::indexing::map_suite< ::std::map<osiris::String, osiris::String, std::less<osiris::String>, osiris::StdAllocator<std::pair<osiris::String const, osiris::String>, osiris::NedAllocator<std::pair<osiris::String const, osiris::String> > > > >() );
+    { //::std::map<osiris::String, osiris::String, std::less<osiris::String>, osiris::StdAllocator<std::pair<osiris::String const, osiris::String>, osiris::SysAllocator<std::pair<osiris::String const, osiris::String> > > >
+        typedef ::boost::python::class_< ::std::map<osiris::String, osiris::String, std::less<osiris::String>, osiris::StdAllocator<std::pair<osiris::String const, osiris::String>, osiris::SysAllocator<std::pair<osiris::String const, osiris::String> > > > > StringMap_exposer_t;
+        StringMap_exposer_t StringMap_exposer = StringMap_exposer_t( "StringMap" );
+        ::boost::python::scope StringMap_scope( StringMap_exposer );
+        StringMap_exposer.def( ::boost::python::indexing::map_suite< ::std::map<osiris::String, osiris::String, std::less<osiris::String>, osiris::StdAllocator<std::pair<osiris::String const, osiris::String>, osiris::SysAllocator<std::pair<osiris::String const, osiris::String> > > > >() );
+    }
 
 }

@@ -12,11 +12,11 @@ namespace bp = boost::python;
 
 void register_IdeAccountsList_class(){
 
-    { //::std::list<boost::shared_ptr<osiris::IdeAccount>, osiris::StdAllocator<boost::shared_ptr<osiris::IdeAccount>, osiris::NedAllocator<boost::shared_ptr<osiris::IdeAccount> > > >
-        typedef ::boost::python::class_< ::std::list<boost::shared_ptr<osiris::IdeAccount>, osiris::StdAllocator<boost::shared_ptr<osiris::IdeAccount>, osiris::NedAllocator<boost::shared_ptr<osiris::IdeAccount> > > > > IdeAccountsList_exposer_t;
+    { //::std::list<boost::shared_ptr<osiris::IdeAccount>, osiris::StdAllocator<boost::shared_ptr<osiris::IdeAccount>, osiris::SysAllocator<boost::shared_ptr<osiris::IdeAccount> > > >
+        typedef ::boost::python::class_< ::std::list<boost::shared_ptr<osiris::IdeAccount>, osiris::StdAllocator<boost::shared_ptr<osiris::IdeAccount>, osiris::SysAllocator<boost::shared_ptr<osiris::IdeAccount> > > > > IdeAccountsList_exposer_t;
         IdeAccountsList_exposer_t IdeAccountsList_exposer = IdeAccountsList_exposer_t( "IdeAccountsList" );
         ::boost::python::scope IdeAccountsList_scope( IdeAccountsList_exposer );
-        IdeAccountsList_exposer.def( ::boost::python::indexing::list_suite< ::std::list<boost::shared_ptr<osiris::IdeAccount>, osiris::StdAllocator<boost::shared_ptr<osiris::IdeAccount>, osiris::NedAllocator<boost::shared_ptr<osiris::IdeAccount> > > > >() );
+        IdeAccountsList_exposer.def( ::boost::python::indexing::list_suite< ::std::list<boost::shared_ptr<osiris::IdeAccount>, osiris::StdAllocator<boost::shared_ptr<osiris::IdeAccount>, osiris::SysAllocator<boost::shared_ptr<osiris::IdeAccount> > > > >() );
     }
 
 }
