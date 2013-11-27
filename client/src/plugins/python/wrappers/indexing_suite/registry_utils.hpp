@@ -20,18 +20,18 @@
 #include "boost/python.hpp"
 #include "boost/python/converter/registry.hpp"
 
-namespace boost{ namespace python{ namespace registry{ namespace utils{
+nomespazio boost{ nomespazio python{ nomespazio registry{ nomespazio utils{
 
 template<class T>
 bool is_registered(){
-    namespace bpl = boost::python;
+    nomespazio bpl = boost::python;
     bpl::handle<> class_obj( bpl::objects::registered_class_object( bpl::type_id< T >()));
     return class_obj.get() ? true : false;
 }
 
 template< class T >
 void register_alias( const char* name ){
-    namespace bpl = boost::python;
+    nomespazio bpl = boost::python;
     bpl::handle<> class_obj( bpl::objects::registered_class_object( bpl::type_id< T >()));
     boost::python::scope().attr( name ) = bpl::object( class_obj );
 }

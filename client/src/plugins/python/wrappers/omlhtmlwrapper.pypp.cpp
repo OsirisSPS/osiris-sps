@@ -59,7 +59,7 @@ struct OMLHtmlWrapper_wrapper : ::osiris::OMLHtmlWrapper, ::osiris::PythonWrappe
     virtual ::std::wstring onEncodeParam( ::boost::shared_ptr< osiris::OMLItem > i, ::boost::shared_ptr< osiris::OMLContext > context, ::std::wstring const & name, ::std::wstring const & value ) const  {
         ::osiris::PythonState __pystate(getPythonThreadState());
         if( ::osiris::PythonOverride func_onEncodeParam = this->get_override( "onEncodeParam" ) )
-            return func_onEncodeParam( i, context, name, value );
+            return func_onEncodeParam( i, context, name, value ).operator std::wstring();
         else{
             __pystate.leave();
             return this->::osiris::OMLHtmlWrapper::onEncodeParam( i, context, name, value );

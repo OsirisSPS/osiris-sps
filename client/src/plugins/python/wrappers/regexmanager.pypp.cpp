@@ -34,7 +34,7 @@ struct RegexManager_wrapper : ::osiris::RegexManager, ::osiris::PythonWrapper< :
 
     static boost::python::object getRegex( ::osiris::RegexManager const & inst, ::osiris::String const & regex, bool nocase=true ){
         ::osiris::PythonThreadSaver __pythreadSaver;
-        ::boost::shared_ptr<boost::basic_regex<wchar_t, boost::regex_traits<wchar_t, boost::cpp_regex_traits<wchar_t> > > > result = inst.getRegex(regex, nocase);
+        ::boost::shared_ptr<boost::wregex> result = inst.getRegex(regex, nocase);
         __pythreadSaver.restore();
         return boost::python::object( result );
     }
