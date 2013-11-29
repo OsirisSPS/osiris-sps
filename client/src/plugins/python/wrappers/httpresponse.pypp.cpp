@@ -24,10 +24,10 @@ struct HttpResponse_wrapper : ::osiris::HttpResponse, ::osiris::PythonWrapper< :
 
     static boost::python::object getCookies( ::osiris::HttpResponse const & inst ){
         ::osiris::PythonThreadSaver __pythreadSaver;
-        ::std::map<std::string, boost::shared_ptr<osiris::HttpCookie>, std::less<std::string>, osiris::StdAllocator<std::pair<std::string const, boost::shared_ptr<osiris::HttpCookie> >, osiris::NedAllocator<std::pair<std::string const, boost::shared_ptr<osiris::HttpCookie> > > > > const & result = inst.getCookies();
+        ::std::map<std::string, boost::shared_ptr<osiris::HttpCookie>, std::less<std::string>, osiris::StdAllocator<std::pair<std::string const, boost::shared_ptr<osiris::HttpCookie> >, osiris::SysAllocator<std::pair<std::string const, boost::shared_ptr<osiris::HttpCookie> > > > > const & result = inst.getCookies();
         __pythreadSaver.restore();
         typedef bp::return_value_policy< bp::copy_const_reference > call_policies_t;
-        return boost::python::object( pyplusplus::call_policies::make_object< call_policies_t, ::std::map<std::string, boost::shared_ptr<osiris::HttpCookie>, std::less<std::string>, osiris::StdAllocator<std::pair<std::string const, boost::shared_ptr<osiris::HttpCookie> >, osiris::NedAllocator<std::pair<std::string const, boost::shared_ptr<osiris::HttpCookie> > > > > const & >( result ) );
+        return boost::python::object( pyplusplus::call_policies::make_object< call_policies_t, ::std::map<std::string, boost::shared_ptr<osiris::HttpCookie>, std::less<std::string>, osiris::StdAllocator<std::pair<std::string const, boost::shared_ptr<osiris::HttpCookie> >, osiris::SysAllocator<std::pair<std::string const, boost::shared_ptr<osiris::HttpCookie> > > > > const & >( result ) );
     }
 
     static boost::python::object getStatusCode( ::osiris::HttpResponse const & inst ){
@@ -609,14 +609,14 @@ void register_HttpResponse_class(){
         }
         { //property "cookies"[fget=::osiris::HttpResponse::getCookies]
         
-            typedef ::std::map<std::string, boost::shared_ptr<osiris::HttpCookie>, std::less<std::string>, osiris::StdAllocator<std::pair<std::string const, boost::shared_ptr<osiris::HttpCookie> >, osiris::NedAllocator<std::pair<std::string const, boost::shared_ptr<osiris::HttpCookie> > > > > const & ( ::osiris::HttpResponse::*fget )(  ) const;
+            typedef ::std::map<std::string, boost::shared_ptr<osiris::HttpCookie>, std::less<std::string>, osiris::StdAllocator<std::pair<std::string const, boost::shared_ptr<osiris::HttpCookie> >, osiris::SysAllocator<std::pair<std::string const, boost::shared_ptr<osiris::HttpCookie> > > > > const & ( ::osiris::HttpResponse::*fget )(  ) const;
             
             HttpResponse_exposer.add_property( 
                 "cookies"
                 , ::boost::python::make_function( 
                       fget( &::osiris::HttpResponse::getCookies )
                     , bp::return_value_policy< bp::copy_const_reference >() ) 
-                , "get property, built on top of \"std::map<std::string, boost::shared_ptr<osiris::HttpCookie>, std::less<std::string>, osiris::StdAllocator<std::pair<std::string const, boost::shared_ptr<osiris::HttpCookie> >, osiris::NedAllocator<std::pair<std::string const, boost::shared_ptr<osiris::HttpCookie> > > > > const & osiris::HttpResponse::getCookies() const [member function]\"" );
+                , "get property, built on top of \"std::map<std::string, boost::shared_ptr<osiris::HttpCookie>, std::less<std::string>, osiris::StdAllocator<std::pair<std::string const, boost::shared_ptr<osiris::HttpCookie> >, osiris::SysAllocator<std::pair<std::string const, boost::shared_ptr<osiris::HttpCookie> > > > > const & osiris::HttpResponse::getCookies() const [member function]\"" );
         
         }
         { //property "contentType"[fget=::osiris::HttpResponse::getContentType]

@@ -103,11 +103,11 @@ struct HttpSession_wrapper : ::osiris::HttpSession, ::osiris::PythonWrapper< ::o
         __pythreadSaver.restore();
     }
 
-    ::boost::shared_ptr< boost::array< char, 8192u > > getRequestBuffer(  ) const {
+    ::boost::shared_ptr< boost::array< char, 8192ul > > getRequestBuffer(  ) const {
         return ::osiris::HttpSession::getRequestBuffer(  );
     }
 
-    ::boost::shared_ptr< boost::array< char, 8192u > > getResponseBuffer(  ) const {
+    ::boost::shared_ptr< boost::array< char, 8192ul > > getResponseBuffer(  ) const {
         return ::osiris::HttpSession::getResponseBuffer(  );
     }
 
@@ -255,7 +255,7 @@ void register_HttpSession_class(){
         }
         { //::osiris::HttpSession::getRequestBuffer
         
-            typedef ::boost::shared_ptr< boost::array< char, 8192u > > ( HttpSession_wrapper::*getRequestBuffer_function_type )(  ) const;
+            typedef ::boost::shared_ptr< boost::array< char, 8192ul > > ( HttpSession_wrapper::*getRequestBuffer_function_type )(  ) const;
             
             HttpSession_exposer.def( 
                 "getRequestBuffer"
@@ -264,7 +264,7 @@ void register_HttpSession_class(){
         }
         { //::osiris::HttpSession::getResponseBuffer
         
-            typedef ::boost::shared_ptr< boost::array< char, 8192u > > ( HttpSession_wrapper::*getResponseBuffer_function_type )(  ) const;
+            typedef ::boost::shared_ptr< boost::array< char, 8192ul > > ( HttpSession_wrapper::*getResponseBuffer_function_type )(  ) const;
             
             HttpSession_exposer.def( 
                 "getResponseBuffer"

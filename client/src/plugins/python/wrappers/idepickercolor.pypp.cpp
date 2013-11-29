@@ -4,9 +4,9 @@
 #include "pypluspluscommon.h"
 #include "boost/python.hpp"
 #include "__call_policies.pypp.hpp"
+#include "idepickercolor.h"
 #include "ideskin.h"
 #include "idesession.h"
-#include "ideportalcontrol.h"
 #include "datatree.h"
 #include "htmlattributes.h"
 #include "htmlevent.h"
@@ -16,47 +16,62 @@
 #include "httprequest.h"
 #include "httpresponse.h"
 #include "httpsession.h"
-#include "idepickerselect.h"
-#include "idepickercomponent.h"
-#include "idepickerskin.h"
-#include "idepickersections.h"
-#include "idepickerculture.h"
-#include "extensionscomponentcontrol.h"
-#include "extensionscomponenteditor.h"
-#include "extensionscomponentviewer.h"
-#include "extensionsinvalidcomponent.h"
-#include "idepositioneditor.h"
-#include "extensionsmodulecontrol.h"
-#include "extensionsmoduleviewer.h"
-#include "extensionsinvalidmodule.h"
-#include "extensionsmoduleviewerhidden.h"
-#include "extensionsmoduleeditor.h"
-#include "idesearchparam.h"
-#include "ipagehtmldiv.pypp.hpp"
+#include "idepickercolor.pypp.hpp"
 
 namespace bp = boost::python;
 
-struct IPageControl_less__osiris_scope_HtmlDiv__greater__wrapper : ::osiris::IPageControl< osiris::HtmlDiv >, ::osiris::PythonWrapper< ::osiris::IPageControl< osiris::HtmlDiv > > {
+struct IdePickerColor_wrapper : ::osiris::IdePickerColor, ::osiris::PythonWrapper< ::osiris::IdePickerColor > {
 
-    IPageControl_less__osiris_scope_HtmlDiv__greater__wrapper( )
-    : ::osiris::IPageControl<osiris::HtmlDiv>( )
-      , ::osiris::PythonWrapper< ::osiris::IPageControl< osiris::HtmlDiv > >(){
+    IdePickerColor_wrapper( )
+    : ::osiris::IdePickerColor( )
+      , ::osiris::PythonWrapper< ::osiris::IdePickerColor >(){
         // null constructor
     
     }
 
-    static boost::python::object getPage( ::osiris::IPageControl< osiris::HtmlDiv > const & inst ){
+    virtual ::osiris::String getValue(  ) const  {
+        ::osiris::PythonState __pystate(getPythonThreadState());
+        if( ::osiris::PythonOverride func_getValue = this->get_override( "getValue" ) )
+            return func_getValue(  );
+        else{
+            __pystate.leave();
+            return this->::osiris::IdePickerColor::getValue(  );
+        }
+    }
+    
+    ::osiris::String default_getValue(  ) const  {
         ::osiris::PythonThreadSaver __pythreadSaver;
-        ::boost::shared_ptr<osiris::IPage> result = inst.getPage();
-        __pythreadSaver.restore();
-        return boost::python::object( result );
+        return ::osiris::IdePickerColor::getValue( );
     }
 
-    static boost::python::object getSkin( ::osiris::IPageControl< osiris::HtmlDiv > const & inst ){
+    virtual void onLoad(  ) {
+        ::osiris::PythonState __pystate(getPythonThreadState());
+        if( ::osiris::PythonOverride func_onLoad = this->get_override( "onLoad" ) )
+            func_onLoad(  );
+        else{
+            __pystate.leave();
+            this->::osiris::IdePickerColor::onLoad(  );
+        }
+    }
+    
+    void default_onLoad(  ) {
         ::osiris::PythonThreadSaver __pythreadSaver;
-        ::boost::shared_ptr<osiris::IdeSkin> result = inst.getSkin();
-        __pythreadSaver.restore();
-        return boost::python::object( result );
+        ::osiris::IdePickerColor::onLoad( );
+    }
+
+    virtual void setValue( ::osiris::String const & value ) {
+        ::osiris::PythonState __pystate(getPythonThreadState());
+        if( ::osiris::PythonOverride func_setValue = this->get_override( "setValue" ) )
+            func_setValue( boost::ref(value) );
+        else{
+            __pystate.leave();
+            this->::osiris::IdePickerColor::setValue( boost::ref(value) );
+        }
+    }
+    
+    void default_setValue( ::osiris::String const & value ) {
+        ::osiris::PythonThreadSaver __pythreadSaver;
+        ::osiris::IdePickerColor::setValue( boost::ref(value) );
     }
 
     bool decodeEvent( ::osiris::String const & command, ::osiris::String & eventName, ::osiris::HtmlEvent & e ) const {
@@ -112,21 +127,6 @@ struct IPageControl_less__osiris_scope_HtmlDiv__greater__wrapper : ::osiris::IPa
         ::osiris::IHtmlControl::onInit( );
     }
 
-    virtual void onLoad(  ){
-        ::osiris::PythonState __pystate(getPythonThreadState());
-        if( ::osiris::PythonOverride func_onLoad = this->get_override( "onLoad" ) )
-            func_onLoad(  );
-        else{
-            __pystate.leave();
-            this->::osiris::IHtmlControl::onLoad(  );
-        }
-    }
-    
-    virtual void default_onLoad(  ){
-        ::osiris::PythonThreadSaver __pythreadSaver;
-        ::osiris::IHtmlControl::onLoad( );
-    }
-
     virtual void onLoadViewState( ::osiris::DataTree const & state ){
         ::osiris::PythonState __pystate(getPythonThreadState());
         if( ::osiris::PythonOverride func_onLoadViewState = this->get_override( "onLoadViewState" ) )
@@ -163,13 +163,13 @@ struct IPageControl_less__osiris_scope_HtmlDiv__greater__wrapper : ::osiris::IPa
             func_onRender( boost::ref(writer) );
         else{
             __pystate.leave();
-            this->::osiris::HtmlDiv::onRender( boost::ref(writer) );
+            this->::osiris::IHtmlControl::onRender( boost::ref(writer) );
         }
     }
     
     virtual void default_onRender( ::osiris::HtmlWriter & writer ){
         ::osiris::PythonThreadSaver __pythreadSaver;
-        ::osiris::HtmlDiv::onRender( boost::ref(writer) );
+        ::osiris::IHtmlControl::onRender( boost::ref(writer) );
     }
 
     virtual void onSaveViewState( ::osiris::DataTree & state ){
@@ -223,186 +223,179 @@ struct IPageControl_less__osiris_scope_HtmlDiv__greater__wrapper : ::osiris::IPa
 
 };
 
-void register_IPageHtmlDiv_class(){
+void register_IdePickerColor_class(){
 
-    { //::osiris::IPageControl< osiris::HtmlDiv >
-        typedef ::boost::python::class_< IPageControl_less__osiris_scope_HtmlDiv__greater__wrapper, ::boost::python::bases< ::osiris::HtmlDiv >, ::boost::noncopyable > IPageHtmlDiv_exposer_t;
-        IPageHtmlDiv_exposer_t IPageHtmlDiv_exposer = IPageHtmlDiv_exposer_t( "IPageHtmlDiv", ::boost::python::init< >() );
-        ::boost::python::scope IPageHtmlDiv_scope( IPageHtmlDiv_exposer );
-        { //::osiris::IPageControl< osiris::HtmlDiv >::getPage
+    { //::osiris::IdePickerColor
+        typedef ::boost::python::class_< IdePickerColor_wrapper, ::boost::python::bases< ::osiris::IPageControl< osiris::IHtmlControl > >, ::boost::noncopyable > IdePickerColor_exposer_t;
+        IdePickerColor_exposer_t IdePickerColor_exposer = IdePickerColor_exposer_t( "IdePickerColor", ::boost::python::init< >() );
+        ::boost::python::scope IdePickerColor_scope( IdePickerColor_exposer );
+        { //::osiris::IdePickerColor::getValue
         
-            typedef ::osiris::IPageControl< osiris::HtmlDiv > exported_class_t;
-            typedef boost::python::object ( *getPage_function_type )( ::osiris::IPageControl<osiris::HtmlDiv> const & );
+            typedef ::osiris::String ( ::osiris::IdePickerColor::*getValue_function_type )(  ) const;
+            typedef ::osiris::String ( IdePickerColor_wrapper::*default_getValue_function_type )(  ) const;
             
-            IPageHtmlDiv_exposer.def( 
-                "getPage"
-                , getPage_function_type( &IPageControl_less__osiris_scope_HtmlDiv__greater__wrapper::getPage ) );
+            IdePickerColor_exposer.def( 
+                "getValue"
+                , getValue_function_type(&::osiris::IdePickerColor::getValue)
+                , default_getValue_function_type(&IdePickerColor_wrapper::default_getValue) );
         
         }
-        { //::osiris::IPageControl< osiris::HtmlDiv >::getSkin
+        { //::osiris::IdePickerColor::onLoad
         
-            typedef ::osiris::IPageControl< osiris::HtmlDiv > exported_class_t;
-            typedef boost::python::object ( *getSkin_function_type )( ::osiris::IPageControl<osiris::HtmlDiv> const & );
+            typedef void ( ::osiris::IdePickerColor::*onLoad_function_type )(  ) ;
+            typedef void ( IdePickerColor_wrapper::*default_onLoad_function_type )(  ) ;
             
-            IPageHtmlDiv_exposer.def( 
-                "getSkin"
-                , getSkin_function_type( &IPageControl_less__osiris_scope_HtmlDiv__greater__wrapper::getSkin ) );
+            IdePickerColor_exposer.def( 
+                "onLoad"
+                , onLoad_function_type(&::osiris::IdePickerColor::onLoad)
+                , default_onLoad_function_type(&IdePickerColor_wrapper::default_onLoad) );
+        
+        }
+        { //::osiris::IdePickerColor::setValue
+        
+            typedef void ( ::osiris::IdePickerColor::*setValue_function_type )( ::osiris::String const & ) ;
+            typedef void ( IdePickerColor_wrapper::*default_setValue_function_type )( ::osiris::String const & ) ;
+            
+            IdePickerColor_exposer.def( 
+                "setValue"
+                , setValue_function_type(&::osiris::IdePickerColor::setValue)
+                , default_setValue_function_type(&IdePickerColor_wrapper::default_setValue)
+                , ( ::boost::python::arg("value") ) );
         
         }
         { //::osiris::IHtmlControl::decodeEvent
         
-            typedef bool ( IPageControl_less__osiris_scope_HtmlDiv__greater__wrapper::*decodeEvent_function_type )( ::osiris::String const &,::osiris::String &,::osiris::HtmlEvent & ) const;
+            typedef bool ( IdePickerColor_wrapper::*decodeEvent_function_type )( ::osiris::String const &,::osiris::String &,::osiris::HtmlEvent & ) const;
             
-            IPageHtmlDiv_exposer.def( 
+            IdePickerColor_exposer.def( 
                 "decodeEvent"
-                , decodeEvent_function_type( &IPageControl_less__osiris_scope_HtmlDiv__greater__wrapper::decodeEvent )
+                , decodeEvent_function_type( &IdePickerColor_wrapper::decodeEvent )
                 , ( ::boost::python::arg("command"), ::boost::python::arg("eventName"), ::boost::python::arg("e") ) );
         
         }
         { //::osiris::IHtmlControl::encodeEvent
         
-            typedef ::osiris::String ( IPageControl_less__osiris_scope_HtmlDiv__greater__wrapper::*encodeEvent_function_type )( ::osiris::String const &,::osiris::HtmlEvent const * ) const;
+            typedef ::osiris::String ( IdePickerColor_wrapper::*encodeEvent_function_type )( ::osiris::String const &,::osiris::HtmlEvent const * ) const;
             
-            IPageHtmlDiv_exposer.def( 
+            IdePickerColor_exposer.def( 
                 "encodeEvent"
-                , encodeEvent_function_type( &IPageControl_less__osiris_scope_HtmlDiv__greater__wrapper::encodeEvent )
+                , encodeEvent_function_type( &IdePickerColor_wrapper::encodeEvent )
                 , ( ::boost::python::arg("eventName"), ::boost::python::arg("e")=(osiris::null) ) );
         
         }
         { //::osiris::IHtmlControl::getSession
         
             typedef ::boost::shared_ptr< osiris::HttpSession > ( ::osiris::IHtmlControl::*getSession_function_type )(  ) const;
-            typedef ::boost::shared_ptr< osiris::HttpSession > ( IPageControl_less__osiris_scope_HtmlDiv__greater__wrapper::*default_getSession_function_type )(  ) const;
+            typedef ::boost::shared_ptr< osiris::HttpSession > ( IdePickerColor_wrapper::*default_getSession_function_type )(  ) const;
             
-            IPageHtmlDiv_exposer.def( 
+            IdePickerColor_exposer.def( 
                 "getSession"
                 , getSession_function_type(&::osiris::IHtmlControl::getSession)
-                , default_getSession_function_type(&IPageControl_less__osiris_scope_HtmlDiv__greater__wrapper::default_getSession) );
+                , default_getSession_function_type(&IdePickerColor_wrapper::default_getSession) );
         
         }
         { //::osiris::IHtmlControl::onEvent
         
-            typedef void ( IPageControl_less__osiris_scope_HtmlDiv__greater__wrapper::*onEvent_function_type )( ::osiris::String const &,::osiris::IEvent * ) ;
+            typedef void ( IdePickerColor_wrapper::*onEvent_function_type )( ::osiris::String const &,::osiris::IEvent * ) ;
             
-            IPageHtmlDiv_exposer.def( 
+            IdePickerColor_exposer.def( 
                 "onEvent"
-                , onEvent_function_type( &IPageControl_less__osiris_scope_HtmlDiv__greater__wrapper::default_onEvent )
+                , onEvent_function_type( &IdePickerColor_wrapper::default_onEvent )
                 , ( ::boost::python::arg("name"), ::boost::python::arg("e")=(osiris::null) ) );
         
         }
         { //::osiris::IHtmlControl::onInit
         
-            typedef void ( IPageControl_less__osiris_scope_HtmlDiv__greater__wrapper::*onInit_function_type )(  ) ;
+            typedef void ( IdePickerColor_wrapper::*onInit_function_type )(  ) ;
             
-            IPageHtmlDiv_exposer.def( 
+            IdePickerColor_exposer.def( 
                 "onInit"
-                , onInit_function_type( &IPageControl_less__osiris_scope_HtmlDiv__greater__wrapper::default_onInit ) );
-        
-        }
-        { //::osiris::IHtmlControl::onLoad
-        
-            typedef void ( IPageControl_less__osiris_scope_HtmlDiv__greater__wrapper::*onLoad_function_type )(  ) ;
-            
-            IPageHtmlDiv_exposer.def( 
-                "onLoad"
-                , onLoad_function_type( &IPageControl_less__osiris_scope_HtmlDiv__greater__wrapper::default_onLoad ) );
+                , onInit_function_type( &IdePickerColor_wrapper::default_onInit ) );
         
         }
         { //::osiris::IHtmlControl::onLoadViewState
         
-            typedef void ( IPageControl_less__osiris_scope_HtmlDiv__greater__wrapper::*onLoadViewState_function_type )( ::osiris::DataTree const & ) ;
+            typedef void ( IdePickerColor_wrapper::*onLoadViewState_function_type )( ::osiris::DataTree const & ) ;
             
-            IPageHtmlDiv_exposer.def( 
+            IdePickerColor_exposer.def( 
                 "onLoadViewState"
-                , onLoadViewState_function_type( &IPageControl_less__osiris_scope_HtmlDiv__greater__wrapper::default_onLoadViewState )
+                , onLoadViewState_function_type( &IdePickerColor_wrapper::default_onLoadViewState )
                 , ( ::boost::python::arg("state") ) );
         
         }
         { //::osiris::IHtmlControl::onPreRender
         
-            typedef void ( IPageControl_less__osiris_scope_HtmlDiv__greater__wrapper::*onPreRender_function_type )(  ) ;
+            typedef void ( IdePickerColor_wrapper::*onPreRender_function_type )(  ) ;
             
-            IPageHtmlDiv_exposer.def( 
+            IdePickerColor_exposer.def( 
                 "onPreRender"
-                , onPreRender_function_type( &IPageControl_less__osiris_scope_HtmlDiv__greater__wrapper::default_onPreRender ) );
+                , onPreRender_function_type( &IdePickerColor_wrapper::default_onPreRender ) );
         
         }
-        { //::osiris::HtmlDiv::onRender
+        { //::osiris::IHtmlControl::onRender
         
-            typedef void ( IPageControl_less__osiris_scope_HtmlDiv__greater__wrapper::*onRender_function_type )( ::osiris::HtmlWriter & ) ;
+            typedef void ( IdePickerColor_wrapper::*onRender_function_type )( ::osiris::HtmlWriter & ) ;
             
-            IPageHtmlDiv_exposer.def( 
+            IdePickerColor_exposer.def( 
                 "onRender"
-                , onRender_function_type( &IPageControl_less__osiris_scope_HtmlDiv__greater__wrapper::default_onRender )
+                , onRender_function_type( &IdePickerColor_wrapper::default_onRender )
                 , ( ::boost::python::arg("writer") ) );
         
         }
         { //::osiris::IHtmlControl::onSaveViewState
         
-            typedef void ( IPageControl_less__osiris_scope_HtmlDiv__greater__wrapper::*onSaveViewState_function_type )( ::osiris::DataTree & ) ;
+            typedef void ( IdePickerColor_wrapper::*onSaveViewState_function_type )( ::osiris::DataTree & ) ;
             
-            IPageHtmlDiv_exposer.def( 
+            IdePickerColor_exposer.def( 
                 "onSaveViewState"
-                , onSaveViewState_function_type( &IPageControl_less__osiris_scope_HtmlDiv__greater__wrapper::default_onSaveViewState )
+                , onSaveViewState_function_type( &IdePickerColor_wrapper::default_onSaveViewState )
                 , ( ::boost::python::arg("state") ) );
         
         }
         { //::osiris::IHtmlControl::renderAttributes
         
             typedef void ( ::osiris::IHtmlControl::*renderAttributes_function_type )( ::osiris::HtmlWriter & ) ;
-            typedef void ( IPageControl_less__osiris_scope_HtmlDiv__greater__wrapper::*default_renderAttributes_function_type )( ::osiris::HtmlWriter & ) ;
+            typedef void ( IdePickerColor_wrapper::*default_renderAttributes_function_type )( ::osiris::HtmlWriter & ) ;
             
-            IPageHtmlDiv_exposer.def( 
+            IdePickerColor_exposer.def( 
                 "renderAttributes"
                 , renderAttributes_function_type(&::osiris::IHtmlControl::renderAttributes)
-                , default_renderAttributes_function_type(&IPageControl_less__osiris_scope_HtmlDiv__greater__wrapper::default_renderAttributes)
+                , default_renderAttributes_function_type(&IdePickerColor_wrapper::default_renderAttributes)
                 , ( ::boost::python::arg("writer") ) );
         
         }
         { //::osiris::IHtmlControl::renderChilds
         
             typedef void ( ::osiris::IHtmlControl::*renderChilds_function_type )( ::osiris::HtmlWriter & ) ;
-            typedef void ( IPageControl_less__osiris_scope_HtmlDiv__greater__wrapper::*default_renderChilds_function_type )( ::osiris::HtmlWriter & ) ;
+            typedef void ( IdePickerColor_wrapper::*default_renderChilds_function_type )( ::osiris::HtmlWriter & ) ;
             
-            IPageHtmlDiv_exposer.def( 
+            IdePickerColor_exposer.def( 
                 "renderChilds"
                 , renderChilds_function_type(&::osiris::IHtmlControl::renderChilds)
-                , default_renderChilds_function_type(&IPageControl_less__osiris_scope_HtmlDiv__greater__wrapper::default_renderChilds)
+                , default_renderChilds_function_type(&IdePickerColor_wrapper::default_renderChilds)
                 , ( ::boost::python::arg("writer") ) );
         
         }
         { //::osiris::IHtmlControl::saveViewState
         
-            typedef void ( IPageControl_less__osiris_scope_HtmlDiv__greater__wrapper::*saveViewState_function_type )( ::osiris::DataTree & ) ;
+            typedef void ( IdePickerColor_wrapper::*saveViewState_function_type )( ::osiris::DataTree & ) ;
             
-            IPageHtmlDiv_exposer.def( 
+            IdePickerColor_exposer.def( 
                 "saveViewState"
-                , saveViewState_function_type( &IPageControl_less__osiris_scope_HtmlDiv__greater__wrapper::saveViewState )
+                , saveViewState_function_type( &IdePickerColor_wrapper::saveViewState )
                 , ( ::boost::python::arg("states") ) );
         
         }
-        { //property "page"[fget=::osiris::IPageControl<osiris::HtmlDiv>::getPage]
+        { //property "value"[fget=::osiris::IdePickerColor::getValue, fset=::osiris::IdePickerColor::setValue]
         
-            typedef ::osiris::IPageControl<osiris::HtmlDiv> fget_class_t;
+            typedef ::osiris::String ( ::osiris::IdePickerColor::*fget )(  ) const;
+            typedef void ( ::osiris::IdePickerColor::*fset )( ::osiris::String const & ) ;
             
-            typedef ::boost::shared_ptr<osiris::IPage> ( fget_class_t::*fget )(  ) const;
-            
-            IPageHtmlDiv_exposer.add_property( 
-                "page"
-                , fget( &::osiris::IPageControl<osiris::HtmlDiv>::getPage )
-                , "get property, built on top of \"boost::shared_ptr<osiris::IPage> osiris::IPageControl<osiris::HtmlDiv>::getPage() const [member function]\"" );
-        
-        }
-        { //property "skin"[fget=::osiris::IPageControl<osiris::HtmlDiv>::getSkin]
-        
-            typedef ::osiris::IPageControl<osiris::HtmlDiv> fget_class_t;
-            
-            typedef ::boost::shared_ptr<osiris::IdeSkin> ( fget_class_t::*fget )(  ) const;
-            
-            IPageHtmlDiv_exposer.add_property( 
-                "skin"
-                , fget( &::osiris::IPageControl<osiris::HtmlDiv>::getSkin )
-                , "get property, built on top of \"boost::shared_ptr<osiris::IdeSkin> osiris::IPageControl<osiris::HtmlDiv>::getSkin() const [member function]\"" );
+            IdePickerColor_exposer.add_property( 
+                "value"
+                , fget( &::osiris::IdePickerColor::getValue )
+                , fset( &::osiris::IdePickerColor::setValue )
+                , "get\\set property, built on top of \"osiris::String osiris::IdePickerColor::getValue() const [member function]\" and \"void osiris::IdePickerColor::setValue(osiris::String const & value) [member function]\"" );
         
         }
     }

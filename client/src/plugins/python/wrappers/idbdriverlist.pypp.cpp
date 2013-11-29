@@ -12,11 +12,11 @@ namespace bp = boost::python;
 
 void register_IDbDriverList_class(){
 
-    { //::std::list<boost::shared_ptr<osiris::IDbDriver>, osiris::StdAllocator<boost::shared_ptr<osiris::IDbDriver>, osiris::NedAllocator<boost::shared_ptr<osiris::IDbDriver> > > >
-        typedef ::boost::python::class_< ::std::list<boost::shared_ptr<osiris::IDbDriver>, osiris::StdAllocator<boost::shared_ptr<osiris::IDbDriver>, osiris::NedAllocator<boost::shared_ptr<osiris::IDbDriver> > > > > IDbDriverList_exposer_t;
+    { //::std::list<boost::shared_ptr<osiris::IDbDriver>, osiris::StdAllocator<boost::shared_ptr<osiris::IDbDriver>, osiris::SysAllocator<boost::shared_ptr<osiris::IDbDriver> > > >
+        typedef ::boost::python::class_< ::std::list<boost::shared_ptr<osiris::IDbDriver>, osiris::StdAllocator<boost::shared_ptr<osiris::IDbDriver>, osiris::SysAllocator<boost::shared_ptr<osiris::IDbDriver> > > > > IDbDriverList_exposer_t;
         IDbDriverList_exposer_t IDbDriverList_exposer = IDbDriverList_exposer_t( "IDbDriverList" );
         ::boost::python::scope IDbDriverList_scope( IDbDriverList_exposer );
-        IDbDriverList_exposer.def( ::boost::python::indexing::list_suite< ::std::list<boost::shared_ptr<osiris::IDbDriver>, osiris::StdAllocator<boost::shared_ptr<osiris::IDbDriver>, osiris::NedAllocator<boost::shared_ptr<osiris::IDbDriver> > > > >() );
+        IDbDriverList_exposer.def( ::boost::python::indexing::list_suite< ::std::list<boost::shared_ptr<osiris::IDbDriver>, osiris::StdAllocator<boost::shared_ptr<osiris::IDbDriver>, osiris::SysAllocator<boost::shared_ptr<osiris::IDbDriver> > > > >() );
     }
 
 }

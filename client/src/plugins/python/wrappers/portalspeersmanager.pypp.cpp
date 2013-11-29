@@ -44,7 +44,7 @@ static boost::python::object peekPeer_3b65602ec22ec2197590f960e40c27a7( ::osiris
     return boost::python::object( result );
 }
 
-static void extractSupernodes_e8f8c6bb3eadc64f38939f371430c488( ::osiris::PortalsPeersManager & inst, ::osiris::uint32 count, ::std::list<boost::shared_ptr<osiris::PortalsPeer>,osiris::StdAllocator<boost::shared_ptr<osiris::PortalsPeer>, osiris::NedAllocator<boost::shared_ptr<osiris::PortalsPeer> > > > & peers ){
+static void extractSupernodes_f9b66401edb576cf5bcc56c8c4e649c7( ::osiris::PortalsPeersManager & inst, ::osiris::uint32 count, ::std::list<boost::shared_ptr<osiris::PortalsPeer>,osiris::StdAllocator<boost::shared_ptr<osiris::PortalsPeer>, osiris::SysAllocator<boost::shared_ptr<osiris::PortalsPeer> > > > & peers ){
     ::osiris::PythonThreadSaver __pythreadSaver;
     inst.extractSupernodes(count, peers);
     __pythreadSaver.restore();
@@ -94,7 +94,7 @@ static void removePeer_67f5c62d9d1b99199861fb2f8db0e24d( ::osiris::PortalsPeersM
     __pythreadSaver.restore();
 }
 
-static void removePeer_f05a9c06e1a90b70303d8e50454d2224( ::osiris::PortalsPeersManager & inst, ::osiris::uint64 id ){
+static void removePeer_c8ee085fbeaa8adcc7800c6ce2a4d9fb( ::osiris::PortalsPeersManager & inst, ::osiris::uint64 id ){
     ::osiris::PythonThreadSaver __pythreadSaver;
     inst.removePeer(id);
     __pythreadSaver.restore();
@@ -174,11 +174,11 @@ void register_PortalsPeersManager_class(){
         }
         { //::osiris::PortalsPeersManager::extractSupernodes
         
-            typedef void ( *extractSupernodes_function_type )( ::osiris::PortalsPeersManager &,::osiris::uint32,::std::list<boost::shared_ptr<osiris::PortalsPeer>,osiris::StdAllocator<boost::shared_ptr<osiris::PortalsPeer>, osiris::NedAllocator<boost::shared_ptr<osiris::PortalsPeer> > > > & );
+            typedef void ( *extractSupernodes_function_type )( ::osiris::PortalsPeersManager &,::osiris::uint32,::std::list<boost::shared_ptr<osiris::PortalsPeer>,osiris::StdAllocator<boost::shared_ptr<osiris::PortalsPeer>, osiris::SysAllocator<boost::shared_ptr<osiris::PortalsPeer> > > > & );
             
             PortalsPeersManager_exposer.def( 
                 "extractSupernodes"
-                , extractSupernodes_function_type( &extractSupernodes_e8f8c6bb3eadc64f38939f371430c488 )
+                , extractSupernodes_function_type( &extractSupernodes_f9b66401edb576cf5bcc56c8c4e649c7 )
                 , ( ::boost::python::arg("inst"), ::boost::python::arg("count"), ::boost::python::arg("peers") ) );
         
         }
@@ -257,7 +257,7 @@ void register_PortalsPeersManager_class(){
             
             PortalsPeersManager_exposer.def( 
                 "removePeer"
-                , removePeer_function_type( &removePeer_f05a9c06e1a90b70303d8e50454d2224 )
+                , removePeer_function_type( &removePeer_c8ee085fbeaa8adcc7800c6ce2a4d9fb )
                 , ( ::boost::python::arg("inst"), ::boost::python::arg("id") ) );
         
         }

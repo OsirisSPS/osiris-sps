@@ -253,6 +253,8 @@
 
 #include "wrappers/idepickerbool.pypp.hpp"
 
+#include "wrappers/idepickercolor.pypp.hpp"
+
 #include "wrappers/idepickercomponent.pypp.hpp"
 
 #include "wrappers/idepickerculture.pypp.hpp"
@@ -264,6 +266,8 @@
 #include "wrappers/idepickernumber.pypp.hpp"
 
 #include "wrappers/idepickerobject.pypp.hpp"
+
+#include "wrappers/idepickerobjectex.pypp.hpp"
 
 #include "wrappers/idepickersections.pypp.hpp"
 
@@ -952,6 +956,8 @@ BOOST_PYTHON_MODULE(osirislib){
 
     register_IdePickerBool_class();
 
+    register_IdePickerColor_class();
+
     register_IdePickerSelect_class();
 
     register_IdePickerComponent_class();
@@ -965,6 +971,8 @@ BOOST_PYTHON_MODULE(osirislib){
     register_IdePickerNumber_class();
 
     register_IdePickerObject_class();
+
+    register_IdePickerObjectEx_class();
 
     register_IdePickerSections_class();
 

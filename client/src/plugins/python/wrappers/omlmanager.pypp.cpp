@@ -11,10 +11,10 @@ namespace bp = boost::python;
 
 static boost::python::object getEmoticons_e8cbaac7bf74ed32213f6f86cd3c55f3( ::osiris::OMLManager const & inst ){
     ::osiris::PythonThreadSaver __pythreadSaver;
-    ::std::list<boost::shared_ptr<osiris::OMLEmoticon>, osiris::StdAllocator<boost::shared_ptr<osiris::OMLEmoticon>, osiris::NedAllocator<boost::shared_ptr<osiris::OMLEmoticon> > > > const & result = inst.getEmoticons();
+    ::std::list<boost::shared_ptr<osiris::OMLEmoticon>, osiris::StdAllocator<boost::shared_ptr<osiris::OMLEmoticon>, osiris::SysAllocator<boost::shared_ptr<osiris::OMLEmoticon> > > > const & result = inst.getEmoticons();
     __pythreadSaver.restore();
     typedef bp::return_value_policy< bp::copy_const_reference > call_policies_t;
-    return boost::python::object( pyplusplus::call_policies::make_object< call_policies_t, ::std::list<boost::shared_ptr<osiris::OMLEmoticon>, osiris::StdAllocator<boost::shared_ptr<osiris::OMLEmoticon>, osiris::NedAllocator<boost::shared_ptr<osiris::OMLEmoticon> > > > const & >( result ) );
+    return boost::python::object( pyplusplus::call_policies::make_object< call_policies_t, ::std::list<boost::shared_ptr<osiris::OMLEmoticon>, osiris::StdAllocator<boost::shared_ptr<osiris::OMLEmoticon>, osiris::SysAllocator<boost::shared_ptr<osiris::OMLEmoticon> > > > const & >( result ) );
 }
 
 static boost::python::object getEventBeforeParse_60721ed6ba01c7c098e466d3426481d4( ::osiris::OMLManager const & inst ){
@@ -536,14 +536,14 @@ void register_OMLManager_class(){
         }
         { //property "emoticons"[fget=::osiris::OMLManager::getEmoticons]
         
-            typedef ::std::list<boost::shared_ptr<osiris::OMLEmoticon>, osiris::StdAllocator<boost::shared_ptr<osiris::OMLEmoticon>, osiris::NedAllocator<boost::shared_ptr<osiris::OMLEmoticon> > > > const & ( ::osiris::OMLManager::*fget )(  ) const;
+            typedef ::std::list<boost::shared_ptr<osiris::OMLEmoticon>, osiris::StdAllocator<boost::shared_ptr<osiris::OMLEmoticon>, osiris::SysAllocator<boost::shared_ptr<osiris::OMLEmoticon> > > > const & ( ::osiris::OMLManager::*fget )(  ) const;
             
             OMLManager_exposer.add_property( 
                 "emoticons"
                 , ::boost::python::make_function( 
                       fget( &::osiris::OMLManager::getEmoticons )
                     , bp::return_value_policy< bp::copy_const_reference >() ) 
-                , "get property, built on top of \"std::list<boost::shared_ptr<osiris::OMLEmoticon>, osiris::StdAllocator<boost::shared_ptr<osiris::OMLEmoticon>, osiris::NedAllocator<boost::shared_ptr<osiris::OMLEmoticon> > > > const & osiris::OMLManager::getEmoticons() const [member function]\"" );
+                , "get property, built on top of \"std::list<boost::shared_ptr<osiris::OMLEmoticon>, osiris::StdAllocator<boost::shared_ptr<osiris::OMLEmoticon>, osiris::SysAllocator<boost::shared_ptr<osiris::OMLEmoticon> > > > const & osiris::OMLManager::getEmoticons() const [member function]\"" );
         
         }
         { //property "eventBeforeParse"[fget=::osiris::OMLManager::getEventBeforeParse]

@@ -20,7 +20,7 @@ struct Options_wrapper : ::osiris::Options, ::osiris::PythonWrapper< ::osiris::O
 
     static boost::python::object getOptions( ::osiris::Options const & inst ){
         ::osiris::PythonThreadSaver __pythreadSaver;
-        ::osiris::LockPtr<const std::map<osiris::String, boost::shared_ptr<osiris::Option>, std::less<osiris::String>, osiris::StdAllocator<std::pair<const osiris::String, boost::shared_ptr<osiris::Option> >, osiris::NedAllocator<std::pair<const osiris::String, boost::shared_ptr<osiris::Option> > > > >,boost::shared_mutex,boost::shared_lock<boost::shared_mutex> > result = inst.getOptions();
+        ::osiris::LockPtr<const std::map<osiris::String, boost::shared_ptr<osiris::Option>, std::less<osiris::String>, osiris::StdAllocator<std::pair<const osiris::String, boost::shared_ptr<osiris::Option> >, osiris::SysAllocator<std::pair<const osiris::String, boost::shared_ptr<osiris::Option> > > > >,boost::shared_mutex,boost::shared_lock<boost::shared_mutex> > result = inst.getOptions();
         __pythreadSaver.restore();
         return boost::python::object( result );
     }
@@ -751,12 +751,12 @@ void register_Options_class(){
         }
         { //property "options"[fget=::osiris::Options::getOptions]
         
-            typedef ::osiris::LockPtr<const std::map<osiris::String, boost::shared_ptr<osiris::Option>, std::less<osiris::String>, osiris::StdAllocator<std::pair<const osiris::String, boost::shared_ptr<osiris::Option> >, osiris::NedAllocator<std::pair<const osiris::String, boost::shared_ptr<osiris::Option> > > > >,boost::shared_mutex,boost::shared_lock<boost::shared_mutex> > ( ::osiris::Options::*fget )(  ) const;
+            typedef ::osiris::LockPtr<const std::map<osiris::String, boost::shared_ptr<osiris::Option>, std::less<osiris::String>, osiris::StdAllocator<std::pair<const osiris::String, boost::shared_ptr<osiris::Option> >, osiris::SysAllocator<std::pair<const osiris::String, boost::shared_ptr<osiris::Option> > > > >,boost::shared_mutex,boost::shared_lock<boost::shared_mutex> > ( ::osiris::Options::*fget )(  ) const;
             
             Options_exposer.add_property( 
                 "options"
                 , fget( &::osiris::Options::getOptions )
-                , "get property, built on top of \"osiris::LockPtr<const std::map<osiris::String, boost::shared_ptr<osiris::Option>, std::less<osiris::String>, osiris::StdAllocator<std::pair<const osiris::String, boost::shared_ptr<osiris::Option> >, osiris::NedAllocator<std::pair<const osiris::String, boost::shared_ptr<osiris::Option> > > > >,boost::shared_mutex,boost::shared_lock<boost::shared_mutex> > osiris::Options::getOptions() const [member function]\"" );
+                , "get property, built on top of \"osiris::LockPtr<const std::map<osiris::String, boost::shared_ptr<osiris::Option>, std::less<osiris::String>, osiris::StdAllocator<std::pair<const osiris::String, boost::shared_ptr<osiris::Option> >, osiris::SysAllocator<std::pair<const osiris::String, boost::shared_ptr<osiris::Option> > > > >,boost::shared_mutex,boost::shared_lock<boost::shared_mutex> > osiris::Options::getOptions() const [member function]\"" );
         
         }
         { //property "rootPath"[fget=::osiris::Options::getRootPath]

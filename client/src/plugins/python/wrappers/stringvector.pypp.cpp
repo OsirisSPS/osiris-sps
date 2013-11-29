@@ -11,11 +11,11 @@ namespace bp = boost::python;
 
 void register_StringVector_class(){
 
-    { //::std::vector<osiris::String, osiris::StdAllocator<osiris::String, osiris::NedAllocator<osiris::String> > >
-        typedef ::boost::python::class_< ::std::vector<osiris::String, osiris::StdAllocator<osiris::String, osiris::NedAllocator<osiris::String> > > > StringVector_exposer_t;
+    { //::std::vector<osiris::String, osiris::StdAllocator<osiris::String, osiris::SysAllocator<osiris::String> > >
+        typedef ::boost::python::class_< ::std::vector<osiris::String, osiris::StdAllocator<osiris::String, osiris::SysAllocator<osiris::String> > > > StringVector_exposer_t;
         StringVector_exposer_t StringVector_exposer = StringVector_exposer_t( "StringVector" );
         ::boost::python::scope StringVector_scope( StringVector_exposer );
-        StringVector_exposer.def( ::boost::python::indexing::vector_suite< ::std::vector<osiris::String, osiris::StdAllocator<osiris::String, osiris::NedAllocator<osiris::String> > > >() );
+        StringVector_exposer.def( ::boost::python::indexing::vector_suite< ::std::vector<osiris::String, osiris::StdAllocator<osiris::String, osiris::SysAllocator<osiris::String> > > >() );
     }
 
 }

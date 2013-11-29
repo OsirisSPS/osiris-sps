@@ -79,7 +79,7 @@ struct IXMLFunction_wrapper : ::osiris::IXMLFunction, ::osiris::PythonWrapper< :
         return boost::python::object( result );
     }
 
-    virtual bool execute( ::osiris::IXMLFunction::IContext & context, ::std::vector<osiris::DataItem,osiris::StdAllocator<osiris::DataItem, osiris::NedAllocator<osiris::DataItem> > > const & args, ::osiris::DataItem & result ){
+    virtual bool execute( ::osiris::IXMLFunction::IContext & context, ::std::vector<osiris::DataItem,osiris::StdAllocator<osiris::DataItem, osiris::SysAllocator<osiris::DataItem> > > const & args, ::osiris::DataItem & result ){
         ::osiris::PythonState __pystate(getPythonThreadState());
         ::osiris::PythonOverride func_execute = this->get_override( "execute" );
         return func_execute( boost::ref(context), boost::ref(args), boost::ref(result) );
@@ -177,7 +177,7 @@ void register_IXMLFunction_class(){
         }
         { //::osiris::IXMLFunction::execute
         
-            typedef bool ( ::osiris::IXMLFunction::*execute_function_type )( ::osiris::IXMLFunction::IContext &,::std::vector<osiris::DataItem,osiris::StdAllocator<osiris::DataItem, osiris::NedAllocator<osiris::DataItem> > > const &,::osiris::DataItem & ) ;
+            typedef bool ( ::osiris::IXMLFunction::*execute_function_type )( ::osiris::IXMLFunction::IContext &,::std::vector<osiris::DataItem,osiris::StdAllocator<osiris::DataItem, osiris::SysAllocator<osiris::DataItem> > > const &,::osiris::DataItem & ) ;
             
             IXMLFunction_exposer.def( 
                 "execute"

@@ -24,18 +24,18 @@ struct ExtensionsSystem_wrapper : ::osiris::ExtensionsSystem, ::osiris::PythonWr
 
     static boost::python::object getComponents( ::osiris::ExtensionsSystem const & inst ){
         ::osiris::PythonThreadSaver __pythreadSaver;
-        ::boost::unordered::unordered_map<osiris::String, boost::shared_ptr<osiris::IExtensionsComponent>, boost::hash<osiris::String>, std::equal_to<osiris::String>, osiris::StdAllocator<std::pair<osiris::String const, boost::shared_ptr<osiris::IExtensionsComponent> >, osiris::NedAllocator<std::pair<osiris::String const, boost::shared_ptr<osiris::IExtensionsComponent> > > > > const & result = inst.getComponents();
+        ::boost::unordered::unordered_map<osiris::String, boost::shared_ptr<osiris::IExtensionsComponent>, boost::hash<osiris::String>, std::equal_to<osiris::String>, osiris::StdAllocator<std::pair<osiris::String const, boost::shared_ptr<osiris::IExtensionsComponent> >, osiris::SysAllocator<std::pair<osiris::String const, boost::shared_ptr<osiris::IExtensionsComponent> > > > > const & result = inst.getComponents();
         __pythreadSaver.restore();
         typedef bp::return_value_policy< bp::copy_const_reference > call_policies_t;
-        return boost::python::object( pyplusplus::call_policies::make_object< call_policies_t, ::boost::unordered::unordered_map<osiris::String, boost::shared_ptr<osiris::IExtensionsComponent>, boost::hash<osiris::String>, std::equal_to<osiris::String>, osiris::StdAllocator<std::pair<osiris::String const, boost::shared_ptr<osiris::IExtensionsComponent> >, osiris::NedAllocator<std::pair<osiris::String const, boost::shared_ptr<osiris::IExtensionsComponent> > > > > const & >( result ) );
+        return boost::python::object( pyplusplus::call_policies::make_object< call_policies_t, ::boost::unordered::unordered_map<osiris::String, boost::shared_ptr<osiris::IExtensionsComponent>, boost::hash<osiris::String>, std::equal_to<osiris::String>, osiris::StdAllocator<std::pair<osiris::String const, boost::shared_ptr<osiris::IExtensionsComponent> >, osiris::SysAllocator<std::pair<osiris::String const, boost::shared_ptr<osiris::IExtensionsComponent> > > > > const & >( result ) );
     }
 
     static boost::python::object getModules( ::osiris::ExtensionsSystem const & inst ){
         ::osiris::PythonThreadSaver __pythreadSaver;
-        ::boost::unordered::unordered_map<osiris::String, boost::shared_ptr<osiris::IExtensionsModule>, boost::hash<osiris::String>, std::equal_to<osiris::String>, osiris::StdAllocator<std::pair<osiris::String const, boost::shared_ptr<osiris::IExtensionsModule> >, osiris::NedAllocator<std::pair<osiris::String const, boost::shared_ptr<osiris::IExtensionsModule> > > > > const & result = inst.getModules();
+        ::boost::unordered::unordered_map<osiris::String, boost::shared_ptr<osiris::IExtensionsModule>, boost::hash<osiris::String>, std::equal_to<osiris::String>, osiris::StdAllocator<std::pair<osiris::String const, boost::shared_ptr<osiris::IExtensionsModule> >, osiris::SysAllocator<std::pair<osiris::String const, boost::shared_ptr<osiris::IExtensionsModule> > > > > const & result = inst.getModules();
         __pythreadSaver.restore();
         typedef bp::return_value_policy< bp::copy_const_reference > call_policies_t;
-        return boost::python::object( pyplusplus::call_policies::make_object< call_policies_t, ::boost::unordered::unordered_map<osiris::String, boost::shared_ptr<osiris::IExtensionsModule>, boost::hash<osiris::String>, std::equal_to<osiris::String>, osiris::StdAllocator<std::pair<osiris::String const, boost::shared_ptr<osiris::IExtensionsModule> >, osiris::NedAllocator<std::pair<osiris::String const, boost::shared_ptr<osiris::IExtensionsModule> > > > > const & >( result ) );
+        return boost::python::object( pyplusplus::call_policies::make_object< call_policies_t, ::boost::unordered::unordered_map<osiris::String, boost::shared_ptr<osiris::IExtensionsModule>, boost::hash<osiris::String>, std::equal_to<osiris::String>, osiris::StdAllocator<std::pair<osiris::String const, boost::shared_ptr<osiris::IExtensionsModule> >, osiris::SysAllocator<std::pair<osiris::String const, boost::shared_ptr<osiris::IExtensionsModule> > > > > const & >( result ) );
     }
 
     static boost::python::object getExtensions( ::osiris::ExtensionsSystem const & inst ){
@@ -681,26 +681,26 @@ void register_ExtensionsSystem_class(){
         }
         { //property "components"[fget=::osiris::ExtensionsSystem::getComponents]
         
-            typedef ::boost::unordered::unordered_map<osiris::String, boost::shared_ptr<osiris::IExtensionsComponent>, boost::hash<osiris::String>, std::equal_to<osiris::String>, osiris::StdAllocator<std::pair<osiris::String const, boost::shared_ptr<osiris::IExtensionsComponent> >, osiris::NedAllocator<std::pair<osiris::String const, boost::shared_ptr<osiris::IExtensionsComponent> > > > > const & ( ::osiris::ExtensionsSystem::*fget )(  ) const;
+            typedef ::boost::unordered::unordered_map<osiris::String, boost::shared_ptr<osiris::IExtensionsComponent>, boost::hash<osiris::String>, std::equal_to<osiris::String>, osiris::StdAllocator<std::pair<osiris::String const, boost::shared_ptr<osiris::IExtensionsComponent> >, osiris::SysAllocator<std::pair<osiris::String const, boost::shared_ptr<osiris::IExtensionsComponent> > > > > const & ( ::osiris::ExtensionsSystem::*fget )(  ) const;
             
             ExtensionsSystem_exposer.add_property( 
                 "components"
                 , ::boost::python::make_function( 
                       fget( &::osiris::ExtensionsSystem::getComponents )
                     , bp::return_value_policy< bp::copy_const_reference >() ) 
-                , "get property, built on top of \"boost::unordered::unordered_map<osiris::String, boost::shared_ptr<osiris::IExtensionsComponent>, boost::hash<osiris::String>, std::equal_to<osiris::String>, osiris::StdAllocator<std::pair<osiris::String const, boost::shared_ptr<osiris::IExtensionsComponent> >, osiris::NedAllocator<std::pair<osiris::String const, boost::shared_ptr<osiris::IExtensionsComponent> > > > > const & osiris::ExtensionsSystem::getComponents() const [member function]\"" );
+                , "get property, built on top of \"boost::unordered::unordered_map<osiris::String, boost::shared_ptr<osiris::IExtensionsComponent>, boost::hash<osiris::String>, std::equal_to<osiris::String>, osiris::StdAllocator<std::pair<osiris::String const, boost::shared_ptr<osiris::IExtensionsComponent> >, osiris::SysAllocator<std::pair<osiris::String const, boost::shared_ptr<osiris::IExtensionsComponent> > > > > const & osiris::ExtensionsSystem::getComponents() const [member function]\"" );
         
         }
         { //property "modules"[fget=::osiris::ExtensionsSystem::getModules]
         
-            typedef ::boost::unordered::unordered_map<osiris::String, boost::shared_ptr<osiris::IExtensionsModule>, boost::hash<osiris::String>, std::equal_to<osiris::String>, osiris::StdAllocator<std::pair<osiris::String const, boost::shared_ptr<osiris::IExtensionsModule> >, osiris::NedAllocator<std::pair<osiris::String const, boost::shared_ptr<osiris::IExtensionsModule> > > > > const & ( ::osiris::ExtensionsSystem::*fget )(  ) const;
+            typedef ::boost::unordered::unordered_map<osiris::String, boost::shared_ptr<osiris::IExtensionsModule>, boost::hash<osiris::String>, std::equal_to<osiris::String>, osiris::StdAllocator<std::pair<osiris::String const, boost::shared_ptr<osiris::IExtensionsModule> >, osiris::SysAllocator<std::pair<osiris::String const, boost::shared_ptr<osiris::IExtensionsModule> > > > > const & ( ::osiris::ExtensionsSystem::*fget )(  ) const;
             
             ExtensionsSystem_exposer.add_property( 
                 "modules"
                 , ::boost::python::make_function( 
                       fget( &::osiris::ExtensionsSystem::getModules )
                     , bp::return_value_policy< bp::copy_const_reference >() ) 
-                , "get property, built on top of \"boost::unordered::unordered_map<osiris::String, boost::shared_ptr<osiris::IExtensionsModule>, boost::hash<osiris::String>, std::equal_to<osiris::String>, osiris::StdAllocator<std::pair<osiris::String const, boost::shared_ptr<osiris::IExtensionsModule> >, osiris::NedAllocator<std::pair<osiris::String const, boost::shared_ptr<osiris::IExtensionsModule> > > > > const & osiris::ExtensionsSystem::getModules() const [member function]\"" );
+                , "get property, built on top of \"boost::unordered::unordered_map<osiris::String, boost::shared_ptr<osiris::IExtensionsModule>, boost::hash<osiris::String>, std::equal_to<osiris::String>, osiris::StdAllocator<std::pair<osiris::String const, boost::shared_ptr<osiris::IExtensionsModule> >, osiris::SysAllocator<std::pair<osiris::String const, boost::shared_ptr<osiris::IExtensionsModule> > > > > const & osiris::ExtensionsSystem::getModules() const [member function]\"" );
         
         }
         { //property "extensions"[fget=::osiris::ExtensionsSystem::getExtensions]

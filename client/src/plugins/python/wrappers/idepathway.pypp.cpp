@@ -208,7 +208,7 @@ void register_IdePathway_class(){
             }
             ::boost::python::register_ptr_to_python< boost::shared_ptr< ::osiris::IdePathway::Path > >();
             ::boost::python::implicitly_convertible< boost::shared_ptr< ::osiris::IdePathway::Path >, boost::shared_ptr< ::osiris::Object > >();
-            ::boost::python::implicitly_convertible< boost::shared_ptr< ::osiris::IdePathway::Path >, boost::shared_ptr< ::osiris::AllocWrapper< osiris::Object, osiris::NedAllocator< osiris::Object > > > >();
+            ::boost::python::implicitly_convertible< boost::shared_ptr< ::osiris::IdePathway::Path >, boost::shared_ptr< ::osiris::AllocWrapper< osiris::Object, osiris::SysAllocator< osiris::Object > > > >();
         }
         { //::osiris::IdePathway::add
         

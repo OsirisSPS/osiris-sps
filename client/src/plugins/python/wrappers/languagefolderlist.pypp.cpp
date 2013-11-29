@@ -12,11 +12,11 @@ namespace bp = boost::python;
 
 void register_LanguageFolderList_class(){
 
-    { //::std::list<boost::shared_ptr<osiris::LanguageFolder>, osiris::StdAllocator<boost::shared_ptr<osiris::LanguageFolder>, osiris::NedAllocator<boost::shared_ptr<osiris::LanguageFolder> > > >
-        typedef ::boost::python::class_< ::std::list<boost::shared_ptr<osiris::LanguageFolder>, osiris::StdAllocator<boost::shared_ptr<osiris::LanguageFolder>, osiris::NedAllocator<boost::shared_ptr<osiris::LanguageFolder> > > > > LanguageFolderList_exposer_t;
+    { //::std::list<boost::shared_ptr<osiris::LanguageFolder>, osiris::StdAllocator<boost::shared_ptr<osiris::LanguageFolder>, osiris::SysAllocator<boost::shared_ptr<osiris::LanguageFolder> > > >
+        typedef ::boost::python::class_< ::std::list<boost::shared_ptr<osiris::LanguageFolder>, osiris::StdAllocator<boost::shared_ptr<osiris::LanguageFolder>, osiris::SysAllocator<boost::shared_ptr<osiris::LanguageFolder> > > > > LanguageFolderList_exposer_t;
         LanguageFolderList_exposer_t LanguageFolderList_exposer = LanguageFolderList_exposer_t( "LanguageFolderList" );
         ::boost::python::scope LanguageFolderList_scope( LanguageFolderList_exposer );
-        LanguageFolderList_exposer.def( ::boost::python::indexing::list_suite< ::std::list<boost::shared_ptr<osiris::LanguageFolder>, osiris::StdAllocator<boost::shared_ptr<osiris::LanguageFolder>, osiris::NedAllocator<boost::shared_ptr<osiris::LanguageFolder> > > > >() );
+        LanguageFolderList_exposer.def( ::boost::python::indexing::list_suite< ::std::list<boost::shared_ptr<osiris::LanguageFolder>, osiris::StdAllocator<boost::shared_ptr<osiris::LanguageFolder>, osiris::SysAllocator<boost::shared_ptr<osiris::LanguageFolder> > > > >() );
     }
 
 }

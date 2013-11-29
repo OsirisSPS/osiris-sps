@@ -68,7 +68,7 @@ static boost::python::object find_13d9ed344d6873adbf9fbf0a24e90f81( ::osiris::XM
     return boost::python::object( result );
 }
 
-static boost::python::object find_bb833aeb2ebfcbac2ce9a6cf8cbb3d30( ::osiris::XMLNodes const & inst, ::size_t index ){
+static boost::python::object find_e3efa947e75c0e8a612bda6c31ff76b7( ::osiris::XMLNodes const & inst, ::size_t index ){
     ::osiris::PythonThreadSaver __pythreadSaver;
     ::boost::shared_ptr<osiris::XMLNode> result = inst.find(index);
     __pythreadSaver.restore();
@@ -181,7 +181,7 @@ void register_XMLNodes_class(){
             
             XMLNodes_exposer.def( 
                 "find"
-                , find_function_type( &find_bb833aeb2ebfcbac2ce9a6cf8cbb3d30 )
+                , find_function_type( &find_e3efa947e75c0e8a612bda6c31ff76b7 )
                 , ( ::boost::python::arg("inst"), ::boost::python::arg("index") ) );
         
         }

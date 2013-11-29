@@ -12,11 +12,11 @@ namespace bp = boost::python;
 
 void register_OMLEmoticonList_class(){
 
-    { //::std::list<boost::shared_ptr<osiris::OMLEmoticon>, osiris::StdAllocator<boost::shared_ptr<osiris::OMLEmoticon>, osiris::NedAllocator<boost::shared_ptr<osiris::OMLEmoticon> > > >
-        typedef ::boost::python::class_< ::std::list<boost::shared_ptr<osiris::OMLEmoticon>, osiris::StdAllocator<boost::shared_ptr<osiris::OMLEmoticon>, osiris::NedAllocator<boost::shared_ptr<osiris::OMLEmoticon> > > > > OMLEmoticonList_exposer_t;
+    { //::std::list<boost::shared_ptr<osiris::OMLEmoticon>, osiris::StdAllocator<boost::shared_ptr<osiris::OMLEmoticon>, osiris::SysAllocator<boost::shared_ptr<osiris::OMLEmoticon> > > >
+        typedef ::boost::python::class_< ::std::list<boost::shared_ptr<osiris::OMLEmoticon>, osiris::StdAllocator<boost::shared_ptr<osiris::OMLEmoticon>, osiris::SysAllocator<boost::shared_ptr<osiris::OMLEmoticon> > > > > OMLEmoticonList_exposer_t;
         OMLEmoticonList_exposer_t OMLEmoticonList_exposer = OMLEmoticonList_exposer_t( "OMLEmoticonList" );
         ::boost::python::scope OMLEmoticonList_scope( OMLEmoticonList_exposer );
-        OMLEmoticonList_exposer.def( ::boost::python::indexing::list_suite< ::std::list<boost::shared_ptr<osiris::OMLEmoticon>, osiris::StdAllocator<boost::shared_ptr<osiris::OMLEmoticon>, osiris::NedAllocator<boost::shared_ptr<osiris::OMLEmoticon> > > > >() );
+        OMLEmoticonList_exposer.def( ::boost::python::indexing::list_suite< ::std::list<boost::shared_ptr<osiris::OMLEmoticon>, osiris::StdAllocator<boost::shared_ptr<osiris::OMLEmoticon>, osiris::SysAllocator<boost::shared_ptr<osiris::OMLEmoticon> > > > >() );
     }
 
 }

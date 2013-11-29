@@ -290,7 +290,7 @@ void register_DataAccount_class(){
 
     { //::osiris::DataAccount
         typedef ::boost::python::class_< DataAccount_wrapper, ::boost::noncopyable > DataAccount_exposer_t;
-        DataAccount_exposer_t DataAccount_exposer = DataAccount_exposer_t( "DataAccount", ::boost::python::init< >() );
+        DataAccount_exposer_t DataAccount_exposer = DataAccount_exposer_t( "DataAccount", ::boost::python::no_init );
         ::boost::python::scope DataAccount_scope( DataAccount_exposer );
         ::boost::python::class_< ::osiris::DataAccount::options >( "options" )    
             .def_readonly( "language", ::osiris::DataAccount::options::language )    
@@ -298,6 +298,7 @@ void register_DataAccount_class(){
             .def_readonly( "time_dst", ::osiris::DataAccount::options::time_dst )    
             .def_readonly( "time_offset", ::osiris::DataAccount::options::time_offset )    
             .def_readonly( "view_mode", ::osiris::DataAccount::options::view_mode );
+        DataAccount_exposer.def( ::boost::python::init< >() );
         { //::osiris::DataAccount::hasAutologin
         
             typedef boost::python::object ( *hasAutologin_function_type )( ::osiris::DataAccount const & );

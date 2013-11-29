@@ -89,10 +89,10 @@ struct SearchQuery_wrapper : ::osiris::SearchQuery, ::osiris::PythonWrapper< ::o
 
     static boost::python::object getOptions( ::osiris::SearchQuery const & inst ){
         ::osiris::PythonThreadSaver __pythreadSaver;
-        ::std::map<osiris::PortalObjectType, boost::shared_ptr<osiris::ISearchOptions>, std::less<osiris::PortalObjectType>, osiris::StdAllocator<std::pair<osiris::PortalObjectType const, boost::shared_ptr<osiris::ISearchOptions> >, osiris::NedAllocator<std::pair<osiris::PortalObjectType const, boost::shared_ptr<osiris::ISearchOptions> > > > > const & result = inst.getOptions();
+        ::std::map<osiris::PortalObjectType, boost::shared_ptr<osiris::ISearchOptions>, std::less<osiris::PortalObjectType>, osiris::StdAllocator<std::pair<osiris::PortalObjectType const, boost::shared_ptr<osiris::ISearchOptions> >, osiris::SysAllocator<std::pair<osiris::PortalObjectType const, boost::shared_ptr<osiris::ISearchOptions> > > > > const & result = inst.getOptions();
         __pythreadSaver.restore();
         typedef bp::return_value_policy< bp::copy_const_reference > call_policies_t;
-        return boost::python::object( pyplusplus::call_policies::make_object< call_policies_t, ::std::map<osiris::PortalObjectType, boost::shared_ptr<osiris::ISearchOptions>, std::less<osiris::PortalObjectType>, osiris::StdAllocator<std::pair<osiris::PortalObjectType const, boost::shared_ptr<osiris::ISearchOptions> >, osiris::NedAllocator<std::pair<osiris::PortalObjectType const, boost::shared_ptr<osiris::ISearchOptions> > > > > const & >( result ) );
+        return boost::python::object( pyplusplus::call_policies::make_object< call_policies_t, ::std::map<osiris::PortalObjectType, boost::shared_ptr<osiris::ISearchOptions>, std::less<osiris::PortalObjectType>, osiris::StdAllocator<std::pair<osiris::PortalObjectType const, boost::shared_ptr<osiris::ISearchOptions> >, osiris::SysAllocator<std::pair<osiris::PortalObjectType const, boost::shared_ptr<osiris::ISearchOptions> > > > > const & >( result ) );
     }
 
     static boost::python::object getFullTextMode( ::osiris::SearchQuery const & inst ){
@@ -311,7 +311,7 @@ struct SearchQuery_wrapper : ::osiris::SearchQuery, ::osiris::PythonWrapper< ::o
         return boost::python::object( result );
     }
 
-    static void computeParentsList_f65e83f1527dcd6a5175194f5fe975e6( ::osiris::SearchQuery const & inst, ::boost::shared_ptr< osiris::IPortalDatabase > database, ::boost::shared_ptr< osiris::Portal > portal, ::osiris::StringList & out ){
+    static void computeParentsList_fe52246006ba2172d61cc82e380560d1( ::osiris::SearchQuery const & inst, ::boost::shared_ptr< osiris::IPortalDatabase > database, ::boost::shared_ptr< osiris::Portal > portal, ::osiris::StringList & out ){
         ::osiris::PythonThreadSaver __pythreadSaver;
         inst.computeParentsList(database, portal, out);
         __pythreadSaver.restore();
@@ -902,7 +902,7 @@ void register_SearchQuery_class(){
             
             SearchQuery_exposer.def( 
                 "computeParentsList"
-                , computeParentsList_function_type( &SearchQuery_wrapper::computeParentsList_f65e83f1527dcd6a5175194f5fe975e6 )
+                , computeParentsList_function_type( &SearchQuery_wrapper::computeParentsList_fe52246006ba2172d61cc82e380560d1 )
                 , ( ::boost::python::arg("inst"), ::boost::python::arg("database"), ::boost::python::arg("portal"), ::boost::python::arg("out") ) );
         
         }
@@ -1624,14 +1624,14 @@ void register_SearchQuery_class(){
         }
         { //property "options"[fget=::osiris::SearchQuery::getOptions]
         
-            typedef ::std::map<osiris::PortalObjectType, boost::shared_ptr<osiris::ISearchOptions>, std::less<osiris::PortalObjectType>, osiris::StdAllocator<std::pair<osiris::PortalObjectType const, boost::shared_ptr<osiris::ISearchOptions> >, osiris::NedAllocator<std::pair<osiris::PortalObjectType const, boost::shared_ptr<osiris::ISearchOptions> > > > > const & ( ::osiris::SearchQuery::*fget )(  ) const;
+            typedef ::std::map<osiris::PortalObjectType, boost::shared_ptr<osiris::ISearchOptions>, std::less<osiris::PortalObjectType>, osiris::StdAllocator<std::pair<osiris::PortalObjectType const, boost::shared_ptr<osiris::ISearchOptions> >, osiris::SysAllocator<std::pair<osiris::PortalObjectType const, boost::shared_ptr<osiris::ISearchOptions> > > > > const & ( ::osiris::SearchQuery::*fget )(  ) const;
             
             SearchQuery_exposer.add_property( 
                 "options"
                 , ::boost::python::make_function( 
                       fget( &::osiris::SearchQuery::getOptions )
                     , bp::return_value_policy< bp::copy_const_reference >() ) 
-                , "get property, built on top of \"std::map<osiris::PortalObjectType, boost::shared_ptr<osiris::ISearchOptions>, std::less<osiris::PortalObjectType>, osiris::StdAllocator<std::pair<osiris::PortalObjectType const, boost::shared_ptr<osiris::ISearchOptions> >, osiris::NedAllocator<std::pair<osiris::PortalObjectType const, boost::shared_ptr<osiris::ISearchOptions> > > > > const & osiris::SearchQuery::getOptions() const [member function]\"" );
+                , "get property, built on top of \"std::map<osiris::PortalObjectType, boost::shared_ptr<osiris::ISearchOptions>, std::less<osiris::PortalObjectType>, osiris::StdAllocator<std::pair<osiris::PortalObjectType const, boost::shared_ptr<osiris::ISearchOptions> >, osiris::SysAllocator<std::pair<osiris::PortalObjectType const, boost::shared_ptr<osiris::ISearchOptions> > > > > const & osiris::SearchQuery::getOptions() const [member function]\"" );
         
         }
         { //property "fullTextMode"[fget=::osiris::SearchQuery::getFullTextMode]

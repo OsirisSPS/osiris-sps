@@ -11,7 +11,11 @@ namespace bp = boost::python;
 
 void register_HttpCookies_class(){
 
-    ::boost::python::class_< ::std::map<std::string, boost::shared_ptr<osiris::HttpCookie>, std::less<std::string>, osiris::StdAllocator<std::pair<std::string const, boost::shared_ptr<osiris::HttpCookie> >, osiris::NedAllocator<std::pair<std::string const, boost::shared_ptr<osiris::HttpCookie> > > > > >( "HttpCookies" )    
-        .def( ::boost::python::indexing::map_suite< ::std::map<std::string, boost::shared_ptr<osiris::HttpCookie>, std::less<std::string>, osiris::StdAllocator<std::pair<std::string const, boost::shared_ptr<osiris::HttpCookie> >, osiris::NedAllocator<std::pair<std::string const, boost::shared_ptr<osiris::HttpCookie> > > > > >() );
+    { //::std::map<std::string, boost::shared_ptr<osiris::HttpCookie>, std::less<std::string>, osiris::StdAllocator<std::pair<std::string const, boost::shared_ptr<osiris::HttpCookie> >, osiris::SysAllocator<std::pair<std::string const, boost::shared_ptr<osiris::HttpCookie> > > > >
+        typedef ::boost::python::class_< ::std::map<std::string, boost::shared_ptr<osiris::HttpCookie>, std::less<std::string>, osiris::StdAllocator<std::pair<std::string const, boost::shared_ptr<osiris::HttpCookie> >, osiris::SysAllocator<std::pair<std::string const, boost::shared_ptr<osiris::HttpCookie> > > > > > HttpCookies_exposer_t;
+        HttpCookies_exposer_t HttpCookies_exposer = HttpCookies_exposer_t( "HttpCookies" );
+        ::boost::python::scope HttpCookies_scope( HttpCookies_exposer );
+        HttpCookies_exposer.def( ::boost::python::indexing::map_suite< ::std::map<std::string, boost::shared_ptr<osiris::HttpCookie>, std::less<std::string>, osiris::StdAllocator<std::pair<std::string const, boost::shared_ptr<osiris::HttpCookie> >, osiris::SysAllocator<std::pair<std::string const, boost::shared_ptr<osiris::HttpCookie> > > > > >() );
+    }
 
 }

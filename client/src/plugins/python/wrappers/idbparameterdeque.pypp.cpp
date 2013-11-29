@@ -12,11 +12,11 @@ namespace bp = boost::python;
 
 void register_IDbParameterDeque_class(){
 
-    { //::std::deque<boost::shared_ptr<osiris::IDbParameter>, osiris::StdAllocator<boost::shared_ptr<osiris::IDbParameter>, osiris::NedAllocator<boost::shared_ptr<osiris::IDbParameter> > > >
-        typedef ::boost::python::class_< ::std::deque<boost::shared_ptr<osiris::IDbParameter>, osiris::StdAllocator<boost::shared_ptr<osiris::IDbParameter>, osiris::NedAllocator<boost::shared_ptr<osiris::IDbParameter> > > > > IDbParameterDeque_exposer_t;
+    { //::std::deque<boost::shared_ptr<osiris::IDbParameter>, osiris::StdAllocator<boost::shared_ptr<osiris::IDbParameter>, osiris::SysAllocator<boost::shared_ptr<osiris::IDbParameter> > > >
+        typedef ::boost::python::class_< ::std::deque<boost::shared_ptr<osiris::IDbParameter>, osiris::StdAllocator<boost::shared_ptr<osiris::IDbParameter>, osiris::SysAllocator<boost::shared_ptr<osiris::IDbParameter> > > > > IDbParameterDeque_exposer_t;
         IDbParameterDeque_exposer_t IDbParameterDeque_exposer = IDbParameterDeque_exposer_t( "IDbParameterDeque" );
         ::boost::python::scope IDbParameterDeque_scope( IDbParameterDeque_exposer );
-        IDbParameterDeque_exposer.def( ::boost::python::indexing::deque_suite< ::std::deque<boost::shared_ptr<osiris::IDbParameter>, osiris::StdAllocator<boost::shared_ptr<osiris::IDbParameter>, osiris::NedAllocator<boost::shared_ptr<osiris::IDbParameter> > > > >() );
+        IDbParameterDeque_exposer.def( ::boost::python::indexing::deque_suite< ::std::deque<boost::shared_ptr<osiris::IDbParameter>, osiris::StdAllocator<boost::shared_ptr<osiris::IDbParameter>, osiris::SysAllocator<boost::shared_ptr<osiris::IDbParameter> > > > >() );
     }
 
 }

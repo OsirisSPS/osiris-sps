@@ -164,7 +164,7 @@ static void setInt32_7b35bbac7fa4db0cbfa210a58b00ad44( ::osiris::DataItem & inst
     __pythreadSaver.restore();
 }
 
-static void setInt64_9fc32a9f9494a3f52263bfb65c185a17( ::osiris::DataItem & inst, ::osiris::int64 const & value ){
+static void setInt64_165d9d6f5554b95e07f9449a854a8055( ::osiris::DataItem & inst, ::osiris::int64 const & value ){
     ::osiris::PythonThreadSaver __pythreadSaver;
     inst.setInt64(value);
     __pythreadSaver.restore();
@@ -188,7 +188,7 @@ static void setUInt32_25ff9c4cc2824430fa93a9c125afb616( ::osiris::DataItem & ins
     __pythreadSaver.restore();
 }
 
-static void setUInt64_64a11148e4510c0a76d29f30583fa241( ::osiris::DataItem & inst, ::osiris::uint64 const & value ){
+static void setUInt64_949f0d63707953444813e68c85263d97( ::osiris::DataItem & inst, ::osiris::uint64 const & value ){
     ::osiris::PythonThreadSaver __pythreadSaver;
     inst.setUInt64(value);
     __pythreadSaver.restore();
@@ -239,6 +239,10 @@ void register_DataItem_class(){
         ::boost::python::implicitly_convertible< ::osiris::achar const *, ::osiris::DataItem >();
         DataItem_exposer.def( ::boost::python::init< ::std::string const & >(( ::boost::python::arg("v") )) );
         ::boost::python::implicitly_convertible< ::std::string const &, ::osiris::DataItem >();
+        DataItem_exposer.def( ::boost::python::init< ::osiris::wchar const * >(( ::boost::python::arg("v") )) );
+        ::boost::python::implicitly_convertible< ::osiris::wchar const *, ::osiris::DataItem >();
+        DataItem_exposer.def( ::boost::python::init< ::std::wstring const & >(( ::boost::python::arg("v") )) );
+        ::boost::python::implicitly_convertible< ::std::wstring const &, ::osiris::DataItem >();
         DataItem_exposer.def( ::boost::python::init< ::osiris::uchar const * >(( ::boost::python::arg("v") )) );
         ::boost::python::implicitly_convertible< ::osiris::uchar const *, ::osiris::DataItem >();
         DataItem_exposer.def( ::boost::python::init< ::osiris::String const & >(( ::boost::python::arg("v") )) );
@@ -469,7 +473,7 @@ void register_DataItem_class(){
             
             DataItem_exposer.def( 
                 "setInt64"
-                , setInt64_function_type( &setInt64_9fc32a9f9494a3f52263bfb65c185a17 )
+                , setInt64_function_type( &setInt64_165d9d6f5554b95e07f9449a854a8055 )
                 , ( ::boost::python::arg("inst"), ::boost::python::arg("value") ) );
         
         }
@@ -509,7 +513,7 @@ void register_DataItem_class(){
             
             DataItem_exposer.def( 
                 "setUInt64"
-                , setUInt64_function_type( &setUInt64_64a11148e4510c0a76d29f30583fa241 )
+                , setUInt64_function_type( &setUInt64_949f0d63707953444813e68c85263d97 )
                 , ( ::boost::python::arg("inst"), ::boost::python::arg("value") ) );
         
         }

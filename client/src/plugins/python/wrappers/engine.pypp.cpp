@@ -103,14 +103,14 @@ static boost::python::object hasBackgroundJobs_8f9855717985741c9142d2104f3700cc(
 
 static boost::python::object getBackgroundJobs_35eb45321a2eca5f900014268e8b4841( ::osiris::Engine const & inst ){
     ::osiris::PythonThreadSaver __pythreadSaver;
-    ::boost::shared_ptr<std::deque<boost::shared_ptr<osiris::IBackgroundJob>, osiris::StdAllocator<boost::shared_ptr<osiris::IBackgroundJob>, osiris::NedAllocator<boost::shared_ptr<osiris::IBackgroundJob> > > > > result = inst.getBackgroundJobs();
+    ::boost::shared_ptr<std::deque<boost::shared_ptr<osiris::IBackgroundJob>, osiris::StdAllocator<boost::shared_ptr<osiris::IBackgroundJob>, osiris::SysAllocator<boost::shared_ptr<osiris::IBackgroundJob> > > > > result = inst.getBackgroundJobs();
     __pythreadSaver.restore();
     return boost::python::object( result );
 }
 
 static boost::python::object getLastCompletedBackgroundJobs_1b639c4419ca8e0bbb5392eaf44adec4( ::osiris::Engine const & inst ){
     ::osiris::PythonThreadSaver __pythreadSaver;
-    ::boost::shared_ptr<std::deque<boost::shared_ptr<osiris::IBackgroundJob>, osiris::StdAllocator<boost::shared_ptr<osiris::IBackgroundJob>, osiris::NedAllocator<boost::shared_ptr<osiris::IBackgroundJob> > > > > result = inst.getLastCompletedBackgroundJobs();
+    ::boost::shared_ptr<std::deque<boost::shared_ptr<osiris::IBackgroundJob>, osiris::StdAllocator<boost::shared_ptr<osiris::IBackgroundJob>, osiris::SysAllocator<boost::shared_ptr<osiris::IBackgroundJob> > > > > result = inst.getLastCompletedBackgroundJobs();
     __pythreadSaver.restore();
     return boost::python::object( result );
 }
@@ -574,22 +574,22 @@ void register_Engine_class(){
         }
         { //property "backgroundJobs"[fget=::osiris::Engine::getBackgroundJobs]
         
-            typedef ::boost::shared_ptr<std::deque<boost::shared_ptr<osiris::IBackgroundJob>, osiris::StdAllocator<boost::shared_ptr<osiris::IBackgroundJob>, osiris::NedAllocator<boost::shared_ptr<osiris::IBackgroundJob> > > > > ( ::osiris::Engine::*fget )(  ) const;
+            typedef ::boost::shared_ptr<std::deque<boost::shared_ptr<osiris::IBackgroundJob>, osiris::StdAllocator<boost::shared_ptr<osiris::IBackgroundJob>, osiris::SysAllocator<boost::shared_ptr<osiris::IBackgroundJob> > > > > ( ::osiris::Engine::*fget )(  ) const;
             
             Engine_exposer.add_property( 
                 "backgroundJobs"
                 , fget( &::osiris::Engine::getBackgroundJobs )
-                , "get property, built on top of \"boost::shared_ptr<std::deque<boost::shared_ptr<osiris::IBackgroundJob>, osiris::StdAllocator<boost::shared_ptr<osiris::IBackgroundJob>, osiris::NedAllocator<boost::shared_ptr<osiris::IBackgroundJob> > > > > osiris::Engine::getBackgroundJobs() const [member function]\"" );
+                , "get property, built on top of \"boost::shared_ptr<std::deque<boost::shared_ptr<osiris::IBackgroundJob>, osiris::StdAllocator<boost::shared_ptr<osiris::IBackgroundJob>, osiris::SysAllocator<boost::shared_ptr<osiris::IBackgroundJob> > > > > osiris::Engine::getBackgroundJobs() const [member function]\"" );
         
         }
         { //property "lastCompletedBackgroundJobs"[fget=::osiris::Engine::getLastCompletedBackgroundJobs]
         
-            typedef ::boost::shared_ptr<std::deque<boost::shared_ptr<osiris::IBackgroundJob>, osiris::StdAllocator<boost::shared_ptr<osiris::IBackgroundJob>, osiris::NedAllocator<boost::shared_ptr<osiris::IBackgroundJob> > > > > ( ::osiris::Engine::*fget )(  ) const;
+            typedef ::boost::shared_ptr<std::deque<boost::shared_ptr<osiris::IBackgroundJob>, osiris::StdAllocator<boost::shared_ptr<osiris::IBackgroundJob>, osiris::SysAllocator<boost::shared_ptr<osiris::IBackgroundJob> > > > > ( ::osiris::Engine::*fget )(  ) const;
             
             Engine_exposer.add_property( 
                 "lastCompletedBackgroundJobs"
                 , fget( &::osiris::Engine::getLastCompletedBackgroundJobs )
-                , "get property, built on top of \"boost::shared_ptr<std::deque<boost::shared_ptr<osiris::IBackgroundJob>, osiris::StdAllocator<boost::shared_ptr<osiris::IBackgroundJob>, osiris::NedAllocator<boost::shared_ptr<osiris::IBackgroundJob> > > > > osiris::Engine::getLastCompletedBackgroundJobs() const [member function]\"" );
+                , "get property, built on top of \"boost::shared_ptr<std::deque<boost::shared_ptr<osiris::IBackgroundJob>, osiris::StdAllocator<boost::shared_ptr<osiris::IBackgroundJob>, osiris::SysAllocator<boost::shared_ptr<osiris::IBackgroundJob> > > > > osiris::Engine::getLastCompletedBackgroundJobs() const [member function]\"" );
         
         }
     }

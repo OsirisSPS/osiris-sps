@@ -46,10 +46,10 @@ struct IHttpMethod_wrapper : ::osiris::IHttpMethod, ::osiris::PythonWrapper< ::o
 
     static boost::python::object getRawParams( ::osiris::IHttpMethod const & inst ){
         ::osiris::PythonThreadSaver __pythreadSaver;
-        ::boost::unordered::unordered_multimap<std::string, std::string, boost::hash<std::string>, std::equal_to<std::string>, osiris::StdAllocator<std::pair<std::string const, std::string>, osiris::NedAllocator<std::pair<std::string const, std::string> > > > const & result = inst.getRawParams();
+        ::boost::unordered::unordered_multimap<std::string, std::string, boost::hash<std::string>, std::equal_to<std::string>, osiris::StdAllocator<std::pair<std::string const, std::string>, osiris::SysAllocator<std::pair<std::string const, std::string> > > > const & result = inst.getRawParams();
         __pythreadSaver.restore();
         typedef bp::return_value_policy< bp::copy_const_reference > call_policies_t;
-        return boost::python::object( pyplusplus::call_policies::make_object< call_policies_t, ::boost::unordered::unordered_multimap<std::string, std::string, boost::hash<std::string>, std::equal_to<std::string>, osiris::StdAllocator<std::pair<std::string const, std::string>, osiris::NedAllocator<std::pair<std::string const, std::string> > > > const & >( result ) );
+        return boost::python::object( pyplusplus::call_policies::make_object< call_policies_t, ::boost::unordered::unordered_multimap<std::string, std::string, boost::hash<std::string>, std::equal_to<std::string>, osiris::StdAllocator<std::pair<std::string const, std::string>, osiris::SysAllocator<std::pair<std::string const, std::string> > > > const & >( result ) );
     }
 
     static boost::python::object serialize( ::osiris::IHttpMethod const & inst ){
@@ -336,14 +336,14 @@ void register_IHttpMethod_class(){
         }
         { //property "rawParams"[fget=::osiris::IHttpMethod::getRawParams]
         
-            typedef ::boost::unordered::unordered_multimap<std::string, std::string, boost::hash<std::string>, std::equal_to<std::string>, osiris::StdAllocator<std::pair<std::string const, std::string>, osiris::NedAllocator<std::pair<std::string const, std::string> > > > const & ( ::osiris::IHttpMethod::*fget )(  ) const;
+            typedef ::boost::unordered::unordered_multimap<std::string, std::string, boost::hash<std::string>, std::equal_to<std::string>, osiris::StdAllocator<std::pair<std::string const, std::string>, osiris::SysAllocator<std::pair<std::string const, std::string> > > > const & ( ::osiris::IHttpMethod::*fget )(  ) const;
             
             IHttpMethod_exposer.add_property( 
                 "rawParams"
                 , ::boost::python::make_function( 
                       fget( &::osiris::IHttpMethod::getRawParams )
                     , bp::return_value_policy< bp::copy_const_reference >() ) 
-                , "get property, built on top of \"boost::unordered::unordered_multimap<std::string, std::string, boost::hash<std::string>, std::equal_to<std::string>, osiris::StdAllocator<std::pair<std::string const, std::string>, osiris::NedAllocator<std::pair<std::string const, std::string> > > > const & osiris::IHttpMethod::getRawParams() const [member function]\"" );
+                , "get property, built on top of \"boost::unordered::unordered_multimap<std::string, std::string, boost::hash<std::string>, std::equal_to<std::string>, osiris::StdAllocator<std::pair<std::string const, std::string>, osiris::SysAllocator<std::pair<std::string const, std::string> > > > const & osiris::IHttpMethod::getRawParams() const [member function]\"" );
         
         }
     }
