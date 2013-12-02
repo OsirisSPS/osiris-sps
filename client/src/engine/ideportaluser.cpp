@@ -189,10 +189,10 @@ void User::onLoad()
 		{
 			nodeRoot->setAttributeString(_S("subpage"), _S("info"));
 		} break;
-	case acInvite:
+	/*case acInvite:
 		{
 			nodeRoot->setAttributeString(_S("subpage"), _S("invite"));
-		} break;
+		} break;*/
 	case acReputations:
 		{
 			nodeRoot->setAttributeString(_S("subpage"), _S("reputations"));
@@ -340,7 +340,7 @@ void User::onLoad()
 	shared_ptr<XMLNode> nodeActions = nodeRoot->addChild(_S("actions"));
 
 	Utils::addAction(nodeActions, get_this_ptr<IPage>(), OS_PORTAL_OBJECT_USER_TYPENAME, _S("view_profile"), getUrl(id.toUTF16(), acInfo), (action==acInfo), false);	
-	Utils::addAction(nodeActions, get_this_ptr<IPage>(), OS_PORTAL_OBJECT_USER_TYPENAME, _S("view_invite"), getUrl(id.toUTF16(), acInvite), (action==acInvite), false);
+	/*Utils::addAction(nodeActions, get_this_ptr<IPage>(), OS_PORTAL_OBJECT_USER_TYPENAME, _S("view_invite"), getUrl(id.toUTF16(), acInvite), (action==acInvite), false);*/
 	Utils::addAction(nodeActions, get_this_ptr<IPage>(), OS_PORTAL_OBJECT_USER_TYPENAME, _S("view_reputations"), getUrl(id.toUTF16(), acReputations), (action==acReputations), false);	
 	Utils::addAction(nodeActions, get_this_ptr<IPage>(), OS_PORTAL_OBJECT_USER_TYPENAME, _S("view_search"), getUrl(id.toUTF16(), acSearch), (action==acSearch), false);
 	if(getSessionAccount()->isPortalGuest(getDatabase()) == false)
@@ -374,7 +374,7 @@ void User::onPreRender()
 	Action action = getUrlAction();
 	switch(action)
 	{
-	case acInvite:
+	/*case acInvite:
 		{
 			String subscribeLink = getPortal()->generateInviteLink(false);
 			nodeRoot->setAttributeString(_S("subscribe_href"), subscribeLink);
@@ -384,7 +384,7 @@ void User::onPreRender()
 
 			String exportLink = getPortal()->generateExportLink();
 			nodeRoot->setAttributeString(_S("export_href"), exportLink);
-		} break;
+		} break;*/
 	case acReputations:
 		{
 			/* --- Reputations - Forward -------------------------------------------------------- */

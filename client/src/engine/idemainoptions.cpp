@@ -28,6 +28,7 @@
 #include "htmlcombobox.h"
 #include "htmlcontrols.h"
 #include "htmldiv.h"
+#include "htmlliteral.h"
 #include "htmlspan.h"
 #include "htmltext.h"
 #include "htmltextbox.h"
@@ -311,8 +312,8 @@ void Options::onInit()
 	cmdCancel->getEventClick()->connect(boost::bind(&Options::onCancel, this));
 	divActions->getControls()->add(cmdCancel);
 
-	//m_block.reset(OS_NEW IdeBlock(getText("main.pages.options.title")));
-	//getArea(pageAreaContent)->getControls()->add(m_block);
+	m_block.reset(OS_NEW IdeBlock(getText("main.pages.options.title")));
+	getArea(pageAreaContent)->getControls()->add(m_block);
 
 	uint32 pageIndex = 0;
 
@@ -324,8 +325,10 @@ void Options::onInit()
 	shared_ptr<HtmlTextBox> filterInput(OS_NEW HtmlTextBox());
 	filterInput->setUID("filterinput");
 	filter->getControls()->add(filterTitle);
+	filter->getControls()->add(shared_ptr<HtmlLiteral>(OS_NEW HtmlLiteral(_S("<br>"))));
 	filter->getControls()->add(filterInput);
-	getArea(pageAreaContent)->getControls()->add(filter);	
+	//getArea(pageAreaContent)->getControls()->add(filter);	
+	m_block->getControls()->add(filter);	
 
 	shared_ptr<HtmlDiv> tab(OS_NEW HtmlDiv());
 	
@@ -333,7 +336,8 @@ void Options::onInit()
 	tab->getAttributes()->set("data-os-otype", "tab");
 	tab->getAttributes()->set("data-os-layout", "left");
 	tab->getAttributes()->set("data-os-storage", "main.options.tab");
-	getArea(pageAreaContent)->getControls()->add(tab);
+	//getArea(pageAreaContent)->getControls()->add(tab);
+	m_block->getControls()->add(tab);	
 
 	shared_ptr<IHtmlControl> pageGeneral = createPage(tab, "general", pageIndex);
 	pageGeneral->getControls()->add(createControlBool("p2p.enable"));

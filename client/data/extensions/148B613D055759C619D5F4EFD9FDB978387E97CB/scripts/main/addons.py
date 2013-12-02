@@ -17,7 +17,9 @@ class Page(osiris.IMainPage):
 		url = "addons.php?act=" + action
 		if(params != ""):
 			url += "&" + params
-		return osiris.Options.instance().getIsisSecureLink(str(url))
+		url = osiris.Options.instance().getIsisSecureLink(str(url))
+		osiris.LogManager.instance().log("Isis url:" + url)
+		return url
 		
 	def processRemoteList(self, node, online):
 		if(node != None):			
@@ -59,9 +61,14 @@ class Page(osiris.IMainPage):
 		
 		if(remote == False):
 			mode = "local"
-			
+		
+		if(nodeRepository != None):
+			osiris.LogManager.instance().log(nodeRepository.getAttributeString("name") + " ----- " + str(nodeRepository.getAttributeFloat("version")))	
 		
 		upgradable = ( (extension) and (remote) and (extension.version < nodeRepository.getAttributeFloat("version")) )	
+		
+		#if(extension):
+		#	osiris.LogManager.instance().log(extension.name + "=" + str(upgradable))
 		
 		if(extension):
 			node.setAttributeString("active", 'true' if extension.isActive() else 'false')
@@ -210,8 +217,8 @@ class Page(osiris.IMainPage):
 				if(extension.internal == False):
 					currents += extension.id.getString() + ":{0:.5f};".format(extension.version);
 			client.request.method = osiris.httpMethodPost
-			client.request.setPostParamString("currents",currents)
-			#osiris.LogManager.instance().log(self.getIsisUrl(action))
+			client.request.setPostParamString("currents",currents)			
+			osiris.LogManager.instance().log("currents:" + currents)
 			if(client.perform(osiris.HttpUrl(self.getIsisUrl(action)))):
 				remoteDocument = osiris.XMLDocument()
 				online = remoteDocument.parseBuffer(client.response.content.content)

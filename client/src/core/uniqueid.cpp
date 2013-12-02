@@ -82,7 +82,7 @@ bool UniqueID::assign(const std::string &id)
 
 	if(regex_match(nid, RegexManager::instance()->getRegex(_S("[0-9A-F]*"), false)) == false)
 	{
-		OS_ASSERTFALSE();
+		//OS_ASSERTFALSE();
 		return false;
 	}
 

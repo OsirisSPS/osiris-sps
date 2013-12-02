@@ -440,7 +440,10 @@ LanguageResult ObjectsIObject::acceptable(shared_ptr<IPortalDatabase> database) 
 	// Non è grave, perchè sta a me spostare controlli dalle "validate" alle "acceptable", fino a evitare le validate da IObject in giù.
 	bool valid = validate(database);
 	if(valid == false)
+	{
+		bool valid = validate(database); // PAZZO
 		return LanguageResult("invalid");
+	}
 
 	if(getAuthor().empty())
 		return LanguageResult("author_required");

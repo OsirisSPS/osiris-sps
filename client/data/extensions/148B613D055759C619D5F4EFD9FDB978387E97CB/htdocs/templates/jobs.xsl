@@ -69,6 +69,8 @@
       <xsl:value-of select="$showAll" disable-output-escaping="yes"/>
     </div>
 
+		<div style="clear:both"></div>
+
     <xsl:for-each select="actions/action">
       <xsl:call-template name="action-row">
         <xsl:with-param name="prefix" select="'main.pages.jobs.actions'"/>

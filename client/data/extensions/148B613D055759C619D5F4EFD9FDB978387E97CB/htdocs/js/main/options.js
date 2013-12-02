@@ -67,8 +67,13 @@ Osiris.Options =
 					$(this).slideUp(Osiris.effectsSpeedSlow);
 				}
 					
-				counter.text(Osiris.Options.countersFilter[pageName] + " / " + Osiris.Options.countersTotal[pageName]);
-				
+				counter.html(Osiris.Options.countersFilter[pageName] + " / " + Osiris.Options.countersTotal[pageName]);
+				counter.removeClass("os_options_counter_zero");
+				counter.removeClass("os_options_counter_found");
+				if(Osiris.Options.countersFilter[pageName] != 0)
+					counter.addClass("os_options_counter_found");
+				else 
+					counter.addClass("os_options_counter_zero");
 			});						
     }
 }

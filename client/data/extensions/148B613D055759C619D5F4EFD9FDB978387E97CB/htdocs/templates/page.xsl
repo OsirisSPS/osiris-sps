@@ -34,18 +34,22 @@
     <!--<xsl:call-template name="dump_xml"/>
     -->
        
-    <xsl:if test="@page_mode = 'full'">
-      <xsl:call-template name="systembar"/>
-    </xsl:if>
+    
 
     <xsl:choose>
       <xsl:when test="@page_mode = 'content'">        
         <xsl:value-of select="$area_content" disable-output-escaping="yes"/>
       </xsl:when>
       <xsl:otherwise>
-        <div class="os_page_container3">
-          <div class="os_page_container2">
+				<!--
+        <div class="os_page_container3x">
+          <div class="os_page_container2x">
+					-->
             <div class="os_page_container">
+							
+							<xsl:if test="@page_mode = 'full'">
+								<xsl:call-template name="systembar"/>								
+							</xsl:if>
               <div class="os_page">
 
                 <a id="top" href="#top" accesskey="t" title="{lang:text('accesskey.top')}"></a>
@@ -55,7 +59,9 @@
                 <!-- > 0.14 RC1 -->
                 <div class="os_header">
 
+									<!--
                   <xsl:call-template name="userbox"/>
+									-->
 
                   <!-- Default Links -->
                   <xsl:if test="//@skip_default_header = 'false'">
@@ -156,8 +162,9 @@
 
               </div>
             </div>
+				<!--
           </div>
-        </div>
+        </div>-->
       </xsl:otherwise>
     </xsl:choose>
 
@@ -207,8 +214,12 @@
             </a>
 
             <xsl:if test="@portal_name">
-              <a title="{lang:text('systembar.actions.assistant')}" class="os_systembar_icon" href="javascript:void(0);" onclick="Osiris.loadUrl('{@assistant_href}&amp;mode=dialog')" data-os-tooltip="{lang:text('systembar.actions.assistant')}">
-                <img src="{system:resource-url('images/systembar/icon_assistant.png')}"/>
+              <!--
+								<a title="{lang:text('systembar.actions.assistant')}" class="os_systembar_icon" href="javascript:void(0);" onclick="Osiris.loadUrl('{@assistant_href}&amp;mode=dialog')" data-os-tooltip="{lang:text('systembar.actions.assistant')}">
+							-->
+								<a title="{lang:text('systembar.actions.assistant')}" class="os_systembar_icon" href="javascript:void(0);" onclick="javascript:Osiris.Assistant.toggle()" data-os-tooltip="{lang:text('systembar.actions.assistant')}">
+								
+								<img src="{system:resource-url('images/systembar/icon_assistant.png')}"/>
               </a>
             </xsl:if>
 

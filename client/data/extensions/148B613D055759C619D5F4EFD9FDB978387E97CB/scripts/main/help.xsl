@@ -21,8 +21,8 @@
         </div>
       </xsl:when>
       <xsl:otherwise>
-        <xsl:call-template name="block_page">
-          <xsl:with-param name="prefix" select="'main.pages.help'"/>
+        <xsl:call-template name="block_big">
+          <xsl:with-param name="title" select="lang:text('main.pages.help.title')"/>
           <xsl:with-param name="content">						
             <xsl:call-template name="page"/>
           </xsl:with-param>

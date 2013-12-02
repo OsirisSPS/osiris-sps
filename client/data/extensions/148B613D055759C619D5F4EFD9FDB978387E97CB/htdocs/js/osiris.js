@@ -16,7 +16,7 @@ var Osiris =
     is_ie: (navigator.userAgent.toLowerCase().indexOf("msie") != -1),
     is_moz: (navigator.userAgent.toLowerCase().indexOf("gecko") != -1),
     is_opera: (navigator.userAgent.toLowerCase().indexOf("opera") != -1),
-    effectsSpeedSlow: 400,
+    effectsSpeedSlow: 500,
     effectsSpeedFast: 200,
     
     notificationElement: null,
@@ -540,14 +540,15 @@ var Osiris =
 			{
 				autoOpen: false,
 				show: 'fade',
-				hide: 'fade',
+				/*hide: 'fade',*/
+				hide: { effect: "fade", duration: Osiris.effectsSpeedSlow },
 				bgiframe: true,
 				resizable: false,
 				minHeight:140,
 				modal: true,		
 				dialogClass: 'notitle',				
 				open: function(){
-            $('.ui-widget-overlay').hide().fadeIn();
+            $('.ui-widget-overlay').hide().fadeIn(Osiris.effectsSpeedSlow);
         },
 			});
 			
@@ -585,19 +586,28 @@ var Osiris =
 		copyClipboard: function(promptTitle, promptMessage, promptButton, promptCancel, promptHref) {
 		  var divObj = osCreate("div");
 	    divObj.title = promptTitle;    
+	    
 	    var divP = osCreate("p");
 	    var divIcon = osCreate("div");
 	    divIcon.className = "os_clipboard_icon";
+	    divIcon.style.float = 'left';
 	    divObj.appendChild(divIcon);
+	    
+	    divTitle = osCreate("h1");
+	    $(divTitle).text(promptTitle);
+	    //$(divObj).prepend(divTitle);
+	    divObj.appendChild(divTitle);
+	    
 	    divText = osCreate("textarea");    
 	    divText.style.width = "500px";    
 	    divText.style.height = "80px";    
+	    divText.style.maxHeight = "300px";
 	    divText.value = promptMessage;    
 	    divObj.appendChild(divText);
 	    
-	    divTitle = $(osCreate("p"));
-	    divTitle.text(promptTitle);
-	    $(divObj).prepend(divTitle);
+	    $(divText).autosize();		
+	    
+	    
 	        
 	    Osiris.dialog(divObj, true);
 	    
@@ -1562,6 +1572,10 @@ function osInitControls(src,debug)
                 
                 if (otype == "omleditor") {
                 		Osiris.controlOmlEditor(src);
+                }
+                
+                if (otype == "textarea") {
+                	$(src).autosize();		
                 }
             }
 

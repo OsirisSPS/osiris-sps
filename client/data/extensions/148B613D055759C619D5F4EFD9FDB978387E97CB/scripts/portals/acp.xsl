@@ -40,8 +40,8 @@
 
   
   <xsl:template match="/home">
-    <xsl:call-template name="block_page">
-      <xsl:with-param name="prefix" select="'portal.pages.acp'"/>        
+    <xsl:call-template name="block_big">
+      <xsl:with-param name="title" select="lang:text('portal.pages.acp.title')"/>        
       <xsl:with-param name="content">
         <xsl:value-of select="//@guest"/>
         <xsl:value-of select="//@userOfPov"/>

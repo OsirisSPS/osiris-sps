@@ -66,7 +66,7 @@
     </xsl:choose>
 
     <xsl:if test="count(object) = 0">
-      <div style="margin:10px;">
+      <div class="os_message_nodata">
         <xsl:value-of select="lang:text('search.no_results')"/>        
       </div>
     </xsl:if>

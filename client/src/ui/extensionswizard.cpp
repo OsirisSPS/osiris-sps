@@ -111,7 +111,8 @@ void ExtensionsWizard::OnWizardFinished(wxWizardEvent &e)
 	nodeRoot->setAttributeString(OS_EXTENSION_XML_NODE_ROOT_NAME, extensionName);
 	nodeRoot->setAttributeString(OS_EXTENSION_XML_NODE_ROOT_DESCRIPTION, extensionDescription);
 	nodeRoot->setAttributeString(OS_EXTENSION_XML_NODE_ROOT_AUTHOR, extensionAuthor);
-	nodeRoot->setAttributeString(OS_EXTENSION_XML_NODE_ROOT_VERSION, _S("0.1"));
+	nodeRoot->setAttributeString(OS_EXTENSION_XML_NODE_ROOT_VERSION_CODE, _S("1"));
+	nodeRoot->setAttributeString(OS_EXTENSION_XML_NODE_ROOT_VERSION_NAME, _S("0.1"));
 	nodeRoot->setAttributeString(OS_EXTENSION_XML_NODE_ROOT_ICON, _S("icon.png"));
 	nodeRoot->setAttributeString(OS_EXTENSION_XML_NODE_ROOT_LOGO, _S("logo.png"));
 

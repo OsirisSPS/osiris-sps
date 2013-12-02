@@ -19,6 +19,7 @@
 #include "stdafx.h"
 #include "extensionsextension.h"
 
+#include "conversions.h"
 #include "engine.h"
 #include "extensionssystem.h"
 #include "iextensionscodeprovider.h"
@@ -149,8 +150,9 @@ bool ExtensionsExtension::init(const ExtensionID &id, const Path &path)
 	m_tags = root->getAttributeString(OS_EXTENSION_XML_NODE_ROOT_TAGS);
 	m_trust = root->getAttributeString(OS_EXTENSION_XML_NODE_ROOT_TRUST);
 	m_author = root->getAttributeString(OS_EXTENSION_XML_NODE_ROOT_AUTHOR);
-	m_version = root->getAttributeFloat(OS_EXTENSION_XML_NODE_ROOT_VERSION);
-	m_compatibility = root->getAttributeFloat(OS_EXTENSION_XML_NODE_ROOT_COMPATIBILITY);
+	m_versionCode = root->getAttributeInt32(OS_EXTENSION_XML_NODE_ROOT_VERSION_CODE);
+	m_versionName = root->getAttributeString(OS_EXTENSION_XML_NODE_ROOT_VERSION_NAME);
+	m_compatibility = root->getAttributeInt32(OS_EXTENSION_XML_NODE_ROOT_COMPATIBILITY);
 	/*
 	if(m_version.fromString(root->getAttributeString(OS_EXTENSION_XML_NODE_ROOT_VERSION).to_ascii()) == false)
 		return false;
@@ -163,7 +165,7 @@ bool ExtensionsExtension::init(const ExtensionID &id, const Path &path)
 	m_logo = root->getAttributeString(OS_EXTENSION_XML_NODE_ROOT_LOGO);
 	
 	NotificationsManager::instance()->notify(_S("Loading extension: ") + m_name);
-
+	
 	shared_ptr<XMLNode> nodeFiles = document->getRoot()->getNode(OS_EXTENSION_XML_NODE_SCRIPTS);
 	if(nodeFiles != null)
 	{
@@ -264,12 +266,17 @@ String ExtensionsExtension::getAuthor() const
 	return m_author;
 }
 
-float ExtensionsExtension::getVersion() const
+int ExtensionsExtension::getVersionCode() const
 {
-	return m_version;
+	return m_versionCode;
 }
 
-float ExtensionsExtension::getCompatibility() const
+String ExtensionsExtension::getVersionName() const
+{
+	return m_versionName;
+}
+
+int ExtensionsExtension::getCompatibility() const
 {
 	return m_compatibility;
 }

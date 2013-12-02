@@ -671,6 +671,8 @@ bool Engine::start(bool recovery)
 
 	//waitJobs(); // CLODOURGENT
 
+	LanguageManager::instance()->setDumpKey(OS_NAMESPACE_NAME::Options::instance()->getOption<bool>(_S("developer.show_language_keys")));
+
 	NotificationsManager::instance()->notify(getVersionName(true) + _S(" is ready"));
 
 	return true;

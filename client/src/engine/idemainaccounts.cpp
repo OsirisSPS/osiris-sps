@@ -156,8 +156,8 @@ void Accounts::onViewAccounts()
 {
 	bool hasAccounts = IdeAccountsManager::instance()->hasAccounts();
 
-	shared_ptr<IdeBlock> block(OS_NEW IdeBlock("main.pages.accounts"));
-	block->setSpecialPage(true);
+	shared_ptr<IdeBlock> block(OS_NEW IdeBlock(getText(_S("main.pages.accounts.title"))));
+	//block->setSpecialPage(true);
 	getArea(pageAreaContent)->getControls()->add(block);
 
 	shared_ptr<HtmlTable> table(OS_NEW HtmlTable());
@@ -311,8 +311,7 @@ void Accounts::onAccountRedirect()
 
 void Accounts::onAccountImport()
 {
-	shared_ptr<IdeBlock> block(OS_NEW IdeBlock(_S("main.pages.accounts.import")));
-	block->setSpecialPage(true);
+	shared_ptr<IdeBlock> block(OS_NEW IdeBlock(getText(_S("main.pages.accounts.import.title"))));
 	getArea(pageAreaContent)->getControls()->add(block);
 
 	shared_ptr<HtmlTable> table(OS_NEW HtmlTable());
