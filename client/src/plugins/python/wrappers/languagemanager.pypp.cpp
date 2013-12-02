@@ -18,6 +18,13 @@ static boost::python::object getAlternative_62b6db6348092b546ccbb882bdf08d4d( ::
     return boost::python::object( result );
 }
 
+static boost::python::object getDumpKey_cff335f3b7a93172f44a0ff584d95ad6( ::osiris::LanguageManager const & inst ){
+    ::osiris::PythonThreadSaver __pythreadSaver;
+    bool result = inst.getDumpKey();
+    __pythreadSaver.restore();
+    return boost::python::object( result );
+}
+
 static boost::python::object getInvariant_3a6e52d3b1254bc20ba9de9c3a081a09( ::osiris::LanguageManager const & inst ){
     ::osiris::PythonThreadSaver __pythreadSaver;
     ::boost::shared_ptr<osiris::LanguageCulture> result = inst.getInvariant();
@@ -150,6 +157,12 @@ static void setAlternative_f92cc64e30a2693a9c529299518ed96a( ::osiris::LanguageM
     __pythreadSaver.restore();
 }
 
+static void setDumpKey_e7a1cf8a0ed31233445fea39d387892c( ::osiris::LanguageManager & inst, bool const & value ){
+    ::osiris::PythonThreadSaver __pythreadSaver;
+    inst.setDumpKey(value);
+    __pythreadSaver.restore();
+}
+
 void register_LanguageManager_class(){
 
     { //::osiris::LanguageManager
@@ -164,6 +177,15 @@ void register_LanguageManager_class(){
             LanguageManager_exposer.def( 
                 "getAlternative"
                 , getAlternative_function_type( &getAlternative_62b6db6348092b546ccbb882bdf08d4d ) );
+        
+        }
+        { //::osiris::LanguageManager::getDumpKey
+        
+            typedef boost::python::object ( *getDumpKey_function_type )( ::osiris::LanguageManager const & );
+            
+            LanguageManager_exposer.def( 
+                "getDumpKey"
+                , getDumpKey_function_type( &getDumpKey_cff335f3b7a93172f44a0ff584d95ad6 ) );
         
         }
         { //::osiris::LanguageManager::getInvariant
@@ -360,6 +382,16 @@ void register_LanguageManager_class(){
                 , ( ::boost::python::arg("inst"), ::boost::python::arg("alt") ) );
         
         }
+        { //::osiris::LanguageManager::setDumpKey
+        
+            typedef void ( *setDumpKey_function_type )( ::osiris::LanguageManager &,bool const & );
+            
+            LanguageManager_exposer.def( 
+                "setDumpKey"
+                , setDumpKey_function_type( &setDumpKey_e7a1cf8a0ed31233445fea39d387892c )
+                , ( ::boost::python::arg("inst"), ::boost::python::arg("value") ) );
+        
+        }
         { //property "alternative"[fget=::osiris::LanguageManager::getAlternative, fset=::osiris::LanguageManager::setAlternative]
         
             typedef ::osiris::String ( ::osiris::LanguageManager::*fget )(  ) const;
@@ -370,6 +402,18 @@ void register_LanguageManager_class(){
                 , fget( &::osiris::LanguageManager::getAlternative )
                 , fset( &::osiris::LanguageManager::setAlternative )
                 , "get\\set property, built on top of \"osiris::String osiris::LanguageManager::getAlternative() const [member function]\" and \"void osiris::LanguageManager::setAlternative(osiris::String const & alt) [member function]\"" );
+        
+        }
+        { //property "dumpKey"[fget=::osiris::LanguageManager::getDumpKey, fset=::osiris::LanguageManager::setDumpKey]
+        
+            typedef bool ( ::osiris::LanguageManager::*fget )(  ) const;
+            typedef void ( ::osiris::LanguageManager::*fset )( bool const & ) ;
+            
+            LanguageManager_exposer.add_property( 
+                "dumpKey"
+                , fget( &::osiris::LanguageManager::getDumpKey )
+                , fset( &::osiris::LanguageManager::setDumpKey )
+                , "get\\set property, built on top of \"bool osiris::LanguageManager::getDumpKey() const [member function]\" and \"void osiris::LanguageManager::setDumpKey(bool const & value) [member function]\"" );
         
         }
         { //property "invariant"[fget=::osiris::LanguageManager::getInvariant]
