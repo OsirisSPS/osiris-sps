@@ -37,7 +37,7 @@
 					<Add option="-static-libgcc" />
 					<Add library="libcore" />
 					<Add library="libengine" />
-					<Add library="libboost_signals-gcc44-mt-d-1_41" />
+					<Add library="libboost_signals-gcc48-mt-d-1_54" />
 					<Add library="libpthread" />
 					<Add directory="../../bin/linux/i386/gcc/debug" />
 					<Add directory="../../dependencies/lib/linux/i386/gcc/debug" />
@@ -75,7 +75,7 @@
 					<Add option="-static-libgcc" />
 					<Add library="libcore" />
 					<Add library="libengine" />
-					<Add library="libboost_signals-gcc44-mt-1_41" />
+					<Add library="libboost_signals-gcc48-mt-1_54" />
 					<Add library="libpthread" />
 					<Add directory="../../bin/linux/i386/gcc/release" />
 					<Add directory="../../dependencies/lib/linux/i386/gcc/release" />
@@ -110,7 +110,7 @@
 					<Add option="-dynamiclib" />
 					<Add library="libcore" />
 					<Add library="libengine" />
-					<Add library="libboost_signals-xgcc42-mt-d-1_41" />
+					<Add library="libboost_signals-xgcc42-mt-d-1_54" />
 					<Add directory="../../lib/macosx/x86_64/gcc/debug" />
 					<Add directory="../../dependencies/lib/macosx/x86_64/gcc/debug" />
 					<Add directory="../../bin/macosx/x86_64/gcc/debug/Osiris.app/Contents/MacOS" />
@@ -149,7 +149,7 @@
 					<Add option="-dynamiclib" />
 					<Add library="libcore" />
 					<Add library="libengine" />
-					<Add library="libboost_signals-xgcc42-mt-1_41" />
+					<Add library="libboost_signals-xgcc42-mt-1_54" />
 					<Add directory="../../lib/macosx/x86_64/gcc/release" />
 					<Add directory="../../dependencies/lib/macosx/x86_64/gcc/release" />
 					<Add directory="../../bin/macosx/x86_64/gcc/release/Osiris.app/Contents/MacOS" />
@@ -188,7 +188,7 @@
 					<Add option="-Wl,-z,defs,-rpath=\\$$ORIGIN" />
 					<Add library="libcore" />
 					<Add library="libengine" />
-					<Add library="libboost_signals-gcc44-mt-d-1_41" />
+					<Add library="libboost_signals-gcc48-mt-d-1_54" />
 					<Add library="libpthread" />
 					<Add directory="../../bin/linux/x86_64/gcc/debug" />
 					<Add directory="../../dependencies/lib/linux/x86_64/gcc/debug" />
@@ -225,7 +225,7 @@
 					<Add option="-Wl,-z,defs,-rpath=\\$$ORIGIN" />
 					<Add library="libcore" />
 					<Add library="libengine" />
-					<Add library="libboost_signals-gcc44-mt-1_41" />
+					<Add library="libboost_signals-gcc48-mt-1_54" />
 					<Add library="libpthread" />
 					<Add directory="../../bin/linux/x86_64/gcc/release" />
 					<Add directory="../../dependencies/lib/linux/x86_64/gcc/release" />

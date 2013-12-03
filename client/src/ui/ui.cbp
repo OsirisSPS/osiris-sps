@@ -53,9 +53,9 @@
 					<Add library="liblang" />
 					<Add library="libengine" />
 					<Add library="libpthread" />
-					<Add library="libboost_signals-gcc44-mt-d-1_41" />
+					<Add library="libboost_signals-gcc48-mt-d-1_54" />
 					<Add library="libxml" />
-					<Add library="libboost_regex-gcc44-mt-d-1_41" />
+					<Add library="libboost_regex-gcc48-mt-d-1_54" />
 					<Add library="libnet" />
 					<Add library="libssl" />
 					<Add library="libcrypto" />
@@ -113,9 +113,9 @@
 					<Add library="liblang" />
 					<Add library="libengine" />
 					<Add library="libpthread" />
-					<Add library="libboost_signals-gcc44-mt-1_41" />
+					<Add library="libboost_signals-gcc48-mt-1_54" />
 					<Add library="libxml" />
-					<Add library="libboost_regex-gcc44-mt-1_41" />
+					<Add library="libboost_regex-gcc48-mt-1_54" />
 					<Add library="libnet" />
 					<Add library="libssl" />
 					<Add library="libcrypto" />
@@ -183,7 +183,7 @@
 					<Add library="web" />
 					<Add library="libcrypto" />
 					<Add library="libssl" />
-					<Add library="libboost_regex-xgcc42-mt-d-1_41" />
+					<Add library="libboost_regex-xgcc42-mt-d-1_54" />
 					<Add library="http" />
 					<Add library="libirc" />
 					<Add library="upnp" />
@@ -255,7 +255,7 @@
 					<Add library="web" />
 					<Add library="libcrypto" />
 					<Add library="libssl" />
-					<Add library="libboost_regex-xgcc42-mt-1_41" />
+					<Add library="libboost_regex-xgcc42-mt-1_54" />
 					<Add library="http" />
 					<Add library="libirc" />
 					<Add library="upnp" />
@@ -315,9 +315,9 @@
 					<Add library="liblang" />
 					<Add library="libengine" />
 					<Add library="libpthread" />
-					<Add library="libboost_signals-gcc44-mt-d-1_41" />
+					<Add library="libboost_signals-gcc48-mt-d-1_54" />
 					<Add library="libxml" />
-					<Add library="libboost_regex-gcc44-mt-d-1_41" />
+					<Add library="libboost_regex-gcc48-mt-d-1_54" />
 					<Add library="libnet" />
 					<Add library="libssl" />
 					<Add library="libcrypto" />
@@ -373,9 +373,9 @@
 					<Add library="liblang" />
 					<Add library="libengine" />
 					<Add library="libpthread" />
-					<Add library="libboost_signals-gcc44-mt-1_41" />
+					<Add library="libboost_signals-gcc48-mt-1_54" />
 					<Add library="libxml" />
-					<Add library="libboost_regex-gcc44-mt-1_41" />
+					<Add library="libboost_regex-gcc48-mt-1_54" />
 					<Add library="libnet" />
 					<Add library="libssl" />
 					<Add library="libcrypto" />

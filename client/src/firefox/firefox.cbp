@@ -34,14 +34,14 @@
 				</ResourceCompiler>
 				<Linker>
 					<Add option="-Wl,-z,defs,-rpath=./" />
-					<Add library="libboost_thread-gcc44-mt-d-1_41" />
+					<Add library="libboost_thread-gcc48-mt-d-1_54" />
 					<Add library="libpthread" />
 					<Add library="libdl" />
 					<Add library="libnspr4" />
 					<Add library="libxpcomglue_s" />
 					<Add library="libxpcom" />
-					<Add library="libboost_system-gcc44-mt-d-1_41" />
-					<Add library="libboost_filesystem-gcc44-mt-d-1_41" />
+					<Add library="libboost_system-gcc48-mt-d-1_54" />
+					<Add library="libboost_filesystem-gcc48-mt-d-1_54" />
 					<Add directory="../../lib/linux/i386/gcc/debug" />
 					<Add directory="../../dependencies/lib/linux/i386/gcc/debug" />
 					<Add directory="../../bin/linux/i386/gcc/debug" />
@@ -77,14 +77,14 @@
 				<Linker>
 					<Add option="-s" />
 					<Add option="-Wl,-z,defs,-rpath=./" />
-					<Add library="libboost_thread-gcc44-mt-1_41" />
+					<Add library="libboost_thread-gcc48-mt-1_54" />
 					<Add library="libpthread" />
 					<Add library="libdl" />
 					<Add library="libnspr4" />
 					<Add library="libxpcomglue_s" />
 					<Add library="libxpcom" />
-					<Add library="libboost_system-gcc44-mt-1_41" />
-					<Add library="libboost_filesystem-gcc44-mt-1_41" />
+					<Add library="libboost_system-gcc48-mt-1_54" />
+					<Add library="libboost_filesystem-gcc48-mt-1_54" />
 					<Add directory="../../lib/linux/i386/gcc/release" />
 					<Add directory="../../dependencies/lib/linux/i386/gcc/release" />
 					<Add directory="../../bin/linux/i386/gcc/release" />
@@ -119,7 +119,7 @@
 				</ResourceCompiler>
 				<Linker>
 					<Add option="-dynamiclib" />
-					<Add library="libboost_thread-xgcc42-mt-d-1_41" />
+					<Add library="libboost_thread-xgcc42-mt-d-1_54" />
 					<Add directory="../../lib/macosx/x86_64/gcc/debug" />
 					<Add directory="../../dependencies/lib/macosx/x86_64/gcc/debug" />
 					<Add directory="../../bin/macosx/x86_64/gcc/debug/Osiris.app/Contents/MacOS" />
@@ -157,13 +157,13 @@
 				<Linker>
 					<Add option="-s" />
 					<Add option="-dynamiclib" />
-					<Add library="libboost_thread-xgcc42-mt-1_41" />
+					<Add library="libboost_thread-xgcc42-mt-1_54" />
 					<Add library="libdl" />
 					<Add library="libnspr4" />
 					<Add library="libxpcomglue_s" />
 					<Add library="libxpcom" />
-					<Add library="libboost_system-xgcc42-mt-1_41" />
-					<Add library="libboost_filesystem-xgcc42-mt-1_41" />
+					<Add library="libboost_system-xgcc42-mt-1_54" />
+					<Add library="libboost_filesystem-xgcc42-mt-1_54" />
 					<Add directory="../../lib/macosx/x86_64/gcc/release" />
 					<Add directory="../../dependencies/lib/macosx/x86_64/gcc/release" />
 					<Add directory="../../bin/macosx/x86_64/gcc/release/Osiris.app/Contents/MacOS" />
