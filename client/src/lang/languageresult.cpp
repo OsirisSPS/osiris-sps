@@ -27,11 +27,17 @@ OS_NAMESPACE_BEGIN()
 
 LanguageResult::LanguageResult()
 {
+
 }
 
-LanguageResult::LanguageResult(const std::string &id)
+LanguageResult::LanguageResult(const char *id) : m_id(id)
 {
-	m_id = id;
+
+}
+
+LanguageResult::LanguageResult(const std::string &id) : m_id(id)
+{
+	
 }
 
 LanguageResult::LanguageResult(const std::string &id, const StringCollection<String> &params)

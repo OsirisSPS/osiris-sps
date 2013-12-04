@@ -36,11 +36,12 @@ class LangExport LanguageResult : public Object
 // Construction
 public:
 	LanguageResult();
-	LanguageResult(const std::string &id);
-	LanguageResult(const std::string &id, const StringCollection<String> &params);
-	LanguageResult(const std::string &id, const std::string &key1, const DataItem &val1);
-	LanguageResult(const std::string &id, const std::string &key1, const DataItem &val1, const std::string &key2, const DataItem &val2);
-	LanguageResult(const std::string &id, const std::string &key1, const DataItem &val1, const std::string &key2, const DataItem &val2, const std::string &key3, const DataItem &val3);
+	explicit LanguageResult(const char *id);
+	explicit LanguageResult(const std::string &id);
+	explicit LanguageResult(const std::string &id, const StringCollection<String> &params);
+	explicit LanguageResult(const std::string &id, const std::string &key1, const DataItem &val1);
+	explicit LanguageResult(const std::string &id, const std::string &key1, const DataItem &val1, const std::string &key2, const DataItem &val2);
+	explicit LanguageResult(const std::string &id, const std::string &key1, const DataItem &val1, const std::string &key2, const DataItem &val2, const std::string &key3, const DataItem &val3);
 
 	virtual ~LanguageResult();
 
