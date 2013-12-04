@@ -151,7 +151,7 @@ void ISocketProxy<P>::async_connection_callback(const boost::system::error_code 
 	{
 		// Connessione fallita
 
-		notify_error(*callback, e);
+		this->notify_error(*callback, e);
 	}
 	else if(endpoint != boost::asio::ip::tcp::resolver::iterator())
 	{
@@ -213,7 +213,7 @@ void ISocketProxy<P>::proxy_resolve_callback(const boost::system::error_code &e,
 {
 	if(e)
 	{
-		notify_error(*callback, e);
+		this->notify_error(*callback, e);
 		return;
 	}
 

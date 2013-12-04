@@ -222,7 +222,7 @@ void Socks5SocketProxy<P>::handshake1(const boost::system::error_code &e, shared
 {
 	if(e)
 	{
-		notify_error(*callback, e);
+		this->notify_error(*callback, e);
 		return;
 	}
 
@@ -243,7 +243,7 @@ void Socks5SocketProxy<P>::handshake2(const boost::system::error_code &e, shared
 {
 	if(e)
 	{
-		notify_error(*callback, e);
+		this->notify_error(*callback, e);
 		return;
 	}
 
@@ -255,7 +255,7 @@ void Socks5SocketProxy<P>::handshake2(const boost::system::error_code &e, shared
 	{
 		OS_ASSERTFALSE();
 
-		notify_error(*callback, boost::asio::error::no_recovery);
+		this->notify_error(*callback, boost::asio::error::no_recovery);
 		return;
 	}
 
@@ -263,7 +263,7 @@ void Socks5SocketProxy<P>::handshake2(const boost::system::error_code &e, shared
 	{
 		OS_ASSERTFALSE();
 
-		notify_error(*callback, boost::asio::error::operation_not_supported);
+		this->notify_error(*callback, boost::asio::error::operation_not_supported);
 		return;
 	}
 
@@ -273,7 +273,7 @@ void Socks5SocketProxy<P>::handshake2(const boost::system::error_code &e, shared
 	{
 		OS_ASSERTFALSE();
 
-		notify_error(*callback, boost::asio::error::no_recovery);
+		this->notify_error(*callback, boost::asio::error::no_recovery);
 		return;
 	}
 
@@ -294,7 +294,7 @@ void Socks5SocketProxy<P>::handshake2(const boost::system::error_code &e, shared
 	default:														// Il proxy ha risposto con un metodo di autenticazione non supportato: verificare i metodi supportati in initHelloBuffer
 
 																	OS_ASSERTFALSE();		
-																	notify_error(*callback, boost::asio::error::operation_not_supported);
+																	this->notify_error(*callback, boost::asio::error::operation_not_supported);
 																	break;
 	}
 }
@@ -304,7 +304,7 @@ void Socks5SocketProxy<P>::handshake3(const boost::system::error_code &e, shared
 {
 	if(e)
 	{
-		notify_error(*callback, e);
+		this->notify_error(*callback, e);
 		return;
 	}
 
@@ -325,7 +325,7 @@ void Socks5SocketProxy<P>::handshake4(const boost::system::error_code &e, shared
 {
 	if(e)
 	{
-		notify_error(*callback, e);
+		this->notify_error(*callback, e);
 		return;
 	}
 
@@ -337,7 +337,7 @@ void Socks5SocketProxy<P>::handshake4(const boost::system::error_code &e, shared
 	{
 		OS_ASSERTFALSE();
 
-		notify_error(*callback, boost::asio::error::no_recovery);
+		this->notify_error(*callback, boost::asio::error::no_recovery);
 		return;
 	}
 
@@ -345,7 +345,7 @@ void Socks5SocketProxy<P>::handshake4(const boost::system::error_code &e, shared
 	{
 		OS_ASSERTFALSE();
 
-		notify_error(*callback, boost::asio::error::operation_not_supported);
+		this->notify_error(*callback, boost::asio::error::operation_not_supported);
 		return;
 	}
 
@@ -355,7 +355,7 @@ void Socks5SocketProxy<P>::handshake4(const boost::system::error_code &e, shared
 	{
 		OS_ASSERTFALSE();
 
-		notify_error(*callback, boost::asio::error::no_recovery);
+		this->notify_error(*callback, boost::asio::error::no_recovery);
 		return;
 	}
 
@@ -363,7 +363,7 @@ void Socks5SocketProxy<P>::handshake4(const boost::system::error_code &e, shared
 	{
 		OS_ASSERTFALSE();
 
-		notify_error(*callback, boost::asio::error::operation_not_supported);
+		this->notify_error(*callback, boost::asio::error::operation_not_supported);
 		return;
 	}
 
@@ -383,7 +383,7 @@ void Socks5SocketProxy<P>::connected1(const boost::system::error_code &e, shared
 {
 	if(e)
 	{
-		notify_error(*callback, e);
+		this->notify_error(*callback, e);
 		return;
 	}
 
@@ -405,7 +405,7 @@ void Socks5SocketProxy<P>::connected2(const boost::system::error_code &e, shared
 {
 	if(e)
 	{
-		notify_error(*callback, e);
+		this->notify_error(*callback, e);
 		return;
 	}
 
@@ -417,7 +417,7 @@ void Socks5SocketProxy<P>::connected2(const boost::system::error_code &e, shared
 	{
 		OS_ASSERTFALSE();
 
-		notify_error(*callback, boost::asio::error::no_recovery);
+		this->notify_error(*callback, boost::asio::error::no_recovery);
 		return;
 	}
 
@@ -425,7 +425,7 @@ void Socks5SocketProxy<P>::connected2(const boost::system::error_code &e, shared
 	{
 		OS_ASSERTFALSE();
 
-		notify_error(*callback, boost::asio::error::operation_not_supported);
+		this->notify_error(*callback, boost::asio::error::operation_not_supported);
 		return;
 	}
 
@@ -434,7 +434,7 @@ void Socks5SocketProxy<P>::connected2(const boost::system::error_code &e, shared
 	{
 		OS_ASSERTFALSE();
 
-		notify_error(*callback, boost::asio::error::no_recovery);
+		this->notify_error(*callback, boost::asio::error::no_recovery);
 		return;
 	}
 
@@ -471,7 +471,7 @@ void Socks5SocketProxy<P>::connected2(const boost::system::error_code &e, shared
 																break;
 		}
 
-		notify_error(*callback, e);
+		this->notify_error(*callback, e);
 		return;
 	}
 
@@ -483,7 +483,7 @@ void Socks5SocketProxy<P>::connected2(const boost::system::error_code &e, shared
 	{
 		OS_ASSERTFALSE();
 
-		notify_error(*callback, boost::asio::error::no_recovery);
+		this->notify_error(*callback, boost::asio::error::no_recovery);
 		return;
 	}
 
@@ -496,7 +496,7 @@ void Socks5SocketProxy<P>::connected2(const boost::system::error_code &e, shared
 	case OS_SOCKS5PROXY_ADDRESS_TYPE_DOMAINNAME:	if(m_buffer->read(&size, sizeof(uint8)) != sizeof(uint8))
 													{
 														OS_ASSERTFALSE();
-														notify_error(*callback, boost::asio::error::no_recovery);
+														this->notify_error(*callback, boost::asio::error::no_recovery);
 														return;
 													}
 
@@ -511,7 +511,7 @@ void Socks5SocketProxy<P>::connected2(const boost::system::error_code &e, shared
 
 	if(size == 0)
 	{
-		notify_error(*callback, boost::asio::error::operation_not_supported);
+		this->notify_error(*callback, boost::asio::error::operation_not_supported);
 		return;
 	}
 
@@ -528,7 +528,7 @@ void Socks5SocketProxy<P>::connected3(const boost::system::error_code &e, shared
 {
 	if(e)
 	{
-		notify_error(*callback, e);
+		this->notify_error(*callback, e);
 		return;
 	}	
 
