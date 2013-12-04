@@ -48,7 +48,7 @@
 					<Add option="-Wl,-z,defs,-rpath=\\$$ORIGIN" />
 					<Add option="-static-libstdc++" />
 					<Add option="-static-libgcc" />
-					<Add library="libboost_unit_test_framework-gcc44-mt-d" />
+					<Add library="libboost_unit_test_framework-gcc48-mt-d" />
 					<Add library="libcore" />
 					<Add library="libhttp" />
 					<Add library="libengine" />
@@ -69,7 +69,7 @@
 					<Add library="libicui18n" />
 					<Add library="libicudata" />
 					<Add library="liblang" />
-					<Add library="libboost_date_time-gcc44-mt-d-1_41" />
+					<Add library="libboost_date_time-gcc48-mt-d-1_54" />
 					<Add library="libminiupnpc" />
 					<Add library="libarchives" />
 					<Add directory="../../dependencies/lib/linux/i386/gcc/debug" />
@@ -119,7 +119,7 @@
 					<Add option="-Wl,-z,defs,-rpath=\\$$ORIGIN" />
 					<Add option="-static-libstdc++" />
 					<Add option="-static-libgcc" />
-					<Add library="libboost_unit_test_framework-gcc44-mt" />
+					<Add library="libboost_unit_test_framework-gcc48-mt" />
 					<Add library="libcore" />
 					<Add library="libhttp" />
 					<Add library="libengine" />
@@ -140,7 +140,7 @@
 					<Add library="libicui18n" />
 					<Add library="libicudata" />
 					<Add library="liblang" />
-					<Add library="libboost_date_time-gcc44-mt-1_41" />
+					<Add library="libboost_date_time-gcc48-mt-1_54" />
 					<Add library="libminiupnpc" />
 					<Add library="libarchives" />
 					<Add directory="../../dependencies/lib/linux/i386/gcc/release" />
@@ -196,14 +196,14 @@
 					<Add library="libxerces-c" />
 					<Add library="libxalan-c" />
 					<Add library="libxalanMsg" />
-					<Add library="libboost_signals-xgcc42-mt-d-1_41" />
+					<Add library="libboost_signals-xgcc42-mt-d-1_54" />
 					<Add library="libz" />
 					<Add library="libhttp" />
 					<Add library="libssl" />
 					<Add library="libcrypto" />
 					<Add library="libengine" />
-					<Add library="libboost_date_time-xgcc42-mt-d-1_41" />
-					<Add library="libboost_unit_test_framework-xgcc42-mt-d-1_41" />
+					<Add library="libboost_date_time-xgcc42-mt-d-1_54" />
+					<Add library="libboost_unit_test_framework-xgcc42-mt-d-1_54" />
 					<Add library="libsdk" />
 					<Add directory="../../dependencies/lib/macosx/x86_64/gcc/debug" />
 					<Add directory="../../lib/macosx/x86_64/gcc/debug" />
@@ -263,14 +263,14 @@
 					<Add library="libxerces-c" />
 					<Add library="libxalan-c" />
 					<Add library="libxalanMsg" />
-					<Add library="libboost_signals-xgcc42-mt-1_41" />
+					<Add library="libboost_signals-xgcc42-mt-1_54" />
 					<Add library="libz" />
 					<Add library="libhttp" />
 					<Add library="libssl" />
 					<Add library="libcrypto" />
 					<Add library="libengine" />
-					<Add library="libboost_date_time-xgcc42-mt-1_41" />
-					<Add library="libboost_unit_test_framework-xgcc42-mt-1_41" />
+					<Add library="libboost_date_time-xgcc42-mt-1_54" />
+					<Add library="libboost_unit_test_framework-xgcc42-mt-1_54" />
 					<Add library="libsdk" />
 					<Add directory="../../dependencies/lib/macosx/x86_64/gcc/release" />
 					<Add directory="../../lib/macosx/x86_64/gcc/release" />
@@ -303,7 +303,7 @@
 					<Add directory="../skin" />
 					<Add directory="../net" />
 					<Add directory="../engine" />
-					<Add directory="../../dependencies/include/linux-x86_64" />
+					<Add directory="../../dependencies/include/linux" />
 					<Add directory="../http" />
 					<Add directory="../db" />
 					<Add directory="../sdk" />
@@ -322,7 +322,7 @@
 				</ResourceCompiler>
 				<Linker>
 					<Add option="-Wl,-z,defs,-rpath=\\$$ORIGIN" />
-					<Add library="libboost_unit_test_framework-gcc44-mt-d" />
+					<Add library="libboost_unit_test_framework-gcc48-mt-d" />
 					<Add library="libcore" />
 					<Add library="libhttp" />
 					<Add library="libengine" />
@@ -343,7 +343,7 @@
 					<Add library="libicui18n" />
 					<Add library="libicudata" />
 					<Add library="liblang" />
-					<Add library="libboost_date_time-gcc44-mt-d-1_41" />
+					<Add library="libboost_date_time-gcc48-mt-d-1_54" />
 					<Add library="libminiupnpc" />
 					<Add library="libarchives" />
 					<Add directory="../../dependencies/lib/linux/x86_64/gcc/debug" />
@@ -372,7 +372,7 @@
 					<Add directory="../skin" />
 					<Add directory="../net" />
 					<Add directory="../engine" />
-					<Add directory="../../dependencies/include/linux-x86_64" />
+					<Add directory="../../dependencies/include/linux" />
 					<Add directory="../http" />
 					<Add directory="../db" />
 					<Add directory="../sdk" />
@@ -392,7 +392,7 @@
 				<Linker>
 					<Add option="-s" />
 					<Add option="-Wl,-z,defs,-rpath=\\$$ORIGIN" />
-					<Add library="libboost_unit_test_framework-gcc44-mt" />
+					<Add library="libboost_unit_test_framework-gcc48-mt" />
 					<Add library="libcore" />
 					<Add library="libhttp" />
 					<Add library="libengine" />
@@ -413,7 +413,7 @@
 					<Add library="libicui18n" />
 					<Add library="libicudata" />
 					<Add library="liblang" />
-					<Add library="libboost_date_time-gcc44-mt-1_41" />
+					<Add library="libboost_date_time-gcc48-mt-1_54" />
 					<Add library="libminiupnpc" />
 					<Add library="libarchives" />
 					<Add directory="../../dependencies/lib/linux/x86_64/gcc/release" />

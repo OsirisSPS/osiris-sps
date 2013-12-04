@@ -632,7 +632,7 @@ public:
 		if(current != null)
 			*current = value;
 		else
-			push_back(key, new S(value));
+			CollectionBase::push_back(key, new S(value));
 	}
 
 // Operations

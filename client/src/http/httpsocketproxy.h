@@ -239,7 +239,7 @@ void HttpSocketProxy<P>::handshake1(const boost::system::error_code &e, shared_p
 
 	if(e)
 	{
-		notify_error(*callback, e);
+		this->notify_error(*callback, e);
 		return;
 	}
 
@@ -252,7 +252,7 @@ void HttpSocketProxy<P>::handshake2(const boost::system::error_code &e, size_t b
 {
 	if(e)
 	{
-		notify_error(*callback, e);
+		this->notify_error(*callback, e);
 		return;
 	}
 
@@ -278,14 +278,14 @@ void HttpSocketProxy<P>::handshake2(const boost::system::error_code &e, size_t b
 
 	if(error)
 	{
-		notify_error(*callback, boost::asio::error::no_recovery);
+		this->notify_error(*callback, boost::asio::error::no_recovery);
 		return;
 	}
 
 	uint32 statusCode = m_response->getStatusCode();
 	if(statusCode != httpStatusOK)
 	{
-		notify_error(*callback, convertHttpErrorCode(statusCode));
+		this->notify_error(*callback, convertHttpErrorCode(statusCode));
 		return;
 	}
 

@@ -57,8 +57,7 @@ class ILogHandler
 		
 	// Operations
 	private:
-		void initLogger();
-		void resetLogger();
+		void createLogger();		
 	};
 
 // Construction
@@ -87,6 +86,10 @@ public:
 	static shared_ptr<T> create(const P1 &p1, const P2 &p2, const P3 &p3, const P4 &p4, const P5 &p5);
 
 private:
+	void initLogger(shared_ptr<Logger> logger);	
+	void resetLogger();
+	
+private:
 	static void destroy(ILogHandler *instance);
 
 protected:
@@ -111,17 +114,11 @@ ILogHandler<T>::Handler::~Handler()
 }
 
 template <typename T>
-void ILogHandler<T>::Handler::initLogger()
+void ILogHandler<T>::Handler::createLogger()
 {
 	// N.B.: se si cambia implementazione non passare boost::bind lo shared_ptr esterno o si crea un riferimento ciclico
-	m_logger = Logger::create(boost::bind(&ILogHandler::log, this, _1));
+	initLogger(Logger::create(boost::bind(&ILogHandler::log, this, _1)));
 }
-
-template <typename T>
-void ILogHandler<T>::Handler::resetLogger()
-{
-	m_logger.reset();
-}	
 
 //////////////////////////////////////////////////////////////////////
 
@@ -147,7 +144,7 @@ template <typename T>
 shared_ptr<T> ILogHandler<T>::create()
 {
 	shared_ptr<Handler> instance(OS_NEW_T(Handler), &ILogHandler::destroy);		
-	instance->initLogger();
+	instance->createLogger();
 	return instance;
 }
 
@@ -156,7 +153,7 @@ template <typename P1>
 shared_ptr<T> ILogHandler<T>::create(const P1 &p1)
 {
 	shared_ptr<Handler> instance(OS_NEW_T(Handler)(p1), &ILogHandler::destroy);		
-	instance->initLogger();
+	instance->createLogger();
 	return instance;
 }
 
@@ -165,7 +162,7 @@ template <typename P1, typename P2>
 shared_ptr<T> ILogHandler<T>::create(const P1 &p1, const P2 &p2)
 {
 	shared_ptr<Handler> instance(OS_NEW_T(Handler)(p1, p2), &ILogHandler::destroy);		
-	instance->initLogger();
+	instance->createLogger();
 	return instance;
 }
 
@@ -174,7 +171,7 @@ template <typename P1, typename P2, typename P3>
 shared_ptr<T> ILogHandler<T>::create(const P1 &p1, const P2 &p2, const P3 &p3)
 {
 	shared_ptr<Handler> instance(OS_NEW_T(Handler)(p1, p2, p3), &ILogHandler::destroy);		
-	instance->initLogger();
+	instance->createLogger();
 	return instance;
 }
 
@@ -183,7 +180,7 @@ template <typename P1, typename P2, typename P3, typename P4>
 shared_ptr<T> ILogHandler<T>::create(const P1 &p1, const P2 &p2, const P3 &p3, const P4 &p4)
 {
 	shared_ptr<Handler> instance(OS_NEW_T(Handler)(p1, p2, p3, p4), &ILogHandler::destroy);		
-	instance->initLogger();
+	instance->createLogger();
 	return instance;
 }
 
@@ -192,14 +189,26 @@ template <typename P1, typename P2, typename P3, typename P4, typename P5>
 shared_ptr<T> ILogHandler<T>::create(const P1 &p1, const P2 &p2, const P3 &p3, const P4 &p4, const P5 &p5)
 {
 	shared_ptr<Handler> instance(OS_NEW_T(Handler)(p1, p2, p3, p4, p5), &ILogHandler::destroy);		
-	instance->initLogger();
+	instance->createLogger();
 	return instance;
+}
+
+template <typename T>
+void ILogHandler<T>::initLogger(shared_ptr<Logger> logger)
+{
+	m_logger = logger;
+}
+
+template <typename T>
+void ILogHandler<T>::resetLogger()
+{
+	m_logger.reset();
 }
 
 template <typename T>
 void ILogHandler<T>::destroy(ILogHandler *instance)
 {
-	dynamic_cast<Handler *>(instance)->resetLogger();
+	instance->resetLogger();
 	OS_DELETE_T(instance);
 }
 

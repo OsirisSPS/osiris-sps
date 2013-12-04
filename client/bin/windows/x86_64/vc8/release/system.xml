@@ -1,7 +1,0 @@
-﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<options>
-  <option name="folders.share" value="../../../../../share"/>
-  <option name="folders.data" value="../../../../../data"/>
-  <option name="folders.temp" value="../../../../../data/temp"/>
-  <option name="folders.log" value="../../../../../data/log"/>
-</options>

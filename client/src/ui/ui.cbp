@@ -53,9 +53,9 @@
 					<Add library="liblang" />
 					<Add library="libengine" />
 					<Add library="libpthread" />
-					<Add library="libboost_signals-gcc44-mt-d-1_41" />
+					<Add library="libboost_signals-gcc48-mt-d-1_54" />
 					<Add library="libxml" />
-					<Add library="libboost_regex-gcc44-mt-d-1_41" />
+					<Add library="libboost_regex-gcc48-mt-d-1_54" />
 					<Add library="libnet" />
 					<Add library="libssl" />
 					<Add library="libcrypto" />
@@ -113,9 +113,9 @@
 					<Add library="liblang" />
 					<Add library="libengine" />
 					<Add library="libpthread" />
-					<Add library="libboost_signals-gcc44-mt-1_41" />
+					<Add library="libboost_signals-gcc48-mt-1_54" />
 					<Add library="libxml" />
-					<Add library="libboost_regex-gcc44-mt-1_41" />
+					<Add library="libboost_regex-gcc48-mt-1_54" />
 					<Add library="libnet" />
 					<Add library="libssl" />
 					<Add library="libcrypto" />
@@ -183,7 +183,7 @@
 					<Add library="web" />
 					<Add library="libcrypto" />
 					<Add library="libssl" />
-					<Add library="libboost_regex-xgcc42-mt-d-1_41" />
+					<Add library="libboost_regex-xgcc42-mt-d-1_54" />
 					<Add library="http" />
 					<Add library="libirc" />
 					<Add library="upnp" />
@@ -255,7 +255,7 @@
 					<Add library="web" />
 					<Add library="libcrypto" />
 					<Add library="libssl" />
-					<Add library="libboost_regex-xgcc42-mt-1_41" />
+					<Add library="libboost_regex-xgcc42-mt-1_54" />
 					<Add library="http" />
 					<Add library="libirc" />
 					<Add library="upnp" />
@@ -297,7 +297,7 @@
 					<Add directory="../upnp" />
 					<Add directory="../../dependencies/include/wxwidgets_ds/setup/linux-x86_64/debug" />
 					<Add directory="../../dependencies/include/wxwidgets_ds" />
-					<Add directory="../../dependencies/include/linux-x86_64" />
+					<Add directory="../../dependencies/include/linux" />
 					<Add directory="../http" />
 					<Add directory="../irc" />
 					<Add directory="../db" />
@@ -315,9 +315,9 @@
 					<Add library="liblang" />
 					<Add library="libengine" />
 					<Add library="libpthread" />
-					<Add library="libboost_signals-gcc44-mt-d-1_41" />
+					<Add library="libboost_signals-gcc48-mt-d-1_54" />
 					<Add library="libxml" />
-					<Add library="libboost_regex-gcc44-mt-d-1_41" />
+					<Add library="libboost_regex-gcc48-mt-d-1_54" />
 					<Add library="libnet" />
 					<Add library="libssl" />
 					<Add library="libcrypto" />
@@ -354,7 +354,7 @@
 					<Add directory="../upnp" />
 					<Add directory="../../dependencies/include/wxwidgets_ds/setup/linux-x86_64/release" />
 					<Add directory="../../dependencies/include/wxwidgets_ds" />
-					<Add directory="../../dependencies/include/linux-x86_64" />
+					<Add directory="../../dependencies/include/linux" />
 					<Add directory="../http" />
 					<Add directory="../irc" />
 					<Add directory="../db" />
@@ -373,9 +373,9 @@
 					<Add library="liblang" />
 					<Add library="libengine" />
 					<Add library="libpthread" />
-					<Add library="libboost_signals-gcc44-mt-1_41" />
+					<Add library="libboost_signals-gcc48-mt-1_54" />
 					<Add library="libxml" />
-					<Add library="libboost_regex-gcc44-mt-1_41" />
+					<Add library="libboost_regex-gcc48-mt-1_54" />
 					<Add library="libnet" />
 					<Add library="libssl" />
 					<Add library="libcrypto" />

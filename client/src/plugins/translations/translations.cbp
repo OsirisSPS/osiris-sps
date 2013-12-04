@@ -229,7 +229,7 @@
 					<Add directory="../../net" />
 					<Add directory="../../http" />
 					<Add directory="../../db" />
-					<Add directory="../../../dependencies/include/linux-x86_64" />
+					<Add directory="../../../dependencies/include/linux" />
 				</Compiler>
 				<ResourceCompiler>
 					<Add directory="../../../dependencies/include" />
@@ -277,7 +277,7 @@
 					<Add directory="../../net" />
 					<Add directory="../../http" />
 					<Add directory="../../db" />
-					<Add directory="../../../dependencies/include/linux-x86_64" />
+					<Add directory="../../../dependencies/include/linux" />
 				</Compiler>
 				<ResourceCompiler>
 					<Add directory="../../../dependencies/include" />

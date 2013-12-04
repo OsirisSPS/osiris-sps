@@ -54,7 +54,7 @@
 					<Add library="libengine" />
 					<Add library="liblang" />
 					<Add library="libxml" />
-					<Add library="libboost_signals-gcc44-mt-d-1_41" />
+					<Add library="libboost_signals-gcc48-mt-d-1_54" />
 					<Add library="libnet" />
 					<Add library="libweb" />
 					<Add library="libxerces-c" />
@@ -65,8 +65,8 @@
 					<Add library="libssl" />
 					<Add library="libcrypto" />
 					<Add library="libhttp" />
-					<Add library="libboost_regex-gcc44-mt-d-1_41" />
-					<Add library="libboost_date_time-gcc44-mt-d-1_41" />
+					<Add library="libboost_regex-gcc48-mt-d-1_54" />
+					<Add library="libboost_date_time-gcc48-mt-d-1_54" />
 					<Add library="libui" />
 					<Add library="libirc" />
 					<Add library="libupnp" />
@@ -75,7 +75,7 @@
 					<Add library="libicuio" />
 					<Add library="libicui18n" />
 					<Add library="libicudata" />
-					<Add library="libboost_filesystem-gcc44-mt-d-1_41" />
+					<Add library="libboost_filesystem-gcc48-mt-d-1_54" />
 					<Add library="libarchives" />
 					<Add library="libwx_gtk2u-2.9" />
 					<Add directory="../../dependencies/lib/linux/i386/gcc/debug" />
@@ -129,7 +129,7 @@
 					<Add library="libengine" />
 					<Add library="liblang" />
 					<Add library="libxml" />
-					<Add library="libboost_signals-gcc44-mt-1_41" />
+					<Add library="libboost_signals-gcc48-mt-1_54" />
 					<Add library="libnet" />
 					<Add library="libweb" />
 					<Add library="libxerces-c" />
@@ -140,8 +140,8 @@
 					<Add library="libssl" />
 					<Add library="libcrypto" />
 					<Add library="libhttp" />
-					<Add library="libboost_regex-gcc44-mt-1_41" />
-					<Add library="libboost_date_time-gcc44-mt-1_41" />
+					<Add library="libboost_regex-gcc48-mt-1_54" />
+					<Add library="libboost_date_time-gcc48-mt-1_54" />
 					<Add library="libui" />
 					<Add library="libirc" />
 					<Add library="libupnp" />
@@ -150,7 +150,7 @@
 					<Add library="libicuio" />
 					<Add library="libicui18n" />
 					<Add library="libicudata" />
-					<Add library="libboost_filesystem-gcc44-mt-1_41" />
+					<Add library="libboost_filesystem-gcc48-mt-1_54" />
 					<Add library="libarchives" />
 					<Add library="libwx_gtk2u-2.9" />
 					<Add directory="../../dependencies/lib/linux/i386/gcc/release" />
@@ -312,7 +312,7 @@
 					<Add library="libengine" />
 					<Add library="liblang" />
 					<Add library="libxml" />
-					<Add library="libboost_signals-gcc44-mt-d-1_41" />
+					<Add library="libboost_signals-gcc48-mt-d-1_54" />
 					<Add library="libnet" />
 					<Add library="libweb" />
 					<Add library="libxerces-c" />
@@ -323,8 +323,8 @@
 					<Add library="libssl" />
 					<Add library="libcrypto" />
 					<Add library="libhttp" />
-					<Add library="libboost_regex-gcc44-mt-d-1_41" />
-					<Add library="libboost_date_time-gcc44-mt-d-1_41" />
+					<Add library="libboost_regex-gcc48-mt-d-1_54" />
+					<Add library="libboost_date_time-gcc48-mt-d-1_54" />
 					<Add library="libui" />
 					<Add library="libirc" />
 					<Add library="libupnp" />
@@ -333,7 +333,7 @@
 					<Add library="libicuio" />
 					<Add library="libicui18n" />
 					<Add library="libicudata" />
-					<Add library="libboost_filesystem-gcc44-mt-d-1_41" />
+					<Add library="libboost_filesystem-gcc48-mt-d-1_54" />
 					<Add library="libarchives" />
 					<Add library="libwx_gtk2u-2.9" />
 					<Add directory="../../dependencies/lib/linux/x86_64/gcc/debug" />
@@ -385,7 +385,7 @@
 					<Add library="libengine" />
 					<Add library="liblang" />
 					<Add library="libxml" />
-					<Add library="libboost_signals-gcc44-mt-1_41" />
+					<Add library="libboost_signals-gcc48-mt-1_54" />
 					<Add library="libnet" />
 					<Add library="libweb" />
 					<Add library="libxerces-c" />
@@ -396,8 +396,8 @@
 					<Add library="libssl" />
 					<Add library="libcrypto" />
 					<Add library="libhttp" />
-					<Add library="libboost_regex-gcc44-mt-1_41" />
-					<Add library="libboost_date_time-gcc44-mt-1_41" />
+					<Add library="libboost_regex-gcc48-mt-1_54" />
+					<Add library="libboost_date_time-gcc48-mt-1_54" />
 					<Add library="libui" />
 					<Add library="libirc" />
 					<Add library="libupnp" />
@@ -406,7 +406,7 @@
 					<Add library="libicuio" />
 					<Add library="libicui18n" />
 					<Add library="libicudata" />
-					<Add library="libboost_filesystem-gcc44-mt-1_41" />
+					<Add library="libboost_filesystem-gcc48-mt-1_54" />
 					<Add library="libarchives" />
 					<Add library="libwx_gtk2u-2.9" />
 					<Add directory="../../dependencies/lib/linux/x86_64/gcc/release" />

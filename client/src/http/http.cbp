@@ -179,7 +179,7 @@
 					<Add directory="../../dependencies/include/common" />
 					<Add directory="../core" />
 					<Add directory="../net" />
-					<Add directory="../../dependencies/include/linux-x86_64" />
+					<Add directory="../../dependencies/include/linux" />
 				</Compiler>
 				<ResourceCompiler>
 					<Add directory="../../dependencies/include/common" />
@@ -216,7 +216,7 @@
 					<Add directory="../core" />
 					<Add directory="../net" />
 					<Add directory="../http/" />
-					<Add directory="../../dependencies/include/linux-x86_64" />
+					<Add directory="../../dependencies/include/linux" />
 				</Compiler>
 				<ResourceCompiler>
 					<Add directory="../../dependencies/include/common" />

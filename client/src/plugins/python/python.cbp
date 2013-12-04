@@ -47,9 +47,9 @@
 					<Add option="-Wl,-z,defs,-rpath=./" />
 					<Add option="-static-libstdc++" />
 					<Add option="-static-libgcc" />
-					<Add library="libboost_python-gcc44-mt-d-1_41" />
+					<Add library="libboost_python-gcc48-mt-d-1_54" />
 					<Add library="libpython2.6" />
-					<Add library="libboost_system-gcc44-mt-d-1_41" />
+					<Add library="libboost_system-gcc48-mt-d-1_54" />
 					<Add library="libcore" />
 					<Add library="libhttp" />
 					<Add library="libpthread" />
@@ -110,9 +110,9 @@
 					<Add option="-Wl,-z,defs,-rpath=./" />
 					<Add option="-static-libstdc++" />
 					<Add option="-static-libgcc" />
-					<Add library="libboost_python-gcc44-mt-1_41" />
+					<Add library="libboost_python-gcc48-mt-1_54" />
 					<Add library="libpython2.6" />
-					<Add library="libboost_system-gcc44-mt-1_41" />
+					<Add library="libboost_system-gcc48-mt-1_54" />
 					<Add library="libcore" />
 					<Add library="libhttp" />
 					<Add library="libpthread" />
@@ -180,7 +180,7 @@
 					<Add library="libnet" />
 					<Add library="libweb" />
 					<Add library="libhttp" />
-					<Add library="libboost_python-xgcc42-mt-d-1_41" />
+					<Add library="libboost_python-xgcc42-mt-d-1_54" />
 					<Add library="libpython2.6" />
 					<Add library="libssl" />
 					<Add library="libcrypto" />
@@ -241,7 +241,7 @@
 					<Add library="libnet" />
 					<Add library="libweb" />
 					<Add library="libhttp" />
-					<Add library="libboost_python-xgcc42-mt-1_41" />
+					<Add library="libboost_python-xgcc42-mt-1_54" />
 					<Add library="libssl" />
 					<Add library="libcrypto" />
 					<Add library="libdb" />
@@ -271,8 +271,8 @@
 					<Add option="-DUNICODE" />
 					<Add directory="./" />
 					<Add directory="../../../dependencies/include" />
-					<Add directory="../../../dependencies/include/linux-x86_64" />
-					<Add directory="../../../dependencies/include/linux-x86_64/python" />
+					<Add directory="../../../dependencies/include/linux" />
+					<Add directory="../../../dependencies/include/linux/python" />
 					<Add directory="../../core" />
 					<Add directory="../../xml" />
 					<Add directory="../../web" />
@@ -295,9 +295,9 @@
 				</ResourceCompiler>
 				<Linker>
 					<Add option="-Wl,-z,defs,-rpath=./" />
-					<Add library="libboost_python-gcc44-mt-d-1_41" />
+					<Add library="libboost_python-gcc48-mt-d-1_54" />
 					<Add library="libpython2.6" />
-					<Add library="libboost_system-gcc44-mt-d-1_41" />
+					<Add library="libboost_system-gcc48-mt-d-1_54" />
 					<Add library="libcore" />
 					<Add library="libhttp" />
 					<Add library="libpthread" />
@@ -332,8 +332,8 @@
 					<Add option="-DUNICODE" />
 					<Add directory="./" />
 					<Add directory="../../../dependencies/include" />
-					<Add directory="../../../dependencies/include/linux-x86_64" />
-					<Add directory="../../../dependencies/include/linux-x86_64/python" />
+					<Add directory="../../../dependencies/include/linux" />
+					<Add directory="../../../dependencies/include/linux/python" />
 					<Add directory="../../core" />
 					<Add directory="../../xml" />
 					<Add directory="../../web" />
@@ -357,9 +357,9 @@
 				<Linker>
 					<Add option="-s" />
 					<Add option="-Wl,-z,defs,-rpath=./" />
-					<Add library="libboost_python-gcc44-mt-1_41" />
+					<Add library="libboost_python-gcc48-mt-1_54" />
 					<Add library="libpython2.6" />
-					<Add library="libboost_system-gcc44-mt-1_41" />
+					<Add library="libboost_system-gcc48-mt-1_54" />
 					<Add library="libcore" />
 					<Add library="libhttp" />
 					<Add library="libpthread" />

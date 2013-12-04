@@ -62,8 +62,8 @@
 					<Add library="libhttp" />
 					<Add library="libnet" />
 					<Add library="libxalanMsg" />
-					<Add library="libboost_signals-gcc44-mt-d-1_41" />
-					<Add library="libboost_date_time-gcc44-mt-d-1_41" />
+					<Add library="libboost_signals-gcc48-mt-d-1_54" />
+					<Add library="libboost_date_time-gcc48-mt-d-1_54" />
 					<Add library="libicuio" />
 					<Add library="libicuuc" />
 					<Add library="libicudata" />
@@ -129,8 +129,8 @@
 					<Add library="libhttp" />
 					<Add library="libnet" />
 					<Add library="libxalanMsg" />
-					<Add library="libboost_signals-gcc44-mt-1_41" />
-					<Add library="libboost_date_time-gcc44-mt-1_41" />
+					<Add library="libboost_signals-gcc48-mt-1_54" />
+					<Add library="libboost_date_time-gcc48-mt-1_54" />
 					<Add library="libicuio" />
 					<Add library="libicuuc" />
 					<Add library="libicudata" />
@@ -279,7 +279,7 @@
 					<Add directory="../../dependencies/include/common" />
 					<Add directory="../../dependencies/include/wxwidgets" />
 					<Add directory="../../dependencies/include/wxwidgets/setup/linux-x86_64/debug" />
-					<Add directory="../../dependencies/include/linux-x86_64" />
+					<Add directory="../../dependencies/include/linux" />
 					<Add directory="../archives" />
 					<Add directory="../core" />
 					<Add directory="../xml" />
@@ -315,8 +315,8 @@
 					<Add library="libhttp" />
 					<Add library="libnet" />
 					<Add library="libxalanMsg" />
-					<Add library="libboost_signals-gcc44-mt-d-1_41" />
-					<Add library="libboost_date_time-gcc44-mt-d-1_41" />
+					<Add library="libboost_signals-gcc48-mt-d-1_54" />
+					<Add library="libboost_date_time-gcc48-mt-d-1_54" />
 					<Add library="libicuio" />
 					<Add library="libicuuc" />
 					<Add library="libicudata" />
@@ -344,7 +344,7 @@
 					<Add directory="../../dependencies/include/common" />
 					<Add directory="../../dependencies/include/wxwidgets" />
 					<Add directory="../../dependencies/include/wxwidgets/setup/linux-x86_64/release" />
-					<Add directory="../../dependencies/include/linux-x86_64" />
+					<Add directory="../../dependencies/include/linux" />
 					<Add directory="../archives" />
 					<Add directory="../core" />
 					<Add directory="../xml" />
@@ -381,8 +381,8 @@
 					<Add library="libhttp" />
 					<Add library="libnet" />
 					<Add library="libxalanMsg" />
-					<Add library="libboost_signals-gcc44-mt-1_41" />
-					<Add library="libboost_date_time-gcc44-mt-1_41" />
+					<Add library="libboost_signals-gcc48-mt-1_54" />
+					<Add library="libboost_date_time-gcc48-mt-1_54" />
 					<Add library="libicuio" />
 					<Add library="libicuuc" />
 					<Add library="libicudata" />

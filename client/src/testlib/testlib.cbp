@@ -33,7 +33,7 @@
 					<Add library="libcore" />
 					<Add library="libpthread" />
 					<Add library="libssl" />
-					<Add library="libboost_signals-gcc44-mt-d-1_41" />
+					<Add library="libboost_signals-gcc48-mt-d-1_54" />
 					<Add library="libcrypto" />
 					<Add directory="../../bin/linux/i386/gcc/debug" />
 					<Add directory="../../dependencies/lib/linux/i386/gcc/debug" />
@@ -67,7 +67,7 @@
 					<Add library="libcore" />
 					<Add library="libpthread" />
 					<Add library="libssl" />
-					<Add library="libboost_signals-gcc44-mt-1_41" />
+					<Add library="libboost_signals-gcc48-mt-1_54" />
 					<Add library="libcrypto" />
 					<Add directory="../../bin/linux/i386/gcc/release" />
 					<Add directory="../../dependencies/lib/linux/i386/gcc/release" />
@@ -100,7 +100,7 @@
 					<Add library="core" />
 					<Add library="libcrypto" />
 					<Add library="libssl" />
-					<Add library="libboost_signals-xgcc42-mt-d-1_41" />
+					<Add library="libboost_signals-xgcc42-mt-d-1_54" />
 					<Add directory="../../lib/macosx/x86_64/gcc/debug" />
 					<Add directory="../../dependencies/lib/macosx/x86_64/gcc/debug" />
 					<Add directory="../../bin/macosx/x86_64/gcc/debug/Osiris.app/Contents/MacOS" />
@@ -137,7 +137,7 @@
 					<Add library="core" />
 					<Add library="libcrypto" />
 					<Add library="libssl" />
-					<Add library="libboost_signals-xgcc42-mt-1_41" />
+					<Add library="libboost_signals-xgcc42-mt-1_54" />
 					<Add directory="../../lib/macosx/x86_64/gcc/release" />
 					<Add directory="../../dependencies/lib/macosx/x86_64/gcc/release" />
 					<Add directory="../../bin/macosx/x86_64/gcc/release/Osiris.app/Contents/MacOS" />
@@ -163,7 +163,7 @@
 					<Add option="-DUNICODE" />
 					<Add directory="../../dependencies/include/common" />
 					<Add directory="../core" />
-					<Add directory="../../dependencies/include/linux-x86_64" />
+					<Add directory="../../dependencies/include/linux" />
 				</Compiler>
 				<ResourceCompiler>
 					<Add directory="../../dependencies/include/common" />
@@ -174,7 +174,7 @@
 					<Add library="libcore" />
 					<Add library="libpthread" />
 					<Add library="libssl" />
-					<Add library="libboost_signals-gcc44-mt-d-1_41" />
+					<Add library="libboost_signals-gcc48-mt-d-1_54" />
 					<Add library="libcrypto" />
 					<Add directory="../../bin/linux/x86_64/gcc/debug" />
 					<Add directory="../../dependencies/lib/linux/x86_64/gcc/debug" />
@@ -197,7 +197,7 @@
 					<Add option="-DUNICODE" />
 					<Add directory="../../dependencies/include/common" />
 					<Add directory="../core" />
-					<Add directory="../../dependencies/include/linux-x86_64" />
+					<Add directory="../../dependencies/include/linux" />
 				</Compiler>
 				<ResourceCompiler>
 					<Add directory="../../dependencies/include/common" />
@@ -209,7 +209,7 @@
 					<Add library="libcore" />
 					<Add library="libpthread" />
 					<Add library="libssl" />
-					<Add library="libboost_signals-gcc44-mt-1_41" />
+					<Add library="libboost_signals-gcc48-mt-1_54" />
 					<Add library="libcrypto" />
 					<Add directory="../../bin/linux/x86_64/gcc/release" />
 					<Add directory="../../dependencies/lib/linux/x86_64/gcc/release" />

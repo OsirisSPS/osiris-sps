@@ -67,8 +67,8 @@
 					<Add library="liblang" />
 					<Add library="libxml" />
 					<Add library="libclucene" />
-					<Add library="libboost_date_time-gcc44-mt-d-1_41" />
-					<Add library="libboost_signals-gcc44-mt-d-1_41" />
+					<Add library="libboost_date_time-gcc48-mt-d-1_54" />
+					<Add library="libboost_signals-gcc48-mt-d-1_54" />
 					<Add library="libupnp" />
 					<Add library="libminiupnpc" />
 					<Add library="libdb" />
@@ -76,7 +76,7 @@
 					<Add library="libicuio" />
 					<Add library="libicui18n" />
 					<Add library="libicudata" />
-					<Add library="libboost_filesystem-gcc44-mt-d-1_41" />
+					<Add library="libboost_filesystem-gcc48-mt-d-1_54" />
 					<Add library="libsdk" />
 					<Add library="libarchives" />
 					<Add directory="../../dependencies/lib/linux/i386/gcc/debug" />
@@ -144,8 +144,8 @@
 					<Add library="liblang" />
 					<Add library="libxml" />
 					<Add library="libclucene" />
-					<Add library="libboost_date_time-gcc44-mt-1_41" />
-					<Add library="libboost_signals-gcc44-mt-1_41" />
+					<Add library="libboost_date_time-gcc48-mt-1_54" />
+					<Add library="libboost_signals-gcc48-mt-1_54" />
 					<Add library="libupnp" />
 					<Add library="libminiupnpc" />
 					<Add library="libdb" />
@@ -153,7 +153,7 @@
 					<Add library="libicuio" />
 					<Add library="libicui18n" />
 					<Add library="libicudata" />
-					<Add library="libboost_filesystem-gcc44-mt-1_41" />
+					<Add library="libboost_filesystem-gcc48-mt-1_54" />
 					<Add library="libsdk" />
 					<Add library="libarchives" />
 					<Add directory="../../dependencies/lib/linux/i386/gcc/release" />
@@ -218,8 +218,8 @@
 					<Add library="liblang" />
 					<Add library="libxml" />
 					<Add library="libclucene" />
-					<Add library="libboost_date_time-xgcc42-mt-d-1_41" />
-					<Add library="libboost_signals-xgcc42-mt-d-1_41" />
+					<Add library="libboost_date_time-xgcc42-mt-d-1_54" />
+					<Add library="libboost_signals-xgcc42-mt-d-1_54" />
 					<Add library="libsdk" />
 					<Add directory="../../dependencies/lib/macosx/x86_64/gcc/debug" />
 					<Add directory="../../lib/macosx/x86_64/gcc/debug" />
@@ -285,8 +285,8 @@
 					<Add library="liblang" />
 					<Add library="libxml" />
 					<Add library="libclucene" />
-					<Add library="libboost_date_time-xgcc42-mt-1_41" />
-					<Add library="libboost_signals-xgcc42-mt-1_41" />
+					<Add library="libboost_date_time-xgcc42-mt-1_54" />
+					<Add library="libboost_signals-xgcc42-mt-1_54" />
 					<Add library="libsdk" />
 					<Add directory="../../dependencies/lib/macosx/x86_64/gcc/release" />
 					<Add directory="../../lib/macosx/x86_64/gcc/release" />
@@ -323,7 +323,7 @@
 					<Add directory="../net" />
 					<Add directory="../engine" />
 					<Add directory="../http" />
-					<Add directory="../../dependencies/include/linux-x86_64" />
+					<Add directory="../../dependencies/include/linux" />
 					<Add directory="../upnp" />
 					<Add directory="../sdk" />
 				</Compiler>
@@ -356,8 +356,8 @@
 					<Add library="liblang" />
 					<Add library="libxml" />
 					<Add library="libclucene" />
-					<Add library="libboost_date_time-gcc44-mt-d-1_41" />
-					<Add library="libboost_signals-gcc44-mt-d-1_41" />
+					<Add library="libboost_date_time-gcc48-mt-d-1_54" />
+					<Add library="libboost_signals-gcc48-mt-d-1_54" />
 					<Add library="libupnp" />
 					<Add library="libminiupnpc" />
 					<Add library="libdb" />
@@ -365,7 +365,7 @@
 					<Add library="libicuio" />
 					<Add library="libicui18n" />
 					<Add library="libicudata" />
-					<Add library="libboost_filesystem-gcc44-mt-d-1_41" />
+					<Add library="libboost_filesystem-gcc48-mt-d-1_54" />
 					<Add library="libsdk" />
 					<Add library="libarchives" />
 					<Add directory="../../dependencies/lib/linux/x86_64/gcc/debug" />
@@ -398,7 +398,7 @@
 					<Add directory="../net" />
 					<Add directory="../engine" />
 					<Add directory="../http" />
-					<Add directory="../../dependencies/include/linux-x86_64" />
+					<Add directory="../../dependencies/include/linux" />
 					<Add directory="../upnp" />
 					<Add directory="../sdk" />
 				</Compiler>
@@ -432,8 +432,8 @@
 					<Add library="liblang" />
 					<Add library="libxml" />
 					<Add library="libclucene" />
-					<Add library="libboost_date_time-gcc44-mt-1_41" />
-					<Add library="libboost_signals-gcc44-mt-1_41" />
+					<Add library="libboost_date_time-gcc48-mt-1_54" />
+					<Add library="libboost_signals-gcc48-mt-1_54" />
 					<Add library="libupnp" />
 					<Add library="libminiupnpc" />
 					<Add library="libdb" />
@@ -441,7 +441,7 @@
 					<Add library="libicuio" />
 					<Add library="libicui18n" />
 					<Add library="libicudata" />
-					<Add library="libboost_filesystem-gcc44-mt-1_41" />
+					<Add library="libboost_filesystem-gcc48-mt-1_54" />
 					<Add library="libsdk" />
 					<Add library="libarchives" />
 					<Add directory="../../dependencies/lib/linux/x86_64/gcc/release" />
