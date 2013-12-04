@@ -323,7 +323,7 @@
 					<Add directory="../net" />
 					<Add directory="../engine" />
 					<Add directory="../http" />
-					<Add directory="../../dependencies/include/linux-x86_64" />
+					<Add directory="../../dependencies/include/linux" />
 					<Add directory="../upnp" />
 					<Add directory="../sdk" />
 				</Compiler>
@@ -398,7 +398,7 @@
 					<Add directory="../net" />
 					<Add directory="../engine" />
 					<Add directory="../http" />
-					<Add directory="../../dependencies/include/linux-x86_64" />
+					<Add directory="../../dependencies/include/linux" />
 					<Add directory="../upnp" />
 					<Add directory="../sdk" />
 				</Compiler>

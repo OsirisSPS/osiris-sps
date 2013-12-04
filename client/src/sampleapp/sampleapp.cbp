@@ -279,7 +279,7 @@
 					<Add directory="../../dependencies/include/common" />
 					<Add directory="../../dependencies/include/wxwidgets" />
 					<Add directory="../../dependencies/include/wxwidgets/setup/linux-x86_64/debug" />
-					<Add directory="../../dependencies/include/linux-x86_64" />
+					<Add directory="../../dependencies/include/linux" />
 					<Add directory="../archives" />
 					<Add directory="../core" />
 					<Add directory="../xml" />
@@ -344,7 +344,7 @@
 					<Add directory="../../dependencies/include/common" />
 					<Add directory="../../dependencies/include/wxwidgets" />
 					<Add directory="../../dependencies/include/wxwidgets/setup/linux-x86_64/release" />
-					<Add directory="../../dependencies/include/linux-x86_64" />
+					<Add directory="../../dependencies/include/linux" />
 					<Add directory="../archives" />
 					<Add directory="../core" />
 					<Add directory="../xml" />

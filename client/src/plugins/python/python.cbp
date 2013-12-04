@@ -271,8 +271,8 @@
 					<Add option="-DUNICODE" />
 					<Add directory="./" />
 					<Add directory="../../../dependencies/include" />
-					<Add directory="../../../dependencies/include/linux-x86_64" />
-					<Add directory="../../../dependencies/include/linux-x86_64/python" />
+					<Add directory="../../../dependencies/include/linux" />
+					<Add directory="../../../dependencies/include/linux/python" />
 					<Add directory="../../core" />
 					<Add directory="../../xml" />
 					<Add directory="../../web" />
@@ -332,8 +332,8 @@
 					<Add option="-DUNICODE" />
 					<Add directory="./" />
 					<Add directory="../../../dependencies/include" />
-					<Add directory="../../../dependencies/include/linux-x86_64" />
-					<Add directory="../../../dependencies/include/linux-x86_64/python" />
+					<Add directory="../../../dependencies/include/linux" />
+					<Add directory="../../../dependencies/include/linux/python" />
 					<Add directory="../../core" />
 					<Add directory="../../xml" />
 					<Add directory="../../web" />

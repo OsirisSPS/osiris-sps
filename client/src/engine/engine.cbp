@@ -267,7 +267,7 @@
 					<Add directory="../lang" />
 					<Add directory="../net" />
 					<Add directory="./" />
-					<Add directory="../../dependencies/include/linux-x86_64" />
+					<Add directory="../../dependencies/include/linux" />
 					<Add directory="../http" />
 					<Add directory="../upnp" />
 					<Add directory="../db" />
@@ -324,7 +324,7 @@
 					<Add directory="../lang" />
 					<Add directory="../net" />
 					<Add directory="./" />
-					<Add directory="../../dependencies/include/linux-x86_64" />
+					<Add directory="../../dependencies/include/linux" />
 					<Add directory="../http" />
 					<Add directory="../upnp" />
 					<Add directory="../db" />

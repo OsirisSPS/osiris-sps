@@ -163,7 +163,7 @@
 					<Add option="-DUNICODE" />
 					<Add directory="../../dependencies/include/common" />
 					<Add directory="../core" />
-					<Add directory="../../dependencies/include/linux-x86_64" />
+					<Add directory="../../dependencies/include/linux" />
 				</Compiler>
 				<ResourceCompiler>
 					<Add directory="../../dependencies/include/common" />
@@ -197,7 +197,7 @@
 					<Add option="-DUNICODE" />
 					<Add directory="../../dependencies/include/common" />
 					<Add directory="../core" />
-					<Add directory="../../dependencies/include/linux-x86_64" />
+					<Add directory="../../dependencies/include/linux" />
 				</Compiler>
 				<ResourceCompiler>
 					<Add directory="../../dependencies/include/common" />

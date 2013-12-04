@@ -303,7 +303,7 @@
 					<Add directory="../skin" />
 					<Add directory="../net" />
 					<Add directory="../engine" />
-					<Add directory="../../dependencies/include/linux-x86_64" />
+					<Add directory="../../dependencies/include/linux" />
 					<Add directory="../http" />
 					<Add directory="../db" />
 					<Add directory="../sdk" />
@@ -372,7 +372,7 @@
 					<Add directory="../skin" />
 					<Add directory="../net" />
 					<Add directory="../engine" />
-					<Add directory="../../dependencies/include/linux-x86_64" />
+					<Add directory="../../dependencies/include/linux" />
 					<Add directory="../http" />
 					<Add directory="../db" />
 					<Add directory="../sdk" />

@@ -297,7 +297,7 @@
 					<Add directory="../upnp" />
 					<Add directory="../../dependencies/include/wxwidgets_ds/setup/linux-x86_64/debug" />
 					<Add directory="../../dependencies/include/wxwidgets_ds" />
-					<Add directory="../../dependencies/include/linux-x86_64" />
+					<Add directory="../../dependencies/include/linux" />
 					<Add directory="../http" />
 					<Add directory="../irc" />
 					<Add directory="../db" />
@@ -354,7 +354,7 @@
 					<Add directory="../upnp" />
 					<Add directory="../../dependencies/include/wxwidgets_ds/setup/linux-x86_64/release" />
 					<Add directory="../../dependencies/include/wxwidgets_ds" />
-					<Add directory="../../dependencies/include/linux-x86_64" />
+					<Add directory="../../dependencies/include/linux" />
 					<Add directory="../http" />
 					<Add directory="../irc" />
 					<Add directory="../db" />
