@@ -26,6 +26,7 @@ import mcp
 import network
 import redirect
 import register_main
+import subscribe2
 import account
 import accounts2
 
@@ -114,6 +115,9 @@ class MainHandler(osiris.IHttpDirectoryHandler):
 			
 		if(relPage == "register"):
 			page = register_main.Page(session)			
+			
+		if(relPage == "subscribe2"):
+			page = subscribe2.Page(session)			
 			
 		if(relPage == "account"):
 			page = account.Page(session)			

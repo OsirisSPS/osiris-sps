@@ -920,8 +920,8 @@ a.os_userbox_notifications:hover
 {
 	font-size:0.9em;
 	font-style:italic;
-	background:@os-skin-error-bg;
-	color:@os-skin-error-fg;
+	background:@os-skin-warning-bg;
+	color: lighten(@os-skin-warning-fg, (@os-color-delta * -60%));    
 	margin-left:10px;
 }
 
@@ -935,7 +935,7 @@ tr.os_current,
 .os_input_invalid
 {
 	/*.os-box-shadow(0px, 0px, 3px, @os-skin-error-bg);*/
-	/*background-color: @os-color-attention;*/
+	background-color: @os-skin-error-bg;
 }
 
 .os_hash
@@ -2206,6 +2206,11 @@ a.os_button_link:hover
 .os_button_img:active
 {
 	.os_button_active_mixin();
+}
+
+.os_button:disabled
+{
+	opacity: 0.3;
 }
 
 a.os_button_img

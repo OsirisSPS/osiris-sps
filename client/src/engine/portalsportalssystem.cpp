@@ -98,7 +98,7 @@ const String PortalsSystem::MAIN_PAGE_ACCOUNTS = _S("accounts");
 const String PortalsSystem::MAIN_PAGE_SETTINGS = _S("settings");
 const String PortalsSystem::MAIN_PAGE_RESOURCES = _S("resources");
 const String PortalsSystem::MAIN_PAGE_MAINTENANCE = _S("maintenance");
-const String PortalsSystem::MAIN_PAGE_SUBSCRIBE = _S("subscribe");
+const String PortalsSystem::MAIN_PAGE_SUBSCRIBE = _S("subscribe2");
 const String PortalsSystem::MAIN_PAGE_ISIS = _S("isis");
 const String PortalsSystem::MAIN_PAGE_JOBDETAIL = _S("jobdetail");
 const String PortalsSystem::MAIN_PAGE_JOBS = _S("jobs");
@@ -563,7 +563,7 @@ bool PortalsSystem::createMonarchicPortal(shared_ptr<PortalOptions> options)
 }
 */
 
-shared_ptr<Portal> PortalsSystem::createPortal(shared_ptr<PortalOptions> options)
+shared_ptr<Portal> PortalsSystem::createPortal(shared_ptr<PortalOptions> options) // TOCLEAN
 {
 	options->setPortalID(PortalID::generate());
 
@@ -622,7 +622,7 @@ shared_ptr<Portal> PortalsSystem::subscribePortal(shared_ptr<PortalOptions> opti
 
 	PortalID id = options->getPortalID();
 	if(id.empty())
-		return null;
+		id = PortalID::generate();		
 
 	PovID pov = options->getPovID();
 	if(pov.empty())

@@ -711,13 +711,16 @@ var Osiris =
     },
 
     controlStringValidation: function () {
-        if (this.attributes["data-os-minchars"]) {
-            var submit = osGetById(this.attributes["data-os-submit"].nodeValue);
-            var minChars = parseInt(this.attributes["data-os-minchars"].nodeValue);
+    		if ($(this).attr("data-os-minchars") != "") {
+            var submit = $(this).attr("data-os-submit");
+            var minChars = $(this).attr("data-os-minchars");
             if ($(this).val().length < minChars) {
                 $(this).addClass("os_input_invalid");
-                var msg =
+                //var msg =
                 $(this.spanMessage).text(Osiris.getText("controls.string.minchars","nchars",minChars));
+                
+                if(submit != "")
+                	$('#' + submit).prop('disabled', true);
 
                 /*
                 if ($(this.spanMessage).text() == "") {
@@ -732,9 +735,14 @@ var Osiris =
                 */
 
             }
-            else {
+            else 
+            	{
                 $(this).removeClass("os_input_invalid");
                 $(this.spanMessage).text("");
+                
+                if(submit != "")
+                	$('#' + submit).prop('disabled', false);
+                	
                 /*
                 if ($(this.spanMessage).text() != "") {
                 submit.errors--;
