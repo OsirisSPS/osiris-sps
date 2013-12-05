@@ -90,6 +90,9 @@
 // Engine - Data
 #include "dataaccount.h"
 
+// Engine - Objects
+#include "objectsobjects.h"
+
 // Engine - Extensions
 #include "iextensionsextension.h"
 #include "iextensionscomponent.h"

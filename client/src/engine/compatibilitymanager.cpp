@@ -23,6 +23,7 @@
 #include "dataaccount.h"
 #include "datatable.h"
 #include "dbdatabasessystem.h"
+#include "file.h"
 #include "htmlparser.h"
 #include "id.h"
 #include "idbconnection.h"
@@ -38,6 +39,7 @@
 #include "objectsirevisionable.h"
 #include "objectsuser.h"
 #include "options.h"
+#include "osirislink.h"
 #include "platformmanager.h"
 #include "portalsportal.h"
 #include "portalsportaloptions.h"
@@ -173,7 +175,7 @@ bool CompatibilityManager::razorUpgrade(const String &folder)
 #else
 					PovID povID = userID.getHash();
 #endif
-					/*
+					
 					if(userID.empty() == false)
 					{
 						// Clean old snapshot
@@ -181,15 +183,15 @@ bool CompatibilityManager::razorUpgrade(const String &folder)
 						connection->execute(_S("delete from os_snapshot_users"));
 						connection->execute(_S("delete from os_snapshot_profiles"));
 						connection->execute(_S("delete from os_discussions_stats"));
-						connection->execute(_S("delete from os_forums_forum_stats"));
-						connection->execute(_S("delete from os_forums_section_stats"));
+						//connection->execute(_S("delete from os_forums_forum_stats"));
+						//connection->execute(_S("delete from os_forums_section_stats"));
 						connection->execute(_S("delete from os_polls_stats"));
 						connection->execute(_S("delete from os_polls_options_stats"));
 						connection->execute(_S("delete from os_users_stats"));
 
 						// Old
-						connection->execute(_S("drop table os_forums_forum_stats"));
-						connection->execute(_S("drop table os_forums_section_stats"));
+						connection->execute(_S("drop table if exists os_forums_forum_stats"));
+						connection->execute(_S("drop table if exists os_forums_section_stats"));
 
 						// Reset acceptable
 						connection->execute(_S("update os_entries set rank=-2"));
@@ -221,13 +223,13 @@ bool CompatibilityManager::razorUpgrade(const String &folder)
 
 						
 					}
-					*/
+					
 
 					connection->close();
 
 					if(userID.empty() == false)
 					{					
-						String newPortalIDKey = oldID;
+						String newPortalIDKey = oldID.substr(8);
 						PortalID newPortalID = CryptManager:: instance()->SHA(newPortalIDKey.buffer(), newPortalIDKey.buffer_size()).toHex();
 
 						String newPovID = Portal::generatePovID(newPortalID, povID);
@@ -294,15 +296,15 @@ bool CompatibilityManager::razorPortalDatabaseUpgrade(const shared_ptr<IPortalDa
 	database->execute(_S("delete from os_snapshot_users"));
 	//database->execute(_S("delete from os_snapshot_profiles"));
 	database->execute(_S("delete from os_discussions_stats"));
-	database->execute(_S("delete from os_forums_forum_stats"));
-	database->execute(_S("delete from os_forums_section_stats"));
+	//database->execute(_S("delete from os_forums_forum_stats"));
+	//database->execute(_S("delete from os_forums_section_stats"));
 	database->execute(_S("delete from os_polls_stats"));
 	database->execute(_S("delete from os_polls_options_stats"));
 	database->execute(_S("delete from os_users_stats"));
 
 	// Old
-	database->execute(_S("drop table os_forums_forum_stats"));
-	database->execute(_S("drop table os_forums_section_stats"));
+	database->execute(_S("drop table if exists os_forums_forum_stats"));
+	database->execute(_S("drop table if exists os_forums_section_stats"));
 
 	// Reset acceptable
 	database->execute(_S("update os_entries set rank=-2"));
@@ -534,6 +536,11 @@ bool CompatibilityManager::razorPortalDatabaseUpgrade(const shared_ptr<IPortalDa
 	database->execute(_S("update os_texts set author=substr(author,9) where length(author)=48;\r\n"));
 	database->execute(_S("update os_texts set entity_author=substr(entity_author,9) where length(entity_author)=48;\r\n"));
 	
+	// Special for Osiris Official
+	database->execute(_S("update os_entries set author='3CCB3260950B80505CBB062C0B9B65E7028BD53F' where author='EFA5BEDD264F19D35BA92F05E503AD477D432E9F' and type=3;\r\n"));
+	database->execute(_S("update os_entries set author='3CCB3260950B80505CBB062C0B9B65E7028BD53F' where author='EFA5BEDD264F19D35BA92F05E503AD477D432E9F' and type=8;\r\n"));
+	database->execute(_S("update os_files set author='3CCB3260950B80505CBB062C0B9B65E7028BD53F',entity_author='3CCB3260950B80505CBB062C0B9B65E7028BD53F' where author='EFA5BEDD264F19D35BA92F05E503AD477D432E9F';\r\n"));
+	database->execute(_S("update os_sections set author='3CCB3260950B80505CBB062C0B9B65E7028BD53F',entity_author='3CCB3260950B80505CBB062C0B9B65E7028BD53F' where author='EFA5BEDD264F19D35BA92F05E503AD477D432E9F';\r\n"));
 
 	// Cleaning... issue found in some old portals.
 	database->execute(_S("delete from os_models where id not in (select id from os_entries);\r\n"));
@@ -560,32 +567,45 @@ bool CompatibilityManager::razorPortalDatabaseUpgrade(const shared_ptr<IPortalDa
 
 	// Update contents	
 	{
-		if(upgradeContentOML(database, _S("os_calendar_events"), _S("content")) == false)
+		if(upgradeContentOML(database, _S("os_calendar_events"), _S("content"), false) == false)
 			return false;
-		if(upgradeContentOML(database, _S("os_files"), _S("content")) == false)
+		if(upgradeContentOML(database, _S("os_files"), _S("content"), false) == false)
 			return false;
-		if(upgradeContentOML(database, _S("os_models"), _S("content")) == false)
+		if(upgradeContentOML(database, _S("os_models"), _S("content"), false) == false)
 			return false;
-		if(upgradeContentOML(database, _S("os_polls"), _S("content")) == false)
+		if(upgradeContentOML(database, _S("os_polls"), _S("content"), false) == false)
 			return false;
-		if(upgradeContentOML(database, _S("os_posts"), _S("content")) == false)
+		if(upgradeContentOML(database, _S("os_posts"), _S("content"), false) == false)
 			return false;
-		if(upgradeContentOML(database, _S("os_texts"), _S("content")) == false)
+		if(upgradeContentOML(database, _S("os_texts"), _S("content"), false) == false)
 			return false;
-		if(upgradeContentOML(database, _S("os_users"), _S("mark")) == false)
+		if(upgradeContentOML(database, _S("os_users"), _S("mark"), false) == false)
 			return false;
-		if(upgradeContentOML(database, _S("os_instances"), _S("data")) == false)
+		if(upgradeContentOML(database, _S("os_instances"), _S("data"), true) == false)
 			return false;
-		if(upgradeContentOML(database, _S("os_sections"), _S("component")) == false)
+		if(upgradeContentOML(database, _S("os_sections"), _S("data"), true) == false)
 			return false;
-		if(upgradeContentOML(database, _S("os_instances"), _S("module")) == false)
+		if(upgradeContentOML(database, _S("os_sections"), _S("component"), false) == false)
+			return false;
+		if(upgradeContentOML(database, _S("os_instances"), _S("module"), false) == false)
 			return false;
 	}	
+
+	String filename = utils::makeFilePath(Options::instance()->getLogPath(), _S("migration_") + database->getPortal()->getPortalID().toWide() + _S(".log"));
+
+	shared_ptr<File> file(OS_NEW File());
+	if(file->open(filename, File::ofWrite) == false)
+		return false;
+
+	std::string debugAscii = m_DebugLog.to_ascii();
+	file->write(debugAscii.data(), static_cast<uint32>(debugAscii.size()));
+
+	file->close();
 
 	return true;
 }
 
-bool CompatibilityManager::upgradeContentOML(const shared_ptr<IPortalDatabase> &database, const String &tableName, const String& fieldName)
+bool CompatibilityManager::upgradeContentOML(const shared_ptr<IPortalDatabase> &database, const String &tableName, const String& fieldName, bool xmlEncoded)
 {
 	NotificationsManager::instance()->notify(_S("Migration (OML texts) of '") + database->getPortal()->getName() + _S("' to 1.0 series"));
 
@@ -607,25 +627,126 @@ bool CompatibilityManager::upgradeContentOML(const shared_ptr<IPortalDatabase> &
 		//String id = *result.get(r,_S("id"));
 		//String oml = *result.get(r,_S("oml"));
 		String id = *row[_S("id")];
-		String oml = *row[_S("oml")];
+		String omlOrig = *row[_S("oml")];
 
-		String oldOml = oml;
+		String oldOml = omlOrig;
 
 		// portal=0D2C4E505C1D98B221E222CABE4E167BECB2D669
 		
 #ifdef OS_NOOBJECTID
-		oml = RegexManager::instance()->replace(oml, _S("[0-1][0-9]0[0-1]000[0-4]([0-9A-F]{40})"), _S("$1"), false);
+		omlOrig = RegexManager::instance()->replace(omlOrig, _S("[0-1][0-9]0[0-1]000[0-4]([0-9A-F]{40})"), _S("$1"), false);
 #else
-		oml = RegexManager::instance()->replace(oml, _S("[0-1][0-9]0[0-1]000[2-4]([0-9A-F]{40})"), _S("$1"), false);
+		omlOrig = RegexManager::instance()->replace(omlOrig, _S("[0-1][0-9]0[0-1]000[2-4]([0-9A-F]{40})"), _S("$1"), false);
 #endif
 
-		
+		String oml = omlOrig;
+
+		/*
+		bool xmlEncoded = false;
+
+		if(oml.starts_with(_S("<?xml version=\"1.0\" encoding=\"UTF-16\" standalone=\"no\" ?>")))
+		{
+			oml = HtmlParser::instance()->decode(omlOrig);
+			xmlEncoded = true;
+		}*/
+		if(xmlEncoded)
+			oml = HtmlParser::instance()->decode(omlOrig);
+
+		int nReplace = 0;
+		String::size_type lastPosLink = 0;
+		for(;;)
+		{
+			nReplace++;
+			String::size_type posLink = oml.find(_S("osiris://"),lastPosLink);
+			if(posLink == String::npos)
+				break;
+
+			String::size_type posEnd = String::npos;
+
+			{
+				String::size_type posEndC = oml.find(_S("\""), posLink+1);
+				if( (posEndC != String::npos) && ( (posEndC<posEnd) || (posEnd == String::npos) ) ) posEnd = posEndC;
+			}
+			{
+				String::size_type posEndC = oml.find(_S("'"), posLink+1);
+				if( (posEndC != String::npos) && ( (posEndC<posEnd) || (posEnd == String::npos) ) ) posEnd = posEndC;
+			}
+			{
+				String::size_type posEndC = oml.find(_S("["), posLink+1);
+				if( (posEndC != String::npos) && ( (posEndC<posEnd) || (posEnd == String::npos) ) ) posEnd = posEndC;
+			}
+			{
+				String::size_type posEndC = oml.find(_S("]"), posLink+1);
+				if( (posEndC != String::npos) && ( (posEndC<posEnd) || (posEnd == String::npos) ) ) posEnd = posEndC;
+			}
+
+			String linkEx = oml.substr(posLink);
+
+			bool valid = true;
+			bool warning = true;
+
+			if(posEnd == String::npos)
+				valid = false;
+			
+			if(valid)
+			{			
+				String link = oml.substr(posLink, posEnd-posLink);
+
+				if( (link == _S("osiris://")) )
+				{
+					valid = false;
+					warning = false;
+				}
+				else if( (link == _S("osiris://.")) )
+				{
+					valid = false;
+					warning = false;
+				}
+				else
+				{
+					OsirisLink osirisLink(link.to_ascii());
+					if(osirisLink.isValid() == false)
+						valid = false;
+					else
+					{
+						String linkNew = osirisLink.generate();
+
+						oml = oml.replace_all(link, linkNew);
+
+						if(id == _S("FE10596C2B406B19020DE70118C5A36208CE7B06"))
+						{
+							valid = true;
+						}
+
+						if(xmlEncoded == false)
+							omlOrig = omlOrig.replace_all(link, linkNew);
+						else
+							omlOrig = omlOrig.replace_all(HtmlParser::instance()->encodeEx(link), HtmlParser::instance()->encodeEx(linkNew));
+
+
+						//m_DebugLog += id + _S(" --> ") + link + _S(" --> ") + linkNew + _S("\r\n");
+					}
+				}
+			}
+
+			if(valid == false)
+			{
+				linkEx = linkEx.replace_all(_S("\r"),_S(" {\\r} "));
+				linkEx = linkEx.replace_all(_S("\n"),_S(" {\\n} "));
+				m_DebugLog += id + _S(" --> ") + linkEx + _S(" --> invalid!\r\n");
+				lastPosLink = posLink+1;
+			}
+			
+			if(nReplace == 10000) // Something wrong.
+				return false;
+
+		}
 
 		// Qui rilevo eventuale parametro 'portal' della 0.x. Lo converto nel nuovo ID.
 
-		if(oml != oldOml)
+		if(omlOrig != oldOml)
 		{
-			String sql = _S("update ") + tableName + _S(" set ") + fieldName + _S("=") + Convert::toSQL(oml) + _S(" where id='") + id + _S("'");
+			String sql = _S("update ") + tableName + _S(" set ") + fieldName + _S("=") + Convert::toSQL(omlOrig) + _S(" where id='") + id + _S("'");
 			if(database->execute(sql) == false)
 				return false;
 			//patch.append();			

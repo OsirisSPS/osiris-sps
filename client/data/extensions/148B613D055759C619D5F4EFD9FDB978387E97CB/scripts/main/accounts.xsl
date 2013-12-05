@@ -24,8 +24,8 @@
 
   <xsl:template match="/accounts">
     <xsl:call-template name="dump_xml"/>
-    <xsl:call-template name="block_page">
-      <xsl:with-param name="prefix" select="'main.pages.accounts'" />
+    <xsl:call-template name="block_big">
+      <xsl:with-param name="title" select="lang:text('main.pages.accounts.title')" />
       <xsl:with-param name="content">
         <xsl:call-template name="help-box">
           <xsl:with-param name="text" select="lang:text('main.pages.accounts.help')" />

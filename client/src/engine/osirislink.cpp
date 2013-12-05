@@ -20,6 +20,8 @@
 #include "osirislink.h"
 
 #include "algorithms.h"
+#include "buffer.h"
+#include "cryptmanager.h"
 #include "httpparser.h"
 #include "log.h"
 #include "osiriscommon.h"
@@ -344,6 +346,12 @@ bool OsirisLink::parse(const std::string &link)
 		}		
 		else
 			return false;
+
+		// Conversion of old 0.X portal ID
+		
+		String oldPortalID = getParam("portal");
+		if(oldPortalID.empty() == false)
+			setParam("portal", CryptManager:: instance()->SHA(oldPortalID.buffer(), oldPortalID.buffer_size()).toHex());
 	}
 	else if(link.substr(0,8) == "osiris:?")
 	{

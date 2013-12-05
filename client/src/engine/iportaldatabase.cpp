@@ -915,7 +915,7 @@ LanguageResult IPortalDatabase::setUserAvatar(shared_ptr<ObjectsUser> user, cons
 {
 	DateTime now = IsisSystem::instance()->getInternetDateTime();
 	if(now.isNull())
-		return false;
+		return LanguageResult("no_clock_sync");
 		
 	bool exists = true;
 	shared_ptr<ObjectsAvatar> avatar = getAvatar(user->getAvatarID());

@@ -112,7 +112,7 @@ void ObjectsFile::exportXML(shared_ptr<XMLPortalExporter> exporter)
 
 		OsirisLink link;
 		link.setParam("type", _W("file"));
-		link.setParam("id", id->toWide());
+		link.setParam("id", getEntityID().toWide());
 		link.setParam("portal", exporter->getPortal()->getPortalID().toWide());
 		//RAZORVERYURGENT: add user param
 		node->setAttributeString(_S("file_osiris_href"), link.generate());

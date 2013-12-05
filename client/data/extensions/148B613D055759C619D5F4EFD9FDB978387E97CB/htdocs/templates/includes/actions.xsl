@@ -304,11 +304,11 @@
           </div>
         </xsl:if>
 
-        <span style="font-size:1.2em;">
+        <span class="os_titlex" style="font-size:1.2em;font-weight:bold">
           <xsl:value-of select="$title" disable-output-escaping="yes"/>
         </span>
         <br />
-        <span style="color:gray;font-size:0.9em">
+        <span class="os_descriptionx" style="font-size:0.9em">
           <xsl:value-of select="$description" disable-output-escaping="yes"/>
         </span>
         <xsl:if test="$content">

@@ -16,7 +16,7 @@ var Osiris =
     is_ie: (navigator.userAgent.toLowerCase().indexOf("msie") != -1),
     is_moz: (navigator.userAgent.toLowerCase().indexOf("gecko") != -1),
     is_opera: (navigator.userAgent.toLowerCase().indexOf("opera") != -1),
-    effectsSpeedSlow: 400,
+    effectsSpeedSlow: 500,
     effectsSpeedFast: 200,
     
     notificationElement: null,
@@ -540,14 +540,15 @@ var Osiris =
 			{
 				autoOpen: false,
 				show: 'fade',
-				hide: 'fade',
+				/*hide: 'fade',*/
+				hide: { effect: "fade", duration: Osiris.effectsSpeedSlow },
 				bgiframe: true,
 				resizable: false,
 				minHeight:140,
 				modal: true,		
 				dialogClass: 'notitle',				
 				open: function(){
-            $('.ui-widget-overlay').hide().fadeIn();
+            $('.ui-widget-overlay').hide().fadeIn(Osiris.effectsSpeedSlow);
         },
 			});
 			
@@ -585,19 +586,28 @@ var Osiris =
 		copyClipboard: function(promptTitle, promptMessage, promptButton, promptCancel, promptHref) {
 		  var divObj = osCreate("div");
 	    divObj.title = promptTitle;    
+	    
 	    var divP = osCreate("p");
 	    var divIcon = osCreate("div");
 	    divIcon.className = "os_clipboard_icon";
+	    divIcon.style.float = 'left';
 	    divObj.appendChild(divIcon);
+	    
+	    divTitle = osCreate("h1");
+	    $(divTitle).text(promptTitle);
+	    //$(divObj).prepend(divTitle);
+	    divObj.appendChild(divTitle);
+	    
 	    divText = osCreate("textarea");    
 	    divText.style.width = "500px";    
 	    divText.style.height = "80px";    
+	    divText.style.maxHeight = "300px";
 	    divText.value = promptMessage;    
 	    divObj.appendChild(divText);
 	    
-	    divTitle = $(osCreate("p"));
-	    divTitle.text(promptTitle);
-	    $(divObj).prepend(divTitle);
+	    $(divText).autosize();		
+	    
+	    
 	        
 	    Osiris.dialog(divObj, true);
 	    
@@ -1563,6 +1573,10 @@ function osInitControls(src,debug)
                 if (otype == "omleditor") {
                 		Osiris.controlOmlEditor(src);
                 }
+                
+                if (otype == "textarea") {
+                	$(src).autosize();		
+                }
             }
 
             if (src.attributes["data-os-tooltip"]) {
@@ -2470,19 +2484,20 @@ function osTabCreate(src)
 			var objHeader = this.headers[i];
 			var objBody = this.bodies[i];
 			
-			if(withEffect)
+			//if(withEffect)
+			if(false)
 			{
 				if(objHeader.style.display != "none")
 				{
-					//jQuery(objHeader).stop(true,true).slideUp(Osiris.effectsSpeedSlow);
+					jQuery(objHeader).stop(true,true).slideUp(Osiris.effectsSpeedSlow);
 					//jQuery(objHeader).stop(true,true).fadeOut(Osiris.effectsSpeedSlow);
-					jQuery(objHeader).fadeOut( { queue: true, duration: Osiris.effectsSpeedSlow } );
+					//jQuery(objHeader).fadeOut( { queue: true, duration: Osiris.effectsSpeedSlow } );
 				}
 				if(objBody.style.display != "block")
 				{
-					//jQuery(objBody).stop(true,true).slideDown(Osiris.effectsSpeedSlow);
+					jQuery(objBody).stop(true,true).slideDown(Osiris.effectsSpeedSlow);
 					//jQuery(objBody).stop(true,true).fadeIn(Osiris.effectsSpeedSlow);
-					jQuery(objBody).fadeIn( { queue: true, duration: Osiris.effectsSpeedSlow } );
+					//jQuery(objBody).fadeIn( { queue: true, duration: Osiris.effectsSpeedSlow } );
 				}
 			}
 			else
@@ -2505,9 +2520,9 @@ function osTabCreate(src)
 			if(objHeader.style.display != "block")
 			{
 				//Effect.BlindDown(objHeader, { queue: 'end', duration: 0.3 });			    	
-				//jQuery(objHeader).stop(true,true).slideDown(Osiris.effectsSpeedSlow);
+				jQuery(objHeader).stop(true,true).slideDown(Osiris.effectsSpeedSlow);
 				//jQuery(objHeader).stop(true,true).fadeIn(Osiris.effectsSpeedSlow);				
-				jQuery(objHeader).fadeIn( { queue: true, duration: Osiris.effectsSpeedSlow } );
+				//jQuery(objHeader).fadeIn( { queue: true, duration: Osiris.effectsSpeedSlow } );
 			}
 		}
 		
@@ -2537,13 +2552,14 @@ function osTabCreate(src)
 					objHeader.className = "os_tab_top_header";
 				else
 					objHeader.className = "os_tab_left_header";
-				if(withEffect)
+				//if(withEffect)
+				if(false)
 				{
 					if(objBody.style.display != "none")
 					{
-						//jQuery(objBody).stop(true,true).slideUp(Osiris.effectsSpeedSlow);
+						jQuery(objBody).stop(true,true).slideUp(Osiris.effectsSpeedSlow);
 						//jQuery(objBody).stop(true,true).fadeOut(Osiris.effectsSpeedSlow);
-						jQuery(objBody).fadeOut( { queue: true, duration: Osiris.effectsSpeedSlow } );
+						//jQuery(objBody).fadeOut( { queue: true, duration: Osiris.effectsSpeedSlow } );
 					}
 				}
 				else
@@ -2567,14 +2583,15 @@ function osTabCreate(src)
 					objHeader.className = "os_tab_left_header_selected";
 				//objBody.style.display = "block";			    
 				//Effect.Appear(objBody, { queue: 'end', duration: 1 });			    	
-				if(withEffect)
+				//if(withEffect)
+				if(false)
 				{
 					if(objBody.style.display != "block")
 					{
 						//Effect.BlindDown(objBody, { queue: 'end', duration: 0.3 });			    			    	    
-						//jQuery(objBody).stop(true,true).slideDown(Osiris.effectsSpeedSlow);
+						jQuery(objBody).stop(true,true).slideDown(Osiris.effectsSpeedSlow);
 						//jQuery(objBody).stop(true,true).fadeIn(Osiris.effectsSpeedSlow);
-						jQuery(objBody).fadeIn( { queue: true, duration: Osiris.effectsSpeedSlow } );
+						//jQuery(objBody).fadeIn( { queue: true, duration: Osiris.effectsSpeedSlow } );
 					}
 				}
 				else

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no" ?>
-<extension author="Osiris Team" description="Rotator or slide subcontent" icon="icon.png" id="15EC737256997E5993528A94D0540235D59E384B" logo="logo.png" name="OML Rotator" version="0.1" homepage="http://www.osiris-sps.org/forums/index.php?showtopic=1678">
+<extension author="Osiris Team" description="Rotator or slide subcontent" icon="icon.png" id="15EC737256997E5993528A94D0540235D59E384B" logo="logo.png" name="OML Rotator" version_code="1" version_name="0.1" homepage="http://www.osiris-sps.org/forums/index.php?showtopic=1678">
 
   <scripts>
     <script language="python" path="scripts/script.py"/>

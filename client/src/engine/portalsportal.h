@@ -163,6 +163,7 @@ public:
 	std::string getSendMessageLink(const ObjectID &id, const ordered_map<std::wstring, std::wstring> &params = (ordered_map<std::wstring, std::wstring>()));
 	std::string getAvatarLink(const ObjectID &id, const DateTime &dt);
 	std::string getFileLink(const ObjectID &id);
+	std::string getFileEntityLink(shared_ptr<IPortalDatabase> database, const EntityID &id);
 	std::string getPrivateMessageLink(const ObjectID &id, bool secure);
 
 	void setCachesSize(uint32 size);

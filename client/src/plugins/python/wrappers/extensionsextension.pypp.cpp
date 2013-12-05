@@ -188,22 +188,37 @@ struct ExtensionsExtension_wrapper : ::osiris::ExtensionsExtension, ::osiris::Py
         return ::osiris::ExtensionsExtension::getAuthor( );
     }
 
-    virtual float getVersion(  ) const  {
+    virtual int getVersionCode(  ) const  {
         ::osiris::PythonState __pystate(getPythonThreadState());
-        if( ::osiris::PythonOverride func_getVersion = this->get_override( "getVersion" ) )
-            return func_getVersion(  );
+        if( ::osiris::PythonOverride func_getVersionCode = this->get_override( "getVersionCode" ) )
+            return func_getVersionCode(  );
         else{
             __pystate.leave();
-            return this->::osiris::ExtensionsExtension::getVersion(  );
+            return this->::osiris::ExtensionsExtension::getVersionCode(  );
         }
     }
     
-    float default_getVersion(  ) const  {
+    int default_getVersionCode(  ) const  {
         ::osiris::PythonThreadSaver __pythreadSaver;
-        return ::osiris::ExtensionsExtension::getVersion( );
+        return ::osiris::ExtensionsExtension::getVersionCode( );
     }
 
-    virtual float getCompatibility(  ) const  {
+    virtual ::osiris::String getVersionName(  ) const  {
+        ::osiris::PythonState __pystate(getPythonThreadState());
+        if( ::osiris::PythonOverride func_getVersionName = this->get_override( "getVersionName" ) )
+            return func_getVersionName(  );
+        else{
+            __pystate.leave();
+            return this->::osiris::ExtensionsExtension::getVersionName(  );
+        }
+    }
+    
+    ::osiris::String default_getVersionName(  ) const  {
+        ::osiris::PythonThreadSaver __pythreadSaver;
+        return ::osiris::ExtensionsExtension::getVersionName( );
+    }
+
+    virtual int getCompatibility(  ) const  {
         ::osiris::PythonState __pystate(getPythonThreadState());
         if( ::osiris::PythonOverride func_getCompatibility = this->get_override( "getCompatibility" ) )
             return func_getCompatibility(  );
@@ -213,7 +228,7 @@ struct ExtensionsExtension_wrapper : ::osiris::ExtensionsExtension, ::osiris::Py
         }
     }
     
-    float default_getCompatibility(  ) const  {
+    int default_getCompatibility(  ) const  {
         ::osiris::PythonThreadSaver __pythreadSaver;
         return ::osiris::ExtensionsExtension::getCompatibility( );
     }
@@ -502,21 +517,32 @@ void register_ExtensionsExtension_class(){
                 , default_getAuthor_function_type(&ExtensionsExtension_wrapper::default_getAuthor) );
         
         }
-        { //::osiris::ExtensionsExtension::getVersion
+        { //::osiris::ExtensionsExtension::getVersionCode
         
-            typedef float ( ::osiris::ExtensionsExtension::*getVersion_function_type )(  ) const;
-            typedef float ( ExtensionsExtension_wrapper::*default_getVersion_function_type )(  ) const;
+            typedef int ( ::osiris::ExtensionsExtension::*getVersionCode_function_type )(  ) const;
+            typedef int ( ExtensionsExtension_wrapper::*default_getVersionCode_function_type )(  ) const;
             
             ExtensionsExtension_exposer.def( 
-                "getVersion"
-                , getVersion_function_type(&::osiris::ExtensionsExtension::getVersion)
-                , default_getVersion_function_type(&ExtensionsExtension_wrapper::default_getVersion) );
+                "getVersionCode"
+                , getVersionCode_function_type(&::osiris::ExtensionsExtension::getVersionCode)
+                , default_getVersionCode_function_type(&ExtensionsExtension_wrapper::default_getVersionCode) );
+        
+        }
+        { //::osiris::ExtensionsExtension::getVersionName
+        
+            typedef ::osiris::String ( ::osiris::ExtensionsExtension::*getVersionName_function_type )(  ) const;
+            typedef ::osiris::String ( ExtensionsExtension_wrapper::*default_getVersionName_function_type )(  ) const;
+            
+            ExtensionsExtension_exposer.def( 
+                "getVersionName"
+                , getVersionName_function_type(&::osiris::ExtensionsExtension::getVersionName)
+                , default_getVersionName_function_type(&ExtensionsExtension_wrapper::default_getVersionName) );
         
         }
         { //::osiris::ExtensionsExtension::getCompatibility
         
-            typedef float ( ::osiris::ExtensionsExtension::*getCompatibility_function_type )(  ) const;
-            typedef float ( ExtensionsExtension_wrapper::*default_getCompatibility_function_type )(  ) const;
+            typedef int ( ::osiris::ExtensionsExtension::*getCompatibility_function_type )(  ) const;
+            typedef int ( ExtensionsExtension_wrapper::*default_getCompatibility_function_type )(  ) const;
             
             ExtensionsExtension_exposer.def( 
                 "getCompatibility"
@@ -732,24 +758,34 @@ void register_ExtensionsExtension_class(){
                 , "get property, built on top of \"osiris::String osiris::ExtensionsExtension::getAuthor() const [member function]\"" );
         
         }
-        { //property "version"[fget=::osiris::ExtensionsExtension::getVersion]
+        { //property "versionCode"[fget=::osiris::ExtensionsExtension::getVersionCode]
         
-            typedef float ( ::osiris::ExtensionsExtension::*fget )(  ) const;
+            typedef int ( ::osiris::ExtensionsExtension::*fget )(  ) const;
             
             ExtensionsExtension_exposer.add_property( 
-                "version"
-                , fget( &::osiris::ExtensionsExtension::getVersion )
-                , "get property, built on top of \"float osiris::ExtensionsExtension::getVersion() const [member function]\"" );
+                "versionCode"
+                , fget( &::osiris::ExtensionsExtension::getVersionCode )
+                , "get property, built on top of \"int osiris::ExtensionsExtension::getVersionCode() const [member function]\"" );
+        
+        }
+        { //property "versionName"[fget=::osiris::ExtensionsExtension::getVersionName]
+        
+            typedef ::osiris::String ( ::osiris::ExtensionsExtension::*fget )(  ) const;
+            
+            ExtensionsExtension_exposer.add_property( 
+                "versionName"
+                , fget( &::osiris::ExtensionsExtension::getVersionName )
+                , "get property, built on top of \"osiris::String osiris::ExtensionsExtension::getVersionName() const [member function]\"" );
         
         }
         { //property "compatibility"[fget=::osiris::ExtensionsExtension::getCompatibility]
         
-            typedef float ( ::osiris::ExtensionsExtension::*fget )(  ) const;
+            typedef int ( ::osiris::ExtensionsExtension::*fget )(  ) const;
             
             ExtensionsExtension_exposer.add_property( 
                 "compatibility"
                 , fget( &::osiris::ExtensionsExtension::getCompatibility )
-                , "get property, built on top of \"float osiris::ExtensionsExtension::getCompatibility() const [member function]\"" );
+                , "get property, built on top of \"int osiris::ExtensionsExtension::getCompatibility() const [member function]\"" );
         
         }
         { //property "homePage"[fget=::osiris::ExtensionsExtension::getHomePage]

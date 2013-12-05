@@ -58,7 +58,7 @@ public:
 
 	inline shared_ptr<IHtmlControl> getBody() const;
 
-	// Hack, temporary: we use this for a block-page.
+	// Hack, temporary: we use this for a block-page. TOCLEAN
 	inline const bool & getSpecialPage() const;
 	inline void setSpecialPage(const bool &page);
 
@@ -101,7 +101,7 @@ inline bool IdeBlock::isLink() const { return m_href.empty() == false; }
 
 inline shared_ptr<IHtmlControl> IdeBlock::getBody() const { return m_body; }
 
-inline const bool & IdeBlock::getSpecialPage() const { return m_page; }
+inline const bool & IdeBlock::getSpecialPage() const { return m_page; } // TOCLEAN
 inline void IdeBlock::setSpecialPage(const bool &page) { m_page = page; }
 
 //////////////////////////////////////////////////////////////////////

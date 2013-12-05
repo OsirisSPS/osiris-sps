@@ -57,6 +57,9 @@ public:
 	inline String getAlternative() const;
 	inline void setAlternative(const String &alt);
 
+	inline bool getDumpKey() const;
+	inline void setDumpKey(const bool &value);
+
 	inline shared_ptr<LanguageCulture> getInvariant() const;
 	inline shared_ptr<LanguageFolder> getRootFolder() const;
 
@@ -97,6 +100,7 @@ protected:
 	Listeners m_listeners;
 	mutable boost::mutex m_cs;
 	String m_alternative;
+	bool m_dumpKey;
 
 protected:
 	static const String LANGUAGES;
@@ -110,6 +114,9 @@ protected:
 
 inline String LanguageManager::getAlternative() const { return m_alternative; }
 inline void LanguageManager::setAlternative(const String &alt) { m_alternative = alt; }
+
+inline bool LanguageManager::getDumpKey() const { return m_dumpKey; }
+inline void LanguageManager::setDumpKey(const bool &value) { m_dumpKey = value; }
 
 inline shared_ptr<LanguageCulture> LanguageManager::getInvariant() const { return m_invariant; }
 inline shared_ptr<LanguageFolder> LanguageManager::getRootFolder() const { return m_root; }

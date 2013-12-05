@@ -23,6 +23,8 @@
 
 #include "archivesmanager.h"
 
+#include "conversions.h"
+
 #include "osirislink.h"
 
 #include "filesystem.h"
@@ -311,6 +313,13 @@ int main(int argc, char *argv[])
 {
 	ObjectID id1("0D2C4E505C1D98B221E222CABE4E167BECB2D669");
 	PovID id2("0D2C4E505C1D98B221E222CABE4E167BECB2D669");
+
+	//String v1 = _S("72480651");
+	String v1 = _S("72480651.123");
+	double v2 = conversions::from_utf16<double>(v1);
+
+	std::string va1 = "72480651.123";
+	float va2 = conversions::from_string<double>(va1);
 
 	bool X1 = (id1 == id2);
 	bool X2 = (id1.getString() == id2.getString());

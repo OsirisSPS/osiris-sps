@@ -53,8 +53,11 @@ public:
 
 protected:
 	void migrateAccounts(const shared_ptr<IPortalDatabase> &database);
-	bool upgradeContentOML(const shared_ptr<IPortalDatabase> &database, const String &tableName, const String& fieldName);
+	bool upgradeContentOML(const shared_ptr<IPortalDatabase> &database, const String &tableName, const String& fieldName, bool xmlEncoded);
 	void renameIDS(const shared_ptr<IPortalDatabase> &database);
+
+public:
+	String m_DebugLog;
 };
 
 //////////////////////////////////////////////////////////////////////

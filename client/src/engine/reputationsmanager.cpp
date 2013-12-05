@@ -91,7 +91,7 @@ LanguageResult ReputationsManager::set(shared_ptr<IPortalDatabase> database, con
 	*/
 
 	if(hash_from == hash_to)
-		return false;
+		return LanguageResult("same_user");
 		
 	shared_ptr<ObjectsReputation> reputation(OS_NEW ObjectsReputation());
 	//automatica reputation->id = IPortalDatabase::getUserReputationID(hash_from, hash_to);

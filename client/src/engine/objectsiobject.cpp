@@ -235,8 +235,8 @@ LanguageResult ObjectsIObject::create(const shared_ptr<IPortalDatabase> &db, con
 		onObjectCreated(db, db->getPortal());
 	}
 	catch(std::exception &e)
-	{
-		result = std::string(e.what());
+	{		
+		result.setNoTranslate(e.what());
 	}
 
 	return result;
@@ -262,7 +262,7 @@ LanguageResult ObjectsIObject::store(const shared_ptr<IPortalDatabase> &db)
 	}
 	catch(std::exception &e)
 	{
-		result = std::string(e.what());
+		result.setNoTranslate(std::string(e.what()));		
 	}
 
 	return result;
@@ -440,7 +440,10 @@ LanguageResult ObjectsIObject::acceptable(shared_ptr<IPortalDatabase> database) 
 	// Non è grave, perchè sta a me spostare controlli dalle "validate" alle "acceptable", fino a evitare le validate da IObject in giù.
 	bool valid = validate(database);
 	if(valid == false)
+	{
+		bool valid = validate(database); // PAZZO
 		return LanguageResult("invalid");
+	}
 
 	if(getAuthor().empty())
 		return LanguageResult("author_required");

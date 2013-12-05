@@ -71,6 +71,12 @@ LanguageResult::~LanguageResult()
 {
 }
 
+void LanguageResult::setNoTranslate(const std::string& text)
+{
+	m_id = std::string("~") + text;
+}
+
+
 void LanguageResult::setParam(const std::string &key, const DataItem &val)
 {
 	m_params.set(key, val);

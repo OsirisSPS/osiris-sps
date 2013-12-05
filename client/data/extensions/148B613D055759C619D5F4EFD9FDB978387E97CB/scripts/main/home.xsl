@@ -112,7 +112,7 @@
             <td>
 							<xsl:if test="//@session_user != ''">
 								<xsl:call-template name="block">
-									<xsl:with-param name="title" select="lang:text('~main.pages.home.subscribed_self')" />
+									<xsl:with-param name="title" select="lang:text('main.pages.home.subscribed_self')" />
 									<xsl:with-param name="content">
 										<xsl:choose>
 											<xsl:when test="subscribedPortals/portal[@id = //@session_user and @pov = //@session_user]">
@@ -125,7 +125,7 @@
 											<xsl:otherwise>
 												<div class="os_message_nodata">
 													<a href="{@subscribe_self_portal_href}">
-														<xsl:value-of select="lang:text('~main.pages.home.subscribe_self_portal')"/>
+														<xsl:value-of select="lang:text('main.pages.home.subscribe_self_portal')"/>
 													</a>
 												</div>
 
@@ -137,7 +137,7 @@
 							</xsl:if>
 
 							<xsl:call-template name="block">
-								<xsl:with-param name="title" select="lang:text('~main.pages.home.subscribed_users')" />
+								<xsl:with-param name="title" select="lang:text('main.pages.home.subscribed_users')" />
 								<xsl:with-param name="content">
 									<xsl:choose>
 										<xsl:when test="subscribedPortals/portal[@id = @pov and @pov != //@session_user]">
@@ -149,7 +149,7 @@
 										</xsl:when>
 										<xsl:otherwise>
 											<div class="os_message_nodata">
-												<xsl:value-of select="lang:text('~main.pages.home.no_users')"/>
+												<xsl:value-of select="lang:text('main.pages.home.no_users')"/>
 											</div>
 										</xsl:otherwise>
 									</xsl:choose>
@@ -354,7 +354,7 @@
 				</xsl:if>
 			</xsl:attribute>
       <div class="os_home_tile_portal_area1">
-        <a class="os_button_link" style="float:right;" href="#" onclick="Osiris.loadUrl('{@infoHref}');">
+        <a class="os_button_link" style="float:right;" href="{@infoHref}">
           <img src="{system:resource-url('images/icons/24x24/more.png')}"/>
         </a>
 

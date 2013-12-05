@@ -48,6 +48,8 @@ LanguageManager::LanguageManager() : m_invariant(OS_NEW LanguageCulture()),
 									 m_root(OS_NEW LanguageFolder())
 {
 	addFolder(m_root);
+
+	m_dumpKey = false;
 }
 
 LanguageManager::~LanguageManager()
@@ -108,11 +110,10 @@ String LanguageManager::getText(const String &culture, const String &name) const
 	{
 		notifyKey(culture, name, value);
 
-		#ifdef OS_DEBUG
-			return _S("{") + value + _S("}");		// Identifica visivamente le voci tradotte rispetto a quelle scritte dirette nel codice
-		#else	
+		if(m_dumpKey)
+			return _S("{") + value + _S("}") + _S(" ~ ") + name + _S(" ~");
+		else
 			return value;
-		#endif		
 	}
 }
 

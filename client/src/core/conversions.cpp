@@ -413,18 +413,21 @@ template<>
 CoreExport float from_string<float>(const std::string &v)
 {
 	return string_to_number<float, std::string>(v);
+	//return atof(conversions::to_string(v).c_str()); // CLODOFIX
 }
 
 template<>
 CoreExport float from_wstring<float>(const std::wstring &v)
 {
 	return string_to_number<float, std::wstring>(v);
+	//return atof(conversions::to_string(v).c_str()); // CLODOFIX
 }
 
 template<>
 CoreExport float from_utf16<float>(const String &v)
 {
 	return string_to_number<float>(v);
+	//return atof(conversions::to_string(v).c_str()); // CLODOFIX
 }
 
 //////////////////////////////////////////////////////////////////////
@@ -451,18 +454,21 @@ template<>
 CoreExport double from_string<double>(const std::string &v)
 {
 	return string_to_number<double, std::string>(v);
+	//return atof(conversions::to_string(v).c_str()); // CLODOFIX
 }
 
 template<>
 CoreExport double from_wstring<double>(const std::wstring &v)
 {
 	return string_to_number<double, std::wstring>(v);
+	//return atof(conversions::to_string(v).c_str()); // CLODOFIX
 }
 
 template<>
 CoreExport double from_utf16<double>(const String &v)
 {
 	return string_to_number<double>(v);
+	//return atof(conversions::to_string(v).c_str()); // CLODOFIX
 }
 
 //////////////////////////////////////////////////////////////////////

@@ -34,18 +34,22 @@
     <!--<xsl:call-template name="dump_xml"/>
     -->
        
-    <xsl:if test="@page_mode = 'full'">
-      <xsl:call-template name="systembar"/>
-    </xsl:if>
+    
 
     <xsl:choose>
       <xsl:when test="@page_mode = 'content'">        
         <xsl:value-of select="$area_content" disable-output-escaping="yes"/>
       </xsl:when>
       <xsl:otherwise>
-        <div class="os_page_container3">
-          <div class="os_page_container2">
+				<!--
+        <div class="os_page_container3x">
+          <div class="os_page_container2x">
+					-->
             <div class="os_page_container">
+							
+							<xsl:if test="@page_mode = 'full'">
+								<xsl:call-template name="systembar"/>								
+							</xsl:if>
               <div class="os_page">
 
                 <a id="top" href="#top" accesskey="t" title="{lang:text('accesskey.top')}"></a>
@@ -55,7 +59,9 @@
                 <!-- > 0.14 RC1 -->
                 <div class="os_header">
 
+									<!--
                   <xsl:call-template name="userbox"/>
+									-->
 
                   <!-- Default Links -->
                   <xsl:if test="//@skip_default_header = 'false'">
@@ -156,8 +162,9 @@
 
               </div>
             </div>
+				<!--
           </div>
-        </div>
+        </div>-->
       </xsl:otherwise>
     </xsl:choose>
 
@@ -185,15 +192,15 @@
               <img src="{system:resource-url('images/systembar/logo.png')}" alt="Osiris"/>
             </a>
             <br />
-            <a title="{lang:text('systembar.actions.home')}" class="os_systembar_icon" href="/main/home">
+            <a class="os_systembar_icon" href="/main/home">
               <img src="{system:resource-url('images/systembar/icon_home.png')}" data-os-tooltip="{lang:text('systembar.actions.home')}"/>
             </a>
-            <a title="{lang:text('systembar.actions.help')}" class="os_systembar_icon" href="javascript:void(0);" onclick="Osiris.loadUrl('/main/help?mode=dialog')" data-os-tooltip="{lang:text('systembar.actions.help')}">
+            <a class="os_systembar_icon" href="javascript:void(0);" onclick="Osiris.loadUrl('/main/help?mode=dialog')" data-os-tooltip="{lang:text('systembar.actions.help')}">
               <img src="{system:resource-url('images/systembar/icon_help.png')}"/>
             </a>
             
-            <a title="{lang:text('systembar.actions.network')}" class="os_systembar_icon" href="javascript:void(0);" onclick="Osiris.loadUrl('/main/network?mode=dialog')" data-os-tooltip="{lang:text('systembar.actions.network')}">              
-              <xsl:choose>
+            <a class="os_systembar_icon" href="javascript:void(0);" onclick="Osiris.loadUrl('/main/network?mode=dialog')" data-os-tooltip="{lang:text('systembar.actions.network')}">
+							<xsl:choose>
                 <xsl:when test="@isis_status = 2">                  
                   <img src="{system:resource-url('images/systembar/icon_network_info.png')}"/>
                 </xsl:when>
@@ -203,12 +210,16 @@
                 <xsl:otherwise>
                   <img src="{system:resource-url('images/systembar/icon_network_error.png')}"/>
                 </xsl:otherwise>
-              </xsl:choose>              
+              </xsl:choose>							
             </a>
 
             <xsl:if test="@portal_name">
-              <a title="{lang:text('systembar.actions.assistant')}" class="os_systembar_icon" href="javascript:void(0);" onclick="Osiris.loadUrl('{@assistant_href}&amp;mode=dialog')" data-os-tooltip="{lang:text('systembar.actions.assistant')}">
-                <img src="{system:resource-url('images/systembar/icon_assistant.png')}"/>
+              <!--
+								<a title="{lang:text('systembar.actions.assistant')}" class="os_systembar_icon" href="javascript:void(0);" onclick="Osiris.loadUrl('{@assistant_href}&amp;mode=dialog')" data-os-tooltip="{lang:text('systembar.actions.assistant')}">
+							-->
+								<a class="os_systembar_icon" href="javascript:void(0);" onclick="javascript:Osiris.Assistant.toggle()" data-os-tooltip="{lang:text('systembar.actions.assistant')}">
+								
+								<img src="{system:resource-url('images/systembar/icon_assistant.png')}"/>
               </a>
             </xsl:if>
 

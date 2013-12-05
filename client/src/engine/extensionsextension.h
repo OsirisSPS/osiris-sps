@@ -35,7 +35,8 @@
 #define OS_EXTENSION_XML_NODE_ROOT_TAGS				"tags"
 #define OS_EXTENSION_XML_NODE_ROOT_TRUST			"trust"
 #define OS_EXTENSION_XML_NODE_ROOT_AUTHOR			"author"
-#define OS_EXTENSION_XML_NODE_ROOT_VERSION			"version"
+#define OS_EXTENSION_XML_NODE_ROOT_VERSION_CODE		"version_code"
+#define OS_EXTENSION_XML_NODE_ROOT_VERSION_NAME		"version_name"
 #define OS_EXTENSION_XML_NODE_ROOT_COMPATIBILITY	"compatibility"
 #define OS_EXTENSION_XML_NODE_ROOT_HOMEPAGE			"homepage"
 #define OS_EXTENSION_XML_NODE_ROOT_ICON				"icon"
@@ -101,8 +102,9 @@ public:
 	virtual String getTags() const;
 	virtual String getTrust() const;
 	virtual String getAuthor() const;
-	virtual float getVersion() const;
-	virtual float getCompatibility() const;
+	virtual int getVersionCode() const;
+	virtual String getVersionName() const;
+	virtual int getCompatibility() const;
 	virtual String getHomePage() const;
 	virtual String getIcon() const;
 	virtual String getLogo() const;
@@ -131,8 +133,9 @@ protected:
 	String m_tags;
 	String m_trust;
 	String m_author;
-	float m_version;
-	float m_compatibility;
+	int m_versionCode;
+	String m_versionName;
+	int m_compatibility;
 	String m_homepage;
 	String m_icon;
 	String m_logo;

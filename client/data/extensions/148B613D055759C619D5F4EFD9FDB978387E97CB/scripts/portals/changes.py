@@ -19,7 +19,7 @@ class Page(osiris.IPortalPage):
 		self.updateReferenceButton = osiris.HtmlLinkButton()
 		commands.controls.add(self.updateReferenceButton)
 		self.updateReferenceButton.id = "markAsRead"
-		self.updateReferenceButton.css = "os_button_big"
+		self.updateReferenceButton.css = "os_button"
 		self.updateReferenceButton.caption = self.getText("portal.pages.changes.mark_as_read")
 		events.connect(self.updateReferenceButton.eventClick, self.onMarkAsRead)	
 				

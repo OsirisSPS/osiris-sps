@@ -45,7 +45,7 @@ Connection::Connection(const String &database, shared_ptr<IDbOptions> options, s
 {
 	m_connection = null;
 
-	m_showSql = OS_NAMESPACE_NAME::Options::instance()->getOption<bool>(_S("developer.showsql"));	
+	m_showSql = OS_NAMESPACE_NAME::Options::instance()->getOption<bool>(_S("developer.show_sql"));	
 
 #ifdef OS_ENABLE_DATABASE_ANALYZE
 	m_transactionId = 0;

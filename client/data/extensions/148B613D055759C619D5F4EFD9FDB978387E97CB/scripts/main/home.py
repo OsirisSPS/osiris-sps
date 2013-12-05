@@ -123,9 +123,6 @@ class Page(osiris.IMainPage):
 		if portal.optionsShared.portalDescription != "":
 			node.attributes.set("description", portal.optionsShared.portalDescription)
 		
-		if(portal.portalID.string == "A821539D0208E66DB84514DD79F51ECEED31E284"):
-			portal.optionsShared.layoutTileImage = osiris.UniqueID("D3AFFF234BDEC2F640A676D30D690B387B70DAB2")
-		
 		if portal.optionsShared.layoutTileImage.empty() == False:
 			node.attributes.set("tileHref", portal.getFileLink(portal.optionsShared.layoutTileImage));
 		
@@ -162,7 +159,7 @@ class Page(osiris.IMainPage):
 		href = 	portal.getLink("view")
 		node.attributes.set("viewHref", portal.getLink("view"))
 
-		node.attributes.set("infoHref", portal.getLink("info?mode=dialog"))
+		node.attributes.set("infoHref", portal.getLink("info"))
 						
 		nodeIsisEndpoints = node.nodes.add("isis")
 		isisEndpoints = portal.options.isisEndpoints;		

@@ -28,6 +28,7 @@
 #include "htmlcombobox.h"
 #include "htmlcontrols.h"
 #include "htmldiv.h"
+#include "htmlliteral.h"
 #include "htmlspan.h"
 #include "htmltext.h"
 #include "htmltextbox.h"
@@ -295,9 +296,23 @@ void Options::onInit()
 {
 	PageBase::onInit();
 
+	m_block.reset(OS_NEW IdeBlock(getText("main.pages.options.title")));
+	getArea(pageAreaContent)->getControls()->add(m_block);
+
 	shared_ptr<HtmlDiv> divActions(OS_NEW HtmlDiv());
 	divActions->setCss("os_commands_right");
-	getArea(pageAreaContent)->getControls()->add(divActions);
+	m_block->getBody()->getControls()->add(divActions);
+
+	shared_ptr<HtmlDiv> filter(OS_NEW HtmlDiv());	
+	filter->setUID("filterbox");
+	shared_ptr<HtmlSpan> filterTitle(OS_NEW HtmlSpan(getText("main.pages.options.filter") + _S(": ")));
+	shared_ptr<HtmlTextBox> filterInput(OS_NEW HtmlTextBox());
+	filterInput->setUID("filterinput");
+	filter->getControls()->add(filterTitle);
+	//filter->getControls()->add(shared_ptr<HtmlLiteral>(OS_NEW HtmlLiteral(_S("<br>"))));
+	filter->getControls()->add(filterInput);
+	//getArea(pageAreaContent)->getControls()->add(filter);	
+	divActions->getControls()->add(filter);	
 
 	shared_ptr<IdeButton> cmdSave(OS_NEW IdeButton());
 	cmdSave->setID("save");
@@ -311,29 +326,19 @@ void Options::onInit()
 	cmdCancel->getEventClick()->connect(boost::bind(&Options::onCancel, this));
 	divActions->getControls()->add(cmdCancel);
 
-	//m_block.reset(OS_NEW IdeBlock(getText("main.pages.options.title")));
-	//getArea(pageAreaContent)->getControls()->add(m_block);
-
 	uint32 pageIndex = 0;
 
-	getArea(pageAreaContent)->getControls()->add(shared_ptr<IdeHelpBox>(OS_NEW IdeHelpBox(getText("main.pages.options.help"), "")));
-
-	shared_ptr<HtmlDiv> filter(OS_NEW HtmlDiv());	
-	filter->setUID("filterbox");
-	shared_ptr<HtmlSpan> filterTitle(OS_NEW HtmlSpan(getText("main.pages.options.filter")));
-	shared_ptr<HtmlTextBox> filterInput(OS_NEW HtmlTextBox());
-	filterInput->setUID("filterinput");
-	filter->getControls()->add(filterTitle);
-	filter->getControls()->add(filterInput);
-	getArea(pageAreaContent)->getControls()->add(filter);	
+	//m_block->getBody()->getControls()->add(shared_ptr<IdeHelpBox>(OS_NEW IdeHelpBox(getText("main.pages.options.help"), "")));
 
 	shared_ptr<HtmlDiv> tab(OS_NEW HtmlDiv());
 	
 	tab->setStyle("display:none;");
+	tab->setUID(_S("options_tab"));
 	tab->getAttributes()->set("data-os-otype", "tab");
 	tab->getAttributes()->set("data-os-layout", "left");
 	tab->getAttributes()->set("data-os-storage", "main.options.tab");
-	getArea(pageAreaContent)->getControls()->add(tab);
+	//getArea(pageAreaContent)->getControls()->add(tab);
+	m_block->getBody()->getControls()->add(tab);	
 
 	shared_ptr<IHtmlControl> pageGeneral = createPage(tab, "general", pageIndex);
 	pageGeneral->getControls()->add(createControlBool("p2p.enable"));

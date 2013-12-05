@@ -90,7 +90,7 @@ protected:
 
 private:
 	Setters m_setters;
-	//shared_ptr<IdeBlock> m_block;
+	shared_ptr<IdeBlock> m_block;
 	shared_ptr<IdePickerSkin> m_skinPicker;
 	shared_ptr<IdePickerCulture> m_culturePicker1;
 	shared_ptr<IdePickerCulture> m_culturePicker2;

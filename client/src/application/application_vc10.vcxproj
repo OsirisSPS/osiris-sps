@@ -104,7 +104,7 @@
     <ClCompile>
       <AdditionalOptions>/EHsc  %(AdditionalOptions)</AdditionalOptions>
       <Optimization>Disabled</Optimization>
-      <AdditionalIncludeDirectories>../../dependencies/include/common;../../dependencies/include/common/wxwidgets;../../dependencies/include/windows/i386/vc10/$(Configuration)/wxwidgets;../core;../xml;../web;../lang;../skin;../net;../engine;../ui;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>../../dependencies/include/common;../../dependencies/include/windows;../../dependencies/include/common/wxwidgets;../../dependencies/include/windows/i386/vc10/$(Configuration);../../dependencies/include/windows/i386/vc10/$(Configuration)/wxwidgets;../core;../xml;../web;../lang;../skin;../net;../engine;../ui;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;UNICODE;WXUSINGDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <MinimalRebuild>false</MinimalRebuild>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
@@ -153,7 +153,7 @@
     <ClCompile>
       <AdditionalOptions>/EHsc  %(AdditionalOptions)</AdditionalOptions>
       <Optimization>Disabled</Optimization>
-      <AdditionalIncludeDirectories>../../dependencies/include/common;../../dependencies/include/common/wxwidgets;../../dependencies/include/windows/x86_64/vc10/$(Configuration)/wxwidgets;../core;../xml;../web;../lang;../skin;../net;../engine;../ui;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>../../dependencies/include/common;../../dependencies/include/windows;../../dependencies/include/common/wxwidgets;../../dependencies/include/windows/x86_64/vc10/$(Configuration)/wxwidgets;../core;../xml;../web;../lang;../skin;../net;../engine;../ui;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;UNICODE;WXUSINGDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <MinimalRebuild>true</MinimalRebuild>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
@@ -203,7 +203,7 @@
       <AdditionalOptions>/EHsc  %(AdditionalOptions)</AdditionalOptions>
       <Optimization>Full</Optimization>
       <InlineFunctionExpansion>Default</InlineFunctionExpansion>
-      <AdditionalIncludeDirectories>../../dependencies/include/common;../../dependencies/include/common/wxwidgets;../../dependencies/include/windows/i386/vc10/$(Configuration)/wxwidgets;../core;../xml;../web;../lang;../skin;../net;../engine;../ui;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>../../dependencies/include/common;../../dependencies/include/windows;../../dependencies/include/common/wxwidgets;../../dependencies/include/windows/i386/vc10/$(Configuration)/wxwidgets;../core;../xml;../web;../lang;../skin;../net;../engine;../ui;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;_WINDOWS;UNICODE;WXUSINGDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <StringPooling>false</StringPooling>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
@@ -256,7 +256,7 @@
       <AdditionalOptions>/EHsc  %(AdditionalOptions)</AdditionalOptions>
       <Optimization>Full</Optimization>
       <InlineFunctionExpansion>Default</InlineFunctionExpansion>
-      <AdditionalIncludeDirectories>../../dependencies/include/common;../../dependencies/include/common/wxwidgets;../../dependencies/include/windows/x86_64/vc10/$(Configuration)/wxwidgets;../core;../xml;../web;../lang;../skin;../net;../engine;../ui;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>../../dependencies/include/common;../../dependencies/include/windows;../../dependencies/include/common/wxwidgets;../../dependencies/include/windows/x86_64/vc10/$(Configuration)/wxwidgets;../core;../xml;../web;../lang;../skin;../net;../engine;../ui;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;_WINDOWS;UNICODE;WXUSINGDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <StringPooling>false</StringPooling>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>

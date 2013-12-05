@@ -30,6 +30,7 @@
 #include "cryptmanager.h"
 #include "dataaccount.h"
 #include "datapeer.h"
+#include "entitiesentity.h"
 #include "idbconnection.h"
 #include "isissystem.h"
 #include "objectsprivatemessage.h"
@@ -507,6 +508,16 @@ std::string Portal::getAvatarLink(const ObjectID &id, const DateTime &dt)
 std::string Portal::getFileLink(const ObjectID &id)
 {
 	return PortalsSystem::instance()->getFileLink(get_this_ptr(), id.toUTF16());
+}
+
+std::string Portal::getFileEntityLink(shared_ptr<IPortalDatabase> database, const EntityID &id)
+{
+	shared_ptr<EntitiesEntity> entity = getEntity(database, id);
+	if(entity == null)
+		return "";
+	if(entity->getCurrent() == null)
+		return "";
+	return PortalsSystem::instance()->getFileLink(get_this_ptr(), entity->getCurrent()->id->toUTF16());
 }
 
 std::string Portal::getPrivateMessageLink(const ObjectID &id, bool secure)

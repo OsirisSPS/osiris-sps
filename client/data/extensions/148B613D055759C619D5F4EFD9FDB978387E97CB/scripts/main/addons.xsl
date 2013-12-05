@@ -10,7 +10,7 @@
   <xsl:import href="http://www.osiris-sps.org/htdocs/templates/includes/actions.xsl"/>
   <xsl:import href="http://www.osiris-sps.org/htdocs/templates/includes/block.xsl"/>
   <xsl:import href="http://www.osiris-sps.org/htdocs/templates/includes/help.xsl"/>
-  
+	
   <xsl:output method="html" indent="yes" omit-xml-declaration="yes"/>
   
   <xsl:template match="/upgradable">
@@ -22,6 +22,7 @@
   </xsl:template>
 
   <xsl:template match="/home">
+		
     <xsl:call-template name="block">
       <xsl:with-param name="title" select="lang:text('main.pages.addons.title')"/>
       <xsl:with-param name="content">
@@ -111,7 +112,7 @@
   
   <xsl:template match="addon">
     <div>
-      <xsl:param name="list"/>
+      <!--<xsl:param name="list"/>-->
       <xsl:choose>
         <xsl:when test="@active != 'false'">
           <xsl:attribute name="class">
@@ -206,7 +207,7 @@
                     <xsl:text>:</xsl:text>
                   </td>
                   <td class="os_value">
-                    <xsl:value-of select="format-number(@version_installed,'##########.##')"/>
+                    <xsl:value-of select="@version_installed"/>
                   </td>
                 </tr>
               </xsl:if>
@@ -218,7 +219,7 @@
                     <xsl:text>:</xsl:text>
                   </td>
                   <td class="os_value">
-                    <xsl:value-of select="format-number(@version_repository,'##########.##')"/>                    
+                    <xsl:value-of select="@version_repository"/>                    
                   </td>
                 </tr>
               </xsl:if>
