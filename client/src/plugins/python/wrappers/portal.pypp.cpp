@@ -194,6 +194,13 @@ static boost::python::object getAvatarLink_0a909fd9fe4c1379a8e4e8b6d929b1cb( ::o
     return boost::python::object( result );
 }
 
+static boost::python::object getFileEntityLink_d7c1f1c9b8c697986dc80f8ad86ce96f( ::osiris::Portal & inst, ::boost::shared_ptr< osiris::IPortalDatabase > database, ::osiris::UniqueID const & id ){
+    ::osiris::PythonThreadSaver __pythreadSaver;
+    ::std::string result = inst.getFileEntityLink(database, id);
+    __pythreadSaver.restore();
+    return boost::python::object( result );
+}
+
 static boost::python::object getPrivateMessageLink_08249c9421b172b13e8f013fa838d82d( ::osiris::Portal & inst, ::osiris::UniqueID const & id, bool secure ){
     ::osiris::PythonThreadSaver __pythreadSaver;
     ::std::string result = inst.getPrivateMessageLink(id, secure);
@@ -771,6 +778,16 @@ void register_Portal_class(){
                 "getAvatarLink"
                 , getAvatarLink_function_type( &getAvatarLink_0a909fd9fe4c1379a8e4e8b6d929b1cb )
                 , ( ::boost::python::arg("inst"), ::boost::python::arg("id"), ::boost::python::arg("dt") ) );
+        
+        }
+        { //::osiris::Portal::getFileEntityLink
+        
+            typedef boost::python::object ( *getFileEntityLink_function_type )( ::osiris::Portal &,::boost::shared_ptr<osiris::IPortalDatabase>,::osiris::UniqueID const & );
+            
+            Portal_exposer.def( 
+                "getFileEntityLink"
+                , getFileEntityLink_function_type( &getFileEntityLink_d7c1f1c9b8c697986dc80f8ad86ce96f )
+                , ( ::boost::python::arg("inst"), ::boost::python::arg("database"), ::boost::python::arg("id") ) );
         
         }
         { //::osiris::Portal::getPrivateMessageLink

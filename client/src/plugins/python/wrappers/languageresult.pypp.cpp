@@ -49,6 +49,12 @@ static void setId_28f6d80cfbdd8392257cac4dad3712c4( ::osiris::LanguageResult & i
     __pythreadSaver.restore();
 }
 
+static void setNoTranslate_f6012eaba3e008ec112c9d872ddeb284( ::osiris::LanguageResult & inst, ::std::string const & text ){
+    ::osiris::PythonThreadSaver __pythreadSaver;
+    inst.setNoTranslate(text);
+    __pythreadSaver.restore();
+}
+
 void register_LanguageResult_class(){
 
     { //::osiris::LanguageResult
@@ -59,6 +65,8 @@ void register_LanguageResult_class(){
         LanguageResult_exposer.def( ::boost::python::init< ::std::string const &, ::std::string const &, ::osiris::DataItem const & >(( ::boost::python::arg("id"), ::boost::python::arg("key1"), ::boost::python::arg("val1") )) );
         LanguageResult_exposer.def( ::boost::python::init< ::std::string const &, ::std::string const &, ::osiris::DataItem const &, ::std::string const &, ::osiris::DataItem const & >(( ::boost::python::arg("id"), ::boost::python::arg("key1"), ::boost::python::arg("val1"), ::boost::python::arg("key2"), ::boost::python::arg("val2") )) );
         LanguageResult_exposer.def( ::boost::python::init< ::std::string const &, ::std::string const &, ::osiris::DataItem const &, ::std::string const &, ::osiris::DataItem const &, ::std::string const &, ::osiris::DataItem const & >(( ::boost::python::arg("id"), ::boost::python::arg("key1"), ::boost::python::arg("val1"), ::boost::python::arg("key2"), ::boost::python::arg("val2"), ::boost::python::arg("key3"), ::boost::python::arg("val3") )) );
+        LanguageResult_exposer.def( ::boost::python::init< char const * >(( ::boost::python::arg("id") )) );
+        ::boost::python::implicitly_convertible< char const *, ::osiris::LanguageResult >();
         LanguageResult_exposer.def( ::boost::python::init< ::std::string const & >(( ::boost::python::arg("id") )) );
         ::boost::python::implicitly_convertible< ::std::string const &, ::osiris::LanguageResult >();
         { //::osiris::LanguageResult::empty
@@ -115,6 +123,16 @@ void register_LanguageResult_class(){
                 "setId"
                 , setId_function_type( &setId_28f6d80cfbdd8392257cac4dad3712c4 )
                 , ( ::boost::python::arg("inst"), ::boost::python::arg("id") ) );
+        
+        }
+        { //::osiris::LanguageResult::setNoTranslate
+        
+            typedef void ( *setNoTranslate_function_type )( ::osiris::LanguageResult &,::std::string const & );
+            
+            LanguageResult_exposer.def( 
+                "setNoTranslate"
+                , setNoTranslate_function_type( &setNoTranslate_f6012eaba3e008ec112c9d872ddeb284 )
+                , ( ::boost::python::arg("inst"), ::boost::python::arg("text") ) );
         
         }
         { //property "id"[fget=::osiris::LanguageResult::getId, fset=::osiris::LanguageResult::setId]

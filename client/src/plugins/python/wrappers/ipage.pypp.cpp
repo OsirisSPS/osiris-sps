@@ -22,8 +22,8 @@
 #include "httprequest.h"
 #include "httpresponse.h"
 #include "httpsession.h"
-#include "iidemainpage.h"
 #include "iideportalpage.h"
+#include "iidemainpage.h"
 #include "ipage.pypp.hpp"
 
 namespace bp = boost::python;
@@ -1942,9 +1942,9 @@ void register_IPage_class(){
         ::boost::python::implicitly_convertible< boost::shared_ptr< ::osiris::IPage >, boost::shared_ptr< ::boost::signals::trackable > >();
         ::boost::python::implicitly_convertible< boost::shared_ptr< ::osiris::IPage >, boost::shared_ptr< ::osiris::enable_this_ptr< osiris::IHtmlControl > > >();
         ::boost::python::implicitly_convertible< boost::shared_ptr< ::osiris::IPage >, boost::shared_ptr< ::osiris::Object > >();
+        ::boost::python::implicitly_convertible< boost::shared_ptr< ::osiris::IPortalPage >, boost::shared_ptr< ::osiris::IPage > >();
         ::boost::python::implicitly_convertible< boost::shared_ptr< ::osiris::IMainPage >, boost::shared_ptr< ::osiris::IPage > >();
         ::boost::python::implicitly_convertible< boost::shared_ptr< ::osiris::HtmlVirtualPage< osiris::IMainPage > >, boost::shared_ptr< ::osiris::IPage > >();
-        ::boost::python::implicitly_convertible< boost::shared_ptr< ::osiris::IPortalPage >, boost::shared_ptr< ::osiris::IPage > >();
     }
 
 }

@@ -15,6 +15,7 @@
 #include "httprequest.h"
 #include "httpresponse.h"
 #include "httpsession.h"
+#include "idevoteeditor.h"
 #include "idepickerobjectex.h"
 #include "idemailbox.h"
 #include "idesearchresults.h"
@@ -22,7 +23,6 @@
 #include "idesearchglobalparams.h"
 #include "idesearchquery.h"
 #include "ideassistant.h"
-#include "idevoteeditor.h"
 #include "iportalpagehtmlcontrol.pypp.hpp"
 
 namespace bp = boost::python;

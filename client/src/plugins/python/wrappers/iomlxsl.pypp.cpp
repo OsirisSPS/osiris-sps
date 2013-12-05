@@ -5,8 +5,8 @@
 #include "boost/python.hpp"
 #include "__call_policies.pypp.hpp"
 #include "iomlxsl.h"
-#include "omluser.h"
 #include "omlview.h"
+#include "omluser.h"
 #include "iomlxsl.pypp.hpp"
 
 namespace bp = boost::python;

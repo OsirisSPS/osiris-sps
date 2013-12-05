@@ -15,8 +15,8 @@
 #include "httpresponse.h"
 #include "httpsession.h"
 #include "iidepage.h"
-#include "iidemainpage.h"
 #include "iideportalpage.h"
+#include "iidemainpage.h"
 #include "htmlpage.pypp.hpp"
 
 namespace bp = boost::python;
@@ -1354,9 +1354,9 @@ void register_HtmlPage_class(){
         ::boost::python::implicitly_convertible< boost::shared_ptr< ::osiris::HtmlPage >, boost::shared_ptr< ::osiris::enable_this_ptr< osiris::IHtmlControl > > >();
         ::boost::python::implicitly_convertible< boost::shared_ptr< ::osiris::HtmlPage >, boost::shared_ptr< ::osiris::Object > >();
         ::boost::python::implicitly_convertible< boost::shared_ptr< ::osiris::IPage >, boost::shared_ptr< ::osiris::HtmlPage > >();
+        ::boost::python::implicitly_convertible< boost::shared_ptr< ::osiris::IPortalPage >, boost::shared_ptr< ::osiris::HtmlPage > >();
         ::boost::python::implicitly_convertible< boost::shared_ptr< ::osiris::IMainPage >, boost::shared_ptr< ::osiris::HtmlPage > >();
         ::boost::python::implicitly_convertible< boost::shared_ptr< ::osiris::HtmlVirtualPage< osiris::IMainPage > >, boost::shared_ptr< ::osiris::HtmlPage > >();
-        ::boost::python::implicitly_convertible< boost::shared_ptr< ::osiris::IPortalPage >, boost::shared_ptr< ::osiris::HtmlPage > >();
     }
 
 }

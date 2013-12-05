@@ -17,8 +17,8 @@
 #include "httprequest.h"
 #include "httpresponse.h"
 #include "httpsession.h"
-#include "idepickercomponent.h"
 #include "idepickerskin.h"
+#include "idepickercomponent.h"
 #include "idepickersections.h"
 #include "idepickerselect.pypp.hpp"
 

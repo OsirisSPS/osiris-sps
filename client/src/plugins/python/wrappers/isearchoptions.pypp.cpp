@@ -11,12 +11,12 @@
 #include "searchsectionoptions.h"
 #include "searchpolloptions.h"
 #include "searchpostoptions.h"
-#include "searchpolloptionoptions.h"
-#include "searchtextoptions.h"
 #include "searchtagoptions.h"
+#include "searchpolloptionoptions.h"
+#include "searchmodeloptions.h"
 #include "searchfileoptions.h"
 #include "searchinstanceoptions.h"
-#include "searchmodeloptions.h"
+#include "searchtextoptions.h"
 #include "isearchoptions.pypp.hpp"
 
 namespace bp = boost::python;
@@ -150,12 +150,12 @@ void register_ISearchOptions_class(){
         ::boost::python::implicitly_convertible< boost::shared_ptr< ::osiris::SearchSectionOptions >, boost::shared_ptr< ::osiris::ISearchOptions > >();
         ::boost::python::implicitly_convertible< boost::shared_ptr< ::osiris::SearchPollOptions >, boost::shared_ptr< ::osiris::ISearchOptions > >();
         ::boost::python::implicitly_convertible< boost::shared_ptr< ::osiris::SearchPostOptions >, boost::shared_ptr< ::osiris::ISearchOptions > >();
-        ::boost::python::implicitly_convertible< boost::shared_ptr< ::osiris::SearchPollOptionOptions >, boost::shared_ptr< ::osiris::ISearchOptions > >();
-        ::boost::python::implicitly_convertible< boost::shared_ptr< ::osiris::SearchTextOptions >, boost::shared_ptr< ::osiris::ISearchOptions > >();
         ::boost::python::implicitly_convertible< boost::shared_ptr< ::osiris::SearchTagOptions >, boost::shared_ptr< ::osiris::ISearchOptions > >();
+        ::boost::python::implicitly_convertible< boost::shared_ptr< ::osiris::SearchPollOptionOptions >, boost::shared_ptr< ::osiris::ISearchOptions > >();
+        ::boost::python::implicitly_convertible< boost::shared_ptr< ::osiris::SearchModelOptions >, boost::shared_ptr< ::osiris::ISearchOptions > >();
         ::boost::python::implicitly_convertible< boost::shared_ptr< ::osiris::SearchFileOptions >, boost::shared_ptr< ::osiris::ISearchOptions > >();
         ::boost::python::implicitly_convertible< boost::shared_ptr< ::osiris::SearchInstanceOptions >, boost::shared_ptr< ::osiris::ISearchOptions > >();
-        ::boost::python::implicitly_convertible< boost::shared_ptr< ::osiris::SearchModelOptions >, boost::shared_ptr< ::osiris::ISearchOptions > >();
+        ::boost::python::implicitly_convertible< boost::shared_ptr< ::osiris::SearchTextOptions >, boost::shared_ptr< ::osiris::ISearchOptions > >();
     }
 
 }
