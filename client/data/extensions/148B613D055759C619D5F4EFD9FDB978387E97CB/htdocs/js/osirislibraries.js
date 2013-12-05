@@ -173,26 +173,26 @@ var OsirisLibraries =
                 jQuery - ColorPicker
                 ------------------------------------------------------------ */
                 
-                /*
-                if (otype == "colorpicker") {
-                	alert('pciker');
-                	
-                	$(src).ColorPicker({
-										color: '#0000ff',
-										onShow: function (colpkr) {
-											$(colpkr).fadeIn(500);
-											return false;
-										},
-										onHide: function (colpkr) {
-											$(colpkr).fadeOut(500);
-											return false;
-										},
-										onChange: function (hsb, hex, rgb) {
-											$('#colorSelector div').css('backgroundColor', '#' + hex);
-										}
+                if (otype == "color") {
+                	$(src).css('width', "0px");
+									$(src).css('opacity', "0");
+						
+									$(src).colorpicker({
+										alpha: true,
+										buttonImage: '/htdocs/images/controls/color.png',
+										buttonImageOnly: true,
+										showOn: 'both',
+										showSwatches: true,
+										showNoneButton: false,
+										buttonColorize: true,
+										showButtonPanel: false,
+										colorFormat: '#rxgxbxax',
+										//colorFormat: 'RGBA',
+										limit: '',
+										parts: 'full',
+										zIndex: 9000
 									});
-                }
-                */
+                }                
             }            
         }
     }

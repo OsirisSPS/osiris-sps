@@ -175,7 +175,7 @@ bool CompatibilityManager::razorUpgrade(const String &folder)
 #else
 					PovID povID = userID.getHash();
 #endif
-					/*
+					
 					if(userID.empty() == false)
 					{
 						// Clean old snapshot
@@ -183,15 +183,15 @@ bool CompatibilityManager::razorUpgrade(const String &folder)
 						connection->execute(_S("delete from os_snapshot_users"));
 						connection->execute(_S("delete from os_snapshot_profiles"));
 						connection->execute(_S("delete from os_discussions_stats"));
-						connection->execute(_S("delete from os_forums_forum_stats"));
-						connection->execute(_S("delete from os_forums_section_stats"));
+						//connection->execute(_S("delete from os_forums_forum_stats"));
+						//connection->execute(_S("delete from os_forums_section_stats"));
 						connection->execute(_S("delete from os_polls_stats"));
 						connection->execute(_S("delete from os_polls_options_stats"));
 						connection->execute(_S("delete from os_users_stats"));
 
 						// Old
-						connection->execute(_S("drop table os_forums_forum_stats"));
-						connection->execute(_S("drop table os_forums_section_stats"));
+						connection->execute(_S("drop table if exists os_forums_forum_stats"));
+						connection->execute(_S("drop table if exists os_forums_section_stats"));
 
 						// Reset acceptable
 						connection->execute(_S("update os_entries set rank=-2"));
@@ -223,7 +223,7 @@ bool CompatibilityManager::razorUpgrade(const String &folder)
 
 						
 					}
-					*/
+					
 
 					connection->close();
 
@@ -296,15 +296,15 @@ bool CompatibilityManager::razorPortalDatabaseUpgrade(const shared_ptr<IPortalDa
 	database->execute(_S("delete from os_snapshot_users"));
 	//database->execute(_S("delete from os_snapshot_profiles"));
 	database->execute(_S("delete from os_discussions_stats"));
-	database->execute(_S("delete from os_forums_forum_stats"));
-	database->execute(_S("delete from os_forums_section_stats"));
+	//database->execute(_S("delete from os_forums_forum_stats"));
+	//database->execute(_S("delete from os_forums_section_stats"));
 	database->execute(_S("delete from os_polls_stats"));
 	database->execute(_S("delete from os_polls_options_stats"));
 	database->execute(_S("delete from os_users_stats"));
 
 	// Old
-	database->execute(_S("drop table os_forums_forum_stats"));
-	database->execute(_S("drop table os_forums_section_stats"));
+	database->execute(_S("drop table if exists os_forums_forum_stats"));
+	database->execute(_S("drop table if exists os_forums_section_stats"));
 
 	// Reset acceptable
 	database->execute(_S("update os_entries set rank=-2"));

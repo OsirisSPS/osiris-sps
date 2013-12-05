@@ -24,7 +24,8 @@
       <xs:attribute name="tags" type="xs:string" use="optional" />
       <xs:attribute name="trust" type="xs:string" use="optional" />
       <xs:attribute name="author" type="xs:string" use="optional" />
-      <xs:attribute name="version" type="xs:decimal" use="required" />
+      <xs:attribute name="version_code" type="xs:decimal" use="required" />
+      <xs:attribute name="version_name" type="xs:string" use="required" />
       <xs:attribute name="compatibility" type="xs:decimal" use="optional" />
       <xs:attribute name="homepage" type="xs:string" use="optional" />
       <xs:attribute name="icon" type="xs:string" use="optional" />

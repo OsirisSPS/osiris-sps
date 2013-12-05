@@ -1264,6 +1264,74 @@ td.os_value
 	padding: 5px;
 }
 
+.os_options_counter
+{
+	display:inline-block;
+	margin-left:10px;
+	margin-right:10px;
+	width:80px;
+	text-align:center;
+	font-size:0.8em;	
+	
+	.rounded(5px);
+	.drop-shadow(0, 0, 2px, 0.2);	
+}
+
+.os_options_counter_zero
+{
+	background-color: #880000;
+	color:white;
+}
+
+.os_options_counter_found
+{
+	background-color: #008800;
+	color:white;
+}
+
+.os_option
+{
+	display:none;
+	clear:both;	
+	margin:3px;
+	border:1px solid #eeeeee;
+	padding:3px;
+}
+
+.os_option:hover
+{
+	background-color:#fafafa;	
+}
+
+.os_option_name
+{
+	border:1px solid transparent;
+	float:left;
+	width:30%;
+	padding:5px;
+
+	text-align:right;		
+
+	/*background-color: fadeout(@os-color-darker, 95%);	*/
+}
+
+.os_option_value
+{
+	border:1px solid transparent;
+	float:right;
+	width:65%;
+	padding:5px;
+}
+
+.os_option:nth-child(2n) {
+	background-color: fadeout(@os-color-darker, 100%);	
+}
+
+.os_option:nth-child(2n+1) {
+	background-color: fadeout(@os-color-darker, 97%);	
+}
+
+
 .os_cell_left
 {
 	text-align: left;
@@ -1401,10 +1469,10 @@ td.os_menuitem
 	display:inline-block;
 	position:absolute;
 	background-color: @os-skin-warning-bg;
+	color: lighten(@os-skin-warning-fg, (@os-color-delta * -60%));    
 	padding:2px;
 	padding-left:5px;
-	padding-right:5px;
-	color: @os-skin-warning-fg;
+	padding-right:5px;	
 	text-align:center;
 	top:-27px;
 	left:-20px;
@@ -1529,12 +1597,13 @@ td.os_menuitem
 	padding:0px;
 	margin:0px;
 	position:relative;
-	top:-2px;
+	top:-1px;
 	height:11px;
 	padding-top:0px;
 	padding-left:8px;
 	text-align:center;
 	font-size:smaller;		
+	white-space: nowrap;
 }
 
 

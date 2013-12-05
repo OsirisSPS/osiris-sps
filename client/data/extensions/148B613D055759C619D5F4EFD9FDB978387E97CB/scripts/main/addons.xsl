@@ -207,7 +207,7 @@
                     <xsl:text>:</xsl:text>
                   </td>
                   <td class="os_value">
-                    <xsl:value-of select="format-number(@version_installed,'##########.##')"/>
+                    <xsl:value-of select="@version_installed"/>
                   </td>
                 </tr>
               </xsl:if>
@@ -219,7 +219,7 @@
                     <xsl:text>:</xsl:text>
                   </td>
                   <td class="os_value">
-                    <xsl:value-of select="format-number(@version_repository,'##########.##')"/>                    
+                    <xsl:value-of select="@version_repository"/>                    
                   </td>
                 </tr>
               </xsl:if>

@@ -192,15 +192,15 @@
               <img src="{system:resource-url('images/systembar/logo.png')}" alt="Osiris"/>
             </a>
             <br />
-            <a title="{lang:text('systembar.actions.home')}" class="os_systembar_icon" href="/main/home">
+            <a class="os_systembar_icon" href="/main/home">
               <img src="{system:resource-url('images/systembar/icon_home.png')}" data-os-tooltip="{lang:text('systembar.actions.home')}"/>
             </a>
-            <a title="{lang:text('systembar.actions.help')}" class="os_systembar_icon" href="javascript:void(0);" onclick="Osiris.loadUrl('/main/help?mode=dialog')" data-os-tooltip="{lang:text('systembar.actions.help')}">
+            <a class="os_systembar_icon" href="javascript:void(0);" onclick="Osiris.loadUrl('/main/help?mode=dialog')" data-os-tooltip="{lang:text('systembar.actions.help')}">
               <img src="{system:resource-url('images/systembar/icon_help.png')}"/>
             </a>
             
-            <a title="{lang:text('systembar.actions.network')}" class="os_systembar_icon" href="javascript:void(0);" onclick="Osiris.loadUrl('/main/network?mode=dialog')" data-os-tooltip="{lang:text('systembar.actions.network')}">              
-              <xsl:choose>
+            <a class="os_systembar_icon" href="javascript:void(0);" onclick="Osiris.loadUrl('/main/network?mode=dialog')" data-os-tooltip="{lang:text('systembar.actions.network')}">
+							<xsl:choose>
                 <xsl:when test="@isis_status = 2">                  
                   <img src="{system:resource-url('images/systembar/icon_network_info.png')}"/>
                 </xsl:when>
@@ -210,14 +210,14 @@
                 <xsl:otherwise>
                   <img src="{system:resource-url('images/systembar/icon_network_error.png')}"/>
                 </xsl:otherwise>
-              </xsl:choose>              
+              </xsl:choose>							
             </a>
 
             <xsl:if test="@portal_name">
               <!--
 								<a title="{lang:text('systembar.actions.assistant')}" class="os_systembar_icon" href="javascript:void(0);" onclick="Osiris.loadUrl('{@assistant_href}&amp;mode=dialog')" data-os-tooltip="{lang:text('systembar.actions.assistant')}">
 							-->
-								<a title="{lang:text('systembar.actions.assistant')}" class="os_systembar_icon" href="javascript:void(0);" onclick="javascript:Osiris.Assistant.toggle()" data-os-tooltip="{lang:text('systembar.actions.assistant')}">
+								<a class="os_systembar_icon" href="javascript:void(0);" onclick="javascript:Osiris.Assistant.toggle()" data-os-tooltip="{lang:text('systembar.actions.assistant')}">
 								
 								<img src="{system:resource-url('images/systembar/icon_assistant.png')}"/>
               </a>

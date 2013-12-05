@@ -96,18 +96,15 @@ class Page(osiris.IPortalPage):
 			#self.registerTerms.css = "os_input_full"
 			#template.addChildParam(self.registerTerms)
 			
-			#self.layoutTileImage = osiris.IdePickerObject()
-			self.layoutTileImage = osiris.HtmlTextBox()            
+			self.layoutTileImage = osiris.IdePickerObject()
 			self.layoutTileImage.id = "layoutTileImage"		
 			template.addChildParam(self.layoutTileImage)
 			
-			#self.layoutTileColorBackground = osiris.IdePickerColor()
-			self.layoutTileColorBackground = osiris.HtmlTextBox()            
+			self.layoutTileColorBackground = osiris.IdePickerColor()
 			self.layoutTileColorBackground.id = "layoutTileColorBackground"		
 			template.addChildParam(self.layoutTileColorBackground)
 			
-			#self.layoutTileColorForeground = osiris.IdePickerColor()
-			self.layoutTileColorForeground = osiris.HtmlTextBox()
+			self.layoutTileColorForeground = osiris.IdePickerColor()
 			self.layoutTileColorForeground.id = "layoutTileColorForeground"		
 			template.addChildParam(self.layoutTileColorForeground)
 			
@@ -165,7 +162,7 @@ class Page(osiris.IPortalPage):
 				
 				self.layoutComponent.value = self.portal.optionsShared.layoutComponent								
 				#self.registerTerms.value = self.portal.optionsShared.registerTerms
-				#self.layoutTileImage.value = self.portal.optionsShared.layoutTileImage.toAscii()
+				self.layoutTileImage.value = self.portal.optionsShared.layoutTileImage
 				self.layoutTileColorBackground.value = self.portal.optionsShared.layoutTileColorBackground
 				self.layoutTileColorForeground.value = self.portal.optionsShared.layoutTileColorForeground
 				self.layoutSkinParams.value = self.portal.optionsShared.layoutSkinParams
@@ -206,7 +203,7 @@ class Page(osiris.IPortalPage):
 		
 		self.portal.optionsShared.layoutComponent = self.layoutComponent.value
 		#self.portal.optionsShared.registerTerms = self.registerTerms.value
-		#self.portal.optionsShared.layoutTileImage = self.layoutTileImage.value
+		self.portal.optionsShared.layoutTileImage = self.layoutTileImage.value
 		self.portal.optionsShared.layoutTileColorBackground = self.layoutTileColorBackground.value
 		self.portal.optionsShared.layoutTileColorForeground = self.layoutTileColorForeground.value
 		self.portal.optionsShared.layoutSkinParams = self.layoutSkinParams.value

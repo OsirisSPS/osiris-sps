@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<extension id="3A400E99522000141CAC3313A129DF6C57FD9017" author="Osiris Team" description="Osiris Official Portal Extension. Used internally in that portal." content="" name="Anubis" version="1.3" logo="logo.png" icon="icon.png" category="" tags="">
+<extension id="3A400E99522000141CAC3313A129DF6C57FD9017" author="Osiris Team" description="Osiris Official Portal Extension. Used internally in that portal." content="" name="Anubis" version_code="1" version_name="1.3" logo="logo.png" icon="icon.png" category="" tags="">
   <scripts>
     <script language="python" path="scripts/script.py" />
   </scripts>

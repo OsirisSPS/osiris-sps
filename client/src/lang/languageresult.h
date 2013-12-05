@@ -57,6 +57,7 @@ public:
 
 // Operations
 public:
+	void setNoTranslate(const std::string& text);
 	void setParam(const std::string &key, const DataItem &val);
 	void clear();
 	

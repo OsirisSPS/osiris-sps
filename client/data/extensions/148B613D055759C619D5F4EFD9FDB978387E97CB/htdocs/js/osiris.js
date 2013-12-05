@@ -2484,19 +2484,20 @@ function osTabCreate(src)
 			var objHeader = this.headers[i];
 			var objBody = this.bodies[i];
 			
-			if(withEffect)
+			//if(withEffect)
+			if(false)
 			{
 				if(objHeader.style.display != "none")
 				{
-					//jQuery(objHeader).stop(true,true).slideUp(Osiris.effectsSpeedSlow);
+					jQuery(objHeader).stop(true,true).slideUp(Osiris.effectsSpeedSlow);
 					//jQuery(objHeader).stop(true,true).fadeOut(Osiris.effectsSpeedSlow);
-					jQuery(objHeader).fadeOut( { queue: true, duration: Osiris.effectsSpeedSlow } );
+					//jQuery(objHeader).fadeOut( { queue: true, duration: Osiris.effectsSpeedSlow } );
 				}
 				if(objBody.style.display != "block")
 				{
-					//jQuery(objBody).stop(true,true).slideDown(Osiris.effectsSpeedSlow);
+					jQuery(objBody).stop(true,true).slideDown(Osiris.effectsSpeedSlow);
 					//jQuery(objBody).stop(true,true).fadeIn(Osiris.effectsSpeedSlow);
-					jQuery(objBody).fadeIn( { queue: true, duration: Osiris.effectsSpeedSlow } );
+					//jQuery(objBody).fadeIn( { queue: true, duration: Osiris.effectsSpeedSlow } );
 				}
 			}
 			else
@@ -2519,9 +2520,9 @@ function osTabCreate(src)
 			if(objHeader.style.display != "block")
 			{
 				//Effect.BlindDown(objHeader, { queue: 'end', duration: 0.3 });			    	
-				//jQuery(objHeader).stop(true,true).slideDown(Osiris.effectsSpeedSlow);
+				jQuery(objHeader).stop(true,true).slideDown(Osiris.effectsSpeedSlow);
 				//jQuery(objHeader).stop(true,true).fadeIn(Osiris.effectsSpeedSlow);				
-				jQuery(objHeader).fadeIn( { queue: true, duration: Osiris.effectsSpeedSlow } );
+				//jQuery(objHeader).fadeIn( { queue: true, duration: Osiris.effectsSpeedSlow } );
 			}
 		}
 		
@@ -2551,13 +2552,14 @@ function osTabCreate(src)
 					objHeader.className = "os_tab_top_header";
 				else
 					objHeader.className = "os_tab_left_header";
-				if(withEffect)
+				//if(withEffect)
+				if(false)
 				{
 					if(objBody.style.display != "none")
 					{
-						//jQuery(objBody).stop(true,true).slideUp(Osiris.effectsSpeedSlow);
+						jQuery(objBody).stop(true,true).slideUp(Osiris.effectsSpeedSlow);
 						//jQuery(objBody).stop(true,true).fadeOut(Osiris.effectsSpeedSlow);
-						jQuery(objBody).fadeOut( { queue: true, duration: Osiris.effectsSpeedSlow } );
+						//jQuery(objBody).fadeOut( { queue: true, duration: Osiris.effectsSpeedSlow } );
 					}
 				}
 				else
@@ -2581,14 +2583,15 @@ function osTabCreate(src)
 					objHeader.className = "os_tab_left_header_selected";
 				//objBody.style.display = "block";			    
 				//Effect.Appear(objBody, { queue: 'end', duration: 1 });			    	
-				if(withEffect)
+				//if(withEffect)
+				if(false)
 				{
 					if(objBody.style.display != "block")
 					{
 						//Effect.BlindDown(objBody, { queue: 'end', duration: 0.3 });			    			    	    
-						//jQuery(objBody).stop(true,true).slideDown(Osiris.effectsSpeedSlow);
+						jQuery(objBody).stop(true,true).slideDown(Osiris.effectsSpeedSlow);
 						//jQuery(objBody).stop(true,true).fadeIn(Osiris.effectsSpeedSlow);
-						jQuery(objBody).fadeIn( { queue: true, duration: Osiris.effectsSpeedSlow } );
+						//jQuery(objBody).fadeIn( { queue: true, duration: Osiris.effectsSpeedSlow } );
 					}
 				}
 				else

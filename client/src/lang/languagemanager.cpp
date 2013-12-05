@@ -48,6 +48,8 @@ LanguageManager::LanguageManager() : m_invariant(OS_NEW LanguageCulture()),
 									 m_root(OS_NEW LanguageFolder())
 {
 	addFolder(m_root);
+
+	m_dumpKey = false;
 }
 
 LanguageManager::~LanguageManager()
