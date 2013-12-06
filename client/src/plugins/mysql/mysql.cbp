@@ -20,7 +20,7 @@
 					<Add option="-W" />
 					<Add option="-g" />
 					<Add option="-O0" />
-					<Add directory="../../../dependencies/include" />
+					<Add directory="../../../dependencies/include/common" />
 					<Add directory="../../core" />
 					<Add directory="../../xml" />
 					<Add directory="../../web" />
@@ -29,7 +29,7 @@
 					<Add directory="../../engine" />
 				</Compiler>
 				<ResourceCompiler>
-					<Add directory="../../../dependencies/include" />
+					<Add directory="../../../dependencies/include/common" />
 					<Add directory="../../core" />
 					<Add directory="../../xml" />
 					<Add directory="../../web" />
@@ -55,7 +55,7 @@
 					<Add option="-DNDEBUG" />
 					<Add option="-DUNICODE" />
 					<Add option="-W" />
-					<Add directory="../../../dependencies/include" />
+					<Add directory="../../../dependencies/include/common" />
 					<Add directory="../../core" />
 					<Add directory="../../xml" />
 					<Add directory="../../web" />
@@ -64,7 +64,7 @@
 					<Add directory="../../engine" />
 				</Compiler>
 				<ResourceCompiler>
-					<Add directory="../../../dependencies/include" />
+					<Add directory="../../../dependencies/include/common" />
 					<Add directory="../../core" />
 					<Add directory="../../xml" />
 					<Add directory="../../web" />
@@ -92,7 +92,7 @@
 					<Add option="-W" />
 					<Add option="-g" />
 					<Add option="-O0" />
-					<Add directory="../../../dependencies/include" />
+					<Add directory="../../../dependencies/include/common" />
 					<Add directory="../../core" />
 					<Add directory="../../xml" />
 					<Add directory="../../web" />
@@ -101,7 +101,7 @@
 					<Add directory="../../engine" />
 				</Compiler>
 				<ResourceCompiler>
-					<Add directory="../../../dependencies/include" />
+					<Add directory="../../../dependencies/include/common" />
 					<Add directory="../../core" />
 					<Add directory="../../xml" />
 					<Add directory="../../web" />
@@ -130,7 +130,7 @@
 					<Add option="-DNDEBUG" />
 					<Add option="-DUNICODE" />
 					<Add option="-W" />
-					<Add directory="../../../dependencies/include" />
+					<Add directory="../../../dependencies/include/common" />
 					<Add directory="../../core" />
 					<Add directory="../../xml" />
 					<Add directory="../../web" />
@@ -139,7 +139,7 @@
 					<Add directory="../../engine" />
 				</Compiler>
 				<ResourceCompiler>
-					<Add directory="../../../dependencies/include" />
+					<Add directory="../../../dependencies/include/common" />
 					<Add directory="../../core" />
 					<Add directory="../../xml" />
 					<Add directory="../../web" />

@@ -8,7 +8,7 @@
 		<Build>
 			<Target title="debug linux-i386">
 				<Option platforms="Unix;" />
-				<Option output="../../bin/linux/i386/gcc/debug/libengine" prefix_auto="1" extension_auto="1" />
+				<Option output="../../bin/linux/i386/gcc/debug/engine" prefix_auto="1" extension_auto="1" />
 				<Option object_output="../../obj/linux/i386/gcc/engine/debug" />
 				<Option type="3" />
 				<Option compiler="gcc" />
@@ -66,7 +66,7 @@
 			</Target>
 			<Target title="release linux-i386">
 				<Option platforms="Unix;" />
-				<Option output="../../bin/linux/i386/gcc/release/libengine" prefix_auto="1" extension_auto="1" />
+				<Option output="../../bin/linux/i386/gcc/release/engine" prefix_auto="1" extension_auto="1" />
 				<Option object_output="../../obj/linux/i386/gcc/engine/release" />
 				<Option type="3" />
 				<Option compiler="gcc" />
@@ -125,7 +125,7 @@
 			</Target>
 			<Target title="debug mac-x86_64">
 				<Option platforms="Mac;" />
-				<Option output="../../bin/macosx/x86_64/gcc/debug/Osiris.app/Contents/MacOS/libengine" prefix_auto="1" extension_auto="1" />
+				<Option output="../../bin/macosx/x86_64/gcc/debug/Osiris.app/Contents/MacOS/engine" prefix_auto="1" extension_auto="1" />
 				<Option object_output="../../obj/macosx/x86_64/gcc/engine/debug" />
 				<Option type="3" />
 				<Option compiler="gcc" />
@@ -185,7 +185,7 @@
 			</Target>
 			<Target title="release mac-x86_64">
 				<Option platforms="Mac;" />
-				<Option output="../../bin/macosx/x86_64/gcc/release/Osiris.app/Contents/MacOS/libengine" prefix_auto="1" extension_auto="1" />
+				<Option output="../../bin/macosx/x86_64/gcc/release/Osiris.app/Contents/MacOS/engine" prefix_auto="1" extension_auto="1" />
 				<Option object_output="../../obj/macosx/x86_64/gcc/engine/release" />
 				<Option type="3" />
 				<Option compiler="gcc" />
@@ -246,7 +246,7 @@
 			</Target>
 			<Target title="debug linux-x86_64">
 				<Option platforms="Unix;" />
-				<Option output="../../bin/linux/x86_64/gcc/debug/libengine" prefix_auto="1" extension_auto="1" />
+				<Option output="../../bin/linux/x86_64/gcc/debug/engine" prefix_auto="1" extension_auto="1" />
 				<Option object_output="../../obj/linux/x86_64/gcc/engine/debug" />
 				<Option type="3" />
 				<Option compiler="gcc" />
@@ -303,7 +303,7 @@
 			</Target>
 			<Target title="release linux-x86_64">
 				<Option platforms="Unix;" />
-				<Option output="../../bin/linux/x86_64/gcc/release/libengine" prefix_auto="1" extension_auto="1" />
+				<Option output="../../bin/linux/x86_64/gcc/release/engine" prefix_auto="1" extension_auto="1" />
 				<Option object_output="../../obj/linux/x86_64/gcc/engine/release" />
 				<Option type="3" />
 				<Option compiler="gcc" />
@@ -360,8 +360,11 @@
 				</Linker>
 			</Target>
 		</Build>
+		<Unit filename="cachesystem.cpp" />
+		<Unit filename="cachesystem.h" />
 		<Unit filename="compatibilitymanager.cpp" />
 		<Unit filename="compatibilitymanager.h" />
+		<Unit filename="compatibilityrazor.h" />
 		<Unit filename="convert.cpp" />
 		<Unit filename="convert.h" />
 		<Unit filename="dataaccount.cpp" />
@@ -385,11 +388,8 @@
 		<Unit filename="datapolloptionstats.h" />
 		<Unit filename="datapollstats.cpp" />
 		<Unit filename="datapollstats.h" />
-		<Unit filename="datasnapshotobject.cpp" />
 		<Unit filename="datasnapshotobject.h" />
-		<Unit filename="datasnapshotprofile.cpp" />
 		<Unit filename="datasnapshotprofile.h" />
-		<Unit filename="datasnapshotuser.cpp" />
 		<Unit filename="datasnapshotuser.h" />
 		<Unit filename="datauserstats.cpp" />
 		<Unit filename="datauserstats.h" />
@@ -413,8 +413,16 @@
 		<Unit filename="dbtables.h" />
 		<Unit filename="dbvalue.cpp" />
 		<Unit filename="dbvalue.h" />
+		<Unit filename="del.bat" />
+		<Unit filename="engine.cbp" />
 		<Unit filename="engine.cpp" />
+		<Unit filename="engine.depend" />
 		<Unit filename="engine.h" />
+		<Unit filename="engine.layout" />
+		<Unit filename="engine.vcproj" />
+		<Unit filename="engine_vc10.vcxproj" />
+		<Unit filename="engine_vc10.vcxproj.filters" />
+		<Unit filename="engine_vc8.vcproj" />
 		<Unit filename="engineconfig.h" />
 		<Unit filename="entitiesentities.h" />
 		<Unit filename="entitiesentitiescache.cpp" />
@@ -427,7 +435,6 @@
 		<Unit filename="entitiessnapshotmanager.h" />
 		<Unit filename="entitiessnapshotoptions.cpp" />
 		<Unit filename="entitiessnapshotoptions.h" />
-		<Unit filename="entitiessnapshotprofile.cpp" />
 		<Unit filename="entitiessnapshotprofile.h" />
 		<Unit filename="entitiesstatisticscache.cpp" />
 		<Unit filename="entitiesstatisticscache.h" />
@@ -435,7 +442,6 @@
 		<Unit filename="extensionscomponentcontrol.h" />
 		<Unit filename="extensionscomponenteditor.cpp" />
 		<Unit filename="extensionscomponenteditor.h" />
-		<Unit filename="extensionscomponentid.cpp" />
 		<Unit filename="extensionscomponentid.h" />
 		<Unit filename="extensionscomponentviewer.cpp" />
 		<Unit filename="extensionscomponentviewer.h" />
@@ -450,7 +456,6 @@
 		<Unit filename="extensionsmodulecontrol.h" />
 		<Unit filename="extensionsmoduleeditor.cpp" />
 		<Unit filename="extensionsmoduleeditor.h" />
-		<Unit filename="extensionsmoduleid.cpp" />
 		<Unit filename="extensionsmoduleid.h" />
 		<Unit filename="extensionsmoduleviewer.cpp" />
 		<Unit filename="extensionsmoduleviewer.h" />
@@ -464,22 +469,21 @@
 		<Unit filename="ibackgroundjob.h" />
 		<Unit filename="id.cpp" />
 		<Unit filename="id.h" />
+		<Unit filename="ideaccount.cpp" />
+		<Unit filename="ideaccount.h" />
+		<Unit filename="ideaccountsmanager.cpp" />
+		<Unit filename="ideaccountsmanager.h" />
 		<Unit filename="ideassistant.cpp" />
 		<Unit filename="ideassistant.h" />
 		<Unit filename="ideblock.cpp" />
 		<Unit filename="ideblock.h" />
-		<Unit filename="idebooleanpicker.cpp" />
 		<Unit filename="idebooleanpicker.h" />
 		<Unit filename="idebutton.cpp" />
 		<Unit filename="idebutton.h" />
 		<Unit filename="idecontrol.h" />
-		<Unit filename="ideculturepicker.cpp" />
 		<Unit filename="ideculturepicker.h" />
-		<Unit filename="idedatetimepicker.cpp" />
 		<Unit filename="idedatetimepicker.h" />
-		<Unit filename="idedatetimespecialpicker.cpp" />
 		<Unit filename="idedatetimespecialpicker.h" />
-		<Unit filename="idedebuginfo.cpp" />
 		<Unit filename="idedebuginfo.h" />
 		<Unit filename="ideeditattachmenteditor.cpp" />
 		<Unit filename="ideeditattachmenteditor.h" />
@@ -511,7 +515,6 @@
 		<Unit filename="idehelpbox.h" />
 		<Unit filename="ideide.cpp" />
 		<Unit filename="ideide.h" />
-		<Unit filename="ideidesystem.cpp" />
 		<Unit filename="ideidesystem.h" />
 		<Unit filename="idemailbox.cpp" />
 		<Unit filename="idemailbox.h" />
@@ -537,13 +540,36 @@
 		<Unit filename="idemainsettings.h" />
 		<Unit filename="idemainsubscribe.cpp" />
 		<Unit filename="idemainsubscribe.h" />
-		<Unit filename="ideobjectpicker.cpp" />
 		<Unit filename="ideobjectpicker.h" />
 		<Unit filename="ideomleditor.cpp" />
 		<Unit filename="ideomleditor.h" />
 		<Unit filename="idepages.h" />
 		<Unit filename="idepathway.cpp" />
 		<Unit filename="idepathway.h" />
+		<Unit filename="idepickerbool.cpp" />
+		<Unit filename="idepickerbool.h" />
+		<Unit filename="idepickercolor.cpp" />
+		<Unit filename="idepickercolor.h" />
+		<Unit filename="idepickercomponent.cpp" />
+		<Unit filename="idepickercomponent.h" />
+		<Unit filename="idepickerculture.cpp" />
+		<Unit filename="idepickerculture.h" />
+		<Unit filename="idepickerdatetime.cpp" />
+		<Unit filename="idepickerdatetime.h" />
+		<Unit filename="idepickerdatetimespecial.cpp" />
+		<Unit filename="idepickerdatetimespecial.h" />
+		<Unit filename="idepickernumber.cpp" />
+		<Unit filename="idepickernumber.h" />
+		<Unit filename="idepickerobject.cpp" />
+		<Unit filename="idepickerobject.h" />
+		<Unit filename="idepickerobjectex.cpp" />
+		<Unit filename="idepickerobjectex.h" />
+		<Unit filename="idepickersections.cpp" />
+		<Unit filename="idepickersections.h" />
+		<Unit filename="idepickerselect.cpp" />
+		<Unit filename="idepickerselect.h" />
+		<Unit filename="idepickerskin.cpp" />
+		<Unit filename="idepickerskin.h" />
 		<Unit filename="ideportalaccount.cpp" />
 		<Unit filename="ideportalaccount.h" />
 		<Unit filename="ideportalassistant.cpp" />
@@ -551,6 +577,8 @@
 		<Unit filename="ideportalcontrol.h" />
 		<Unit filename="ideportaledit.cpp" />
 		<Unit filename="ideportaledit.h" />
+		<Unit filename="ideportalmessenger.cpp" />
+		<Unit filename="ideportalmessenger.h" />
 		<Unit filename="ideportalobjectdetail.cpp" />
 		<Unit filename="ideportalobjectdetail.h" />
 		<Unit filename="ideportalsearch.cpp" />
@@ -571,12 +599,17 @@
 		<Unit filename="idesearchquery.h" />
 		<Unit filename="idesearchresults.cpp" />
 		<Unit filename="idesearchresults.h" />
+		<Unit filename="idesession.cpp" />
+		<Unit filename="idesession.h" />
+		<Unit filename="idesessionportal.cpp" />
+		<Unit filename="idesessionportal.h" />
 		<Unit filename="ideskin.cpp" />
 		<Unit filename="ideskin.h" />
-		<Unit filename="ideskinpicker.cpp" />
 		<Unit filename="ideskinpicker.h" />
 		<Unit filename="ideskinsimple.cpp" />
 		<Unit filename="ideskinsimple.h" />
+		<Unit filename="idesystem.cpp" />
+		<Unit filename="idesystem.h" />
 		<Unit filename="idetablequery.cpp" />
 		<Unit filename="idetablequery.h" />
 		<Unit filename="ideutils.cpp" />
@@ -611,6 +644,8 @@
 		<Unit filename="idevoteeditor.h" />
 		<Unit filename="idexslresolver.cpp" />
 		<Unit filename="idexslresolver.h" />
+		<Unit filename="ids.cpp" />
+		<Unit filename="ids.h" />
 		<Unit filename="iextensionscodecontext.cpp" />
 		<Unit filename="iextensionscodecontext.h" />
 		<Unit filename="iextensionscodeprovider.cpp" />
@@ -676,8 +711,9 @@
 		<Unit filename="objectsfile.h" />
 		<Unit filename="objectsicommentable.cpp" />
 		<Unit filename="objectsicommentable.h" />
-		<Unit filename="objectsientity.cpp" />
 		<Unit filename="objectsientity.h" />
+		<Unit filename="objectsientry.cpp" />
+		<Unit filename="objectsientry.h" />
 		<Unit filename="objectsinstance.cpp" />
 		<Unit filename="objectsinstance.h" />
 		<Unit filename="objectsiobject.cpp" />
@@ -693,7 +729,6 @@
 		<Unit filename="objectsobjects.h" />
 		<Unit filename="objectsobjectscache.cpp" />
 		<Unit filename="objectsobjectscache.h" />
-		<Unit filename="objectsobjectssystem.cpp" />
 		<Unit filename="objectsobjectssystem.h" />
 		<Unit filename="objectspoll.cpp" />
 		<Unit filename="objectspoll.h" />
@@ -711,6 +746,8 @@
 		<Unit filename="objectssection.h" />
 		<Unit filename="objectssigner.cpp" />
 		<Unit filename="objectssigner.h" />
+		<Unit filename="objectssystem.cpp" />
+		<Unit filename="objectssystem.h" />
 		<Unit filename="objectstag.cpp" />
 		<Unit filename="objectstag.h" />
 		<Unit filename="objectstext.cpp" />
@@ -741,6 +778,8 @@
 		<Unit filename="omlhtml.h" />
 		<Unit filename="omlhtmlwrapper.cpp" />
 		<Unit filename="omlhtmlwrapper.h" />
+		<Unit filename="omlif.cpp" />
+		<Unit filename="omlif.h" />
 		<Unit filename="omlimg.cpp" />
 		<Unit filename="omlimg.h" />
 		<Unit filename="omlitem.cpp" />
@@ -853,13 +892,12 @@
 		<Unit filename="pluginmodule.h" />
 		<Unit filename="pluginsmanager.cpp" />
 		<Unit filename="pluginsmanager.h" />
-		<Unit filename="portaldatabasescache.cpp" />
 		<Unit filename="portaldatabasescache.h" />
 		<Unit filename="portalsaccount.cpp" />
 		<Unit filename="portalsaccount.h" />
-		<Unit filename="portalsaccountsmanager.cpp" />
 		<Unit filename="portalsaccountsmanager.h" />
-		<Unit filename="portalserializer.cpp" />
+		<Unit filename="portalsdatabasescache.cpp" />
+		<Unit filename="portalsdatabasescache.h" />
 		<Unit filename="portalserializer.h" />
 		<Unit filename="portalsexporterjob.cpp" />
 		<Unit filename="portalsexporterjob.h" />
@@ -867,7 +905,6 @@
 		<Unit filename="portalsimporterjob.h" />
 		<Unit filename="portalsiportalslistener.cpp" />
 		<Unit filename="portalsiportalslistener.h" />
-		<Unit filename="portalsloggeduser.cpp" />
 		<Unit filename="portalsloggeduser.h" />
 		<Unit filename="portalsmaindirectory.cpp" />
 		<Unit filename="portalsmaindirectory.h" />
@@ -875,13 +912,14 @@
 		<Unit filename="portalsmessenger.h" />
 		<Unit filename="portalsoptimizerjob.cpp" />
 		<Unit filename="portalsoptimizerjob.h" />
+		<Unit filename="portalsoptionsshared.cpp" />
+		<Unit filename="portalsoptionsshared.h" />
 		<Unit filename="portalspeer.cpp" />
 		<Unit filename="portalspeer.h" />
 		<Unit filename="portalspeersmanager.cpp" />
 		<Unit filename="portalspeersmanager.h" />
 		<Unit filename="portalsportal.cpp" />
 		<Unit filename="portalsportal.h" />
-		<Unit filename="portalsportalid.cpp" />
 		<Unit filename="portalsportalid.h" />
 		<Unit filename="portalsportaloptions.cpp" />
 		<Unit filename="portalsportaloptions.h" />
@@ -898,9 +936,14 @@
 		<Unit filename="portalsprofile.h" />
 		<Unit filename="portalsprofilescache.cpp" />
 		<Unit filename="portalsprofilescache.h" />
+		<Unit filename="portalsserializer.cpp" />
+		<Unit filename="portalsserializer.h" />
 		<Unit filename="portalsstabilityjob.cpp" />
 		<Unit filename="portalsstabilityjob.h" />
-		<Unit filename="portaltransaction.cpp" />
+		<Unit filename="portalssyncjob.cpp" />
+		<Unit filename="portalssyncjob.h" />
+		<Unit filename="portalstransaction.cpp" />
+		<Unit filename="portalstransaction.h" />
 		<Unit filename="portaltransaction.h" />
 		<Unit filename="reputationsfeedback.cpp" />
 		<Unit filename="reputationsfeedback.h" />
