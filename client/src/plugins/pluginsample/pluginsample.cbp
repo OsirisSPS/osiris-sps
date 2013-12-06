@@ -19,7 +19,7 @@
 					<Add option="-W" />
 					<Add option="-D_DEBUG" />
 					<Add option="-DUNICODE" />
-					<Add directory="../../../dependencies/include" />
+					<Add directory="../../../dependencies/common/include" />
 					<Add directory="../../core" />
 					<Add directory="../../lang" />
 					<Add directory="../../web" />
@@ -28,7 +28,7 @@
 					<Add directory="../../net" />
 				</Compiler>
 				<ResourceCompiler>
-					<Add directory="../../../dependencies/include" />
+					<Add directory="../../../dependencies/common/include" />
 					<Add directory="../../core" />
 					<Add directory="../../lang" />
 					<Add directory="../../web" />
@@ -57,7 +57,7 @@
 					<Add option="-W" />
 					<Add option="-DNDEBUG" />
 					<Add option="-DUNICODE" />
-					<Add directory="../../../dependencies/include" />
+					<Add directory="../../../dependencies/common/include" />
 					<Add directory="../../core" />
 					<Add directory="../../lang" />
 					<Add directory="../../web" />
@@ -66,7 +66,7 @@
 					<Add directory="../../net" />
 				</Compiler>
 				<ResourceCompiler>
-					<Add directory="../../../dependencies/include" />
+					<Add directory="../../../dependencies/common/include" />
 					<Add directory="../../core" />
 					<Add directory="../../lang" />
 					<Add directory="../../web" />
@@ -96,7 +96,7 @@
 					<Add option="-g" />
 					<Add option="-D_DEBUG" />
 					<Add option="-DUNICODE" />
-					<Add directory="../../../dependencies/include" />
+					<Add directory="../../../dependencies/common/include" />
 					<Add directory="../../core" />
 					<Add directory="../../lang" />
 					<Add directory="../../web" />
@@ -105,7 +105,7 @@
 					<Add directory="../../net" />
 				</Compiler>
 				<ResourceCompiler>
-					<Add directory="../../../dependencies/include" />
+					<Add directory="../../../dependencies/common/include" />
 					<Add directory="../../core" />
 					<Add directory="../../lang" />
 					<Add directory="../../web" />
@@ -138,7 +138,7 @@
 					<Add option="-W" />
 					<Add option="-DNDEBUG" />
 					<Add option="-DUNICODE" />
-					<Add directory="../../../dependencies/include" />
+					<Add directory="../../../dependencies/common/include" />
 					<Add directory="../../core" />
 					<Add directory="../../lang" />
 					<Add directory="../../web" />
@@ -147,7 +147,7 @@
 					<Add directory="../../net" />
 				</Compiler>
 				<ResourceCompiler>
-					<Add directory="../../../dependencies/include" />
+					<Add directory="../../../dependencies/common/include" />
 					<Add directory="../../core" />
 					<Add directory="../../lang" />
 					<Add directory="../../web" />
@@ -182,7 +182,7 @@
 					<Add option="-fPIC" />
 					<Add option="-D_DEBUG" />
 					<Add option="-DUNICODE" />
-					<Add directory="../../../dependencies/include" />
+					<Add directory="../../../dependencies/common/include" />
 					<Add directory="../../core" />
 					<Add directory="../../lang" />
 					<Add directory="../../web" />
@@ -191,7 +191,7 @@
 					<Add directory="../../net" />
 				</Compiler>
 				<ResourceCompiler>
-					<Add directory="../../../dependencies/include" />
+					<Add directory="../../../dependencies/common/include" />
 					<Add directory="../../core" />
 					<Add directory="../../lang" />
 					<Add directory="../../web" />
@@ -219,7 +219,7 @@
 					<Add option="-fPIC" />
 					<Add option="-DNDEBUG" />
 					<Add option="-DUNICODE" />
-					<Add directory="../../../dependencies/include" />
+					<Add directory="../../../dependencies/common/include" />
 					<Add directory="../../core" />
 					<Add directory="../../lang" />
 					<Add directory="../../web" />
@@ -228,7 +228,7 @@
 					<Add directory="../../net" />
 				</Compiler>
 				<ResourceCompiler>
-					<Add directory="../../../dependencies/include" />
+					<Add directory="../../../dependencies/common/include" />
 					<Add directory="../../core" />
 					<Add directory="../../lang" />
 					<Add directory="../../web" />
