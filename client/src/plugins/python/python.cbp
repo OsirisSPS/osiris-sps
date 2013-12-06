@@ -48,7 +48,7 @@
 					<Add option="-static-libstdc++" />
 					<Add option="-static-libgcc" />
 					<Add library="libboost_python-gcc48-mt-d-1_54" />
-					<Add library="libpython2.6" />
+					<Add library="libpython2.7" />
 					<Add library="libboost_system-gcc48-mt-d-1_54" />
 					<Add library="libcore" />
 					<Add library="libhttp" />
@@ -111,7 +111,7 @@
 					<Add option="-static-libstdc++" />
 					<Add option="-static-libgcc" />
 					<Add library="libboost_python-gcc48-mt-1_54" />
-					<Add library="libpython2.6" />
+					<Add library="libpython2.7" />
 					<Add library="libboost_system-gcc48-mt-1_54" />
 					<Add library="libcore" />
 					<Add library="libhttp" />
@@ -181,7 +181,7 @@
 					<Add library="libweb" />
 					<Add library="libhttp" />
 					<Add library="libboost_python-xgcc42-mt-d-1_54" />
-					<Add library="libpython2.6" />
+					<Add library="libpython2.7" />
 					<Add library="libssl" />
 					<Add library="libcrypto" />
 					<Add library="libdb" />
@@ -245,7 +245,7 @@
 					<Add library="libssl" />
 					<Add library="libcrypto" />
 					<Add library="libdb" />
-					<Add library="libpython2.6" />
+					<Add library="libpython2.7" />
 					<Add library="libz" />
 					<Add directory="../../../lib/macosx/x86_64/gcc/release" />
 					<Add directory="../../../dependencies/lib/macosx/x86_64/gcc/release" />
@@ -296,7 +296,7 @@
 				<Linker>
 					<Add option="-Wl,-z,defs,-rpath=./" />
 					<Add library="libboost_python-gcc48-mt-d-1_54" />
-					<Add library="libpython2.6" />
+					<Add library="libpython2.7" />
 					<Add library="libboost_system-gcc48-mt-d-1_54" />
 					<Add library="libcore" />
 					<Add library="libhttp" />
@@ -358,7 +358,7 @@
 					<Add option="-s" />
 					<Add option="-Wl,-z,defs,-rpath=./" />
 					<Add library="libboost_python-gcc48-mt-1_54" />
-					<Add library="libpython2.6" />
+					<Add library="libpython2.7" />
 					<Add library="libboost_system-gcc48-mt-1_54" />
 					<Add library="libcore" />
 					<Add library="libhttp" />
