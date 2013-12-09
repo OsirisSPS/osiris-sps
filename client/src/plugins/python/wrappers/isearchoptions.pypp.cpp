@@ -6,17 +6,17 @@
 #include "__call_policies.pypp.hpp"
 #include "isearchoptions.h"
 #include "idesearchparam.h"
-#include "searchattachmentoptions.h"
-#include "searchcalendareventoptions.h"
-#include "searchsectionoptions.h"
+#include "searchtextoptions.h"
 #include "searchpolloptions.h"
 #include "searchpostoptions.h"
 #include "searchtagoptions.h"
 #include "searchpolloptionoptions.h"
 #include "searchmodeloptions.h"
 #include "searchfileoptions.h"
+#include "searchsectionoptions.h"
+#include "searchcalendareventoptions.h"
 #include "searchinstanceoptions.h"
-#include "searchtextoptions.h"
+#include "searchattachmentoptions.h"
 #include "isearchoptions.pypp.hpp"
 
 namespace bp = boost::python;
@@ -145,17 +145,17 @@ void register_ISearchOptions_class(){
         ::boost::python::register_ptr_to_python< boost::shared_ptr< ::osiris::ISearchOptions > >();
         ::boost::python::implicitly_convertible< boost::shared_ptr< ::osiris::ISearchOptions >, boost::shared_ptr< ::osiris::enable_this_ptr< osiris::ISearchOptions > > >();
         ::boost::python::implicitly_convertible< boost::shared_ptr< ::osiris::ISearchOptions >, boost::shared_ptr< ::osiris::Object > >();
-        ::boost::python::implicitly_convertible< boost::shared_ptr< ::osiris::SearchAttachmentOptions >, boost::shared_ptr< ::osiris::ISearchOptions > >();
-        ::boost::python::implicitly_convertible< boost::shared_ptr< ::osiris::SearchCalendarEventOptions >, boost::shared_ptr< ::osiris::ISearchOptions > >();
-        ::boost::python::implicitly_convertible< boost::shared_ptr< ::osiris::SearchSectionOptions >, boost::shared_ptr< ::osiris::ISearchOptions > >();
+        ::boost::python::implicitly_convertible< boost::shared_ptr< ::osiris::SearchTextOptions >, boost::shared_ptr< ::osiris::ISearchOptions > >();
         ::boost::python::implicitly_convertible< boost::shared_ptr< ::osiris::SearchPollOptions >, boost::shared_ptr< ::osiris::ISearchOptions > >();
         ::boost::python::implicitly_convertible< boost::shared_ptr< ::osiris::SearchPostOptions >, boost::shared_ptr< ::osiris::ISearchOptions > >();
         ::boost::python::implicitly_convertible< boost::shared_ptr< ::osiris::SearchTagOptions >, boost::shared_ptr< ::osiris::ISearchOptions > >();
         ::boost::python::implicitly_convertible< boost::shared_ptr< ::osiris::SearchPollOptionOptions >, boost::shared_ptr< ::osiris::ISearchOptions > >();
         ::boost::python::implicitly_convertible< boost::shared_ptr< ::osiris::SearchModelOptions >, boost::shared_ptr< ::osiris::ISearchOptions > >();
         ::boost::python::implicitly_convertible< boost::shared_ptr< ::osiris::SearchFileOptions >, boost::shared_ptr< ::osiris::ISearchOptions > >();
+        ::boost::python::implicitly_convertible< boost::shared_ptr< ::osiris::SearchSectionOptions >, boost::shared_ptr< ::osiris::ISearchOptions > >();
+        ::boost::python::implicitly_convertible< boost::shared_ptr< ::osiris::SearchCalendarEventOptions >, boost::shared_ptr< ::osiris::ISearchOptions > >();
         ::boost::python::implicitly_convertible< boost::shared_ptr< ::osiris::SearchInstanceOptions >, boost::shared_ptr< ::osiris::ISearchOptions > >();
-        ::boost::python::implicitly_convertible< boost::shared_ptr< ::osiris::SearchTextOptions >, boost::shared_ptr< ::osiris::ISearchOptions > >();
+        ::boost::python::implicitly_convertible< boost::shared_ptr< ::osiris::SearchAttachmentOptions >, boost::shared_ptr< ::osiris::ISearchOptions > >();
     }
 
 }

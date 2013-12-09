@@ -129,6 +129,15 @@ void register_enumerations(){
         .export_values()
         ;
 
+    ::boost::python::enum_< ::osiris::ObjectsReputationThreshold>("ObjectsReputationThreshold")
+        .value("rtAll", ::osiris::rtAll)
+        .value("rtNegative", ::osiris::rtNegative)
+        .value("rtNotNegative", ::osiris::rtNotNegative)
+        .value("rtPositive", ::osiris::rtPositive)
+        .value("rtInherit", ::osiris::rtInherit)
+        .export_values()
+        ;
+
     ::boost::python::enum_< ::osiris::PageArea>("PageArea")
         .value("pageAreaUnknown", ::osiris::pageAreaUnknown)
         .value("pageAreaLeft", ::osiris::pageAreaLeft)

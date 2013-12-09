@@ -4,8 +4,8 @@
 #include "pypluspluscommon.h"
 #include "boost/python.hpp"
 #include "omlhtmlwrapper.h"
-#include "omla.h"
 #include "omlimg.h"
+#include "omla.h"
 #include "omlhtmlwrapper.pypp.hpp"
 
 namespace bp = boost::python;
