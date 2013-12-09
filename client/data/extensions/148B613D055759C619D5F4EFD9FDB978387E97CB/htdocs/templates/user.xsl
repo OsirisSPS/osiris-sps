@@ -87,7 +87,7 @@
             <xsl:if test="@subpage = 'reputations'">
               <xsl:call-template name="block">
                 <xsl:with-param name="title">
-                  <xsl:value-of select="lang:text('user.actions.view_reputations')"/>
+                  <xsl:value-of select="lang:text('user.actions.view_reputations')"/>									
                 </xsl:with-param>
                 <xsl:with-param name="content">
                   <div style="display:none" data-os-otype="tab">

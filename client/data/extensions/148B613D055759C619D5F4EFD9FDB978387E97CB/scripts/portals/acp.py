@@ -48,9 +48,9 @@ class Page(osiris.IPortalPage):
 				povOfUserHref = povOfUser.getLink("view")
 			else:
 				params  = { }
+				params["mode"] = "fork"
 				params["name"] = self.portal.optionsShared.portalName
-				params["portal"] = self.portal.portalID.toWide()
-				params["user"] = self.sessionAccount.userID.toWide()
+				params["id"] = self.portal.portalID.toWide()
 				povOfUserHref = osiris.PortalsSystem.instance().getMainLink("subscribe", params)
 				
 			self.root.setAttributeString("povOfUserHref", povOfUserHref);		
@@ -65,10 +65,7 @@ class Page(osiris.IPortalPage):
 			self.saveCommand.id = "saveCommand"
 			osiris.events.connect(self.saveCommand.eventClick, self.onSave)
 			template.addChildParam(self.saveCommand)
-            
-			osiris.events.connect(self.events.get("onCreatePov"), self.onCreatePov)
-			self.root.setAttributeString("onCreatePov_href", self.getEventCommand("onCreatePov"))
-		
+      			
 			self.portalName = osiris.HtmlTextBox()
 			self.portalName.id = "portalName"		
 			self.portalName.size = 80			
@@ -82,6 +79,13 @@ class Page(osiris.IPortalPage):
 			self.portalDescription.css = "os_input_full"
 			template.addChildParam(self.portalDescription)
 			
+			self.authorsReputationThreshold = osiris.HtmlComboBox()
+			self.authorsReputationThreshold.id = "authorsReputationThreshold"
+			template.addChildParam(self.authorsReputationThreshold)
+			self.authorsReputationThreshold.addOption(self.getText("reputation.threshold.all"), "0")			
+			self.authorsReputationThreshold.addOption(self.getText("reputation.threshold.negative"), "1")		
+			self.authorsReputationThreshold.addOption(self.getText("reputation.threshold.not_negative"), "2")		
+			self.authorsReputationThreshold.addOption(self.getText("reputation.threshold.positive"), "3")					
 			
 			
 			# Layout
@@ -157,6 +161,7 @@ class Page(osiris.IPortalPage):
 				# Main
 				self.portalName.value = self.portal.optionsShared.portalName
 				self.portalDescription.value = self.portal.optionsShared.portalDescription
+				#self.authorsReputationThreshold.value = str(int(self.portal.optionsShared.authorsReputationThreshold));
 				
 				# Layout
 				
@@ -198,6 +203,7 @@ class Page(osiris.IPortalPage):
 		
 		self.portal.optionsShared.portalName = self.portalName.value
 		self.portal.optionsShared.portalDescription = self.portalDescription.value
+		self.portal.optionsShared.authorsReputationThreshold = int(self.authorsReputationThreshold.value)
 		
 		# Layout
 		
@@ -228,10 +234,7 @@ class Page(osiris.IPortalPage):
 			self.showError("Settings invalid.")
 			
 		return
-
-	def onCreatePov(self, args):
-		self.showMessage("alternative pov!")					
-
+	
 def main(args):
 	page = Page(args[0])
 	page.transmit()

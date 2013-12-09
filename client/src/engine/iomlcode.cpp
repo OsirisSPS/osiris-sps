@@ -568,13 +568,14 @@ String IOMLCode::encodeResourceUrlEx(shared_ptr<OMLContext> context, shared_ptr<
 			if(portal != null)
 			{
 				String id = osirisLink.getParam("id");
+				
 				shared_ptr<EntitiesEntity> entity = portal->getEntity(page->getDatabase(), EntityID(id.to_ascii()));
 
 				shared_ptr<ObjectsIObject> current = entity ? entity->getCurrent() : null;
 
 				if( (current != null) && (current->getObjectType() == portalObjectTypeFile) )
 				{
-					src = portal->getFileLink(current->id);					
+					src = portal->getFileLink(id.to_ascii());					
 					entityID = id.to_ascii();
 				}
 				else
@@ -753,7 +754,7 @@ String IOMLCode::encodeUrl(shared_ptr<OMLContext> context, shared_ptr<OMLItem> i
 				return String::EMPTY;
 						
 			// Internal file url			
-			out = portalPage->getPortal()->getFileLink(ObjectID(String(osirisLink.getParam("id")).to_ascii()));
+			out = portalPage->getPortal()->getFileLink(EntityID(String(osirisLink.getParam("id")).to_ascii()));
 		}
 		else
 			context->addWarningInvalidUrl(i, out);

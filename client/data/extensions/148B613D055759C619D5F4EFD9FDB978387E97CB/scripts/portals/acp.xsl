@@ -18,6 +18,7 @@
 
   <xsl:param name="portalName"/>
   <xsl:param name="portalDescription"/>
+	<xsl:param name="authorsReputationThreshold"/>
 
 	<xsl:param name="registerTerms"/>
 	
@@ -42,12 +43,7 @@
   <xsl:template match="/home">
     <xsl:call-template name="block_big">
       <xsl:with-param name="title" select="lang:text('portal.pages.acp.title')"/>        
-      <xsl:with-param name="content">
-        <xsl:value-of select="//@guest"/>
-        <xsl:value-of select="//@userOfPov"/>
-        <a href="{@onCreatePov_href}">
-          <xsl:value-of select="//@onCreatePov_href"/>
-        </a>
+      <xsl:with-param name="content">                
         <xsl:choose>
           <xsl:when test="//@isGuest = 'true'">
             <xsl:call-template name="help-box">
@@ -63,6 +59,7 @@
             <xsl:call-template name="help-box">
               <xsl:with-param name="text" select="lang:text('~portal.pages.acp.user.help')"/>
             </xsl:call-template>
+						<a href="{@subscribe_fork_href}">Click here to fork</a>
           </xsl:otherwise>          
         </xsl:choose>
 
@@ -71,8 +68,9 @@
             <xsl:value-of select="$saveCommand" disable-output-escaping="yes"/>
           </div>
         </xsl:if>
+								
 
-        <div id="addons_tab" style="display:none" data-os-otype="tab" data-os-layout="left" data-os-storage="portal.acp">
+        <div style="clear:both;display:none" data-os-otype="tab" data-os-layout="left" data-os-storage="portal.acp">
 
           <div data-os-tabType="header">
             <xsl:value-of select="lang:text('portal.pages.acp.main')"/>
@@ -81,7 +79,7 @@
             <table class="os_table_properties">              
               <tr>
                 <td>
-                  <xsl:value-of select="'portalName'"/>
+                  <xsl:value-of select="lang:text('portal.pages.acp.options.portalName')"/>
                   <xsl:text> :</xsl:text>
                 </td>
                 <td>
@@ -90,7 +88,7 @@
               </tr>
               <tr>
                 <td>
-                  <xsl:value-of select="'portalDescription'"/>
+                  <xsl:value-of select="lang:text('portal.pages.acp.options.portalDescription')"/>
                   <xsl:text> :</xsl:text>
                 </td>
                 <td>
@@ -119,7 +117,7 @@
             <table class="os_table_properties">
               <tr>
                 <td>
-                  <xsl:value-of select="'layoutComponent'"/>
+                  <xsl:value-of select="lang:text('portal.pages.acp.options.layoutComponent')"/>
                   <xsl:text> :</xsl:text>
                 </td>
                 <td>
@@ -139,7 +137,7 @@
 							-->
               <tr>
                 <td>
-                  <xsl:value-of select="'layoutSkinParams'"/>
+                  <xsl:value-of select="lang:text('portal.pages.acp.options.layoutSkinParams')"/>
                   <xsl:text> :</xsl:text>
                 </td>
                 <td>
@@ -148,7 +146,7 @@
               </tr>
 							<tr>
 								<td>
-									<xsl:value-of select="'tile'"/>
+									<xsl:value-of select="lang:text('portal.pages.acp.options.tile')"/>
 									<xsl:text> :</xsl:text>
 								</td>
 								<td>
@@ -160,7 +158,7 @@
 							</tr>
               <tr>
                 <td>
-                  <xsl:value-of select="'layoutCss'"/>
+                  <xsl:value-of select="lang:text('portal.pages.acp.options.layoutCss')"/>
                   <xsl:text> :</xsl:text>
                 </td>
                 <td>
@@ -169,7 +167,7 @@
               </tr>
               <tr>
                 <td>
-                  <xsl:value-of select="'layoutHeader'"/>
+                  <xsl:value-of select="lang:text('portal.pages.acp.options.layoutHeader')"/>
                   <xsl:text> :</xsl:text>
                 </td>
                 <td>
@@ -183,10 +181,20 @@
             <xsl:value-of select="lang:text('portal.pages.acp.rules')"/>
           </div>
           <div data-os-tabType="body">
-            <table class="os_table_properties">              
-              <tr>
+            <table class="os_table_properties">
+							
+							<tr>
+								<td>
+									<xsl:value-of select="lang:text('portal.pages.acp.options.authorsReputationThreshold')"/>
+									<xsl:text> :</xsl:text>
+								</td>
+								<td>
+									<xsl:value-of select="$authorsReputationThreshold" disable-output-escaping="yes"/>
+								</td>
+							</tr>
+							<tr>
                 <td>
-                  <xsl:value-of select="'objectsMaxSize'"/>
+                  <xsl:value-of select="lang:text('portal.pages.acp.options.objectsMaxSize')"/>
                   <xsl:text> :</xsl:text>
                 </td>
                 <td>
@@ -195,7 +203,7 @@
               </tr>              
               <tr>
                 <td>
-                  <xsl:value-of select="'badWords'"/>
+                  <xsl:value-of select="lang:text('portal.pages.acp.options.badWords')"/>
                   <xsl:text> :</xsl:text>
                 </td>
                 <td>
@@ -213,7 +221,7 @@
             <table class="os_table_properties">
               <tr>
                 <td>
-                  <xsl:value-of select="'allowObjectInFuture'"/>
+                  <xsl:value-of select="lang:text('portal.pages.acp.options.allowObjectInFuture')"/>
                   <xsl:text> :</xsl:text>
                 </td>
                 <td>
@@ -222,7 +230,7 @@
               </tr>
               <tr>
                 <td>
-                  <xsl:value-of select="'allowObjectUnsigned'"/>
+                  <xsl:value-of select="lang:text('portal.pages.acp.options.allowObjectUnsigned')"/>
                   <xsl:text> :</xsl:text>
                 </td>
                 <td>
@@ -231,7 +239,7 @@
               </tr>
               <tr>
                 <td>
-                  <xsl:value-of select="'objectsPhysicalRemove'"/>
+                  <xsl:value-of select="lang:text('portal.pages.acp.options.objectsPhysicalRemove')"/>
                   <xsl:text> :</xsl:text>
                 </td>
                 <td>
@@ -240,7 +248,7 @@
               </tr>
               <tr>
                 <td>
-                  <xsl:value-of select="'objectsPhysicalRemoveDays'"/>
+                  <xsl:value-of select="lang:text('portal.pages.acp.options.objectsPhysicalRemoveDays')"/>
                   <xsl:text> :</xsl:text>
                 </td>
                 <td>

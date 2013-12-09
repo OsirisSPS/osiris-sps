@@ -344,7 +344,7 @@
 
     <div id="{@id}_{@pov}" class="os_home_tile_portal os_block_item">			
 			<xsl:attribute name="style">
-				<xsl:text>background-color:#</xsl:text>
+				<xsl:text>background-color:</xsl:text>
 				<xsl:value-of select="@tileBackColor"/>
 				<xsl:text>;</xsl:text>
 				<xsl:if test="@tileHref">
@@ -358,10 +358,10 @@
           <img src="{system:resource-url('images/icons/24x24/more.png')}"/>
         </a>
 
-        <a href="{@viewHref}" class="os_home_tile_portal_name os_nowrap" style="color:#{@tileForeColor}">
+        <a href="{@viewHref}" class="os_home_tile_portal_name os_nowrap" style="color:{@tileForeColor}">
           <xsl:value-of select="system:parse(@name, false(), false(), true())" disable-output-escaping="yes" />
         </a>
-        <div class="os_home_tile_portal_description" style="color:#{@tileForeColor}">
+        <div class="os_home_tile_portal_description" style="color:{@tileForeColor}">
           <xsl:value-of select="system:parse(@description, false(), false(), true())" disable-output-escaping="yes" />					
         </div>				
       </div>

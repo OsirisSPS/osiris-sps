@@ -108,7 +108,7 @@ void ObjectsFile::exportXML(shared_ptr<XMLPortalExporter> exporter)
 	if(exporter->getMode() == XMLPortalExporter::emFull)
 	{
 		node->setAttributeString(_S("mime_type"), getMimeType());
-		node->setAttributeString(_S("file_href"), exporter->getPortal()->getFileLink(id));
+		node->setAttributeString(_S("file_href"), exporter->getPortal()->getFileLink(getEntityID()));
 
 		OsirisLink link;
 		link.setParam("type", _W("file"));

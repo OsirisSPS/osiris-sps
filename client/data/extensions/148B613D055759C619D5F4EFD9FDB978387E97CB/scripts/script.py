@@ -11,10 +11,10 @@ import globalvars
 
 # "Main" pages
 sys.path.append(os.path.join(os.path.dirname(__file__), "main"))
+import account
 import addons
 import omlhelp
 import bbobject
-import create
 import error
 import external
 import help
@@ -26,8 +26,7 @@ import mcp
 import network
 import redirect
 import register_main
-import subscribe2
-import account
+import subscribe
 import accounts2
 
 # "Portals" pages
@@ -70,6 +69,9 @@ class MainHandler(osiris.IHttpDirectoryHandler):
 		
 		if(relPage == "about"):
 			page = about.MainPage(session)			
+			
+		if(relPage == "account"):
+			page = account.Page(session)			
 	
 		if(relPage == "addons"):
 			page = addons.Page(session)			
@@ -79,9 +81,6 @@ class MainHandler(osiris.IHttpDirectoryHandler):
 			
 		if(relPage == "bbobject"):
 			page = bbobject.Page(session)			
-			
-		if(relPage == "create"):
-			page = create.Page(session)			
 			
 		if(relPage == "error"):
 			page = error.Page(session)			
@@ -116,11 +115,8 @@ class MainHandler(osiris.IHttpDirectoryHandler):
 		if(relPage == "register"):
 			page = register_main.Page(session)			
 			
-		if(relPage == "subscribe2"):
-			page = subscribe2.Page(session)			
-			
-		if(relPage == "account"):
-			page = account.Page(session)			
+		if(relPage == "subscribe"):
+			page = subscribe.Page(session)					
 			
 		if(relPage == "accounts2"):
 			page = accounts2.Page(session)			

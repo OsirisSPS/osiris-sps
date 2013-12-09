@@ -510,16 +510,6 @@ std::string Portal::getFileLink(const ObjectID &id)
 	return PortalsSystem::instance()->getFileLink(get_this_ptr(), id.toUTF16());
 }
 
-std::string Portal::getFileEntityLink(shared_ptr<IPortalDatabase> database, const EntityID &id)
-{
-	shared_ptr<EntitiesEntity> entity = getEntity(database, id);
-	if(entity == null)
-		return "";
-	if(entity->getCurrent() == null)
-		return "";
-	return PortalsSystem::instance()->getFileLink(get_this_ptr(), entity->getCurrent()->id->toUTF16());
-}
-
 std::string Portal::getPrivateMessageLink(const ObjectID &id, bool secure)
 {
 	return ide::portal::Account::getViewMessageLink(get_this_ptr(), id, secure);

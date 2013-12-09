@@ -68,9 +68,7 @@ Osiris.Options =
 			else {
 				$(this).slideUp(Osiris.speedEffect);
 			}
-
-			console.log(text + ", show:" + show);
-
+			
 			counter.html(Osiris.Options.countersFilter[pageName] + " / " + Osiris.Options.countersTotal[pageName]);
 			counter.removeClass("os_options_counter_zero");
 			counter.removeClass("os_options_counter_found");
