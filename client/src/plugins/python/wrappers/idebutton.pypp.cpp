@@ -45,6 +45,14 @@ struct IdeButton_wrapper : ::osiris::IdeButton, ::osiris::PythonWrapper< ::osiri
         return boost::python::object( pyplusplus::call_policies::make_object< call_policies_t, ::osiris::String const & >( result ) );
     }
 
+    static boost::python::object getIconHref( ::osiris::IdeButton const & inst ){
+        ::osiris::PythonThreadSaver __pythreadSaver;
+        ::osiris::String const & result = inst.getIconHref();
+        __pythreadSaver.restore();
+        typedef bp::return_value_policy< bp::copy_const_reference > call_policies_t;
+        return boost::python::object( pyplusplus::call_policies::make_object< call_policies_t, ::osiris::String const & >( result ) );
+    }
+
     static boost::python::object getHref( ::osiris::IdeButton const & inst ){
         ::osiris::PythonThreadSaver __pythreadSaver;
         ::osiris::String const & result = inst.getHref();
@@ -121,6 +129,12 @@ struct IdeButton_wrapper : ::osiris::IdeButton, ::osiris::PythonWrapper< ::osiri
     static void setHref( ::osiris::IdeButton & inst, ::osiris::String const & href ){
         ::osiris::PythonThreadSaver __pythreadSaver;
         inst.setHref(href);
+        __pythreadSaver.restore();
+    }
+
+    static void setIconHref( ::osiris::IdeButton & inst, ::osiris::String const & href ){
+        ::osiris::PythonThreadSaver __pythreadSaver;
+        inst.setIconHref(href);
         __pythreadSaver.restore();
     }
 
@@ -325,6 +339,15 @@ void register_IdeButton_class(){
                 , getCaption_function_type( &IdeButton_wrapper::getCaption ) );
         
         }
+        { //::osiris::IdeButton::getIconHref
+        
+            typedef boost::python::object ( *getIconHref_function_type )( ::osiris::IdeButton const & );
+            
+            IdeButton_exposer.def( 
+                "getIconHref"
+                , getIconHref_function_type( &IdeButton_wrapper::getIconHref ) );
+        
+        }
         { //::osiris::IdeButton::getHref
         
             typedef boost::python::object ( *getHref_function_type )( ::osiris::IdeButton const & );
@@ -408,6 +431,16 @@ void register_IdeButton_class(){
             IdeButton_exposer.def( 
                 "setHref"
                 , setHref_function_type( &IdeButton_wrapper::setHref )
+                , ( ::boost::python::arg("inst"), ::boost::python::arg("href") ) );
+        
+        }
+        { //::osiris::IdeButton::setIconHref
+        
+            typedef void ( *setIconHref_function_type )( ::osiris::IdeButton &,::osiris::String const & );
+            
+            IdeButton_exposer.def( 
+                "setIconHref"
+                , setIconHref_function_type( &IdeButton_wrapper::setIconHref )
                 , ( ::boost::python::arg("inst"), ::boost::python::arg("href") ) );
         
         }
@@ -589,6 +622,20 @@ void register_IdeButton_class(){
                     , bp::return_value_policy< bp::copy_const_reference >() ) 
                 , fset( &::osiris::IdeButton::setCaption )
                 , "get\\set property, built on top of \"osiris::String const & osiris::IdeButton::getCaption() const [member function]\" and \"void osiris::IdeButton::setCaption(osiris::String const & caption) [member function]\"" );
+        
+        }
+        { //property "iconHref"[fget=::osiris::IdeButton::getIconHref, fset=::osiris::IdeButton::setIconHref]
+        
+            typedef ::osiris::String const & ( ::osiris::IdeButton::*fget )(  ) const;
+            typedef void ( ::osiris::IdeButton::*fset )( ::osiris::String const & ) ;
+            
+            IdeButton_exposer.add_property( 
+                "iconHref"
+                , ::boost::python::make_function( 
+                      fget( &::osiris::IdeButton::getIconHref )
+                    , bp::return_value_policy< bp::copy_const_reference >() ) 
+                , fset( &::osiris::IdeButton::setIconHref )
+                , "get\\set property, built on top of \"osiris::String const & osiris::IdeButton::getIconHref() const [member function]\" and \"void osiris::IdeButton::setIconHref(osiris::String const & href) [member function]\"" );
         
         }
         { //property "href"[fget=::osiris::IdeButton::getHref, fset=::osiris::IdeButton::setHref]

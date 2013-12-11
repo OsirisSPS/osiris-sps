@@ -92,13 +92,6 @@ static boost::python::object getReferenceDate_59cd64530a087aecc437bfd24f12085a( 
     return boost::python::object( pyplusplus::call_policies::make_object< call_policies_t, ::osiris::DateTime const & >( result ) );
 }
 
-static boost::python::object loadUser_5381223bdd14a1cb552676cc3e4963b0( ::osiris::IdeAccount & inst, ::boost::shared_ptr< osiris::IPortalDatabase > database ){
-    ::osiris::PythonThreadSaver __pythreadSaver;
-    ::boost::shared_ptr<osiris::ObjectsUser> result = inst.loadUser(database);
-    __pythreadSaver.restore();
-    return boost::python::object( result );
-}
-
 static void setDeleted_b4ae39b903f379b56443ccba25462e35( ::osiris::IdeAccount & inst, bool deleted ){
     ::osiris::PythonThreadSaver __pythreadSaver;
     inst.setDeleted(deleted);
@@ -146,13 +139,6 @@ static void setViewMode_b6f13a21a963298e5a758881d863a5ad( ::osiris::IdeAccount &
     ::osiris::PythonThreadSaver __pythreadSaver;
     inst.setViewMode(mode);
     __pythreadSaver.restore();
-}
-
-static boost::python::object updateAccount_80c9225a49ef480388fae791d79bb6e8( ::osiris::IdeAccount & inst, ::boost::shared_ptr< osiris::IPortalDatabase > database ){
-    ::osiris::PythonThreadSaver __pythreadSaver;
-    bool result = inst.updateAccount(database);
-    __pythreadSaver.restore();
-    return boost::python::object( result );
 }
 
 void register_IdeAccount_class(){
@@ -261,16 +247,6 @@ void register_IdeAccount_class(){
                 , getReferenceDate_function_type( &getReferenceDate_59cd64530a087aecc437bfd24f12085a ) );
         
         }
-        { //::osiris::IdeAccount::loadUser
-        
-            typedef boost::python::object ( *loadUser_function_type )( ::osiris::IdeAccount &,::boost::shared_ptr<osiris::IPortalDatabase> );
-            
-            IdeAccount_exposer.def( 
-                "loadUser"
-                , loadUser_function_type( &loadUser_5381223bdd14a1cb552676cc3e4963b0 )
-                , ( ::boost::python::arg("inst"), ::boost::python::arg("database") ) );
-        
-        }
         { //::osiris::IdeAccount::setDeleted
         
             typedef void ( *setDeleted_function_type )( ::osiris::IdeAccount &,bool );
@@ -349,16 +325,6 @@ void register_IdeAccount_class(){
                 "setViewMode"
                 , setViewMode_function_type( &setViewMode_b6f13a21a963298e5a758881d863a5ad )
                 , ( ::boost::python::arg("inst"), ::boost::python::arg("mode") ) );
-        
-        }
-        { //::osiris::IdeAccount::updateAccount
-        
-            typedef boost::python::object ( *updateAccount_function_type )( ::osiris::IdeAccount &,::boost::shared_ptr<osiris::IPortalDatabase> );
-            
-            IdeAccount_exposer.def( 
-                "updateAccount"
-                , updateAccount_function_type( &updateAccount_80c9225a49ef480388fae791d79bb6e8 )
-                , ( ::boost::python::arg("inst"), ::boost::python::arg("database") ) );
         
         }
         { //property "name"[fget=::osiris::IdeAccount::getName, fset=::osiris::IdeAccount::setName]

@@ -260,6 +260,13 @@ struct IDbConnection_wrapper : ::osiris::IDbConnection, ::osiris::PythonWrapper<
         return boost::python::object( result );
     }
 
+    static boost::python::object queryValue( ::osiris::IDbConnection & inst, ::osiris::String const & sql ){
+        ::osiris::PythonThreadSaver __pythreadSaver;
+        ::osiris::DataItem result = inst.queryValue(sql);
+        __pythreadSaver.restore();
+        return boost::python::object( result );
+    }
+
     static boost::python::object value_of_0067f7624fc7078cc2b0fb254800d9ef( ::osiris::IDbConnection & inst, ::osiris::String const & sql ){
         ::osiris::PythonThreadSaver __pythreadSaver;
         ::osiris::uint32 result = inst.value_of(sql);
@@ -571,6 +578,16 @@ void register_IDbConnection_class(){
                 "query"
                 , query_function_type( &IDbConnection_wrapper::query_0d43599dd29152d95cb0ed3cad88e1a8 )
                 , ( ::boost::python::arg("inst"), ::boost::python::arg("select") ) );
+        
+        }
+        { //::osiris::IDbConnection::queryValue
+        
+            typedef boost::python::object ( *queryValue_function_type )( ::osiris::IDbConnection &,::osiris::String const & );
+            
+            IDbConnection_exposer.def( 
+                "queryValue"
+                , queryValue_function_type( &IDbConnection_wrapper::queryValue )
+                , ( ::boost::python::arg("inst"), ::boost::python::arg("sql") ) );
         
         }
         { //::osiris::IDbConnection::value_of

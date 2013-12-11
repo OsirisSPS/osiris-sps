@@ -57,20 +57,34 @@ static void removeAllRows_33c0068d986237a66981fc82b0e53c58( ::osiris::DataTable 
     __pythreadSaver.restore();
 }
 
-static boost::python::object get_ca55dda4ecf56b658e53b14a9f385aec( ::osiris::DataTable const & inst, ::osiris::uint32 row, ::osiris::uint32 column ){
+static boost::python::object getPtr_55a984fc0332af755e7a7eb58bf6ca74( ::osiris::DataTable const & inst, ::osiris::uint32 row, ::osiris::uint32 column ){
     ::osiris::PythonThreadSaver __pythreadSaver;
-    ::osiris::DataItem * result = inst.get(row, column);
+    ::osiris::DataItem * result = inst.getPtr(row, column);
     __pythreadSaver.restore();
     typedef bp::return_value_policy< bp::reference_existing_object > call_policies_t;
     return boost::python::object( pyplusplus::call_policies::make_object< call_policies_t, ::osiris::DataItem * >( result ) );
 }
 
-static boost::python::object get_4333cfc2b0262fb3c289d32452ae383d( ::osiris::DataTable const & inst, ::osiris::uint32 row, ::osiris::String const & column ){
+static boost::python::object getPtr_71ec7ddd94c828b4e42d0f7a938816eb( ::osiris::DataTable const & inst, ::osiris::uint32 row, ::osiris::String const & column ){
     ::osiris::PythonThreadSaver __pythreadSaver;
-    ::osiris::DataItem * result = inst.get(row, column);
+    ::osiris::DataItem * result = inst.getPtr(row, column);
     __pythreadSaver.restore();
     typedef bp::return_value_policy< bp::reference_existing_object > call_policies_t;
     return boost::python::object( pyplusplus::call_policies::make_object< call_policies_t, ::osiris::DataItem * >( result ) );
+}
+
+static boost::python::object get_ca55dda4ecf56b658e53b14a9f385aec( ::osiris::DataTable const & inst, ::osiris::uint32 row, ::osiris::uint32 column ){
+    ::osiris::PythonThreadSaver __pythreadSaver;
+    ::osiris::DataItem result = inst.get(row, column);
+    __pythreadSaver.restore();
+    return boost::python::object( result );
+}
+
+static boost::python::object get_4333cfc2b0262fb3c289d32452ae383d( ::osiris::DataTable const & inst, ::osiris::uint32 row, ::osiris::String const & column ){
+    ::osiris::PythonThreadSaver __pythreadSaver;
+    ::osiris::DataItem result = inst.get(row, column);
+    __pythreadSaver.restore();
+    return boost::python::object( result );
 }
 
 static void set_32b781109dd4971a3f390f67377528a8( ::osiris::DataTable & inst, ::osiris::uint32 row, ::osiris::uint32 column, ::osiris::DataItem const & value ){
@@ -207,6 +221,26 @@ void register_DataTable_class(){
             DataTable_exposer.def( 
                 "removeAllRows"
                 , removeAllRows_function_type( &removeAllRows_33c0068d986237a66981fc82b0e53c58 ) );
+        
+        }
+        { //::osiris::DataTable::getPtr
+        
+            typedef boost::python::object ( *getPtr_function_type )( ::osiris::DataTable const &,::osiris::uint32,::osiris::uint32 );
+            
+            DataTable_exposer.def( 
+                "getPtr"
+                , getPtr_function_type( &getPtr_55a984fc0332af755e7a7eb58bf6ca74 )
+                , ( ::boost::python::arg("inst"), ::boost::python::arg("row"), ::boost::python::arg("column") ) );
+        
+        }
+        { //::osiris::DataTable::getPtr
+        
+            typedef boost::python::object ( *getPtr_function_type )( ::osiris::DataTable const &,::osiris::uint32,::osiris::String const & );
+            
+            DataTable_exposer.def( 
+                "getPtr"
+                , getPtr_function_type( &getPtr_71ec7ddd94c828b4e42d0f7a938816eb )
+                , ( ::boost::python::arg("inst"), ::boost::python::arg("row"), ::boost::python::arg("column") ) );
         
         }
         { //::osiris::DataTable::get
