@@ -15,8 +15,8 @@
 #include "httprequest.h"
 #include "httpresponse.h"
 #include "httpsession.h"
-#include "htmlcombobox.h"
 #include "htmllistbox.h"
+#include "htmlcombobox.h"
 #include "ihtmlselect.pypp.hpp"
 
 namespace bp = boost::python;

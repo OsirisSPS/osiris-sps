@@ -18,10 +18,10 @@
 #include "httprequest.h"
 #include "httpresponse.h"
 #include "httpsession.h"
-#include "extensionsmoduleeditor.h"
 #include "extensionsmoduleviewer.h"
 #include "extensionsinvalidmodule.h"
 #include "extensionsmoduleviewerhidden.h"
+#include "extensionsmoduleeditor.h"
 #include "extensionsmodulecontrol.pypp.hpp"
 
 namespace bp = boost::python;
