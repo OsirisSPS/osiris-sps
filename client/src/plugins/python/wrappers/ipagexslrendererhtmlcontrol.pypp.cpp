@@ -16,10 +16,10 @@
 #include "httprequest.h"
 #include "httpresponse.h"
 #include "httpsession.h"
-#include "idehelpbox.h"
-#include "idebutton.h"
-#include "ideomleditor.h"
 #include "ideblock.h"
+#include "ideomleditor.h"
+#include "idebutton.h"
+#include "idehelpbox.h"
 #include "ipagexslrendererhtmlcontrol.pypp.hpp"
 
 namespace bp = boost::python;
