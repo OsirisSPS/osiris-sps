@@ -89,6 +89,7 @@ bool Account::isLogged() const
 }
 */
 
+/* // TOCLEAN
 shared_ptr<ObjectsUser> IdeAccount::loadUser(shared_ptr<IPortalDatabase> database)
 {
 	OS_ASSERT(database != null);
@@ -105,6 +106,7 @@ shared_ptr<ObjectsUser> IdeAccount::loadUser(shared_ptr<IPortalDatabase> databas
 
 	return user;
 }
+*/
 
 bool IdeAccount::getDeleted() const
 {
@@ -191,10 +193,12 @@ void IdeAccount::setReferenceDate(const DateTime &date)
 	m_account->reference_date = date;
 }
 
+/* // TOCLEAN
 bool IdeAccount::updateAccount(shared_ptr<IPortalDatabase> database)
 {
 	return database->updateRecord(m_account);
 }
+*/
 
 /*
 bool Account::_sinkSkin()

@@ -16,7 +16,7 @@
   </xsl:template>
 
   <xsl:template match="skin">
-    <a class="os_picker_skin_item" style="float:left;	width:210px;" id="{@key}" href="{@href}" data-os-tooltip="{system:parse(@description, false(), false(), true())}">
+    <a class="os_picker_skin_item" style="float:left;	width:210px;" id="{@group}_{@key}" href="{@href}" data-os-tooltip="{system:parse(@description, false(), false(), true())}">
       <img src="{@preview_href}"/>
       <br/>
       <xsl:value-of select="system:parse(@name, false(), false(), true())"/>

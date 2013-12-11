@@ -249,10 +249,12 @@ var Osiris =
     
     // Highlight a "selectedID" child of groupID, de-hightlight others, set an hidden field with "selectedID".
     pickerSelect: function (groupID, selectedID, hiddenFieldID) {
+    		//alert(groupID + "," + selectedID + "," + hiddenFieldID);
         $('#' + hiddenFieldID).val(selectedID);        
         $('#' + groupID + " a").addClass("os_picker_select_item_normal");
         $('#' + groupID + " a").removeClass("os_picker_select_item_selected");
-        $('#' + selectedID).addClass("os_picker_select_item_selected");
+        $('#' + groupID + "_" + selectedID).addClass("os_picker_select_item_selected");
+        //alert(groupID + "_" + selectedID);
     },
 
     // Look style as button up, emboss effect.

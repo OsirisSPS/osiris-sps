@@ -561,11 +561,12 @@ void Account::_updateAccount()
 		showError(getText(_S("portal.pages.account.account.modify.error.invalid_password")));
 		return;
 	}
-
+	/*
 	if(account->updateAccount(getDatabase()))
 		showMessage(getText(_S("portal.pages.account.account.modify.error.success")));
 	else
 		showError(getText(_S("portal.pages.account.account.modify.error.generic")));
+	*/
 }
 
 void Account::_editSkin()
@@ -654,11 +655,13 @@ void Account::_updateSkin()
 
 	account->setSkin(m_skinPicker->getValue().to_ascii());
 
+	/*
 	if(account->updateAccount(getDatabase()))
 		// Ricarica la pagina per applicare la skin
 		reload();
 	else
 		showError(getText(_S("portal.pages.account.account.skin.error.generic")));
+	*/
 }
 
 void Account::_initLanguage()
@@ -775,7 +778,7 @@ void Account::_updateLanguage()
 	account->getAccount()->setTimeDST(conversions::from_utf16<int32>(m_accountTimeDST->getValue()));
 	account->getAccount()->setLanguage(m_accountCulturePicker->getValue());
 	
-	account->updateAccount(getDatabase());
+	//account->updateAccount(getDatabase());
 
 	reload();
 }

@@ -50,15 +50,35 @@ uint32 DataTableRow::columns() const
 	return m_table->columns();
 }
 
-DataItem * DataTableRow::get(uint32 column) const
+DataItem * DataTableRow::getPtr(uint32 column) const
 {
-	return m_table->get(m_index, column);
+	return m_table->getPtr(m_index, column);
 }
 
-DataItem * DataTableRow::get(const String &column) const
+DataItem * DataTableRow::getPtr(const String &column) const
 {
-	return m_table->get(m_index, column);
+	return m_table->getPtr(m_index, column);
 }
+
+DataItem DataTableRow::get(uint32 column) const
+{
+	DataItem* result = getPtr(column);
+	if(result == null)
+		return DataItem();
+	else
+		return *result;	
+}
+
+DataItem DataTableRow::get(const String &column) const
+{
+	DataItem* result = getPtr(column);
+	if(result == null)
+		return DataItem();
+	else
+		return *result;	
+}
+
+	
 
 void DataTableRow::set(uint32 column, const DataItem &value)
 {
@@ -72,12 +92,12 @@ void DataTableRow::set(const String &column, const DataItem &value)
 
 DataItem * DataTableRow::operator [](uint32 column) const
 {
-	return get(column);
+	return getPtr(column);
 }
 
 DataItem * DataTableRow::operator [](const String &column) const
 {
-	return get(column);
+	return getPtr(column);
 }
 
 DataTableRow & DataTableRow::operator =(const DataTableRow &row)
@@ -140,7 +160,7 @@ bool DataTable::setColumnName(uint32 column, const String &name)
 	return true;
 }
 
-DataItem * DataTable::get(uint32 row, uint32 column) const
+DataItem * DataTable::getPtr(uint32 row, uint32 column) const
 {
 	if(exists(row, column))
 		return (*m_values)[m_columns * row + column];
@@ -148,13 +168,31 @@ DataItem * DataTable::get(uint32 row, uint32 column) const
 	return null;
 }
 
-DataItem * DataTable::get(uint32 row, const String &column) const
+DataItem * DataTable::getPtr(uint32 row, const String &column) const
 {
 	uint32 index = getIndex(column);
 	if(index == npos)
 		return null;
 
-	return get(row, index);
+	return getPtr(row, index);
+}
+
+DataItem DataTable::get(uint32 row, uint32 column) const
+{
+	DataItem* result = getPtr(row, column);
+	if(result == null)
+		return DataItem();
+	else
+		return *result;	
+}
+
+DataItem DataTable::get(uint32 row, const String &column) const
+{
+	DataItem* result = getPtr(row, column);
+	if(result == null)
+		return DataItem();
+	else
+		return *result;	
 }
 
 void DataTable::set(uint32 row, uint32 column, const DataItem &value)
@@ -228,7 +266,7 @@ void DataTable::_resize(uint32 rows, uint32 columns)
 			DataItem *item;
 
 			if(column < m_columns && row < m_rows)
-				item = OS_NEW DataItem(*get(row, column));
+				item = OS_NEW DataItem(*getPtr(row, column));
 			else
 				item = OS_NEW DataItem();
 

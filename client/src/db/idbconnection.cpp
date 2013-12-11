@@ -139,6 +139,17 @@ bool IDbConnection::query(shared_ptr<DbSqlICommand> select, DataTable &table)
 	return query(sql, table);
 }
 
+DataItem IDbConnection::queryValue(const String &sql)
+{
+	DataItem value;
+
+	DataTable result;
+	if(query(sql, result))
+		if(result.rows() > 0 && result.columns() > 0)
+			value = *result[0][0];
+	return value;
+}
+
 bool IDbConnection::query(const String &sql, DataTable &table)
 {
 	shared_ptr<IDbResult> result = query(sql);
@@ -151,7 +162,7 @@ bool IDbConnection::query(const String &sql, DataTable &table)
 		return false;
 }
 
-uint32 IDbConnection::value_of(const String &sql)
+uint32 IDbConnection::value_of(const String &sql) // TOCLEAN, rimpiazzare con la queryValue
 {
 	DataTable result;
 	if(query(sql, result) == false)

@@ -19,6 +19,7 @@
   <xsl:param name="portalName"/>
   <xsl:param name="portalDescription"/>
 	<xsl:param name="authorsReputationThreshold"/>
+	<xsl:param name="editorsReputationThreshold"/>
 
 	<xsl:param name="registerTerms"/>
 	
@@ -190,6 +191,15 @@
 								</td>
 								<td>
 									<xsl:value-of select="$authorsReputationThreshold" disable-output-escaping="yes"/>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<xsl:value-of select="lang:text('portal.pages.acp.options.editorsReputationThreshold')"/>
+									<xsl:text> :</xsl:text>
+								</td>
+								<td>
+									<xsl:value-of select="$editorsReputationThreshold" disable-output-escaping="yes"/>
 								</td>
 							</tr>
 							<tr>

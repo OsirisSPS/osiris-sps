@@ -161,25 +161,37 @@ shared_ptr<IPortalDatabase> IPage::getDatabaseX() const
 
 String IPage::getLanguage() const
 {
+	shared_ptr<IdeSession> ideSession = getSessionAccount();
+	if( (ideSession != null) && ideSession->isLogged() )
+	{
+		return ideSession->getLanguage();
+	}
+	
 	return Options::instance()->getDefaultLanguage();
 }
 
 int32 IPage::getTimeOffset() const
 {
-	/*
-	if(getRequest()->hasCookie("os_time_offset"))
-		return conversions::from_utf16<int32>(getRequest()->getCookie("os_time_offset"));
-	*/
+	shared_ptr<IdeSession> ideSession = getSessionAccount();
+	if( (ideSession != null) && ideSession->isLogged() )
+	{
+		int time_offset = ideSession->getAccount()->getAccount()->getTimeOffset();
+		if(time_offset != OS_TIME_DETECTION_SYSTEM)
+			return time_offset;		
+	}
 
 	return Engine::instance()->getTimeOffset();	
 }
 
 int32 IPage::getTimeDST() const
 {
-	/*
-	if(getRequest()->hasCookie("os_time_dst"))
-		return conversions::from_utf16<int32>(getRequest()->getCookie("os_time_dst"));
-	*/
+	shared_ptr<IdeSession> ideSession = getSessionAccount();
+	if( (ideSession != null) && ideSession->isLogged() )
+	{
+		int time_dst = ideSession->getAccount()->getAccount()->getTimeDST();
+		if(time_dst != OS_TIME_DETECTION_SYSTEM)
+			return time_dst;
+	}
 
 	return Engine::instance()->getTimeDST();	
 }
@@ -243,6 +255,17 @@ shared_ptr<IdePathway> IPage::getPathway() const
 
 shared_ptr<IdeSkin> IPage::getSkin() const
 {
+	//return IdeSystem::instance()->getDefaultSkin();
+	shared_ptr<IdeSession> ideSession = getSessionAccount();
+	if(ideSession != null && ideSession->isLogged())
+	{
+		shared_ptr<IdeSkin> skin;
+		skin = ideSession->getCurrentSkin();
+
+		if(skin != null && skin->isValid())
+			return skin;
+	}
+
 	return IdeSystem::instance()->getDefaultSkin();
 }
 

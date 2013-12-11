@@ -98,14 +98,14 @@ bool EntitiesEntity::load(const shared_ptr<IPortalDatabase> &database, const Ent
 	}
 	else
 	{
-		ObjectID currentID = static_cast<String>(*result.get(0,_S("current"))).to_ascii();
-		m_type = Convert::toObjectType(static_cast<uint32>(*result.get(0,_S("type"))));
-		m_visible = *result.get(0,_S("visible"));
+		ObjectID currentID = static_cast<String>(result.get(0,_S("current"))).to_ascii();
+		m_type = Convert::toObjectType(static_cast<uint32>(result.get(0,_S("type"))));
+		m_visible = result.get(0,_S("visible"));
 		//m_score = *result.get(0,_S("score")); // TOCLEAN_SNAPSHOT_SCORE
-		m_depth = *result.get(0,_S("depth"));
-		m_parent = static_cast<String>(*result.get(0,_S("parent"))).to_ascii();
-		m_section = static_cast<String>(*result.get(0,_S("section"))).to_ascii();
-		m_stabilityDate = String(*result.get(0,_S("stability_date")));
+		m_depth = result.get(0,_S("depth"));
+		m_parent = static_cast<String>(result.get(0,_S("parent"))).to_ascii();
+		m_section = static_cast<String>(result.get(0,_S("section"))).to_ascii();
+		m_stabilityDate = String(result.get(0,_S("stability_date")));
 
 		if(id == ObjectsSystem::instance()->getRootID())
 			//m_current = objects_revisionable_cast(database->getPortal()->getObject(database, ObjectsSystem::instance()->getRootID().toObjectID()));
@@ -242,7 +242,7 @@ shared_ptr<EntitiesEntities> EntitiesEntity::getChilds(const shared_ptr<IPortalD
 	database->execute(sql, result);
 	for(uint32 i = 0; i < result.rows(); i++)
 	{
-		String child_id = *result.get(i, DBTABLES::ENTITY);
+		String child_id = result.get(i, DBTABLES::ENTITY);
 		childs->push_back(child_id.to_ascii());
 	}
 

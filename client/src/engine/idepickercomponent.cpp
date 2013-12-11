@@ -97,6 +97,7 @@ void IdePickerComponent::addComponent(shared_ptr<IExtensionsComponent> component
 	}	
 	
 	shared_ptr<XMLNode> nodeSkin = m_nodeRoot->addChild(_S("component"));
+	nodeSkin->setAttributeString(_S("group"), getTarget());
 	nodeSkin->setAttributeString(_S("id"), id);
 	nodeSkin->setAttributeString(_S("key"), getKey(id));
 	nodeSkin->setAttributeString(_S("href"), getKeyHref(id));

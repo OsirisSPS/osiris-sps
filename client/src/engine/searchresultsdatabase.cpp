@@ -356,7 +356,7 @@ void SearchResultsDatabase::executeQuery(shared_ptr<IPortalDatabase> database, s
 	if(database->execute(select, result))
 	{
 		OS_ASSERT(result.hasRow(0));
-		m_totalResults = *result.get(0, 0);
+		m_totalResults = result.get(0, 0);
 
 		if(m_totalResults > 0)	// In teoria non serve rieseguire la query se non ci sono risultati...
 		{
@@ -398,14 +398,14 @@ void SearchResultsDatabase::executeQuery(shared_ptr<IPortalDatabase> database, s
 			{
 				for(uint32 r = 0; r < result.rows(); r++)
 				{
-					EntityID reference = static_cast<String>(*result.get(r, DBTABLES::SNAPSHOT_OBJECTS::ENTITY)).to_ascii();
+					EntityID reference = static_cast<String>(result.get(r, DBTABLES::SNAPSHOT_OBJECTS::ENTITY)).to_ascii();
 					if(query->getGroupMode())
 					{
 						shared_ptr<EntitiesEntity> entity = database->getPortal()->getEntity(database, reference);
 						if( (entity != NULL) && (entity->getCurrent() != NULL) )
 						{
 							if(ObjectsSystem::instance()->getDescriptor(entity->getObjectType())->isGroupable())
-								reference = static_cast<String>(*result.get(r, DBTABLES::SNAPSHOT_OBJECTS::PARENT)).to_ascii();
+								reference = static_cast<String>(result.get(r, DBTABLES::SNAPSHOT_OBJECTS::PARENT)).to_ascii();
 						}
 					}
 					add(reference);

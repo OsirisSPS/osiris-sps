@@ -37,10 +37,12 @@ public:
 	enum ColumnType
 	{
 		ctString		= 0,
-		ctID			= 1,
-		ctScore			= 2,
-		ctShortDateTime	= 3,
-		ctLongDateTime	= 4,
+		ctEntityID		= 1,
+		ctObjectID		= 2,
+		ctUserID		= 3,
+		ctScore			= 4,
+		ctShortDateTime	= 5,
+		ctLongDateTime	= 6,
 	};
 
 	typedef map<uint32, String>::type ColumnsTitles;

@@ -93,92 +93,64 @@ IPortalPage::~IPortalPage()
 
 String IPortalPage::getLanguage() const
 {
-	shared_ptr<IdeSession> ideSession = getSessionAccount();
-	if( (ideSession != null) && ideSession->isLogged() )
+	if(getRequestSource() != rsOsiris)
 	{
-		return ideSession->getLanguage();
-	}
-	else
-	{
-		if(getRequestSource() != rsOsiris)
+		// Qui c'è da chiederlo al cookie, al browser
+		String language = LanguageManager::instance()->localize(getRequest()->getCookie("os_culture"));
+		if(language.empty() == false)
+			return language;
+
+		// Lingue specificate nel browser
+		String languages = getRequest()->getAcceptLanguage();
+		String::size_type posComma = languages.find(_S(";"));
+		if(posComma != String::npos)
+			languages = languages.substr(0, posComma);
+		StringVector tarray;
+		utils::split(languages, _S(","), tarray);
+		for(uint32 a1 = 0; a1 < tarray.size(); a1++)
 		{
-			// Qui c'è da chiederlo al cookie, al browser
-			String language = LanguageManager::instance()->localize(getRequest()->getCookie("os_culture"));
+			language = LanguageManager::instance()->localize(tarray[a1]);
 			if(language.empty() == false)
 				return language;
-
-			// Lingue specificate nel browser
-			String languages = getRequest()->getAcceptLanguage();
-			String::size_type posComma = languages.find(_S(";"));
-			if(posComma != String::npos)
-				languages = languages.substr(0, posComma);
-			StringVector tarray;
-			utils::split(languages, _S(","), tarray);
-			for(uint32 a1 = 0; a1 < tarray.size(); a1++)
-			{
-				language = LanguageManager::instance()->localize(tarray[a1]);
-				if(language.empty() == false)
-					return language;
-			}
-		}		
-	}
+		}
+	}			
 
 	return IPage::getLanguage();
 }
 
 int32 IPortalPage::getTimeOffset() const
 {
-	shared_ptr<IdeSession> ideSession = getSessionAccount();
-	if( (ideSession != null) && ideSession->isLogged() )
-	{
-		int time_offset = ideSession->getAccount()->getAccount()->getTimeOffset();
-		if(time_offset != OS_TIME_DETECTION_SYSTEM)
-			return time_offset;		
-	}
-	else
-	{
-		if(getRequestSource() != rsOsiris)
-			return getOption("language.time_offset");		
-	}
+	if(getRequestSource() != rsOsiris)
+		return getOption("language.time_offset");		
 
 	return IPage::getTimeOffset();
 }
 
 int32 IPortalPage::getTimeDST() const
 {
-	shared_ptr<IdeSession> ideSession = getSessionAccount();
-	if( (ideSession != null) && ideSession->isLogged() )
-	{
-		int time_dst = ideSession->getAccount()->getAccount()->getTimeDST();
-		if(time_dst != OS_TIME_DETECTION_SYSTEM)
-			return time_dst;
-	}
-	else
-	{
-		if(getRequestSource() != rsOsiris)
-			return getOption("language.time_dst");				
-	}
-
+	if(getRequestSource() != rsOsiris)
+		return getOption("language.time_dst");				
+	
 	return IPage::getTimeDST();
 }
 
 shared_ptr<IdeSkin> IPortalPage::getSkin() const
-{
-	shared_ptr<IdeSession> ideSession = getSessionAccount();
-	if(ideSession != null && ideSession->isLogged())
+{	
+	shared_ptr<IdeSkin> skin;
+	if((getRequestSource() != rsOsiris) && (m_isisEndpoint != null))
 	{
-		shared_ptr<IdeSkin> skin;
-		if((getRequestSource() != rsOsiris) && (m_isisEndpoint != null))
-		{
-			String id = m_isisEndpoint->getIsisOptions().getOption(Options::ide_options::skin_id);
-			skin = IdeSystem::instance()->getSkin(SkinID(id.to_ascii()));
-		}
-		else
-			skin = ideSession->getCurrentSkin();
-
-		if(skin != null && skin->isValid())
-			return skin;
+		String id = m_isisEndpoint->getIsisOptions().getOption(Options::ide_options::skin_id);
+		skin = IdeSystem::instance()->getSkin(SkinID(id.to_ascii()));
 	}
+	else
+	{
+		shared_ptr<IdeSession> ideSession = getSessionAccount();
+		if(ideSession != null && ideSession->isLogged())
+			skin = ideSession->getCurrentSkin();
+	}
+
+	if(skin != null && skin->isValid())
+		return skin;	
 
 	return PageBase::getSkin();
 }

@@ -230,7 +230,7 @@ void EntitiesSnapshotManager::onInsertObject(const shared_ptr<IPortalDatabase> &
 
 		for(uint32 r=0;r<result.rows();r++)
 		{
-			String childID = *result.get(r,_S("entity"));
+			String childID = result.get(r,_S("entity"));
 			invalidateEntity(database, childID.to_ascii(), true, true);
 		}				
 	}
@@ -527,10 +527,10 @@ void EntitiesSnapshotManager::ensure(const shared_ptr<IPortalDatabase> &database
 		RSSXX1.stop();
 		if(result.rows() == 1)
 		{
-			objectType = Convert::toObjectType(static_cast<uint32>(*result.get(0,_S("type"))));
-			currentStabilityDate = String(*result.get(0, _S("stability_date")));
-			ObjectID currentEntryID = static_cast<String>(*result.get(0, _S("current"))).to_ascii();
-			currentParent = static_cast<String>(*result.get(0, _S("parent"))).to_ascii();
+			objectType = Convert::toObjectType(static_cast<uint32>(result.get(0,_S("type"))));
+			currentStabilityDate = String(result.get(0, _S("stability_date")));
+			ObjectID currentEntryID = static_cast<String>(result.get(0, _S("current"))).to_ascii();
+			currentParent = static_cast<String>(result.get(0, _S("parent"))).to_ascii();
 
 			if(!currentEntryID.empty())
 			{
@@ -597,7 +597,7 @@ void EntitiesSnapshotManager::ensure(const shared_ptr<IPortalDatabase> &database
 
 				for(uint32 r=0;r<result.rows();r++)
 				{
-					String childAuthor=*result.get(r,_S("author"));
+					String childAuthor=result.get(r,_S("author"));
 
 					computeUserStability(database, childAuthor.to_ascii());					
 				}
@@ -612,7 +612,7 @@ void EntitiesSnapshotManager::ensure(const shared_ptr<IPortalDatabase> &database
 
 				for(uint32 r=0;r<result.rows();r++)
 				{
-					String childAuthor=*result.get(r,_S("author"));
+					String childAuthor=result.get(r,_S("author"));
 
 					if(childAuthor != primaryAuthor) // Se  l'autore primario, l'ho gi stabilizzato.
 					{
@@ -638,7 +638,7 @@ void EntitiesSnapshotManager::ensure(const shared_ptr<IPortalDatabase> &database
 				String sql=String::format(_S("select insert_date from os_entries where id='%S'").c_str(), currentID.toUTF16().c_str());
 				database->execute(sql,result);
 				if(result.rows()>=1)
-					insertDate = String(*result.get(0, _S("insert_date")));
+					insertDate = String(result.get(0, _S("insert_date")));
 			}
 
 			// Calcola il position
@@ -659,7 +659,7 @@ void EntitiesSnapshotManager::ensure(const shared_ptr<IPortalDatabase> &database
 				database->execute(sql,result);
 				if(result.rows()==1)
 				{
-					ObjectID oldCurrentID = static_cast<String>(*result.get(0, _S("current"))).to_ascii();
+					ObjectID oldCurrentID = static_cast<String>(result.get(0, _S("current"))).to_ascii();
 					shared_ptr<ObjectsSection> oldCurrentObj = objects_section_cast(getPortal()->getObject(database, oldCurrentID));
 					shared_ptr<ObjectsSection> newCurrentObj = objects_section_cast(currentObj);
 
@@ -885,7 +885,7 @@ void EntitiesSnapshotManager::ensureChilds(const shared_ptr<IPortalDatabase> &da
 
 	for(uint32 r=0;r<result.rows();r++)
 	{
-		String child_id = *result.get(r,_S("entity"));
+		String child_id = result.get(r,_S("entity"));
 
 		ensure(database, child_id.to_ascii());
 	}
@@ -913,7 +913,7 @@ ReputationsScore EntitiesSnapshotManager::computeUserStability(const shared_ptr<
 		return ReputationsScore();
 	}
 
-	DateTime stabilityDate = static_cast<String>(*result.get(0,_S("stability_date")));
+	DateTime stabilityDate = static_cast<String>(result.get(0,_S("stability_date")));
 	DateTime profileStabilityDate = getStabilityDate(database);
 
 	if ( (stabilityDate.isValid() == false) || (stabilityDate<profileStabilityDate) )
@@ -932,7 +932,7 @@ ReputationsScore EntitiesSnapshotManager::computeUserStability(const shared_ptr<
 	}
 	else
 	{
-		return ReputationsScore(*result.get(0,_S("score")),*result.get(0,_S("description")),*result.get(0,_S("follow")));
+		return ReputationsScore(result.get(0,_S("score")),result.get(0,_S("description")),result.get(0,_S("follow")));
 	}
 }
 
@@ -1006,7 +1006,7 @@ void SnapshotManager::updateObjectSearch(const shared_ptr<IPortalDatabase> &data
 		String sql=String::format(_S("select insert_date from os_entries where id='%S'").c_str(), ObjectID(current->id).toString().c_str());
 		database->execute(sql,result);
 		if(result.rows()>=1)
-			insertDate = *result.get(0, _S("insert_date"));
+			insertDate = result.get(0, _S("insert_date"));
 	}
 	RSUSO1.stop();
 
@@ -1186,7 +1186,7 @@ bool EntitiesSnapshotManager::computeStabilityAccept(const shared_ptr<IPortalDat
 
 	for(uint32 r=0;r<result.rows();r++)
 	{
-		ObjectID id = static_cast<String>(*result.get(r,_S("id"))).to_ascii();
+		ObjectID id = static_cast<String>(result.get(r,_S("id"))).to_ascii();
 
 		shared_ptr<ObjectsIObject> object = getPortal()->getObject(database, id);
 		OS_ASSERT(object!=null);
@@ -1262,7 +1262,7 @@ bool EntitiesSnapshotManager::computeStabilityPrepare(const shared_ptr<IPortalDa
 
 		for(uint32 r=0;r<result.rows();r++)
 		{
-			String id=*result.get(r,_S("id"));
+			String id=result.get(r,_S("id"));
 
 			shared_ptr<ObjectsIRevisionable> primary=objects_revisionable_cast(getPortal()->getObject(database, id));
 			OS_ASSERT(primary!=null);
@@ -1290,7 +1290,7 @@ bool EntitiesSnapshotManager::computeStabilityPrepare(const shared_ptr<IPortalDa
 
 		for(uint32 r=0;r<result.rows();r++)
 		{
-			String user_id=*result.get(r,_S("id"));
+			String user_id=result.get(r,_S("id"));
 
 			shared_ptr<ObjectsUser> user=objects_user_cast(getPortal()->getObject(database, user_id));
 			OS_ASSERT(user!=null);
@@ -1327,7 +1327,7 @@ bool EntitiesSnapshotManager::computeStabilityUsers(const shared_ptr<IPortalData
 	{
 		for(uint32 r=0;r<result.rows();r++)
 		{
-			String id=*result.get(r,_S("id"));
+			String id=result.get(r,_S("id"));
 			computeUserStability(database, id.to_ascii());
 
 			if(!canStabilityRun(true, job))
@@ -1407,7 +1407,7 @@ bool EntitiesSnapshotManager::computeStabilityObjects(const shared_ptr<IPortalDa
 			OS_TRACE("SnapshotManager:: Stabilities step...\n");
 			for(uint32 r=0; r<nRows; r++)
 			{
-				String entity=*result.get(r,_S("entity"));
+				String entity=result.get(r,_S("entity"));
 
 				// Hack:
 				// Nella 0.13, stabilizza all'infinito (SOLO un anarchico).
@@ -1564,7 +1564,7 @@ bool EntitiesSnapshotManager::computeStatisticsObjects(const shared_ptr<IPortalD
 			uint32 nRows = result.rows();
 			for(uint32 r=0;r<nRows;r++)
 			{
-				String entity=*result.get(r,_S("entity"));
+				String entity=result.get(r,_S("entity"));
 				updateObjectStatistics(database, entity.to_ascii());
 
 				if(!canStabilityRun(true, job))
@@ -1602,7 +1602,7 @@ bool EntitiesSnapshotManager::computeStatisticsUsers(const shared_ptr<IPortalDat
 	{
 		for(uint32 r=0;r<result.rows();r++)
 		{
-			String id=*result.get(r,_S("id"));
+			String id=result.get(r,_S("id"));
 			updateUserStatistics(database, id.to_ascii());
 
 			if(!canStabilityRun(true, job))
@@ -1650,8 +1650,8 @@ bool EntitiesSnapshotManager::computeSearchObjects(const shared_ptr<IPortalDatab
 		OS_TRACE("SnapshotManager:: Search step...\n");
 		for(uint32 r=0;r<result.rows();r++)
 		{
-			String entity=*result.get(r,_S("entity"));
-			String document=*result.get(r,_S("document"));
+			String entity=result.get(r,_S("entity"));
+			String document=result.get(r,_S("document"));
 			updateObjectSearch(database, entity.to_ascii(), document, searchLevel);
 			if(!canStabilityRun(true, job))
 				return false;
@@ -1687,7 +1687,7 @@ bool EntitiesSnapshotManager::computeFinalize(const shared_ptr<IPortalDatabase> 
 				OS_TRACE("SnapshotManager:: Finalize step...\n");
 				for(uint32 r=0;r<result.rows();r++)
 				{
-					ObjectID id = static_cast<String>(*result.get(r,_S("id"))).to_ascii();
+					ObjectID id = static_cast<String>(result.get(r,_S("id"))).to_ascii();
 
 					shared_ptr<ObjectsIObject> object = database->getPortal()->getObject(database, id);
 					OS_ASSERT(object != null);
@@ -1992,7 +1992,7 @@ void EntitiesSnapshotManager::invalidateEntity(const shared_ptr<IPortalDatabase>
 		database->execute(sql,result);
 		if(result.rows() == 1)
 		{
-			EntityID parent  = static_cast<String>(*result.get(0, _S("parent"))).to_ascii();
+			EntityID parent  = static_cast<String>(result.get(0, _S("parent"))).to_ascii();
 
 			// Questo invalida le statistiche fino alla root.
 			invalidateEntity(database, parent, invalidateParentStability, invalidateParentStatistics);
@@ -2065,7 +2065,7 @@ bool EntitiesSnapshotManager::rebuildAlignmentHash(const shared_ptr<IPortalDatab
 	
 	for(uint32 r=0;r<result.rows();r++)
 	{
-		ObjectID id = static_cast<String>(*result.get(r,_S("id"))).to_ascii();
+		ObjectID id = static_cast<String>(result.get(r,_S("id"))).to_ascii();
 		getPortal()->getOptions()->updateAlignmentHash(id, true);
 	}
 
@@ -2161,7 +2161,7 @@ void EntitiesSnapshotManager::ensureSnapshot(shared_ptr<IPortalDatabase> databas
 
 			for(uint32 r=0;r<result.rows();r++)
 			{
-				ObjectID id = static_cast<String>(*result.get(r,_S("id"))).to_ascii();
+				ObjectID id = static_cast<String>(result.get(r,_S("id"))).to_ascii();
 
 				shared_ptr<ObjectsIRevisionable> obj = objects_revisionable_cast(getPortal()->getObject(database, id));
 				OS_ASSERT(obj!=null);
@@ -2178,7 +2178,7 @@ void EntitiesSnapshotManager::ensureSnapshot(shared_ptr<IPortalDatabase> databas
 
 			for(uint32 r=0;r<result.rows();r++)
 			{
-				ObjectID userID = static_cast<String>(*result.get(r,_S("id"))).to_ascii();
+				ObjectID userID = static_cast<String>(result.get(r,_S("id"))).to_ascii();
 
 				shared_ptr<ObjectsUser> user=objects_user_cast(getPortal()->getObject(database, userID));
 				OS_ASSERT(user!=null);
@@ -2593,7 +2593,7 @@ void EntitiesSnapshotManager::updateObjectSearch(const shared_ptr<IPortalDatabas
 		String sql=String::format(_S("select insert_date from os_entries where id='%S'").c_str(), currentID.toUTF16().c_str());
 		database->execute(sql,result);
 		if(result.rows()>=1)
-			insertDate = String(*result.get(0, _S("insert_date")));
+			insertDate = String(result.get(0, _S("insert_date")));
 	}
 	RSRX.stop();
 
@@ -2865,8 +2865,8 @@ void EntitiesSnapshotManager::getObjectRevision(const shared_ptr<IPortalDatabase
 
 	if(result.hasRow(0))
 	{
-		id = static_cast<String>(*result.get(0,_S("id"))).to_ascii();
-		score = *result.get(0,_S("score"));
+		id = static_cast<String>(result.get(0,_S("id"))).to_ascii();
+		score = result.get(0,_S("score"));
 	}
 	else
 	{
@@ -2882,7 +2882,7 @@ void EntitiesSnapshotManager::getObjectRevisions(const shared_ptr<IPortalDatabas
 
 	for(uint32 r=0;r<result.rows();r++)
 	{
-		String id = *result.get(r,_S("id"));
+		String id = result.get(r,_S("id"));
 		results.push_back(id);
 	}
 }

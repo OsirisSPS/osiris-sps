@@ -87,6 +87,14 @@ class Page(osiris.IPortalPage):
 			self.authorsReputationThreshold.addOption(self.getText("reputation.threshold.not_negative"), "2")		
 			self.authorsReputationThreshold.addOption(self.getText("reputation.threshold.positive"), "3")					
 			
+			self.editorsReputationThreshold = osiris.HtmlComboBox()
+			self.editorsReputationThreshold.id = "editorsReputationThreshold"
+			template.addChildParam(self.editorsReputationThreshold)
+			self.editorsReputationThreshold.addOption(self.getText("reputation.threshold.all"), "0")			
+			self.editorsReputationThreshold.addOption(self.getText("reputation.threshold.negative"), "1")		
+			self.editorsReputationThreshold.addOption(self.getText("reputation.threshold.not_negative"), "2")		
+			self.editorsReputationThreshold.addOption(self.getText("reputation.threshold.positive"), "3")					
+			
 			
 			# Layout
 			
@@ -161,7 +169,8 @@ class Page(osiris.IPortalPage):
 				# Main
 				self.portalName.value = self.portal.optionsShared.portalName
 				self.portalDescription.value = self.portal.optionsShared.portalDescription
-				#self.authorsReputationThreshold.value = str(int(self.portal.optionsShared.authorsReputationThreshold));
+				self.authorsReputationThreshold.value = self.portal.optionsShared.authorsReputationThreshold;
+				self.editorsReputationThreshold.value = self.portal.optionsShared.editorsReputationThreshold;				
 				
 				# Layout
 				
@@ -203,7 +212,8 @@ class Page(osiris.IPortalPage):
 		
 		self.portal.optionsShared.portalName = self.portalName.value
 		self.portal.optionsShared.portalDescription = self.portalDescription.value
-		self.portal.optionsShared.authorsReputationThreshold = int(self.authorsReputationThreshold.value)
+		self.portal.optionsShared.authorsReputationThreshold = osiris.ObjectsReputationThreshold(int(self.authorsReputationThreshold.value))
+		self.portal.optionsShared.editorsReputationThreshold = osiris.ObjectsReputationThreshold(int(self.editorsReputationThreshold.value))		
 		
 		# Layout
 		

@@ -29,10 +29,9 @@ class Page(osiris.IPortalPage):
 		
 		document.root.setAttributeString("machine_id", osiris.Engine.instance().getMachineID())
 		
-		document.root.setAttributeString("align_hash", self.portal.options.getAlignHash())
+		document.root.setAttributeString("align_hash", self.portal.options.getAlignHash().getString())
 		
 		document.root.setAttributeString("acceptable_hash", self.portal.optionsShared.getAcceptableHash())
-		
 		
 		
 		self.query = osiris.IdeTableQuery()
@@ -54,8 +53,22 @@ class Page(osiris.IPortalPage):
 		self.query.setColumnType(4,osiris.IdeTableQuery.ctShortDateTime)		
 		self.query.setColumnType(5,osiris.IdeTableQuery.ctShortDateTime)		
 		template.addChildParam(self.query)	
+
+		dataTrashReason = osiris.DataTable()
+		sql = "select accept_msg, count(*) from os_entries group by accept_msg"
+		self.database.execute(sql, dataTrashReason)
+
+		osiris.LogManager.instance().log(str(dataTrashReason.rows()))
+
+		for r in range(dataTrashReason.rows()):
+			osiris.LogManager.instance().log(str(r))
+			osiris.LogManager.instance().log(dataTrashReason.get(r,0).getString())
+			#osiris.LogManager.instance().log("record")
 		
-		
+		self.tableTrashReason = osiris.IdeTableQuery()
+		self.tableTrashReason.id = "table_trash_reason"
+		self.tableTrashReason.setSql(sql)
+		template.addChildParam(self.tableTrashReason)	
 		
 		
 	def onPreRender(self):

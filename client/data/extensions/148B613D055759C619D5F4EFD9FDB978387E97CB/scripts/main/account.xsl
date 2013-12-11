@@ -18,6 +18,8 @@
 
   <xsl:param name="name"/>
   <xsl:param name="password"/>
+	<xsl:param name="skin"/>
+	<xsl:param name="language"/>
 
 	
   <xsl:template match="/home">
@@ -45,6 +47,15 @@
                   <xsl:value-of select="$name" disable-output-escaping="yes"/>
                 </td>
               </tr>
+							<tr>
+								<td>
+									<xsl:value-of select="lang:text('main.pages.account.options.password')"/>
+									<xsl:text> :</xsl:text>
+								</td>
+								<td>
+									<xsl:value-of select="$password" disable-output-escaping="yes"/>
+								</td>
+							</tr>
               
 
             </table>
@@ -57,7 +68,15 @@
           </div>
           <div data-os-tabType="body">
             <table class="os_table_properties">
-              
+							<tr>
+								<td>
+									<xsl:value-of select="lang:text('main.pages.account.options.skin')"/>
+									<xsl:text> :</xsl:text>
+								</td>
+								<td>
+									<xsl:value-of select="$skin" disable-output-escaping="yes"/>
+								</td>
+							</tr>
             </table>
           </div>
 
@@ -65,8 +84,16 @@
             <xsl:value-of select="lang:text('portal.pages.account.language')"/>
           </div>
           <div data-os-tabType="body">
-            <table class="os_table_properties">              
-              
+            <table class="os_table_properties">
+							<tr>
+								<td>
+									<xsl:value-of select="lang:text('main.pages.account.options.language')"/>
+									<xsl:text> :</xsl:text>
+								</td>
+								<td>
+									<xsl:value-of select="$language" disable-output-escaping="yes"/>
+								</td>
+							</tr>
             </table>
           </div>
 
