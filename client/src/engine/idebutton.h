@@ -45,6 +45,9 @@ public:
 	inline const String & getCaption() const;
 	inline void setCaption(const String &caption);
 
+	inline const String & getIconHref() const;
+	inline void setIconHref(const String &href);
+
 	inline const String & getHref() const;
 	inline void setHref(const String &href);
 
@@ -67,6 +70,7 @@ protected:
 protected:
 	bool m_isDefault;
 	String m_caption;
+	String m_iconHref;
 	String m_href;
 	String m_confirmMessage;
 	String m_waitMessage;
@@ -82,6 +86,9 @@ inline void IdeButton::setIsDefault(bool def) { m_isDefault = def; }
 
 inline const String & IdeButton::getCaption() const { return m_caption; }
 inline void IdeButton::setCaption(const String &caption) { m_caption = caption; }
+
+inline const String & IdeButton::getIconHref() const { return m_iconHref; }
+inline void IdeButton::setIconHref(const String &href) { m_iconHref = href; }
 
 inline const String & IdeButton::getHref() const { return m_href; }
 inline void IdeButton::setHref(const String &href) { m_href = href; }

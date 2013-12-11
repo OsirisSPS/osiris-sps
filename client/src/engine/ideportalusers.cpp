@@ -288,7 +288,7 @@ void Users::onPreRender()
 			{
 				for(uint32 r = 0; r < result.rows(); r++)
 				{
-					ObjectID id = static_cast<String>(*result.get(r, DBTABLES::ID)).to_ascii();
+					ObjectID id = static_cast<String>(result.get(r, DBTABLES::ID)).to_ascii();
 
 					shared_ptr<ObjectsUser> user = objects_user_cast(getObject(id));
 					if(user)

@@ -272,7 +272,7 @@ void register_IdeTableQuery_class(){
         ::boost::python::scope IdeTableQuery_scope( IdeTableQuery_exposer );
         ::boost::python::enum_< ::osiris::IdeTableQuery::ColumnType>("ColumnType")
             .value("ctString", ::osiris::IdeTableQuery::ctString)
-            .value("ctID", ::osiris::IdeTableQuery::ctID)
+            .value("ctID", ::osiris::IdeTableQuery::ctEntityID)
             .value("ctScore", ::osiris::IdeTableQuery::ctScore)
             .value("ctShortDateTime", ::osiris::IdeTableQuery::ctShortDateTime)
             .value("ctLongDateTime", ::osiris::IdeTableQuery::ctLongDateTime)

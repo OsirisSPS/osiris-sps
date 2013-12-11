@@ -624,8 +624,8 @@ bool CompatibilityManager::upgradeContentOML(const shared_ptr<IPortalDatabase> &
 	{
 		result2->bind(row);
 
-		//String id = *result.get(r,_S("id"));
-		//String oml = *result.get(r,_S("oml"));
+		//String id = result.get(r,_S("id"));
+		//String oml = result.get(r,_S("oml"));
 		String id = *row[_S("id")];
 		String omlOrig = *row[_S("oml")];
 
@@ -783,9 +783,9 @@ void CompatibilityManager::renameIDS(const shared_ptr<IPortalDatabase> &database
 
 		for(uint32 r=0;r<result.rows();r++)
 		{
-			String id = *result.get(r,_S("id"));
-			String author = *result.get(r,_S("author"));
-			String reference = *result.get(r,_S("reference"));
+			String id = result.get(r,_S("id"));
+			String author = result.get(r,_S("author"));
+			String reference = result.get(r,_S("reference"));
 
 			ObjectID newID = database->getUserReputationID(author.to_ascii(), reference.to_ascii());
 
@@ -804,8 +804,8 @@ void CompatibilityManager::renameIDS(const shared_ptr<IPortalDatabase> &database
 
 		for(uint32 r=0;r<result.rows();r++)
 		{
-			String id = *result.get(r,_S("id"));
-			String author = *result.get(r,_S("author"));
+			String id = result.get(r,_S("id"));
+			String author = result.get(r,_S("author"));
 			
 			ObjectID newID = database->getUserAvatarID(author.to_ascii());
 
@@ -824,9 +824,9 @@ void CompatibilityManager::renameIDS(const shared_ptr<IPortalDatabase> &database
 
 		for(uint32 r=0;r<result.rows();r++)
 		{
-			String id = *result.get(r,_S("id"));
-			String author = *result.get(r,_S("author"));
-			String reference = *result.get(r,_S("reference"));
+			String id = result.get(r,_S("id"));
+			String author = result.get(r,_S("author"));
+			String reference = result.get(r,_S("reference"));
 			
 			ObjectID newID = database->getUserVoteID(author.to_ascii(), reference.to_ascii());
 
@@ -845,9 +845,9 @@ void CompatibilityManager::renameIDS(const shared_ptr<IPortalDatabase> &database
 
 		for(uint32 r=0;r<result.rows();r++)
 		{
-			String id = *result.get(r,_S("id"));
-			String author = *result.get(r,_S("author"));
-			String reference = *result.get(r,_S("reference"));
+			String id = result.get(r,_S("id"));
+			String author = result.get(r,_S("author"));
+			String reference = result.get(r,_S("reference"));
 			
 			ObjectID newID = database->getUserPollVoteID(author.to_ascii(), reference.to_ascii());
 
@@ -870,7 +870,7 @@ void CompatibilityManager::migrateAccounts(const shared_ptr<IPortalDatabase> &da
 
 	for(uint32 r=0;r<result.rows();r++)
 	{
-		String id = *result.get(r,_S("id"));
+		String id = result.get(r,_S("id"));
 
 		shared_ptr<DataAccount> dataAccount(OS_NEW DataAccount());
 
@@ -907,9 +907,9 @@ void CompatibilityManager::resigner(const shared_ptr<IPortalDatabase> &database,
 
 			for(uint32 r=0;r<result.rows();r++)
 			{
-				String id = *result.get(r,_S("id"));
-				String entityAuthor = *result.get(r,_S("entity_author"));
-				String author = *result.get(r,_S("author"));
+				String id = result.get(r,_S("id"));
+				String entityAuthor = result.get(r,_S("entity_author"));
+				String author = result.get(r,_S("author"));
 
 				shared_ptr<ObjectsIObject> object = database->getPortal()->getObject(database, id.to_ascii());
 				if(object != null)

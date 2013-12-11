@@ -91,6 +91,7 @@ public:
 	shared_ptr<IDbResult> query(shared_ptr<DbSqlICommand> select);		
 	bool query(shared_ptr<DbSqlICommand> select, DataTable &table);
 	bool query(const String &sql, DataTable &table);	
+	DataItem queryValue(const String &sql);
 	
 	uint32 value_of(const String &sql);
 	uint32 value_of(shared_ptr<DbSqlICommand> command);

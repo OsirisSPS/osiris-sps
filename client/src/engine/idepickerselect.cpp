@@ -56,7 +56,7 @@ const String IdeSkinPicker::EVENT_OPEN = _S("onOpen");
 const String IdeObjectPicker::EVENT_SELECT = _S("onSelect");
 */
 
-#define OS_PICKERSELECT_EMPTYKEY _S("123123")
+#define OS_PICKERSELECT_EMPTYKEY _S("")
 
 //////////////////////////////////////////////////////////////////////
 

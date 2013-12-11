@@ -1195,6 +1195,8 @@ table.properties tr > td:first-child,
 	white-space: nowrap;
 	color: @os-skin-label-fg;		
 	text-align:right;		
+	vertical-align: top;
+	padding:10px;		
 }	
 
 table.properties img,
@@ -3139,93 +3141,59 @@ div.os_tab_left_header_selected:hover
 /*   Boolean Picker */
 /* ======================================== */
 
-.os_controls_bool
-{
-	background:url("/htdocs/images/controls/bool.png") bottom left;   
-	display: inline-block;
-	vertical-align: middle;
-	width:70px;
-	height:22px;
-	cursor:pointer;
-	margin:2px;
-}
-
-.os_controls_bool_checked
-{
-	background-position:top left;
-}
-
-
-
-
-
 .os_controls_bool_container
 {
-	display: inline-block;
-	width:70px;
-	height:18px;
-	
-	.rounded(5px);
-	
-	vertical-align:middle;
+	position:relative;
+	display:inline-block;
+	width:100px;
+	height:20px;
+	.os-rounded(0.5em);
+	.os-box-shadow(0px, 0px, 2px, 0.3);	
 }
 
-.os_controls_bool_container_yes
-{
-	display: inline-block;
-	width: 35px;
-	height: 18px;
-	
-	background-color: @os-skin-controls-bg;
-	
-	background-image: url("/htdocs/images/controls/bool_yes.png");
-	background-repeat:no-repeat;
-	background-position:center; 
-	
-	.border-radius(0px, 0px, 5px, 5px);
-	
-	box-shadow: 0 2px 3px black inset;
-}
-
-.os_controls_bool_container_no
-{
-	display: inline-block;
-	width: 35px;
-	height: 18px;
-	
-	background-image: url("/htdocs/images/controls/bool_no.png");
-	background-repeat:no-repeat;
-	background-position:center; 
-	
-	.border-radius(5px, 5px, 0px, 0px);
-	
-	box-shadow: 0 2px 3px black inset;
-}
-
-.os_controls_bool_switch
+.os_controls_bool_switch_off
 {
 	position:absolute;
-	
-	display: inline-block;
-	width:35px;
-	height:18px;
 	margin-left:0px;
-	
-	cursor:pointer;
-
+	width:50px;
+	height:16px;
 	background-color: @os-skin-controls-bg;
+	.os-rounded(0.5em);	
+	opacity:0.2;
 	
-	.os-transition();
-	
-	.rounded(5px);
-	
-	.os-box-shadow(0px, 0px, 3px);
-	
+	-webkit-transition: margin-left 0.5s ease-out, background-color 0.5s ease-out, opacity 0.5s ease-out;
+  -moz-transition: margin-left 0.5s ease-out, background-color 0.5s ease-out, opacity 0.5s ease-out;
+  transition: margin-left 0.5s ease-out, background-color 0.5s ease-out, opacity 0.5s ease-out;
+  /*
+  box-shadow:
+		3px 3px 6px rgba(0, 0, 0, .4),
+		0px 0px 3px rgba(0, 0, 0, .2),
+		inset 0px 15px 2px fadeout(darken(@os-skin-controls-bg,10%),50%),
+		inset 0px 25px 25px darken(@os-skin-controls-bg,10%);
+		*/
+		
+	border:2px solid @os-skin-controls-bg;
+	border-style: outset;
 }
 
-.os_controls_bool_switch_checked
+.os_controls_bool_switch_on
 {
-	margin-left:35px;
+	margin-left:50px;
+	opacity:1.0;
+	/*
+	width:50px;
+	height:20px;
+	background-color: @os-skin-controls-bg;*/
+}
+
+.os_controls_bool_foreground
+{
+	position:absolute;
+	width:100px;
+	height:20px;
+	
+	background-image: url("/htdocs/images/controls/bool_fg.png");
+	cursor: pointer;
 }
 
 /* ======================================== */

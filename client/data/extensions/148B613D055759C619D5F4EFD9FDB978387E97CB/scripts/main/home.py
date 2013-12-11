@@ -14,8 +14,8 @@ class Page(osiris.IMainPage):
 		
 		self.addCss(self.skin.getResourceUrl("css/main/home.less"))
 		
-		osiris.events.connect(self.events.get("onPortalRemove"), self.onPortalRemove)
-		osiris.events.connect(self.events.get("onPortalSelfCreate"), self.onPortalSelfCreate)
+		#osiris.events.connect(self.events.get("onPortalRemove"), self.onPortalRemove)
+		#osiris.events.connect(self.events.get("onPortalSelfCreate"), self.onPortalSelfCreate)
 		
 				
 		
@@ -36,7 +36,8 @@ class Page(osiris.IMainPage):
 			if(osiris.Engine.instance().getVersionName(False) != osiris.IsisSystem.instance().getLatestOsirisVersion()):
 				root.attributes.set("latest_osiris_notes", osiris.IsisSystem.instance().getLatestOsirisNotes())			
 			
-		root.attributes.set("subscribe_self_portal_href",self.getEventCommand("onPortalSelfCreate"))		
+		#root.attributes.set("subscribe_self_portal_href",self.getEventCommand("onPortalSelfCreate"))		
+		root.attributes.set("subscribe_self_portal_href", osiris.PortalsSystem.instance().getMainLink("subscribe?mode=self"))		
 		
 		if(self.sessionAccount.isLogged() == True):
 			root.attributes.set("session_user", self.sessionAccount.getUserID().string)
@@ -69,12 +70,12 @@ class Page(osiris.IMainPage):
 		
 		actionSubscribePortal = nodeActions.nodes.add("action")
 		actionSubscribePortal.attributes.set("name", "subscribe")
-		actionSubscribePortal.attributes.set("href", osiris.PortalsSystem.instance().getMainLink("subscribe"))
+		actionSubscribePortal.attributes.set("href", osiris.PortalsSystem.instance().getMainLink("subscribe?mode=subscribe"))
 		
 		if(self.sessionAccount.isLogged() == True):
 			actionCreatePortal = nodeActions.nodes.add("action")
 			actionCreatePortal.attributes.set("name", "create")
-			actionCreatePortal.attributes.set("href", osiris.PortalsSystem.instance().getMainLink("create"))		
+			actionCreatePortal.attributes.set("href", osiris.PortalsSystem.instance().getMainLink("subscribe?mode=create"))		
 		
 		#actionNetwork = nodeActions.nodes.add("action")
 		#actionNetwork.attributes.set("name", "network")
@@ -129,12 +130,12 @@ class Page(osiris.IMainPage):
 		if portal.optionsShared.layoutTileColorBackground != "":
 			node.attributes.set("tileBackColor", portal.optionsShared.layoutTileColorBackground);
 		else:
-			node.attributes.set("tileBackColor", portal.portalID.getString()[3:6]);
+			node.attributes.set("tileBackColor", '#' + portal.portalID.getString()[3:6]);
 			
 		if portal.optionsShared.layoutTileColorForeground != "":
 			node.attributes.set("tileForeColor", portal.optionsShared.layoutTileColorForeground);
 		else:
-			node.attributes.set("tileForeColor", "000000");
+			node.attributes.set("tileForeColor", "#000000");
 		
 		
 				
@@ -171,14 +172,14 @@ class Page(osiris.IMainPage):
 			nodeIsis.attributes.set("url",isisEndpoint.url.toString());
 			nodeIsis.attributes.set("enabled",isisEndpoint.enabled);			
 			
-	def onPortalRemove(self, args):		
-		self.showMessage(args[0])					
+	#def onPortalRemove(self, args):		
+	#	self.showMessage(args[0])					
+	#	
+	#	portal = osiris.PortalsSystem.instance().getPortalByFullPov(args[0]);
+	#	if portal:
+	#		osiris.PortalsSystem.instance().removePortal(portal.portalID, portal.povID)
 		
-		portal = osiris.PortalsSystem.instance().getPortalByFullPov(args[0]);
-		if portal:
-			osiris.PortalsSystem.instance().removePortal(portal.portalID, portal.povID)
-		
-	def onPortalSelfCreate(self, args):		
-		self.showMessage("selfcreate!")					
+	#def onPortalSelfCreate(self, args):		
+	#	self.showMessage("selfcreate!")					
 		
 

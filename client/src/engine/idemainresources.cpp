@@ -20,6 +20,7 @@
 #include "idemainresources.h"
 
 #include "conversions.h"
+#include "entitiesentity.h"
 #include "file.h"
 #include "filesystem.h"
 #include "objectsavatar.h"
@@ -71,7 +72,13 @@ bool Resources::transmitAvatar(const shared_ptr<IPortalDatabase> &database, cons
 
 bool Resources::transmitFile(const shared_ptr<IPortalDatabase> &database, const String &hash)
 {
-	shared_ptr<ObjectsFile> file = database->getFile(hash.to_ascii());
+	shared_ptr<EntitiesEntity> entity = database->getPortal()->getEntity(database, hash.to_ascii());
+	if(entity == null)
+		return "";
+	if(entity->getCurrent() == null)
+		return "";
+
+	shared_ptr<ObjectsFile> file = database->getFile(entity->getCurrent()->id->toAscii());
 
 	closeDatabase();
 

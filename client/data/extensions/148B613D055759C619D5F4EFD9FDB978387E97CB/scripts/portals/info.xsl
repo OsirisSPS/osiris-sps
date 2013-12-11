@@ -25,8 +25,8 @@
         </div>
       </xsl:when>
       <xsl:otherwise>
-        <xsl:call-template name="block_page">
-          <xsl:with-param name="prefix" select="'portal.pages.info'"/>
+        <xsl:call-template name="block_big">
+          <xsl:with-param name="title" select="lang:text('portal.pages.info.title')"/>
           <xsl:with-param name="content">
             <xsl:call-template name="page"/>
           </xsl:with-param>

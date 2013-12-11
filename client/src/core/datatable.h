@@ -44,8 +44,11 @@ public:
 public:
 	uint32 columns() const;
 
-	DataItem * get(uint32 column) const;
-	DataItem * get(const String &column) const;
+	DataItem * getPtr(uint32 column) const;
+	DataItem * getPtr(const String &column) const;
+
+	DataItem get(uint32 column) const;
+	DataItem get(const String &column) const;
 
 	void set(uint32 column, const DataItem &value);
 	void set(const String &column, const DataItem &value);
@@ -96,8 +99,11 @@ public:
 	DataTableRow addRow();
 	void removeAllRows();
 
-	DataItem * get(uint32 row, uint32 column) const;
-	DataItem * get(uint32 row, const String &column) const;
+	DataItem * getPtr(uint32 row, uint32 column) const;
+	DataItem * getPtr(uint32 row, const String &column) const;
+
+	DataItem get(uint32 row, uint32 column) const;
+	DataItem get(uint32 row, const String &column) const;
 
 	void set(uint32 row, uint32 column, const DataItem &value);
 	void set(uint32 row, const String &column, const DataItem &value);

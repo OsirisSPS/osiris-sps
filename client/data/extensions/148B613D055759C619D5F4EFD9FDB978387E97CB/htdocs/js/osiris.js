@@ -249,10 +249,12 @@ var Osiris =
     
     // Highlight a "selectedID" child of groupID, de-hightlight others, set an hidden field with "selectedID".
     pickerSelect: function (groupID, selectedID, hiddenFieldID) {
+    		//alert(groupID + "," + selectedID + "," + hiddenFieldID);
         $('#' + hiddenFieldID).val(selectedID);        
         $('#' + groupID + " a").addClass("os_picker_select_item_normal");
         $('#' + groupID + " a").removeClass("os_picker_select_item_selected");
-        $('#' + selectedID).addClass("os_picker_select_item_selected");
+        $('#' + groupID + "_" + selectedID).addClass("os_picker_select_item_selected");
+        //alert(groupID + "_" + selectedID);
     },
 
     // Look style as button up, emboss effect.
@@ -628,58 +630,36 @@ var Osiris =
     **************************************************************************************************/
 
     controlBoolean: function (src) {
-    		/*
-    	  var boolSwitch = osCreate("span")
-        boolSwitch.referenceInput = src;
-        $(boolSwitch).addClass("os_controls_bool");
-        if ($(src).val() == 1) {
-            $(boolSwitch).addClass("os_controls_bool_checked");
-        }
-        $(boolSwitch).click(function (e) {
-            if ($(this.referenceInput).val() == 1) {
-                $(this.referenceInput).val(0);
-                $(this).removeClass("os_controls_bool_checked");
-
-            } else {
-                $(this.referenceInput).val(1);
-                $(this).addClass("os_controls_bool_checked");
-            }
-        });
-        */
+    		
         
-       	var boolContainer = osCreate("span");
-       	
-      	var boolSwitch = osCreate("span");
-      	$(boolContainer).append(boolSwitch);
-        boolSwitch.referenceInput = src;
+        
+        var boolContainer = osCreate("div");        
         $(boolContainer).addClass("os_controls_bool_container");
-        $(boolSwitch).addClass("os_controls_bool_switch");
-        if ($(src).val() == 1) {
-            $(boolSwitch).addClass("os_controls_bool_switch_checked");
-        }
-        $(boolSwitch).click(function (e) {
+        var boolSwitch = osCreate("div");
+        $(boolSwitch).addClass("os_controls_bool_switch_off");
+        if ($(src).val() == 1)
+        	$(boolSwitch).addClass("os_controls_bool_switch_on");        
+        var boolForeground = osCreate("div");
+        $(boolForeground).addClass("os_controls_bool_foreground");
+        
+        boolForeground.referenceInput = src;
+        boolForeground.switch = boolSwitch;
+        
+        $(boolForeground).click(function (e) {
             if ($(this.referenceInput).val() == 1) {
                 $(this.referenceInput).val(0);
-                $(this).removeClass("os_controls_bool_switch_checked");                
+                $(this.switch).removeClass("os_controls_bool_switch_on");                                
 
             } else {
                 $(this.referenceInput).val(1);
-                $(this).addClass("os_controls_bool_switch_checked");                
+                $(this.switch).addClass("os_controls_bool_switch_on");                                
             }
         });
-      
-      	var boolContainerYes = osCreate("span");
-       	$(boolContainerYes).addClass("os_controls_bool_container_yes");
-       	$(boolContainer).append(boolContainerYes);
-       	
-       	var boolContainerNo = osCreate("span");
-       	$(boolContainerNo).addClass("os_controls_bool_container_no");
-       	$(boolContainer).append(boolContainerNo);
-      
-
-        //$(src).hide();
-        $(boolContainer).insertAfter($(src));
         
+        $(boolContainer).append(boolSwitch);
+        $(boolContainer).append(boolForeground);
+        
+        $(boolContainer).insertAfter($(src));
         
     },
 
@@ -700,14 +680,21 @@ var Osiris =
     },
 
     controlString: function (src, required) {
+    		$(src).bind("blur change paste keyup", Osiris.controlStringValidation);
+    		
+    		
+    		/*
         $(src).blur(Osiris.controlStringValidation);
         $(src).keyup(Osiris.controlStringValidation);
+        $(src).change(Osiris.controlStringValidation);
+        */
         src.spanMessage = osCreate("span");
         //alert(src.validationMessage2);
         //$(src.spanMessage).text("xxx");
         $(src).after(src.spanMessage);
         $(src.spanMessage).addClass("os_validation_message");
-        $(src).trigger("blur");
+        
+        $(src).trigger("change");
     },
 
     controlStringValidation: function () {

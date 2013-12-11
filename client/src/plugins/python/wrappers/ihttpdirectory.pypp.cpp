@@ -10,8 +10,8 @@
 #include "httpsessionstate.h"
 #include "httpenumerateddirectorycallback.h"
 #include "httpdirectorycallback.h"
-#include "httpphysicaldirectory.h"
 #include "httprootdirectory.h"
+#include "httpphysicaldirectory.h"
 #include "httpvirtualdirectory.h"
 #include "ihttpdirectory.pypp.hpp"
 
@@ -409,10 +409,10 @@ void register_IHttpDirectory_class(){
         ::boost::python::implicitly_convertible< boost::shared_ptr< ::osiris::IHttpDirectory >, boost::shared_ptr< ::boost::noncopyable_::noncopyable > >();
         ::boost::python::implicitly_convertible< boost::shared_ptr< ::osiris::IHttpDirectory >, boost::shared_ptr< ::osiris::Object > >();
         ::boost::python::implicitly_convertible< boost::shared_ptr< ::osiris::IHttpDirectory >, boost::shared_ptr< ::osiris::enable_this_ptr< osiris::IHttpDirectory > > >();
-        ::boost::python::implicitly_convertible< boost::shared_ptr< ::osiris::HttpDirectoryCallback >, boost::shared_ptr< ::osiris::IHttpDirectory > >();
-        ::boost::python::implicitly_convertible< boost::shared_ptr< ::osiris::HttpPhysicalDirectory >, boost::shared_ptr< ::osiris::IHttpDirectory > >();
-        ::boost::python::implicitly_convertible< boost::shared_ptr< ::osiris::HttpEnumeratedDirectoryCallback >, boost::shared_ptr< ::osiris::IHttpDirectory > >();
         ::boost::python::implicitly_convertible< boost::shared_ptr< ::osiris::HttpRootDirectory >, boost::shared_ptr< ::osiris::IHttpDirectory > >();
+        ::boost::python::implicitly_convertible< boost::shared_ptr< ::osiris::HttpPhysicalDirectory >, boost::shared_ptr< ::osiris::IHttpDirectory > >();
+        ::boost::python::implicitly_convertible< boost::shared_ptr< ::osiris::HttpDirectoryCallback >, boost::shared_ptr< ::osiris::IHttpDirectory > >();
+        ::boost::python::implicitly_convertible< boost::shared_ptr< ::osiris::HttpEnumeratedDirectoryCallback >, boost::shared_ptr< ::osiris::IHttpDirectory > >();
         ::boost::python::implicitly_convertible< boost::shared_ptr< ::osiris::HttpVirtualDirectory >, boost::shared_ptr< ::osiris::IHttpDirectory > >();
     }
 

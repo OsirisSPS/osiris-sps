@@ -86,7 +86,8 @@ void LanguageSwitcherViewer::onSelect(IEvent *e)
 		if(account->getLanguage() != htmlEvent->get(0))
 		{
 			account->setLanguage(htmlEvent->get(0));
-			account->updateAccount(getDatabase());
+			IdeAccountsManager::instance()->save(account);
+			//account->updateAccount(getDatabase());
 			IdeAccountsManager::instance()->save(account);
 		}
 	}

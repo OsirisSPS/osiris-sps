@@ -71,6 +71,7 @@ void IdeButton::onInit()
 		root->setAttributeBool(_S("isDefault"), true);
 	if(hasID())
 		root->setAttributeString(_S("id"), getTarget());
+	root->setAttributeString(_S("icon_href"), m_iconHref);
 	root->setAttributeString(_S("caption"), m_caption);
 	root->setAttributeString(_S("href"), m_href.empty() ? getEventCommand(EVENT_ONCLICK) : m_href);
 	root->setAttributeString(_S("waitMessage"), m_waitMessage);

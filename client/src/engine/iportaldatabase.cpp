@@ -482,7 +482,7 @@ void IPortalDatabase::addToList(const String &sql, StringList &list, bool append
 	OS_ASSERT(result.columns() == 1);
 	for(uint32 r=0;r<result.rows();r++)
 	{
-		String value = *result.get(r,0);
+		String value = result.get(r,0);
 		list.push_back(value);
 	}
 }

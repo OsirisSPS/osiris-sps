@@ -47,11 +47,11 @@ Profile::Profile(shared_ptr<Portal> portal, shared_ptr<IPortalDatabase> database
 	if(result.hasRow(0))
 	{
 		// Estrae il punteggio
-		m_score.setValue(*result.get(0, _S("score")));
+		m_score.setValue(result.get(0, _S("score")));
 		// Estrae la descrizione
-		m_score.setDescription(*result.get(0, _S("description")));
+		m_score.setDescription(result.get(0, _S("description")));
 		// Estrae il follow
-		m_score.setFollow(*result.get(0, _S("follow")));
+		m_score.setFollow(result.get(0, _S("follow")));
 	}
 }
 

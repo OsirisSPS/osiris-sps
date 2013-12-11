@@ -421,7 +421,7 @@ void User::onPreRender()
 				String sql=String::format(_S("select r.author,r.score,r.description,r.submit_date from os_reputations r, os_snapshot_users u where r.score!=0 and u.visible=1 and r.author=u.id and r.reference='%S' order by u.score desc,r.score desc").c_str(), userId.toUTF16().c_str());
 				shared_ptr<IdeTableQuery> table_comments(OS_NEW IdeTableQuery());
 				table_comments->setSql(sql);
-				table_comments->setColumnType(0,IdeTableQuery::ctID);
+				table_comments->setColumnType(0,IdeTableQuery::ctUserID);
 				table_comments->setColumnType(1,IdeTableQuery::ctScore);
 				table_comments->setColumnType(2,IdeTableQuery::ctString);
 				table_comments->setColumnType(3,IdeTableQuery::ctLongDateTime);
@@ -440,7 +440,7 @@ void User::onPreRender()
 				String sql=String::format(_S("select r.reference,r.score,r.description,r.submit_date from os_reputations r, os_snapshot_users u where r.score!=0 and u.visible=1 and r.author='%S' and r.reference=u.id order by u.score desc,r.score desc").c_str(), userId.toUTF16().c_str());
 				shared_ptr<IdeTableQuery> table_comments(OS_NEW IdeTableQuery());
 				table_comments->setSql(sql);
-				table_comments->setColumnType(0,IdeTableQuery::ctID);
+				table_comments->setColumnType(0,IdeTableQuery::ctUserID);
 				table_comments->setColumnType(1,IdeTableQuery::ctScore);
 				table_comments->setColumnType(2,IdeTableQuery::ctString);
 				table_comments->setColumnType(3,IdeTableQuery::ctLongDateTime);

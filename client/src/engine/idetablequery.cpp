@@ -117,9 +117,17 @@ void IdeTableQuery::onPreRender()
 				{
 					node_column->setAttributeString(_S("type"), _S("score"));
 				} break;
-			case IdeTableQuery::ctID:
+			case IdeTableQuery::ctEntityID:
 				{
-					node_column->setAttributeString(_S("type"), _S("id"));
+					node_column->setAttributeString(_S("type"), _S("entity-id"));
+				} break;
+			case IdeTableQuery::ctObjectID:
+				{
+					node_column->setAttributeString(_S("type"), _S("object-id"));
+				} break;
+			case IdeTableQuery::ctUserID:
+				{
+					node_column->setAttributeString(_S("type"), _S("user-id"));
 				} break;
 			case IdeTableQuery::ctShortDateTime:
 				{
@@ -142,15 +150,34 @@ void IdeTableQuery::onPreRender()
 			{
 				shared_ptr<XMLNode> node_data_row_item = node_data_row->addChild(_S("item"));
 
-				String value = *result.get(r,c);
+				String value = result.get(r,c);
 
 				switch(getColumnType(c))
 				{
 				case IdeTableQuery::ctScore:
 					{
-						node_data_row_item->setAttributeString(_S("value"), String::format(_S("%1.1f").c_str(), double(*result.get(r,c))));
+						node_data_row_item->setAttributeString(_S("value"), String::format(_S("%1.1f").c_str(), double(result.get(r,c))));
 					} break;
-				case IdeTableQuery::ctID:
+				case IdeTableQuery::ctEntityID:
+					{
+						// Sbagliata
+						shared_ptr<XMLPortalExporter> exporter(OS_NEW XMLPortalExporter(node_data_row_item, getPage(), XMLPortalExporter::emLite));
+						shared_ptr<ObjectsIObject> object = getPage()->getObject(value.to_ascii());
+						if(object != null)
+						{
+							object->exportXML(exporter);
+						}
+					} break;
+				case IdeTableQuery::ctObjectID:
+					{
+						shared_ptr<XMLPortalExporter> exporter(OS_NEW XMLPortalExporter(node_data_row_item, getPage(), XMLPortalExporter::emLite));
+						shared_ptr<ObjectsIObject> object = getPage()->getObject(value.to_ascii());
+						if(object != null)
+						{
+							object->exportXML(exporter);
+						}
+					} break;
+				case IdeTableQuery::ctUserID:
 					{
 						shared_ptr<XMLPortalExporter> exporter(OS_NEW XMLPortalExporter(node_data_row_item, getPage(), XMLPortalExporter::emLite));
 						shared_ptr<ObjectsIObject> object = getPage()->getObject(value.to_ascii());

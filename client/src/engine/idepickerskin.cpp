@@ -134,6 +134,7 @@ void IdePickerSkin::addSkin(shared_ptr<IdeSkin> skin)
 	//getControls()->add(shared_ptr<IHtmlControl>(OS_NEW HtmlLiteral(html)));
 
 	shared_ptr<XMLNode> nodeSkin = m_nodeRoot->addChild(_S("skin"));
+	nodeSkin->setAttributeString(_S("group"), getTarget());
 	nodeSkin->setAttributeString(_S("id"), skinID);
 	nodeSkin->setAttributeString(_S("key"), getKey(skinID));
 	nodeSkin->setAttributeString(_S("href"), getKeyHref(skinID));

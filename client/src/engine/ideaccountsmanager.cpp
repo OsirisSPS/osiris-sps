@@ -51,7 +51,7 @@ IdeAccountsManager::IdeAccountsManager()
 
 	for(uint32 r = 0; r < result.rows(); r++)
 	{
-		_load(connection, *result.get(r, DBTABLES::ACCOUNTS::ID));
+		_load(connection, result.get(r, DBTABLES::ACCOUNTS::ID));
 	}	
 }
 
