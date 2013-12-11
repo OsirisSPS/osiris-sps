@@ -16,13 +16,13 @@
 #include "httprequest.h"
 #include "httpresponse.h"
 #include "httpsession.h"
-#include "idetablequery.h"
-#include "idesearchglobalparams.h"
-#include "ideassistant.h"
-#include "idesearchquery.h"
 #include "idepickerobjectex.h"
 #include "idemailbox.h"
 #include "idesearchresults.h"
+#include "idetablequery.h"
+#include "idesearchglobalparams.h"
+#include "idesearchquery.h"
+#include "ideassistant.h"
 #include "iportalpagexslrendererhtmlcontrol.pypp.hpp"
 
 namespace bp = boost::python;

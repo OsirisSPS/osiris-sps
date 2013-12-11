@@ -14,79 +14,79 @@
 #include "httprequest.h"
 #include "httpresponse.h"
 #include "httpsession.h"
+#include "htmloption.h"
+#include "htmlimage.h"
+#include "htmlscript.h"
+#include "ihtmlinput.h"
+#include "htmlcheckbox.h"
+#include "htmlfilebrowser.h"
+#include "htmltextbox.h"
+#include "idepickerbool.h"
+#include "htmlpanel.h"
+#include "htmldiv.h"
+#include "htmltooltip.h"
+#include "htmlpager.h"
+#include "htmlpopup.h"
+#include "idepickerculture.h"
+#include "idepickerselect.h"
+#include "idepickerskin.h"
+#include "idepickercomponent.h"
+#include "idepickersections.h"
+#include "extensionsmodulecontrol.h"
+#include "extensionsmoduleeditor.h"
+#include "extensionsmoduleviewer.h"
+#include "extensionsinvalidmodule.h"
+#include "extensionsmoduleviewerhidden.h"
+#include "extensionscomponentcontrol.h"
+#include "extensionscomponenteditor.h"
+#include "extensionscomponentviewer.h"
+#include "extensionsinvalidcomponent.h"
+#include "idepositioneditor.h"
+#include "idesearchparam.h"
+#include "htmltabpage.h"
+#include "htmltab.h"
+#include "htmlroller.h"
 #include "htmllinkbutton.h"
 #include "ihtmlselect.h"
-#include "htmllistbox.h"
 #include "htmlcombobox.h"
+#include "htmllistbox.h"
+#include "htmllink.h"
+#include "htmltablerow.h"
+#include "htmltextarea.h"
 #include "htmlpage.h"
 #include "iidepage.h"
 #include "iideportalpage.h"
 #include "iidemainpage.h"
 #include "htmlliteral.h"
-#include "htmlimage.h"
-#include "htmltextarea.h"
 #include "htmlbr.h"
-#include "htmltablerow.h"
 #include "htmltabctrl.h"
-#include "htmlparagraph.h"
-#include "htmlspace.h"
-#include "htmltable.h"
-#include "htmloptiongroup.h"
-#include "htmlspan.h"
-#include "htmlpanel.h"
-#include "htmllink.h"
-#include "htmltext.h"
 #include "htmltablecell.h"
 #include "htmltableheader.h"
-#include "idepickerobject.h"
-#include "idehelpbox.h"
-#include "idebutton.h"
-#include "ideomleditor.h"
-#include "ideblock.h"
-#include "idepickerdatetime.h"
+#include "htmlparagraph.h"
+#include "htmlspace.h"
 #include "idepickernumber.h"
+#include "idepickerobject.h"
+#include "ideblock.h"
+#include "ideomleditor.h"
+#include "idebutton.h"
+#include "idehelpbox.h"
+#include "idepickerdatetime.h"
 #include "idepickerdatetimespecial.h"
-#include "idetablequery.h"
-#include "idesearchglobalparams.h"
-#include "ideassistant.h"
-#include "idesearchquery.h"
+#include "idepickercolor.h"
+#include "idevoteeditor.h"
 #include "idepickerobjectex.h"
 #include "idemailbox.h"
 #include "idesearchresults.h"
-#include "idevoteeditor.h"
-#include "idepickercolor.h"
-#include "htmloption.h"
+#include "idetablequery.h"
+#include "idesearchglobalparams.h"
+#include "idesearchquery.h"
+#include "ideassistant.h"
+#include "htmltable.h"
+#include "htmloptiongroup.h"
 #include "htmlxslcontrol.h"
+#include "htmlspan.h"
 #include "htmlbutton.h"
-#include "htmldiv.h"
-#include "htmltab.h"
-#include "htmltooltip.h"
-#include "htmlpopup.h"
-#include "htmlroller.h"
-#include "idepickerselect.h"
-#include "idepickercomponent.h"
-#include "idepickersections.h"
-#include "idepickerskin.h"
-#include "idepositioneditor.h"
-#include "idesearchparam.h"
-#include "extensionsmodulecontrol.h"
-#include "extensionsmoduleviewer.h"
-#include "extensionsinvalidmodule.h"
-#include "extensionsmoduleviewerhidden.h"
-#include "extensionsmoduleeditor.h"
-#include "extensionscomponentcontrol.h"
-#include "extensionscomponenteditor.h"
-#include "extensionscomponentviewer.h"
-#include "extensionsinvalidcomponent.h"
-#include "idepickerculture.h"
-#include "htmltabpage.h"
-#include "htmlpager.h"
-#include "ihtmlinput.h"
-#include "htmlfilebrowser.h"
-#include "htmlcheckbox.h"
-#include "idepickerbool.h"
-#include "htmltextbox.h"
-#include "htmlscript.h"
+#include "htmltext.h"
 #include "ihtmlcontrol.pypp.hpp"
 
 namespace bp = boost::python;
@@ -1229,86 +1229,86 @@ void register_IHtmlControl_class(){
         ::boost::python::implicitly_convertible< boost::shared_ptr< ::osiris::IHtmlControl >, boost::shared_ptr< ::boost::signals::trackable > >();
         ::boost::python::implicitly_convertible< boost::shared_ptr< ::osiris::IHtmlControl >, boost::shared_ptr< ::osiris::enable_this_ptr< osiris::IHtmlControl > > >();
         ::boost::python::implicitly_convertible< boost::shared_ptr< ::osiris::IHtmlControl >, boost::shared_ptr< ::osiris::Object > >();
+        ::boost::python::implicitly_convertible< boost::shared_ptr< ::osiris::HtmlOption >, boost::shared_ptr< ::osiris::IHtmlControl > >();
+        ::boost::python::implicitly_convertible< boost::shared_ptr< ::osiris::HtmlImage >, boost::shared_ptr< ::osiris::IHtmlControl > >();
+        ::boost::python::implicitly_convertible< boost::shared_ptr< ::osiris::HtmlScript >, boost::shared_ptr< ::osiris::IHtmlControl > >();
+        ::boost::python::implicitly_convertible< boost::shared_ptr< ::osiris::IHtmlInput >, boost::shared_ptr< ::osiris::IHtmlControl > >();
+        ::boost::python::implicitly_convertible< boost::shared_ptr< ::osiris::HtmlCheckBox >, boost::shared_ptr< ::osiris::IHtmlControl > >();
+        ::boost::python::implicitly_convertible< boost::shared_ptr< ::osiris::HtmlFileBrowser >, boost::shared_ptr< ::osiris::IHtmlControl > >();
+        ::boost::python::implicitly_convertible< boost::shared_ptr< ::osiris::HtmlTextBox >, boost::shared_ptr< ::osiris::IHtmlControl > >();
+        ::boost::python::implicitly_convertible< boost::shared_ptr< ::osiris::IdePickerBool >, boost::shared_ptr< ::osiris::IHtmlControl > >();
+        ::boost::python::implicitly_convertible< boost::shared_ptr< ::osiris::HtmlPanel >, boost::shared_ptr< ::osiris::IHtmlControl > >();
+        ::boost::python::implicitly_convertible< boost::shared_ptr< ::osiris::HtmlDiv >, boost::shared_ptr< ::osiris::IHtmlControl > >();
+        ::boost::python::implicitly_convertible< boost::shared_ptr< ::osiris::HtmlTooltip >, boost::shared_ptr< ::osiris::IHtmlControl > >();
+        ::boost::python::implicitly_convertible< boost::shared_ptr< ::osiris::HtmlPager >, boost::shared_ptr< ::osiris::IHtmlControl > >();
+        ::boost::python::implicitly_convertible< boost::shared_ptr< ::osiris::HtmlPopup >, boost::shared_ptr< ::osiris::IHtmlControl > >();
+        ::boost::python::implicitly_convertible< boost::shared_ptr< ::osiris::IPageControl< osiris::HtmlDiv > >, boost::shared_ptr< ::osiris::IHtmlControl > >();
+        ::boost::python::implicitly_convertible< boost::shared_ptr< ::osiris::IdePickerCulture >, boost::shared_ptr< ::osiris::IHtmlControl > >();
+        ::boost::python::implicitly_convertible< boost::shared_ptr< ::osiris::IdePickerSelect >, boost::shared_ptr< ::osiris::IHtmlControl > >();
+        ::boost::python::implicitly_convertible< boost::shared_ptr< ::osiris::IdePickerSkin >, boost::shared_ptr< ::osiris::IHtmlControl > >();
+        ::boost::python::implicitly_convertible< boost::shared_ptr< ::osiris::IdePickerComponent >, boost::shared_ptr< ::osiris::IHtmlControl > >();
+        ::boost::python::implicitly_convertible< boost::shared_ptr< ::osiris::IdePickerSections >, boost::shared_ptr< ::osiris::IHtmlControl > >();
+        ::boost::python::implicitly_convertible< boost::shared_ptr< ::osiris::IPortalPageControl< osiris::HtmlDiv > >, boost::shared_ptr< ::osiris::IHtmlControl > >();
+        ::boost::python::implicitly_convertible< boost::shared_ptr< ::osiris::ExtensionsModuleControl >, boost::shared_ptr< ::osiris::IHtmlControl > >();
+        ::boost::python::implicitly_convertible< boost::shared_ptr< ::osiris::ExtensionsModuleEditor >, boost::shared_ptr< ::osiris::IHtmlControl > >();
+        ::boost::python::implicitly_convertible< boost::shared_ptr< ::osiris::ExtensionsModuleViewer >, boost::shared_ptr< ::osiris::IHtmlControl > >();
+        ::boost::python::implicitly_convertible< boost::shared_ptr< ::osiris::ExtensionsInvalidModule >, boost::shared_ptr< ::osiris::IHtmlControl > >();
+        ::boost::python::implicitly_convertible< boost::shared_ptr< ::osiris::ExtensionsModuleViewerHidden >, boost::shared_ptr< ::osiris::IHtmlControl > >();
+        ::boost::python::implicitly_convertible< boost::shared_ptr< ::osiris::ExtensionsComponentControl >, boost::shared_ptr< ::osiris::IHtmlControl > >();
+        ::boost::python::implicitly_convertible< boost::shared_ptr< ::osiris::ExtensionsComponentEditor >, boost::shared_ptr< ::osiris::IHtmlControl > >();
+        ::boost::python::implicitly_convertible< boost::shared_ptr< ::osiris::ExtensionsComponentViewer >, boost::shared_ptr< ::osiris::IHtmlControl > >();
+        ::boost::python::implicitly_convertible< boost::shared_ptr< ::osiris::ExtensionsInvalidComponent >, boost::shared_ptr< ::osiris::IHtmlControl > >();
+        ::boost::python::implicitly_convertible< boost::shared_ptr< ::osiris::IdePositionEditor >, boost::shared_ptr< ::osiris::IHtmlControl > >();
+        ::boost::python::implicitly_convertible< boost::shared_ptr< ::osiris::IdeSearchParam >, boost::shared_ptr< ::osiris::IHtmlControl > >();
+        ::boost::python::implicitly_convertible< boost::shared_ptr< ::osiris::HtmlTabPage >, boost::shared_ptr< ::osiris::IHtmlControl > >();
+        ::boost::python::implicitly_convertible< boost::shared_ptr< ::osiris::HtmlTab >, boost::shared_ptr< ::osiris::IHtmlControl > >();
+        ::boost::python::implicitly_convertible< boost::shared_ptr< ::osiris::HtmlRoller >, boost::shared_ptr< ::osiris::IHtmlControl > >();
         ::boost::python::implicitly_convertible< boost::shared_ptr< ::osiris::HtmlLinkButton >, boost::shared_ptr< ::osiris::IHtmlControl > >();
         ::boost::python::implicitly_convertible< boost::shared_ptr< ::osiris::IHtmlSelect >, boost::shared_ptr< ::osiris::IHtmlControl > >();
-        ::boost::python::implicitly_convertible< boost::shared_ptr< ::osiris::HtmlListBox >, boost::shared_ptr< ::osiris::IHtmlControl > >();
         ::boost::python::implicitly_convertible< boost::shared_ptr< ::osiris::HtmlComboBox >, boost::shared_ptr< ::osiris::IHtmlControl > >();
+        ::boost::python::implicitly_convertible< boost::shared_ptr< ::osiris::HtmlListBox >, boost::shared_ptr< ::osiris::IHtmlControl > >();
+        ::boost::python::implicitly_convertible< boost::shared_ptr< ::osiris::HtmlLink >, boost::shared_ptr< ::osiris::IHtmlControl > >();
+        ::boost::python::implicitly_convertible< boost::shared_ptr< ::osiris::HtmlTableRow >, boost::shared_ptr< ::osiris::IHtmlControl > >();
+        ::boost::python::implicitly_convertible< boost::shared_ptr< ::osiris::HtmlTextArea >, boost::shared_ptr< ::osiris::IHtmlControl > >();
         ::boost::python::implicitly_convertible< boost::shared_ptr< ::osiris::HtmlPage >, boost::shared_ptr< ::osiris::IHtmlControl > >();
         ::boost::python::implicitly_convertible< boost::shared_ptr< ::osiris::IPage >, boost::shared_ptr< ::osiris::IHtmlControl > >();
         ::boost::python::implicitly_convertible< boost::shared_ptr< ::osiris::IPortalPage >, boost::shared_ptr< ::osiris::IHtmlControl > >();
         ::boost::python::implicitly_convertible< boost::shared_ptr< ::osiris::IMainPage >, boost::shared_ptr< ::osiris::IHtmlControl > >();
         ::boost::python::implicitly_convertible< boost::shared_ptr< ::osiris::HtmlVirtualPage< osiris::IMainPage > >, boost::shared_ptr< ::osiris::IHtmlControl > >();
         ::boost::python::implicitly_convertible< boost::shared_ptr< ::osiris::HtmlLiteral >, boost::shared_ptr< ::osiris::IHtmlControl > >();
-        ::boost::python::implicitly_convertible< boost::shared_ptr< ::osiris::HtmlImage >, boost::shared_ptr< ::osiris::IHtmlControl > >();
-        ::boost::python::implicitly_convertible< boost::shared_ptr< ::osiris::HtmlTextArea >, boost::shared_ptr< ::osiris::IHtmlControl > >();
         ::boost::python::implicitly_convertible< boost::shared_ptr< ::osiris::HtmlBR >, boost::shared_ptr< ::osiris::IHtmlControl > >();
-        ::boost::python::implicitly_convertible< boost::shared_ptr< ::osiris::HtmlTableRow >, boost::shared_ptr< ::osiris::IHtmlControl > >();
         ::boost::python::implicitly_convertible< boost::shared_ptr< ::osiris::HtmlTabCtrl >, boost::shared_ptr< ::osiris::IHtmlControl > >();
-        ::boost::python::implicitly_convertible< boost::shared_ptr< ::osiris::HtmlParagraph >, boost::shared_ptr< ::osiris::IHtmlControl > >();
-        ::boost::python::implicitly_convertible< boost::shared_ptr< ::osiris::HtmlSpace >, boost::shared_ptr< ::osiris::IHtmlControl > >();
-        ::boost::python::implicitly_convertible< boost::shared_ptr< ::osiris::HtmlTable >, boost::shared_ptr< ::osiris::IHtmlControl > >();
-        ::boost::python::implicitly_convertible< boost::shared_ptr< ::osiris::HtmlOptionGroup >, boost::shared_ptr< ::osiris::IHtmlControl > >();
-        ::boost::python::implicitly_convertible< boost::shared_ptr< ::osiris::HtmlSpan >, boost::shared_ptr< ::osiris::IHtmlControl > >();
-        ::boost::python::implicitly_convertible< boost::shared_ptr< ::osiris::HtmlPanel >, boost::shared_ptr< ::osiris::IHtmlControl > >();
-        ::boost::python::implicitly_convertible< boost::shared_ptr< ::osiris::HtmlLink >, boost::shared_ptr< ::osiris::IHtmlControl > >();
-        ::boost::python::implicitly_convertible< boost::shared_ptr< ::osiris::HtmlText >, boost::shared_ptr< ::osiris::IHtmlControl > >();
         ::boost::python::implicitly_convertible< boost::shared_ptr< ::osiris::HtmlTableCell >, boost::shared_ptr< ::osiris::IHtmlControl > >();
         ::boost::python::implicitly_convertible< boost::shared_ptr< ::osiris::HtmlTableHeader >, boost::shared_ptr< ::osiris::IHtmlControl > >();
+        ::boost::python::implicitly_convertible< boost::shared_ptr< ::osiris::HtmlParagraph >, boost::shared_ptr< ::osiris::IHtmlControl > >();
+        ::boost::python::implicitly_convertible< boost::shared_ptr< ::osiris::HtmlSpace >, boost::shared_ptr< ::osiris::IHtmlControl > >();
         ::boost::python::implicitly_convertible< boost::shared_ptr< ::osiris::IPageControl< osiris::IHtmlControl > >, boost::shared_ptr< ::osiris::IHtmlControl > >();
+        ::boost::python::implicitly_convertible< boost::shared_ptr< ::osiris::IdePickerNumber >, boost::shared_ptr< ::osiris::IHtmlControl > >();
         ::boost::python::implicitly_convertible< boost::shared_ptr< ::osiris::IdePickerObject >, boost::shared_ptr< ::osiris::IHtmlControl > >();
         ::boost::python::implicitly_convertible< boost::shared_ptr< ::osiris::IXSLRenderer< osiris::IPageControl< osiris::IHtmlControl > > >, boost::shared_ptr< ::osiris::IHtmlControl > >();
-        ::boost::python::implicitly_convertible< boost::shared_ptr< ::osiris::IdeHelpBox >, boost::shared_ptr< ::osiris::IHtmlControl > >();
-        ::boost::python::implicitly_convertible< boost::shared_ptr< ::osiris::IdeButton >, boost::shared_ptr< ::osiris::IHtmlControl > >();
-        ::boost::python::implicitly_convertible< boost::shared_ptr< ::osiris::IdeOMLEditor >, boost::shared_ptr< ::osiris::IHtmlControl > >();
         ::boost::python::implicitly_convertible< boost::shared_ptr< ::osiris::IdeBlock >, boost::shared_ptr< ::osiris::IHtmlControl > >();
+        ::boost::python::implicitly_convertible< boost::shared_ptr< ::osiris::IdeOMLEditor >, boost::shared_ptr< ::osiris::IHtmlControl > >();
+        ::boost::python::implicitly_convertible< boost::shared_ptr< ::osiris::IdeButton >, boost::shared_ptr< ::osiris::IHtmlControl > >();
+        ::boost::python::implicitly_convertible< boost::shared_ptr< ::osiris::IdeHelpBox >, boost::shared_ptr< ::osiris::IHtmlControl > >();
         ::boost::python::implicitly_convertible< boost::shared_ptr< ::osiris::IdePickerDateTime >, boost::shared_ptr< ::osiris::IHtmlControl > >();
-        ::boost::python::implicitly_convertible< boost::shared_ptr< ::osiris::IdePickerNumber >, boost::shared_ptr< ::osiris::IHtmlControl > >();
         ::boost::python::implicitly_convertible< boost::shared_ptr< ::osiris::IdePickerDateTimeSpecial >, boost::shared_ptr< ::osiris::IHtmlControl > >();
+        ::boost::python::implicitly_convertible< boost::shared_ptr< ::osiris::IdePickerColor >, boost::shared_ptr< ::osiris::IHtmlControl > >();
         ::boost::python::implicitly_convertible< boost::shared_ptr< ::osiris::IPortalPageControl< osiris::IHtmlControl > >, boost::shared_ptr< ::osiris::IHtmlControl > >();
+        ::boost::python::implicitly_convertible< boost::shared_ptr< ::osiris::IdeVoteEditor >, boost::shared_ptr< ::osiris::IHtmlControl > >();
         ::boost::python::implicitly_convertible< boost::shared_ptr< ::osiris::IXSLRenderer< osiris::IPortalPageControl< osiris::IHtmlControl > > >, boost::shared_ptr< ::osiris::IHtmlControl > >();
-        ::boost::python::implicitly_convertible< boost::shared_ptr< ::osiris::IdeTableQuery >, boost::shared_ptr< ::osiris::IHtmlControl > >();
-        ::boost::python::implicitly_convertible< boost::shared_ptr< ::osiris::IdeSearchGlobalParams >, boost::shared_ptr< ::osiris::IHtmlControl > >();
-        ::boost::python::implicitly_convertible< boost::shared_ptr< ::osiris::IdeAssistant >, boost::shared_ptr< ::osiris::IHtmlControl > >();
-        ::boost::python::implicitly_convertible< boost::shared_ptr< ::osiris::IdeSearchQuery >, boost::shared_ptr< ::osiris::IHtmlControl > >();
         ::boost::python::implicitly_convertible< boost::shared_ptr< ::osiris::IdePickerObjectEx >, boost::shared_ptr< ::osiris::IHtmlControl > >();
         ::boost::python::implicitly_convertible< boost::shared_ptr< ::osiris::IdeMailBox >, boost::shared_ptr< ::osiris::IHtmlControl > >();
         ::boost::python::implicitly_convertible< boost::shared_ptr< ::osiris::IdeSearchResults >, boost::shared_ptr< ::osiris::IHtmlControl > >();
-        ::boost::python::implicitly_convertible< boost::shared_ptr< ::osiris::IdeVoteEditor >, boost::shared_ptr< ::osiris::IHtmlControl > >();
-        ::boost::python::implicitly_convertible< boost::shared_ptr< ::osiris::IdePickerColor >, boost::shared_ptr< ::osiris::IHtmlControl > >();
-        ::boost::python::implicitly_convertible< boost::shared_ptr< ::osiris::HtmlOption >, boost::shared_ptr< ::osiris::IHtmlControl > >();
+        ::boost::python::implicitly_convertible< boost::shared_ptr< ::osiris::IdeTableQuery >, boost::shared_ptr< ::osiris::IHtmlControl > >();
+        ::boost::python::implicitly_convertible< boost::shared_ptr< ::osiris::IdeSearchGlobalParams >, boost::shared_ptr< ::osiris::IHtmlControl > >();
+        ::boost::python::implicitly_convertible< boost::shared_ptr< ::osiris::IdeSearchQuery >, boost::shared_ptr< ::osiris::IHtmlControl > >();
+        ::boost::python::implicitly_convertible< boost::shared_ptr< ::osiris::IdeAssistant >, boost::shared_ptr< ::osiris::IHtmlControl > >();
+        ::boost::python::implicitly_convertible< boost::shared_ptr< ::osiris::HtmlTable >, boost::shared_ptr< ::osiris::IHtmlControl > >();
+        ::boost::python::implicitly_convertible< boost::shared_ptr< ::osiris::HtmlOptionGroup >, boost::shared_ptr< ::osiris::IHtmlControl > >();
         ::boost::python::implicitly_convertible< boost::shared_ptr< ::osiris::HtmlXSLControl >, boost::shared_ptr< ::osiris::IHtmlControl > >();
+        ::boost::python::implicitly_convertible< boost::shared_ptr< ::osiris::HtmlSpan >, boost::shared_ptr< ::osiris::IHtmlControl > >();
         ::boost::python::implicitly_convertible< boost::shared_ptr< ::osiris::HtmlButton >, boost::shared_ptr< ::osiris::IHtmlControl > >();
-        ::boost::python::implicitly_convertible< boost::shared_ptr< ::osiris::HtmlDiv >, boost::shared_ptr< ::osiris::IHtmlControl > >();
-        ::boost::python::implicitly_convertible< boost::shared_ptr< ::osiris::HtmlTab >, boost::shared_ptr< ::osiris::IHtmlControl > >();
-        ::boost::python::implicitly_convertible< boost::shared_ptr< ::osiris::HtmlTooltip >, boost::shared_ptr< ::osiris::IHtmlControl > >();
-        ::boost::python::implicitly_convertible< boost::shared_ptr< ::osiris::HtmlPopup >, boost::shared_ptr< ::osiris::IHtmlControl > >();
-        ::boost::python::implicitly_convertible< boost::shared_ptr< ::osiris::HtmlRoller >, boost::shared_ptr< ::osiris::IHtmlControl > >();
-        ::boost::python::implicitly_convertible< boost::shared_ptr< ::osiris::IPageControl< osiris::HtmlDiv > >, boost::shared_ptr< ::osiris::IHtmlControl > >();
-        ::boost::python::implicitly_convertible< boost::shared_ptr< ::osiris::IdePickerSelect >, boost::shared_ptr< ::osiris::IHtmlControl > >();
-        ::boost::python::implicitly_convertible< boost::shared_ptr< ::osiris::IdePickerComponent >, boost::shared_ptr< ::osiris::IHtmlControl > >();
-        ::boost::python::implicitly_convertible< boost::shared_ptr< ::osiris::IdePickerSections >, boost::shared_ptr< ::osiris::IHtmlControl > >();
-        ::boost::python::implicitly_convertible< boost::shared_ptr< ::osiris::IdePickerSkin >, boost::shared_ptr< ::osiris::IHtmlControl > >();
-        ::boost::python::implicitly_convertible< boost::shared_ptr< ::osiris::IPortalPageControl< osiris::HtmlDiv > >, boost::shared_ptr< ::osiris::IHtmlControl > >();
-        ::boost::python::implicitly_convertible< boost::shared_ptr< ::osiris::IdePositionEditor >, boost::shared_ptr< ::osiris::IHtmlControl > >();
-        ::boost::python::implicitly_convertible< boost::shared_ptr< ::osiris::IdeSearchParam >, boost::shared_ptr< ::osiris::IHtmlControl > >();
-        ::boost::python::implicitly_convertible< boost::shared_ptr< ::osiris::ExtensionsModuleControl >, boost::shared_ptr< ::osiris::IHtmlControl > >();
-        ::boost::python::implicitly_convertible< boost::shared_ptr< ::osiris::ExtensionsModuleViewer >, boost::shared_ptr< ::osiris::IHtmlControl > >();
-        ::boost::python::implicitly_convertible< boost::shared_ptr< ::osiris::ExtensionsInvalidModule >, boost::shared_ptr< ::osiris::IHtmlControl > >();
-        ::boost::python::implicitly_convertible< boost::shared_ptr< ::osiris::ExtensionsModuleViewerHidden >, boost::shared_ptr< ::osiris::IHtmlControl > >();
-        ::boost::python::implicitly_convertible< boost::shared_ptr< ::osiris::ExtensionsModuleEditor >, boost::shared_ptr< ::osiris::IHtmlControl > >();
-        ::boost::python::implicitly_convertible< boost::shared_ptr< ::osiris::ExtensionsComponentControl >, boost::shared_ptr< ::osiris::IHtmlControl > >();
-        ::boost::python::implicitly_convertible< boost::shared_ptr< ::osiris::ExtensionsComponentEditor >, boost::shared_ptr< ::osiris::IHtmlControl > >();
-        ::boost::python::implicitly_convertible< boost::shared_ptr< ::osiris::ExtensionsComponentViewer >, boost::shared_ptr< ::osiris::IHtmlControl > >();
-        ::boost::python::implicitly_convertible< boost::shared_ptr< ::osiris::ExtensionsInvalidComponent >, boost::shared_ptr< ::osiris::IHtmlControl > >();
-        ::boost::python::implicitly_convertible< boost::shared_ptr< ::osiris::IdePickerCulture >, boost::shared_ptr< ::osiris::IHtmlControl > >();
-        ::boost::python::implicitly_convertible< boost::shared_ptr< ::osiris::HtmlTabPage >, boost::shared_ptr< ::osiris::IHtmlControl > >();
-        ::boost::python::implicitly_convertible< boost::shared_ptr< ::osiris::HtmlPager >, boost::shared_ptr< ::osiris::IHtmlControl > >();
-        ::boost::python::implicitly_convertible< boost::shared_ptr< ::osiris::IHtmlInput >, boost::shared_ptr< ::osiris::IHtmlControl > >();
-        ::boost::python::implicitly_convertible< boost::shared_ptr< ::osiris::HtmlFileBrowser >, boost::shared_ptr< ::osiris::IHtmlControl > >();
-        ::boost::python::implicitly_convertible< boost::shared_ptr< ::osiris::HtmlCheckBox >, boost::shared_ptr< ::osiris::IHtmlControl > >();
-        ::boost::python::implicitly_convertible< boost::shared_ptr< ::osiris::IdePickerBool >, boost::shared_ptr< ::osiris::IHtmlControl > >();
-        ::boost::python::implicitly_convertible< boost::shared_ptr< ::osiris::HtmlTextBox >, boost::shared_ptr< ::osiris::IHtmlControl > >();
-        ::boost::python::implicitly_convertible< boost::shared_ptr< ::osiris::HtmlScript >, boost::shared_ptr< ::osiris::IHtmlControl > >();
+        ::boost::python::implicitly_convertible< boost::shared_ptr< ::osiris::HtmlText >, boost::shared_ptr< ::osiris::IHtmlControl > >();
     }
 
 }

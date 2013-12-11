@@ -6,10 +6,10 @@
 #include "__call_policies.pypp.hpp"
 #include "ijob.h"
 #include "ibackgroundjob.h"
-#include "mainaddonsjob.h"
 #include "iportalbackgroundjob.h"
 #include "portalsimporterjob.h"
 #include "portalsstabilityjob.h"
+#include "mainaddonsjob.h"
 #include "ijob.pypp.hpp"
 
 namespace bp = boost::python;
