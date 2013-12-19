@@ -102,14 +102,6 @@ static boost::python::object getLastSyncDate_1aab12267e68f12350c9cbcf1db806fb( :
     __pythreadSaver.restore();
     return boost::python::object( result );
 }
-/*
-static boost::python::object getLastCheckingDate_bd48dad60a22c77c0203afb357d05767( ::osiris::PortalOptions const & inst ){
-    ::osiris::PythonThreadSaver __pythreadSaver;
-    ::osiris::DateTime result = inst.getLastCheckingDate();
-    __pythreadSaver.restore();
-    return boost::python::object( result );
-}
-*/
 
 static boost::python::object getLastStabilizationDate_ac00d811df94bd1c66a1f495749cc2f0( ::osiris::PortalOptions const & inst ){
     ::osiris::PythonThreadSaver __pythreadSaver;
@@ -131,9 +123,9 @@ static void resetAlignmentHash_39e4f4114d731029de6d97ea246b9ce1( ::osiris::Porta
     __pythreadSaver.restore();
 }
 
-static void updateAlignmentHash_0a9b68391eb95d9e2d9299799de7e62d( ::osiris::PortalOptions & inst, ::osiris::UniqueID const & id, bool add ){
+static void updateAlignmentHash_e194461b139e2edc6d679fdec08d7c41( ::osiris::PortalOptions & inst, ::osiris::UniqueID const & id, ::osiris::DateTime const & submitDate, bool add ){
     ::osiris::PythonThreadSaver __pythreadSaver;
-    inst.updateAlignmentHash(id, add);
+    inst.updateAlignmentHash(id, submitDate, add);
     __pythreadSaver.restore();
 }
 
@@ -340,13 +332,6 @@ static void setExchangeEnabled_fd5dd5d19fa0346d8985ce318ec72507( ::osiris::Porta
     inst.setExchangeEnabled(exchangeEnabled);
     __pythreadSaver.restore();
 }
-/*
-static void setLastCheckingDate_2790c2b4a8fbbacbb1a800e3bb49de51( ::osiris::PortalOptions & inst, ::osiris::DateTime const & lastCheckingDate ){
-    ::osiris::PythonThreadSaver __pythreadSaver;
-    inst.setLastCheckingDate(lastCheckingDate);
-    __pythreadSaver.restore();
-}
-*/
 
 static void setLastExchangedObject_7294c5f4b02af64aa9632cad245505ef( ::osiris::PortalOptions & inst, ::osiris::UniqueID const & lastExchangedObject ){
     ::osiris::PythonThreadSaver __pythreadSaver;
@@ -454,7 +439,7 @@ void register_PortalOptions_class(){
             .def_readonly( "database_version", ::osiris::PortalOptions::options::database_version )    
             .def_readonly( "deleted", ::osiris::PortalOptions::options::deleted )    
             .def_readonly( "exchange_enabled", ::osiris::PortalOptions::options::exchange_enabled )    
-            //.def_readonly( "last_checking_date", ::osiris::PortalOptions::options::last_checking_date )    
+            .def_readonly( "last_checking_date", ::osiris::PortalOptions::options::last_checking_date )    
             .def_readonly( "last_downloaded_object_date", ::osiris::PortalOptions::options::last_downloaded_object_date )    
             .def_readonly( "last_exchange_date", ::osiris::PortalOptions::options::last_exchange_date )    
             .def_readonly( "last_exchanged_object", ::osiris::PortalOptions::options::last_exchanged_object )    
@@ -589,17 +574,6 @@ void register_PortalOptions_class(){
                 , getLastSyncDate_function_type( &getLastSyncDate_1aab12267e68f12350c9cbcf1db806fb ) );
         
         }
-		/*
-        { //::osiris::PortalOptions::getLastCheckingDate
-        
-            typedef boost::python::object ( *getLastCheckingDate_function_type )( ::osiris::PortalOptions const & );
-            
-            PortalOptions_exposer.def( 
-                "getLastCheckingDate"
-                , getLastCheckingDate_function_type( &getLastCheckingDate_bd48dad60a22c77c0203afb357d05767 ) );
-        
-        }
-		*/
         { //::osiris::PortalOptions::getLastStabilizationDate
         
             typedef boost::python::object ( *getLastStabilizationDate_function_type )( ::osiris::PortalOptions const & );
@@ -629,12 +603,12 @@ void register_PortalOptions_class(){
         }
         { //::osiris::PortalOptions::updateAlignmentHash
         
-            typedef void ( *updateAlignmentHash_function_type )( ::osiris::PortalOptions &,::osiris::UniqueID const &,bool );
+            typedef void ( *updateAlignmentHash_function_type )( ::osiris::PortalOptions &,::osiris::UniqueID const &,::osiris::DateTime const &,bool );
             
             PortalOptions_exposer.def( 
                 "updateAlignmentHash"
-                , updateAlignmentHash_function_type( &updateAlignmentHash_0a9b68391eb95d9e2d9299799de7e62d )
-                , ( ::boost::python::arg("inst"), ::boost::python::arg("id"), ::boost::python::arg("add") ) );
+                , updateAlignmentHash_function_type( &updateAlignmentHash_e194461b139e2edc6d679fdec08d7c41 )
+                , ( ::boost::python::arg("inst"), ::boost::python::arg("id"), ::boost::python::arg("submitDate"), ::boost::python::arg("add") ) );
         
         }
         { //::osiris::PortalOptions::getLastExchangedObject
@@ -930,18 +904,6 @@ void register_PortalOptions_class(){
                 , ( ::boost::python::arg("inst"), ::boost::python::arg("exchangeEnabled") ) );
         
         }
-		/*
-        { //::osiris::PortalOptions::setLastCheckingDate
-        
-            typedef void ( *setLastCheckingDate_function_type )( ::osiris::PortalOptions &,::osiris::DateTime const & );
-            
-            PortalOptions_exposer.def( 
-                "setLastCheckingDate"
-                , setLastCheckingDate_function_type( &setLastCheckingDate_2790c2b4a8fbbacbb1a800e3bb49de51 )
-                , ( ::boost::python::arg("inst"), ::boost::python::arg("lastCheckingDate") ) );
-        
-        }
-		*/
         { //::osiris::PortalOptions::setLastExchangedObject
         
             typedef void ( *setLastExchangedObject_function_type )( ::osiris::PortalOptions &,::osiris::UniqueID const & );
@@ -1260,20 +1222,6 @@ void register_PortalOptions_class(){
                 , "get\\set property, built on top of \"osiris::DateTime osiris::PortalOptions::getLastSyncDate() const [member function]\" and \"void osiris::PortalOptions::setLastSyncDate(osiris::DateTime const & lastSyncDate) [member function]\"" );
         
         }
-		/*
-        { //property "lastCheckingDate"[fget=::osiris::PortalOptions::getLastCheckingDate, fset=::osiris::PortalOptions::setLastCheckingDate]
-        
-            typedef ::osiris::DateTime ( ::osiris::PortalOptions::*fget )(  ) const;
-            typedef void ( ::osiris::PortalOptions::*fset )( ::osiris::DateTime const & ) ;
-            
-            PortalOptions_exposer.add_property( 
-                "lastCheckingDate"
-                , fget( &::osiris::PortalOptions::getLastCheckingDate )
-                , fset( &::osiris::PortalOptions::setLastCheckingDate )
-                , "get\\set property, built on top of \"osiris::DateTime osiris::PortalOptions::getLastCheckingDate() const [member function]\" and \"void osiris::PortalOptions::setLastCheckingDate(osiris::DateTime const & lastCheckingDate) [member function]\"" );
-        
-        }
-		*/
         { //property "lastStabilizationDate"[fget=::osiris::PortalOptions::getLastStabilizationDate, fset=::osiris::PortalOptions::setLastStabilizationDate]
         
             typedef ::osiris::DateTime ( ::osiris::PortalOptions::*fget )(  ) const;

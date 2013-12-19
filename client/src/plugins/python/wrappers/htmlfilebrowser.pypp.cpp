@@ -42,7 +42,7 @@ struct HtmlFileBrowser_wrapper : ::osiris::HtmlFileBrowser, ::osiris::PythonWrap
         return boost::python::object( result );
     }
 
-    static boost::python::object getFileBuffer( ::osiris::HtmlFileBrowser const & inst ){
+    static boost::python::object getFileBufferPtr( ::osiris::HtmlFileBrowser const & inst ){
         ::osiris::PythonThreadSaver __pythreadSaver;
         ::osiris::Buffer const * result = inst.getFileBufferPtr();
         __pythreadSaver.restore();
@@ -238,13 +238,13 @@ void register_HtmlFileBrowser_class(){
                 , getFileType_function_type( &HtmlFileBrowser_wrapper::getFileType ) );
         
         }
-        { //::osiris::HtmlFileBrowser::getFileBuffer
+        { //::osiris::HtmlFileBrowser::getFileBufferPtr
         
-            typedef boost::python::object ( *getFileBuffer_function_type )( ::osiris::HtmlFileBrowser const & );
+            typedef boost::python::object ( *getFileBufferPtr_function_type )( ::osiris::HtmlFileBrowser const & );
             
             HtmlFileBrowser_exposer.def( 
-                "getFileBuffer"
-                , getFileBuffer_function_type( &HtmlFileBrowser_wrapper::getFileBuffer ) );
+                "getFileBufferPtr"
+                , getFileBufferPtr_function_type( &HtmlFileBrowser_wrapper::getFileBufferPtr ) );
         
         }
         { //::osiris::HtmlFileBrowser::onLoad
@@ -399,16 +399,16 @@ void register_HtmlFileBrowser_class(){
                 , "get property, built on top of \"osiris::String osiris::HtmlFileBrowser::getFileType() const [member function]\"" );
         
         }
-        { //property "fileBuffer"[fget=::osiris::HtmlFileBrowser::getFileBuffer]
+        { //property "fileBufferPtr"[fget=::osiris::HtmlFileBrowser::getFileBufferPtr]
         
             typedef ::osiris::Buffer const * ( ::osiris::HtmlFileBrowser::*fget )(  ) const;
             
             HtmlFileBrowser_exposer.add_property( 
-                "fileBuffer"
+                "fileBufferPtr"
                 , ::boost::python::make_function( 
                       fget( &::osiris::HtmlFileBrowser::getFileBufferPtr )
                     , bp::return_value_policy< bp::reference_existing_object >() ) 
-                , "get property, built on top of \"osiris::Buffer const * osiris::HtmlFileBrowser::getFileBuffer() const [member function]\"" );
+                , "get property, built on top of \"osiris::Buffer const * osiris::HtmlFileBrowser::getFileBufferPtr() const [member function]\"" );
         
         }
     }
