@@ -43,24 +43,36 @@
   
   <xsl:template match="/home">
     <xsl:call-template name="block_big">
-      <xsl:with-param name="title" select="lang:text('portal.pages.acp.title')"/>        
-      <xsl:with-param name="content">                
+      <xsl:with-param name="title" select="lang:text('portal.pages.acp.title')"/>        			
+      <xsl:with-param name="content">
+				<xsl:value-of select="@povOfUserHref"/>
+
+
+				<xsl:if test="//@isUserOfPov = 'false'">					
+					<xsl:call-template name="help-box">
+						<xsl:with-param name="text" select="lang:text('portal.pages.acp.cannot_edit.help')"/>
+					</xsl:call-template>
+				</xsl:if>
+				
+				
         <xsl:choose>
-          <xsl:when test="//@isGuest = 'true'">
-            <xsl:call-template name="help-box">
-              <xsl:with-param name="text" select="lang:text('~portal.pages.acp.guest.help')"/>
-            </xsl:call-template>
+          <xsl:when test="//@isGuest = 'true'">            
           </xsl:when>
-          <xsl:when test="//@isUserOfPov = 'true'">
-            <xsl:call-template name="help-box">
-              <xsl:with-param name="text" select="lang:text('~portal.pages.acp.admin.help')"/>
-            </xsl:call-template>
+          <xsl:when test="//@isUserOfPov = 'true'">            
           </xsl:when>
-          <xsl:otherwise>
-            <xsl:call-template name="help-box">
-              <xsl:with-param name="text" select="lang:text('~portal.pages.acp.user.help')"/>
-            </xsl:call-template>
-						<a href="{@subscribe_fork_href}">Click here to fork</a>
+					<xsl:when test="//@povOfUserExists = 'true'">
+						<div class="os_commands">
+							<a class="os_button" href="{//@povOfUserHref}">
+								<xsl:value-of select="lang:text('portal.pages.acp.pov_exists.go')"/>
+							</a>
+						</div>
+					</xsl:when>
+          <xsl:otherwise>            
+						<div class="os_commands">
+							<a class="os_button" href="{//@povOfUserHref}">
+								<xsl:value-of select="lang:text('portal.pages.acp.pov_create.go')"/>
+							</a>
+						</div>
           </xsl:otherwise>          
         </xsl:choose>
 
@@ -72,8 +84,21 @@
 								
 
         <div style="clear:both;display:none" data-os-otype="tab" data-os-layout="left" data-os-storage="portal.acp">
-
-          <div data-os-tabType="header">
+					<div data-os-place="below-tabs" style="padding-top:3em;width:400px;">						
+						<xsl:call-template name="action-row">
+							<xsl:with-param name="prefix" select="'portal.pages'"/>
+							<xsl:with-param name="name" select="'stabilization_stats'"/>
+							<xsl:with-param name="icon" select="'stats'"/>
+							<xsl:with-param name="href" select="@stabilization_stats_href"/>
+						</xsl:call-template>
+						<xsl:call-template name="action-row">
+							<xsl:with-param name="prefix" select="'portal.pages'"/>
+							<xsl:with-param name="name" select="'trash'"/>
+							<xsl:with-param name="icon" select="'trash'"/>
+							<xsl:with-param name="href" select="@trash_href"/>
+						</xsl:call-template>
+					</div>
+					<div data-os-tabType="header">
             <xsl:value-of select="lang:text('portal.pages.acp.main')"/>
           </div>
           <div data-os-tabType="body">
@@ -100,15 +125,7 @@
 
             </table>
 
-            <xsl:if test="//@isGuest = 'false' and //@isUserOfPov = 'false'">
-              <h1>Fork this portal!</h1>
-              <xsl:if test="//@povOfUserExists = 'true'">
-                <a href="{//@povOfUserHref}">Visit</a>
-              </xsl:if>
-              <xsl:if test="//@povOfUserExists = 'false'">
-                <a href="{//@povOfUserHref}">Create now!</a>
-              </xsl:if>
-            </xsl:if>
+            
           </div>
 
           <div data-os-tabType="header">

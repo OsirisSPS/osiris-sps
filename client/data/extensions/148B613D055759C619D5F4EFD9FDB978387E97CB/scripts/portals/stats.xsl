@@ -7,6 +7,7 @@
                 exclude-result-prefixes="lang date system os"
                 version="1.0">
 
+	<xsl:import href="http://www.osiris-sps.org/htdocs/templates/includes/debug.xsl"/>
   <xsl:import href="http://www.osiris-sps.org/htdocs/templates/includes/block.xsl"/>
   <xsl:import href="http://www.osiris-sps.org/htdocs/templates/includes/actions.xsl"/>
   <xsl:import href="http://www.osiris-sps.org/htdocs/templates/includes/help.xsl"/>
@@ -17,7 +18,7 @@
 
   <xsl:param name="table_trash_reason"/>
 
-  <xsl:template match="/stats">
+  <xsl:template match="/stats">		
     <xsl:choose>
       <xsl:when test="@mode = 'dialog'">
         <div title="{lang:text('portal.pages.stats.title')}" data-os-otype="dialog" data-os-dialog-width="60%">
@@ -98,10 +99,10 @@
 						</td>
 					</tr>
 					<tr>
-						<td class="os_label">
+						<td>
 							Machine ID :
 						</td>
-						<td class="os_value">
+						<td>
 							<xsl:call-template name="hash">
 								<xsl:with-param name="hash" select="//@machine_id"/>
 							</xsl:call-template>
@@ -114,23 +115,66 @@
 		<xsl:call-template name="block_small">
 			<xsl:with-param name="title" select="lang:text('portal.pages.stats.trash_reason')"/>
 			<xsl:with-param name="content">
-				<xsl:value-of select="$table_trash_reason" disable-output-escaping="yes"/>
+
+				<table class="os_table_data">
+					<tr>
+						<th>Reason</th>
+						<th>N. Objects</th>						
+					</tr>
+					<xsl:for-each select="trash_reasons/reason">
+						<tr>
+							<td>
+								<xsl:if test="@id = ''">
+									<xsl:value-of select="'Valid, not in trash'"/>
+								</xsl:if>
+								<xsl:value-of select="@id"/>
+							</td>
+							<td>
+								<xsl:value-of select="@n"/>
+							</td>							
+						</tr>
+					</xsl:for-each>
+				</table>
+				
 			</xsl:with-param>
 		</xsl:call-template>
 
 		<xsl:call-template name="block_small">
 			<xsl:with-param name="title" select="lang:text('portal.pages.stats.objects_types')"/>
 			<xsl:with-param name="content">
-				<table class="os_table_data">
+				<table class="os_table_data">					
 					<tr>
 						<th>Type</th>
 						<th>N. Total</th>
+						<th>N. Unchecked</th>
 						<th>N. Trash</th>
-					</tr>					
+					</tr>
+					<xsl:for-each select="objects_types/object_type">
+						<tr>
+							<td>
+								<xsl:value-of select="@name"/>
+							</td>
+							<td>
+								<xsl:value-of select="@total"/>
+							</td>
+							<td>
+								<xsl:value-of select="@unchecked"/>
+							</td>
+							<td>
+								<xsl:value-of select="@trash"/>
+								<a href="{//@trash_href}&amp;type={@type_code}" class="os_button">
+									<xsl:value-of select="'View objects'"/>
+								</a>
+							</td>
+						</tr>
+					</xsl:for-each>
 				</table>
 				
 			</xsl:with-param>
 		</xsl:call-template>
+
+
+		<xsl:call-template name="dump_xml"/>
     
   </xsl:template>
 

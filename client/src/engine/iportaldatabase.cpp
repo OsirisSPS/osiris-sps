@@ -431,6 +431,18 @@ bool IPortalDatabase::execute(shared_ptr<DbSqlICommand> command, DataTable &resu
 	return false;
 }
 
+DataItem IPortalDatabase::queryValue(const String &sql) const
+{
+	try
+	{
+		return m_connection->queryValue(sql);
+	}
+	catch(std::exception &e)
+	{
+		logError(sql, e);
+		return DataItem();
+	}
+}
 
 
 /*

@@ -78,7 +78,3 @@ class Page(osiris.IMainPage):
 				self.showMessage(ex.message)
 						
 			
-		
-def main(args):
-	page = Page(args[0])
-	page.transmit()

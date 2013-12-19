@@ -33,7 +33,8 @@ BOOST_AUTO_TEST_CASE(test_datatable_construction)
 	BOOST_CHECK(table.empty());
 	BOOST_CHECK(table.hasRow(0) == false);
 	BOOST_CHECK(table.hasColumn(0) == false);
-	BOOST_CHECK(table.get(0, 0) == null);
+	BOOST_CHECK(table.getPtr(0, 0) == null);
+	BOOST_CHECK(table.get(0, 0) == DataItem());
 }
 
 BOOST_AUTO_TEST_CASE(test_datatable_operations)

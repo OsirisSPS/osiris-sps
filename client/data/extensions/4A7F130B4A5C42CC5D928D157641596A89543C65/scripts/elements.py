@@ -30,7 +30,3 @@ class Page(osiris.IMainPage):
 		
 			
 			
-		
-def main(args):
-	page = Page(args[0])
-	page.transmit()

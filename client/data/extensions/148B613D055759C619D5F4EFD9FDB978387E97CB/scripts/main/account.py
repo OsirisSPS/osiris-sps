@@ -25,6 +25,7 @@ class Page(osiris.IMainPage):
 				
 		self.saveCommand = osiris.IdeButton(self.getText("common.actions.save"))
 		self.saveCommand.id = "saveCommand"
+		self.saveCommand.iconHref = self.skin.getImageUrl("icons/16x16/save.png")
 		osiris.events.connect(self.saveCommand.eventClick, self.onSave)
 		template.addChildParam(self.saveCommand)
 		
@@ -78,13 +79,13 @@ class Page(osiris.IMainPage):
 			
 	def onSave(self, args):
 	
-		self.showMessage("Saved settings.")
+		self.showMessage(self.getText("common.save_success"))
 
 		database = osiris.Engine.instance().createSystemConnection()
 		
 		self.getSessionAccount().account.name = self.txtName.value
 		if(self.getSessionAccount().account.setRealPassword(self.txtPassword.value) == False):
-			self.showError(self.getText("portal.pages.account.account.modify.error.invalid_password"))
+			self.showError(self.getText("common.invalid_password"))
 			return
 		self.getSessionAccount().account.setSkin(str(self.skinPicker.value))
 		self.getSessionAccount().account.setLanguage(self.languagePicker.value)

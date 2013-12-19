@@ -34,10 +34,13 @@ class Page(osiris.IPortalPage):
 		
 		isGuest = self.sessionAccount.isPortalGuest(self.database)
 		self.root.setAttributeBool("isGuest", isGuest);
+
+		self.root.setAttributeString("stabilization_stats_href", self.portal.getLink("stabilization_stats"))
+		self.root.setAttributeString("trash_href", self.portal.getLink("trash"))
 				
 		if(isGuest == False):
 			# Hack, to fix: senza le getString le rileva diversi sempre...
-			isUserOfPov = (isGuest == False and self.sessionAccount.userID.getString() == self.portal.povID.getString());
+			isUserOfPov = (self.sessionAccount.isPortalGuest(self.database) == False and self.sessionAccount.userID.getString() == self.portal.povID.getString());
 			self.root.setAttributeBool("isUserOfPov", isUserOfPov);		
 			
 			povOfUser = osiris.PortalsSystem.instance().getPortal(self.portal.portalID, self.sessionAccount.userID.getString())			
@@ -45,7 +48,7 @@ class Page(osiris.IPortalPage):
 			
 			povOfUserHref = ""
 			if(povOfUser != None):
-				povOfUserHref = povOfUser.getLink("view")
+				povOfUserHref = povOfUser.getLink("acp")
 			else:
 				params  = { }
 				params["mode"] = "fork"
@@ -63,6 +66,7 @@ class Page(osiris.IPortalPage):
 		
 			self.saveCommand = osiris.IdeButton(self.getText("common.actions.save"))
 			self.saveCommand.id = "saveCommand"
+			self.saveCommand.iconHref = self.skin.getImageUrl("icons/16x16/save.png")
 			osiris.events.connect(self.saveCommand.eventClick, self.onSave)
 			template.addChildParam(self.saveCommand)
       			
@@ -76,6 +80,7 @@ class Page(osiris.IPortalPage):
 						
 			self.portalDescription = osiris.HtmlTextBox()
 			self.portalDescription.id = "portalDescription"		
+			self.portalDescription.size = 80
 			self.portalDescription.css = "os_input_full"
 			template.addChildParam(self.portalDescription)
 			
@@ -167,7 +172,7 @@ class Page(osiris.IPortalPage):
 			if(self.postBack == False):
 			
 				# Main
-				self.portalName.value = self.portal.optionsShared.portalName
+				self.portalName.value = self.portal.name
 				self.portalDescription.value = self.portal.optionsShared.portalDescription
 				self.authorsReputationThreshold.value = self.portal.optionsShared.authorsReputationThreshold;
 				self.editorsReputationThreshold.value = self.portal.optionsShared.editorsReputationThreshold;				
@@ -239,12 +244,9 @@ class Page(osiris.IPortalPage):
 		self.portal.optionsShared.objectsPhysicalRemoveDays = self.objectsPhysicalRemoveDays.value
 		
 		if(self.portal.saveUser(self.database, self.sessionAccount) == True):		
-			self.showMessage("Saved settings.")
+			self.showMessage(self.getText("common.save_success"))
 		else:
-			self.showError("Settings invalid.")
+			self.showError(self.getText("common.save_fail"))
 			
 		return
 	
-def main(args):
-	page = Page(args[0])
-	page.transmit()

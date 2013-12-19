@@ -24,6 +24,3 @@ class Page(osiris.IMainPage):
 		template.document = document
 		self.getArea(osiris.pageAreaContent).controls.add(template)
 		
-def main(args):
-	page = Page(args[0])
-	page.transmit()

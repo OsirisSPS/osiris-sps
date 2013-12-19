@@ -73,7 +73,7 @@
 							<xsl:call-template name="block_minimal">
 								<xsl:with-param name="title" select="lang:text('search.what_options')"/>
 								<xsl:with-param name="content">
-									<div class="os_content">
+									<div class="os_padding">
 										<xsl:value-of select="$nickMode" disable-output-escaping="yes"/>
 										<xsl:value-of select="$nickName" disable-output-escaping="yes"/>
 									</div>
@@ -85,7 +85,7 @@
 							<xsl:call-template name="block_minimal">
 								<xsl:with-param name="title" select="lang:text('search.view_options')"/>
 								<xsl:with-param name="content">
-									<div class="os_content">
+									<div class="os_padding">
 										<span class="os_label">
 											<xsl:value-of select="lang:text('portal.pages.users.search.pager_size')"/>
 										</span>
@@ -104,7 +104,7 @@
 							<xsl:call-template name="block_minimal">
 								<xsl:with-param name="title" select="lang:text('search.order_mode')"/>
 								<xsl:with-param name="content">
-									<div class="os_content">
+									<div class="os_padding">
 										<xsl:value-of select="$orderMode" disable-output-escaping="yes"/>
 										<xsl:value-of select="$orderDirection" disable-output-escaping="yes"/>
 									</div>

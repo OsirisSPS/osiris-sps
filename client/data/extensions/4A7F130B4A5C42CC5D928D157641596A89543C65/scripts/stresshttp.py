@@ -29,7 +29,3 @@ class Page(osiris.IMainPage):
 				self.controls.add(osiris.HtmlLiteral("<div style=\"border:1px solid red;padding:5px;margin:5px;\" data-os-url=\"/main/pcrash?number=" + str(i) + "\">Loading...</div>"));
 		else:		
 			self.controls.add(osiris.HtmlText("Success! - " + number));
-		
-def main(args):	
-	page = Page(args[0])
-	page.transmit()

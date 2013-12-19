@@ -44,7 +44,7 @@ struct HtmlFileBrowser_wrapper : ::osiris::HtmlFileBrowser, ::osiris::PythonWrap
 
     static boost::python::object getFileBuffer( ::osiris::HtmlFileBrowser const & inst ){
         ::osiris::PythonThreadSaver __pythreadSaver;
-        ::osiris::Buffer const * result = inst.getFileBuffer();
+        ::osiris::Buffer const * result = inst.getFileBufferPtr();
         __pythreadSaver.restore();
         typedef bp::return_value_policy< bp::reference_existing_object > call_policies_t;
         return boost::python::object( pyplusplus::call_policies::make_object< call_policies_t, ::osiris::Buffer const * >( result ) );
@@ -406,7 +406,7 @@ void register_HtmlFileBrowser_class(){
             HtmlFileBrowser_exposer.add_property( 
                 "fileBuffer"
                 , ::boost::python::make_function( 
-                      fget( &::osiris::HtmlFileBrowser::getFileBuffer )
+                      fget( &::osiris::HtmlFileBrowser::getFileBufferPtr )
                     , bp::return_value_policy< bp::reference_existing_object >() ) 
                 , "get property, built on top of \"osiris::Buffer const * osiris::HtmlFileBrowser::getFileBuffer() const [member function]\"" );
         

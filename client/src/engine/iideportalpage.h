@@ -69,6 +69,8 @@ public:
 	inline bool getLoadInstances() const;
 	inline void setLoadInstances(bool loadInstances);
 
+	String getStabilityStatus();
+
 protected:
 	// Indica se la pagina carica le istanze posizionate nell'area con
 	virtual bool getShowInstance(shared_ptr<ObjectsInstance> instance) const;

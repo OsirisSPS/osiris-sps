@@ -63,19 +63,25 @@ class Page(osiris.IMainPage):
 		actionAbout = nodeActions.nodes.add("action")
 		actionAbout.attributes.set("name", "about")
 		actionAbout.attributes.set("href", osiris.PortalsSystem.instance().getMainLink("about"))
+
+		actionAccounts = nodeActions.nodes.add("action")
+		actionAccounts.attributes.set("name", "accounts")
+		actionAccounts.attributes.set("href", osiris.PortalsSystem.instance().getMainLink("accounts"))
 		
 		actionImport = nodeActions.nodes.add("action")
 		actionImport.attributes.set("name", "import")
 		actionImport.attributes.set("href", osiris.PortalsSystem.instance().getMainLink("import"))
-		
-		actionSubscribePortal = nodeActions.nodes.add("action")
-		actionSubscribePortal.attributes.set("name", "subscribe")
-		actionSubscribePortal.attributes.set("href", osiris.PortalsSystem.instance().getMainLink("subscribe?mode=subscribe"))
-		
+
 		if(self.sessionAccount.isLogged() == True):
 			actionCreatePortal = nodeActions.nodes.add("action")
 			actionCreatePortal.attributes.set("name", "create")
+			actionCreatePortal.attributes.set("prefix", "main.pages.subscribe")
 			actionCreatePortal.attributes.set("href", osiris.PortalsSystem.instance().getMainLink("subscribe?mode=create"))		
+		
+		actionSubscribePortal = nodeActions.nodes.add("action")
+		actionSubscribePortal.attributes.set("name", "subscribe")
+		actionSubscribePortal.attributes.set("prefix", "main.pages.subscribe")
+		actionSubscribePortal.attributes.set("href", osiris.PortalsSystem.instance().getMainLink("subscribe?mode=subscribe"))
 		
 		#actionNetwork = nodeActions.nodes.add("action")
 		#actionNetwork.attributes.set("name", "network")

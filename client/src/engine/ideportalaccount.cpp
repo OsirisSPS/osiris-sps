@@ -870,19 +870,21 @@ void Account::_initProfile()
 	{
 		m_username->setValue(user->name);
 		m_description->setValue(user->description);
+		/*
 		if(user->authors_threshold.isNull() == false)
 			m_authorsThreshold->setValue(conversions::to_utf16<uint32>(user->authors_threshold));
 		if(user->editors_threshold.isNull() == false)
 			m_editorsThreshold->setValue(conversions::to_utf16<uint32>(user->editors_threshold));
+		*/
 
 		if(user->birth_date->isValid())
 			m_birthdate->setValue(user->birth_date);
 		m_gender->setValue(conversions::to_utf16<uint32>(user->gender));
-		m_location->setValue(user->location);	
-		m_email->setValue(user->email);
-		m_website->setValue(user->website);
-		m_showAvatar->setCheck(user->show_avatar);
-		m_showMark->setCheck(user->show_mark);
+		//m_location->setValue(user->location);	
+		//m_email->setValue(user->email);
+		//m_website->setValue(user->website);
+		//m_showAvatar->setCheck(user->show_avatar);
+		//m_showMark->setCheck(user->show_mark);
 		m_miscEditor->setValue(user->misc);
 	}
 }
@@ -902,6 +904,7 @@ void Account::_updateProfile()
 
 	user->description = algorithms::trim_copy(m_description->getValue());
 
+	/*
 	DbValue<uint32> newAuthorsThreshold;
 	if(m_authorsThreshold->getValue().empty() == false)
 		newAuthorsThreshold = Convert::toReputationThreshold(m_authorsThreshold->getValue());
@@ -916,13 +919,14 @@ void Account::_updateProfile()
 		//getPortal()->getSnapshotManager()->onAccountChanged(getDatabase(), getLoggedUser()->getAccount()->getID(), user);
 		getPortal()->getSnapshotManager()->onChangeReputationLevel(getDatabase());
 	}
+	*/
 	user->birth_date = m_birthdate->getValue();
 	user->gender = conversions::from_utf16<uint32>(m_gender->getValue());
-	user->location = algorithms::trim_copy(m_location->getValue());	
-	user->email = algorithms::trim_copy(m_email->getValue());
-	user->website = algorithms::trim_copy(m_website->getValue());
-	user->show_mark = m_showMark->getCheck();
-	user->show_avatar = m_showAvatar->getCheck();
+	//user->location = algorithms::trim_copy(m_location->getValue());	
+	//user->email = algorithms::trim_copy(m_email->getValue());
+	//user->website = algorithms::trim_copy(m_website->getValue());
+	//user->show_mark = m_showMark->getCheck();
+	//user->show_avatar = m_showAvatar->getCheck();
 	user->misc = algorithms::trim_copy(m_miscEditor->getValue());
 
 	LanguageResult result = getDatabase()->_signAndUpdate(user, getSessionAccount()->getPrivateKey(), true);
@@ -1009,7 +1013,7 @@ void Account::_initAvatar()
 
 void Account::_updateAvatar()
 {
-	const Buffer *pFileBuffer = m_avatarBrowser->getFileBuffer();
+	const Buffer *pFileBuffer = m_avatarBrowser->getFileBufferPtr();
 	if(pFileBuffer != null)
 	{
 		if(ObjectsAvatar::validateFormat(getPortal(), *pFileBuffer))

@@ -43,10 +43,10 @@ class Page(osiris.IPortalPage):
 			actionProfile.attributes.set("icon", "account")
 			actionProfile.attributes.set("href", self.portal.getLink("account"))
 			
-			actionPrivateMessages = nodeActions.nodes.add("action")
-			actionPrivateMessages.attributes.set("name", "messenger")
-			actionPrivateMessages.attributes.set("icon", "messenger")
-			actionPrivateMessages.attributes.set("href", self.portal.getLink("messenger"))
+			#actionPrivateMessages = nodeActions.nodes.add("action")
+			#actionPrivateMessages.attributes.set("name", "messenger")
+			#actionPrivateMessages.attributes.set("icon", "messenger")
+			#actionPrivateMessages.attributes.set("href", self.portal.getLink("messenger"))
 			
 		actionEdit = nodeActions.nodes.add("action")
 		actionEdit.attributes.set("name", "info")
@@ -113,7 +113,3 @@ class Page(osiris.IPortalPage):
 		osiris.IPortalPage.onPreRender(self)		
 
 		
-		
-def main(args):
-	page = Page(args[0])
-	page.transmit()

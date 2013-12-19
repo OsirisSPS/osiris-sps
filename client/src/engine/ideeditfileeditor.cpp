@@ -104,7 +104,7 @@ shared_ptr<ObjectsIRevisionable> FileEditor::createObject()
 	{
 		file_name = m_browser->getFileName();
 		file_type = m_browser->getFileType();
-		file_data = m_browser->getFileBuffer();
+		file_data = m_browser->getFileBufferPtr();
 	}
 
 	if(file_data == null)

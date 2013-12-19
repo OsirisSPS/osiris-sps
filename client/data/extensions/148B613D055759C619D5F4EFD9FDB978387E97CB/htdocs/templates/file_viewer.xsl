@@ -29,13 +29,13 @@
     <div>
       <!-- Image view -->
       <xsl:if test="starts-with(@mime_type,'image')">
-        <div style="overflow:auto;text-align:center;">
+        <div style="overflow:auto;text-align:center;padding:1em">
           <img src="{@file_href}"/>
         </div>
         <div class="os_separator" colspan="3"/>
       </xsl:if>
       <div style="float:right;padding:20px; vertical-align:middle;text-align:center;">
-        <a href="{@file_href}">
+        <a href="{@file_href}" class="os_button">
           <img src="{system:resource-url('images/download.png')}"/>
           <span style="margin:5px;font-size:2em">
             <xsl:value-of select="lang:text('common.download')"/>
@@ -48,62 +48,68 @@
         </div>
       </xsl:if>
       <div style="overflow:auto;padding:20px">
-        <table class="os_table_properties os_content_box">
-          <xsl:if test="@description != ''">
-            <xsl:call-template name="row-information">
-              <xsl:with-param name="name" select="'file.description'"/>
-              <xsl:with-param name="value" select="@description"/>
-            </xsl:call-template>
-          </xsl:if>
-          <xsl:call-template name="row-information">
-            <xsl:with-param name="name" select="'object.entity_date'"/>
-            <xsl:with-param name="value" select="date:long-datetime(@entity_date)"/>
-          </xsl:call-template>
-          <xsl:call-template name="row-information">
-            <xsl:with-param name="name" select="'file.file_name'"/>
-            <xsl:with-param name="value" select="@file_name"/>
-          </xsl:call-template>
-          <xsl:call-template name="row-information">
-            <xsl:with-param name="name" select="'file.mime_type'"/>
-            <xsl:with-param name="content">
-              <xsl:call-template name="file-icon"/>
-              <xsl:text> </xsl:text>
-              <xsl:value-of select="@mime_type"/>
-            </xsl:with-param>
-          </xsl:call-template>
-          <xsl:call-template name="row-information">
-            <xsl:with-param name="name" select="'file.file_size'"/>
-            <xsl:with-param name="value" select="system:format-size(@file_size)"/>
-          </xsl:call-template>          
-          <xsl:call-template name="row-information">
-            <xsl:with-param name="name" select="'file.viewer.bbcode'"/>
-            <xsl:with-param name="content">
-              <xsl:call-template name="copy-paste">
-                <xsl:with-param name="body" select="concat('[img]',@file_osiris_href,'[/img]')"/>
-              </xsl:call-template>
-            </xsl:with-param>
-          </xsl:call-template>
-          <xsl:call-template name="row-information">
-            <xsl:with-param name="name" select="'file.viewer.url'"/>
-            <xsl:with-param name="content">
-              <xsl:call-template name="copy-paste">
-                <xsl:with-param name="body" select="@file_osiris_href"/>
-              </xsl:call-template>
-            </xsl:with-param>
-          </xsl:call-template>
-          <xsl:if test="$show_rating">
-            <xsl:call-template name="row-information">
-              <xsl:with-param name="name" select="'file.viewer.rating'"/>
-              <xsl:with-param name="content">
-                <xsl:call-template name="rating-edit">
-                  <xsl:with-param name="votes" select="stats/@votes"/>
-                  <xsl:with-param name="votes_average" select="stats/@votes_average"/>
-                  <xsl:with-param name="editor" select="$vote_editor"/>
-                </xsl:call-template>
-              </xsl:with-param>
-            </xsl:call-template>
-          </xsl:if>
-        </table>
+				<xsl:call-template name="block_small">
+					<xsl:with-param name="title" select="lang:text('common.properties')"/>
+					<xsl:with-param name="content">
+						<table class="os_table_properties os_content_boxx">
+							<xsl:if test="@description != ''">
+								<xsl:call-template name="row-information">
+									<xsl:with-param name="name" select="'file.description'"/>
+									<xsl:with-param name="value" select="@description"/>
+								</xsl:call-template>
+							</xsl:if>
+							<xsl:call-template name="row-information">
+								<xsl:with-param name="name" select="'object.entity_date'"/>
+								<xsl:with-param name="value" select="date:long-datetime(@entity_date)"/>
+							</xsl:call-template>
+							<xsl:call-template name="row-information">
+								<xsl:with-param name="name" select="'file.file_name'"/>
+								<xsl:with-param name="value" select="@file_name"/>
+							</xsl:call-template>
+							<xsl:call-template name="row-information">
+								<xsl:with-param name="name" select="'file.mime_type'"/>
+								<xsl:with-param name="content">
+									<xsl:call-template name="file-icon"/>
+									<xsl:text> </xsl:text>
+									<xsl:value-of select="@mime_type"/>
+								</xsl:with-param>
+							</xsl:call-template>
+							<xsl:call-template name="row-information">
+								<xsl:with-param name="name" select="'file.file_size'"/>
+								<xsl:with-param name="value" select="system:format-size(@file_size)"/>
+							</xsl:call-template>
+							<xsl:call-template name="row-information">
+								<xsl:with-param name="name" select="'file.viewer.bbcode'"/>
+								<xsl:with-param name="content">
+									<xsl:call-template name="copy-paste">
+										<xsl:with-param name="body" select="concat('[img]',@file_osiris_href,'[/img]')"/>
+									</xsl:call-template>
+								</xsl:with-param>
+							</xsl:call-template>
+							<xsl:call-template name="row-information">
+								<xsl:with-param name="name" select="'file.viewer.url'"/>
+								<xsl:with-param name="content">
+									<xsl:call-template name="copy-paste">
+										<xsl:with-param name="body" select="@file_osiris_href"/>
+									</xsl:call-template>
+								</xsl:with-param>
+							</xsl:call-template>
+							<xsl:if test="$show_rating">
+								<xsl:call-template name="row-information">
+									<xsl:with-param name="name" select="'file.viewer.rating'"/>
+									<xsl:with-param name="content">
+										<xsl:call-template name="rating-edit">
+											<xsl:with-param name="votes" select="stats/@votes"/>
+											<xsl:with-param name="votes_average" select="stats/@votes_average"/>
+											<xsl:with-param name="editor" select="$vote_editor"/>
+										</xsl:call-template>
+									</xsl:with-param>
+								</xsl:call-template>
+							</xsl:if>
+						</table>
+					</xsl:with-param>
+				</xsl:call-template>
+        
       </div>
     </div>
     <xsl:apply-templates select="tags"/>

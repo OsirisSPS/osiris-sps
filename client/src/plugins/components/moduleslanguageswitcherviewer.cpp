@@ -88,7 +88,7 @@ void LanguageSwitcherViewer::onSelect(IEvent *e)
 			account->setLanguage(htmlEvent->get(0));
 			IdeAccountsManager::instance()->save(account);
 			//account->updateAccount(getDatabase());
-			IdeAccountsManager::instance()->save(account);
+			//IdeAccountsManager::instance()->save(account);
 		}
 	}
 	else
@@ -99,6 +99,13 @@ void LanguageSwitcherViewer::onSelect(IEvent *e)
 	getPage()->reload();
 }
 
+void LanguageSwitcherViewer::onInit()
+{
+	ViewerBase::onInit();
+
+	getEvents()->get(EVENT_ONSELECT)->connect(boost::bind(&LanguageSwitcherViewer::onSelect, this, _1));
+}
+
 void LanguageSwitcherViewer::onLoad()
 {
 	ViewerBase::onLoad();
@@ -107,8 +114,6 @@ void LanguageSwitcherViewer::onLoad()
 	if(controlID.empty())
 		controlID = _S("preview"); // Se il modulo è in preview, non ha un'ID di istanza. Ma un ID mi serve x forza per gli eventi.
 	setID(controlID);
-
-	getEvents()->get(EVENT_ONSELECT)->connect(boost::bind(&LanguageSwitcherViewer::onSelect, this, _1));
 
 	shared_ptr<XMLNode> root = getModuleDocument()->getRoot();
 	OS_ASSERT(root != null);

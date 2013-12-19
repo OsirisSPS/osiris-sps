@@ -84,21 +84,13 @@ public:
 	DbValue<Buffer> public_key;
 	DbValue<String> name;
 	DbValue<String> description;
-	DbValue<uint32> authors_threshold;
-	DbValue<uint32> editors_threshold;
 	DbValue<DateTime> join_date;
 	DbValue<DateTime> birth_date;
 	DbValue<uint32> gender;
-	DbValue<String> location;
-	DbValue<int32> time_offset; // FORCOMPATIBILITY, from 0.14 are only in account options.
-	DbValue<String> language; // FORCOMPATIBILITY, from 0.14 are only in account options.
 	DbValue<String> misc;
 	DbValue<String> mark;
-	DbValue<bool> show_mark;
-	DbValue<bool> show_avatar;
-	DbValue<String> email;
-	DbValue<String> website;	
-	DbValue<String> contacts;
+	//DbValue<bool> show_mark; // TOCLEAN
+	//DbValue<bool> show_avatar;
 	DbValue<String> options;
 
 public:

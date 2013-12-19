@@ -21,7 +21,7 @@
     <xsl:call-template name="block">
       <xsl:with-param name="title" select="@title"/>
       <xsl:with-param name="content">
-        <div data-os-entity="{@entity}" class="os_content">
+        <div data-os-entity="{@entity}">
 
           <xsl:call-template name="text-details">
             <xsl:with-param name="show_stats" select="false()"/>

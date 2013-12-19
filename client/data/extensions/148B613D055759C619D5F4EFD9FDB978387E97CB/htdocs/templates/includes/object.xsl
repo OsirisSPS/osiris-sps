@@ -451,7 +451,6 @@
     <xsl:param name="childs" select="true()"/>
     <xsl:call-template name="object-container">
       <xsl:with-param name="content">
-        <div class="os_content">
           <div style="float:right">
             <xsl:call-template name="object-icon"/>
           </div>
@@ -510,7 +509,7 @@
             </xsl:call-template>            
           </div>
           <div style="clear:both"/>
-        </div>
+        
       </xsl:with-param>
     </xsl:call-template>
 

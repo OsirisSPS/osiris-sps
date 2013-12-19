@@ -20,68 +20,6 @@
   <xsl:param name="cancel"/>
 
   <xsl:template match="/register">    
-    <div style="width:500px;margin:auto;">
-      <xsl:call-template name="block">
-        <xsl:with-param name="title" select="lang:text('portal.pages.register.title')" />
-        <xsl:with-param name="content">
-          <xsl:call-template name="help-box">
-            <xsl:with-param name="text" select="lang:text('portal.pages.register.help')"/>
-          </xsl:call-template>
-          <table style="width:100%"> 
-            <tr>
-              <td class="os_cell_icon">
-                <img src="{system:resource-url('images/icons/48x48/register.png')}"/>
-              </td>
-              <td>
-                <table class="os_table_data os_content_box">
-                  <tr>
-                    <td class="os_label">
-                      <xsl:value-of select="lang:text('portal.pages.register.username')"/>
-                      <xsl:text> :</xsl:text>
-                    </td>
-                    <td class="os_value">
-                      <xsl:value-of select="$username" disable-output-escaping="yes"/>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td class="os_label">
-                      <xsl:value-of select="lang:text('portal.pages.register.password')"/>
-                      <xsl:text> :</xsl:text>
-                    </td>
-                    <td class="os_value">
-                      <xsl:value-of select="$password" disable-output-escaping="yes"/>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td class="os_label">
-                      <xsl:value-of select="lang:text('portal.pages.register.passwordConfirm')"/>
-                      <xsl:text> :</xsl:text>
-                    </td>
-                    <td class="os_value">
-                      <xsl:value-of select="$passwordChecker" disable-output-escaping="yes"/>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td class="os_label">
-                      <xsl:value-of select="lang:text('portal.pages.register.rememberPassword')"/>
-                      <xsl:text> :</xsl:text>
-                    </td>
-                    <td class="os_value">
-                      <xsl:value-of select="$savePassword" disable-output-escaping="yes"/>
-                    </td>
-                  </tr>                  
-                </table>
-              </td>
-            </tr>
-          </table>
-          
-          <div class="os_commands">
-            <xsl:value-of select="$register" disable-output-escaping="yes"/>
-            <xsl:value-of select="$cancel" disable-output-escaping="yes"/>            
-          </div>
-        </xsl:with-param>
-      </xsl:call-template>
-    </div>
     
   </xsl:template>
 

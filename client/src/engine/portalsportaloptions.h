@@ -104,8 +104,8 @@ public:
 	DateTime getLastSyncDate() const;
 	void setLastSyncDate(const DateTime &lastSyncDate);
 
-	DateTime getLastCheckingDate() const;
-	void setLastCheckingDate(const DateTime &lastCheckingDate);
+	//DateTime getLastCheckingDate() const;
+	//void setLastCheckingDate(const DateTime &lastCheckingDate);
 
 	DateTime getLastStabilizationDate() const;
 	void setLastStabilizationDate(const DateTime &lastStabilizationDate);
@@ -114,7 +114,7 @@ public:
 	void setAlignHash(const UniqueID &alignHash);
 
 	void resetAlignmentHash();
-	void updateAlignmentHash(const ObjectID &id, bool add);
+	void updateAlignmentHash(const ObjectID &id, const DateTime &submitDate, bool add);
 
 	ObjectID getLastExchangedObject() const;
     void setLastExchangedObject(const ObjectID &lastExchangedObject);

@@ -276,14 +276,17 @@ var Osiris =
 	    Osiris.contentFromUrl(ajaxDiv, url, "none", "notify");
     },
     
-    contentFromUrl: function (src, url, effect, wait) {
+    contentFromUrl: function (src, url, effect, wait, skipErrors) {
 
-			src = Osiris.resolveElement(src);    	
+		src = Osiris.resolveElement(src);    	
     	var fullUrl = Osiris.adjustUrl(url);
 	    if(effect == null)
 	        effect = "none";
+		if(skipErrors == null)
+			skipErrors = false;
 	        
 	    src.waitStyle = wait;
+	    src.skipErrors = skipErrors;
 	    
 	    //alert('warning, ' + url);    
 	    //Osiris.notify("warning", url);    
@@ -372,7 +375,8 @@ var Osiris =
 	        var msg = "Ajax error, status = " + xhr.status + " - url = " + url;
 	        
 	        // TOCLEAN alert('error, ' + url);
-	        Osiris.notify("warning",msg);
+	        if(src.skipErrors == false)
+	        	Osiris.notify("warning",msg);
 	     }
 	    });  
     },
@@ -591,12 +595,14 @@ var Osiris =
 	    
 	    var divP = osCreate("p");
 	    var divIcon = osCreate("div");
-	    divIcon.className = "os_clipboard_icon";
+	    divIcon.className = "os_clipboard_icon";		
 	    divIcon.style.float = 'left';
 	    divObj.appendChild(divIcon);
 	    
-	    divTitle = osCreate("h1");
-	    $(divTitle).text(promptTitle);
+	    divTitle = osCreate("div");
+		divTitle.style.fontSize = "1.3em";		
+		divTitle.style.paddingTop = "1.3em";		
+		$(divTitle).text(promptTitle);
 	    //$(divObj).prepend(divTitle);
 	    divObj.appendChild(divTitle);
 	    
@@ -753,7 +759,7 @@ var Osiris =
     initAdvertising: function() {    
     	var objParent = osGetById("osiris_advertising");
 			if( (objParent != null) && (objParent.attributes) )
-	    	Osiris.contentFromUrl(objParent, "/AF4E66017B2F4E240E47EA9240F6F7E8C9EF7D78/adv", "fade", "none");	
+	    	Osiris.contentFromUrl(objParent, "/AF4E66017B2F4E240E47EA9240F6F7E8C9EF7D78/adv", "fade", "none", true);
 	  }
 
 }
@@ -2406,8 +2412,8 @@ function osTabCreate(src)
 	
 	startPage = Osiris.storageGet("tab." + objTab.tabStorage, startPage);
 		
-	objTab.headers = new Array(0);
-	objTab.bodies = new Array(0);		
+	objTab.headers = new Array(0);	
+	objTab.bodies = new Array(0);
 		
 	for(var objIndex=0;objIndex<objTab.childNodes.length;objIndex++)
 	{
@@ -2464,6 +2470,11 @@ function osTabCreate(src)
 		objTab.headersDiv.appendChild(objHeader);
 		objTab.bodiesDiv.appendChild(objBody);
 	}
+
+	//console.log();
+	//console.log($('div[data-os-place="below_tabs"]').length);
+	//console.log($('div[data-os-place="below-tabs"]').length);
+	$(objTab.headersDiv).append($(objTab).find('div[data-os-place="below-tabs"]'));
 	
 	objTab.appendChild(objTab.headersDiv);
 	objTab.appendChild(objTab.bodiesDiv);

@@ -164,6 +164,44 @@ shared_ptr<ObjectsIObject> IPortalPage::getObject(const ObjectID &id) const
 	return null;
 }
 
+
+String IPortalPage::getStabilityStatus()
+{
+	String stabilityStatus;
+	switch(getPortal()->getSnapshotManager()->getStabilityStatus())
+	{
+	case EntitiesSnapshotManager::ssNone:
+		stabilityStatus=_S("snapshot_none");
+		break;
+	case EntitiesSnapshotManager::ssAccept:
+		stabilityStatus=_S("snapshot_accept");
+		break;
+	case EntitiesSnapshotManager::ssPrepare:
+		stabilityStatus=_S("snapshot_prepare");
+		break;
+	case EntitiesSnapshotManager::ssStabilityUsers:
+		stabilityStatus=_S("snapshot_users_stability");
+		break;
+	case EntitiesSnapshotManager::ssStabilityObjects:
+		stabilityStatus=_S("snapshot_objects_stability");
+		break;
+	case EntitiesSnapshotManager::ssStatisticsObjects:
+		stabilityStatus=_S("snapshot_objects_statistics");
+		break;
+	case EntitiesSnapshotManager::ssStatisticsUsers:
+		stabilityStatus=_S("snapshot_users_statistics");
+		break;
+	case EntitiesSnapshotManager::ssSearchObjects:
+		stabilityStatus=_S("snapshot_objects_search");
+		break;
+	case EntitiesSnapshotManager::ssDone:
+		stabilityStatus=_S("snapshot_done");
+		break;
+	}
+
+	return stabilityStatus;
+}
+
 EntityID IPortalPage::getTargetObject() const
 {
 	return ObjectsSystem::instance()->getRootID();
@@ -526,6 +564,7 @@ void IPortalPage::onRenderDocument(shared_ptr<XMLNode> nodeRoot)
 	}
 }
 
+
 void IPortalPage::onRenderInformations(shared_ptr<XMLNode> node)
 {
 	node->setAttributeBool(_S("guest"), getSessionAccount()->isPortalGuest(getDatabase()));	
@@ -534,39 +573,9 @@ void IPortalPage::onRenderInformations(shared_ptr<XMLNode> node)
 	if(getRequestSource() == rsIsis)
 		node->setAttributeBool(_S("isis"), true);
 	
-	String stabilityStatus;
-	switch(getPortal()->getSnapshotManager()->getStabilityStatus())
-	{
-	case EntitiesSnapshotManager::ssNone:
-		stabilityStatus=_S("snapshot_none");
-		break;
-	case EntitiesSnapshotManager::ssAccept:
-		stabilityStatus=_S("snapshot_accept");
-		break;
-	case EntitiesSnapshotManager::ssPrepare:
-		stabilityStatus=_S("snapshot_prepare");
-		break;
-	case EntitiesSnapshotManager::ssStabilityUsers:
-		stabilityStatus=_S("snapshot_users_stability");
-		break;
-	case EntitiesSnapshotManager::ssStabilityObjects:
-		stabilityStatus=_S("snapshot_objects_stability");
-		break;
-	case EntitiesSnapshotManager::ssStatisticsObjects:
-		stabilityStatus=_S("snapshot_objects_statistics");
-		break;
-	case EntitiesSnapshotManager::ssStatisticsUsers:
-		stabilityStatus=_S("snapshot_users_statistics");
-		break;
-	case EntitiesSnapshotManager::ssSearchObjects:
-		stabilityStatus=_S("snapshot_objects_search");
-		break;
-	case EntitiesSnapshotManager::ssDone:
-		stabilityStatus=_S("snapshot_done");
-		break;
-	}
+	
 
-	node->setAttributeString(_S("stability_status"), stabilityStatus);
+	node->setAttributeString(_S("stability_status"), getStabilityStatus());
 
 	PageBase::onRenderInformations(node);
 }
@@ -657,10 +666,11 @@ void IPortalPage::onInit()
 		}
 	}
 
-	// CLODOURGENT serve?
+	/*
 	shared_ptr<IdeSession> ideSession = getSessionAccount();
 	if(ideSession->isLogged())
 		return;
+	*/
 
 	/* // CLODOURGENT vedi l'altro commento in restoreSession
 	if(restoreSession(loggedUser) == false)
@@ -678,6 +688,18 @@ void IPortalPage::onInit()
 		}
 	}
 	*/
+
+	if(getAjax() == false)
+	{
+		//if(getPageMode() == httpPageModeFull) // RC1
+		if(getPageMode() != httpPageModeAjax) // RC2
+		{
+			// Controlla se effettuare il caricamento delle istanze
+			if(getLoadInstances())
+				// Carica le istanze
+				loadInstances(getTargetObject());
+		}
+	}
 }
 
 void IPortalPage::onLoad()
@@ -745,17 +767,7 @@ void IPortalPage::onLoad()
 
 void IPortalPage::onPreRender()
 {
-	if(getAjax() == false)
-	{
-		//if(getPageMode() == httpPageModeFull) // RC1
-		if(getPageMode() != httpPageModeAjax) // RC2
-		{
-			// Controlla se effettuare il caricamento delle istanze
-			if(getLoadInstances())
-				// Carica le istanze
-				loadInstances(getTargetObject());
-		}
-	}
+	
 
 	PageBase::onPreRender();
 }
@@ -788,7 +800,7 @@ void IPortalPage::renderLinktags(HtmlWriter &writer)
 	style += "</style>";
 	writer.writeLine(style);
 		
-	//PageBase::renderLinktags(writer);
+	PageBase::renderLinktags(writer);
 }
 
 void IPortalPage::redirect(const std::string &url)		// Necessario per non "oscurare" il metodo redirect della base

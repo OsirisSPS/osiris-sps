@@ -46,20 +46,20 @@
           <xsl:value-of select="lang:text('main.pages.addons.title')"/>
         </a>
 
-        <xsl:choose>
-          <xsl:when test="@upgradable_counter">
-            <xsl:if test="@upgradable_counter > 0">
-              <div style="position: relative; width: 0; height: 0; display:inline-block;">
-                <div class="os_button_counter" data-os-tooltip="{lang:text('main.pages.addons.upgrade_available')}">
-                  <xsl:value-of select="@upgradable_counter"/>
-                </div>
-              </div>
-            </xsl:if>
-          </xsl:when>
-          <xsl:otherwise>
-            <div data-os-url="/main/addons?act=upgradable&amp;mode=counter"/>
-          </xsl:otherwise>
-        </xsl:choose>
+				<div style="position: relative; width: 0; height: 0; display:inline-block;">
+					<xsl:choose>
+						<xsl:when test="@upgradable_counter">
+							<xsl:if test="@upgradable_counter > 0">
+								<div class="os_button_counter" data-os-tooltip="{lang:text('main.pages.addons.upgrade_available')}">
+									<xsl:value-of select="@upgradable_counter"/>
+								</div>
+							</xsl:if>
+						</xsl:when>
+						<xsl:otherwise>
+							<div data-os-url="/main/addons?act=upgradable&amp;mode=counter"/>
+						</xsl:otherwise>
+					</xsl:choose>
+				</div>
        
         <a class="os_button" href="javascript:void(0);" onclick="Osiris.dialog('#more_dialog', true);return false;"  data-os-tooltip="{lang:text('main.pages.more.description')}">
         	<img src="{system:resource-url('images/icons/16x16/more.png')}" />
@@ -100,16 +100,16 @@
 											</div>
 										</xsl:when>
 										<xsl:otherwise>
-											<xsl:call-template name="help-box">
-												<xsl:with-param name="text" select="lang:text('main.pages.home.no_portals')"/>
-											</xsl:call-template>
+											<div class="os_message_nodata">
+												<xsl:value-of select="lang:text('main.pages.home.no_portals')"/>
+											</div>
 										</xsl:otherwise>
 									</xsl:choose>
 									<div style="clear:both;"/>
 								</xsl:with-param>
 							</xsl:call-template>
             </td>
-            <td>
+            <td style="width:360px">
 							<xsl:if test="//@session_user != ''">
 								<xsl:call-template name="block">
 									<xsl:with-param name="title" select="lang:text('main.pages.home.subscribed_self')" />
@@ -220,10 +220,7 @@
       <div id="more_dialog" title="{lang:text('main.pages.home.more.title')}" style="display:none;width:500px;">
         <xsl:call-template name="actions-row">
           <xsl:with-param name="prefix" select="'main.pages'"/>
-        </xsl:call-template>
-        <xsl:for-each select="actions">
-
-        </xsl:for-each>
+        </xsl:call-template>        
       </div>
 
 
@@ -335,15 +332,20 @@
 	-->
 
   <xsl:template name="tile-portal">
+		<!--
     <div id="{@id}_{@pov}_dialog" style="display:none">
       <h1>
         <xsl:value-of select="system:parse(@name, false(), false(), true())" disable-output-escaping="yes" />
       </h1>      
       <xsl:value-of select="system:parse(@description, false(), false(), true())" disable-output-escaping="yes" />
     </div>
+		-->
 
     <div id="{@id}_{@pov}" class="os_home_tile_portal os_block_item">			
 			<xsl:attribute name="style">
+				<xsl:text>color:</xsl:text>
+				<xsl:value-of select="@tileForeColor"/>
+				<xsl:text>;</xsl:text>
 				<xsl:text>background-color:</xsl:text>
 				<xsl:value-of select="@tileBackColor"/>
 				<xsl:text>;</xsl:text>
@@ -361,7 +363,7 @@
         <a href="{@viewHref}" class="os_home_tile_portal_name os_nowrap" style="color:{@tileForeColor}">
           <xsl:value-of select="system:parse(@name, false(), false(), true())" disable-output-escaping="yes" />
         </a>
-        <div class="os_home_tile_portal_description" style="color:{@tileForeColor}">
+        <div class="os_home_tile_portal_description">
           <xsl:value-of select="system:parse(@description, false(), false(), true())" disable-output-escaping="yes" />					
         </div>				
       </div>
@@ -432,14 +434,21 @@
             </xsl:if>
           </div>
 
-          <xsl:choose>
-            <xsl:when test="@exchangeEnabled = 'true'">
-              <xsl:value-of select="date:userfriendly-datetime(@lastObjectDate)"/>
-            </xsl:when>
-            <xsl:otherwise>
-              <xsl:value-of select="lang:text('main.pages.home.disabled_exchange')"/>
-            </xsl:otherwise>
-          </xsl:choose>
+					<span style="font-size:0.7em">
+						<br/>
+						<xsl:value-of select="'P2P:'"/>
+						<xsl:text>: </xsl:text>
+						<b>
+						<xsl:choose>
+							<xsl:when test="@exchangeEnabled = 'true'">								
+								<xsl:value-of select="date:userfriendly-datetime(@lastObjectDate)"/>
+							</xsl:when>
+							<xsl:otherwise>
+								<xsl:value-of select="lang:text('main.pages.home.disabled_exchange')"/>
+							</xsl:otherwise>
+						</xsl:choose>
+						</b>
+					</span>
         </div>
       </div>
 

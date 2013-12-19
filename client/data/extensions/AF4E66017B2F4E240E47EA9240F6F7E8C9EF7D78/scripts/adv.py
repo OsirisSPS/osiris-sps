@@ -24,7 +24,3 @@ class Page(osiris.IMainPage):
 		
 			html = client.response.content.toString()
 			self.controls.add(osiris.HtmlLiteral(html))
-		
-def main(args):	
-	page = Page(args[0])
-	page.transmit()

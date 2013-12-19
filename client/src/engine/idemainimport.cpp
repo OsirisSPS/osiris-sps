@@ -67,7 +67,7 @@ Import::~Import()
 
 void Import::onImport()
 {
-	const Buffer *buffer = m_fileBrowser->getFileBuffer();
+	const Buffer *buffer = m_fileBrowser->getFileBufferPtr();
 	if(buffer == null)
 	{
 		showError(getText("main.pages.import.errors.invalid_file"));
@@ -140,11 +140,6 @@ void Import::onImport()
 	redirect(PortalsSystem::instance()->getMainLink("jobs", params));	
 }
 
-void Import::onCancel()
-{
-	redirect(PortalsSystem::instance()->getMainLink(OS_IDE_PAGE_OSIRIS));
-}
-
 String Import::getPageName() const
 {
     return "main.pages.import";
@@ -163,16 +158,10 @@ void Import::onLoad()
 	cmdImport->setID("cmdImport");
 	cmdImport->setIsDefault(true);
 	cmdImport->getEventClick()->connect(boost::bind(&Import::onImport, this));
-	
-	shared_ptr<IdeButton> cmdCancel(OS_NEW IdeButton(getText("main.pages.import.actions.cancel")));
-	cmdCancel->setID("cmdCancel");
-	cmdCancel->setIsDefault(false);
-	cmdCancel->getEventClick()->connect(boost::bind(&Import::onCancel, this));
-	
+		
 	pageTemplate->addChildParam(m_fileBrowser);
 	pageTemplate->addChildParam(m_portalPassword);
-	pageTemplate->addChildParam(cmdImport);
-	pageTemplate->addChildParam(cmdCancel);
+	pageTemplate->addChildParam(cmdImport);	
 }
 
 //////////////////////////////////////////////////////////////////////

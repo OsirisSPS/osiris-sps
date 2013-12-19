@@ -117,7 +117,7 @@ public:
 public:
 	//bool createAnarchicPortal(shared_ptr<PortalOptions> options);
 	//bool createMonarchicPortal(shared_ptr<PortalOptions> options);
-	shared_ptr<Portal> createPortal(shared_ptr<PortalOptions> options);
+	//shared_ptr<Portal> createPortal(shared_ptr<PortalOptions> options);
 	shared_ptr<Portal> subscribePortal(shared_ptr<PortalOptions> options);
 	bool deletePortal(shared_ptr<PortalOptions> options, const String &path);
 	shared_ptr<Portal> ensurePortal(shared_ptr<OsirisLink> link, const String &password = String::EMPTY);

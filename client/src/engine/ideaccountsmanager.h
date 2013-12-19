@@ -31,6 +31,7 @@ OS_NAMESPACE_BEGIN()
 
 //////////////////////////////////////////////////////////////////////
 
+class Buffer;
 class IDbConnection;
 class IdeAccount;
 
@@ -67,6 +68,7 @@ public:
 	bool remove(const String &id);
 	bool removePhysical(const String &id);
 	void save(shared_ptr<IdeAccount> account);
+	bool import(const Buffer &buffer);
 
 private:
 	bool _load(shared_ptr<IDbConnection> database, const String &id);
