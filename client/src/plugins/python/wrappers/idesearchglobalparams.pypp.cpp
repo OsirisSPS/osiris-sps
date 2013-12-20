@@ -24,7 +24,7 @@ namespace bp = boost::python;
 
 struct IdeSearchGlobalParams_wrapper : ::osiris::IdeSearchGlobalParams, ::osiris::PythonWrapper< ::osiris::IdeSearchGlobalParams > {
 
-    IdeSearchGlobalParams_wrapper(::boost::shared_ptr< osiris::SearchQuery > query=osiris::null )
+    IdeSearchGlobalParams_wrapper(::boost::shared_ptr< osiris::SearchQuery > query=nullptr )
     : ::osiris::IdeSearchGlobalParams( query )
       , ::osiris::PythonWrapper< ::osiris::IdeSearchGlobalParams >(){
         // constructor
@@ -114,7 +114,7 @@ struct IdeSearchGlobalParams_wrapper : ::osiris::IdeSearchGlobalParams, ::osiris
         return ::osiris::IHtmlControl::decodeEvent( boost::ref(command), boost::ref(eventName), boost::ref(e) );
     }
 
-    ::osiris::String encodeEvent( ::osiris::String const & eventName, ::osiris::HtmlEvent const * e=(osiris::null) ) const {
+    ::osiris::String encodeEvent( ::osiris::String const & eventName, ::osiris::HtmlEvent const * e=(nullptr) ) const {
         return ::osiris::IHtmlControl::encodeEvent( boost::ref(eventName), boost::python::ptr(e) );
     }
 
@@ -133,7 +133,7 @@ struct IdeSearchGlobalParams_wrapper : ::osiris::IdeSearchGlobalParams, ::osiris
         return ::osiris::IHtmlControl::getSession( );
     }
 
-    virtual void onEvent( ::osiris::String const & name, ::osiris::IEvent * e=(osiris::null) ){
+    virtual void onEvent( ::osiris::String const & name, ::osiris::IEvent * e=(nullptr) ){
         ::osiris::PythonState __pystate(getPythonThreadState());
         if( ::osiris::PythonOverride func_onEvent = this->get_override( "onEvent" ) )
             func_onEvent( boost::ref(name), boost::python::ptr(e) );
@@ -143,7 +143,7 @@ struct IdeSearchGlobalParams_wrapper : ::osiris::IdeSearchGlobalParams, ::osiris
         }
     }
     
-    virtual void default_onEvent( ::osiris::String const & name, ::osiris::IEvent * e=(osiris::null) ){
+    virtual void default_onEvent( ::osiris::String const & name, ::osiris::IEvent * e=(nullptr) ){
         ::osiris::PythonThreadSaver __pythreadSaver;
         ::osiris::IHtmlControl::onEvent( boost::ref(name), boost::python::ptr(e) );
     }
@@ -248,7 +248,7 @@ void register_IdeSearchGlobalParams_class(){
 
     { //::osiris::IdeSearchGlobalParams
         typedef ::boost::python::class_< IdeSearchGlobalParams_wrapper, ::boost::python::bases< ::osiris::IXSLRenderer< osiris::IPortalPageControl< osiris::IHtmlControl > > >, ::boost::noncopyable > IdeSearchGlobalParams_exposer_t;
-        IdeSearchGlobalParams_exposer_t IdeSearchGlobalParams_exposer = IdeSearchGlobalParams_exposer_t( "IdeSearchGlobalParams", ::boost::python::init< ::boost::python::optional< ::boost::shared_ptr< osiris::SearchQuery > > >(( ::boost::python::arg("query")=osiris::null )) );
+        IdeSearchGlobalParams_exposer_t IdeSearchGlobalParams_exposer = IdeSearchGlobalParams_exposer_t( "IdeSearchGlobalParams", ::boost::python::init< ::boost::python::optional< ::boost::shared_ptr< osiris::SearchQuery > > >(( ::boost::python::arg("query")=nullptr )) );
         ::boost::python::scope IdeSearchGlobalParams_scope( IdeSearchGlobalParams_exposer );
         ::boost::python::implicitly_convertible< ::boost::shared_ptr< osiris::SearchQuery >, ::osiris::IdeSearchGlobalParams >();
         { //::osiris::IdeSearchGlobalParams::getQuery
@@ -334,7 +334,7 @@ void register_IdeSearchGlobalParams_class(){
             IdeSearchGlobalParams_exposer.def( 
                 "encodeEvent"
                 , encodeEvent_function_type( &IdeSearchGlobalParams_wrapper::encodeEvent )
-                , ( ::boost::python::arg("eventName"), ::boost::python::arg("e")=(osiris::null) ) );
+                , ( ::boost::python::arg("eventName"), ::boost::python::arg("e")=(nullptr) ) );
         
         }
         { //::osiris::IHtmlControl::getSession
@@ -355,7 +355,7 @@ void register_IdeSearchGlobalParams_class(){
             IdeSearchGlobalParams_exposer.def( 
                 "onEvent"
                 , onEvent_function_type( &IdeSearchGlobalParams_wrapper::default_onEvent )
-                , ( ::boost::python::arg("name"), ::boost::python::arg("e")=(osiris::null) ) );
+                , ( ::boost::python::arg("name"), ::boost::python::arg("e")=(nullptr) ) );
         
         }
         { //::osiris::IXSLRenderer< osiris::IPortalPageControl< osiris::IHtmlControl > >::onInitStylesheet

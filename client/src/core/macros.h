@@ -27,6 +27,12 @@
 
 //////////////////////////////////////////////////////////////////////
 
+#define OS_NULL								nullptr
+
+#ifndef null
+	#define null							OS_NULL
+#endif
+
 #define OS_CURRENT_FILE                     __FILE__
 #define OS_CURRENT_LINE                     __LINE__
 #define OS_CURRENT_FUNCTION					BOOST_CURRENT_FUNCTION
@@ -47,6 +53,12 @@
 #else
 	#define OS_VERIFY(exp)					((void)(exp))
 #endif // OS_DEBUG
+
+#ifdef OS_SUPPORT_CPP0X
+	#define OS_OVERRIDE						override
+#else
+	#define OS_OVERRIDE
+#endif
 
 #define OS_MAKE_UINT8(l, h)					((uint8)(((uint8)(l)) & 0xF) | (((uint8)(h)) << 4))
 #define OS_UINT8_LO(b)						((uint8)(((uint8)(b)) & 0xF))

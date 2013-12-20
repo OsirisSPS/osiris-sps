@@ -350,7 +350,7 @@ struct IHtmlControl_wrapper : ::osiris::IHtmlControl, ::osiris::PythonWrapper< :
         ::osiris::IHtmlControl::onPreRender( );
     }
 
-    ::osiris::String encodeEvent( ::osiris::String const & eventName, ::osiris::HtmlEvent const * e=(osiris::null) ) const {
+    ::osiris::String encodeEvent( ::osiris::String const & eventName, ::osiris::HtmlEvent const * e=(nullptr) ) const {
         return ::osiris::IHtmlControl::encodeEvent( boost::ref(eventName), boost::python::ptr(e) );
     }
 
@@ -361,14 +361,14 @@ struct IHtmlControl_wrapper : ::osiris::IHtmlControl, ::osiris::PythonWrapper< :
         return boost::python::object( result );
     }
 
-    static boost::python::object getEventCommand_5f9eb79715d8c7f66e3fdd78ba915328( ::osiris::IHtmlControl const & inst, ::osiris::String const & eventName, ::osiris::HtmlEvent const * e=(osiris::null) ){
+    static boost::python::object getEventCommand_5f9eb79715d8c7f66e3fdd78ba915328( ::osiris::IHtmlControl const & inst, ::osiris::String const & eventName, ::osiris::HtmlEvent const * e=(nullptr) ){
         ::osiris::PythonThreadSaver __pythreadSaver;
         ::osiris::String result = inst.getEventCommand(eventName, e);
         __pythreadSaver.restore();
         return boost::python::object( result );
     }
 
-    virtual void onEvent( ::osiris::String const & name, ::osiris::IEvent * e=(osiris::null) ){
+    virtual void onEvent( ::osiris::String const & name, ::osiris::IEvent * e=(nullptr) ){
         ::osiris::PythonState __pystate(getPythonThreadState());
         if( ::osiris::PythonOverride func_onEvent = this->get_override( "onEvent" ) )
             func_onEvent( boost::ref(name), boost::python::ptr(e) );
@@ -378,7 +378,7 @@ struct IHtmlControl_wrapper : ::osiris::IHtmlControl, ::osiris::PythonWrapper< :
         }
     }
     
-    virtual void default_onEvent( ::osiris::String const & name, ::osiris::IEvent * e=(osiris::null) ){
+    virtual void default_onEvent( ::osiris::String const & name, ::osiris::IEvent * e=(nullptr) ){
         ::osiris::PythonThreadSaver __pythreadSaver;
         ::osiris::IHtmlControl::onEvent( boost::ref(name), boost::python::ptr(e) );
     }
@@ -810,7 +810,7 @@ void register_IHtmlControl_class(){
             IHtmlControl_exposer.def( 
                 "encodeEvent"
                 , encodeEvent_function_type( &IHtmlControl_wrapper::encodeEvent )
-                , ( ::boost::python::arg("eventName"), ::boost::python::arg("e")=(osiris::null) ) );
+                , ( ::boost::python::arg("eventName"), ::boost::python::arg("e")=(nullptr) ) );
         
         }
         { //::osiris::IHtmlControl::findTarget
@@ -830,7 +830,7 @@ void register_IHtmlControl_class(){
             IHtmlControl_exposer.def( 
                 "getEventCommand"
                 , getEventCommand_function_type( &IHtmlControl_wrapper::getEventCommand_5f9eb79715d8c7f66e3fdd78ba915328 )
-                , ( ::boost::python::arg("inst"), ::boost::python::arg("eventName"), ::boost::python::arg("e")=(osiris::null) ) );
+                , ( ::boost::python::arg("inst"), ::boost::python::arg("eventName"), ::boost::python::arg("e")=(nullptr) ) );
         
         }
         { //::osiris::IHtmlControl::onEvent
@@ -840,7 +840,7 @@ void register_IHtmlControl_class(){
             IHtmlControl_exposer.def( 
                 "onEvent"
                 , onEvent_function_type( &IHtmlControl_wrapper::default_onEvent )
-                , ( ::boost::python::arg("name"), ::boost::python::arg("e")=(osiris::null) ) );
+                , ( ::boost::python::arg("name"), ::boost::python::arg("e")=(nullptr) ) );
         
         }
         { //::osiris::IHtmlControl::onLoadViewState

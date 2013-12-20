@@ -20,42 +20,42 @@ struct XMLManager_wrapper : ::osiris::XMLManager, ::osiris::PythonWrapper< ::osi
     
     }
 
-    static boost::python::object parseBuffer( ::osiris::XMLManager & inst, ::osiris::Buffer const & buffer, ::osiris::IXMLHandler * handler, ::boost::shared_ptr< osiris::XMLSchema > schema=(osiris::null), ::osiris::String const & encoding=("UTF-8") ){
+    static boost::python::object parseBuffer( ::osiris::XMLManager & inst, ::osiris::Buffer const & buffer, ::osiris::IXMLHandler * handler, ::boost::shared_ptr< osiris::XMLSchema > schema=(nullptr), ::osiris::String const & encoding=("UTF-8") ){
         ::osiris::PythonThreadSaver __pythreadSaver;
         bool result = inst.parseBuffer(buffer, handler, schema, encoding);
         __pythreadSaver.restore();
         return boost::python::object( result );
     }
 
-    static boost::python::object parseFile( ::osiris::XMLManager & inst, ::osiris::String const & filename, ::osiris::IXMLHandler * handler, ::boost::shared_ptr< osiris::XMLSchema > schema=(osiris::null) ){
+    static boost::python::object parseFile( ::osiris::XMLManager & inst, ::osiris::String const & filename, ::osiris::IXMLHandler * handler, ::boost::shared_ptr< osiris::XMLSchema > schema=(nullptr) ){
         ::osiris::PythonThreadSaver __pythreadSaver;
         bool result = inst.parseFile(filename, handler, schema);
         __pythreadSaver.restore();
         return boost::python::object( result );
     }
 
-    static boost::python::object parseString( ::osiris::XMLManager & inst, ::osiris::String const & str, ::osiris::IXMLHandler * handler, ::boost::shared_ptr< osiris::XMLSchema > schema=(osiris::null) ){
+    static boost::python::object parseString( ::osiris::XMLManager & inst, ::osiris::String const & str, ::osiris::IXMLHandler * handler, ::boost::shared_ptr< osiris::XMLSchema > schema=(nullptr) ){
         ::osiris::PythonThreadSaver __pythreadSaver;
         bool result = inst.parseString(str, handler, schema);
         __pythreadSaver.restore();
         return boost::python::object( result );
     }
 
-    static boost::python::object parseStringUTF8( ::osiris::XMLManager & inst, ::std::string const & str, ::osiris::IXMLHandler * handler, ::boost::shared_ptr< osiris::XMLSchema > schema=(osiris::null) ){
+    static boost::python::object parseStringUTF8( ::osiris::XMLManager & inst, ::std::string const & str, ::osiris::IXMLHandler * handler, ::boost::shared_ptr< osiris::XMLSchema > schema=(nullptr) ){
         ::osiris::PythonThreadSaver __pythreadSaver;
         bool result = inst.parseStringUTF8(str, handler, schema);
         __pythreadSaver.restore();
         return boost::python::object( result );
     }
 
-    static boost::python::object parseStream( ::osiris::XMLManager & inst, ::boost::shared_ptr< osiris::IStream > stream, ::osiris::IXMLHandler * handler, ::boost::shared_ptr< osiris::XMLSchema > schema=(osiris::null), ::osiris::String const & encoding=("UTF-8") ){
+    static boost::python::object parseStream( ::osiris::XMLManager & inst, ::boost::shared_ptr< osiris::IStream > stream, ::osiris::IXMLHandler * handler, ::boost::shared_ptr< osiris::XMLSchema > schema=(nullptr), ::osiris::String const & encoding=("UTF-8") ){
         ::osiris::PythonThreadSaver __pythreadSaver;
         bool result = inst.parseStream(stream, handler, schema, encoding);
         __pythreadSaver.restore();
         return boost::python::object( result );
     }
 
-    static boost::python::object parseUrl( ::osiris::XMLManager & inst, ::osiris::HttpUrl const & url, ::osiris::IXMLHandler * handler, ::osiris::String const & userAgent, ::boost::shared_ptr< boost::asio::io_service > service, ::boost::shared_ptr< osiris::TCPSocket > socket, ::boost::shared_ptr< osiris::XMLSchema > schema=(osiris::null) ){
+    static boost::python::object parseUrl( ::osiris::XMLManager & inst, ::osiris::HttpUrl const & url, ::osiris::IXMLHandler * handler, ::osiris::String const & userAgent, ::boost::shared_ptr< boost::asio::io_service > service, ::boost::shared_ptr< osiris::TCPSocket > socket, ::boost::shared_ptr< osiris::XMLSchema > schema=(nullptr) ){
         ::osiris::PythonThreadSaver __pythreadSaver;
         bool result = inst.parseUrl(url, handler, userAgent, service, socket, schema);
         __pythreadSaver.restore();
@@ -97,21 +97,21 @@ struct XMLManager_wrapper : ::osiris::XMLManager, ::osiris::PythonWrapper< ::osi
         return boost::python::object( result );
     }
 
-    static boost::python::object validateBuffer( ::osiris::XMLManager const & inst, ::osiris::Buffer const & buffer, ::boost::shared_ptr< osiris::XMLSchema > schema=(osiris::null) ){
+    static boost::python::object validateBuffer( ::osiris::XMLManager const & inst, ::osiris::Buffer const & buffer, ::boost::shared_ptr< osiris::XMLSchema > schema=(nullptr) ){
         ::osiris::PythonThreadSaver __pythreadSaver;
         bool result = inst.validateBuffer(buffer, schema);
         __pythreadSaver.restore();
         return boost::python::object( result );
     }
 
-    static boost::python::object validateFile( ::osiris::XMLManager const & inst, ::osiris::String const & filename, ::boost::shared_ptr< osiris::XMLSchema > schema=(osiris::null) ){
+    static boost::python::object validateFile( ::osiris::XMLManager const & inst, ::osiris::String const & filename, ::boost::shared_ptr< osiris::XMLSchema > schema=(nullptr) ){
         ::osiris::PythonThreadSaver __pythreadSaver;
         bool result = inst.validateFile(filename, schema);
         __pythreadSaver.restore();
         return boost::python::object( result );
     }
 
-    static boost::python::object validateString( ::osiris::XMLManager const & inst, ::osiris::String const & str, ::boost::shared_ptr< osiris::XMLSchema > schema=(osiris::null) ){
+    static boost::python::object validateString( ::osiris::XMLManager const & inst, ::osiris::String const & str, ::boost::shared_ptr< osiris::XMLSchema > schema=(nullptr) ){
         ::osiris::PythonThreadSaver __pythreadSaver;
         bool result = inst.validateString(str, schema);
         __pythreadSaver.restore();
@@ -127,27 +127,27 @@ void register_XMLManager_class(){
         .def( 
             "parseBuffer"
             , (boost::python::object (*)( ::osiris::XMLManager &,::osiris::Buffer const &,::osiris::IXMLHandler *,::boost::shared_ptr<osiris::XMLSchema>,::osiris::String const & ))( &XMLManager_wrapper::parseBuffer )
-            , ( ::boost::python::arg("inst"), ::boost::python::arg("buffer"), ::boost::python::arg("handler"), ::boost::python::arg("schema")=(osiris::null), ::boost::python::arg("encoding")=("UTF-8") ) )    
+            , ( ::boost::python::arg("inst"), ::boost::python::arg("buffer"), ::boost::python::arg("handler"), ::boost::python::arg("schema")=(nullptr), ::boost::python::arg("encoding")=("UTF-8") ) )    
         .def( 
             "parseFile"
             , (boost::python::object (*)( ::osiris::XMLManager &,::osiris::String const &,::osiris::IXMLHandler *,::boost::shared_ptr<osiris::XMLSchema> ))( &XMLManager_wrapper::parseFile )
-            , ( ::boost::python::arg("inst"), ::boost::python::arg("filename"), ::boost::python::arg("handler"), ::boost::python::arg("schema")=(osiris::null) ) )    
+            , ( ::boost::python::arg("inst"), ::boost::python::arg("filename"), ::boost::python::arg("handler"), ::boost::python::arg("schema")=(nullptr) ) )    
         .def( 
             "parseString"
             , (boost::python::object (*)( ::osiris::XMLManager &,::osiris::String const &,::osiris::IXMLHandler *,::boost::shared_ptr<osiris::XMLSchema> ))( &XMLManager_wrapper::parseString )
-            , ( ::boost::python::arg("inst"), ::boost::python::arg("str"), ::boost::python::arg("handler"), ::boost::python::arg("schema")=(osiris::null) ) )    
+            , ( ::boost::python::arg("inst"), ::boost::python::arg("str"), ::boost::python::arg("handler"), ::boost::python::arg("schema")=(nullptr) ) )    
         .def( 
             "parseStringUTF8"
             , (boost::python::object (*)( ::osiris::XMLManager &,::std::string const &,::osiris::IXMLHandler *,::boost::shared_ptr<osiris::XMLSchema> ))( &XMLManager_wrapper::parseStringUTF8 )
-            , ( ::boost::python::arg("inst"), ::boost::python::arg("str"), ::boost::python::arg("handler"), ::boost::python::arg("schema")=(osiris::null) ) )    
+            , ( ::boost::python::arg("inst"), ::boost::python::arg("str"), ::boost::python::arg("handler"), ::boost::python::arg("schema")=(nullptr) ) )    
         .def( 
             "parseStream"
             , (boost::python::object (*)( ::osiris::XMLManager &,::boost::shared_ptr<osiris::IStream>,::osiris::IXMLHandler *,::boost::shared_ptr<osiris::XMLSchema>,::osiris::String const & ))( &XMLManager_wrapper::parseStream )
-            , ( ::boost::python::arg("inst"), ::boost::python::arg("stream"), ::boost::python::arg("handler"), ::boost::python::arg("schema")=(osiris::null), ::boost::python::arg("encoding")=("UTF-8") ) )    
+            , ( ::boost::python::arg("inst"), ::boost::python::arg("stream"), ::boost::python::arg("handler"), ::boost::python::arg("schema")=(nullptr), ::boost::python::arg("encoding")=("UTF-8") ) )    
         .def( 
             "parseUrl"
             , (boost::python::object (*)( ::osiris::XMLManager &,::osiris::HttpUrl const &,::osiris::IXMLHandler *,::osiris::String const &,::boost::shared_ptr<boost::asio::io_service>,::boost::shared_ptr<osiris::TCPSocket>,::boost::shared_ptr<osiris::XMLSchema> ))( &XMLManager_wrapper::parseUrl )
-            , ( ::boost::python::arg("inst"), ::boost::python::arg("url"), ::boost::python::arg("handler"), ::boost::python::arg("userAgent"), ::boost::python::arg("service"), ::boost::python::arg("socket"), ::boost::python::arg("schema")=(osiris::null) ) )    
+            , ( ::boost::python::arg("inst"), ::boost::python::arg("url"), ::boost::python::arg("handler"), ::boost::python::arg("userAgent"), ::boost::python::arg("service"), ::boost::python::arg("socket"), ::boost::python::arg("schema")=(nullptr) ) )    
         .def( 
             "writeBuffer"
             , (boost::python::object (*)( ::osiris::XMLManager const &,::osiris::XMLDocument const &,::osiris::Buffer &,::osiris::String const & ))( &XMLManager_wrapper::writeBuffer )
@@ -171,14 +171,14 @@ void register_XMLManager_class(){
         .def( 
             "validateBuffer"
             , (boost::python::object (*)( ::osiris::XMLManager const &,::osiris::Buffer const &,::boost::shared_ptr<osiris::XMLSchema> ))( &XMLManager_wrapper::validateBuffer )
-            , ( ::boost::python::arg("inst"), ::boost::python::arg("buffer"), ::boost::python::arg("schema")=(osiris::null) ) )    
+            , ( ::boost::python::arg("inst"), ::boost::python::arg("buffer"), ::boost::python::arg("schema")=(nullptr) ) )    
         .def( 
             "validateFile"
             , (boost::python::object (*)( ::osiris::XMLManager const &,::osiris::String const &,::boost::shared_ptr<osiris::XMLSchema> ))( &XMLManager_wrapper::validateFile )
-            , ( ::boost::python::arg("inst"), ::boost::python::arg("filename"), ::boost::python::arg("schema")=(osiris::null) ) )    
+            , ( ::boost::python::arg("inst"), ::boost::python::arg("filename"), ::boost::python::arg("schema")=(nullptr) ) )    
         .def( 
             "validateString"
             , (boost::python::object (*)( ::osiris::XMLManager const &,::osiris::String const &,::boost::shared_ptr<osiris::XMLSchema> ))( &XMLManager_wrapper::validateString )
-            , ( ::boost::python::arg("inst"), ::boost::python::arg("str"), ::boost::python::arg("schema")=(osiris::null) ) );
+            , ( ::boost::python::arg("inst"), ::boost::python::arg("str"), ::boost::python::arg("schema")=(nullptr) ) );
 
 }

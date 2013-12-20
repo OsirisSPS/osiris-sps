@@ -15,7 +15,7 @@ namespace bp = boost::python;
 
 struct XMLDocument_wrapper : ::osiris::XMLDocument, ::osiris::PythonWrapper< ::osiris::XMLDocument > {
 
-    XMLDocument_wrapper(::boost::shared_ptr< osiris::XMLSchema > schema=osiris::null )
+    XMLDocument_wrapper(::boost::shared_ptr< osiris::XMLSchema > schema=nullptr )
     : ::osiris::XMLDocument( schema )
       , ::osiris::PythonWrapper< ::osiris::XMLDocument >(){
         // constructor
@@ -203,7 +203,7 @@ void register_XMLDocument_class(){
 
     { //::osiris::XMLDocument
         typedef ::boost::python::class_< XMLDocument_wrapper, ::boost::python::bases< ::osiris::IXMLHandler >, ::boost::noncopyable > XMLDocument_exposer_t;
-        XMLDocument_exposer_t XMLDocument_exposer = XMLDocument_exposer_t( "XMLDocument", ::boost::python::init< ::boost::python::optional< ::boost::shared_ptr< osiris::XMLSchema > > >(( ::boost::python::arg("schema")=osiris::null )) );
+        XMLDocument_exposer_t XMLDocument_exposer = XMLDocument_exposer_t( "XMLDocument", ::boost::python::init< ::boost::python::optional< ::boost::shared_ptr< osiris::XMLSchema > > >(( ::boost::python::arg("schema")=nullptr )) );
         ::boost::python::scope XMLDocument_scope( XMLDocument_exposer );
         ::boost::python::implicitly_convertible< ::boost::shared_ptr< osiris::XMLSchema >, ::osiris::XMLDocument >();
         { //::osiris::XMLDocument::getRoot

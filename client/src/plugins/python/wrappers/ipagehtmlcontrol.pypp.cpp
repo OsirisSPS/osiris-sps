@@ -63,7 +63,7 @@ struct IPageControl_less__osiris_scope_IHtmlControl__greater__wrapper : ::osiris
         return ::osiris::IHtmlControl::decodeEvent( boost::ref(command), boost::ref(eventName), boost::ref(e) );
     }
 
-    ::osiris::String encodeEvent( ::osiris::String const & eventName, ::osiris::HtmlEvent const * e=(osiris::null) ) const {
+    ::osiris::String encodeEvent( ::osiris::String const & eventName, ::osiris::HtmlEvent const * e=(nullptr) ) const {
         return ::osiris::IHtmlControl::encodeEvent( boost::ref(eventName), boost::python::ptr(e) );
     }
 
@@ -82,7 +82,7 @@ struct IPageControl_less__osiris_scope_IHtmlControl__greater__wrapper : ::osiris
         return ::osiris::IHtmlControl::getSession( );
     }
 
-    virtual void onEvent( ::osiris::String const & name, ::osiris::IEvent * e=(osiris::null) ){
+    virtual void onEvent( ::osiris::String const & name, ::osiris::IEvent * e=(nullptr) ){
         ::osiris::PythonState __pystate(getPythonThreadState());
         if( ::osiris::PythonOverride func_onEvent = this->get_override( "onEvent" ) )
             func_onEvent( boost::ref(name), boost::python::ptr(e) );
@@ -92,7 +92,7 @@ struct IPageControl_less__osiris_scope_IHtmlControl__greater__wrapper : ::osiris
         }
     }
     
-    virtual void default_onEvent( ::osiris::String const & name, ::osiris::IEvent * e=(osiris::null) ){
+    virtual void default_onEvent( ::osiris::String const & name, ::osiris::IEvent * e=(nullptr) ){
         ::osiris::PythonThreadSaver __pythreadSaver;
         ::osiris::IHtmlControl::onEvent( boost::ref(name), boost::python::ptr(e) );
     }
@@ -266,7 +266,7 @@ void register_IPageHtmlControl_class(){
             IPageHtmlControl_exposer.def( 
                 "encodeEvent"
                 , encodeEvent_function_type( &IPageControl_less__osiris_scope_IHtmlControl__greater__wrapper::encodeEvent )
-                , ( ::boost::python::arg("eventName"), ::boost::python::arg("e")=(osiris::null) ) );
+                , ( ::boost::python::arg("eventName"), ::boost::python::arg("e")=(nullptr) ) );
         
         }
         { //::osiris::IHtmlControl::getSession
@@ -287,7 +287,7 @@ void register_IPageHtmlControl_class(){
             IPageHtmlControl_exposer.def( 
                 "onEvent"
                 , onEvent_function_type( &IPageControl_less__osiris_scope_IHtmlControl__greater__wrapper::default_onEvent )
-                , ( ::boost::python::arg("name"), ::boost::python::arg("e")=(osiris::null) ) );
+                , ( ::boost::python::arg("name"), ::boost::python::arg("e")=(nullptr) ) );
         
         }
         { //::osiris::IHtmlControl::onInit

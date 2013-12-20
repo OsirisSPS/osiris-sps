@@ -25,7 +25,7 @@ namespace bp = boost::python;
 
 struct IdeSearchResults_wrapper : ::osiris::IdeSearchResults, ::osiris::PythonWrapper< ::osiris::IdeSearchResults > {
 
-    IdeSearchResults_wrapper(::boost::shared_ptr< osiris::SearchQuery > query=osiris::null, ::boost::shared_ptr< osiris::ISearchResults > results=osiris::null )
+    IdeSearchResults_wrapper(::boost::shared_ptr< osiris::SearchQuery > query=nullptr, ::boost::shared_ptr< osiris::ISearchResults > results=nullptr )
     : ::osiris::IdeSearchResults( query, results )
       , ::osiris::PythonWrapper< ::osiris::IdeSearchResults >(){
         // constructor
@@ -118,7 +118,7 @@ struct IdeSearchResults_wrapper : ::osiris::IdeSearchResults, ::osiris::PythonWr
         return ::osiris::IHtmlControl::decodeEvent( boost::ref(command), boost::ref(eventName), boost::ref(e) );
     }
 
-    ::osiris::String encodeEvent( ::osiris::String const & eventName, ::osiris::HtmlEvent const * e=(osiris::null) ) const {
+    ::osiris::String encodeEvent( ::osiris::String const & eventName, ::osiris::HtmlEvent const * e=(nullptr) ) const {
         return ::osiris::IHtmlControl::encodeEvent( boost::ref(eventName), boost::python::ptr(e) );
     }
 
@@ -137,7 +137,7 @@ struct IdeSearchResults_wrapper : ::osiris::IdeSearchResults, ::osiris::PythonWr
         return ::osiris::IHtmlControl::getSession( );
     }
 
-    virtual void onEvent( ::osiris::String const & name, ::osiris::IEvent * e=(osiris::null) ){
+    virtual void onEvent( ::osiris::String const & name, ::osiris::IEvent * e=(nullptr) ){
         ::osiris::PythonState __pystate(getPythonThreadState());
         if( ::osiris::PythonOverride func_onEvent = this->get_override( "onEvent" ) )
             func_onEvent( boost::ref(name), boost::python::ptr(e) );
@@ -147,7 +147,7 @@ struct IdeSearchResults_wrapper : ::osiris::IdeSearchResults, ::osiris::PythonWr
         }
     }
     
-    virtual void default_onEvent( ::osiris::String const & name, ::osiris::IEvent * e=(osiris::null) ){
+    virtual void default_onEvent( ::osiris::String const & name, ::osiris::IEvent * e=(nullptr) ){
         ::osiris::PythonThreadSaver __pythreadSaver;
         ::osiris::IHtmlControl::onEvent( boost::ref(name), boost::python::ptr(e) );
     }
@@ -282,7 +282,7 @@ void register_IdeSearchResults_class(){
 
     { //::osiris::IdeSearchResults
         typedef ::boost::python::class_< IdeSearchResults_wrapper, ::boost::python::bases< ::osiris::IXSLRenderer< osiris::IPortalPageControl< osiris::IHtmlControl > >, ::osiris::IIdePageable >, ::boost::noncopyable > IdeSearchResults_exposer_t;
-        IdeSearchResults_exposer_t IdeSearchResults_exposer = IdeSearchResults_exposer_t( "IdeSearchResults", ::boost::python::init< ::boost::python::optional< ::boost::shared_ptr< osiris::SearchQuery >, ::boost::shared_ptr< osiris::ISearchResults > > >(( ::boost::python::arg("query")=osiris::null, ::boost::python::arg("results")=osiris::null )) );
+        IdeSearchResults_exposer_t IdeSearchResults_exposer = IdeSearchResults_exposer_t( "IdeSearchResults", ::boost::python::init< ::boost::python::optional< ::boost::shared_ptr< osiris::SearchQuery >, ::boost::shared_ptr< osiris::ISearchResults > > >(( ::boost::python::arg("query")=nullptr, ::boost::python::arg("results")=nullptr )) );
         ::boost::python::scope IdeSearchResults_scope( IdeSearchResults_exposer );
         ::boost::python::implicitly_convertible< ::boost::shared_ptr< osiris::SearchQuery >, ::osiris::IdeSearchResults >();
         { //::osiris::IdeSearchResults::getQuery
@@ -393,7 +393,7 @@ void register_IdeSearchResults_class(){
             IdeSearchResults_exposer.def( 
                 "encodeEvent"
                 , encodeEvent_function_type( &IdeSearchResults_wrapper::encodeEvent )
-                , ( ::boost::python::arg("eventName"), ::boost::python::arg("e")=(osiris::null) ) );
+                , ( ::boost::python::arg("eventName"), ::boost::python::arg("e")=(nullptr) ) );
         
         }
         { //::osiris::IHtmlControl::getSession
@@ -414,7 +414,7 @@ void register_IdeSearchResults_class(){
             IdeSearchResults_exposer.def( 
                 "onEvent"
                 , onEvent_function_type( &IdeSearchResults_wrapper::default_onEvent )
-                , ( ::boost::python::arg("name"), ::boost::python::arg("e")=(osiris::null) ) );
+                , ( ::boost::python::arg("name"), ::boost::python::arg("e")=(nullptr) ) );
         
         }
         { //::osiris::IXSLRenderer< osiris::IPortalPageControl< osiris::IHtmlControl > >::onInit

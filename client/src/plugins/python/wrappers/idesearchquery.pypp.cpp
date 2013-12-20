@@ -25,7 +25,7 @@ namespace bp = boost::python;
 
 struct IdeSearchQuery_wrapper : ::osiris::IdeSearchQuery, ::osiris::PythonWrapper< ::osiris::IdeSearchQuery > {
 
-    IdeSearchQuery_wrapper(::boost::shared_ptr< osiris::SearchQuery > query=osiris::null )
+    IdeSearchQuery_wrapper(::boost::shared_ptr< osiris::SearchQuery > query=nullptr )
     : ::osiris::IdeSearchQuery( query )
       , ::osiris::PythonWrapper< ::osiris::IdeSearchQuery >(){
         // constructor
@@ -141,7 +141,7 @@ struct IdeSearchQuery_wrapper : ::osiris::IdeSearchQuery, ::osiris::PythonWrappe
         return ::osiris::IHtmlControl::decodeEvent( boost::ref(command), boost::ref(eventName), boost::ref(e) );
     }
 
-    ::osiris::String encodeEvent( ::osiris::String const & eventName, ::osiris::HtmlEvent const * e=(osiris::null) ) const {
+    ::osiris::String encodeEvent( ::osiris::String const & eventName, ::osiris::HtmlEvent const * e=(nullptr) ) const {
         return ::osiris::IHtmlControl::encodeEvent( boost::ref(eventName), boost::python::ptr(e) );
     }
 
@@ -160,7 +160,7 @@ struct IdeSearchQuery_wrapper : ::osiris::IdeSearchQuery, ::osiris::PythonWrappe
         return ::osiris::IHtmlControl::getSession( );
     }
 
-    virtual void onEvent( ::osiris::String const & name, ::osiris::IEvent * e=(osiris::null) ){
+    virtual void onEvent( ::osiris::String const & name, ::osiris::IEvent * e=(nullptr) ){
         ::osiris::PythonState __pystate(getPythonThreadState());
         if( ::osiris::PythonOverride func_onEvent = this->get_override( "onEvent" ) )
             func_onEvent( boost::ref(name), boost::python::ptr(e) );
@@ -170,7 +170,7 @@ struct IdeSearchQuery_wrapper : ::osiris::IdeSearchQuery, ::osiris::PythonWrappe
         }
     }
     
-    virtual void default_onEvent( ::osiris::String const & name, ::osiris::IEvent * e=(osiris::null) ){
+    virtual void default_onEvent( ::osiris::String const & name, ::osiris::IEvent * e=(nullptr) ){
         ::osiris::PythonThreadSaver __pythreadSaver;
         ::osiris::IHtmlControl::onEvent( boost::ref(name), boost::python::ptr(e) );
     }
@@ -275,7 +275,7 @@ void register_IdeSearchQuery_class(){
 
     { //::osiris::IdeSearchQuery
         typedef ::boost::python::class_< IdeSearchQuery_wrapper, ::boost::python::bases< ::osiris::IXSLRenderer< osiris::IPortalPageControl< osiris::IHtmlControl > > >, ::boost::noncopyable > IdeSearchQuery_exposer_t;
-        IdeSearchQuery_exposer_t IdeSearchQuery_exposer = IdeSearchQuery_exposer_t( "IdeSearchQuery", ::boost::python::init< ::boost::python::optional< ::boost::shared_ptr< osiris::SearchQuery > > >(( ::boost::python::arg("query")=osiris::null )) );
+        IdeSearchQuery_exposer_t IdeSearchQuery_exposer = IdeSearchQuery_exposer_t( "IdeSearchQuery", ::boost::python::init< ::boost::python::optional< ::boost::shared_ptr< osiris::SearchQuery > > >(( ::boost::python::arg("query")=nullptr )) );
         ::boost::python::scope IdeSearchQuery_scope( IdeSearchQuery_exposer );
         ::boost::python::implicitly_convertible< ::boost::shared_ptr< osiris::SearchQuery >, ::osiris::IdeSearchQuery >();
         { //::osiris::IdeSearchQuery::getQuery
@@ -400,7 +400,7 @@ void register_IdeSearchQuery_class(){
             IdeSearchQuery_exposer.def( 
                 "encodeEvent"
                 , encodeEvent_function_type( &IdeSearchQuery_wrapper::encodeEvent )
-                , ( ::boost::python::arg("eventName"), ::boost::python::arg("e")=(osiris::null) ) );
+                , ( ::boost::python::arg("eventName"), ::boost::python::arg("e")=(nullptr) ) );
         
         }
         { //::osiris::IHtmlControl::getSession
@@ -421,7 +421,7 @@ void register_IdeSearchQuery_class(){
             IdeSearchQuery_exposer.def( 
                 "onEvent"
                 , onEvent_function_type( &IdeSearchQuery_wrapper::default_onEvent )
-                , ( ::boost::python::arg("name"), ::boost::python::arg("e")=(osiris::null) ) );
+                , ( ::boost::python::arg("name"), ::boost::python::arg("e")=(nullptr) ) );
         
         }
         { //::osiris::IXSLRenderer< osiris::IPortalPageControl< osiris::IHtmlControl > >::onInitStylesheet

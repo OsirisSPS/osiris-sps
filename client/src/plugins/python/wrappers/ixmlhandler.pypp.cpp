@@ -14,7 +14,7 @@ namespace bp = boost::python;
 
 struct IXMLHandler_wrapper : ::osiris::IXMLHandler, ::osiris::PythonWrapper< ::osiris::IXMLHandler > {
 
-    IXMLHandler_wrapper(::boost::shared_ptr< osiris::XMLSchema > schema=osiris::null )
+    IXMLHandler_wrapper(::boost::shared_ptr< osiris::XMLSchema > schema=nullptr )
     : ::osiris::IXMLHandler( schema )
       , ::osiris::PythonWrapper< ::osiris::IXMLHandler >(){
         // constructor
@@ -170,7 +170,7 @@ void register_IXMLHandler_class(){
 
     { //::osiris::IXMLHandler
         typedef ::boost::python::class_< IXMLHandler_wrapper, ::boost::noncopyable > IXMLHandler_exposer_t;
-        IXMLHandler_exposer_t IXMLHandler_exposer = IXMLHandler_exposer_t( "IXMLHandler", ::boost::python::init< ::boost::python::optional< ::boost::shared_ptr< osiris::XMLSchema > > >(( ::boost::python::arg("schema")=osiris::null )) );
+        IXMLHandler_exposer_t IXMLHandler_exposer = IXMLHandler_exposer_t( "IXMLHandler", ::boost::python::init< ::boost::python::optional< ::boost::shared_ptr< osiris::XMLSchema > > >(( ::boost::python::arg("schema")=nullptr )) );
         ::boost::python::scope IXMLHandler_scope( IXMLHandler_exposer );
         { //::osiris::IXMLHandler::getSchema
         

@@ -22,7 +22,7 @@ namespace bp = boost::python;
 
 struct HtmlXSLControl_wrapper : ::osiris::HtmlXSLControl, ::osiris::PythonWrapper< ::osiris::HtmlXSLControl > {
 
-    HtmlXSLControl_wrapper(::boost::shared_ptr< osiris::XMLStylesheet > stylesheet=osiris::null, ::boost::shared_ptr< osiris::XMLDocument > document=osiris::null )
+    HtmlXSLControl_wrapper(::boost::shared_ptr< osiris::XMLStylesheet > stylesheet=nullptr, ::boost::shared_ptr< osiris::XMLDocument > document=nullptr )
     : ::osiris::HtmlXSLControl( stylesheet, document )
       , ::osiris::PythonWrapper< ::osiris::HtmlXSLControl >(){
         // constructor
@@ -107,7 +107,7 @@ struct HtmlXSLControl_wrapper : ::osiris::HtmlXSLControl, ::osiris::PythonWrappe
         return ::osiris::IHtmlControl::decodeEvent( boost::ref(command), boost::ref(eventName), boost::ref(e) );
     }
 
-    ::osiris::String encodeEvent( ::osiris::String const & eventName, ::osiris::HtmlEvent const * e=(osiris::null) ) const {
+    ::osiris::String encodeEvent( ::osiris::String const & eventName, ::osiris::HtmlEvent const * e=(nullptr) ) const {
         return ::osiris::IHtmlControl::encodeEvent( boost::ref(eventName), boost::python::ptr(e) );
     }
 
@@ -126,7 +126,7 @@ struct HtmlXSLControl_wrapper : ::osiris::HtmlXSLControl, ::osiris::PythonWrappe
         return ::osiris::IHtmlControl::getSession( );
     }
 
-    virtual void onEvent( ::osiris::String const & name, ::osiris::IEvent * e=(osiris::null) ){
+    virtual void onEvent( ::osiris::String const & name, ::osiris::IEvent * e=(nullptr) ){
         ::osiris::PythonState __pystate(getPythonThreadState());
         if( ::osiris::PythonOverride func_onEvent = this->get_override( "onEvent" ) )
             func_onEvent( boost::ref(name), boost::python::ptr(e) );
@@ -136,7 +136,7 @@ struct HtmlXSLControl_wrapper : ::osiris::HtmlXSLControl, ::osiris::PythonWrappe
         }
     }
     
-    virtual void default_onEvent( ::osiris::String const & name, ::osiris::IEvent * e=(osiris::null) ){
+    virtual void default_onEvent( ::osiris::String const & name, ::osiris::IEvent * e=(nullptr) ){
         ::osiris::PythonThreadSaver __pythreadSaver;
         ::osiris::IHtmlControl::onEvent( boost::ref(name), boost::python::ptr(e) );
     }
@@ -256,7 +256,7 @@ void register_HtmlXSLControl_class(){
 
     { //::osiris::HtmlXSLControl
         typedef ::boost::python::class_< HtmlXSLControl_wrapper, ::boost::python::bases< ::osiris::IHtmlControl >, ::boost::noncopyable > HtmlXSLControl_exposer_t;
-        HtmlXSLControl_exposer_t HtmlXSLControl_exposer = HtmlXSLControl_exposer_t( "HtmlXSLControl", ::boost::python::init< ::boost::python::optional< ::boost::shared_ptr< osiris::XMLStylesheet >, ::boost::shared_ptr< osiris::XMLDocument > > >(( ::boost::python::arg("stylesheet")=osiris::null, ::boost::python::arg("document")=osiris::null )) );
+        HtmlXSLControl_exposer_t HtmlXSLControl_exposer = HtmlXSLControl_exposer_t( "HtmlXSLControl", ::boost::python::init< ::boost::python::optional< ::boost::shared_ptr< osiris::XMLStylesheet >, ::boost::shared_ptr< osiris::XMLDocument > > >(( ::boost::python::arg("stylesheet")=nullptr, ::boost::python::arg("document")=nullptr )) );
         ::boost::python::scope HtmlXSLControl_scope( HtmlXSLControl_exposer );
         ::boost::python::implicitly_convertible< ::boost::shared_ptr< osiris::XMLStylesheet >, ::osiris::HtmlXSLControl >();
         { //::osiris::HtmlXSLControl::getDocument
@@ -376,7 +376,7 @@ void register_HtmlXSLControl_class(){
             HtmlXSLControl_exposer.def( 
                 "encodeEvent"
                 , encodeEvent_function_type( &HtmlXSLControl_wrapper::encodeEvent )
-                , ( ::boost::python::arg("eventName"), ::boost::python::arg("e")=(osiris::null) ) );
+                , ( ::boost::python::arg("eventName"), ::boost::python::arg("e")=(nullptr) ) );
         
         }
         { //::osiris::IHtmlControl::getSession
@@ -397,7 +397,7 @@ void register_HtmlXSLControl_class(){
             HtmlXSLControl_exposer.def( 
                 "onEvent"
                 , onEvent_function_type( &HtmlXSLControl_wrapper::default_onEvent )
-                , ( ::boost::python::arg("name"), ::boost::python::arg("e")=(osiris::null) ) );
+                , ( ::boost::python::arg("name"), ::boost::python::arg("e")=(nullptr) ) );
         
         }
         { //::osiris::IHtmlControl::onInit

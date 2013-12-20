@@ -184,7 +184,7 @@ struct File_wrapper : ::osiris::File, ::osiris::PythonWrapper< ::osiris::File > 
         return ::osiris::File::eof( );
     }
 
-    static boost::python::object getStats( ::osiris::File const & inst, ::boost::posix_time::ptime * timeCreation, ::boost::posix_time::ptime * timeLastModify=(osiris::null), ::boost::posix_time::ptime * timeLastAccess=(osiris::null) ){
+    static boost::python::object getStats( ::osiris::File const & inst, ::boost::posix_time::ptime * timeCreation, ::boost::posix_time::ptime * timeLastModify=(nullptr), ::boost::posix_time::ptime * timeLastAccess=(nullptr) ){
         ::osiris::PythonThreadSaver __pythreadSaver;
         bool result = inst.getStats(timeCreation, timeLastModify, timeLastAccess);
         __pythreadSaver.restore();
@@ -354,7 +354,7 @@ void register_File_class(){
             File_exposer.def( 
                 "getStats"
                 , getStats_function_type( &File_wrapper::getStats )
-                , ( ::boost::python::arg("inst"), ::boost::python::arg("timeCreation"), ::boost::python::arg("timeLastModify")=(osiris::null), ::boost::python::arg("timeLastAccess")=(osiris::null) ) );
+                , ( ::boost::python::arg("inst"), ::boost::python::arg("timeCreation"), ::boost::python::arg("timeLastModify")=(nullptr), ::boost::python::arg("timeLastAccess")=(nullptr) ) );
         
         }
         { //::osiris::IStream::peek

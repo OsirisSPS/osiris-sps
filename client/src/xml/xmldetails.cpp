@@ -332,7 +332,7 @@ public:
 	XMLPScanTokenScope(SAX2XMLReader *parser, XMLPScanToken &scanToken) : m_parser(parser),
 																		  m_scanToken(scanToken)
 	{
-		OS_ASSERT(parser != OS_NAMESPACE_NAME::null);
+		OS_ASSERT(parser != null);
 	}
 
 	~XMLPScanTokenScope()
@@ -349,7 +349,7 @@ private:
 
 DOMImplementation * getImplementation()
 {
-	return DOMImplementationRegistry::getDOMImplementation(OS_NAMESPACE_NAME::null);
+	return DOMImplementationRegistry::getDOMImplementation(null);
 }
 
 bool parseSource(const InputSource &source, OS_NAMESPACE_NAME::IXMLHandler *handler, InputSource *xsd)
@@ -360,23 +360,23 @@ bool parseSource(const InputSource &source, OS_NAMESPACE_NAME::IXMLHandler *hand
 
 	try
 	{
-		if(handler != OS_NAMESPACE_NAME::null)
+		if(handler != null)
 		{
 			handler->setStopParser(false);
 			parser->setContentHandler(handler->getImpl());
 			parser->setErrorHandler(handler->getImpl());
 		}
 
-		if(xsd != OS_NAMESPACE_NAME::null)
+		if(xsd != null)
 		{
 			// Carica lo schema
 			Grammar *grammar = parser->loadGrammar(*xsd, Grammar::SchemaGrammarType, true);
-			if(grammar == OS_NAMESPACE_NAME::null)
+			if(grammar == null)
 			{
 				OS_NAMESPACE_NAME::String error = _S("Invalid xml schema");
 
 				const XMLCh *id = xsd->getSystemId();
-				if(id != OS_NAMESPACE_NAME::null)
+				if(id != null)
 				{
 					error += _S(", id=");
 					error += id;
@@ -404,7 +404,7 @@ bool parseSource(const InputSource &source, OS_NAMESPACE_NAME::IXMLHandler *hand
 
 			while(parser->getErrorCount() == 0)
 			{
-				if(handler != OS_NAMESPACE_NAME::null && handler->getStopParser())
+				if(handler != null && handler->getStopParser())
 					break;
 
 				if(parser->parseNext(scanToken) == false)
@@ -519,11 +519,11 @@ bool exportToTarget(const OS_NAMESPACE_NAME::XMLDocument &document, XMLFormatTar
 bool convertDocument(const OS_NAMESPACE_NAME::XMLDocument &document, DOMDocument *doc)
 {
 	OS_NAMESPACE_NAME::shared_ptr<OS_NAMESPACE_NAME::XMLNode> rootNode = document.getRoot();
-	if(rootNode == OS_NAMESPACE_NAME::null)
+	if(rootNode == null)
 		return false;
 
 	DOMElement *root_element = doc->createElement(rootNode->getName().c_str());
-	if(root_element == OS_NAMESPACE_NAME::null)
+	if(root_element == null)
 		return false;
 
 	doc->appendChild(root_element);
@@ -532,7 +532,7 @@ bool convertDocument(const OS_NAMESPACE_NAME::XMLDocument &document, DOMDocument
 
 bool convertNode(OS_NAMESPACE_NAME::shared_ptr<OS_NAMESPACE_NAME::XMLNode> node, DOMElement *element)
 {
-	if(element == OS_NAMESPACE_NAME::null)
+	if(element == null)
 		return false;
 
 	OS_NAMESPACE_NAME::shared_ptr<OS_NAMESPACE_NAME::XMLAttributes> attributes = node->getAttributes();
@@ -550,7 +550,7 @@ bool convertNode(OS_NAMESPACE_NAME::shared_ptr<OS_NAMESPACE_NAME::XMLNode> node,
 	for(OS_NAMESPACE_NAME::XMLNodes::const_iterator i = nodes->begin(); i != nodes->end(); ++i)
 	{
 		DOMElement *child_element = element->getOwnerDocument()->createElement((*i)->getName().c_str());
-		if(child_element == OS_NAMESPACE_NAME::null)
+		if(child_element == null)
 			return false;
 
 		element->appendChild(child_element);

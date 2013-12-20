@@ -32,7 +32,7 @@ struct EventSource_wrapper : ::osiris::EventSource, ::osiris::PythonWrapper< ::o
         __pythreadSaver.restore();
     }
 
-    virtual void fire( ::osiris::IEvent * e=(osiris::null) ) {
+    virtual void fire( ::osiris::IEvent * e=(nullptr) ) {
         ::osiris::PythonState __pystate(getPythonThreadState());
         if( ::osiris::PythonOverride func_fire = this->get_override( "fire" ) )
             func_fire( boost::python::ptr(e) );
@@ -42,7 +42,7 @@ struct EventSource_wrapper : ::osiris::EventSource, ::osiris::PythonWrapper< ::o
         }
     }
     
-    void default_fire( ::osiris::IEvent * e=(osiris::null) ) {
+    void default_fire( ::osiris::IEvent * e=(nullptr) ) {
         ::osiris::PythonThreadSaver __pythreadSaver;
         ::osiris::EventSource::fire( boost::python::ptr(e) );
     }
@@ -103,7 +103,7 @@ void register_EventSource_class(){
                 "fire"
                 , fire_function_type(&::osiris::EventSource::fire)
                 , default_fire_function_type(&EventSource_wrapper::default_fire)
-                , ( ::boost::python::arg("e")=(osiris::null) ) );
+                , ( ::boost::python::arg("e")=(nullptr) ) );
         
         }
         { //::osiris::EventSource::connect

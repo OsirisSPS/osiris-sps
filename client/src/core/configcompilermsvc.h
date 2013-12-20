@@ -33,6 +33,10 @@
 	#endif
 #endif
 
+#if OS_COMPILER_VERSION >= 1600			// Visual Studio 2010
+	#define OS_SUPPORT_CPP0X
+#endif
+
 #define OS_ENDIANITY						OS_ENDIANITY_LITTLE
 #define OS_FORCEINLINE						__forceinline
 

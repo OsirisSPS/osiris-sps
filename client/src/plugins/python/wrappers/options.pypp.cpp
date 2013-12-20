@@ -186,7 +186,7 @@ struct Options_wrapper : ::osiris::Options, ::osiris::PythonWrapper< ::osiris::O
         __pythreadSaver.restore();
     }
 
-    static boost::python::object ensureOptionValue( ::osiris::Options & inst, ::osiris::String const & name, ::osiris::DataItem const & value, bool publicOption, ::boost::shared_ptr< osiris::IOptionValidator > validator=(osiris::null) ){
+    static boost::python::object ensureOptionValue( ::osiris::Options & inst, ::osiris::String const & name, ::osiris::DataItem const & value, bool publicOption, ::boost::shared_ptr< osiris::IOptionValidator > validator=(nullptr) ){
         ::osiris::PythonThreadSaver __pythreadSaver;
         bool result = inst.ensureOptionValue(name, value, publicOption, validator);
         __pythreadSaver.restore();
@@ -615,7 +615,7 @@ void register_Options_class(){
             Options_exposer.def( 
                 "ensureOptionValue"
                 , ensureOptionValue_function_type( &Options_wrapper::ensureOptionValue )
-                , ( ::boost::python::arg("inst"), ::boost::python::arg("name"), ::boost::python::arg("value"), ::boost::python::arg("publicOption"), ::boost::python::arg("validator")=(osiris::null) ) );
+                , ( ::boost::python::arg("inst"), ::boost::python::arg("name"), ::boost::python::arg("value"), ::boost::python::arg("publicOption"), ::boost::python::arg("validator")=(nullptr) ) );
         
         }
         { //::osiris::Options::lock

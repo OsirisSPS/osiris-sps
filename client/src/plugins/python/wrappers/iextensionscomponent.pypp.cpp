@@ -121,7 +121,7 @@ struct IExtensionsComponent_wrapper : ::osiris::IExtensionsComponent, ::osiris::
         return ::osiris::IExtensionsComponent::removeProfileData( db );
     }
 
-    virtual void removeStatistics( ::boost::shared_ptr< osiris::IPortalDatabase > db, ::boost::shared_ptr< osiris::ObjectsIObject > object=(osiris::null) ) {
+    virtual void removeStatistics( ::boost::shared_ptr< osiris::IPortalDatabase > db, ::boost::shared_ptr< osiris::ObjectsIObject > object=(nullptr) ) {
         ::osiris::PythonState __pystate(getPythonThreadState());
         if( ::osiris::PythonOverride func_removeStatistics = this->get_override( "removeStatistics" ) )
             func_removeStatistics( db, object );
@@ -131,7 +131,7 @@ struct IExtensionsComponent_wrapper : ::osiris::IExtensionsComponent, ::osiris::
         }
     }
     
-    void default_removeStatistics( ::boost::shared_ptr< osiris::IPortalDatabase > db, ::boost::shared_ptr< osiris::ObjectsIObject > object=(osiris::null) ) {
+    void default_removeStatistics( ::boost::shared_ptr< osiris::IPortalDatabase > db, ::boost::shared_ptr< osiris::ObjectsIObject > object=(nullptr) ) {
         ::osiris::PythonThreadSaver __pythreadSaver;
         ::osiris::IExtensionsComponent::removeStatistics( db, object );
     }
@@ -251,7 +251,7 @@ void register_IExtensionsComponent_class(){
                 "removeStatistics"
                 , removeStatistics_function_type(&::osiris::IExtensionsComponent::removeStatistics)
                 , default_removeStatistics_function_type(&IExtensionsComponent_wrapper::default_removeStatistics)
-                , ( ::boost::python::arg("db"), ::boost::python::arg("object")=(osiris::null) ) );
+                , ( ::boost::python::arg("db"), ::boost::python::arg("object")=(nullptr) ) );
         
         }
         ::boost::python::register_ptr_to_python< boost::shared_ptr< ::osiris::IExtensionsComponent > >();

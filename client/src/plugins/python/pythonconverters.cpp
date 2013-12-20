@@ -34,32 +34,6 @@ OS_NAMESPACE_BEGIN()
 //////////////////////////////////////////////////////////////////////
 
 template <>
-struct PythonConverter<null_ptr>
-{
-	static void * convertible(PyObject *obj)
-	{
-		if(obj == Py_None)
-			return obj;
-
-		return null;
-	}
-
-	static void create(PyObject *obj, boost::python::converter::rvalue_from_python_stage1_data *data)
-	{
-		void *memory_chunk = reinterpret_cast<boost::python::converter::rvalue_from_python_storage<null_ptr> *>(data)->storage.bytes;
-		new (memory_chunk) null_ptr();
-		data->convertible = memory_chunk; 
-	}
-
-	static PyObject * convert(const null_ptr &obj)
-	{
-		return boost::python::detail::none();
-	}
-};
-
-//////////////////////////////////////////////////////////////////////
-
-template <>
 struct PythonConverter<String>
 {
 	static void * convertible(PyObject *obj)
@@ -293,7 +267,6 @@ void PythonConverters::init()
 {
 	add<boost::none_t>();
 	add<boost::posix_time::ptime>();
-	add<null_ptr>();
 	add<String>();
 	
 	// N.B.: la conversione da C++ a Python è già esposta tramite indexing suite

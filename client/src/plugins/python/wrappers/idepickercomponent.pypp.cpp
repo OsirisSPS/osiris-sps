@@ -64,7 +64,7 @@ struct IdePickerComponent_wrapper : ::osiris::IdePickerComponent, ::osiris::Pyth
         return ::osiris::IHtmlControl::decodeEvent( boost::ref(command), boost::ref(eventName), boost::ref(e) );
     }
 
-    ::osiris::String encodeEvent( ::osiris::String const & eventName, ::osiris::HtmlEvent const * e=(osiris::null) ) const {
+    ::osiris::String encodeEvent( ::osiris::String const & eventName, ::osiris::HtmlEvent const * e=(nullptr) ) const {
         return ::osiris::IHtmlControl::encodeEvent( boost::ref(eventName), boost::python::ptr(e) );
     }
 
@@ -113,7 +113,7 @@ struct IdePickerComponent_wrapper : ::osiris::IdePickerComponent, ::osiris::Pyth
         return ::osiris::IdePickerSelect::getValue( );
     }
 
-    virtual void onEvent( ::osiris::String const & name, ::osiris::IEvent * e=(osiris::null) ){
+    virtual void onEvent( ::osiris::String const & name, ::osiris::IEvent * e=(nullptr) ){
         ::osiris::PythonState __pystate(getPythonThreadState());
         if( ::osiris::PythonOverride func_onEvent = this->get_override( "onEvent" ) )
             func_onEvent( boost::ref(name), boost::python::ptr(e) );
@@ -123,7 +123,7 @@ struct IdePickerComponent_wrapper : ::osiris::IdePickerComponent, ::osiris::Pyth
         }
     }
     
-    virtual void default_onEvent( ::osiris::String const & name, ::osiris::IEvent * e=(osiris::null) ){
+    virtual void default_onEvent( ::osiris::String const & name, ::osiris::IEvent * e=(nullptr) ){
         ::osiris::PythonThreadSaver __pythreadSaver;
         ::osiris::IHtmlControl::onEvent( boost::ref(name), boost::python::ptr(e) );
     }
@@ -272,7 +272,7 @@ void register_IdePickerComponent_class(){
         .def( 
             "encodeEvent"
             , (::osiris::String ( IdePickerComponent_wrapper::* )( ::osiris::String const &,::osiris::HtmlEvent const * ) const)(&IdePickerComponent_wrapper::encodeEvent)
-            , ( ::boost::python::arg("eventName"), ::boost::python::arg("e")=(osiris::null) ) )    
+            , ( ::boost::python::arg("eventName"), ::boost::python::arg("e")=(nullptr) ) )    
         .def( 
             "getSession"
             , (::boost::shared_ptr< osiris::HttpSession > ( ::osiris::IHtmlControl::* )(  ) const)(&::osiris::IHtmlControl::getSession)
@@ -288,7 +288,7 @@ void register_IdePickerComponent_class(){
         .def( 
             "onEvent"
             , (void ( IdePickerComponent_wrapper::* )( ::osiris::String const &,::osiris::IEvent * ) )(&IdePickerComponent_wrapper::default_onEvent)
-            , ( ::boost::python::arg("name"), ::boost::python::arg("e")=(osiris::null) ) )    
+            , ( ::boost::python::arg("name"), ::boost::python::arg("e")=(nullptr) ) )    
         .def( 
             "onInit"
             , (void ( ::osiris::IdePickerSelect::* )(  ) )(&::osiris::IdePickerSelect::onInit)

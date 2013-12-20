@@ -50,7 +50,7 @@ struct HtmlTabCtrl_wrapper : ::osiris::HtmlTabCtrl, ::osiris::PythonWrapper< ::o
         return boost::python::object( result );
     }
 
-    static boost::python::object addPage_53422f5c8393000c79ab42003dfbfe34( ::osiris::HtmlTabCtrl & inst, ::osiris::String const & caption=(osiris::String::EMPTY), ::boost::shared_ptr< osiris::HtmlImage > icon=(osiris::null) ){
+    static boost::python::object addPage_53422f5c8393000c79ab42003dfbfe34( ::osiris::HtmlTabCtrl & inst, ::osiris::String const & caption=(osiris::String::EMPTY), ::boost::shared_ptr< osiris::HtmlImage > icon=(nullptr) ){
         ::osiris::PythonThreadSaver __pythreadSaver;
         ::boost::shared_ptr<osiris::HtmlTabPage> result = inst.addPage(caption, icon);
         __pythreadSaver.restore();
@@ -105,7 +105,7 @@ struct HtmlTabCtrl_wrapper : ::osiris::HtmlTabCtrl, ::osiris::PythonWrapper< ::o
         return ::osiris::IHtmlControl::decodeEvent( boost::ref(command), boost::ref(eventName), boost::ref(e) );
     }
 
-    ::osiris::String encodeEvent( ::osiris::String const & eventName, ::osiris::HtmlEvent const * e=(osiris::null) ) const {
+    ::osiris::String encodeEvent( ::osiris::String const & eventName, ::osiris::HtmlEvent const * e=(nullptr) ) const {
         return ::osiris::IHtmlControl::encodeEvent( boost::ref(eventName), boost::python::ptr(e) );
     }
 
@@ -124,7 +124,7 @@ struct HtmlTabCtrl_wrapper : ::osiris::HtmlTabCtrl, ::osiris::PythonWrapper< ::o
         return ::osiris::IHtmlControl::getSession( );
     }
 
-    virtual void onEvent( ::osiris::String const & name, ::osiris::IEvent * e=(osiris::null) ){
+    virtual void onEvent( ::osiris::String const & name, ::osiris::IEvent * e=(nullptr) ){
         ::osiris::PythonState __pystate(getPythonThreadState());
         if( ::osiris::PythonOverride func_onEvent = this->get_override( "onEvent" ) )
             func_onEvent( boost::ref(name), boost::python::ptr(e) );
@@ -134,7 +134,7 @@ struct HtmlTabCtrl_wrapper : ::osiris::HtmlTabCtrl, ::osiris::PythonWrapper< ::o
         }
     }
     
-    virtual void default_onEvent( ::osiris::String const & name, ::osiris::IEvent * e=(osiris::null) ){
+    virtual void default_onEvent( ::osiris::String const & name, ::osiris::IEvent * e=(nullptr) ){
         ::osiris::PythonThreadSaver __pythreadSaver;
         ::osiris::IHtmlControl::onEvent( boost::ref(name), boost::python::ptr(e) );
     }
@@ -290,7 +290,7 @@ void register_HtmlTabCtrl_class(){
             HtmlTabCtrl_exposer.def( 
                 "addPage"
                 , addPage_function_type( &HtmlTabCtrl_wrapper::addPage_53422f5c8393000c79ab42003dfbfe34 )
-                , ( ::boost::python::arg("inst"), ::boost::python::arg("caption")=(osiris::String::EMPTY), ::boost::python::arg("icon")=(osiris::null) ) );
+                , ( ::boost::python::arg("inst"), ::boost::python::arg("caption")=(osiris::String::EMPTY), ::boost::python::arg("icon")=(nullptr) ) );
         
         }
         { //::osiris::HtmlTabCtrl::addPage
@@ -349,7 +349,7 @@ void register_HtmlTabCtrl_class(){
             HtmlTabCtrl_exposer.def( 
                 "encodeEvent"
                 , encodeEvent_function_type( &HtmlTabCtrl_wrapper::encodeEvent )
-                , ( ::boost::python::arg("eventName"), ::boost::python::arg("e")=(osiris::null) ) );
+                , ( ::boost::python::arg("eventName"), ::boost::python::arg("e")=(nullptr) ) );
         
         }
         { //::osiris::IHtmlControl::getSession
@@ -370,7 +370,7 @@ void register_HtmlTabCtrl_class(){
             HtmlTabCtrl_exposer.def( 
                 "onEvent"
                 , onEvent_function_type( &HtmlTabCtrl_wrapper::default_onEvent )
-                , ( ::boost::python::arg("name"), ::boost::python::arg("e")=(osiris::null) ) );
+                , ( ::boost::python::arg("name"), ::boost::python::arg("e")=(nullptr) ) );
         
         }
         { //::osiris::IHtmlControl::onLoad

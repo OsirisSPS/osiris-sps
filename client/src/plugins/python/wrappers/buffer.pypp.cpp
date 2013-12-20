@@ -43,7 +43,7 @@ static boost::python::object eraseOffset_73b7b695fc905ede8640a2907af7c9aa( ::osi
     return boost::python::object( result );
 }
 
-static boost::python::object find_b5fe5cd0f310ac5871271b83bb44e10b( ::osiris::Buffer const & inst, ::osiris::byte const * value, ::osiris::uint32 length, ::osiris::byte const * pos=(osiris::null) ){
+static boost::python::object find_b5fe5cd0f310ac5871271b83bb44e10b( ::osiris::Buffer const & inst, ::osiris::byte const * value, ::osiris::uint32 length, ::osiris::byte const * pos=(nullptr) ){
     ::osiris::PythonThreadSaver __pythreadSaver;
     ::osiris::byte const * result = inst.find(value, length, pos);
     __pythreadSaver.restore();
@@ -395,7 +395,7 @@ void register_Buffer_class(){
             Buffer_exposer.def( 
                 "find"
                 , find_function_type( &find_b5fe5cd0f310ac5871271b83bb44e10b )
-                , ( ::boost::python::arg("inst"), ::boost::python::arg("value"), ::boost::python::arg("length"), ::boost::python::arg("pos")=(osiris::null) ) );
+                , ( ::boost::python::arg("inst"), ::boost::python::arg("value"), ::boost::python::arg("length"), ::boost::python::arg("pos")=(nullptr) ) );
         
         }
         { //::osiris::Buffer::getAllocEndPosition

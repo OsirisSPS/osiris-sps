@@ -157,7 +157,7 @@ void register_LanguageCulture_class(){
 
     { //::osiris::LanguageCulture
         typedef ::boost::python::class_< ::osiris::LanguageCulture, ::boost::noncopyable > LanguageCulture_exposer_t;
-        LanguageCulture_exposer_t LanguageCulture_exposer = LanguageCulture_exposer_t( "LanguageCulture", ::boost::python::init< ::boost::python::optional< ::boost::shared_ptr< osiris::LanguageCulture > > >(( ::boost::python::arg("parent")=osiris::null )) );
+        LanguageCulture_exposer_t LanguageCulture_exposer = LanguageCulture_exposer_t( "LanguageCulture", ::boost::python::init< ::boost::python::optional< ::boost::shared_ptr< osiris::LanguageCulture > > >(( ::boost::python::arg("parent")=nullptr )) );
         ::boost::python::scope LanguageCulture_scope( LanguageCulture_exposer );
         ::boost::python::implicitly_convertible< ::boost::shared_ptr< osiris::LanguageCulture >, ::osiris::LanguageCulture >();
         { //::osiris::LanguageCulture::getID

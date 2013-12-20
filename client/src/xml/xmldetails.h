@@ -25,16 +25,23 @@
 //////////////////////////////////////////////////////////////////////
 
 #define OS_XERCES_NEW						new		// Xerces ha già un memory manager per le classi derivate da XMemory (vedere l'aggancio in XMLPlatformUtils::Initialize) per cui non serve richiamare le macro di allocazione/deallocazione
-
-//////////////////////////////////////////////////////////////////////
+#undef null
 
 #if OS_COMPILER	== OS_COMPILER_MSVC
 	#pragma warning(disable : 4244)		// 'conversion from <type> to <type>, possible loss of data'
 	#pragma warning(disable : 4267)		// 'conversion from <type> to <type>, possible loss of data'
 #endif
 
+//////////////////////////////////////////////////////////////////////
+
 #include "xalanc/Include/XalanVersion.hpp"
+#include "xalanc/XalanDOM/XalanDocumentFragment.hpp"
 #include "xalanc/XalanTransformer/XalanTransformer.hpp"
+#include "xalanc/XalanTransformer/XercesDOMWrapperParsedSource.hpp"
+#include "xalanc/XercesParserLiaison/XercesDOMSupport.hpp"
+#include "xalanc/XercesParserLiaison/XercesParserLiaison.hpp"
+#include "xalanc/XPath/Function.hpp"
+#include "xalanc/XPath/XObjectFactory.hpp"
 #include "xercesc/dom/DOMDocument.hpp"
 #include "xercesc/dom/DOMElement.hpp"
 #include "xercesc/dom/DOMException.hpp"
@@ -51,6 +58,7 @@
 #include "xercesc/parsers/XercesDOMParser.hpp"
 #include "xercesc/util/XercesDefs.hpp"
 #include "xercesc/util/XMLString.hpp"
+#include "xercesc/sax/EntityResolver.hpp"
 #include "xercesc/sax/InputSource.hpp"
 #include "xercesc/sax2/Attributes.hpp"
 #include "xercesc/sax2/DefaultHandler.hpp"
@@ -59,10 +67,14 @@
 #include "xercesc/util/IOException.hpp"
 #include "xercesc/validators/common/Grammar.hpp"
 
+//////////////////////////////////////////////////////////////////////
+
 #if OS_COMPILER	== OS_COMPILER_MSVC
 	#pragma warning(default : 4244)
 	#pragma warning(default : 4267)
 #endif
+
+#define null OS_NULL
 
 //////////////////////////////////////////////////////////////////////
 
@@ -120,14 +132,14 @@ class AutoPtr
 public:
 	AutoPtr(T *ptr)
 	{
-		OS_ASSERT(ptr != OS_NAMESPACE_NAME::null);
+		OS_ASSERT(ptr != null);
 		m_ptr = ptr;
 	}
 
 	~AutoPtr()
 	{
 		m_ptr->release();
-		m_ptr = OS_NAMESPACE_NAME::null;
+		m_ptr = null;
 	}
 
 // Operators

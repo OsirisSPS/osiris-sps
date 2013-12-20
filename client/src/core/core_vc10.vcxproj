@@ -194,7 +194,6 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="algorithms.cpp" />
-    <ClCompile Include="boost.cpp" />
     <ClCompile Include="buffer.cpp" />
     <ClCompile Include="collections.cpp" />
     <ClCompile Include="condition.cpp" />

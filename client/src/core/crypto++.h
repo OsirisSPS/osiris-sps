@@ -137,7 +137,7 @@ class StreamLayerSink : public Sink
 public:
 	StreamLayerSink(OS_NAMESPACE_NAME::shared_ptr<OS_NAMESPACE_NAME::IStreamLayer> layer) : m_layer(layer)
 	{
-		OS_ASSERT(layer != OS_NAMESPACE_NAME::null);
+		OS_ASSERT(layer != null);
 	}
 
 	virtual ~StreamLayerSink() 

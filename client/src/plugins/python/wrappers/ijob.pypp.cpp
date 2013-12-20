@@ -37,7 +37,7 @@ struct IJob_wrapper : ::osiris::IJob, ::osiris::PythonWrapper< ::osiris::IJob > 
         return boost::python::object( result );
     }
 
-    static boost::python::object getRunnable( ::osiris::IJob const & inst, ::osiris::uint32 * timeout=(osiris::null) ){
+    static boost::python::object getRunnable( ::osiris::IJob const & inst, ::osiris::uint32 * timeout=(nullptr) ){
         ::osiris::PythonThreadSaver __pythreadSaver;
         bool result = inst.getRunnable(timeout);
         __pythreadSaver.restore();
@@ -178,7 +178,7 @@ void register_IJob_class(){
             IJob_exposer.def( 
                 "getRunnable"
                 , getRunnable_function_type( &IJob_wrapper::getRunnable )
-                , ( ::boost::python::arg("inst"), ::boost::python::arg("timeout")=(osiris::null) ) );
+                , ( ::boost::python::arg("inst"), ::boost::python::arg("timeout")=(nullptr) ) );
         
         }
         { //::osiris::IJob::getDelay

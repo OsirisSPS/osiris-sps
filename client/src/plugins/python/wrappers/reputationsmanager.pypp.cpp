@@ -30,7 +30,7 @@ static boost::python::object set_245c683171d32f553561f36fd705d2cf( ::osiris::Rep
     return boost::python::object( result );
 }
 
-static boost::python::object compute_7b21f2250e3903cc8cdab63f35c80114( ::osiris::ReputationsManager & inst, ::boost::shared_ptr< osiris::IPortalDatabase > database, ::osiris::UniqueID const & hash_from, ::osiris::UniqueID const & hash_to, ::boost::shared_ptr< osiris::ReputationsFeedback > const & feedback=(osiris::null) ){
+static boost::python::object compute_7b21f2250e3903cc8cdab63f35c80114( ::osiris::ReputationsManager & inst, ::boost::shared_ptr< osiris::IPortalDatabase > database, ::osiris::UniqueID const & hash_from, ::osiris::UniqueID const & hash_to, ::boost::shared_ptr< osiris::ReputationsFeedback > const & feedback=(nullptr) ){
     ::osiris::PythonThreadSaver __pythreadSaver;
     ::osiris::ReputationsScore result = inst.compute(database, hash_from, hash_to, feedback);
     __pythreadSaver.restore();
@@ -80,7 +80,7 @@ void register_ReputationsManager_class(){
             ReputationsManager_exposer.def( 
                 "compute"
                 , compute_function_type( &compute_7b21f2250e3903cc8cdab63f35c80114 )
-                , ( ::boost::python::arg("inst"), ::boost::python::arg("database"), ::boost::python::arg("hash_from"), ::boost::python::arg("hash_to"), ::boost::python::arg("feedback")=(osiris::null) ) );
+                , ( ::boost::python::arg("inst"), ::boost::python::arg("database"), ::boost::python::arg("hash_from"), ::boost::python::arg("hash_to"), ::boost::python::arg("feedback")=(nullptr) ) );
         
         }
         ::boost::python::register_ptr_to_python< boost::shared_ptr< ::osiris::ReputationsManager > >();

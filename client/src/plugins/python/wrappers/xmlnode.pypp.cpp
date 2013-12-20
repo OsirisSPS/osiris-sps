@@ -259,7 +259,7 @@ void register_XMLNode_class(){
 
     { //::osiris::XMLNode
         typedef ::boost::python::class_< ::osiris::XMLNode, ::boost::noncopyable > XMLNode_exposer_t;
-        XMLNode_exposer_t XMLNode_exposer = XMLNode_exposer_t( "XMLNode", ::boost::python::init< ::boost::python::optional< ::osiris::String const &, ::boost::shared_ptr< osiris::XMLDocument >, ::boost::shared_ptr< osiris::XMLNode > > >(( ::boost::python::arg("name")=osiris::String::EMPTY, ::boost::python::arg("document")=osiris::null, ::boost::python::arg("parent")=osiris::null )) );
+        XMLNode_exposer_t XMLNode_exposer = XMLNode_exposer_t( "XMLNode", ::boost::python::init< ::boost::python::optional< ::osiris::String const &, ::boost::shared_ptr< osiris::XMLDocument >, ::boost::shared_ptr< osiris::XMLNode > > >(( ::boost::python::arg("name")=osiris::String::EMPTY, ::boost::python::arg("document")=nullptr, ::boost::python::arg("parent")=nullptr )) );
         ::boost::python::scope XMLNode_scope( XMLNode_exposer );
         ::boost::python::implicitly_convertible< ::osiris::String const &, ::osiris::XMLNode >();
         { //::osiris::XMLNode::getName
