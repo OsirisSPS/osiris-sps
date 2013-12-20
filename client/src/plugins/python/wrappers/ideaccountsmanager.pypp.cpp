@@ -79,6 +79,13 @@ static boost::python::object hasAccount_6bd63eca7ddbbba82640f0345ede1c9a( ::osir
     return boost::python::object( result );
 }
 
+static boost::python::object import_0587da2ec5449f138574e47d712a8114( ::osiris::IdeAccountsManager & inst, ::osiris::Buffer const & buffer ){
+    ::osiris::PythonThreadSaver __pythreadSaver;
+    bool result = inst.import(buffer);
+    __pythreadSaver.restore();
+    return boost::python::object( result );
+}
+
 static boost::python::object remove_ab9e70964391e6998a5b38fddf983955( ::osiris::IdeAccountsManager & inst, ::osiris::String const & id ){
     ::osiris::PythonThreadSaver __pythreadSaver;
     bool result = inst.remove(id);
@@ -202,6 +209,16 @@ void register_IdeAccountsManager_class(){
                 "hasAccount"
                 , hasAccount_function_type( &hasAccount_6bd63eca7ddbbba82640f0345ede1c9a )
                 , ( ::boost::python::arg("inst"), ::boost::python::arg("id") ) );
+        
+        }
+        { //::osiris::IdeAccountsManager::import
+        
+            typedef boost::python::object ( *import_function_type )( ::osiris::IdeAccountsManager &,::osiris::Buffer const & );
+            
+            IdeAccountsManager_exposer.def( 
+                "import"
+                , import_function_type( &import_0587da2ec5449f138574e47d712a8114 )
+                , ( ::boost::python::arg("inst"), ::boost::python::arg("buffer") ) );
         
         }
         { //::osiris::IdeAccountsManager::remove

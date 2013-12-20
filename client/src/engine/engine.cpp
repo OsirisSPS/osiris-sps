@@ -164,7 +164,7 @@ template <typename T>
 void pimpl<Engine>::configureSystem()
 {
 	shared_ptr<ISystem> system(T::create());
-	OS_EXCEPT_IF(system == null, "Invalid system");
+	OS_EXCEPT_IF(system == nullptr, "Invalid system");
 
 	OS_ASSERT(utils::exists(systems, system) == false);		// Essendo tutti i sistemi dei singleton è possibile effettuare il controllo
 	systems.push_back(system);
@@ -181,7 +181,7 @@ bool pimpl<Engine>::hasBackgroundJobs() const
 {
 	boost::mutex::scoped_lock lock(m_backgroundJobsCS);
 
-	if(m_backgroundJobsPool == null)
+	if(m_backgroundJobsPool == nullptr)
 		return false;
 
 	return m_backgroundJobsPool->hasJobs();
@@ -197,10 +197,10 @@ shared_ptr<IBackgroundJob> pimpl<Engine>::getBackgroundJob(uint32 id) const
 			return *i;
 	}
 
-	if(m_backgroundJobsPool != null)
+	if(m_backgroundJobsPool != nullptr)
 		return boost::dynamic_pointer_cast<IBackgroundJob>(m_backgroundJobsPool->getJob(id));
 
-	return null;
+	return nullptr;
 }
 
 shared_ptr<Engine::BackgroundJobs> pimpl<Engine>::getBackgroundJobs() const
@@ -209,15 +209,15 @@ shared_ptr<Engine::BackgroundJobs> pimpl<Engine>::getBackgroundJobs() const
 
 	boost::mutex::scoped_lock lock(m_backgroundJobsCS);
 
-	if(m_backgroundJobsPool != null)
+	if(m_backgroundJobsPool != nullptr)
 	{
 		JobsPool::Jobs poolJobs;
 		m_backgroundJobsPool->getJobs(poolJobs);
 		for(JobsPool::Jobs::const_iterator i = poolJobs.begin(); i != poolJobs.end(); ++i)
 		{
 			shared_ptr<IBackgroundJob> job = boost::dynamic_pointer_cast<IBackgroundJob>(*i);
-			OS_ASSERT(job != null);
-			if(job != null)
+			OS_ASSERT(job != nullptr);
+			if(job != nullptr)
 				jobs->push_back(job);
 		}
 	}
@@ -260,7 +260,7 @@ shared_ptr<IBackgroundJob> pimpl<Engine>::getBackgroundPortalJob(PortalID portal
 		if((*i)->getID() == id)
 			return *i;
 	}
-	return null;
+	return nullptr;
 }
 */
 
@@ -282,7 +282,7 @@ void pimpl<Engine>::resetJobs()
 		m_backgroundJobsPool.reset();
 	}
 
-	if(pool != null)
+	if(pool != nullptr)
 		pool->stop();
 }
 
@@ -292,7 +292,7 @@ bool pimpl<Engine>::processLinkPortal(const OsirisLink &link, String &href)
 	OS_ASSERT(href.empty());
 
 	/*
-	if(link == null)
+	if(link == nullptr)
 	{
 		OS_ASSERTFALSE();
 		return false;
@@ -323,7 +323,7 @@ void pimpl<Engine>::updateOptions()
 {
 	boost::mutex::scoped_lock lock(m_backgroundJobsCS);
 
-	if(m_backgroundJobsPool != null)
+	if(m_backgroundJobsPool != nullptr)
 		m_backgroundJobsPool->resize(Options::instance()->getOption<uint32>(Options::system_options::background_tasks));
 }
 
@@ -333,7 +333,7 @@ bool pimpl<Engine>::processLinkIsis(const OsirisLink &link, String &href)
 	OS_ASSERT(href.empty());
 
 	/*
-	if(link == null)
+	if(link == nullptr)
 	{
 		OS_ASSERTFALSE();
 		return false;
@@ -347,7 +347,7 @@ bool pimpl<Engine>::processLinkIsis(const OsirisLink &link, String &href)
 	
 	shared_ptr<Portal> portal = PortalsSystem::instance()->getPortal(portalID,povID);
 	
-	if(portal != null)	
+	if(portal != nullptr)	
 		href = IdeSystem::instance()->getLocalUrl(PortalsSystem::instance()->getSettingsLink(portal, link.getParams2()));
 	else
 		href = IdeSystem::instance()->getLocalUrl(PortalsSystem::instance()->getErrorLink(Engine::instance()->getText(_S("common.errors.invalid_portal"))));
@@ -359,7 +359,7 @@ shared_ptr<JobsPool> pimpl<Engine>::ensureJobsPool()
 {
 	// N.B.: la funzione va loccata a monte
 
-	if(m_backgroundJobsPool == null)
+	if(m_backgroundJobsPool == nullptr)
 	{
 		m_backgroundJobsPool.reset(OS_NEW JobsPool(Options::instance()->getOption<uint32>(Options::system_options::background_tasks), taskPriorityIdle));
 		m_backgroundJobsPool->getJobCompletedEvent()->connect(boost::bind(&pimpl<Engine>::handleBackgroundJobCompleted, this, _1));
@@ -433,10 +433,10 @@ void pimpl<Engine>::registerLibraries()
 
 void pimpl<Engine>::handleBackgroundJobCompleted(shared_ptr<IJob> job)
 {
-	OS_ASSERT(job != null && job->getStatus() == IJob::jobComplete);
+	OS_ASSERT(job != nullptr && job->getStatus() == IJob::jobComplete);
 
 	shared_ptr<IBackgroundJob> backgroundJob = boost::dynamic_pointer_cast<IBackgroundJob>(job);
-	if(backgroundJob == null)
+	if(backgroundJob == nullptr)
 	{
 		OS_ASSERTFALSE();
 		return;
@@ -614,7 +614,7 @@ bool Engine::_start(bool recovery)
 	for(pimpl<Engine>::Systems::iterator i = m_impl->systems.begin(); i != m_impl->systems.end(); ++i)
 	{
 		shared_ptr<ISystem> system = *i;
-		OS_ASSERT(system != null);
+		OS_ASSERT(system != nullptr);
 
 		NotificationsManager::instance()->notify(_S("Starting system: ") + system->getName());
 		if(system->start(recovery) == false)
@@ -706,15 +706,15 @@ uint32 Engine::processFile(shared_ptr<File> file, const String &password)
 	shared_ptr<PortalsSerializer> serializer(OS_NEW PortalsSerializer());
 
 	shared_ptr<PortalsSerializer::IResult> result = serializer->parsePortalLink(file);
-	if(result == null)
+	if(result == nullptr)
 		return 0;
 	
 	shared_ptr<OsirisLink> portalLink = result->getPortalLink();
-	if(portalLink == null)
+	if(portalLink == nullptr)
 		return 0;
 	
 	shared_ptr<Portal> portal = PortalsSystem::instance()->ensurePortal(portalLink, password);
-	if(portal == null)
+	if(portal == nullptr)
 		return 0;
 	
 	uint32 jobID = Engine::instance()->peekBackgroundJobID();
@@ -748,7 +748,7 @@ bool Engine::processLink(const OsirisLink &link, String &href)
 shared_ptr<IDbConnection> Engine::createSystemConnection() const
 {
 	shared_ptr<IDbDriver> driver = DatabasesSystem::instance()->getDefaultDriver();
-	OS_EXCEPT_IF(driver == null, "Need a default driver");
+	OS_EXCEPT_IF(driver == nullptr, "Need a default driver");
 
 	shared_ptr<IDbConnection> connection = driver->createConnection(OS_SYSTEM_DB_NAME.to_ascii(), driver->createOptions());
 	connection->open();
@@ -759,7 +759,7 @@ shared_ptr<IDbConnection> Engine::createSystemConnection() const
 void Engine::enableLogger(bool enable)
 {
 	// Controlla se lo stato coincide con quello attuale
-	if(enable == (m_impl->logger != null))
+	if(enable == (m_impl->logger != nullptr))
 		return;
 
 	if(enable)
@@ -773,7 +773,7 @@ void Engine::enableLogger(bool enable)
 		}
 
 		shared_ptr<FileLogger> logger = FileLogger::create();
-		if(logger != null)
+		if(logger != nullptr)
 		{
 			String filename = utils::makeFilePath(logPath, OS_LOG_FILENAME);
 			if(logger->open(filename))
@@ -882,10 +882,10 @@ shared_ptr<TCPSocket> Engine::createTCPSocket(shared_ptr<boost::asio::io_service
 {
 	OS_ASSERT((unsafe == false) || outgoing);		// Le connessioni che non vanno all'esterno non possono essere insicure
 
-	if(io_service == null)
+	if(io_service == nullptr)
 	{
 		OS_ASSERTFALSE();
-		return null;
+		return nullptr;
 	}
 
 	shared_ptr<TCPSocket> socket(OS_NEW TCPSocket(*io_service));
@@ -937,10 +937,10 @@ shared_ptr<UDPSocket> Engine::createUDPSocket(shared_ptr<boost::asio::io_service
 {
 	OS_ASSERT((unsafe == false) || outgoing);		// Le connessioni che non vanno all'esterno non possono essere insicure
 
-	if(io_service == null)
+	if(io_service == nullptr)
 	{
 		OS_ASSERTFALSE();
-		return null;
+		return nullptr;
 	}
 
 	shared_ptr<UDPSocket> socket(OS_NEW UDPSocket(*io_service));
@@ -970,7 +970,7 @@ int Engine::getTimeOffset()
 	else if(timeOffset == OS_TIME_DETECTION_CULTURE)
 	{
 		shared_ptr<LanguageCulture> culture = LanguageManager::instance()->getCulture(Options::instance()->getDefaultLanguage());
-		if(culture != null)
+		if(culture != nullptr)
 			return culture->getDefaultTimeOffset() * 60 * 60;
 	}
 	
@@ -993,14 +993,14 @@ String Engine::formatSystemDate(const boost::posix_time::ptime &time, DateTime::
 {
 	// 0.14
 	shared_ptr<LanguageCulture> culture = LanguageManager::instance()->getCulture(Options::instance()->getDefaultLanguage());
-	OS_ASSERT(culture != null);
+	OS_ASSERT(culture != nullptr);
 	return culture->formatDate(time, pattern, getTimeOffset(), getTimeDST());
 
 	/*
 	String str;
 	shared_ptr<LanguageCulture> systemCulture = LanguageManager::instance()->getSystemCulture();
-	OS_ASSERT(culture != null);
-	if(systemCulture != null)
+	OS_ASSERT(culture != nullptr);
+	if(systemCulture != nullptr)
 		// VERYURGENT: corretto? Non bisogna chiamare systemCulture->getDefaultTimeOffset() perchè il timeoffset è già "applicato" al timestamp
 		str = systemCulture->formatDate(time, pattern, 0, LanguageManager::instance()->getRootFolder());
 	else
@@ -1050,7 +1050,7 @@ shared_ptr<XMLDocument> Engine::parseUrlXml(HttpUrl& url)
 	if(document->parseUrl(url, getDefaultHttpUserAgent(), service, socket) == true)
 		return document;
 	else
-		return null;
+		return nullptr;
 }
 
 void Engine::onUpdateOptions()
@@ -1124,7 +1124,7 @@ bool Engine::doSynchronizeClockWithNTP(DateTime &dt, uint32 retries)
 {
 	// N.B.: creare qui un io_service temporaneo da passare a NTPClient::query perchè internamente chiama una io_service::run (va ristrutturata)
 	shared_ptr<boost::asio::io_service> service = createAsioService();
-	if(service == null)
+	if(service == nullptr)
 	{
 		OS_ASSERTFALSE();
 		return false;
@@ -1134,7 +1134,7 @@ bool Engine::doSynchronizeClockWithNTP(DateTime &dt, uint32 retries)
 	while(retries > 0)
 	{
 		shared_ptr<NTPResponse> response = NTPClient::query(service, createUDPSocket(service, true, true), OS_NTP_DEFAULT_SERVER_NAME, OS_NTP_DEFAULT_SERVER_PORT);
-		if(response != null)
+		if(response != nullptr)
 		{
 			dt = static_cast<boost::posix_time::ptime>(response->transmit_time);
 			return true;
@@ -1155,7 +1155,7 @@ bool Engine::doSynchronizeClockWithIsis(DateTime &dt, uint32 retries)
 		return false;
 
 	shared_ptr<boost::asio::io_service> service = createAsioService();
-	if(service == null)
+	if(service == nullptr)
 	{
 		OS_ASSERTFALSE();
 		return false;
@@ -1169,7 +1169,7 @@ bool Engine::doSynchronizeClockWithIsis(DateTime &dt, uint32 retries)
 	}
 
 	shared_ptr<XMLNode> root = document->getRoot();
-	if(root == null)
+	if(root == nullptr)
 		return false;
 
 	String clock = root->getAttributeString(_S("GMT"));

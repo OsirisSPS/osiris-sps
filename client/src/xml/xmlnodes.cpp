@@ -54,7 +54,7 @@ shared_ptr<XMLNode> XMLNodes::find(const String &name) const
 	if(i != m_nodes.end())
 		return *i;
 
-	return null;
+	return nullptr;
 }
 
 shared_ptr<XMLNode> XMLNodes::find(size_t index) const
@@ -111,22 +111,22 @@ shared_ptr<XMLNode> XMLNodes::_findByIndex(size_t index) const
 	if(index < size())
 		return m_nodes[index];
 
-	return null;
+	return nullptr;
 }
 
 shared_ptr<XMLNode> XMLNodes::_insert(shared_ptr<XMLNode> node, bool back)
 {
-	if(node == null)
+	if(node == nullptr)
 	{
 		OS_ASSERTFALSE();
-		return null;
+		return nullptr;
 	}
 
 	OS_ASSERT(node->getName().empty() == false);
 
 	node->setDocument(getNode().getDocument());
 
-	OS_EXCEPT_IF(node->getParent() != null, "Node already attached");
+	OS_EXCEPT_IF(node->getParent() != nullptr, "Node already attached");
 	node->setParent(getNode().get_this_ptr());
 
 	if(back)

@@ -57,7 +57,7 @@ IdeXSLResolver::~IdeXSLResolver()
 /*
 bool IdeXSLResolver::resolveSkinPath(shared_ptr<IdeSkin> skin, const String &path, String &resolved)
 {
-	OS_ASSERT(skin != null);
+	OS_ASSERT(skin != nullptr);
 
     // Calcola il path fisico del file
 	resolved = skin->getResourcePath(path);
@@ -67,7 +67,7 @@ bool IdeXSLResolver::resolveSkinPath(shared_ptr<IdeSkin> skin, const String &pat
 bool IdeXSLResolver::resolveSkinsPath(const UniqueID &id, const String &path, String &resolved)
 {
 	shared_ptr<IdeSkin> skin = IdeSystem::instance()->getSkin(id.toUTF16());
-	if(skin == null)
+	if(skin == nullptr)
 	{
 	    OS_ASSERTFALSE();
 	    return false;
@@ -88,7 +88,7 @@ bool IdeXSLResolver::resolveHtdocsPath(const String &path, String &resolved)
 bool IdeXSLResolver::resolvePluginsPath(const UniqueID &id, const String &path, String &resolved)
 {
 	shared_ptr<Plugin> plugin = PluginsManager::instance()->getPlugin(id.toUTF16());
-	if(plugin == null)
+	if(plugin == nullptr)
 		return false;
 
 	resolved = utils::makeFilePath(plugin->getPath(), path);
@@ -102,7 +102,7 @@ bool IdeXSLResolver::resolvePluginsPath(const UniqueID &id, const String &path, 
 bool IdeXSLResolver::resolveExtensionsPath(const ExtensionID &id, const String &path, String &resolved)
 {
 	shared_ptr<IExtensionsExtension> extension = ExtensionsSystem::instance()->getExtension(id);
-	if(extension == null)
+	if(extension == nullptr)
 		return false;
 
 	resolved = utils::makeFilePath(extension->getPath(), path);

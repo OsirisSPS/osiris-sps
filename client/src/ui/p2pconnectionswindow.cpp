@@ -64,7 +64,7 @@ SafeVar<bool> P2PConnectionsWindow::s_valid(false);
 //////////////////////////////////////////////////////////////////////
 
 P2PConnectionsWindow::P2PConnectionsWindow(wxWindow *parent, wxWindowID id, const wxPoint &pos, const wxSize &size, long style) : WindowBase(parent, id, pos, size, style),
-																																  m_connectionsCtrl(null),
+																																  m_connectionsCtrl(nullptr),
 																																  m_imageList(16, 16),
 																																  m_connectionsLimit(0)
 {
@@ -81,10 +81,10 @@ P2PConnectionsWindow::P2PConnectionsWindow(wxWindow *parent, wxWindowID id, cons
 	loadOptions();
 
 	shared_ptr<P2PServer> server = p2p::P2PSystem::instance()->getServer();
-	if(server != null)
+	if(server != nullptr)
 	{
 		shared_ptr<ConnectionsManager> connectionsManager = server->getConnectionsManager();
-		if(connectionsManager != null)
+		if(connectionsManager != nullptr)
 		{
 			// Inizializza le connessioni attive
 			Locked<const ConnectionsManager::Connections>::unique activeConnections = connectionsManager->getConnections();
@@ -110,7 +110,7 @@ P2PConnectionsWindow::~P2PConnectionsWindow()
 	s_valid = false;
 
 	delete m_timer;
-	m_timer = null;
+	m_timer = nullptr;
 }
 
 shared_ptr<ConnectionInfo> P2PConnectionsWindow::getConnectionInfo(uint32 connectionID) const
@@ -158,7 +158,7 @@ void P2PConnectionsWindow::createLayout()
 
 void P2PConnectionsWindow::initWindow()
 {
-	OS_ASSERT(m_connectionsCtrl != null);
+	OS_ASSERT(m_connectionsCtrl != nullptr);
 	m_connectionsCtrl->InsertColumn(columnStatus, conversions::from_utf16<wxString>(getText(_S("ui.mainframe.connections.status"))), wxLIST_FORMAT_LEFT, 100);
 	m_connectionsCtrl->InsertColumn(columnPortal, conversions::from_utf16<wxString>(getText(_S("ui.mainframe.connections.portal"))), wxLIST_FORMAT_LEFT, 100);
 	m_connectionsCtrl->InsertColumn(columnPeer, conversions::from_utf16<wxString>(getText(_S("ui.mainframe.connections.peer"))), wxLIST_FORMAT_LEFT, 100);
@@ -171,7 +171,7 @@ void P2PConnectionsWindow::initWindow()
 
 void P2PConnectionsWindow::resizeWindow()
 {
-	if(m_connectionsCtrl == null)
+	if(m_connectionsCtrl == nullptr)
 		return;
 
 	m_connectionsCtrl->SetSize(GetSize());
@@ -201,7 +201,7 @@ void P2PConnectionsWindow::refreshConnectionItem(uint32 connectionID)
 {
 	// Carica i dettagli sulla connessione
 	shared_ptr<ConnectionInfo> connectionInfo = getConnectionInfo(connectionID);
-	if(connectionInfo == null || connectionInfo->getModified() == false)
+	if(connectionInfo == nullptr || connectionInfo->getModified() == false)
 		return;		// Il riferimento alla connessione potrebbe essere stato rimosso in seguito al superamento del limite
 
 	int32 connectionItem = -1;
@@ -214,10 +214,10 @@ void P2PConnectionsWindow::refreshConnectionItem(uint32 connectionID)
 		int32 iconIndex = -1;
 
 		shared_ptr<ConnectionStatus> nodeStatus = connectionInfo->getConnectionStatus();
-		OS_ASSERT(nodeStatus != null);
-		if(nodeStatus != null)
+		OS_ASSERT(nodeStatus != nullptr);
+		if(nodeStatus != nullptr)
 		{
-			OS_ASSERT(boost::dynamic_pointer_cast<p2p::NodeStatus>(nodeStatus) != null);
+			OS_ASSERT(boost::dynamic_pointer_cast<p2p::NodeStatus>(nodeStatus) != nullptr);
 			iconIndex = boost::dynamic_pointer_cast<p2p::NodeStatus>(nodeStatus)->getOutgoing() ? m_connectionOutIcon : m_connectionInIcon;
 		}
 
@@ -234,7 +234,7 @@ void P2PConnectionsWindow::refreshConnectionItem(uint32 connectionID)
 
 	// Aggiorna i dettagli sulla connessione
 	shared_ptr<p2p::NodeStatus> connectionStatus = boost::dynamic_pointer_cast<p2p::NodeStatus>(connectionInfo->getConnectionStatus());
-	if(connectionStatus == null)
+	if(connectionStatus == nullptr)
 	{
 		OS_ASSERTFALSE();
 		return;
@@ -265,10 +265,10 @@ void P2PConnectionsWindow::refreshConnectionItem(uint32 connectionID)
 	m_connectionsCtrl->SetItem(connectionItem, columnStatus, conversions::from_utf16<wxString>(status));
 
 	shared_ptr<Portal> portal = connectionStatus->getPortal();
-	m_connectionsCtrl->SetItem(connectionItem, columnPortal, portal != null ? conversions::from_utf16<wxString>(portal->getName()) : conversions::from_utf16<wxString>(_S("?")));
+	m_connectionsCtrl->SetItem(connectionItem, columnPortal, portal != nullptr ? conversions::from_utf16<wxString>(portal->getName()) : conversions::from_utf16<wxString>(_S("?")));
 
 	shared_ptr<IPAddress> peer = connectionStatus->getPeer();
-	m_connectionsCtrl->SetItem(connectionItem, columnPeer, (peer == null || peer->isAny()) ? conversions::from_utf16<wxString>(_S("?")) : conversions::from_utf16<wxString>(String::format(_S("%S:%d").c_str(), peer->toString().c_str(), peer->getPort())));
+	m_connectionsCtrl->SetItem(connectionItem, columnPeer, (peer == nullptr || peer->isAny()) ? conversions::from_utf16<wxString>(_S("?")) : conversions::from_utf16<wxString>(String::format(_S("%S:%d").c_str(), peer->toString().c_str(), peer->getPort())));
 
 	String tranfers = String::format(_S("D: %S / U: %S").c_str(), utils::formatSize(connectionStatus->getDownloadedBytes()).c_str(), utils::formatSize(connectionStatus->getUploadedBytes()).c_str());
 	m_connectionsCtrl->SetItem(connectionItem, columnTransfers, conversions::from_utf16<wxString>(tranfers));
@@ -289,7 +289,7 @@ void P2PConnectionsWindow::removeConnectionItem(uint32 connectionID)
 	if(connectionItem == -1)
 		return;
 
-	OS_ASSERT(getConnectionInfo(connectionID) == null);
+	OS_ASSERT(getConnectionInfo(connectionID) == nullptr);
 	m_connectionsCtrl->DeleteItem(connectionItem);
 }
 
@@ -332,7 +332,7 @@ void P2PConnectionsWindow::refreshConnectionInfo(shared_ptr<IConnection> connect
 	OS_LOCK(m_cs);
 
 	shared_ptr<P2PConnection> p2pConnection = boost::dynamic_pointer_cast<P2PConnection>(connection);
-	if(p2pConnection == null)
+	if(p2pConnection == nullptr)
 	{
 		OS_ASSERTFALSE();
 		return;
@@ -343,7 +343,7 @@ void P2PConnectionsWindow::refreshConnectionInfo(shared_ptr<IConnection> connect
 
 	switch(e)
 	{
-	case connectionAdded:		OS_ASSERT(connectionInfo == null);
+	case connectionAdded:		OS_ASSERT(connectionInfo == nullptr);
 
 								// Salva la nuova connessione
 								connectionInfo.reset(OS_NEW ConnectionInfo(connectionID, DateTime::now(), p2pConnection->getOrigin()));
@@ -357,7 +357,7 @@ void P2PConnectionsWindow::refreshConnectionInfo(shared_ptr<IConnection> connect
 
 								break;
 
-	case connectionUpdated:		if(connectionInfo != null)
+	case connectionUpdated:		if(connectionInfo != nullptr)
 								{
 									// Aggiorna la data dell'ultimo aggiornamento sulla connessione
 									connectionInfo->setLastAction(DateTime::now());
@@ -367,7 +367,7 @@ void P2PConnectionsWindow::refreshConnectionInfo(shared_ptr<IConnection> connect
 
 								break;
 
-	case connectionRemoved:		if(connectionInfo != null)
+	case connectionRemoved:		if(connectionInfo != nullptr)
 									connectionInfo->setRemoved(true);
 
 								break;
@@ -393,7 +393,7 @@ void P2PConnectionsWindow::handleConnectionEvent(shared_ptr<IConnection> connect
 {
 	// N.B.: il callback può essere chiamato da threads diversi pertanto ogni notifica deve essere fatta via post
 
-	if(connection == null)
+	if(connection == nullptr)
 	{
 		OS_ASSERTFALSE();
 		return;
@@ -418,7 +418,7 @@ void P2PConnectionsWindow::handleConnectionStateChanged(shared_ptr<IConnection> 
 {
 	// N.B.: il callback può essere chiamato da threads diversi pertanto ogni notifica deve essere fatta via post
 
-	if(connection == null)
+	if(connection == nullptr)
 	{
 		OS_ASSERTFALSE();
 		return;

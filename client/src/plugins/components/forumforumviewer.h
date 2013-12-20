@@ -54,7 +54,7 @@ public:
 
 // Construction
 public:
-	ForumViewer(shared_ptr<EntitiesEntity> topic = null);
+	ForumViewer(shared_ptr<EntitiesEntity> topic = nullptr);
 	virtual ~ForumViewer();
 
 // Attributes

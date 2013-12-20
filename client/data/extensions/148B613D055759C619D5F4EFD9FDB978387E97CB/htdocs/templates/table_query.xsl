@@ -15,7 +15,7 @@
   <xsl:template match="table_query">
     <xsl:choose>
       <xsl:when test="header">
-        <table class="os_table_data" data-os-otype="table">
+        <table class="os_table_data os_content_box" data-os-otype="table">
           <xsl:apply-templates />
         </table>
       </xsl:when>
@@ -61,20 +61,13 @@
         <xsl:when test="$type='id'">
           <xsl:choose>
             <xsl:when test="@type = 'user'">
-							<xsl:call-template name="user-row"/>
-							<xsl:call-template name="object-row-tech"/>
+              <xsl:call-template name="user-row"/>
             </xsl:when>
             <xsl:otherwise>
               <xsl:call-template name="object-row-tech"/>
             </xsl:otherwise>
           </xsl:choose>          
         </xsl:when>
-				<xsl:when test="$type='user'">
-					<xsl:call-template name="user-row"/>
-				</xsl:when>
-				<xsl:when test="$type='object-id'">					
-					<xsl:call-template name="object-revision"/>
-				</xsl:when>
         <xsl:when test="$type='short-datetime'">
           <xsl:value-of select="date:short-datetime(@value)"/>
         </xsl:when>	

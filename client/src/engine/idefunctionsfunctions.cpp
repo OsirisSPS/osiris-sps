@@ -601,14 +601,14 @@ ReferenceDate::~ReferenceDate()
 bool ReferenceDate::execute(IContext &context, const Arguments &args, DataItem &result)
 {
 	shared_ptr<IPortalPage> page = boost::dynamic_pointer_cast<IPortalPage>(getPage());
-	if(page == null)
+	if(page == nullptr)
 	{
 		context.reportError(_S("internal error"));
 		return false;
 	}
 
 	shared_ptr<IdeSession> ideSession = page->getSessionAccount();
-	if(ideSession != null)
+	if(ideSession != nullptr)
 	{
 		result = ideSession->getReferenceDate().toXML();
 	}
@@ -690,7 +690,7 @@ EnglishName::~EnglishName()
 bool EnglishName::execute(IContext &context, const Arguments &args, DataItem &result)
 {
 	shared_ptr<LanguageCulture> culture = LanguageManager::instance()->getCulture(args[0]);
-	if(culture == null)
+	if(culture == nullptr)
 	{
 		context.reportError(_S("invalid culture"));
 		return false;
@@ -715,7 +715,7 @@ NativeName::~NativeName()
 bool NativeName::execute(IContext &context, const Arguments &args, DataItem &result)
 {
 	shared_ptr<LanguageCulture> culture = LanguageManager::instance()->getCulture(args[0]);
-	if(culture == null)
+	if(culture == nullptr)
 	{
 		context.reportError(_S("invalid culture"));
 		return false;

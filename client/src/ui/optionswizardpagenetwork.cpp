@@ -247,7 +247,7 @@ void OptionsWizardPageNetwork::testPort2(uint32 port, wxButton* button)
 	else
 	{
 		shared_ptr<boost::asio::io_service> service = createAsioService();
-		if(service == null)
+		if(service == nullptr)
 		{
 			message = _S("Internal error.");
 		}
@@ -261,7 +261,7 @@ void OptionsWizardPageNetwork::testPort2(uint32 port, wxButton* button)
 			else
 			{
 				shared_ptr<XMLNode> root = document->getRoot();
-				if(root == null)
+				if(root == nullptr)
 				{
 					message = _S("Unknown response.");
 				}

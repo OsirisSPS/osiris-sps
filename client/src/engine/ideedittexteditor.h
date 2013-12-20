@@ -43,7 +43,7 @@ class EngineExport TextEditor : public IObjectEditor
 
 // Construction
 public:
-	TextEditor(shared_ptr<EntitiesEntity> entity = null, shared_ptr<EntitiesEntity> parent = null);
+	TextEditor(shared_ptr<EntitiesEntity> entity = nullptr, shared_ptr<EntitiesEntity> parent = nullptr);
 	virtual ~TextEditor();
 
 // IXSLRenderer interface

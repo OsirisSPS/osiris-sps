@@ -371,7 +371,7 @@ void Account::_editMessage()
 	block->getBody()->getControls()->add(table);
 
 	shared_ptr<ObjectsUser> message_reference = _getMessageReference();
-	if(message_reference == null)
+	if(message_reference == nullptr)
 	{
 		redirect(getUrl(acDefault).to_ascii());
 		return;
@@ -438,7 +438,7 @@ shared_ptr<ObjectsUser> Account::_getMessageReference()
 void Account::_sendMessage()
 {
 	shared_ptr<ObjectsUser> message_reference = _getMessageReference();
-	if(message_reference == null)
+	if(message_reference == nullptr)
 		return;
 
 	shared_ptr<ObjectsMessage> message(OS_NEW ObjectsMessage());
@@ -535,7 +535,7 @@ void Account::_editAccount()
 void Account::_initAccount()
 {
 	shared_ptr<IdeAccount> account = getSessionAccount()->getAccount();
-	OS_ASSERT(account != null);
+	OS_ASSERT(account != nullptr);
 
 	if(getPostBack() == false)
 	{
@@ -599,7 +599,7 @@ void Account::_editSkin()
 		for(IdeSystem::Skins::const_iterator i = skins->begin(); i != skins->end(); ++i)
 		{
 			shared_ptr<IdeSkin> skin = i->second;
-			if(skin != null)
+			if(skin != nullptr)
 				m_availableSkins.push_back(skinsGroup->addOption(skin->getName(), skin->getID().toUTF16()));
 		}
 		*/
@@ -623,18 +623,18 @@ void Account::_editSkin()
 void Account::_initSkin()
 {
 	shared_ptr<IdeAccount> account = getSessionAccount()->getAccount();
-	OS_ASSERT(account != null);
+	OS_ASSERT(account != nullptr);
 
 	if(getPostBack() == false)
 		m_skinPicker->setValue(account->getSkinID().toUTF16());
 	/*
-	if(m_skin != null)
+	if(m_skin != nullptr)
 	{
 		// Scorre tutte le skin caricate
 		for(list<shared_ptr<IHtmlControl> >::type::iterator i = m_availableSkins.begin(); i != m_availableSkins.end(); ++i)
 		{
 			shared_ptr<HtmlOption> skin_option = boost::dynamic_pointer_cast<HtmlOption>(*i);
-			if(skin_option != null)
+			if(skin_option != nullptr)
 			{
 				// Controlla se la skin corrente coincide con quella dell'account
 				if(skin_option->getValue() == account->getSkinID())
@@ -667,7 +667,7 @@ void Account::_updateSkin()
 void Account::_initLanguage()
 {
 	shared_ptr<IdeAccount> account = getSessionAccount()->getAccount();
-	OS_ASSERT(account != null);
+	OS_ASSERT(account != nullptr);
 
 	if(getPostBack() == false)
 	{
@@ -759,7 +759,7 @@ void Account::_editLanguage()
 void Account::_updateLanguage(IEvent *e)
 {
 	HtmlEvent *htmlEvent = dynamic_cast<HtmlEvent *>(e);
-	if(htmlEvent == null)
+	if(htmlEvent == nullptr)
 		return;
 
 	shared_ptr<IdeAccount> account = getLoggedUser()->getAccount();
@@ -864,25 +864,27 @@ void Account::_editProfile()
 void Account::_initProfile()
 {
 	shared_ptr<ObjectsUser> user = getSessionAccount()->getUser(getDatabase());
-	OS_ASSERT(user != null);
+	OS_ASSERT(user != nullptr);
 
 	if(getPostBack() == false)
 	{
 		m_username->setValue(user->name);
 		m_description->setValue(user->description);
+		/*
 		if(user->authors_threshold.isNull() == false)
 			m_authorsThreshold->setValue(conversions::to_utf16<uint32>(user->authors_threshold));
 		if(user->editors_threshold.isNull() == false)
 			m_editorsThreshold->setValue(conversions::to_utf16<uint32>(user->editors_threshold));
+		*/
 
 		if(user->birth_date->isValid())
 			m_birthdate->setValue(user->birth_date);
 		m_gender->setValue(conversions::to_utf16<uint32>(user->gender));
-		m_location->setValue(user->location);	
-		m_email->setValue(user->email);
-		m_website->setValue(user->website);
-		m_showAvatar->setCheck(user->show_avatar);
-		m_showMark->setCheck(user->show_mark);
+		//m_location->setValue(user->location);	
+		//m_email->setValue(user->email);
+		//m_website->setValue(user->website);
+		//m_showAvatar->setCheck(user->show_avatar);
+		//m_showMark->setCheck(user->show_mark);
 		m_miscEditor->setValue(user->misc);
 	}
 }
@@ -890,7 +892,7 @@ void Account::_initProfile()
 void Account::_updateProfile()
 {
 	shared_ptr<ObjectsUser> user = getSessionAccount()->getUser(getDatabase());
-	OS_ASSERT(user != null);
+	OS_ASSERT(user != nullptr);
 
 	if(Portal::validateUsername(m_username->getValue()) == false)
 	{
@@ -902,6 +904,7 @@ void Account::_updateProfile()
 
 	user->description = algorithms::trim_copy(m_description->getValue());
 
+	/*
 	DbValue<uint32> newAuthorsThreshold;
 	if(m_authorsThreshold->getValue().empty() == false)
 		newAuthorsThreshold = Convert::toReputationThreshold(m_authorsThreshold->getValue());
@@ -916,13 +919,14 @@ void Account::_updateProfile()
 		//getPortal()->getSnapshotManager()->onAccountChanged(getDatabase(), getLoggedUser()->getAccount()->getID(), user);
 		getPortal()->getSnapshotManager()->onChangeReputationLevel(getDatabase());
 	}
+	*/
 	user->birth_date = m_birthdate->getValue();
 	user->gender = conversions::from_utf16<uint32>(m_gender->getValue());
-	user->location = algorithms::trim_copy(m_location->getValue());	
-	user->email = algorithms::trim_copy(m_email->getValue());
-	user->website = algorithms::trim_copy(m_website->getValue());
-	user->show_mark = m_showMark->getCheck();
-	user->show_avatar = m_showAvatar->getCheck();
+	//user->location = algorithms::trim_copy(m_location->getValue());	
+	//user->email = algorithms::trim_copy(m_email->getValue());
+	//user->website = algorithms::trim_copy(m_website->getValue());
+	//user->show_mark = m_showMark->getCheck();
+	//user->show_avatar = m_showAvatar->getCheck();
 	user->misc = algorithms::trim_copy(m_miscEditor->getValue());
 
 	LanguageResult result = getDatabase()->_signAndUpdate(user, getSessionAccount()->getPrivateKey(), true);
@@ -989,17 +993,17 @@ void Account::_editAvatar()
 
 void Account::_initAvatar()
 {
-	if(m_avatarPanel == null)
+	if(m_avatarPanel == nullptr)
 		return;
 
-	if(m_avatarInfo != null)
+	if(m_avatarInfo != nullptr)
 	{
 		m_avatarPanel->getControls()->remove(m_avatarInfo);
 		m_avatarInfo.reset();
 	}
 
 	shared_ptr<ObjectsAvatar> avatar = getSessionAccount()->getUser(getDatabase())->getAvatar(getDatabase());
-	if(avatar != null)
+	if(avatar != nullptr)
 		m_avatarInfo.reset(OS_NEW HtmlImage(getPortal()->getAvatarLink(avatar->id, avatar->submit_date)));
 	else
 		m_avatarInfo.reset(OS_NEW HtmlText(getText(_S("portal.pages.account.user.avatar.label.none"))));
@@ -1009,8 +1013,8 @@ void Account::_initAvatar()
 
 void Account::_updateAvatar()
 {
-	const Buffer *pFileBuffer = m_avatarBrowser->getFileBuffer();
-	if(pFileBuffer != null)
+	const Buffer *pFileBuffer = m_avatarBrowser->getFileBufferPtr();
+	if(pFileBuffer != nullptr)
 	{
 		if(ObjectsAvatar::validateFormat(getPortal(), *pFileBuffer))
 		{
@@ -1091,7 +1095,7 @@ void Account::_initMark()
 void Account::_updateMark()
 {
 	shared_ptr<ObjectsUser> user = getSessionAccount()->getUser(getDatabase());
-	OS_ASSERT(user != null);
+	OS_ASSERT(user != nullptr);
 
 	user->mark = m_markEditor->getValue();
 
@@ -1128,7 +1132,7 @@ void Account::onInit()
 	}
 
 	_createBrowser();
-	OS_ASSERT(m_view != null);
+	OS_ASSERT(m_view != nullptr);
 
 	switch(getAction())
 	{

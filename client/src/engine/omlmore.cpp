@@ -39,7 +39,7 @@ OMLMore::~OMLMore()
 
 String OMLMore::processHtml(shared_ptr<OMLItem> i, shared_ptr<OMLContext> context) const
 {
-	//int *p=null;
+	//int *p=nullptr;
 	//*p=5;
 
 	if(context->getFull())

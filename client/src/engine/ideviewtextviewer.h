@@ -35,7 +35,7 @@ class TextViewer : public CommentableObjectViewer
 
 // Construction
 public:
-	TextViewer(shared_ptr<EntitiesEntity> entity = null);
+	TextViewer(shared_ptr<EntitiesEntity> entity = nullptr);
 	virtual ~TextViewer();
 
 // IXSLRenderer interface

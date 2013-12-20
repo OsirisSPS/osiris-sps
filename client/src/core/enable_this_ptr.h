@@ -96,14 +96,14 @@ public:
 	template <typename I>
 	inline shared_ptr<I> get_this_ptr()
 	{
-		OS_ASSERT(boost::dynamic_pointer_cast<I>(get_this_ptr()) != null);
+		OS_ASSERT(boost::dynamic_pointer_cast<I>(get_this_ptr()) != nullptr);
 		return boost::dynamic_pointer_cast<I>(get_this_ptr());
 	}
 
 	template <typename I>
 	inline shared_ptr<I const> get_this_ptr() const
 	{
-		OS_ASSERT(boost::dynamic_pointer_cast<I const>(get_this_ptr()) != null);
+		OS_ASSERT(boost::dynamic_pointer_cast<I const>(get_this_ptr()) != nullptr);
 		return boost::dynamic_pointer_cast<I const>(get_this_ptr());
 	}
 
@@ -121,7 +121,7 @@ public:
     template <typename X, typename Y> 
 	void internal_accept_shared_owner(shared_ptr<X> *ppx, Y *py) const
     {
-        OS_ASSERT(ppx != null);
+        OS_ASSERT(ppx != nullptr);
 
         if(m_internal_weak_this.use_count() == 0)
         {

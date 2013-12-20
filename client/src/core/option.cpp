@@ -65,7 +65,7 @@ bool Option::setValue(const DataItem &value, bool allowDefault)
 		castedValue = value;
 
 	// Se è stato specificato un validatore a livello di opzione verifica che il valore sia valido
-	if(m_validator != null && m_validator->validate(castedValue) == false)
+	if(m_validator != nullptr && m_validator->validate(castedValue) == false)
 	{
 		if(allowDefault)
 			toDefault();
@@ -104,7 +104,7 @@ void Option::setValidator(shared_ptr<IOptionValidator> validator)
 
 	m_validator = validator;
 
-	OS_ASSERT(m_validator == null || m_validator->validate(getDefaultValue()));
+	OS_ASSERT(m_validator == nullptr || m_validator->validate(getDefaultValue()));
 
 	if(needRefresh)
 		refreshValue();

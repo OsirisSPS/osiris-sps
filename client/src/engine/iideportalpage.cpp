@@ -137,7 +137,7 @@ int32 IPortalPage::getTimeDST() const
 shared_ptr<IdeSkin> IPortalPage::getSkin() const
 {	
 	shared_ptr<IdeSkin> skin;
-	if((getRequestSource() != rsOsiris) && (m_isisEndpoint != null))
+	if((getRequestSource() != rsOsiris) && (m_isisEndpoint != nullptr))
 	{
 		String id = m_isisEndpoint->getIsisOptions().getOption(Options::ide_options::skin_id);
 		skin = IdeSystem::instance()->getSkin(SkinID(id.to_ascii()));
@@ -145,11 +145,11 @@ shared_ptr<IdeSkin> IPortalPage::getSkin() const
 	else
 	{
 		shared_ptr<IdeSession> ideSession = getSessionAccount();
-		if(ideSession != null && ideSession->isLogged())
+		if(ideSession != nullptr && ideSession->isLogged())
 			skin = ideSession->getCurrentSkin();
 	}
 
-	if(skin != null && skin->isValid())
+	if(skin != nullptr && skin->isValid())
 		return skin;	
 
 	return PageBase::getSkin();
@@ -158,10 +158,48 @@ shared_ptr<IdeSkin> IPortalPage::getSkin() const
 shared_ptr<ObjectsIObject> IPortalPage::getObject(const ObjectID &id) const
 {
 	shared_ptr<Portal> portal = getPortal();
-	if(portal != null)
+	if(portal != nullptr)
 		return portal->getObject(getDatabase(), id);
 
-	return null;
+	return nullptr;
+}
+
+
+String IPortalPage::getStabilityStatus()
+{
+	String stabilityStatus;
+	switch(getPortal()->getSnapshotManager()->getStabilityStatus())
+	{
+	case EntitiesSnapshotManager::ssNone:
+		stabilityStatus=_S("snapshot_none");
+		break;
+	case EntitiesSnapshotManager::ssAccept:
+		stabilityStatus=_S("snapshot_accept");
+		break;
+	case EntitiesSnapshotManager::ssPrepare:
+		stabilityStatus=_S("snapshot_prepare");
+		break;
+	case EntitiesSnapshotManager::ssStabilityUsers:
+		stabilityStatus=_S("snapshot_users_stability");
+		break;
+	case EntitiesSnapshotManager::ssStabilityObjects:
+		stabilityStatus=_S("snapshot_objects_stability");
+		break;
+	case EntitiesSnapshotManager::ssStatisticsObjects:
+		stabilityStatus=_S("snapshot_objects_statistics");
+		break;
+	case EntitiesSnapshotManager::ssStatisticsUsers:
+		stabilityStatus=_S("snapshot_users_statistics");
+		break;
+	case EntitiesSnapshotManager::ssSearchObjects:
+		stabilityStatus=_S("snapshot_objects_search");
+		break;
+	case EntitiesSnapshotManager::ssDone:
+		stabilityStatus=_S("snapshot_done");
+		break;
+	}
+
+	return stabilityStatus;
 }
 
 EntityID IPortalPage::getTargetObject() const
@@ -171,7 +209,7 @@ EntityID IPortalPage::getTargetObject() const
 
 bool IPortalPage::getShowInstance(shared_ptr<ObjectsInstance> instance) const
 {
-	if(instance == null)
+	if(instance == nullptr)
 		return false;
 
 	// Di default tutte le pagine del portale caricano istanze che non siano nell'area content
@@ -182,8 +220,8 @@ bool IPortalPage::getShowInstance(shared_ptr<ObjectsInstance> instance) const
 void IPortalPage::redirect(ide::portal::PortalPage page)
 {
 	shared_ptr<Portal> portal = getPortal();
-	OS_ASSERT(portal != null);
-	if(portal != null)
+	OS_ASSERT(portal != nullptr);
+	if(portal != nullptr)
 		redirect(portal->getLink(page));
 }
 */
@@ -191,15 +229,15 @@ void IPortalPage::redirect(ide::portal::PortalPage page)
 void IPortalPage::redirectPage(const std::string &page) // TOCLEAN: mai usato?
 {
 	shared_ptr<Portal> portal = getPortal();
-	OS_ASSERT(portal != null);
-	if(portal != null)
+	OS_ASSERT(portal != nullptr);
+	if(portal != nullptr)
 		redirect(portal->getLink(page));
 }
 
 uint32 IPortalPage::loadInstances(const EntityID &ID)
 {
 	shared_ptr<EntitiesEntity> entity = getPortal()->getEntity(getDatabase(), ID);
-	if(entity == null)
+	if(entity == nullptr)
 		return 0;
 
 	return onLoadInstances(entity, ID);
@@ -207,7 +245,7 @@ uint32 IPortalPage::loadInstances(const EntityID &ID)
 
 DataItem IPortalPage::getOption(const String &name) const
 {
-	if((getRequestSource() != rsOsiris) && (m_isisEndpoint != null))
+	if((getRequestSource() != rsOsiris) && (m_isisEndpoint != nullptr))
 		return m_isisEndpoint->getIsisOptions().getOption(name);
 
 	return Options::instance()->getOptionValue(name);
@@ -228,7 +266,7 @@ void IPortalPage::updateReferenceDate()
 
 uint32 IPortalPage::onLoadInstances(shared_ptr<EntitiesEntity> entity, EntityID origin)
 {
-	if(entity == null)
+	if(entity == nullptr)
 		return 0;
 
 	uint32 count = 0;
@@ -246,10 +284,10 @@ uint32 IPortalPage::onLoadInstances(shared_ptr<EntitiesEntity> entity, EntityID 
 		for(EntitiesEntities::iterator i = childs->begin(); i != childs->end(); ++i)
 		{
 			shared_ptr<EntitiesEntity> instanceEntity = childs->get(getDatabase(), *i);
-			if(instanceEntity != null)
+			if(instanceEntity != nullptr)
 			{
 				shared_ptr<ObjectsInstance> instanceObject = objects_instance_cast(instanceEntity->getCurrent());
-				if(instanceObject != null)
+				if(instanceObject != nullptr)
 				{
 					bool show = true;
 					switch(instanceObject->getInherit())
@@ -277,7 +315,7 @@ uint32 IPortalPage::onLoadInstances(shared_ptr<EntitiesEntity> entity, EntityID 
 					{
 						// Crea il controllo di vista dell'istanza
 						shared_ptr<IHtmlControl> instanceControl = instanceObject->getDescriptor()->createViewControl(instanceEntity);
-						if(instanceControl != null)
+						if(instanceControl != nullptr)
 						{
 							// Inserisce il controllo nell'area di riferimento dell'istanza
 							getArea(static_cast<PageArea>(instanceObject->getArea()))->getControls()->add(instanceControl);
@@ -319,7 +357,7 @@ void IPortalPage::onPathway2() const
 String IPortalPage::getText(const String &name) const
 {
 	shared_ptr<IdeSession> ideSession = getLoggedUser();
-	if(loggedUser != null && loggedUser->isLogged() && (loggedUser->getGuestMode() == false))
+	if(loggedUser != nullptr && loggedUser->isLogged() && (loggedUser->getGuestMode() == false))
 	{
 		shared_ptr<IdeAccount> account = loggedUser->getAccount();
 		if(account->hasLanguage())
@@ -349,14 +387,14 @@ void IPortalPage::initStylesheet(shared_ptr<XMLStylesheet> stylesheet)
 /*
 bool IPortalPage::restoreSession(shared_ptr<IdeSession> ideSession)
 {
-	if(loggedUser == null)
+	if(loggedUser == nullptr)
 		return false;
 
 	OS_ASSERT(loggedUser->isLogged() == false);
 
 	// Ottiene il portale di riferimento
 	shared_ptr<Portal> portal = loggedUser->getPortal();
-	if(portal == null)
+	if(portal == nullptr)
 		return false;
 
 	// Ottiene dai cookies l'ultimo account usato
@@ -384,7 +422,7 @@ bool IPortalPage::isIsisAllowed() const
 
 String IPortalPage::getBaseTitle()
 {
-	return m_portal != null ? m_portal->getName() : String::EMPTY;
+	return m_portal != nullptr ? m_portal->getName() : String::EMPTY;
 }
 
 void IPortalPage::onRenderDocument(shared_ptr<XMLNode> nodeRoot)
@@ -410,7 +448,7 @@ void IPortalPage::onRenderDocument(shared_ptr<XMLNode> nodeRoot)
 	if(getSessionAccount()->isPortalGuest(getDatabase()) == false)
 	{
 		shared_ptr<ObjectsUser> user = getSessionAccount()->getUser(getDatabase());
-		OS_ASSERT(user != null);
+		OS_ASSERT(user != nullptr);
 
 		shared_ptr<XMLPortalExporter> userExporter(OS_NEW XMLPortalExporter(nodeUser, get_this_ptr<IPortalPage>(), XMLPortalExporter::emFull));
 		user->exportXML(userExporter);
@@ -462,7 +500,7 @@ void IPortalPage::onRenderDocument(shared_ptr<XMLNode> nodeRoot)
 			if(getSessionAccount()->getSessionPortal(getPortal())->getGuest())
 			{	
 
-				if(getSessionAccount()->getUser(getDatabase()) != null)
+				if(getSessionAccount()->getUser(getDatabase()) != nullptr)
 				{
 					shared_ptr<XMLNode> nodeActionLogin = userActions->addChild(_S("action"));
 					nodeActionLogin->setAttributeString(_S("name"), _S("login"));
@@ -526,6 +564,7 @@ void IPortalPage::onRenderDocument(shared_ptr<XMLNode> nodeRoot)
 	}
 }
 
+
 void IPortalPage::onRenderInformations(shared_ptr<XMLNode> node)
 {
 	node->setAttributeBool(_S("guest"), getSessionAccount()->isPortalGuest(getDatabase()));	
@@ -534,39 +573,9 @@ void IPortalPage::onRenderInformations(shared_ptr<XMLNode> node)
 	if(getRequestSource() == rsIsis)
 		node->setAttributeBool(_S("isis"), true);
 	
-	String stabilityStatus;
-	switch(getPortal()->getSnapshotManager()->getStabilityStatus())
-	{
-	case EntitiesSnapshotManager::ssNone:
-		stabilityStatus=_S("snapshot_none");
-		break;
-	case EntitiesSnapshotManager::ssAccept:
-		stabilityStatus=_S("snapshot_accept");
-		break;
-	case EntitiesSnapshotManager::ssPrepare:
-		stabilityStatus=_S("snapshot_prepare");
-		break;
-	case EntitiesSnapshotManager::ssStabilityUsers:
-		stabilityStatus=_S("snapshot_users_stability");
-		break;
-	case EntitiesSnapshotManager::ssStabilityObjects:
-		stabilityStatus=_S("snapshot_objects_stability");
-		break;
-	case EntitiesSnapshotManager::ssStatisticsObjects:
-		stabilityStatus=_S("snapshot_objects_statistics");
-		break;
-	case EntitiesSnapshotManager::ssStatisticsUsers:
-		stabilityStatus=_S("snapshot_users_statistics");
-		break;
-	case EntitiesSnapshotManager::ssSearchObjects:
-		stabilityStatus=_S("snapshot_objects_search");
-		break;
-	case EntitiesSnapshotManager::ssDone:
-		stabilityStatus=_S("snapshot_done");
-		break;
-	}
+	
 
-	node->setAttributeString(_S("stability_status"), stabilityStatus);
+	node->setAttributeString(_S("stability_status"), getStabilityStatus());
 
 	PageBase::onRenderInformations(node);
 }
@@ -623,7 +632,7 @@ void IPortalPage::onInit()
 	PageBase::onInit();
 
 	m_portal = getPortalFromUrl();
-	if(m_portal == null)
+	if(m_portal == nullptr)
 	{
 		redirect(PortalsSystem::instance()->getMainLink(OS_IDE_PAGE_OSIRIS));
 		return;
@@ -633,7 +642,7 @@ void IPortalPage::onInit()
 	{
 		// Localizza l'endpoint
 		m_isisEndpoint = m_portal->getOptions()->findIsisEndpoint(getRequestIsisUrl().to_ascii());
-		OS_EXCEPT_IF(m_isisEndpoint == null, "Invalid Isis endpoint");
+		OS_EXCEPT_IF(m_isisEndpoint == nullptr, "Invalid Isis endpoint");
 	}
 	else
 	{
@@ -651,16 +660,17 @@ void IPortalPage::onInit()
 	if(getSessionAccount()->isLogged() == true)
 	{	
 		shared_ptr<ObjectsUser> user = objects_user_cast(getPortal()->getObject(getDatabase(), getSessionAccount()->getUserID()));
-		if(user != null)
+		if(user != nullptr)
 		{
 			LanguageResult result = getSessionAccount()->portalLogin(getDatabase());
 		}
 	}
 
-	// CLODOURGENT serve?
+	/*
 	shared_ptr<IdeSession> ideSession = getSessionAccount();
 	if(ideSession->isLogged())
 		return;
+	*/
 
 	/* // CLODOURGENT vedi l'altro commento in restoreSession
 	if(restoreSession(loggedUser) == false)
@@ -678,6 +688,18 @@ void IPortalPage::onInit()
 		}
 	}
 	*/
+
+	if(getAjax() == false)
+	{
+		//if(getPageMode() == httpPageModeFull) // RC1
+		if(getPageMode() != httpPageModeAjax) // RC2
+		{
+			// Controlla se effettuare il caricamento delle istanze
+			if(getLoadInstances())
+				// Carica le istanze
+				loadInstances(getTargetObject());
+		}
+	}
 }
 
 void IPortalPage::onLoad()
@@ -704,7 +726,7 @@ void IPortalPage::onLoad()
 			if(getSessionAccount()->isPortalGuest(getDatabase()) == false)			
 			{
 				shared_ptr<Portal> portal = getPortal();
-				if(portal != null)
+				if(portal != nullptr)
 				{
 					uint32 pendingPrivateMessage = portal->getMessenger()->getPendingMessages(getDatabase(), getSessionAccount(), true);
 					if(pendingPrivateMessage > 0)
@@ -745,17 +767,7 @@ void IPortalPage::onLoad()
 
 void IPortalPage::onPreRender()
 {
-	if(getAjax() == false)
-	{
-		//if(getPageMode() == httpPageModeFull) // RC1
-		if(getPageMode() != httpPageModeAjax) // RC2
-		{
-			// Controlla se effettuare il caricamento delle istanze
-			if(getLoadInstances())
-				// Carica le istanze
-				loadInstances(getTargetObject());
-		}
-	}
+	
 
 	PageBase::onPreRender();
 }
@@ -788,7 +800,7 @@ void IPortalPage::renderLinktags(HtmlWriter &writer)
 	style += "</style>";
 	writer.writeLine(style);
 		
-	//PageBase::renderLinktags(writer);
+	PageBase::renderLinktags(writer);
 }
 
 void IPortalPage::redirect(const std::string &url)		// Necessario per non "oscurare" il metodo redirect della base
@@ -802,7 +814,7 @@ bool IPortalPage::transmit()
 
 	// Vedere IPortalPage::onInit
 	shared_ptr<Portal> portal = getPortal();
-	if(portal != null)
+	if(portal != nullptr)
 		portal->getSnapshotManager()->updateLastActionTick();
 
 	return result;

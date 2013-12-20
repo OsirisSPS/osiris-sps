@@ -25,7 +25,7 @@ struct HtmlTabCtrl_wrapper : ::osiris::HtmlTabCtrl, ::osiris::PythonWrapper< ::o
     HtmlTabCtrl_wrapper( )
     : ::osiris::HtmlTabCtrl( )
       , ::osiris::PythonWrapper< ::osiris::HtmlTabCtrl >(){
-        // null constructor
+        // nullptr constructor
     
     }
 

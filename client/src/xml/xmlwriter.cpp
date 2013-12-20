@@ -44,7 +44,7 @@ private:
 	public:
 		IndentScope(pimpl<XMLWriter> *writer)
 		{
-			OS_ASSERT(writer != null);
+			OS_ASSERT(writer != nullptr);
 			m_writer = writer;
 			m_writer->increaseIndent();
 		}
@@ -169,7 +169,7 @@ bool pimpl<XMLWriter>::openStream(shared_ptr<IStream> stream)
 {
 	close();
 
-	if(stream == null)
+	if(stream == nullptr)
 	{
 		OS_ASSERTFALSE();
 		return false;
@@ -188,10 +188,10 @@ bool pimpl<XMLWriter>::openStream(shared_ptr<IStream> stream)
 		return false;
 	}
 
-	OS_ASSERT(formatTarget != null);
+	OS_ASSERT(formatTarget != nullptr);
 	m_formatTarget = formatTarget;
 
-	OS_ASSERT(formatter != null);
+	OS_ASSERT(formatter != nullptr);
 	m_formatter = formatter;
 
 	return true;
@@ -201,7 +201,7 @@ void pimpl<XMLWriter>::close()
 {
 	OS_ASSERT(m_indentLevel == 0);
 
-	if(m_formatTarget != null)
+	if(m_formatTarget != nullptr)
 	{
 		m_formatTarget->flush();
 		m_formatTarget.reset();
@@ -214,7 +214,7 @@ bool pimpl<XMLWriter>::writeDeclaration()
 {
 	try
 	{
-		OS_ASSERT(m_formatter != null);
+		OS_ASSERT(m_formatter != nullptr);
 
 		*m_formatter << xerces::XMLFormatter::NoEscapes;
         *m_formatter << m_declarationVersionInfo << xerces::XMLUni::fgVersion1_0 << m_declarationSeparator;
@@ -235,7 +235,7 @@ bool pimpl<XMLWriter>::writeDeclaration()
 
 bool pimpl<XMLWriter>::writeDocument(shared_ptr<XMLDocument> document, bool declaration)
 {
-	if(document == null)
+	if(document == nullptr)
 	{
 		OS_ASSERTFALSE();
 		return false;
@@ -249,7 +249,7 @@ bool pimpl<XMLWriter>::writeDocument(shared_ptr<XMLDocument> document, bool decl
 
 bool pimpl<XMLWriter>::writeNode(shared_ptr<XMLNode> node)
 {
-	if(node == null)
+	if(node == nullptr)
 	{
 		OS_ASSERTFALSE();
 		return false;
@@ -280,7 +280,7 @@ bool pimpl<XMLWriter>::writeNode(shared_ptr<XMLNode> node)
 
 bool pimpl<XMLWriter>::writeOpen(shared_ptr<XMLNode> node, bool selfClose)
 {
-	if(node == null)
+	if(node == nullptr)
 	{
 		OS_ASSERTFALSE();
 		return false;
@@ -290,12 +290,12 @@ bool pimpl<XMLWriter>::writeOpen(shared_ptr<XMLNode> node, bool selfClose)
 	{
 		writeIndent();
 
-		OS_ASSERT(m_formatter != null);
+		OS_ASSERT(m_formatter != nullptr);
 
 		*m_formatter << xerces::XMLFormatter::NoEscapes << xerces::chOpenAngle << node->getName().c_str();
 
 		shared_ptr<XMLAttributes> attributes = node->getAttributes();
-		OS_ASSERT(attributes != null);
+		OS_ASSERT(attributes != nullptr);
 		for(XMLAttributes::const_iterator i = attributes->begin(); i != attributes->end(); ++i)
 		{
 			shared_ptr<XMLAttribute> attribute = *i;
@@ -320,7 +320,7 @@ bool pimpl<XMLWriter>::writeOpen(shared_ptr<XMLNode> node, bool selfClose)
 
 bool pimpl<XMLWriter>::writeContent(shared_ptr<XMLNode> node, bool childs)
 {
-	if(node == null)
+	if(node == nullptr)
 	{
 		OS_ASSERTFALSE();
 		return false;
@@ -332,7 +332,7 @@ bool pimpl<XMLWriter>::writeContent(shared_ptr<XMLNode> node, bool childs)
 		{
 			writeIndent();
 
-			OS_ASSERT(m_formatter != null);
+			OS_ASSERT(m_formatter != nullptr);
 
 			*m_formatter << xerces::XMLFormatter::CharEscapes << node->getData().c_str();		
 
@@ -360,7 +360,7 @@ bool pimpl<XMLWriter>::writeContent(shared_ptr<XMLNode> node, bool childs)
 
 bool pimpl<XMLWriter>::writeClose(shared_ptr<XMLNode> node)
 {
-	if(node == null)
+	if(node == nullptr)
 	{
 		OS_ASSERTFALSE();
 		return false;
@@ -370,7 +370,7 @@ bool pimpl<XMLWriter>::writeClose(shared_ptr<XMLNode> node)
 	{
 		writeIndent();
 
-		OS_ASSERT(m_formatter != null);
+		OS_ASSERT(m_formatter != nullptr);
 
 		*m_formatter << xerces::XMLFormatter::NoEscapes << m_angleSlash << node->getName().c_str() << m_angleFeed;
 
@@ -414,7 +414,7 @@ void pimpl<XMLWriter>::writeIndent()
 	uint32 indentLevel = m_indentLevel;
 	while(indentLevel > 0)
 	{
-		OS_ASSERT(m_formatter != null);
+		OS_ASSERT(m_formatter != nullptr);
 		*m_formatter << m_indent.c_str();
 		indentLevel--;
 	}		
@@ -425,7 +425,7 @@ void pimpl<XMLWriter>::writeLine()
 	if(m_enableFormat == false)
 		return;
 
-	OS_ASSERT(m_formatter != null);
+	OS_ASSERT(m_formatter != nullptr);
 	*m_formatter << xerces::chLF;	
 }
 

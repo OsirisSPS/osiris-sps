@@ -32,7 +32,7 @@ XMLPortalExporter::XMLPortalExporter(shared_ptr<XMLNode> root, shared_ptr<IPorta
 																																					m_mode(mode),
 																																					m_withStats(withStats)
 {
-	OS_ASSERT(page != null);
+	OS_ASSERT(page != nullptr);
 }
 
 XMLPortalExporter::XMLPortalExporter(shared_ptr<XMLNode> root, const XMLPortalExporter &second) : ExporterBase(root, second),
@@ -51,28 +51,28 @@ XMLPortalExporter::~XMLPortalExporter()
 shared_ptr<Portal> XMLPortalExporter::getPortal() const
 {
 	shared_ptr<const IPortalPage> page = getPage();
-	if(page != null)
+	if(page != nullptr)
 		return page->getPortal();
 
-	return null;
+	return nullptr;
 }
 
 shared_ptr<IPortalDatabase> XMLPortalExporter::getDatabase() const
 {
 	shared_ptr<const IPortalPage> page = getPage();
-	if(page != null)
+	if(page != nullptr)
 		return page->getDatabase();
 
-	return null;
+	return nullptr;
 }
 
 shared_ptr<IdeSession> XMLPortalExporter::getSessionAccount()
 {
 	shared_ptr<IPortalPage> page = getPage();
-	if(page != null)
+	if(page != nullptr)
 		return page->getSessionAccount();
 
-	return null;
+	return nullptr;
 }
 
 //////////////////////////////////////////////////////////////////////

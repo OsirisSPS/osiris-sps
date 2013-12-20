@@ -38,7 +38,7 @@ class EngineExport DbSchemaField : public Object,
 {
 // Construction
 public:
-	DbSchemaField(shared_ptr<DbSchemaTable> table = null);
+	DbSchemaField(shared_ptr<DbSchemaTable> table = nullptr);
 	virtual ~DbSchemaField();
 
 // Attributes

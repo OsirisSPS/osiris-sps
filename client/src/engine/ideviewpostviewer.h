@@ -36,7 +36,7 @@ class PostViewer : public IObjectViewer
 
 // Construction
 public:
-	PostViewer(shared_ptr<EntitiesEntity> entity = null);
+	PostViewer(shared_ptr<EntitiesEntity> entity = nullptr);
 	virtual ~PostViewer();
 
 // Operations

@@ -55,7 +55,7 @@ String::String(const String &first, const String &second)
 
 String::String(const char_type *first, const String &second)
 {
-	if(first != null)
+	if(first != nullptr)
 	{
 		m_str.reserve(std::char_traits<char_type>::length(first) + second.length());
 		m_str.append(first);
@@ -69,7 +69,7 @@ String::String(const char_type *first, const String &second)
 
 String::String(const String &first, const char_type *second)
 {
-	if(second != null)
+	if(second != nullptr)
 	{
 		m_str.reserve(first.length() + std::char_traits<char_type>::length(second));
 		m_str.append(first.m_str);

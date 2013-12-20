@@ -27,7 +27,7 @@ OS_NAMESPACE_BEGIN()
 
 IIRCTarget::IIRCTarget(shared_ptr<IRCSession> session) : m_session(session)
 {
-	OS_ASSERT(session != null);	
+	OS_ASSERT(session != nullptr);	
 }
 
 IIRCTarget::~IIRCTarget()

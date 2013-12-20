@@ -81,9 +81,9 @@ DHTThread::DHTStatus DHTThread::getStatus(int *total) const
 	int good = 0;
 	int dubious = 0;
 	int incoming = 0;
-    dht_nodes(AF_INET, &good, &dubious, null, &incoming);
+    dht_nodes(AF_INET, &good, &dubious, nullptr, &incoming);
 
-	if(total != null)
+	if(total != nullptr)
 		*total = good + dubious + incoming;
 
     if((good < 4) || (good + dubious <= 8))
@@ -100,7 +100,7 @@ shared_ptr<IDHTSearch> DHTThread::peekNextSearch()
 {
 	uint32 portals = PortalsSystem::instance()->getPortalsCount();
 	if(portals == 0)
-		return null;
+		return nullptr;
 
 	if(m_portal >= portals)
 		m_portal = 0;
@@ -108,8 +108,8 @@ shared_ptr<IDHTSearch> DHTThread::peekNextSearch()
 	shared_ptr<Portal> portal = PortalsSystem::instance()->getPortalByIndex(m_portal);
 	m_portal++;
 
-	if(portal == null)
-		return null;
+	if(portal == nullptr)
+		return nullptr;
 
 #ifdef OS_OSIRIS_VERSION_RAZOR
   std::string id = generateSearchID(portal->getNetworkID());
@@ -119,24 +119,24 @@ shared_ptr<IDHTSearch> DHTThread::peekNextSearch()
 	if(id.empty())
 	{
 		OS_ASSERTFALSE();
-		return null;
+		return nullptr;
 	}
 
 	if(m_searches.find(id) != m_searches.end())
-		return null;		// Ricerca già in corso
+		return nullptr;		// Ricerca già in corso
 
 	shared_ptr<IDHTSearch> search(OS_NEW DHTPortalSearch(portal));
 	if(search->assignID(id) == false)
 	{
 		OS_ASSERTFALSE();
-		return null;
+		return nullptr;
 	}
 
 	OS_LOG_DEBUG("Starting DHT search on portal '" + portal->getName() + "', search id = '" + id + "'");
 
 	shared_ptr<P2PServer> server = p2p::P2PSystem::instance()->getServer();
 	uint32 announcePort = 0;
-	if(server != null && server->getBindPort(announcePort))
+	if(server != nullptr && server->getBindPort(announcePort))
 		search->setAnnouncePort(announcePort);
 
 	m_searches[id] = search;
@@ -204,7 +204,7 @@ bool DHTThread::bootstrap(const std::string &host, uint16 port)
 	bool done = false;
 
     struct addrinfo *current = info;
-	while(current != null)
+	while(current != nullptr)
 	{
         dht_ping_node(current->ai_addr, static_cast<int>(current->ai_addrlen));
         current = current->ai_next;
@@ -392,7 +392,7 @@ void DHTThread::run()
 			if(status >= dhtStatusPoor)
 			{
 				shared_ptr<IDHTSearch> search = peekNextSearch();
-				if(search != null)
+				if(search != nullptr)
 				{
 					OS_ASSERT(search->getID()->getSize() == CryptManager::SHA_DIGESTSIZE);
 					// This is how you trigger a search for a torrent hash.  If port (the second argument) is non-zero, it also performs an announce. Since peers expire announced data after 30 minutes, it's a good idea to reannounce every 28 minutes or so.
@@ -423,7 +423,7 @@ void DHTThread::onLeave()
 		scoped_array<sockaddr_in, os_deallocate_t> sins(OS_ALLOCATE_T(sockaddr_in, total));
 
 		int total_ipv6 = 0;
-		int n = dht_get_nodes(sins.get(), &total, null, &total_ipv6);
+		int n = dht_get_nodes(sins.get(), &total, nullptr, &total_ipv6);
 		OS_ASSERT(n == total);
 		int cacheLimit = static_cast<int>(Options::instance()->getOption<uint32>(OS_DHT_OPTION_NODES_CACHE_SIZE));
 		if(total > cacheLimit)

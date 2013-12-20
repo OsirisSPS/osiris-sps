@@ -57,11 +57,11 @@ HttpPath IHttpDirectory::getPath() const
 	String path;
 
 	shared_ptr<const IHttpDirectory> directory = get_this_ptr();
-	while(directory != null)
+	while(directory != nullptr)
 	{
 		String name = directory->getName();
 
-		OS_ASSERT((name.empty() == false) || (directory->getParent() == null));
+		OS_ASSERT((name.empty() == false) || (directory->getParent() == nullptr));
 		if(name.empty() == false)
 			path.insert(0, (OS_HTTP_PATH_SEPARATOR + name).c_str());
 		
@@ -75,7 +75,7 @@ bool IHttpDirectory::addDirectory(shared_ptr<IHttpDirectory> directory)
 {
 	OS_LOCK(m_cs);
 
-	if(directory == null)
+	if(directory == nullptr)
 		return false;
 
 	OS_EXCEPT_IF(hasDirectory(directory->getName()), "Duplicated directory");
@@ -88,7 +88,7 @@ bool IHttpDirectory::addDirectory(shared_ptr<IHttpDirectory> directory)
 
 bool IHttpDirectory::removeDirectory(shared_ptr<IHttpDirectory> directory)
 {
-	if(directory == null)
+	if(directory == nullptr)
 	{
 		OS_ASSERTFALSE();
 		return false;
@@ -102,7 +102,7 @@ bool IHttpDirectory::removeDirectory(const String &name)
 	OS_LOCK(m_cs);
 
 	shared_ptr<IHttpDirectory> directory = m_directories.get(name);
-	if(directory == null)
+	if(directory == nullptr)
 		return false;
 	
 	directory->m_parent.reset();
@@ -124,7 +124,7 @@ String IHttpDirectory::getSessionCookie(shared_ptr<HttpSession> session) const
 shared_ptr<HttpSessionState> IHttpDirectory::createSessionState(shared_ptr<HttpSession> session, const TimeDuration &duration) const
 {
 	shared_ptr<IHttpDirectory> parent = getParent();
-	if(parent != null)
+	if(parent != nullptr)
 		return parent->createSessionState(session, duration);
 
 	return shared_ptr<HttpSessionState>(OS_NEW HttpSessionState(CryptManager::instance()->randomSHA().toHex(), duration));
@@ -142,7 +142,7 @@ bool IHttpDirectory::process(shared_ptr<HttpSession> session, const HttpPath &pa
 		return true;
 
 	shared_ptr<IHttpDirectory> directory = getDirectory(path.getDirectory());
-	if(directory != null && directory->process(session, path.getTarget()))
+	if(directory != nullptr && directory->process(session, path.getTarget()))
 		return true;
 
 	return false;

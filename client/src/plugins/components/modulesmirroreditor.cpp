@@ -99,7 +99,7 @@ void MirrorEditor::onLoad()
 	if(getPostBack() == false)
 	{
 		shared_ptr<XMLNode> root = getModuleDocument()->getRoot();
-		if(root != null)
+		if(root != nullptr)
 		{
 			m_objectID->setValue(root->getAttributeString(OS_MODULES_MIRROR_OBJECT_ID));
 			m_renderMode->setValue(conversions::to_utf16(Mirror::getRenderMode(root)));
@@ -115,8 +115,8 @@ void MirrorEditor::onLoad()
 	if(stylesheet->parseFile(path))
 	{
 		// URGENT devo per forza creare un documento?
-		// Se il secondo parametro della XSLControl  null non crea il controllo,
-		// e non posso passare una "getDocument()" perch se  una nuova istanza  null pure lui...
+		// Se il secondo parametro della XSLControl  nullptr non crea il controllo,
+		// e non posso passare una "getDocument()" perch se  una nuova istanza  nullptr pure lui...
 		shared_ptr<XMLDocument> document(OS_NEW XMLDocument());
 		shared_ptr<XMLNode> root = document->create(OS_MODULES_MIRROR_ROOT);
 

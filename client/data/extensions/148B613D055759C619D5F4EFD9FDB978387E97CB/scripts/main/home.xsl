@@ -26,12 +26,6 @@
     <iframe style="float:right;width:300px;height:800px;" src="/portals/view?id=03000002D6FFEC28CC9FF49C4187E4A5F608590E41C915FE&amp;portal=010000014F87B96064EA304F761B8F905FF54E057DEEA49D&amp;page-mode=content"></iframe>
     -->
 
-    <xsl:if test="@latest_osiris_notes">
-      <div class="box-info">
-        <xsl:value-of select="system:parse(@latest_osiris_notes)" disable-output-escaping="yes" />
-      </div>
-    </xsl:if>
-
     <div>
 
       <div class="os_commands_right">
@@ -41,25 +35,25 @@
         </a>
 
 
-        <a class="os_button" href="{actions/action[@name='addons']/@href}" data-os-tooltip="{lang:text('main.pages.addons.description')}">        	
-					<img src="{system:resource-url('images/icons/16x16/addons.png')}" />
-          <xsl:value-of select="lang:text('main.pages.addons.title')"/>
-        </a>
+        <a class="os_button" href="{actions/action[@name='addons']/@href}" data-os-tooltip="{lang:text('main.pages.addons.description')}">
+        	
 
-        <xsl:choose>
-          <xsl:when test="@upgradable_counter">
-            <xsl:if test="@upgradable_counter > 0">
-              <div style="position: relative; width: 0; height: 0; display:inline-block;">
+          <xsl:choose>
+            <xsl:when test="@upgradable_counter">
+              <xsl:if test="@upgradable_counter > 0">
                 <div class="os_button_counter" data-os-tooltip="{lang:text('main.pages.addons.upgrade_available')}">
                   <xsl:value-of select="@upgradable_counter"/>
                 </div>
-              </div>
-            </xsl:if>
-          </xsl:when>
-          <xsl:otherwise>
-            <div data-os-url="/main/addons?act=upgradable&amp;mode=counter"/>
-          </xsl:otherwise>
-        </xsl:choose>
+              </xsl:if>
+            </xsl:when>
+            <xsl:otherwise>
+              <div data-os-url="/main/addons?act=upgradable&amp;mode=counter"/>
+            </xsl:otherwise>
+          </xsl:choose>
+
+					<img src="{system:resource-url('images/icons/16x16/addons.png')}" />
+          <xsl:value-of select="lang:text('main.pages.addons.title')"/>
+        </a>
        
         <a class="os_button" href="javascript:void(0);" onclick="Osiris.dialog('#more_dialog', true);return false;"  data-os-tooltip="{lang:text('main.pages.more.description')}">
         	<img src="{system:resource-url('images/icons/16x16/more.png')}" />
@@ -69,98 +63,108 @@
 
       </div>
 
-      <table style="width:100%">        
-          <tr>						
+      <table style="width:100%">
+        <xsl:if test="//@session_user != ''">
+          <tr>
             <td>
-							<xsl:if test="//@session_user != ''">
-								<xsl:if test="subscribedPortals/portal[@id != //@session_user and @pov = //@session_user]">
-									<xsl:call-template name="block">
-										<xsl:with-param name="title" select="lang:text('main.pages.home.subscribed_your')" />
-										<xsl:with-param name="content">
-											<div>
-												<xsl:for-each select="subscribedPortals/portal[@id != //@session_user and @pov = //@session_user]">
-													<xsl:call-template name="tile-portal"/>
-												</xsl:for-each>
-											</div>
-											<div style="clear:both;"/>
-										</xsl:with-param>
-									</xsl:call-template>
-								</xsl:if>
-							</xsl:if>
-
-							<xsl:call-template name="block">
-								<xsl:with-param name="title" select="lang:text('main.pages.home.subscribed_portals')" />
-								<xsl:with-param name="content">
-									<xsl:choose>
-										<xsl:when test="subscribedPortals/portal[@id != @pov and @pov != //@session_user]">
-											<div>
-												<xsl:for-each select="subscribedPortals/portal[@id != @pov and @pov != //@session_user]">
-													<xsl:call-template name="tile-portal"/>
-												</xsl:for-each>
-											</div>
-										</xsl:when>
-										<xsl:otherwise>
-											<xsl:call-template name="help-box">
-												<xsl:with-param name="text" select="lang:text('main.pages.home.no_portals')"/>
-											</xsl:call-template>
-										</xsl:otherwise>
-									</xsl:choose>
-									<div style="clear:both;"/>
-								</xsl:with-param>
-							</xsl:call-template>
+              <xsl:call-template name="block">
+                <xsl:with-param name="title" select="lang:text('main.pages.home.subscribed_your')" />
+                <xsl:with-param name="content">
+                  <xsl:choose>
+                    <xsl:when test="subscribedPortals/portal[@id != //@session_user and @pov = //@session_user]">
+                      <div>
+                        <xsl:for-each select="subscribedPortals/portal[@id != //@session_user and @pov = //@session_user]">
+                          <xsl:call-template name="tile-portal"/>
+                        </xsl:for-each>
+                      </div>
+                    </xsl:when>
+                    <xsl:otherwise>
+                      <xsl:call-template name="help-box">
+                        <xsl:with-param name="text" select="lang:text('main.pages.home.no_portals')"/>
+                      </xsl:call-template>
+                    </xsl:otherwise>
+                  </xsl:choose>
+                  <div style="clear:both;"/>
+                </xsl:with-param>
+              </xsl:call-template>
             </td>
             <td>
-							<xsl:if test="//@session_user != ''">
-								<xsl:call-template name="block">
-									<xsl:with-param name="title" select="lang:text('main.pages.home.subscribed_self')" />
-									<xsl:with-param name="content">
-										<xsl:choose>
-											<xsl:when test="subscribedPortals/portal[@id = //@session_user and @pov = //@session_user]">
-												<div>
-													<xsl:for-each select="subscribedPortals/portal[@id = //@session_user and @pov = //@session_user]">
-														<xsl:call-template name="tile-portal"/>
-													</xsl:for-each>
-												</div>
-											</xsl:when>
-											<xsl:otherwise>
-												<div class="os_message_nodata">
-													<a href="{@subscribe_self_portal_href}">
-														<xsl:value-of select="lang:text('main.pages.home.subscribe_self_portal')"/>
-													</a>
-												</div>
+              <xsl:call-template name="block">
+                <xsl:with-param name="title" select="lang:text('~main.pages.home.subscribed_self')" />
+                <xsl:with-param name="content">
+                  <xsl:choose>
+                    <xsl:when test="subscribedPortals/portal[@id = //@session_user and @pov = //@session_user]">
+                      <div>
+                        <xsl:for-each select="subscribedPortals/portal[@id = //@session_user and @pov = //@session_user]">
+                          <xsl:call-template name="tile-portal"/>
+                        </xsl:for-each>
+                      </div>
+                    </xsl:when>
+                    <xsl:otherwise>
+                      <div class="os_center">
+                        <a href="{@subscribe_self_portal_href}">
+                          <xsl:value-of select="lang:text('~main.pages.home.subscribe_self_portal')"/>
+                        </a>
+                      </div>
 
-											</xsl:otherwise>
-										</xsl:choose>
-										<div style="clear:both;"/>
-									</xsl:with-param>
-								</xsl:call-template>
-							</xsl:if>
-
-							<xsl:call-template name="block">
-								<xsl:with-param name="title" select="lang:text('main.pages.home.subscribed_users')" />
-								<xsl:with-param name="content">
-									<xsl:choose>
-										<xsl:when test="subscribedPortals/portal[@id = @pov and @pov != //@session_user]">
-											<div>
-												<xsl:for-each select="subscribedPortals/portal[@id = @pov and @pov != //@session_user]">
-													<xsl:call-template name="tile-portal"/>
-												</xsl:for-each>
-											</div>
-										</xsl:when>
-										<xsl:otherwise>
-											<div class="os_message_nodata">
-												<xsl:value-of select="lang:text('main.pages.home.no_users')"/>
-											</div>
-										</xsl:otherwise>
-									</xsl:choose>
-									<div style="clear:both;"/>
-								</xsl:with-param>
-							</xsl:call-template>
+                    </xsl:otherwise>
+                  </xsl:choose>
+                  <div style="clear:both;"/>
+                </xsl:with-param>
+              </xsl:call-template>
             </td>
           </tr>
+        </xsl:if>
+        <tr>
+          <td style="width:100%;">
+            <xsl:call-template name="block">
+              <xsl:with-param name="title" select="lang:text('main.pages.home.subscribed_portals')" />
+              <xsl:with-param name="content">
+                <xsl:choose>
+                  <xsl:when test="subscribedPortals/portal[@id != @pov and @pov != //@session_user]">
+                    <div>
+                      <xsl:for-each select="subscribedPortals/portal[@id != @pov and @pov != //@session_user]">
+                        <xsl:call-template name="tile-portal"/>
+                      </xsl:for-each>
+                    </div>
+                  </xsl:when>
+                  <xsl:otherwise>
+                    <xsl:call-template name="help-box">
+                      <xsl:with-param name="text" select="lang:text('main.pages.home.no_portals')"/>
+                    </xsl:call-template>
+                  </xsl:otherwise>
+                </xsl:choose>
+                <div style="clear:both;"/>
+              </xsl:with-param>
+            </xsl:call-template>
+          </td>
+          <td>
+            <xsl:call-template name="block">
+              <xsl:with-param name="title" select="lang:text('~main.pages.home.subscribed_users')" />
+              <xsl:with-param name="content">
+                <xsl:choose>
+                  <xsl:when test="subscribedPortals/portal[@id = @pov and @pov != //@session_user]">
+                    <div>
+                      <xsl:for-each select="subscribedPortals/portal[@id = @pov and @pov != //@session_user]">
+                        <xsl:call-template name="tile-portal"/>
+                      </xsl:for-each>
+                    </div>
+                  </xsl:when>
+                  <xsl:otherwise>
+                    <div class="os_content" style="padding:2em;text-align:center">
+                      <xsl:value-of select="lang:text('~main.pages.home.no_users')"/>
+                    </div>
+                    <xsl:call-template name="help-box">
+                      <xsl:with-param name="text" select="lang:text('~main.pages.home.no_users')"/>
+                    </xsl:call-template>
+                  </xsl:otherwise>
+                </xsl:choose>
+                <div style="clear:both;"/>
+              </xsl:with-param>
+            </xsl:call-template>
+          </td>
+        </tr>
       </table>
-			
-			<!--
       <div style="clear:both;">       
         <div style="clear:both;margin-top:200px;">
         <xsl:call-template name="block">
@@ -188,8 +192,7 @@
         </xsl:call-template>
         </div>
       </div>
-			-->
-      <div style="clear:both;" class="os_home_footer">        
+      <div class="os_home_footer">        
         <span class="os_label">
           <xsl:value-of select="lang:text('main.pages.home.current_time')"/>
           <xsl:text> : </xsl:text>
@@ -205,10 +208,6 @@
             <xsl:value-of select="lang:text('main.pages.home.actions.create')"/>
           </a>
         </xsl:if>
-        <a class="os_button" href="{actions/action[@name='import']/@href}" data-os-tooltip="{lang:text('main.pages.import.description')}">
-          <img src="{system:resource-url('images/icons/16x16/import.png')}" />
-          <xsl:value-of select="lang:text('main.pages.home.actions.import')"/>
-        </a>
         <a class="os_button" href="{actions/action[@name='subscribe']/@href}" data-os-tooltip="{lang:text('main.pages.subscribe.description')}">
         	<img src="{system:resource-url('images/icons/16x16/subscribe.png')}" />
           <xsl:value-of select="lang:text('main.pages.home.actions.subscribe')"/>
@@ -231,7 +230,6 @@
     
   </xsl:template>
 
-	<!--
   <xsl:template name="row-header">
     <tr>
       <th width="100%">
@@ -318,12 +316,14 @@
         </xsl:choose>
       </td>
       <td class="os_center os_nowrap">
+        <!--
         <xsl:for-each select="actions/action">          
           <xsl:call-template name="action-link">
             <xsl:with-param name="suffix" select="'main.pages.home'"/>
           </xsl:call-template>
         </xsl:for-each>
-        
+        -->
+
         <xsl:call-template name="actions-popup">
           <xsl:with-param name="prefix" select="'main.pages.home.actions'"/>
           <xsl:with-param name="actions" select="actions"/>
@@ -332,41 +332,18 @@
       </td>
     </tr>
   </xsl:template>
-	-->
 
   <xsl:template name="tile-portal">
-    <div id="{@id}_{@pov}_dialog" style="display:none">
-      <h1>
-        <xsl:value-of select="system:parse(@name, false(), false(), true())" disable-output-escaping="yes" />
-      </h1>      
-      <xsl:value-of select="system:parse(@description, false(), false(), true())" disable-output-escaping="yes" />
-    </div>
-
-    <div id="{@id}_{@pov}" class="os_home_tile_portal os_block_item">			
-			<xsl:attribute name="style">
-				<xsl:text>background-color:</xsl:text>
-				<xsl:value-of select="@tileBackColor"/>
-				<xsl:text>;</xsl:text>
-				<xsl:if test="@tileHref">
-					<xsl:text>background-image:url('</xsl:text>
-					<xsl:value-of select="@tileHref"/>
-					<xsl:text>');</xsl:text>
-				</xsl:if>
-			</xsl:attribute>
-      <div class="os_home_tile_portal_area1">
-        <a class="os_button_link" style="float:right;" href="{@infoHref}">
-          <img src="{system:resource-url('images/icons/24x24/more.png')}"/>
-        </a>
-
-        <a href="{@viewHref}" class="os_home_tile_portal_name os_nowrap" style="color:{@tileForeColor}">
+    <div id="{@id}_{@pov}" class="os_home_tile_portal os_block_item">
+      <div style="margin:10px;">
+        <div class="os_home_tile_portal_name">
           <xsl:value-of select="system:parse(@name, false(), false(), true())" disable-output-escaping="yes" />
-        </a>
-        <div class="os_home_tile_portal_description" style="color:{@tileForeColor}">
-          <xsl:value-of select="system:parse(@description, false(), false(), true())" disable-output-escaping="yes" />					
-        </div>				
-      </div>
+        </div>
+        <div class="os_home_tile_portal_description">
+          <xsl:value-of select="system:parse(@description, false(), false(), true())" disable-output-escaping="yes" />
+        </div>
 
-      <div class="os_home_tile_portal_area2">
+
         <div>
           <div class="os_home_portal_icons">
             <xsl:if test="@publicEnabled">
@@ -401,13 +378,6 @@
                 <img src="{system:resource-url('images/icons/16x16/p2p_off.png')}" alt="{$desc}" data-os-tooltip="{$desc}"/>
               </xsl:otherwise>
             </xsl:choose>
-
-						<xsl:if test="@password != ''">
-							<xsl:variable name="desc" select="concat(lang:text('main.pages.home.portals.exchangeWithPassword'), ' ', @password)"/>
-							<img src="{system:resource-url('images/icons/16x16/p2p_password.png')}" alt="{$desc}" data-os-tooltip="{$desc}"/>
-						</xsl:if>
-						
-
             <xsl:if test="isis">
               <br/>
               <xsl:for-each select="isis/isis">
@@ -442,9 +412,9 @@
           </xsl:choose>
         </div>
       </div>
-
-
-    </div>
+    
+    
+    
     
     <!--
         <xsl:for-each select="actions/action">          
@@ -454,15 +424,13 @@
         </xsl:for-each>
         -->
 
-    <!--
         <xsl:call-template name="actions-popup">
           <xsl:with-param name="prefix" select="'main.pages.home.actions'"/>
           <xsl:with-param name="actions" select="actions"/>
           <xsl:with-param name="default" select="'enter'"/>
         </xsl:call-template>
-        -->
 
-    
+    </div>
   </xsl:template>
   
 </xsl:stylesheet>

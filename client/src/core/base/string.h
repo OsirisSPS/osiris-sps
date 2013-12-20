@@ -323,14 +323,14 @@ inline String::String(const String &str, size_type pos, size_type n) : BaseClass
 
 }
 
-inline String::String(const char_type *str) : m_str(str != null ? str : EMPTY.c_str())
+inline String::String(const char_type *str) : m_str(str != nullptr ? str : EMPTY.c_str())
 {
 
 }
 
 inline String::String(const char_type *str, size_type len)
 {
-	if(str != null)
+	if(str != nullptr)
 		m_str.assign(str, len);
 }
 

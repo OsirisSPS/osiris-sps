@@ -72,7 +72,7 @@ void PollOptionEditor::onPreRender()
 	if(isRevision() && getPostBack() == false)
 	{
 		shared_ptr<ObjectsPollOption> current = objects_poll_option_cast(getCurrent());
-		if(current != null)
+		if(current != nullptr)
 			m_title->setValue(current->title);
 	}
 }

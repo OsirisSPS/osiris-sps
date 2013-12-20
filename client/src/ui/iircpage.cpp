@@ -30,7 +30,7 @@ OS_NAMESPACE_BEGIN()
 IIRCPage::IIRCPage(IRCWindow *ircWindow, wxWindow *parent) : WindowBase(parent),
 															 m_ircWindow(ircWindow)
 {
-	OS_ASSERT(ircWindow != null);
+	OS_ASSERT(ircWindow != nullptr);
 }
 
 IIRCPage::~IIRCPage()

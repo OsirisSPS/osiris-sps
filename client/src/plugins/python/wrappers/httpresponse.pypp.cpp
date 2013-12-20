@@ -18,7 +18,7 @@ struct HttpResponse_wrapper : ::osiris::HttpResponse, ::osiris::PythonWrapper< :
     HttpResponse_wrapper( )
     : ::osiris::HttpResponse( )
       , ::osiris::PythonWrapper< ::osiris::HttpResponse >(){
-        // null constructor
+        // nullptr constructor
     
     }
 

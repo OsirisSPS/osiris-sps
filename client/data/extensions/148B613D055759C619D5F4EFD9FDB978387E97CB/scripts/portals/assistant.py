@@ -6,6 +6,9 @@ class Page(osiris.IPortalPage):
 		osiris.IPortalPage.__init__(self, session)
 		
 		self.ajax = True
+		
+	def isMcpModeRequired(self):
+		return False
 				
 	def getPageName(self):
 		return "portal.pages.assistant"
@@ -14,16 +17,11 @@ class Page(osiris.IPortalPage):
 		osiris.IPortalPage.onLoad(self)		
 		
 		document = osiris.XMLDocument()
-		self.root = document.create("assistant")
+		root = document.create("assistant")
 		template = osiris.HtmlXSLControl()
 		template.stylesheet = self.loadStylesheet(os.path.join(os.path.dirname(__file__), "assistant.xsl"))
-		template.document = document
-		
+		template.document = document		
 		self.controls.add(template)
-			
-		#document.root.setAttributeString("mode", self.request.getUrlParam("mode"))		
 		
-	def onPreRender(self):
-		osiris.IPortalPage.onPreRender(self)		
-
+		#document.root.setAttributeString("mode", self.request.getUrlParam("mode"))		
 		

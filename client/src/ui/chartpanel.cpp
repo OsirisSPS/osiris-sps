@@ -90,7 +90,7 @@ void ChartPanel::drawChart(wxDC &dc, wxRect rect)
 {
 	OS_LOCK(RealtimeStatsManager::getLock());
 
-	if(RealtimeStatsManager::m_currentPreset == null)
+	if(RealtimeStatsManager::m_currentPreset == nullptr)
 		return;
 
 	// Costanti:

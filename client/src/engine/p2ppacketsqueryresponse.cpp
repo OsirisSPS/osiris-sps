@@ -49,13 +49,13 @@ QueryResponse::~QueryResponse()
 void QueryResponse::getEntries(DataEntry::DataEntryList &entries) const
 {
 	DataTree *root = getRoot();
-	if(root != null)
+	if(root != nullptr)
 	{
 		// Scandisce l'elenco delle entries disponibili
 		for(DataTree::iterator i = root->begin(); i != root->end(); ++i)
 		{
 			shared_ptr<DataEntry> entry = loadEntry(root, i->first.to_ascii());
-			if(entry != null)
+			if(entry != nullptr)
 				entries.push_back(entry);
 		}
 	}
@@ -64,7 +64,7 @@ void QueryResponse::getEntries(DataEntry::DataEntryList &entries) const
 void QueryResponse::setEntries(const DataEntry::DataEntryList &entries)
 {
 	DataTree *root = getRoot();
-	if(root != null)
+	if(root != nullptr)
 	{
 		// Resetta le entries attuali
 		root->clear();
@@ -84,10 +84,10 @@ DataTree * QueryResponse::getRoot() const
 
 shared_ptr<DataEntry> QueryResponse::loadEntry(DataTree *root, const ObjectID &id) const
 {
-	OS_ASSERT(root != null);
+	OS_ASSERT(root != nullptr);
 	DataItem *value = root->getVP(id.toUTF16());
-	if(value == null)
-		return null;
+	if(value == nullptr)
+		return nullptr;
 
 	shared_ptr<DataEntry> entry(OS_NEW DataEntry());
 	entry->id = id;
@@ -98,7 +98,7 @@ shared_ptr<DataEntry> QueryResponse::loadEntry(DataTree *root, const ObjectID &i
 
 bool QueryResponse::saveEntry(DataTree *root, const shared_ptr<DataEntry> &entry)
 {
-	OS_ASSERT(root != null);
+	OS_ASSERT(root != nullptr);
 	OS_ASSERT(entry->id->empty() == false);
 
 	if(entry->id->empty() || root->exists(entry->id.get().toUTF16()))
@@ -115,7 +115,7 @@ bool QueryResponse::create()
 
 bool QueryResponse::parse()
 {
-	return getRoot() != null;
+	return getRoot() != nullptr;
 }
 
 //////////////////////////////////////////////////////////////////////

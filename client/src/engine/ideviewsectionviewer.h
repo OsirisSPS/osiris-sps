@@ -35,7 +35,7 @@ class SectionViewer : public IObjectViewer
 
 // Construction
 public:
-	SectionViewer(shared_ptr<EntitiesEntity> entity = null);
+	SectionViewer(shared_ptr<EntitiesEntity> entity = nullptr);
 	virtual ~SectionViewer();
 
 // IXSLRenderer interface

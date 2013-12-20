@@ -76,9 +76,9 @@ void QuickSearchViewer::onLoad()
 	setID(controlID);
 
 	shared_ptr<XMLNode> root = getModuleDocument()->getRoot();
-	OS_ASSERT(root != null);
+	OS_ASSERT(root != nullptr);
 		
-	if(root != null)
+	if(root != nullptr)
 	{
 		String style = root->getAttributeString("style");
 
@@ -95,8 +95,8 @@ void QuickSearchViewer::onLoad()
 		if(stylesheet->parseFile(path))
 		{
 			// URGENT devo per forza creare un documento?
-			// Se il secondo parametro della XSLControl  null non crea il controllo,
-			// e non posso passare una "getDocument()" perch se  una nuova istanza  null pure lui...
+			// Se il secondo parametro della XSLControl  nullptr non crea il controllo,
+			// e non posso passare una "getDocument()" perch se  una nuova istanza  nullptr pure lui...
 			shared_ptr<XMLDocument> document(OS_NEW XMLDocument());
 			document->create(OS_MODULES_QUICKSEARCH_ROOT);
 

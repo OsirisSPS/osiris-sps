@@ -42,8 +42,8 @@ class EngineExport IdeSearchQuery : public IXSLRenderer<IPortalPageControl<IHtml
 	
 // Construction
 public:
-	//SearchResults(const String &title, search::query_ptr query = null, search::results_ptr results = null);
-	IdeSearchQuery(shared_ptr<SearchQuery> query = null);
+	//SearchResults(const String &title, search::query_ptr query = nullptr, search::results_ptr results = nullptr);
+	IdeSearchQuery(shared_ptr<SearchQuery> query = nullptr);
 	virtual ~IdeSearchQuery();
 
 // Attributes

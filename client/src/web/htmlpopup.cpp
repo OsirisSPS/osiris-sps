@@ -43,7 +43,7 @@ HtmlPopup::~HtmlPopup()
 
 shared_ptr<HtmlDiv> HtmlPopup::getHeader()
 {
-	if(m_header == null)
+	if(m_header == nullptr)
 	{
 		m_header.reset(OS_NEW HtmlDiv());
 		m_header->setCss(OS_CSS_POPUP_HEADER);
@@ -57,7 +57,7 @@ shared_ptr<HtmlDiv> HtmlPopup::getHeader()
 
 shared_ptr<HtmlDiv> HtmlPopup::getBody()
 {
-	if(m_body == null)
+	if(m_body == nullptr)
 	{
 		m_body.reset(OS_NEW HtmlDiv());
 		m_body->setCss(OS_CSS_POPUP_BODY);

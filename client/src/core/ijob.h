@@ -58,7 +58,7 @@ public:
 	TaskPriority getPriority() const;
 	void setPriority(TaskPriority priority);
 
-    bool getRunnable(uint32 *timeout = null) const;
+    bool getRunnable(uint32 *timeout = nullptr) const;
 
 	// Se settato restituisce il delay del job altrimenti boost::none
 	boost::posix_time::ptime getDelay() const;

@@ -239,7 +239,7 @@ inline IPage::RequestSource IPage::getRequestSource() const { return m_requestSo
 inline bool IPage::getMcpMode() const { return m_mcpMode; }
 inline void IPage::setMcpMode(bool mcpMode) { m_mcpMode = mcpMode; }
 inline shared_ptr<IdeSession> IPage::getSessionAccount() const { return m_session; }
-//inline shared_ptr<IdeSession> IPage::getSessionPortal() const { return m_session ? m_session->getSessionPortal(getPortal()) : null; }
+//inline shared_ptr<IdeSession> IPage::getSessionPortal() const { return m_session ? m_session->getSessionPortal(getPortal()) : nullptr; }
 
 //////////////////////////////////////////////////////////////////////
 

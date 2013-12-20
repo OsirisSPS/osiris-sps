@@ -86,7 +86,7 @@ void PollEditor::onPreRender()
 	if(isRevision() && getPostBack() == false)
 	{
 		shared_ptr<ObjectsPoll> current = objects_poll_cast(getCurrent());
-		if(current != null)
+		if(current != nullptr)
 		{
 			m_title->setValue(current->title);
 			m_type->setValue(conversions::to_utf16<uint32>(current->type));

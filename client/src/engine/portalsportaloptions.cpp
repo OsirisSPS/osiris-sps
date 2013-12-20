@@ -83,7 +83,7 @@ const String PortalOptions::options::password = _S("password");
 const String PortalOptions::options::sync = _S("sync");
 const String PortalOptions::options::optimize_threshold = _S("optimize.threshold");
 const String PortalOptions::options::last_sync_date = _S("last_sync_date");
-const String PortalOptions::options::last_checking_date = _S("last_checking_date");
+//const String PortalOptions::options::last_checking_date = _S("last_checking_date");
 const String PortalOptions::options::last_stabilization_date = _S("last_stabilization_date");
 const String PortalOptions::options::align_hash = _S("align_hash");
 const String PortalOptions::options::last_exchanged_object = _S("last_exchanged_object");
@@ -113,7 +113,7 @@ PortalOptions::PortalOptions() : m_isisID(0)
 	m_portalOptions.ensureOption(options::sync, String::EMPTY, true);
 	m_portalOptions.ensureOption(options::optimize_threshold, -100, true);
 	m_portalOptions.ensureOption(options::last_sync_date, String::EMPTY, false);
-	m_portalOptions.ensureOption(options::last_checking_date, String::EMPTY, false);
+	//m_portalOptions.ensureOption(options::last_checking_date, String::EMPTY, false);
 	m_portalOptions.ensureOption(options::last_stabilization_date, String::EMPTY, false);
 	m_portalOptions.ensureOption(options::align_hash, String::EMPTY, false);
 	m_portalOptions.ensureOption(options::last_exchanged_object, ObjectID::EMPTY.toUTF16(), false);
@@ -207,6 +207,7 @@ void PortalOptions::setLastSyncDate(const DateTime &lastSyncDate)
 	m_portalOptions.setOption(options::last_sync_date, lastSyncDate.toString());
 }
 
+/*
 DateTime PortalOptions::getLastCheckingDate() const
 {
 	return static_cast<String>(m_portalOptions.getOption(options::last_checking_date));
@@ -216,6 +217,7 @@ void PortalOptions::setLastCheckingDate(const DateTime &lastCheckingDate)
 {
 	m_portalOptions.setOption(options::last_checking_date, lastCheckingDate.toString());
 }
+*/
 
 DateTime PortalOptions::getLastStabilizationDate() const
 {
@@ -242,10 +244,11 @@ void PortalOptions::resetAlignmentHash()
 	m_portalOptions.setOption(options::align_hash, String::EMPTY);
 }
 
-void PortalOptions::updateAlignmentHash(const ObjectID &id, bool add)
+void PortalOptions::updateAlignmentHash(const ObjectID &id, const DateTime &submitDate, bool add)
 {
+	std::string data = id.toAscii() + "_" + submitDate.toString().to_ascii();
 #ifdef OS_NOOBJECTID
-	setAlignHash(utils::generateHashMerge(getAlignHash().getString(), id.toAscii(), add)); 
+	setAlignHash(utils::generateHashMerge(getAlignHash().getString(), data, add)); 
 #else
 	setAlignHash(utils::generateHashMerge(getAlignHash().getString(), id.getHash(), add)); 
 #endif
@@ -341,7 +344,7 @@ shared_ptr<IsisEndpoint> PortalOptions::getIsisEndpoint(uint32 id) const
 	if(i != m_isisEndpoints.end())
 		return i->second;
 
-	return null;
+	return nullptr;
 }
 
 Locked<const PortalOptions::IsisEndpoints>::unique PortalOptions::getIsisEndpoints() const
@@ -367,7 +370,7 @@ bool PortalOptions::readFile(const String &filename)
 	{
 		String::size_type pos = filename.find(_S("000001"));
 		if(pos != String::npos)
-			schema = null;
+			schema = nullptr;
 	}
 	
 	shared_ptr<XMLDocument> document(OS_NEW XMLDocument(schema));
@@ -419,7 +422,7 @@ bool PortalOptions::validate() const
 	if(getDatabaseVersion().empty())
 		return false;
 
-	if(DatabasesSystem::instance()->getDriver(getDatabaseDriver().to_ascii()) == null)
+	if(DatabasesSystem::instance()->getDriver(getDatabaseDriver().to_ascii()) == nullptr)
 		return false;
 
 	return true;
@@ -472,7 +475,7 @@ shared_ptr<IsisEndpoint> PortalOptions::findIsisEndpoint(const std::string &url)
 			return i->second;
 	}
 
-	return null;
+	return nullptr;
 }
 
 bool PortalOptions::removeIsisEndpoint(uint32 id)
@@ -516,7 +519,7 @@ bool PortalOptions::_readXML(shared_ptr<XMLDocument> document)
 	clear();
 
 	shared_ptr<XMLNode> root = document->getRoot();
-	if(root == null)
+	if(root == nullptr)
 		return false;
 
 	m_portalID = root->getAttributeString(ID).to_ascii();
@@ -525,11 +528,11 @@ bool PortalOptions::_readXML(shared_ptr<XMLDocument> document)
 	_readCompatibilityPortalOptions(root);
 
 	shared_ptr<XMLNode> databaseNnode = root->getNode(DATABASE);
-	if(databaseNnode != null)
+	if(databaseNnode != nullptr)
 		_readCompatibilityDatabaseOptions(databaseNnode);
 
 	shared_ptr<XMLNode> optionsNode = root->getNode(OS_XMLOPTIONS_NODE_ROOT);
-	if(optionsNode != null)
+	if(optionsNode != nullptr)
 		m_portalOptions.parseXMLNode(optionsNode);
 
 	readIsisOptions();
@@ -546,7 +549,7 @@ bool PortalOptions::_writeXML(shared_ptr<XMLDocument> document) const
 		return false;
 
 	shared_ptr<XMLNode> root = document->create(PORTAL);
-	if(root == null)
+	if(root == nullptr)
 		return false;
 
 	root->setAttributeString(ID, m_portalID.toUTF16());
@@ -556,7 +559,7 @@ bool PortalOptions::_writeXML(shared_ptr<XMLDocument> document) const
 	writeIsisOptions();
 
 	shared_ptr<XMLNode> optionsNode = m_portalOptions.toXMLNode();
-	if(optionsNode != null)
+	if(optionsNode != nullptr)
 		root->addChild(optionsNode);
 
 	return true;
@@ -564,26 +567,26 @@ bool PortalOptions::_writeXML(shared_ptr<XMLDocument> document) const
 
 void PortalOptions::_readCompatibilityPortalOptions(shared_ptr<XMLNode> node)
 {
-	OS_ASSERT(node != null);
+	OS_ASSERT(node != nullptr);
 
 	shared_ptr<XMLAttribute> name = node->getAttribute(NAME);
-	if(name != null)
+	if(name != nullptr)
 		setName(name->getValue());
 
 	/*
 	shared_ptr<XMLAttribute> description = node->getAttribute(DESCRIPTION);
-	if(description != null)
+	if(description != nullptr)
 		setDescription(description->getValue());
 	*/
 
 	shared_ptr<XMLAttribute> attributeDeleted = node->getAttribute(DELETED);
-	if(attributeDeleted != null)
+	if(attributeDeleted != nullptr)
 		setDeleted(conversions::from_utf16<bool>(attributeDeleted->getValue()));
 }
 
 void PortalOptions::_readCompatibilityDatabaseOptions(shared_ptr<XMLNode> node)
 {
-	OS_ASSERT(node != null);
+	OS_ASSERT(node != nullptr);
 
 	shared_ptr<XMLAttributes> attributes = node->getAttributes();
 	for(XMLAttributes::const_iterator i = attributes->begin(); i != attributes->end(); ++i)
@@ -637,7 +640,7 @@ void PortalOptions::readIsisOptions()
 			else
 				isisEndpoint = s->second;
 
-			OS_ASSERT(isisEndpoint != null);
+			OS_ASSERT(isisEndpoint != nullptr);
 
 			String isisOption = tokens[2];
 
@@ -680,7 +683,7 @@ void PortalOptions::writeIsisOptions() const
 
 		m_portalOptions.ensureOption(isisServer + ISIS_NAME, isisEndpoint->getName(), String::EMPTY, false);
 		m_portalOptions.ensureOption(isisServer + ISIS_URL, String(isisEndpoint->getUrl().toString()), String::EMPTY, false);
-		m_portalOptions.ensureOption(isisServer + ISIS_ENABLED, isisEndpoint->getEnabled(), true, false, null);
+		m_portalOptions.ensureOption(isisServer + ISIS_ENABLED, isisEndpoint->getEnabled(), true, false, nullptr);
 		m_portalOptions.ensureOption(isisServer + ISIS_PASSWORD, isisEndpoint->getPassword(), String::EMPTY, false);
 		//m_portalOptions.ensureOption(isisServer + ISIS_USER, isisEndpoint->getUser().toUTF16(), ObjectID::EMPTY.toUTF16(), false);
 		//m_portalOptions.ensureOption(isisServer + ISIS_LAST_EVENT, isisEndpoint->getLastEvent(), String::EMPTY, false);
@@ -692,14 +695,14 @@ bool PortalOptions::initDatabaseOptions()
 	String databaseDriver = getDatabaseDriver();
 
 	shared_ptr<IDbDriver> driver = DatabasesSystem::instance()->getDriver(databaseDriver.to_ascii());
-	if(driver == null)
+	if(driver == nullptr)
 	{
 		OS_LOG_ERROR(String::format(_S("Invalid database driver '%S'").c_str(), databaseDriver.c_str()));
 		return false;
 	}
 
 	m_databaseOptions = driver->createOptions();
-	if(m_databaseOptions != null)
+	if(m_databaseOptions != nullptr)
 	{
 		// TODO: caricare e settare i parametri del database
 
@@ -734,7 +737,7 @@ void PortalOptions::writeDatabaseOptions() const
 
 	m_portalOptions.removePattern(databaseParams);
 
-	if(m_databaseOptions == null)
+	if(m_databaseOptions == nullptr)
 		return;
 
 	const ordered_map<String, String> &params = m_databaseOptions->getParams();

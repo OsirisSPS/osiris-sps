@@ -14,7 +14,7 @@ struct StaticSingleton_less__osiris_scope_CryptManager_comma__true__greater__wra
     StaticSingleton_less__osiris_scope_CryptManager_comma__true__greater__wrapper( )
     : ::osiris::StaticSingleton<osiris::CryptManager, true>( )
       , ::osiris::PythonWrapper< ::osiris::StaticSingleton< osiris::CryptManager, true > >(){
-        // null constructor
+        // nullptr constructor
     
     }
 

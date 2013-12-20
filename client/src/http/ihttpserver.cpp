@@ -114,7 +114,7 @@ shared_ptr<HttpPhysicalDirectory> IHttpServer::addResourceLocation(const String 
 {
 	shared_ptr<HttpPhysicalDirectory> directory(OS_NEW HttpPhysicalDirectory(name, path));
 	if(addDirectory(directory) == false)
-		return null;
+		return nullptr;
 
 	return directory;
 }
@@ -150,7 +150,7 @@ bool IHttpServer::processRequest(shared_ptr<HttpSession> session, const HttpPath
 		directory_name = getDefaultDirectory();
 
 	shared_ptr<IHttpDirectory> directory = getDirectory(directory_name);
-	return directory != null ? directory->process(session, path.getTarget()) : false;
+	return directory != nullptr ? directory->process(session, path.getTarget()) : false;
 }
 
 shared_ptr<HttpSessionState> IHttpServer::getSessionState(shared_ptr<HttpSession> session, const HttpPath &path)
@@ -159,8 +159,8 @@ shared_ptr<HttpSessionState> IHttpServer::getSessionState(shared_ptr<HttpSession
 
 	// Cerca la directory richiesta
 	shared_ptr<IHttpDirectory> directory = getDirectory(path.getDirectory());
-	if(directory == null)
-		return null;
+	if(directory == nullptr)
+		return nullptr;
 
 	String session_cookie = directory->getSessionCookie(session);
 	String session_id;
@@ -172,7 +172,7 @@ shared_ptr<HttpSessionState> IHttpServer::getSessionState(shared_ptr<HttpSession
 		// Carica l'id della sessione
 		session_id = session->getRequest()->getCookie(session_cookie.to_ascii());
 		if(session_id.empty())
-			return null;
+			return nullptr;
 
 		// Cerca la sessione richiesta
 		SessionsStates::iterator i = m_sessionsStates.find(session_id);
@@ -186,12 +186,12 @@ shared_ptr<HttpSessionState> IHttpServer::getSessionState(shared_ptr<HttpSession
 		}
 	}
 
-	if(session_state == null)
+	if(session_state == nullptr)
 	{
 		OS_TRACE("\r\nNew session..."); // COOKIEURGENT
 		session_state = directory->createSessionState(session, getSessionsDuration());
-		if(session_state == null)
-			return null;
+		if(session_state == nullptr)
+			return nullptr;
 
 		session_id = session_state->getID();
 

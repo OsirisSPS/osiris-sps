@@ -15,7 +15,7 @@ struct XMLStylesheet_wrapper : ::osiris::XMLStylesheet, ::osiris::PythonWrapper<
     XMLStylesheet_wrapper( )
     : ::osiris::XMLStylesheet( )
       , ::osiris::PythonWrapper< ::osiris::XMLStylesheet >(){
-        // null constructor
+        // nullptr constructor
     
     }
 

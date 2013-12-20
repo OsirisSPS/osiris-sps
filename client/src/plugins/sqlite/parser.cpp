@@ -186,7 +186,7 @@ void Parser::parseCreateIndex(shared_ptr<DbSqlCreateIndex> command, String &sql)
 void Parser::parseDropIndex(shared_ptr<DbSqlDropIndex> command, String &sql)
 {
 	shared_ptr<DbSchemaIndex> index = command->getIndex();
-	OS_ASSERT(index != null);
+	OS_ASSERT(index != nullptr);
 
 	sql = _S("drop index if exists ") + index->getName();
 }
@@ -456,7 +456,7 @@ bool Parser::_generateFieldSql(shared_ptr<DbSchemaField> field, String &sql)
 
 bool Parser::_generateIndexSql(shared_ptr<DbSchemaIndex> index, String &sql)
 {
-	OS_ASSERT(index != null);
+	OS_ASSERT(index != nullptr);
 
 	const DbSchemaIndexFields &indexFields = index->getFields();
 	if(indexFields.empty())
@@ -504,7 +504,7 @@ bool Parser::_generateBoolFieldSql(shared_ptr<DbSchemaField> field, String &sql)
 	sql = String::format(_S("%S int(1)").c_str(), field->getName().c_str());
 
 	if(field->getNull() == false)
-		sql += _S(" NOT null");
+		sql += _S(" NOT nullptr");
 
 	String value = field->getDefault();
 	if(value.empty() == false)
@@ -523,7 +523,7 @@ bool Parser::_generateIntFieldSql(shared_ptr<DbSchemaField> field, String &sql)
 	sql = String::format(_S("%S int(%d)").c_str(), field->getName().c_str(), field->getSize());
 
 	if(field->getNull() == false)
-		sql += _S(" NOT null");
+		sql += _S(" NOT nullptr");
 
 	String value = field->getDefault();
 	if(value.empty() == false)
@@ -537,7 +537,7 @@ bool Parser::_generateDoubleFieldSql(shared_ptr<DbSchemaField> field, String &sq
 	sql = String::format(_S("%S real").c_str(), field->getName().c_str());
 
 	if(field->getNull() == false)
-		sql += _S(" NOT null");
+		sql += _S(" NOT nullptr");
 
 	String value = field->getDefault();
 	if(value.empty() == false)
@@ -551,7 +551,7 @@ bool Parser::_generateVarcharFieldSql(shared_ptr<DbSchemaField> field, String &s
 	sql = String::format(_S("%S varchar(%d)").c_str(), field->getName().c_str(), field->getSize());
 
 	if(field->getNull() == false)
-		sql += _S(" NOT null");
+		sql += _S(" NOT nullptr");
 
 	String value = field->getDefault();
 	if(value.empty() == false)
@@ -565,7 +565,7 @@ bool Parser::_generateTextFieldSql(shared_ptr<DbSchemaField> field, String &sql)
 	sql = String::format(_S("%S text").c_str(), field->getName().c_str());
 
 	if(field->getNull() == false)
-		sql += _S(" NOT null");
+		sql += _S(" NOT nullptr");
 
 	String value = field->getDefault();
 	if(value.empty() == false)
@@ -579,7 +579,7 @@ bool Parser::_generateBlobFieldSql(shared_ptr<DbSchemaField> field, String &sql)
 	sql = String::format(_S("%S blob").c_str(), field->getName().c_str());
 
 	if(field->getNull() == false)
-		sql += _S(" NOT null");
+		sql += _S(" NOT nullptr");
 
 	String value = field->getDefault();
 	if(value.empty() == false)

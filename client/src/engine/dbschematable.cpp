@@ -63,7 +63,7 @@ shared_ptr<DbSchemaField> DbSchemaTable::getField(const String &name, bool check
 			return *i;
 	}
 
-	return null;
+	return nullptr;
 }
 
 shared_ptr<DbSchemaIndex> DbSchemaTable::getIndex(const String &name) const
@@ -74,12 +74,12 @@ shared_ptr<DbSchemaIndex> DbSchemaTable::getIndex(const String &name) const
 			return *i;
 	}
 
-	return null;
+	return nullptr;
 }
 
 bool DbSchemaTable::parse(shared_ptr<XMLNode> table)
 {
-	OS_ASSERT(table != null);
+	OS_ASSERT(table != nullptr);
 
 	m_name = table->getAttributeString(NAME);
 	if(m_name.empty())
@@ -90,11 +90,11 @@ bool DbSchemaTable::parse(shared_ptr<XMLNode> table)
 		return false;
 
 	shared_ptr<XMLNode> nodeFields = table->getNode(FIELDS);
-	if(nodeFields != null && _parseFields(nodeFields) == false)
+	if(nodeFields != nullptr && _parseFields(nodeFields) == false)
 		return false;
 
 	shared_ptr<XMLNode> nodeIndexes = table->getNode(INDEXES);
-	if(nodeIndexes != null && _parseIndexes(nodeIndexes) == false)
+	if(nodeIndexes != nullptr && _parseIndexes(nodeIndexes) == false)
 		return false;
 
 	return true;
@@ -138,7 +138,7 @@ bool DbSchemaTable::generateDifferences(shared_ptr<DbSchemaTable> new_table, DbS
 	for(DbSchemaFields::const_iterator nf = new_fields.begin(); nf != new_fields.end(); ++nf)
 	{
 		shared_ptr<DbSchemaField> new_field = *nf;
-		shared_ptr<DbSchemaField> old_field = null;
+		shared_ptr<DbSchemaField> old_field = nullptr;
 
 		// Controlla se il campo è ancora presente
 		if(hasField(new_field->getName()))
@@ -151,7 +151,7 @@ bool DbSchemaTable::generateDifferences(shared_ptr<DbSchemaTable> new_table, DbS
 			if(new_field->wasRenamed())
 			{
 				old_field = getField(new_field->getOldName());
-				if(old_field == null)
+				if(old_field == nullptr)
 				{
 					OS_LOG_ERROR(String::format(_S("field in table '%S' has been renamed but wasn't not found in the old table: oldname='%S', newname='%S'\n").c_str(), getName().c_str(), new_field->getOldName().c_str(), new_field->getName().c_str()));
 					return false;
@@ -178,7 +178,7 @@ bool DbSchemaTable::generateDifferences(shared_ptr<DbSchemaTable> new_table, DbS
 		}
 
 		// Se è stato trovo il vecchio campo lo allinea con quello nuovo
-		if(old_field != null)
+		if(old_field != nullptr)
 		{
 			commandRebuildTable->importField(new_field->getName(), old_field->getName());
 
@@ -202,7 +202,7 @@ bool DbSchemaTable::generateDifferences(shared_ptr<DbSchemaTable> new_table, DbS
 	{
 		// Nel caso ci siano solo nuovi campi un'eventuale rinominazione va effettuata in precedenza perchè
 		// i nuovi campi sono basati sulla nuova tabella
-		if(commandRenameTable != null)
+		if(commandRenameTable != nullptr)
 			commands.push_back(commandRenameTable);
 
 		// Esporta i comandi di creazione dei nuovi campi
@@ -237,7 +237,7 @@ bool DbSchemaTable::generateDifferences(shared_ptr<DbSchemaTable> new_table, DbS
 			if(hasIndex(new_index->getName()))
 			{
 				shared_ptr<DbSchemaIndex> old_index = getIndex(new_index->getName());
-				OS_ASSERT(old_index != null);
+				OS_ASSERT(old_index != nullptr);
 
 				if(old_index->compare(new_index) == false)
 				{
@@ -267,7 +267,7 @@ bool DbSchemaTable::generateDifferences(shared_ptr<DbSchemaTable> new_table, DbS
 
 void DbSchemaTable::_addField(shared_ptr<DbSchemaField> field)
 {
-	if(field == null)
+	if(field == nullptr)
 	{
 		OS_ASSERTFALSE();
 		return;
@@ -279,7 +279,7 @@ void DbSchemaTable::_addField(shared_ptr<DbSchemaField> field)
 
 void DbSchemaTable::_addIndex(shared_ptr<DbSchemaIndex> index)
 {
-	if(index == null)
+	if(index == nullptr)
 	{
 		OS_ASSERTFALSE();
 		return;
@@ -291,8 +291,8 @@ void DbSchemaTable::_addIndex(shared_ptr<DbSchemaIndex> index)
 
 bool DbSchemaTable::_parseFields(shared_ptr<XMLNode> nodeFields)
 {
-	OS_ASSERT(nodeFields != null);
-	if(nodeFields == null)
+	OS_ASSERT(nodeFields != nullptr);
+	if(nodeFields == nullptr)
 		return false;
 
 	shared_ptr<XMLNodes> nodeChilds = nodeFields->getNodes();
@@ -317,8 +317,8 @@ bool DbSchemaTable::_parseField(shared_ptr<XMLNode> nodeField)
 
 bool DbSchemaTable::_parseIndexes(shared_ptr<XMLNode> nodeIndexes)
 {
-	OS_ASSERT(nodeIndexes != null);
-	if(nodeIndexes == null)
+	OS_ASSERT(nodeIndexes != nullptr);
+	if(nodeIndexes == nullptr)
 		return false;
 
 	shared_ptr<XMLNodes> nodeChilds = nodeIndexes->getNodes();

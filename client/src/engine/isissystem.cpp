@@ -242,7 +242,7 @@ uint32 IsisSystem::requestIsis(bool force)
 	DateTime now = DateTime::now();
 		
 	shared_ptr<boost::asio::io_service> service = createAsioService();
-	if(service == null)
+	if(service == nullptr)
 	{
 		m_lastRequest = now;
 		m_lastError = _S("No Asio service.");
@@ -275,7 +275,7 @@ uint32 IsisSystem::requestIsis(bool force)
 
 			if(portal->getOptions()->getExchangeEnabled())
 			{			
-				if( (olderPortal == null) || (portal->getLastIsisRequest()<olderDate) )
+				if( (olderPortal == nullptr) || (portal->getLastIsisRequest()<olderDate) )
 				{
 					olderDate = portal->getLastIsisRequest();
 					olderPortal = portal;
@@ -283,7 +283,7 @@ uint32 IsisSystem::requestIsis(bool force)
 			}
 		}
 
-		if(olderPortal == null)
+		if(olderPortal == nullptr)
 			break;
 		else
 		{
@@ -359,7 +359,7 @@ uint32 IsisSystem::requestIsis(bool force)
 	
 	// Read Portals
 	shared_ptr<XMLNode> nodePortals = root->getNode(_S("portals"));
-	if(nodePortals != null)
+	if(nodePortals != nullptr)
 	{
 		shared_ptr<XMLNodes> nodesPortals = nodePortals->getNodes();
 		for(XMLNodes::const_iterator i = nodesPortals->begin(); i != nodesPortals->end(); ++i)
@@ -367,7 +367,7 @@ uint32 IsisSystem::requestIsis(bool force)
 			shared_ptr<XMLNode> nodePortal = *i;
 						
 			shared_ptr<Portal> portal = PortalsSystem::instance()->getPortal(nodePortal->getAttributeString("portal").to_ascii(), nodePortal->getAttributeString("pov").to_ascii());
-			if(portal != null)
+			if(portal != nullptr)
 			{
 				// Read info
 				int nodesSameAlign = nodePortal->getAttributeUint32("nodesSameAlign");
@@ -378,7 +378,7 @@ uint32 IsisSystem::requestIsis(bool force)
 
 				// Read peers
 				shared_ptr<XMLNode> nodePeers = nodePortal->getNode(_S("nodes"));
-				if(nodePeers != null)
+				if(nodePeers != nullptr)
 				{
 					shared_ptr<XMLNodes> nodesPeers = nodePeers->getNodes();
 					for(XMLNodes::const_iterator i = nodesPeers->begin(); i != nodesPeers->end(); ++i)
@@ -389,7 +389,7 @@ uint32 IsisSystem::requestIsis(bool force)
 				                
 						uint32 port = 0;
 						shared_ptr<XMLAttribute> portAttribute = (*i)->getAttribute(_S("port"));
-						if(portAttribute != null)
+						if(portAttribute != nullptr)
 							port = conversions::from_utf16<uint32>(portAttribute->getValue());
 
 						if(port == 0)
@@ -420,7 +420,7 @@ DateTime IsisSystem::getClockWithNTP()
 {
 	// N.B.: creare qui un io_service temporaneo da passare a NTPClient::query perchè internamente chiama una io_service::run (va ristrutturata)
 	shared_ptr<boost::asio::io_service> service = createAsioService();
-	if(service == null)
+	if(service == nullptr)
 	{
 		OS_ASSERTFALSE();
 		return DateTime::EMPTY;
@@ -431,7 +431,7 @@ DateTime IsisSystem::getClockWithNTP()
 	while(retries > 0)
 	{
 		shared_ptr<NTPResponse> response = NTPClient::query(service, Engine::instance()->createUDPSocket(service, true, true), OS_NTP_DEFAULT_SERVER_NAME, OS_NTP_DEFAULT_SERVER_PORT);
-		if(response != null)
+		if(response != nullptr)
 		{
 			DateTime dt = static_cast<boost::posix_time::ptime>(response->transmit_time);
 			return dt;

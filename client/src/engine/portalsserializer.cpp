@@ -125,7 +125,7 @@ private:
 
 	// Construction
 	public:
-		Parser(shared_ptr<Portal> portal = null, shared_ptr<XMLSchema> schema = null);
+		Parser(shared_ptr<Portal> portal = nullptr, shared_ptr<XMLSchema> schema = nullptr);
 		virtual ~Parser();
 
 	// Attributes
@@ -303,7 +303,7 @@ inline void pimpl<PortalsSerializer>::Parser::setProgressCallback(const boost::f
 
 void pimpl<PortalsSerializer>::Parser::parseNodeRoot(const StringCollection<String> &attributes)
 {
-	OS_ASSERT(m_result->getPortalLink() == null);
+	OS_ASSERT(m_result->getPortalLink() == nullptr);
 
 	const String &linkAttribute = attributes.get(OS_PORTALSERIALIZER_XML_PORTAL_LINK);
 	if(linkAttribute.empty() == false)
@@ -317,7 +317,7 @@ void pimpl<PortalsSerializer>::Parser::parseNodeRoot(const StringCollection<Stri
 		
 		m_result->setPortalLink(link);
 
-		if(m_portal == null)
+		if(m_portal == nullptr)
 		{
 			setStopParser(true);
 			return;
@@ -354,7 +354,7 @@ void pimpl<PortalsSerializer>::Parser::parseNodeObject(const StringCollection<St
 		// Build the object.
 		// A better approach will be some "importXML" virtual in objects itself.
 		shared_ptr<IPortalDatabase> database = m_importWork->getDatabase();
-		OS_ASSERT(database != null);
+		OS_ASSERT(database != nullptr);
 
 		shared_ptr<ObjectsIObject> object;
 
@@ -468,7 +468,7 @@ void pimpl<PortalsSerializer>::Parser::parseNodeObject(const StringCollection<St
 			object = reputation;
 		}
 
-		if(object != null)
+		if(object != nullptr)
 		{
 			if(attributes.exists(_S("id")))
 #ifdef OS_NOOBJECTID
@@ -493,7 +493,7 @@ void pimpl<PortalsSerializer>::Parser::parseNodeObject(const StringCollection<St
 
 			object->ensureID(database); // Calculate the ID for some types of objects, for example votes.
 
-			shared_ptr<ObjectsIObject> existsObject = null; // Identify the latest object, to check if is already the same object.
+			shared_ptr<ObjectsIObject> existsObject = nullptr; // Identify the latest object, to check if is already the same object.
 
 			shared_ptr<ObjectsIRevisionable> revisionable = objects_revisionable_cast(object);			
 			if(revisionable)
@@ -512,7 +512,7 @@ void pimpl<PortalsSerializer>::Parser::parseNodeObject(const StringCollection<St
 
 #else
 				shared_ptr<ObjectsIObject> primary = m_portal->getObject(database, entityID.toObjectID());
-				if(primary != null)
+				if(primary != nullptr)
 				{
 					revisionable->revision = entityID.toEntityID();					
 				}
@@ -537,7 +537,7 @@ void pimpl<PortalsSerializer>::Parser::parseNodeObject(const StringCollection<St
 				
 				m_portal->getSnapshotManager()->ensure(database, entityID);
 				shared_ptr<EntitiesEntity> entity = m_portal->getEntity(database, entityID);
-				if(entity != null)
+				if(entity != nullptr)
 				{
 					existsObject = entity->getCurrent();
 
@@ -554,16 +554,16 @@ void pimpl<PortalsSerializer>::Parser::parseNodeObject(const StringCollection<St
 				}
 
 				// If the object doesn't exists, not create the delete revision.
-				if( (object) && (existsObject == null) && (revisionable->visible == false) ) 
-					object = null;
+				if( (object) && (existsObject == nullptr) && (revisionable->visible == false) ) 
+					object = nullptr;
 				// If the object exists, and it's deleted, not create the delete revision.
-				if( (object) && (existsObject != null) && (objects_revisionable_cast(existsObject)->visible == false) )
-					object = null;
+				if( (object) && (existsObject != nullptr) && (objects_revisionable_cast(existsObject)->visible == false) )
+					object = nullptr;
 
 #ifdef OS_TODOCIP
 				
 				// Construct the entity data, with data available.						
-				if( (object) && (existsObject == null) )
+				if( (object) && (existsObject == nullptr) )
 				{
 					revisionable->entity = entityID;
 					if(attributes.exists(_S("entity_author")))
@@ -599,20 +599,20 @@ void pimpl<PortalsSerializer>::Parser::parseNodeObject(const StringCollection<St
 			}
 
 			// If don't have the submit_date, maybe compare content.
-			if( (object != null) && (existsObject != null) )
+			if( (object != nullptr) && (existsObject != nullptr) )
 			{
 				if(object->submit_date->isNull())
 				{
 					// TODO: Compare by content. Actually skip.
-					object = null;
+					object = nullptr;
 				}
 				else if(object->submit_date <= existsObject->submit_date)
 				{
-					object = null;
+					object = nullptr;
 				}				
 			}
 						
-			if(object != null)
+			if(object != nullptr)
 			{
 				Buffer privateKey;
 				privateKey.fromHex(privateKeyHex.to_ascii());
@@ -655,7 +655,7 @@ void pimpl<PortalsSerializer>::Parser::parseNodeObject(const StringCollection<St
 
 pimpl<PortalsSerializer>::Parser::ObjectImportResult pimpl<PortalsSerializer>::Parser::importObject(const std::string &id, const std::string &data)
 {
-	if(m_portal == null)
+	if(m_portal == nullptr)
 	{
 		OS_ASSERTFALSE();
 		OS_EXCEPTION("Internal error: invalid portal");
@@ -676,7 +676,7 @@ pimpl<PortalsSerializer>::Parser::ObjectImportResult pimpl<PortalsSerializer>::P
 	PortalObjectType objectType = Convert::toObjectType(static_cast<uint32>(objectData.getV(DBTABLES::ENTRIES::TYPE)));
 
 	shared_ptr<ObjectsIObject> object = ObjectsSystem::instance()->createObject(objectType);
-	if(object == null)
+	if(object == nullptr)
 		return objectImportSkipped;		// Oggetto sconosciuto
 
     if(object->read(id, objectData) == false)
@@ -688,7 +688,7 @@ pimpl<PortalsSerializer>::Parser::ObjectImportResult pimpl<PortalsSerializer>::P
 pimpl<PortalsSerializer>::Parser::ObjectImportResult pimpl<PortalsSerializer>::Parser::importObject(shared_ptr<ObjectsIObject> object)
 {
 	shared_ptr<IPortalDatabase> database = m_importWork->getDatabase();
-	OS_ASSERT(database != null);
+	OS_ASSERT(database != nullptr);
 
 	if(object->isUser() == false)
 	{
@@ -715,39 +715,39 @@ pimpl<PortalsSerializer>::Parser::ObjectImportResult pimpl<PortalsSerializer>::P
 
 void pimpl<PortalsSerializer>::Parser::initializeImport()
 {
-	if(m_portal == null) // If the parse need to read only the portal-link.
+	if(m_portal == nullptr) // If the parse need to read only the portal-link.
 		return;
 
-	if(m_portal == null)
+	if(m_portal == nullptr)
 	{
 		OS_ASSERTFALSE();
 		OS_EXCEPTION("Internal error: invalid portal");
 	}
 
-	if(m_exchangeContext == null)
+	if(m_exchangeContext == nullptr)
 	{
 		m_exchangeContext = m_portal->getExchangeContext();
-		if(m_exchangeContext == null)
+		if(m_exchangeContext == nullptr)
 		{
 			OS_ASSERTFALSE();
 			OS_EXCEPTION("Internal error: invalid exchange context");
 		}
 	}
 
-	if(m_exchangeSession == null)
+	if(m_exchangeSession == nullptr)
 	{
 		m_exchangeSession = m_exchangeContext->createSession();
-		if(m_exchangeSession == null)
+		if(m_exchangeSession == nullptr)
 		{
 			OS_ASSERTFALSE();
 			OS_EXCEPTION("Internal error: invalid exchange session");
 		}
 	}
 
-	if(m_importWork == null)
+	if(m_importWork == nullptr)
 	{
 		m_importWork = m_portal->startTransaction(true);
-		if(m_importWork == null)
+		if(m_importWork == nullptr)
 		{
 			OS_ASSERTFALSE();
 			OS_EXCEPTION("Internal error: invalid database work");
@@ -759,11 +759,11 @@ void pimpl<PortalsSerializer>::Parser::initializeImport()
 
 void pimpl<PortalsSerializer>::Parser::finalizeImport()
 {
-	if(m_exchangeContext != null)
+	if(m_exchangeContext != nullptr)
 	{
-		if(m_exchangeSession != null)
+		if(m_exchangeSession != nullptr)
 		{
-			OS_ASSERT(m_portal != null);
+			OS_ASSERT(m_portal != nullptr);
 			m_exchangeSession->finalize(m_portal);
 
 			m_exchangeContext->removeSession(m_exchangeSession);
@@ -773,7 +773,7 @@ void pimpl<PortalsSerializer>::Parser::finalizeImport()
 		m_exchangeContext.reset();
 	}
 
-	if(m_importWork != null)
+	if(m_importWork != nullptr)
 	{
 		m_importWork->getDatabase()->commit();
 		m_importWork.reset();
@@ -883,21 +883,21 @@ bool pimpl<PortalsSerializer>::exportFile(shared_ptr<Portal> portal, const Strin
 
 bool pimpl<PortalsSerializer>::exportStream(shared_ptr<Portal> portal, shared_ptr<IStream> stream, const String &format, const boost::function<void (double)> &progressCallback)
 {
-	if(portal == null)
+	if(portal == nullptr)
 	{
 		OS_ASSERTFALSE();
 		return false;
 	}
 
 	shared_ptr<PortalsTransaction> exportWork = portal->startTransaction(false);
-	if(exportWork == null)
+	if(exportWork == nullptr)
 	{
 		OS_ASSERTFALSE();
 		return false;
 	}
 
 	shared_ptr<IPortalDatabase> db = exportWork->getDatabase();
-	if(db == null)
+	if(db == nullptr)
 	{
 		OS_ASSERTFALSE();
 		return false;
@@ -908,14 +908,14 @@ bool pimpl<PortalsSerializer>::exportStream(shared_ptr<Portal> portal, shared_pt
 	resetData();
 
 	stream = initStream(stream, false, format);
-	if(stream == null)
+	if(stream == nullptr)
 	{
 		OS_ASSERTFALSE();
 		return false;
 	}
 
-	OS_ASSERT(portal != null);
-	OS_ASSERT(db != null);
+	OS_ASSERT(portal != nullptr);
+	OS_ASSERT(db != nullptr);
 
 	if(format == _S("osiris"))
 		return exportOsirisFormat(db, portal, stream, progressCallback);
@@ -934,22 +934,22 @@ shared_ptr<pimpl<PortalsSerializer>::Result> pimpl<PortalsSerializer>::importFil
 {
 	shared_ptr<File> file(OS_NEW File());
 	if(file->open(filename, File::ofRead) == false)
-		return null;
+		return nullptr;
 
 	return importStream(portal, file, format, progressCallback);
 }
 
 shared_ptr<pimpl<PortalsSerializer>::Result> pimpl<PortalsSerializer>::importStream(shared_ptr<Portal> portal, shared_ptr<IStream> stream, const String &format, const boost::function<void (double)> &progressCallback)
 {
-	if(portal == null)
+	if(portal == nullptr)
 	{
 		OS_ASSERTFALSE();
-		return null;
+		return nullptr;
 	}
 
 	shared_ptr<Parser> parser(OS_NEW Parser(portal));
 	if(importStream(parser, stream, progressCallback) == false)
-		return null;
+		return nullptr;
 
 	return parser->getResult();
 }
@@ -958,7 +958,7 @@ shared_ptr<pimpl<PortalsSerializer>::Result> pimpl<PortalsSerializer>::parsePort
 {
 	shared_ptr<File> file(OS_NEW File());
 	if(file->open(filename, File::ofRead) == false)
-		return null;
+		return nullptr;
 
 	return parsePortalLink(file, progressCallback);
 }
@@ -968,7 +968,7 @@ shared_ptr<pimpl<PortalsSerializer>::Result> pimpl<PortalsSerializer>::parsePort
 	shared_ptr<Parser> parser(OS_NEW Parser());
 	// N.B.: in fase di estrazione del link il parser viene volutamente fermato causando un valore di ritorno "false"
 	if(importStream(parser, stream, progressCallback) == false)
-		return null;
+		return nullptr;
 
 	return parser->getResult();
 }
@@ -981,16 +981,16 @@ void pimpl<PortalsSerializer>::fireProgressEvent(double percentage)
 
 shared_ptr<IStream> pimpl<PortalsSerializer>::initStream(shared_ptr<IStream> stream, bool read, const String &format)
 {
-	if(stream == null || stream->is_open() == false)
+	if(stream == nullptr || stream->is_open() == false)
 	{
 		OS_ASSERTFALSE();
-		return null;
+		return nullptr;
 	}
 
 	if(stream->seekToBegin() == false)
 	{
 		OS_ASSERTFALSE();
-		return null;
+		return nullptr;
 	}
 
 	shared_ptr<StreamFilter> filter(OS_NEW StreamFilter(stream));
@@ -1011,13 +1011,13 @@ shared_ptr<IStream> pimpl<PortalsSerializer>::initStream(shared_ptr<IStream> str
 											break;
 
 			default:						OS_ASSERTFALSE();
-											return null;
+											return nullptr;
 			}
 		}
 		catch(std::exception &e)
 		{
 			OS_LOG_ERROR(e.what());
-			return null;
+			return nullptr;
 		}
 	}
 	else
@@ -1032,14 +1032,14 @@ shared_ptr<IStream> pimpl<PortalsSerializer>::initStream(shared_ptr<IStream> str
 
 bool pimpl<PortalsSerializer>::importStream(shared_ptr<Parser> parser, shared_ptr<IStream> stream, const boost::function<void (double)> &progressCallback)
 {
-	OS_ASSERT(parser != null);
+	OS_ASSERT(parser != nullptr);
 
 	boost::mutex::scoped_lock lock(m_taskMutex);
 
 	resetData();
 
 	stream = initStream(stream, true, _S("osiris"));
-	if(stream == null)
+	if(stream == nullptr)
 	{
 		OS_ASSERTFALSE();
 		return false;
@@ -1065,7 +1065,7 @@ void pimpl<PortalsSerializer>::resetData()
 
 bool pimpl<PortalsSerializer>::handleParserProgress(shared_ptr<IStream> stream, uint64 totalSize, const boost::function<void (double)> &progressCallback)
 {
-	OS_ASSERT(stream != null);
+	OS_ASSERT(stream != nullptr);
 	OS_ASSERT(progressCallback.empty() == false);
 
 	uint64 position = stream->position();
@@ -1080,24 +1080,24 @@ bool pimpl<PortalsSerializer>::handleParserProgress(shared_ptr<IStream> stream, 
 
 shared_ptr<XMLNode> pimpl<PortalsSerializer>::exportObjectXML(shared_ptr<ObjectsIObject> object)
 {
-	if(object == null)
+	if(object == nullptr)
 	{
 		OS_ASSERTFALSE();
-		return null;
+		return nullptr;
 	}
 
 	DataTree objectData;
 	if(object->write(objectData) == false)
 	{
 		OS_ASSERTFALSE();
-		return null;
+		return nullptr;
 	}
 
 	Buffer objectBuffer;
 	if(objectData.write(objectBuffer, false) == false)
 	{
 		OS_ASSERTFALSE();
-		return null;
+		return nullptr;
 	}
 
 	shared_ptr<XMLNode> node(OS_NEW XMLNode(OS_PORTALSERIALIZER_XML_OBJECT));
@@ -1179,7 +1179,7 @@ bool pimpl<PortalsSerializer>::exportOsirisFormat(shared_ptr<IPortalDatabase> db
 		*/
 
 		shared_ptr<IDbResult> result = db->getConnection()->query(query);
-		if(result == null)
+		if(result == nullptr)
 		{
 			OS_ASSERTFALSE();
 			return false;
@@ -1199,14 +1199,14 @@ bool pimpl<PortalsSerializer>::exportOsirisFormat(shared_ptr<IPortalDatabase> db
 
 			ObjectID objectID = static_cast<String>(*row[0]).to_ascii();
 			shared_ptr<ObjectsIObject> object = portal->getObject(db, objectID);
-			if(object == null)
+			if(object == nullptr)
 			{
 				OS_ASSERTFALSE();
 				return false;
 			}
 
 			shared_ptr<XMLNode> objectXML = exportObjectXML(object);
-			if(objectXML == null)
+			if(objectXML == nullptr)
 			{
 				OS_ASSERTFALSE();
 				return false;

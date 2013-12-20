@@ -122,7 +122,7 @@ public:
 	// Restituisce il puntatore al portale
 	//shared_ptr<Portal> getPortal() const;
 
-	// Restituisce gli id dei figli dell'oggetto di tipo specificato (non restituisce mai null, usare otUnknown per tutti i figli)
+	// Restituisce gli id dei figli dell'oggetto di tipo specificato (non restituisce mai nullptr, usare otUnknown per tutti i figli)
 	shared_ptr<EntitiesEntities> getChilds(const shared_ptr<IPortalDatabase> &database, PortalObjectType type, const RangeUint32 &range, shared_ptr<DbSqlSelect> select) const;
 	shared_ptr<EntitiesEntities> getChilds(const shared_ptr<IPortalDatabase> &database, const ObjectsTypes &types, const RangeUint32 &range, shared_ptr<DbSqlSelect> select) const;
 
@@ -133,8 +133,8 @@ public:
 	shared_ptr<EntitiesEntities> getChilds(const shared_ptr<IPortalDatabase> &database, const ExtensionsComponentID &component, const RangeUint32 &range = RangeUint32(0, 0), CommonOrder order = coPositionAsc) const;
 
 	// Restituisce il numero totale di figli di un tipo specificato
-	uint32 getChildsCount(const shared_ptr<IPortalDatabase> &database, PortalObjectType type, shared_ptr<DbSqlSelect> select = null) const;
-	uint32 getChildsCount(const shared_ptr<IPortalDatabase> &database, const ObjectsTypes &types, shared_ptr<DbSqlSelect> select = null) const;
+	uint32 getChildsCount(const shared_ptr<IPortalDatabase> &database, PortalObjectType type, shared_ptr<DbSqlSelect> select = nullptr) const;
+	uint32 getChildsCount(const shared_ptr<IPortalDatabase> &database, const ObjectsTypes &types, shared_ptr<DbSqlSelect> select = nullptr) const;
 
 	// Genera lo statement di base per il caricamento dei figli dell'entit
 	void getChildsStatement(const shared_ptr<IPortalDatabase> &database, PortalObjectType type, const RangeUint32 &range, bool count, bool includeSystem, bool includeInvisible, shared_ptr<DbSqlSelect> &statement) const;
@@ -196,10 +196,10 @@ protected:
 
 //inline entities::snapshot_profile_ptr Entity::getSnapshotProfile() const { return m_profile.lock(); }
 #ifdef OS_TODOCIP
-	inline const EntityID & EntitiesEntity::getEntityID() const { return (m_current != null) ? m_current->getEntityID() : EntityID::EMPTY; }
+	inline const EntityID & EntitiesEntity::getEntityID() const { return (m_current != nullptr) ? m_current->getEntityID() : EntityID::EMPTY; }
 #else
 	inline shared_ptr<ObjectsIRevisionable> EntitiesEntity::getPrimary() const { return m_primary; }
-	inline EntityID EntitiesEntity::getEntityID() const { return (m_primary != null) ? m_primary->getEntityID() : EntityID::EMPTY; }
+	inline EntityID EntitiesEntity::getEntityID() const { return (m_primary != nullptr) ? m_primary->getEntityID() : EntityID::EMPTY; }
 #endif
 inline shared_ptr<ObjectsIRevisionable> EntitiesEntity::getCurrent() const { return m_current; }
 inline const EntityID& EntitiesEntity::getParentID() const { return m_parent; }

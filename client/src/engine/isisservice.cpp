@@ -49,7 +49,7 @@ shared_ptr<Portal> IsisService::peekPortal()
 	{
 		m_portals = PortalsSystem::instance()->getPortals();
 		if(m_portals.empty())
-			return null;
+			return nullptr;
 	}
 
 	return utils::pop_front(m_portals);
@@ -58,7 +58,7 @@ shared_ptr<Portal> IsisService::peekPortal()
 bool IsisService::onIdle()
 {
 	shared_ptr<Portal> portal = peekPortal();
-	if(portal != null && portal->getLoaded())
+	if(portal != nullptr && portal->getLoaded())
 		portal->getOptions()->updateIsisEndpoints(getConnectionsManager());		
 
 	return ServiceBase::onIdle();

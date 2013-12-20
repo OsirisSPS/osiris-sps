@@ -36,7 +36,7 @@ class SplashScreen : public wxFrame,
 
 // Construction
 public:
-	SplashScreen(const wxString &title, const wxBitmap &image, wxWindow *parent = null, wxWindowID id = wxID_ANY, const wxPoint &pos = wxDefaultPosition, const wxSize &size = wxDefaultSize, long style = wxNO_BORDER | wxFRAME_NO_TASKBAR | wxSTAY_ON_TOP);
+	SplashScreen(const wxString &title, const wxBitmap &image, wxWindow *parent = nullptr, wxWindowID id = wxID_ANY, const wxPoint &pos = wxDefaultPosition, const wxSize &size = wxDefaultSize, long style = wxNO_BORDER | wxFRAME_NO_TASKBAR | wxSTAY_ON_TOP);
 	virtual ~SplashScreen();
 
 // Operations

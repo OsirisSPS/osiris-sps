@@ -96,16 +96,16 @@ public:
 	virtual shared_ptr<ISearchOptions> getSearchOptions();
 
 	// Restituisce il controllo di editazione dell'oggetto
-	virtual ide::edit::editor_ptr createEditControl(shared_ptr<EntitiesEntity> entity = null, shared_ptr<EntitiesEntity> parent = null);
+	virtual ide::edit::editor_ptr createEditControl(shared_ptr<EntitiesEntity> entity = nullptr, shared_ptr<EntitiesEntity> parent = nullptr);
 	// Restituisce il controllo di vista dell'oggetto
-	virtual ide::view::viewer_ptr createViewControl(shared_ptr<EntitiesEntity> entity = null);
+	virtual ide::view::viewer_ptr createViewControl(shared_ptr<EntitiesEntity> entity = nullptr);
 
 	// Crea il record di statistiche sull'oggetto
 	virtual void createStatistics(shared_ptr<IPortalDatabase> db, shared_ptr<ObjectsIObject> object);
 	// Computa le statistiche dell'oggetto
 	virtual void computeStatistics(shared_ptr<IPortalDatabase> db, shared_ptr<ObjectsIObject> object);
-	// Rimuove le statistiche di un profilo (se object != null rimuove solo le statistiche sull'oggetto, altrimenti tutte le statistiche del profilo)
-	virtual void removeStatistics(shared_ptr<IPortalDatabase> db, shared_ptr<ObjectsIObject> object = null);
+	// Rimuove le statistiche di un profilo (se object != nullptr rimuove solo le statistiche sull'oggetto, altrimenti tutte le statistiche del profilo)
+	virtual void removeStatistics(shared_ptr<IPortalDatabase> db, shared_ptr<ObjectsIObject> object = nullptr);
 		
 };
 

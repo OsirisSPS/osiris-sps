@@ -115,16 +115,16 @@ shared_ptr<ObjectsIRevisionable> InstanceEditor::createObject()
 	instance->style = algorithms::trim_copy(m_style->getValue());
 
 	String data;
-	if(m_editor != null)
+	if(m_editor != nullptr)
 	{
 		if(m_editor->createDocument() == false)
-			return null;
+			return nullptr;
 
 		// Questo perch potrebbe aver creato la vista di edit, ma comunque non valorizza i parametri.
-		if(m_editor->getModuleDocument()->getRoot() != null)
+		if(m_editor->getModuleDocument()->getRoot() != nullptr)
 		{
 			if(m_editor->getModuleDocument()->writeString(data) == false)
-				return null;
+				return nullptr;
 		}
 	}
 	if(data.empty() == false)
@@ -141,7 +141,7 @@ void InstanceEditor::onInit()
 	for(ExtensionsSystem::Modules::const_iterator i = modules.begin(); i != modules.end(); ++i)
 	{
 		shared_ptr<IExtensionsModule> module = i->second;
-		OS_ASSERT(module != null);
+		OS_ASSERT(module != nullptr);
 
 		shared_ptr<HtmlOption> option = m_modulesList->addOption(getPage()->parseOml(module->getName(), false, false, true), module->getID().toUTF16());
 
@@ -200,13 +200,13 @@ void InstanceEditor::onLoad()
 				m_module = module;
 
 				m_editor = ExtensionsSystem::instance()->createModuleEditor(module->getID());
-				if(m_editor != null)
+				if(m_editor != nullptr)
 				{
 					getTemplate()->addChildParam(m_editor, _S("editor"));
 
 					/*
 					// Carica l'xml della base solo nel caso in cui si tratti dello stesso modulo
-					if(m_current != null && m_current->module == selectedModuleID)
+					if(m_current != nullptr && m_current->module == selectedModuleID)
 					{
 						m_editor->init(m_module, m_current->title, getPrimaryID(), m_current->data);
 					}
@@ -215,7 +215,7 @@ void InstanceEditor::onLoad()
 					// 0.12 - Se non è lo stesso modulo, resetta il documento.
 					String title;
 					String data;
-					if(m_current != null && m_current->module == selectedModuleID)
+					if(m_current != nullptr && m_current->module == selectedModuleID)
 					{
 						title = m_current->title;
 						data = m_current->data;
@@ -231,7 +231,7 @@ void InstanceEditor::onLoad()
 
 void InstanceEditor::onModuleChanged()
 {
-	if(m_module != null && isRevision() == false)
+	if(m_module != nullptr && isRevision() == false)
 		m_style->setValue(m_module->getDefaultStyle());
 }
 
@@ -248,13 +248,13 @@ void InstanceEditor::onPreview()
 {
 	shared_ptr<ObjectsInstance> instance = objects_instance_cast(createObject());
 
-	if(instance == null)
+	if(instance == nullptr)
 		return;
 
 	shared_ptr<IExtensionsModule> module = ExtensionsSystem::instance()->getModule(instance->module);
-	OS_EXCEPT_IF(module == null, "Invalid instance module");
+	OS_EXCEPT_IF(module == nullptr, "Invalid instance module");
 	shared_ptr<ExtensionsModuleViewer> viewer = ExtensionsSystem::instance()->createModuleViewer(instance->module, false);
-	OS_EXCEPT_IF(viewer == null, "Invalid instance module");
+	OS_EXCEPT_IF(viewer == nullptr, "Invalid instance module");
 	viewer->init(module, instance->title, constants::empty_string, instance->data);
 
 	shared_ptr<HtmlDiv> instance_ctrl(OS_NEW HtmlDiv());

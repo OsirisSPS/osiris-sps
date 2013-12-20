@@ -92,16 +92,16 @@ shared_ptr<ObjectsIRevisionable> SectionEditor::createObject()
 		section->component = component;
 
 		String data;
-		if(m_editor != null)
+		if(m_editor != nullptr)
 		{
 			if(m_editor->createDocument() == false)
-				return null;
+				return nullptr;
 
 			// Questo perch potrebbe aver creato la vista di edit, ma comunque non valorizza i parametri.
-			if(m_editor->getComponentDocument()->getRoot() != null)
+			if(m_editor->getComponentDocument()->getRoot() != nullptr)
 			{
 				if(m_editor->getComponentDocument()->writeString(data) == false)
-					return null;
+					return nullptr;
 			}
 		}
 		if(data.empty() == false)
@@ -125,7 +125,7 @@ void SectionEditor::onInit()
 	}
 
 	m_current = objects_section_cast(getCurrent());
-	if(m_current != null)
+	if(m_current != nullptr)
 	{
 		if(isRevision() && getPostBack() == false)
 		{
@@ -152,13 +152,13 @@ void SectionEditor::onLoad()
 				m_component = component;
 
 				m_editor = ExtensionsSystem::instance()->createComponentEditor(component->getID(), getEntity());
-				if(m_editor != null)
+				if(m_editor != nullptr)
 				{
 					getTemplate()->addChildParam(m_editor, _S("editor"));
 
 					/*
 					// Carica l'xml della base solo nel caso in cui si tratti dello stesso modulo
-					if(m_current != null && m_current->component == selectedComponentID)
+					if(m_current != nullptr && m_current->component == selectedComponentID)
 					{
 						m_editor->init(m_current->title, getPrimaryID(), m_current->data);
 					}

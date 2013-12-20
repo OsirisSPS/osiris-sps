@@ -77,7 +77,7 @@ bool XMLOptions::setOption(const String &name, const DataItem &value)
 	if(i != m_options.end())
 		return i->second->setValue(value);		
 	
-	return doEnsureOption(name, value, DataItem::EMPTY, false, null);
+	return doEnsureOption(name, value, DataItem::EMPTY, false, nullptr);
 }
 
 bool XMLOptions::exists(const String &name) const
@@ -110,15 +110,15 @@ void XMLOptions::parseString(const String &str)
 
 void XMLOptions::parseXML(shared_ptr<XMLDocument> document)
 {
-	OS_ASSERT(document != null);
-	if(document != null)
+	OS_ASSERT(document != nullptr);
+	if(document != nullptr)
 		parseXMLNode(document->getRoot());
 }
 
 void XMLOptions::parseXMLNode(shared_ptr<XMLNode> node)
 {
-	OS_ASSERT(node != null);
-	if(node == null)
+	OS_ASSERT(node != nullptr);
+	if(node == nullptr)
 		return;
 
 	shared_ptr<XMLNodes> optionsNodes = node->getNodes();
@@ -135,7 +135,7 @@ void XMLOptions::parseXMLNode(shared_ptr<XMLNode> node)
 String XMLOptions::toString(bool allowNull) const
 {
 	shared_ptr<XMLDocument> xml = toXML(allowNull);
-	if(xml == null)
+	if(xml == nullptr)
 	{
 		OS_ASSERT(allowNull);
 		return String::EMPTY;
@@ -151,10 +151,10 @@ String XMLOptions::toString(bool allowNull) const
 shared_ptr<XMLDocument> XMLOptions::toXML(bool allowNull) const
 {
 	shared_ptr<XMLNode> node = toXMLNode(OS_XMLOPTIONS_NODE_ROOT, allowNull);
-	if(node == null)
+	if(node == nullptr)
 	{
 		OS_ASSERT(allowNull);
-		return null;
+		return nullptr;
 	}
 
 	shared_ptr<XMLDocument> document(OS_NEW XMLDocument());
@@ -180,7 +180,7 @@ shared_ptr<XMLNode> XMLOptions::toXMLNode(const String &nodeName, bool allowNull
 	}
 	
 	if(allowNull && nodeRoot->getNodes()->empty())
-		return null;	// Restituisce null nel caso tutte le opzioni siano al valore di default
+		return nullptr;	// Restituisce nullptr nel caso tutte le opzioni siano al valore di default
 
 	return nodeRoot;
 }
@@ -206,7 +206,7 @@ void XMLOptions::write(DbSqlValues &values, const String &field) const
 	DbValue<String> options;
 
 	String str = toString();
-	// N.B.: se le opzioni sono vuote lascia il campo a null
+	// N.B.: se le opzioni sono vuote lascia il campo a nullptr
 	if(str.empty() == false)
 		options = str;
 
@@ -261,7 +261,7 @@ bool XMLOptions::doEnsureOption(const String &name, const DataItem &value, const
 		if(i->second->getDefaultValue().isNull())
 			i->second->setDefaultValue(defaultValue);
 
-		if(i->second->getValidator() == null)
+		if(i->second->getValidator() == nullptr)
 			i->second->setValidator(validator);
 
 		return true;

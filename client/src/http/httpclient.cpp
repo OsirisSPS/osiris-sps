@@ -38,8 +38,8 @@ OS_NAMESPACE_BEGIN()
 HttpClient::HttpClient(shared_ptr<boost::asio::io_service> service, shared_ptr<TCPSocket> socket) : m_service(service),
 																								    m_socket(socket)
 {
-	OS_ASSERT(m_service != null);
-	OS_ASSERT(m_socket != null);
+	OS_ASSERT(m_service != nullptr);
+	OS_ASSERT(m_socket != nullptr);
 
 	// N.B.: non usare m_socket->get_io_service() (crasha, da verificare il motivo)
 	m_sslContext = createAsioSSLObject<boost::asio::ssl::context, boost::asio::ssl::context_base::method>(*service, boost::asio::ssl::context::sslv23);
@@ -95,7 +95,7 @@ bool HttpClient::perform(const HttpUrl &url, uint32 redirectsCount)
 
 	{
 		shared_ptr<HttpData> data = m_request->serialize();
-		if(data == null)
+		if(data == nullptr)
 		{
 			OS_ASSERTFALSE();
 			return false;
@@ -198,7 +198,7 @@ void HttpClient::onResponseProgress(uint32 value, uint32 total)
 
 boost::asio::ssl::context & HttpClient::getSSLContext()
 {
-	OS_ASSERT(m_sslContext != null);
+	OS_ASSERT(m_sslContext != nullptr);
 	return *m_sslContext;
 }
 

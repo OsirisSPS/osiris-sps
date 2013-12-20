@@ -72,7 +72,7 @@ void FeedViewer::onLoad()
 	ViewerBase::onLoad();
 
 	shared_ptr<XMLNode> root = getModuleDocument()->getRoot();
-	OS_ASSERT(root != null);
+	OS_ASSERT(root != nullptr);
 
 	// Ajax:
 	// - Creo un controllo per contenere quanto sotto
@@ -128,7 +128,7 @@ void FeedViewer::onLoad()
 
 			shared_ptr<XMLNode> rssRoot = document->getRoot();
 
-			if(rssRoot == null)
+			if(rssRoot == nullptr)
 			{
 				// Error reading RSS Feed.				
 				error = _S("Feed reading error.");				

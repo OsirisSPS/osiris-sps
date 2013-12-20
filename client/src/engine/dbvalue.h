@@ -223,7 +223,7 @@ protected:
 //////////////////////////////////////////////////////////////////////
 
 template <typename T>
-inline bool DbValue<T>::isNull() const { return m_value == null; }
+inline bool DbValue<T>::isNull() const { return m_value == nullptr; }
 
 template <typename T>
 inline void DbValue<T>::setNull() { reset(); }
@@ -231,32 +231,32 @@ inline void DbValue<T>::setNull() { reset(); }
 //////////////////////////////////////////////////////////////////////
 
 template <typename T>
-DbValue<T>::DbValue() : m_value(null)
+DbValue<T>::DbValue() : m_value(nullptr)
 {
 
 }
 
 template <typename T>
-DbValue<T>::DbValue(const T &value) : m_value(null)
+DbValue<T>::DbValue(const T &value) : m_value(nullptr)
 {
 	set(value);
 }
 
 template <typename T>
-DbValue<T>::DbValue(const DbValue<T> &value) : m_value(null)
+DbValue<T>::DbValue(const DbValue<T> &value) : m_value(nullptr)
 {
 	_copy(value);
 }
 
 template <typename T>
-DbValue<T>::DbValue(const DataItem &value) : m_value(null)
+DbValue<T>::DbValue(const DataItem &value) : m_value(nullptr)
 {
 	_copy(value);
 }
 
 template <typename T>
 template <typename I>
-DbValue<T>::DbValue(const I &value) : m_value(null)
+DbValue<T>::DbValue(const I &value) : m_value(nullptr)
 {
 	set(static_cast<T>(value));
 }
@@ -270,7 +270,7 @@ DbValue<T>::~DbValue()
 template <typename T>
 const T & DbValue<T>::get() const
 {
-	if(m_value == null)
+	if(m_value == nullptr)
 		return get_default<T>();
 
 	return *m_value;
@@ -285,7 +285,7 @@ const T * DbValue<T>::get_ptr() const
 template <typename T>
 void DbValue<T>::set(const T &value)
 {
-	if(m_value == null)
+	if(m_value == nullptr)
 		m_value = OS_NEW_T(T)(value);
 	else
 		*m_value = value;
@@ -294,7 +294,7 @@ void DbValue<T>::set(const T &value)
 template <typename T>
 T & DbValue<T>::value() const
 {
-	if(m_value == null)
+	if(m_value == nullptr)
 		m_value = OS_NEW_T(T);
 
 	return *m_value;
@@ -397,8 +397,8 @@ template <typename T>
 void DbValue<T>::read(const DataTableRow &row, const String &field)
 {
 	DataItem *value = row[field];
-	// OS_EXCEPT_IF(value == null, String::format(_S("'%S': invalid row value").c_str(), field.c_str()));
-	if(value == null)
+	// OS_EXCEPT_IF(value == nullptr, String::format(_S("'%S': invalid row value").c_str(), field.c_str()));
+	if(value == nullptr)
 		setNull();		// TODO: corretto?
 	else
         _copy(*value);
@@ -408,8 +408,8 @@ template <typename T>
 void DbValue<T>::read(const DataTree &data, const String &field)
 {
 	DataItem *value = data.getVP(field);
-	//OS_EXCEPT_IF(value == null, String::format(_S("'%S': invalid item value").c_str(), field.c_str()));
-	if(value == null)
+	//OS_EXCEPT_IF(value == nullptr, String::format(_S("'%S': invalid item value").c_str(), field.c_str()));
+	if(value == nullptr)
 		setNull();		// TODO: corretto?
 	else
 		_copy(*value);
@@ -437,7 +437,7 @@ template <typename T>
 void DbValue<T>::reset()
 {
 	OS_DELETE_T(m_value);
-	m_value = null;	
+	m_value = nullptr;	
 }
 
 template <typename T>

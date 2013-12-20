@@ -44,7 +44,7 @@ void TCPSocket::connect(const endpoint_type &endpoint)
 
 void TCPSocket::connect(const endpoint_type &endpoint, boost::system::error_code &e)
 {
-	if(m_layer != null)
+	if(m_layer != nullptr)
 		m_layer->connect(endpoint, e);
 	else
 		m_socket->connect(endpoint, e);
@@ -52,7 +52,7 @@ void TCPSocket::connect(const endpoint_type &endpoint, boost::system::error_code
 
 void TCPSocket::async_connect(const endpoint_type &endpoint, const callback_type &callback)
 {
-	if(m_layer != null)
+	if(m_layer != nullptr)
 		m_layer->async_connect(endpoint, callback);
 	else
 		m_socket->async_connect(endpoint, callback);

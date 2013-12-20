@@ -34,18 +34,18 @@ CoreExport void * ned_allocate(const size_t size)
 
 CoreExport void ned_deallocate(void *ptr)
 {
-	// Assicura la compatibilità con free(null) visto che internamente nedmalloc non effettua questo controllo
-	if(ptr != null)
+	// Assicura la compatibilità con free(nullptr) visto che internamente nedmalloc non effettua questo controllo
+	if(ptr != nullptr)
 		nedalloc::nedfree(ptr);
 }
 
 CoreExport void * ned_reallocate(void *ptr, const size_t size)
 {
-	// Assicura la compatibilità con lo standard secondo cui se la dimensione è 0 il buffer deve essere deallocato ed essere restituito null
+	// Assicura la compatibilità con lo standard secondo cui se la dimensione è 0 il buffer deve essere deallocato ed essere restituito nullptr
 	if(size == 0)
 	{
 		ned_deallocate(ptr);
-		return null;
+		return nullptr;
 	}
 
 	return nedalloc::nedrealloc(ptr, size);

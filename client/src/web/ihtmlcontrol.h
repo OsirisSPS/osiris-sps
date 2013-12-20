@@ -112,7 +112,7 @@ public:
 
 	String getTarget() const;
 		
-	String getEventCommand(const String &eventName, const HtmlEvent *e = null) const;
+	String getEventCommand(const String &eventName, const HtmlEvent *e = nullptr) const;
 	String getEventCommand(const String &eventName, const String &e) const;
 
 	HtmlUnit getWidth() const;
@@ -125,7 +125,7 @@ public:
 	void setVisible(bool visible);
 
 protected:
-	String encodeEvent(const String &eventName, const HtmlEvent *e = null) const;
+	String encodeEvent(const String &eventName, const HtmlEvent *e = nullptr) const;
 	bool decodeEvent(const String &command, String &eventName, HtmlEvent &e) const;
 
 // Operations
@@ -153,7 +153,7 @@ protected:
 	virtual void onLoadViewState(const DataTree &state);
 	virtual void onSaveViewState(DataTree &state);
 
-	virtual void onEvent(const String &name, IEvent *e = null);
+	virtual void onEvent(const String &name, IEvent *e = nullptr);
 
 protected:
 	weak_ptr<HtmlPage> m_page;					// Pagina di riferimento

@@ -26,7 +26,7 @@
 
 Parameter::Parameter(sqlite3_stmt *statement, uint32 index)
 {
-	OS_ASSERT(statement != null);
+	OS_ASSERT(statement != nullptr);
 	m_statement = statement;
 
 	m_index = index;

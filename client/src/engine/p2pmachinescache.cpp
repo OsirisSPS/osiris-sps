@@ -45,7 +45,7 @@ shared_ptr<P2pMachine> MachinesCache::addMachine(const Buffer &id, const Buffer 
 	String machineKey = id.toHex();
 
 	shared_ptr<P2pMachine> machine = get(machineKey, 0);
-	if(machine != null)
+	if(machine != nullptr)
 		return machine;
 
 	machine.reset(OS_NEW P2pMachine());
@@ -53,7 +53,7 @@ shared_ptr<P2pMachine> MachinesCache::addMachine(const Buffer &id, const Buffer 
 	machine->setPublicKey(publicKey);
 	
 	if(machine->store() == false)
-		return null;
+		return nullptr;
 
 	// Salva la macchina nella cache
 	insert(machineKey, machine);
@@ -66,7 +66,7 @@ shared_ptr<P2pMachine> MachinesCache::load(const String &id, int32)
 	if(machine->load(id))
 		return machine;
 
-	return null;
+	return nullptr;
 }
 
 //////////////////////////////////////////////////////////////////////

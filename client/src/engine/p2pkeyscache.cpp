@@ -106,7 +106,7 @@ shared_ptr<CryptKeyAgreement> KeysCache::peekKey()
 {
 	OS_LOCK(m_cs);
 	
-	shared_ptr<CryptKeyAgreement> key = null;
+	shared_ptr<CryptKeyAgreement> key = nullptr;
 	if(m_keys.size() < m_cacheSize)
 	{
 		std::auto_ptr<Key> cachedKey(OS_NEW Key());
@@ -115,7 +115,7 @@ shared_ptr<CryptKeyAgreement> KeysCache::peekKey()
 	}
 
 	if(m_keys.empty())
-		return null;
+		return nullptr;
 
 	Keys::iterator i = m_keys.begin() + RandomNumberGenerator::instance()->generate<uint32>(0, static_cast<uint32>(m_keys.size() - 1));
 	OS_ASSERT(i != m_keys.end());

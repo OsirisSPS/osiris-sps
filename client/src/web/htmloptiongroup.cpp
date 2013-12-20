@@ -46,14 +46,14 @@ void HtmlOptionGroup::setSelectedByValue(const String &value)
 	for(HtmlControls::iterator i = m_controls->begin(); i != m_controls->end(); ++i)
 	{
 		shared_ptr<HtmlOption> option = boost:: dynamic_pointer_cast<HtmlOption>(*i);
-		if(option != null)
+		if(option != nullptr)
 		{
 			option->setSelected(option->getValue() == value);
 		}
 		else
 		{
 			shared_ptr<HtmlOptionGroup> optionGroup = boost:: dynamic_pointer_cast<HtmlOptionGroup>(*i);
-			if(optionGroup != null)
+			if(optionGroup != nullptr)
 			{
 				optionGroup->setSelectedByValue(value);
 			}
@@ -66,7 +66,7 @@ shared_ptr<HtmlOption> HtmlOptionGroup::getSelected() const
 	for(HtmlControls::iterator i = m_controls->begin(); i != m_controls->end(); ++i)
 	{
 		shared_ptr<HtmlOption> option = boost:: dynamic_pointer_cast<HtmlOption>(*i);
-		if(option != null)
+		if(option != nullptr)
 		{
 			if(option->getSelected())
 				return option;
@@ -74,16 +74,16 @@ shared_ptr<HtmlOption> HtmlOptionGroup::getSelected() const
 		else
 		{
 			shared_ptr<HtmlOptionGroup> optionGroup = boost:: dynamic_pointer_cast<HtmlOptionGroup>(*i);
-			if(optionGroup != null)
+			if(optionGroup != nullptr)
 			{
 				shared_ptr<HtmlOption> optionSelected = optionGroup->getSelected();
-				if(optionSelected != null)
+				if(optionSelected != nullptr)
 					return optionSelected;
 			}
 		}
 	}
 
-	return null;
+	return nullptr;
 }
 
 shared_ptr<HtmlOption> HtmlOptionGroup::addOption(const String &label, const String &value)

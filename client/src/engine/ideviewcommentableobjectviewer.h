@@ -44,7 +44,7 @@ public:
 
 // Construction
 public:
-	CommentableObjectViewer(shared_ptr<EntitiesEntity> entity = null);
+	CommentableObjectViewer(shared_ptr<EntitiesEntity> entity = nullptr);
 	virtual ~CommentableObjectViewer();
 
 // Attributes

@@ -49,7 +49,7 @@ bool XMLAttributes::exists(const String &name) const
 const String & XMLAttributes::get(const String &name) const
 {
 	shared_ptr<XMLAttribute> attribute = find(name);
-	if(attribute != null)
+	if(attribute != nullptr)
 		return attribute->getValue();
 
 	return String::EMPTY;
@@ -60,7 +60,7 @@ void XMLAttributes::set(const String &name, const String &value)
 	OS_ASSERT(name.empty() == false);
 
 	shared_ptr<XMLAttribute> attribute = find(name);
-	if(attribute != null)
+	if(attribute != nullptr)
 	{
 		attribute->setValue(value);
 	}
@@ -77,7 +77,7 @@ shared_ptr<XMLAttribute> XMLAttributes::find(const String &name) const
 	if(i != m_attributes.end())
 		return *i;
 
-	return null;
+	return nullptr;
 }
 
 shared_ptr<XMLAttribute> XMLAttributes::find(size_t index) const
@@ -113,7 +113,7 @@ shared_ptr<XMLAttribute> XMLAttributes::_findByIndex(size_t index) const
 	if(index < size())
 		return m_attributes[index];
 
-	return null;
+	return nullptr;
 }
 
 //////////////////////////////////////////////////////////////////////

@@ -158,10 +158,10 @@ void ExtensionsWizardPageGeneral::updateControls()
 	m_name->SetBackgroundColour(valid ? OS_UI_TEXTBOX_BACKGROUND_STANDARD : OS_UI_TEXTBOX_BACKGROUND_INVALID);
 	
 	wxWizard *wizard = dynamic_cast<wxWizard *>(GetParent());
-	OS_ASSERT(wizard != null);
+	OS_ASSERT(wizard != nullptr);
 
 	wxButton *buttonForward = dynamic_cast<wxButton *>(wizard->FindWindow(wxID_FORWARD));
-	if(buttonForward != null)
+	if(buttonForward != nullptr)
 		buttonForward->Enable(valid);
 
 	Refresh();

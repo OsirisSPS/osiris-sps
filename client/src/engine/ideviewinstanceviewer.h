@@ -35,7 +35,7 @@ class InstanceViewer : public IObjectViewer
 
 // Construction
 public:
-	InstanceViewer(shared_ptr<EntitiesEntity> entity = null);
+	InstanceViewer(shared_ptr<EntitiesEntity> entity = nullptr);
 	virtual ~InstanceViewer();
 
 // IXSLRenderer interface

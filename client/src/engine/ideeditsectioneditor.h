@@ -46,7 +46,7 @@ class EngineExport SectionEditor : public IObjectEditor
 
 // Construction
 public:
-	SectionEditor(shared_ptr<EntitiesEntity> entity = null, shared_ptr<EntitiesEntity> parent = null);
+	SectionEditor(shared_ptr<EntitiesEntity> entity = nullptr, shared_ptr<EntitiesEntity> parent = nullptr);
 	virtual ~SectionEditor();
 
 // IXSLRenderer interface

@@ -98,7 +98,7 @@ void OMLManager::remove(shared_ptr<IOMLCode> code)
 {
 	// TODO: andrebbe protetta da boost::unique_lock
 
-	if(code == null)
+	if(code == nullptr)
 	{
 		OS_ASSERTFALSE();
 		return;

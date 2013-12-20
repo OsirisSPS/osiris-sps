@@ -99,7 +99,7 @@ bool PortalsDirectory::handle(shared_ptr<HttpSession> session, const HttpPath &p
                                                 break;
 			}
 
-			return page != null ? page->transmit() : false;
+			return page != nullptr ? page->transmit() : false;
 		}
 	}
 

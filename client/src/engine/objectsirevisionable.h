@@ -65,7 +65,7 @@ public:
 
 // Operations
 public:
-	void changeToRevision(shared_ptr<ObjectsIRevisionable> object = null);
+	void changeToRevision(shared_ptr<ObjectsIRevisionable> object = nullptr);
 	bool signEntity(const Buffer &private_key, const PortalID &portal);
 
 // Overridables

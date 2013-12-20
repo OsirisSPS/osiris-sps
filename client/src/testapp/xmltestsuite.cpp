@@ -36,11 +36,11 @@ OS_NAMESPACE_BEGIN()
 BOOST_AUTO_TEST_CASE(test_xmldocument)
 {
 	shared_ptr<XMLDocument> document(OS_NEW XMLDocument());
-	BOOST_CHECK(document->getRoot() == null);
+	BOOST_CHECK(document->getRoot() == nullptr);
 
 	BOOST_CHECK(document->parseString("<root alfa=\"1\" beta=\"2\"><child1 gamma=\"3\"><child2 delta=\"4\"/><child3/>child_data</child1>root_data</root>"));
 	shared_ptr<XMLNode> root = document->getRoot();
-	BOOST_CHECK(root != null);
+	BOOST_CHECK(root != nullptr);
 	BOOST_CHECK(root->getName() == "root");
 	BOOST_CHECK(root->hasAttributes());
 	BOOST_CHECK(root->hasNodes());
@@ -53,29 +53,29 @@ BOOST_AUTO_TEST_CASE(test_xmldocument)
 	BOOST_CHECK(root->getAttributeString("beta") == "2");
 
 	shared_ptr<XMLAttributes> rootAttributes = root->getAttributes();
-	BOOST_CHECK(rootAttributes != null);
+	BOOST_CHECK(rootAttributes != nullptr);
 	BOOST_CHECK(rootAttributes->empty() == false);
 	BOOST_CHECK(rootAttributes->size() == 2);
 
 	shared_ptr<XMLAttribute> alfa = rootAttributes->find("alfa");
-	BOOST_CHECK(alfa != null);
+	BOOST_CHECK(alfa != nullptr);
 	BOOST_CHECK(alfa->getName() == "alfa");
 	BOOST_CHECK(alfa->getValue() == "1");
 
 	shared_ptr<XMLAttribute> beta = rootAttributes->find("beta");
-	BOOST_CHECK(beta != null);
+	BOOST_CHECK(beta != nullptr);
 	BOOST_CHECK(beta->getName() == "beta");
 	BOOST_CHECK(beta->getValue() == "2");
 
 	shared_ptr<XMLNodes> rootNodes = root->getNodes();
-	BOOST_CHECK(rootNodes != null);
+	BOOST_CHECK(rootNodes != nullptr);
 	BOOST_CHECK(rootNodes->empty() == false);
 	BOOST_CHECK(rootNodes->size() == 1);
 
 	shared_ptr<XMLNode> child1 = rootNodes->find("child1");
-	BOOST_CHECK(child1 != null);
+	BOOST_CHECK(child1 != nullptr);
 	BOOST_CHECK(rootNodes->find(0) == child1);
-	BOOST_CHECK(rootNodes->find(1) == null);
+	BOOST_CHECK(rootNodes->find(1) == nullptr);
 
 	BOOST_CHECK(child1->getName() == "child1");
 	BOOST_CHECK(root->hasAttributes());
@@ -84,12 +84,12 @@ BOOST_AUTO_TEST_CASE(test_xmldocument)
 	BOOST_CHECK(child1->getData() == "child_data");
 
 	shared_ptr<XMLNodes> child1Nodes = child1->getNodes();
-	BOOST_CHECK(child1Nodes != null);
+	BOOST_CHECK(child1Nodes != nullptr);
 	BOOST_CHECK(child1Nodes->empty() == false);
 	BOOST_CHECK(child1Nodes->size() == 2);
 
 	shared_ptr<XMLNode> child2 = child1Nodes->find("child2");
-	BOOST_CHECK(child2 != null);
+	BOOST_CHECK(child2 != nullptr);
 	BOOST_CHECK(child2->hasAttributes());
 	BOOST_CHECK(child2->hasNodes() == false);
 	BOOST_CHECK(child2->hasData() == false);
@@ -97,7 +97,7 @@ BOOST_AUTO_TEST_CASE(test_xmldocument)
 	BOOST_CHECK(child2->getAttributeString("delta") == "4");
 
 	shared_ptr<XMLNode> child3 = child1Nodes->find("child3");
-	BOOST_CHECK(child3 != null);
+	BOOST_CHECK(child3 != nullptr);
 	BOOST_CHECK(child3->hasAttributes() == false);
 	BOOST_CHECK(child3->hasNodes() == false);
 	BOOST_CHECK(child3->hasData() == false);

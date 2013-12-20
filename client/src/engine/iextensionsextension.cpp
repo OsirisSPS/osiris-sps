@@ -51,9 +51,9 @@ String IExtensionsExtension::getDataPath() const
 
 bool IExtensionsExtension::isExtensionRegistered(shared_ptr<Portal> portal, shared_ptr<IPortalDatabase> db, Version &version) const
 {
-	OS_ASSERT(portal != null);
+	OS_ASSERT(portal != nullptr);
 
-	OS_EXCEPT_IF(db == null, "Invalid database");
+	OS_EXCEPT_IF(db == nullptr, "Invalid database");
 
 	shared_ptr<DbSqlSelect> select(OS_NEW DbSqlSelect(DBTABLES::EXTENSIONS_TABLE));
 	select->fields.add(DbSqlField(DBTABLES::EXTENSIONS::VERSION));
@@ -73,10 +73,10 @@ bool IExtensionsExtension::isExtensionRegistered(shared_ptr<Portal> portal, shar
 
 bool IExtensionsExtension::registerExtension(shared_ptr<Portal> portal, shared_ptr<IPortalDatabase> db, const Version &version)
 {
-	OS_ASSERT(portal != null);
+	OS_ASSERT(portal != nullptr);
 
 	//shared_ptr<IPortalDatabase> db = portal->getDatabase();
-	OS_EXCEPT_IF(db == null, "Invalid database");
+	OS_EXCEPT_IF(db == nullptr, "Invalid database");
 
 	DbSqlValues values;
 	values.set(DBTABLES::EXTENSIONS::ID, getID().toUTF16());
@@ -88,10 +88,10 @@ bool IExtensionsExtension::registerExtension(shared_ptr<Portal> portal, shared_p
 
 bool IExtensionsExtension::updateExtension(shared_ptr<Portal> portal, shared_ptr<IPortalDatabase> db, const Version &version)
 {
-	OS_ASSERT(portal != null);
+	OS_ASSERT(portal != nullptr);
 
 	//shared_ptr<IPortalDatabase> db = portal->getDatabase();
-	OS_EXCEPT_IF(db == null, "Invalid database");
+	OS_EXCEPT_IF(db == nullptr, "Invalid database");
 
 	DbSqlValues values;
 	values.set(DBTABLES::EXTENSIONS::VERSION, static_cast<String>(version.toString()));

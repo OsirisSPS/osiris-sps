@@ -16,7 +16,7 @@ var Osiris =
     is_ie: (navigator.userAgent.toLowerCase().indexOf("msie") != -1),
     is_moz: (navigator.userAgent.toLowerCase().indexOf("gecko") != -1),
     is_opera: (navigator.userAgent.toLowerCase().indexOf("opera") != -1),
-    effectsSpeedSlow: 500,
+    effectsSpeedSlow: 1000,
     effectsSpeedFast: 200,
     
     notificationElement: null,
@@ -65,7 +65,7 @@ var Osiris =
     },
     */
     
-    cloneVar: function (obj) {    		
+    cloneVar: function (obj) {
 		    // Handle the 3 simple types, and null or undefined
 		    if (null == obj || "object" != typeof obj) return obj;
 		
@@ -161,16 +161,6 @@ var Osiris =
 			var k = "osiris." + key;
       localStorage.setItem(k, JSON.stringify(val));
     },
-    
-    storageRemove: function (key) {
-    	if ((key == null) || (key == ""))
-          return;
-      if (Osiris.storageAvailable() == false)
-          return;
-
-			var k = "osiris." + key;
-			localStorage.removeItem(k);
-    },
 
     /**************************************************************************************************
     International
@@ -249,12 +239,10 @@ var Osiris =
     
     // Highlight a "selectedID" child of groupID, de-hightlight others, set an hidden field with "selectedID".
     pickerSelect: function (groupID, selectedID, hiddenFieldID) {
-    		//alert(groupID + "," + selectedID + "," + hiddenFieldID);
         $('#' + hiddenFieldID).val(selectedID);        
         $('#' + groupID + " a").addClass("os_picker_select_item_normal");
         $('#' + groupID + " a").removeClass("os_picker_select_item_selected");
-        $('#' + groupID + "_" + selectedID).addClass("os_picker_select_item_selected");
-        //alert(groupID + "_" + selectedID);
+        $('#' + selectedID).addClass("os_picker_select_item_selected");
     },
 
     // Look style as button up, emboss effect.
@@ -273,108 +261,7 @@ var Osiris =
 	    ajaxDiv.style.display = "none";
 	    ajaxDiv.onAjaxSuccess = successEvent;
 	    document.body.appendChild(ajaxDiv);    
-	    Osiris.contentFromUrl(ajaxDiv, url, "none", "notify");
-    },
-    
-    contentFromUrl: function (src, url, effect, wait) {
-
-			src = Osiris.resolveElement(src);    	
-    	var fullUrl = Osiris.adjustUrl(url);
-	    if(effect == null)
-	        effect = "none";
-	        
-	    src.waitStyle = wait;
-	    
-	    //alert('warning, ' + url);    
-	    //Osiris.notify("warning", url);    
-	    
-	    if(wait == "progress")
-	    {
-	        divWait = document.createElement('div');
-	        divWait.className = "os_ajax_wait";    
-	    
-	        jQuery(divWait).css( { "left": jQuery(src).offset().left + "px", "top": jQuery(src).offset().top + "px" } );
-	        jQuery(divWait).css( { "width": jQuery(src).width() + "px", "height": jQuery(src).height() + "px" } );
-	     
-	        src.appendChild(divWait);
-	    }
-	    else if(wait == "notify")
-    	{
-    		// TOCLEAN alert('wait, ' + url);
-    		Osiris.notify("wait");
-    	}
-	    
-	    jQuery.ajax(
-			{
-	     url: fullUrl,
-	     success: function(response) 
-	     {
-	     		// TOCLEAN alert('clean, ' + url);
-	     		// TOCLEAN alert(src.waitStyle);
-	     		if(src.waitStyle != "none")
-	     			Osiris.notify("clean");
-	     		
-	        if(src.onAjaxSuccess)
-	            src.onAjaxSuccess();
-	            
-	        //alert("inner result :" + response);
-	        if(effect == "slide")    
-	        {
-	            $(src).slideUp(Osiris.effectsSpeedFast);
-	        }
-	            
-	        if(effect == "fade")    
-	        {        
-	            $(src).fadeOut(Osiris.effectsSpeedSlow);
-	        }
-	                
-	        var html = response;
-	        
-	        arr = Osiris.extractJavascript(html);
-	        
-	        for(i=0;i<arr.length;i++)
-	        {
-	            //alert("ele " + i + ":" + arr[i]);
-	            
-	            if(i == 0)
-	            {                
-	                src.innerHTML = arr[0];
-	                
-	                for(var i2=0;i2<src.childNodes.length;i2++)
-	                {	
-	                    osInitControls(src.childNodes[i2]);
-	                }
-	            }
-	            else
-	            {
-	                var s = document.createElement("script");
-	                s.type = "text/javascript";
-	                s.text = arr[i];
-	                src.appendChild(s);
-	            }
-	        }                
-	        
-	        if(src.onReady)
-	            src.onReady();
-	        
-	        if(effect == "slide")    
-	        {
-	            $(src).slideDown(Osiris.effectsSpeedFast);
-	        }
-	            
-	        if(effect == "fade")    
-	        {
-	            $(src).fadeIn(Osiris.effectsSpeedSlow);
-	        }
-	     },
-	     error: function(xhr) 
-	     {
-	        var msg = "Ajax error, status = " + xhr.status + " - url = " + url;
-	        
-	        // TOCLEAN alert('error, ' + url);
-	        Osiris.notify("warning",msg);
-	     }
-	    });  
+	    osAjax_InnerHtmlFromUrl(ajaxDiv, url, "none", "notify");    
     },
     
     /**************************************************************************************************
@@ -394,7 +281,7 @@ var Osiris =
 	    var divIcon = osCreate("span");    
 	    divP.appendChild(divIcon);
 	    divText = osCreate("div");
-	    //divText.className = "os_content";
+	    divText.className = "os_content";
 	    
 	    if(osGetById(promptMessage))
 	        divText.appendChild(osGetById(promptMessage))
@@ -430,7 +317,6 @@ var Osiris =
 		
 		notify: function(style, message) {			
 			
-			//alert("style:" + style + ", message:" + message);
 			/* Styles:
 			   - wait : Wait icon. Don't removed automatically.
 			   - clean : Remove current notification
@@ -448,7 +334,6 @@ var Osiris =
 			if( (style == null) || (style == "clean") )// Hide directly.
 			{
 				//Osiris.notificationElement.fadeOut(Osiris.effectsSpeedSlow);
-				clearTimeout(Osiris.notificationElement.timer);
 				Osiris.notificationElement.hide();
 				return;
 			}			
@@ -468,13 +353,9 @@ var Osiris =
 			
 			if(style != "wait")
 			{
-				Osiris.notificationElement.timer = setTimeout(function() {
+				setTimeout(function() {
 					Osiris.notificationElement.fadeOut(Osiris.effectsSpeedSlow);
-				}, 3000);							
-			}
-			else
-			{
-				clearTimeout(Osiris.notificationElement.timer);
+				}, 3000);			
 			}
 		},
     
@@ -487,7 +368,7 @@ var Osiris =
 	    var divIcon = osCreate("span");    
 	    divP.appendChild(divIcon);
 	    divText = osCreate("div");
-	    //divText.className = "os_content";
+	    divText.className = "os_content";
 	    
 	    if(osGetById(promptMessage))
 	        divText.appendChild(osGetById(promptMessage))
@@ -542,15 +423,14 @@ var Osiris =
 			{
 				autoOpen: false,
 				show: 'fade',
-				/*hide: 'fade',*/
-				hide: { effect: "fade", duration: Osiris.effectsSpeedSlow },
+				hide: 'fade',
 				bgiframe: true,
 				resizable: false,
 				minHeight:140,
 				modal: true,		
 				dialogClass: 'notitle',				
 				open: function(){
-            $('.ui-widget-overlay').hide().fadeIn(Osiris.effectsSpeedSlow);
+            $('.ui-widget-overlay').hide().fadeIn();
         },
 			});
 			
@@ -588,28 +468,19 @@ var Osiris =
 		copyClipboard: function(promptTitle, promptMessage, promptButton, promptCancel, promptHref) {
 		  var divObj = osCreate("div");
 	    divObj.title = promptTitle;    
-	    
 	    var divP = osCreate("p");
 	    var divIcon = osCreate("div");
 	    divIcon.className = "os_clipboard_icon";
-	    divIcon.style.float = 'left';
 	    divObj.appendChild(divIcon);
-	    
-	    divTitle = osCreate("h1");
-	    $(divTitle).text(promptTitle);
-	    //$(divObj).prepend(divTitle);
-	    divObj.appendChild(divTitle);
-	    
 	    divText = osCreate("textarea");    
 	    divText.style.width = "500px";    
 	    divText.style.height = "80px";    
-	    divText.style.maxHeight = "300px";
 	    divText.value = promptMessage;    
 	    divObj.appendChild(divText);
 	    
-	    $(divText).autosize();		
-	    
-	    
+	    divTitle = $(osCreate("p"));
+	    divTitle.text(promptTitle);
+	    $(divObj).prepend(divTitle);
 	        
 	    Osiris.dialog(divObj, true);
 	    
@@ -630,36 +501,58 @@ var Osiris =
     **************************************************************************************************/
 
     controlBoolean: function (src) {
-    		
-        
-        
-        var boolContainer = osCreate("div");        
-        $(boolContainer).addClass("os_controls_bool_container");
-        var boolSwitch = osCreate("div");
-        $(boolSwitch).addClass("os_controls_bool_switch_off");
-        if ($(src).val() == 1)
-        	$(boolSwitch).addClass("os_controls_bool_switch_on");        
-        var boolForeground = osCreate("div");
-        $(boolForeground).addClass("os_controls_bool_foreground");
-        
-        boolForeground.referenceInput = src;
-        boolForeground.switch = boolSwitch;
-        
-        $(boolForeground).click(function (e) {
+    		/*
+    	  var boolSwitch = osCreate("span")
+        boolSwitch.referenceInput = src;
+        $(boolSwitch).addClass("os_controls_bool");
+        if ($(src).val() == 1) {
+            $(boolSwitch).addClass("os_controls_bool_checked");
+        }
+        $(boolSwitch).click(function (e) {
             if ($(this.referenceInput).val() == 1) {
                 $(this.referenceInput).val(0);
-                $(this.switch).removeClass("os_controls_bool_switch_on");                                
+                $(this).removeClass("os_controls_bool_checked");
 
             } else {
                 $(this.referenceInput).val(1);
-                $(this.switch).addClass("os_controls_bool_switch_on");                                
+                $(this).addClass("os_controls_bool_checked");
             }
         });
+        */
         
-        $(boolContainer).append(boolSwitch);
-        $(boolContainer).append(boolForeground);
-        
+       	var boolContainer = osCreate("span");
+       	
+      	var boolSwitch = osCreate("span");
+      	$(boolContainer).append(boolSwitch);
+        boolSwitch.referenceInput = src;
+        $(boolContainer).addClass("os_controls_bool_container");
+        $(boolSwitch).addClass("os_controls_bool_switch");
+        if ($(src).val() == 1) {
+            $(boolSwitch).addClass("os_controls_bool_switch_checked");
+        }
+        $(boolSwitch).click(function (e) {
+            if ($(this.referenceInput).val() == 1) {
+                $(this.referenceInput).val(0);
+                $(this).removeClass("os_controls_bool_switch_checked");                
+
+            } else {
+                $(this.referenceInput).val(1);
+                $(this).addClass("os_controls_bool_switch_checked");                
+            }
+        });
+      
+      	var boolContainerYes = osCreate("span");
+       	$(boolContainerYes).addClass("os_controls_bool_container_yes");
+       	$(boolContainer).append(boolContainerYes);
+       	
+       	var boolContainerNo = osCreate("span");
+       	$(boolContainerNo).addClass("os_controls_bool_container_no");
+       	$(boolContainer).append(boolContainerNo);
+      
+
+        //$(src).hide();
         $(boolContainer).insertAfter($(src));
+        
         
     },
 
@@ -667,47 +560,26 @@ var Osiris =
         // Note 02/03/2012: Wait jQuery 1.9
         //$(src).spinner({max: 3, min:0});
     },
-    
-    controlSlider: function (src) {
-        src.slider = osCreate("div");
-        $(src.slider).slider({
-        	min: 5,
-        	max: 10,
-        	value: 2,
-        	slide: function( event, ui) {
-        	}
-        });
-    },
 
     controlString: function (src, required) {
-    		$(src).bind("blur change paste keyup", Osiris.controlStringValidation);
-    		
-    		
-    		/*
         $(src).blur(Osiris.controlStringValidation);
         $(src).keyup(Osiris.controlStringValidation);
-        $(src).change(Osiris.controlStringValidation);
-        */
         src.spanMessage = osCreate("span");
         //alert(src.validationMessage2);
         //$(src.spanMessage).text("xxx");
         $(src).after(src.spanMessage);
         $(src.spanMessage).addClass("os_validation_message");
-        
-        $(src).trigger("change");
+        $(src).trigger("blur");
     },
 
     controlStringValidation: function () {
-    		if ($(this).attr("data-os-minchars") != "") {
-            var submit = $(this).attr("data-os-submit");
-            var minChars = $(this).attr("data-os-minchars");
+        if (this.attributes["data-os-minchars"]) {
+            var submit = osGetById(this.attributes["data-os-submit"].nodeValue);
+            var minChars = parseInt(this.attributes["data-os-minchars"].nodeValue);
             if ($(this).val().length < minChars) {
                 $(this).addClass("os_input_invalid");
-                //var msg =
+                var msg =
                 $(this.spanMessage).text(Osiris.getText("controls.string.minchars","nchars",minChars));
-                
-                if(submit != "")
-                	$('#' + submit).prop('disabled', true);
 
                 /*
                 if ($(this.spanMessage).text() == "") {
@@ -722,14 +594,9 @@ var Osiris =
                 */
 
             }
-            else 
-            	{
+            else {
                 $(this).removeClass("os_input_invalid");
                 $(this.spanMessage).text("");
-                
-                if(submit != "")
-                	$('#' + submit).prop('disabled', false);
-                	
                 /*
                 if ($(this.spanMessage).text() != "") {
                 submit.errors--;
@@ -753,7 +620,7 @@ var Osiris =
     initAdvertising: function() {    
     	var objParent = osGetById("osiris_advertising");
 			if( (objParent != null) && (objParent.attributes) )
-	    	Osiris.contentFromUrl(objParent, "/AF4E66017B2F4E240E47EA9240F6F7E8C9EF7D78/adv", "fade", "none");	
+	    	osAjax_InnerHtmlFromUrl(objParent, "/AF4E66017B2F4E240E47EA9240F6F7E8C9EF7D78/adv", "fade", "none");	
 	  }
 
 }
@@ -1023,7 +890,6 @@ function osMoveOnCursor(e,obj,offsetLeft,offsetTop)
 	// 0.12 - Window border adjust
 	var winDX = osGetWindowWidth()-30;
 	var winDY = osGetWindowHeight()-30;
-	//console.log(winDX);
 	if(newx + parseInt(obj.offsetWidth) > winDX)
 	    newx = winDX - parseInt(obj.offsetWidth);	
 	    
@@ -1545,7 +1411,7 @@ function osInitControls(src,debug)
                 }
 
                 if (otype == "dialog") {                    
-                    Osiris.dialog(src);                         
+                    Osiris.dialog(src);     
     								jQuery(src).dialog("open");
                 }
                                 
@@ -1556,10 +1422,6 @@ function osInitControls(src,debug)
                 if (otype == "number") {
                     Osiris.controlNumber(src);
                 }
-                
-                if (otype == "slider") {
-                    Osiris.controlSlider(src);
-                }
 
                 if (otype == "string") {
                     Osiris.controlString(src);
@@ -1567,10 +1429,6 @@ function osInitControls(src,debug)
                 
                 if (otype == "omleditor") {
                 		Osiris.controlOmlEditor(src);
-                }
-                
-                if (otype == "textarea") {
-                	$(src).autosize();		
                 }
             }
 
@@ -1613,7 +1471,6 @@ function osInitControls(src,debug)
 	Ajax
 **************************************************************************************************/
 
-/*
 function osAjax_GetXmlHttpObject(handler)
 { 
 	var objXMLHttp=null
@@ -1627,7 +1484,97 @@ function osAjax_GetXmlHttpObject(handler)
 	}
 	return objXMLHttp;
 }
-*/
+
+function osAjax_InnerHtmlFromUrl(src, url, effect, wait)
+{	
+    var fullUrl = Osiris.adjustUrl(url);
+    if(effect == null)
+        effect = "none";
+    
+    if( (wait == null) || (wait != "none") )
+    {
+        divWait = document.createElement('div');
+        divWait.className = "os_ajax_wait";    
+    
+        jQuery(divWait).css( { "left": jQuery(src).offset().left + "px", "top": jQuery(src).offset().top + "px" } );
+        jQuery(divWait).css( { "width": jQuery(src).width() + "px", "height": jQuery(src).height() + "px" } );
+     
+        src.appendChild(divWait);
+        
+        //Osiris.notify("wait");    
+        Osiris.notify("warning", url);    
+    }
+    
+    jQuery.ajax(
+	{
+     url: fullUrl,
+     success: function(response) 
+     {
+     		Osiris.notify("clean");
+     		
+        if(src.onAjaxSuccess)
+            src.onAjaxSuccess();
+            
+        //alert("inner result :" + response);
+        if(effect == "slide")    
+        {
+            $(src).slideUp(Osiris.effectsSpeedFast);
+        }
+            
+        if(effect == "fade")    
+        {        
+            $(src).fadeOut(Osiris.effectsSpeedSlow);
+        }
+                
+        var html = response;
+                
+        arr = Osiris.extractJavascript(html);
+        
+        for(i=0;i<arr.length;i++)
+        {
+            //alert("ele " + i + ":" + arr[i]);
+            
+            if(i == 0)
+            {                
+                src.innerHTML = arr[0];
+                
+                for(var i2=0;i2<src.childNodes.length;i2++)
+                {	
+                    osInitControls(src.childNodes[i2]);
+                }
+            }
+            else
+            {
+                var s = document.createElement("script");
+                s.type = "text/javascript";
+                s.text = arr[i];
+                src.appendChild(s);
+            }
+        }                
+        
+        if(src.onReady)
+            src.onReady();
+        
+        if(effect == "slide")    
+        {
+            $(src).slideDown(Osiris.effectsSpeedFast);
+        }
+            
+        if(effect == "fade")    
+        {
+            $(src).fadeIn(Osiris.effectsSpeedSlow);
+        }
+     },
+     error: function(xhr) 
+     {
+        //src.innerHTML = "Ajax error, status = " + xhr.status + " - url = " + url;
+        var msg = "Ajax error, status = " + xhr.status + " - url = " + url;
+        //src.innerHTML = "<img alt=\"" + msg + "\" src=\"/htdocs/images/icons/16x16/warning.png\">";
+        
+        Osiris.notify("warning",msg);
+     }
+    });    
+}
 
 /*
 function osAjax_InnerHtmlFromUrl_StateChanged(src)
@@ -1700,7 +1647,7 @@ function osDynamicDiv(src, url, waitStyle, effect)
 	src.wait = waitStyle;
 	src.updateContent = function()
 	{
-		Osiris.contentFromUrl(this,this.updateUrl,this.effect,this.wait);		
+		osAjax_InnerHtmlFromUrl(this,this.updateUrl,this.effect,this.wait);		
 	}
 	
 	src.onReady = function()
@@ -1996,8 +1943,6 @@ function osTooltipCreate()
 function osTooltipShow(e, objTooltip)
 {    
     globalTooltip.innerHTML = objTooltip.tooltip;
-    globalTooltip.left = 0;
-    globalTooltip.top = 0;
     
     osTooltipMove(e);
     
@@ -2479,27 +2424,22 @@ function osTabCreate(src)
 			var objHeader = this.headers[i];
 			var objBody = this.bodies[i];
 			
-			//if(withEffect)
-			if(false)
+			if(withEffect)
 			{
 				if(objHeader.style.display != "none")
 				{
 					jQuery(objHeader).stop(true,true).slideUp(Osiris.effectsSpeedSlow);
-					//jQuery(objHeader).stop(true,true).fadeOut(Osiris.effectsSpeedSlow);
-					//jQuery(objHeader).fadeOut( { queue: true, duration: Osiris.effectsSpeedSlow } );
 				}
 				if(objBody.style.display != "block")
 				{
 					jQuery(objBody).stop(true,true).slideDown(Osiris.effectsSpeedSlow);
-					//jQuery(objBody).stop(true,true).fadeIn(Osiris.effectsSpeedSlow);
-					//jQuery(objBody).fadeIn( { queue: true, duration: Osiris.effectsSpeedSlow } );
 				}
-			}
-			else
-			{
-				objHeader.style.display = "none";
-				objBody.style.display = "block";
-			}
+				}
+				else
+				{
+					objHeader.style.display = "none";
+					objBody.style.display = "block";
+				}
 		}
 		objTab.collapsed = false;
 	}
@@ -2516,8 +2456,6 @@ function osTabCreate(src)
 			{
 				//Effect.BlindDown(objHeader, { queue: 'end', duration: 0.3 });			    	
 				jQuery(objHeader).stop(true,true).slideDown(Osiris.effectsSpeedSlow);
-				//jQuery(objHeader).stop(true,true).fadeIn(Osiris.effectsSpeedSlow);				
-				//jQuery(objHeader).fadeIn( { queue: true, duration: Osiris.effectsSpeedSlow } );
 			}
 		}
 		
@@ -2535,35 +2473,6 @@ function osTabCreate(src)
 		return;
 		*/
 
-		// Chiudo il vecchio
-		for(var i=0;i<objTab.bodies.length;i++)
-		{	    		
-			var objHeader = this.headers[i];
-			var objBody = this.bodies[i];
-
-			if( (objBody.pageIndex != pageIndex) && (objBody.style.display != "none") )
-			{
-				if(objTab.tabLayout == "top")
-					objHeader.className = "os_tab_top_header";
-				else
-					objHeader.className = "os_tab_left_header";
-				//if(withEffect)
-				if(false)
-				{
-					if(objBody.style.display != "none")
-					{
-						jQuery(objBody).stop(true,true).slideUp(Osiris.effectsSpeedSlow);
-						//jQuery(objBody).stop(true,true).fadeOut(Osiris.effectsSpeedSlow);
-						//jQuery(objBody).fadeOut( { queue: true, duration: Osiris.effectsSpeedSlow } );
-					}
-				}
-				else
-				{
-					objBody.style.display = "none";
-				}
-			}	        
-		}		   
-		
 		// Apro il nuovo
 		for(var i=0;i<objTab.bodies.length;i++)
 		{	    		
@@ -2578,15 +2487,12 @@ function osTabCreate(src)
 					objHeader.className = "os_tab_left_header_selected";
 				//objBody.style.display = "block";			    
 				//Effect.Appear(objBody, { queue: 'end', duration: 1 });			    	
-				//if(withEffect)
-				if(false)
+				if(withEffect)
 				{
 					if(objBody.style.display != "block")
 					{
 						//Effect.BlindDown(objBody, { queue: 'end', duration: 0.3 });			    			    	    
 						jQuery(objBody).stop(true,true).slideDown(Osiris.effectsSpeedSlow);
-						//jQuery(objBody).stop(true,true).fadeIn(Osiris.effectsSpeedSlow);
-						//jQuery(objBody).fadeIn( { queue: true, duration: Osiris.effectsSpeedSlow } );
 					}
 				}
 				else
@@ -2594,7 +2500,33 @@ function osTabCreate(src)
 					objBody.style.display = "block";
 				}
 			}	        
-		} 
+		}
+
+		// Chiudo il vecchio
+		for(var i=0;i<objTab.bodies.length;i++)
+		{	    		
+			var objHeader = this.headers[i];
+			var objBody = this.bodies[i];
+
+			if( (objBody.pageIndex != pageIndex) && (objBody.style.display != "none") )
+			{
+				if(objTab.tabLayout == "top")
+					objHeader.className = "os_tab_top_header";
+				else
+					objHeader.className = "os_tab_left_header";
+				if(withEffect)
+				{
+					if(objBody.style.display != "none")
+					{
+						jQuery(objBody).stop(true,true).slideUp(Osiris.effectsSpeedSlow);
+					}
+				}
+				else
+				{
+					objBody.style.display = "none";
+				}
+			}	        
+		}		    
 
 		this.pageIndex = pageIndex;
 
@@ -2720,13 +2652,13 @@ function osOmlUrlsLaunch(obj)
 
 function osOmlUrlsLaunchAll(obj)
 {
-	obj.iv = setInterval("osOmlUrlsLaunch(osmlUrls_" + obj.id + ")",250);
+    obj.iv = setInterval("osOmlUrlsLaunch(osmlUrls_" + obj.id + ")",250);
 	obj.n = 0;
 }
 
 function osOmlUrlsPopup(obj)
 {
-	obj.theWin = window.open("", "links", "width=800,height=600,scrollbars=1");
+    obj.theWin = window.open("", "links", "width=800,height=600,scrollbars=1");
 	obj.theWin.document.title = "Links";
 	obj.theWin.document.write(obj.theWin.document.body.innerHTML + "<pre id='data'>");
 	var i = 0;

@@ -236,8 +236,6 @@
       </xsl:choose>
     </xsl:variable>
     
-    <!-- This commented version support action without link. -->
-    <!--
     <div class="os_action_row">      
       <xsl:if test="$icon or $icon_path">
         <div style="margin:3px;margin-right:15px;float:left;">
@@ -282,45 +280,6 @@
 
       <div class="os_clear"/>
     </div>
-    -->
-
-    <xsl:call-template name="action-href">
-      <xsl:with-param name="prefix" select="$prefix"/>
-      <xsl:with-param name="href" select="$href"/>
-      <xsl:with-param name="call" select="$call"/>
-      <xsl:with-param name="class" select="'os_action_row'"/>
-      <xsl:with-param name="content">
-        <xsl:if test="$icon or $icon_path">
-          <div style="margin:3px;margin-right:15px;float:left;">
-            <xsl:choose>
-              <xsl:when test="$icon_path">
-                <img src="{$icon_path}"/>
-              </xsl:when>
-              <xsl:otherwise>
-                <img src="{system:resource-url(concat('images/icons/32x32/',$icon,'.png'))}"/>
-              </xsl:otherwise>
-            </xsl:choose>
-
-          </div>
-        </xsl:if>
-
-        <span class="os_titlex" style="font-size:1.2em;font-weight:bold">
-          <xsl:value-of select="$title" disable-output-escaping="yes"/>
-        </span>
-        <br />
-        <span class="os_descriptionx" style="font-size:0.9em">
-          <xsl:value-of select="$description" disable-output-escaping="yes"/>
-        </span>
-        <xsl:if test="$content">
-          <br />
-          <xsl:copy-of select="$content"/>
-        </xsl:if>
-
-        <div class="os_clear"/>
-      </xsl:with-param>
-    </xsl:call-template>
-    
-    
 
   </xsl:template>
 

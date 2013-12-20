@@ -305,7 +305,7 @@ void Users::onPreRender()
 void Users::onChangeOffset(IEvent *e)
 {
 	HtmlEvent *htmlEvent = dynamic_cast<HtmlEvent *>(e);
-	if(htmlEvent == null)
+	if(htmlEvent == nullptr)
 		return;
 
 	m_offset = conversions::from_utf16<uint32>(htmlEvent->get(0));
@@ -314,7 +314,7 @@ void Users::onChangeOffset(IEvent *e)
 void Users::onFilterAlphabetic(IEvent *e)
 {
 	HtmlEvent *htmlEvent = dynamic_cast<HtmlEvent *>(e);
-	if(htmlEvent == null)
+	if(htmlEvent == nullptr)
 		return;
 
 	

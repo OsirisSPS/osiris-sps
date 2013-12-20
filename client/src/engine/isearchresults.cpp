@@ -80,9 +80,9 @@ void ISearchResults::exportXML(shared_ptr<XMLNode> nodeRoot, shared_ptr<SearchQu
 		for(uint32 i = 0; i < results; i++)
 		{
 			shared_ptr<SearchResult> result = getResult(page->getDatabase(), i);
-			if(result != null)
+			if(result != nullptr)
 			{
-				_exportNode(nodeRoot, query, page, result->getID(), result->getScore(), null, true, external);
+				_exportNode(nodeRoot, query, page, result->getID(), result->getScore(), nullptr, true, external);
 			}
 		}
 	}
@@ -99,7 +99,7 @@ void ISearchResults::exportXML(shared_ptr<XMLNode> nodeRoot, shared_ptr<SearchQu
 		for(uint32 i = 0; i < results; i++)
 		{
 			shared_ptr<SearchResult> result = getResult(page->getDatabase(), i);
-			if(result != null)
+			if(result != nullptr)
 			{
 				_exportNode(nodeRoot, query, page, result->getID(), result->getScore(), &nodeCache, true, external);
 			}
@@ -131,7 +131,7 @@ shared_ptr<XMLNode> ISearchResults::_exportNode(shared_ptr<XMLNode> nodeRoot, sh
 		}
 	}
 
-	if(node_result == null)
+	if(node_result == nullptr)
 	{
 		shared_ptr<EntitiesEntity> entity = page->getPortal()->getEntity(page->getDatabase(), id);
 		if( (entity != NULL) && (entity->getCurrent() != NULL) )
@@ -171,7 +171,7 @@ shared_ptr<XMLNode> ISearchResults::_exportNode(shared_ptr<XMLNode> nodeRoot, sh
 					}
 				}
 
-				if(node_parent != null)
+				if(node_parent != nullptr)
 				{
 					node_parent->addChild(node_result);
 

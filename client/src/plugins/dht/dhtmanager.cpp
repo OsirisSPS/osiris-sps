@@ -100,7 +100,7 @@ bool DHTManager::startDHT()
 
 void DHTManager::stopDHT()
 {
-	if(m_dhtThread != null)
+	if(m_dhtThread != nullptr)
 	{
 		m_dhtThread->stop();
 		m_dhtThread.reset();
@@ -130,7 +130,7 @@ bool DHTManager::updateDHT()
 
 	bool needRestart = false;
 
-	if(m_dhtThread != null && m_dhtThread->running())
+	if(m_dhtThread != nullptr && m_dhtThread->running())
 	{
 		if(Options::instance()->getOption<uint32>(OS_DHT_OPTION_PORT) != m_port)
 			needRestart = true;

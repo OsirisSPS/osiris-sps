@@ -37,7 +37,7 @@ OS_NAMESPACE_BEGIN()
 DHTPortalSearch::DHTPortalSearch(shared_ptr<Portal> portal, uint32 announcePort) : SearchBase(announcePort),
 																				   m_portal(portal)
 {
-	OS_ASSERT(portal != null);
+	OS_ASSERT(portal != nullptr);
 }
 
 DHTPortalSearch::~DHTPortalSearch()
@@ -48,7 +48,7 @@ DHTPortalSearch::~DHTPortalSearch()
 void DHTPortalSearch::processResult(uint32 ip, uint32 port)
 {
 	shared_ptr<Portal> portal = getPortal();
-	if(portal == null)
+	if(portal == nullptr)
 		return;
 
 	shared_ptr<IPAddress> address(OS_NEW IPAddress(ip, port));

@@ -42,9 +42,9 @@ ReputationsFeedback::~ReputationsFeedback()
 
 void ReputationsFeedback::addChild(shared_ptr<ReputationsFeedback> feedback) 
 {
-	OS_ASSERT(feedback != null);
+	OS_ASSERT(feedback != nullptr);
 
-	if(feedback != null && utils::exists(m_childs, feedback) == false)
+	if(feedback != nullptr && utils::exists(m_childs, feedback) == false)
 		m_childs.push_back(feedback); 
 }
 

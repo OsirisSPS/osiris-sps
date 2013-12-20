@@ -94,7 +94,7 @@ const String PortalsSystem::PORTAL_PAGE_ASSISTANT = _S("assistant");
 const String PortalsSystem::PORTAL_PAGE_SEARCH = _S("search");
 const String PortalsSystem::PORTAL_PAGE_MESSENGER = _S("privatemessages");
 
-const String PortalsSystem::MAIN_PAGE_ACCOUNTS = _S("accounts");
+const String PortalsSystem::MAIN_PAGE_ACCOUNTS = _S("accounts2");
 const String PortalsSystem::MAIN_PAGE_SETTINGS = _S("settings");
 const String PortalsSystem::MAIN_PAGE_RESOURCES = _S("resources");
 const String PortalsSystem::MAIN_PAGE_MAINTENANCE = _S("maintenance");
@@ -163,7 +163,7 @@ shared_ptr<Portal> PortalsSystem::getPortal(const PortalID &id) const
 			return *i;
 	}
 
-	return null;
+	return nullptr;
 }
 */
 
@@ -177,7 +177,7 @@ shared_ptr<Portal> PortalsSystem::getPortal(const PortalID &id, const PovID &pov
 			return *i;
 	}
 
-	return null;
+	return nullptr;
 }
 
 shared_ptr<Portal> PortalsSystem::getPortalByFullPov(const String &id) const
@@ -190,7 +190,7 @@ shared_ptr<Portal> PortalsSystem::getPortalByFullPov(const String &id) const
 			return *i;
 	}
 
-	return null;
+	return nullptr;
 }
 
 shared_ptr<Portal> PortalsSystem::getPortalByIndex(uint32 index) const
@@ -201,7 +201,7 @@ shared_ptr<Portal> PortalsSystem::getPortalByIndex(uint32 index) const
 	if(i != m_portals.end())
 		return *i;
 
-	return null;
+	return nullptr;
 }
 
 shared_ptr<Portal> PortalsSystem::getFirstPortal(const PortalID &id) const
@@ -214,7 +214,7 @@ shared_ptr<Portal> PortalsSystem::getFirstPortal(const PortalID &id) const
 			return *i;
 	}
 
-	return null;
+	return nullptr;
 }
 
 String PortalsSystem::getPath() const
@@ -363,7 +363,7 @@ std::string PortalsSystem::getPortalLink(const shared_ptr<Portal> &portal, ide::
 
 std::string PortalsSystem::getPortalLink(const shared_ptr<Portal> &portal, const std::string &page, const ordered_map<std::wstring, std::wstring> &params)
 {
-	OS_ASSERT(portal != null);
+	OS_ASSERT(portal != nullptr);
 
 	ordered_map<std::wstring, std::wstring> portalParams(params);
 
@@ -542,7 +542,7 @@ bool PortalsSystem::createMonarchicPortal(shared_ptr<PortalOptions> options)
 		return false;
 
 	shared_ptr<Portal> portal = getPortal(id);
-	OS_EXCEPT_IF(portal == null, "Internal error (invalid portal)");
+	OS_EXCEPT_IF(portal == nullptr, "Internal error (invalid portal)");
 
 	shared_ptr<PortalsTransaction> databaseWork = portal->startTransaction(false);
 	shared_ptr<IPortalDatabase> database = databaseWork->getDatabase();
@@ -563,24 +563,25 @@ bool PortalsSystem::createMonarchicPortal(shared_ptr<PortalOptions> options)
 }
 */
 
+/*
 shared_ptr<Portal> PortalsSystem::createPortal(shared_ptr<PortalOptions> options) // TOCLEAN
 {
 	options->setPortalID(PortalID::generate());
 
-	/*
+	
 	Buffer public_key;
 	Buffer private_key;
 
 	// Genera la coppia di chiavi dell'amministratore
 	if(CryptManager::instance()->rsaGenerateKeys(rsaType2048, private_key, public_key) == false)
 		return false;
-	*/
+	
 
 	//PortalAccess access = options->getPassword().empty() ? portalAccessPublic : portalAccessPrivate;
 	//options->setPortalID(PortalID::generateAnarchic(access));
 	
 
-	/*
+	
 	if(options->getPortalID().empty())
 		options->setPortalID(PortalID::generateAnarchic(access));
 	
@@ -588,7 +589,7 @@ shared_ptr<Portal> PortalsSystem::createPortal(shared_ptr<PortalOptions> options
 	{
 		// Create account
 		shared_ptr<IdeAccount> account = IdeAccountsManager::instance()->createAccount(OS_DEFAULT_ADMIN_USERNAME, OS_DEFAULT_ADMIN_PASSWORD, true);
-		if(account == null)
+		if(account == nullptr)
 		{
 			OS_LOG_ERROR("Cannot create account");
 			return false;
@@ -598,56 +599,59 @@ shared_ptr<Portal> PortalsSystem::createPortal(shared_ptr<PortalOptions> options
 		account->getAccount()->decodePublicKey(OS_DEFAULT_ADMIN_PASSWORD, publicKey);
 		options->setUserID(DataAccount::getReferenceUser(publicKey));
 	}
-	*/
+	
 			
 	shared_ptr<Portal> portal = subscribePortal(options);
-	if(portal == null)
+	if(portal == nullptr)
 	{
 		OS_LOG_ERROR("Cannot create portal");
-		return null;
+		return nullptr;
 	}
 
 	return portal;
 }
-
+*/
 shared_ptr<Portal> PortalsSystem::subscribePortal(shared_ptr<PortalOptions> options)
 {
 	OS_LOCK(m_cs);
 
-	if(options == null)
+	if(options == nullptr)
 	{
 		OS_ASSERTFALSE();
-		return null;
+		return nullptr;
 	}
 
 	PortalID id = options->getPortalID();
 	if(id.empty())
+	{
 		id = PortalID::generate();		
+		options->setPortalID(id);
+	}
 
 	PovID pov = options->getPovID();
 	if(pov.empty())
-		return null;
+		return nullptr;
 	
 	//if(id.getType() != ID::idPortal || id.validate(false) == false)
-	//	return null;
+	//	return nullptr;
 
 	String fullPov = Portal::generatePovID(id, pov);
 
-	if(getPortal(id, pov) != null)
-		return null;
+	if(getPortal(id, pov) != nullptr)
+		return nullptr;
 
 	if(options->getDatabaseName().empty())
 		options->setDatabaseName(fullPov);
 
 	if(options->validate() == false)
-		return null;
+		return nullptr;
 
 	String folder = utils::standardisePath(getPath() + fullPov);
 
 	if(FileSystem::instance()->exists(folder))
 	{
 		OS_LOG_ERROR(String::format(_S("Folder '%S' already exists").c_str(), folder.c_str()));
-		return null;
+		return nullptr;
 	}
 
 	// Assicura che la root dei portali esista
@@ -656,14 +660,14 @@ shared_ptr<Portal> PortalsSystem::subscribePortal(shared_ptr<PortalOptions> opti
 	if(FileSystem::instance()->createDirectory(folder) == false)
 	{
 		OS_LOG_ERROR(String::format(_S("Cannot create folder '%S'").c_str(), folder.c_str()));
-		return null;
+		return nullptr;
 	}
 
 	// Crea il portale
 	if(_setupPortal(options, folder) == false)
 	{
 		FileSystem::instance()->removeDirectory(folder);
-		return null;
+		return nullptr;
 	}
 
 	return _loadPortal(folder, false, true);
@@ -672,14 +676,14 @@ shared_ptr<Portal> PortalsSystem::subscribePortal(shared_ptr<PortalOptions> opti
 
 bool PortalsSystem::deletePortal(shared_ptr<PortalOptions> options, const String &path)
 {
-	if(options == null || options->getDeleted() == false)
+	if(options == nullptr || options->getDeleted() == false)
 		return false;
 
 	NotificationsManager::instance()->notify(_S("Removing portal '") + options->getName() + _S("'"));
 
 	String driverName = options->getDatabaseDriver();
 	shared_ptr<IDbDriver> driver = DatabasesSystem::instance()->getDriver(driverName.to_ascii());
-	if(driver == null)
+	if(driver == nullptr)
 	{
 		OS_LOG_ERROR(_S("Invalid database driver '") + driverName + _S("'"));
 		return false;
@@ -703,23 +707,23 @@ bool PortalsSystem::deletePortal(shared_ptr<PortalOptions> options, const String
 
 shared_ptr<Portal> PortalsSystem::ensurePortal(shared_ptr<OsirisLink> link, const String &password)
 {
-	if(link == null)
+	if(link == nullptr)
 	{
 		OS_ASSERTFALSE();
-		return null;
+		return nullptr;
 	}
 
 	OS_LOCK(m_cs);
 
 	shared_ptr<Portal> portal = getPortal(link->getPortal(), link->getPov());
-	if(portal != null)
+	if(portal != nullptr)
 		return portal;
 
 	shared_ptr<IDbDriver> defaultDriver = DatabasesSystem::instance()->getDefaultDriver();
-	if(defaultDriver == null)
+	if(defaultDriver == nullptr)
 	{
 		OS_LOG_ERROR("Invalid database driver");
-		return null;
+		return nullptr;
 	}
 
 	PortalID portalID = link->getPortal();
@@ -739,14 +743,15 @@ shared_ptr<Portal> PortalsSystem::ensurePortal(shared_ptr<OsirisLink> link, cons
 	portalOptions->setDatabaseOptions(defaultDriver->createOptions());
 
 	// VERYURGENT: le varie createPortal/subscribePortal dovrebbero restituire il riferimento al portale
-	if(subscribePortal(portalOptions) == false)
+	portal = subscribePortal(portalOptions);
+	if(portal == nullptr)
 	{
 		OS_LOG_ERROR("Cannot create portal");
-		return null;
+		return nullptr;
 	}
 
-	portal = getPortal(portalID, povID);
-	OS_ASSERT(portal != null);
+	//portal = getPortal(portalID, povID);
+	//OS_ASSERT(portal != nullptr);
 	return portal;
 }
 /*
@@ -805,7 +810,7 @@ bool PortalsSystem::renamePortal(const PortalID &id, const String &name)
 
 void PortalsSystem::notifyPortalLoaded(shared_ptr<Portal> portal, shared_ptr<IPortalDatabase> database)
 {
-	OS_ASSERT(portal != null);
+	OS_ASSERT(portal != nullptr);
 	for(PortalsListeners::const_iterator i = m_listeners.begin(); i != m_listeners.end(); ++i)
 	{
 		(*i)->onPortalLoaded(portal, database);
@@ -814,7 +819,7 @@ void PortalsSystem::notifyPortalLoaded(shared_ptr<Portal> portal, shared_ptr<IPo
 
 void PortalsSystem::addPortalsListener(shared_ptr<IPortalsListener> listener)
 {
-	if(listener == null)
+	if(listener == nullptr)
 	{
 		OS_ASSERTFALSE();
 		return;
@@ -892,14 +897,14 @@ shared_ptr<Portal> PortalsSystem::_loadPortal(const String &path, bool recovery,
 	{
 		shared_ptr<Portal> portal(OS_NEW Portal(getPeersCacheSize(), getDatabasesCacheSize()));
 		if(_initPortal(portal, path, recovery, start) == false)
-			return null;
+			return nullptr;
 
 		/*
-		if(getPortal(portal->getPortalID()) != null)
+		if(getPortal(portal->getPortalID()) != nullptr)
 			return false;
 		*/
-		if(getPortalByFullPov(portal->getFullPovID()) != null)
-			return null;
+		if(getPortalByFullPov(portal->getFullPovID()) != nullptr)
+			return nullptr;
 
 		m_portals.push_back(portal);
 		return portal;
@@ -913,15 +918,15 @@ shared_ptr<Portal> PortalsSystem::_loadPortal(const String &path, bool recovery,
 		OS_LOG_ERROR(_S("Unknown error loading portal '") + path + _S("'"));
 	}
 
-	return null;
+	return nullptr;
 }
 
 void PortalsSystem::_initDirectories()
 {
 	shared_ptr<IHttpServer> server = IdeSystem::instance()->getServer();
-	OS_ASSERT(server != null);
+	OS_ASSERT(server != nullptr);
 
-	if(server != null)
+	if(server != nullptr)
 	{
 		server->addDirectory(m_mainDirectory);
 		server->addDirectory(m_portalsDirectory);
@@ -970,7 +975,7 @@ bool PortalsSystem::_setupPortal(shared_ptr<PortalOptions> options, const String
 	}
 
 	shared_ptr<IDbDriver> driver = DatabasesSystem::instance()->getDriver(options->getDatabaseDriver().to_ascii());
-	if(driver == null)
+	if(driver == nullptr)
 	{
 		OS_LOG_ERROR(_S("Invalid database driver"));
 		return false;

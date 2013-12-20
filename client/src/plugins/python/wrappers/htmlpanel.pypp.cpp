@@ -23,7 +23,7 @@ struct HtmlPanel_wrapper : ::osiris::HtmlPanel, ::osiris::PythonWrapper< ::osiri
     HtmlPanel_wrapper( )
     : ::osiris::HtmlPanel( )
       , ::osiris::PythonWrapper< ::osiris::HtmlPanel >(){
-        // null constructor
+        // nullptr constructor
     
     }
 

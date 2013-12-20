@@ -50,8 +50,8 @@ public:
 	// Costruisce la stringa da un puntatore UTF-16 e la relativa dimensione in caratteri
 	StringUTF16(const uchar *text, size_type length = -1);
 	// Costruisce una stringa effettuando la conversione da char *
-	StringUTF16(const achar *text, size_type length = -1, const char *codepage = null);
-	StringUTF16(const std::string &text, const char *codepage = null);
+	StringUTF16(const achar *text, size_type length = -1, const char *codepage = nullptr);
+	StringUTF16(const std::string &text, const char *codepage = nullptr);
 #ifndef OS_HAS_NATIVE_UCHAR
 	StringUTF16(const wchar *text, size_type length = -1);
 #endif

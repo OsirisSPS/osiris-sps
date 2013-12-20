@@ -56,7 +56,7 @@ void Export::onLoad()
 	PageBase::onLoad();
 
 	shared_ptr<Portal> portal = getPortalFromUrl();
-	if(portal == null)
+	if(portal == nullptr)
 	{
 		showError(getText(_S("ide.messages.invalid_portal")));
 		return;

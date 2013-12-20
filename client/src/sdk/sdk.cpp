@@ -87,7 +87,7 @@ private:
 
 //////////////////////////////////////////////////////////////////////
 
-os_log_handler Application::g_logHandler = null;
+os_log_handler Application::g_logHandler = nullptr;
 
 //////////////////////////////////////////////////////////////////////
 
@@ -121,7 +121,7 @@ LogLevel Application::convertLogLevel(uint8 level)
 
 void Application::log(shared_ptr<LogMessage> message)
 {
-	if(g_logHandler != null)
+	if(g_logHandler != nullptr)
 	{
 		std::string str = message->getMessage().to_utf8();
 		os_uint8 level = static_cast<os_uint8>(message->getLevel());
@@ -168,7 +168,7 @@ extern "C" OS_SDK_API os_result osiris_init(int argc, char *argv[], const char *
 
 	if(argc == 0)
 	{
-		if(root == null)
+		if(root == nullptr)
 			return OS_SDK_ERROR_INVALID_PARAM;
 
 		String path;

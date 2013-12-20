@@ -54,7 +54,7 @@ void SectionViewer::onLoad()
 	ViewerBase::onLoad();
 
 	shared_ptr<EntitiesEntity> section = getEntity(getDatabase());
-	if(section != null)
+	if(section != nullptr)
 	{
 		shared_ptr<XMLPortalExporter> exporter(OS_NEW XMLPortalExporter(getDocument()->create(OS_COMFORUM_SECTION_NODE), getPage(), XMLPortalExporter::emFull));
 		ForumManager::instance()->renderSection(section, exporter);

@@ -63,8 +63,8 @@ END_EVENT_TABLE()
 //////////////////////////////////////////////////////////////////////
 
 LogWindow::LogWindow(wxWindow *parent, wxWindowID id, const wxPoint &pos, const wxSize &size, long style) : WindowBase(parent, id, pos, size, style),
-																											m_logCtrl(null),
-																											m_buttonClearLog(null),
+																											m_logCtrl(nullptr),
+																											m_buttonClearLog(nullptr),
 																											m_imageList(16, 16),
 																											m_enableAutoscoll(true)
 {
@@ -105,7 +105,7 @@ void LogWindow::createLayout()
 
 void LogWindow::initWindow()
 {
-	OS_ASSERT(m_commandsPanel != null);
+	OS_ASSERT(m_commandsPanel != nullptr);
 	m_commandsPanel->getRenderer()->setBackgroundImage(wxImage(conversions::from_utf16<wxString>(Application::instance()->getResourcesFilePath(_S("window_commands_background.png"))), wxBITMAP_TYPE_PNG));
 
 	m_iconsMap[OS_NAMESPACE_NAME::logLevelDebug] = m_imageList.Add(wxBitmap(conversions::from_utf16<wxString>(Application::instance()->getResourcesFilePath(_S("main_icons_logs_debug.png"))), wxBITMAP_TYPE_PNG));
@@ -115,7 +115,7 @@ void LogWindow::initWindow()
 	m_iconsMap[OS_NAMESPACE_NAME::logLevelError] = m_imageList.Add(wxBitmap(conversions::from_utf16<wxString>(Application::instance()->getResourcesFilePath(_S("main_icons_logs_error.png"))), wxBITMAP_TYPE_PNG));
 	m_iconsMap[OS_NAMESPACE_NAME::logLevelCritical] = m_imageList.Add(wxBitmap(conversions::from_utf16<wxString>(Application::instance()->getResourcesFilePath(_S("main_icons_logs_critical.png"))), wxBITMAP_TYPE_PNG));
 
-	OS_ASSERT(m_logCtrl != null);
+	OS_ASSERT(m_logCtrl != nullptr);
 	m_logCtrl->InsertColumn(columnTimestamp, conversions::from_utf16<wxString>(getText(_S("ui.mainframe.log.timestamp"))), wxLIST_FORMAT_LEFT, 120);
 	m_logCtrl->InsertColumn(columnMessage, conversions::from_utf16<wxString>(getText(_S("ui.mainframe.log.message"))), wxLIST_FORMAT_LEFT, 260);
 	m_logCtrl->SetImageList(&m_imageList, wxIMAGE_LIST_SMALL);
@@ -139,7 +139,7 @@ void LogWindow::cleanupWindow()
 
 void LogWindow::logMessage(shared_ptr<LogMessage> message)
 {
-	if(message == null)
+	if(message == nullptr)
 	{
 		OS_ASSERTFALSE();
 		return;
@@ -211,7 +211,7 @@ void LogWindow::logMessages(const list<shared_ptr<LogMessage> >::type &logs)
 
 void LogWindow::clearLogs()
 {
-	if(m_logCtrl != null)
+	if(m_logCtrl != nullptr)
 		m_logCtrl->DeleteAllItems();
 }
 

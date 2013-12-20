@@ -69,7 +69,7 @@ uint32 pimpl<StreamLayerGzip>::read(const StreamLayerGzip *layer, void *v, uint3
 	if(ensureDecompressor(layer, size) == false)
 		return 0;
 
-	OS_ASSERT(m_decompressor != null);
+	OS_ASSERT(m_decompressor != nullptr);
 
 	try
 	{
@@ -90,7 +90,7 @@ uint32 pimpl<StreamLayerGzip>::write(const StreamLayerGzip *layer, const void *v
 	if(ensureCompressor(layer) == false)
 		return 0;
 
-	OS_ASSERT(m_compressor != null);
+	OS_ASSERT(m_compressor != nullptr);
 
 	try
 	{		
@@ -109,7 +109,7 @@ bool pimpl<StreamLayerGzip>::close()
 {
 	try
 	{
-		if(m_compressor != null)
+		if(m_compressor != nullptr)
 		{
 			m_compressor->MessageEnd();
 			m_compressor.reset();			
@@ -126,14 +126,14 @@ bool pimpl<StreamLayerGzip>::close()
 
 bool pimpl<StreamLayerGzip>::ensureCompressor(const StreamLayerGzip *layer)
 {
-	OS_ASSERT(layer != null);
-	if(m_compressor != null)
+	OS_ASSERT(layer != nullptr);
+	if(m_compressor != nullptr)
 		return true;
 
 	try
 	{
 		shared_ptr<IStreamLayer> nextLayer = layer->getNext();
-		if(nextLayer == null)
+		if(nextLayer == nullptr)
 		{
 			OS_ASSERTFALSE();
 			return false;
@@ -155,13 +155,13 @@ bool pimpl<StreamLayerGzip>::ensureDecompressor(const StreamLayerGzip *layer, ui
 	try
 	{
 		shared_ptr<IStreamLayer> nextLayer = layer->getNext();
-		if(nextLayer == null)
+		if(nextLayer == nullptr)
 		{
 			OS_ASSERTFALSE();
 			return false;
 		}
 
-		if(m_decompressor == null)
+		if(m_decompressor == nullptr)
 			m_decompressor.reset(new CryptoPP::Gunzip());
 
 		while(static_cast<uint32>(m_decompressor->MaxRetrievable()) < size)

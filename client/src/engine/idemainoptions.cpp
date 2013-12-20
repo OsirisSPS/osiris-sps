@@ -79,7 +79,7 @@ String Options::getControlIDFromOptionName(String optionName) const
 // 07/2011: Copiata da quella sotto, non ho trovato modo di non passare gli ultimi 2 parametri boost:function.
 shared_ptr<IHtmlControl> Options::createControl(const String &optionName, shared_ptr<IHtmlControl> optionControl)
 {
-    OS_ASSERT(optionControl != null);
+    OS_ASSERT(optionControl != nullptr);
         
 	String title = getText("options." + optionName + ".title");
 	String desc = getText("options." + optionName + ".description");
@@ -116,7 +116,7 @@ shared_ptr<IHtmlControl> Options::createControl(const String &optionName, shared
 
 shared_ptr<IHtmlControl> Options::createControl(const String &optionName, shared_ptr<IHtmlControl> optionControl, const boost::function<void()> &optionReader, const boost::function<void()> &optionWriter)
 {
-    OS_ASSERT(optionControl != null);
+    OS_ASSERT(optionControl != nullptr);
     OS_ASSERT(optionReader.empty() == false);
     OS_ASSERT(optionWriter.empty() == false);
 
@@ -211,7 +211,7 @@ shared_ptr<IHtmlControl> Options::createControlString(const String &optionName)
 
 shared_ptr<IHtmlControl> Options::createPage(shared_ptr<IHtmlControl> tab, const String &name, uint32 &pageIndex)
 {
-	OS_ASSERT(tab != null);
+	OS_ASSERT(tab != nullptr);
 	OS_ASSERT(name.empty() == false);
 
 	shared_ptr<HtmlDiv> tabPageHeader(OS_NEW HtmlDiv());
@@ -240,7 +240,7 @@ shared_ptr<IHtmlControl> Options::createPage(shared_ptr<IHtmlControl> tab, const
 
 shared_ptr<IHtmlControl> Options::createPageGroup(shared_ptr<IHtmlControl> tabPage, const String &name)
 {
-	OS_ASSERT(tabPage != null);
+	OS_ASSERT(tabPage != nullptr);
 	OS_ASSERT(name.empty() == false);
 
 	shared_ptr<IdeBlock> block(OS_NEW IdeBlock(getText("main.pages.options." + name)));
@@ -258,10 +258,12 @@ shared_ptr<IHtmlControl> Options::createSeparator()
 }
 */
 
+/*
 void Options::onCancel()
 {
 	redirect(PortalsSystem::instance()->getMainLink(OS_IDE_PAGE_OSIRIS));
 }
+*/
 
 void Options::onSave()
 {
@@ -316,15 +318,18 @@ void Options::onInit()
 
 	shared_ptr<IdeButton> cmdSave(OS_NEW IdeButton());
 	cmdSave->setID("save");
+	cmdSave->setIconHref(getSkin()->getImageUrl(_S("/icons/16x16/save.png")));
 	cmdSave->setCaption(getText("main.pages.options.actions.save"));
 	cmdSave->getEventClick()->connect(boost::bind(&Options::onSave, this));
 	divActions->getControls()->add(cmdSave);
 
+	/*
 	shared_ptr<IdeButton> cmdCancel(OS_NEW IdeButton());
 	cmdCancel->setID("cancel");
 	cmdCancel->setCaption(getText("main.pages.options.actions.cancel"));
 	cmdCancel->getEventClick()->connect(boost::bind(&Options::onCancel, this));
 	divActions->getControls()->add(cmdCancel);
+	*/
 
 	uint32 pageIndex = 0;
 
@@ -546,7 +551,7 @@ void Options::onInit()
 	for(XMLOptions::Options::const_iterator i = options->begin(); i != options->end(); ++i)
 	{
 		shared_ptr<Option> option = i->second;
-		OS_ASSERT(option != null);
+		OS_ASSERT(option != nullptr);
 
 		if(m_setters.find(i->first) != m_setters.end())
 			continue;
@@ -578,9 +583,9 @@ void Options::onInit()
 										break;
 			}
 
-			if(optionControl != null)
+			if(optionControl != nullptr)
 			{
-				if(miscPage == null)
+				if(miscPage == nullptr)
 				{
 					miscPage = createPage(tab, "misc", pageIndex);
 					miscPage->getControls()->add(shared_ptr<IdeHelpBox>(OS_NEW IdeHelpBox(getText("main.pages.options.advanced.warning"), "")));
@@ -604,7 +609,7 @@ void Options::onLoad()
 	addCss(getSkin()->getResourceUrl(_S("css/main/options.less")));
 	addJavascript(getSkin()->getResourceUrl(_S("js/main/options.js")));
 
-	//OS_ASSERT(m_block != null);
+	//OS_ASSERT(m_block != nullptr);
 
 	
 }

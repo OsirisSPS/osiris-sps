@@ -14,7 +14,7 @@ struct ThirdPartyLibrariesReporter_wrapper : ::osiris::ThirdPartyLibrariesReport
     ThirdPartyLibrariesReporter_wrapper( )
     : ::osiris::ThirdPartyLibrariesReporter( )
       , ::osiris::PythonWrapper< ::osiris::ThirdPartyLibrariesReporter >(){
-        // null constructor
+        // nullptr constructor
     
     }
 

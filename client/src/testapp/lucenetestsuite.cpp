@@ -88,11 +88,11 @@ BOOST_AUTO_TEST_CASE(test_lucene)
 	luceneIndexWriter->setMergeFactor(10);
 	luceneIndexWriter->setMinMergeDocs(1000);
 
-	if(luceneIndexWriter != null)
+	if(luceneIndexWriter != nullptr)
 	{
 		luceneIndexWriter->optimize();
 		luceneIndexWriter->close();
-		luceneIndexWriter = null;
+		luceneIndexWriter = nullptr;
 	}
 }
 

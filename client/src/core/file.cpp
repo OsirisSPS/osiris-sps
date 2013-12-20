@@ -31,12 +31,12 @@ OS_NAMESPACE_BEGIN()
 
 File::File()
 {
-	m_handle = null;
+	m_handle = nullptr;
 }
 
 File::File(const String &filename, uint32 flags)
 {
-	m_handle = null;
+	m_handle = nullptr;
 	open(filename, flags);
 }
 
@@ -47,7 +47,7 @@ File::~File()
 
 bool File::getStats(boost::posix_time::ptime *timeCreation, boost::posix_time::ptime *timeLastModify, boost::posix_time::ptime *timeLastAccess) const
 {
-    OS_ASSERT(m_handle != null);
+    OS_ASSERT(m_handle != nullptr);
     return PlatformManager::instance()->fileStats(m_handle, timeCreation, timeLastModify, timeLastAccess);
 }
 
@@ -105,20 +105,20 @@ bool File::open(const String &filename, uint32 flags)
 
 	// Apre il file
 	m_handle = PlatformManager::instance()->fileOpen(filename.c_str(), mode.c_str());
-	return m_handle != null;
+	return m_handle != nullptr;
 }
 
 bool File::is_open() const
 {
-	return m_handle != null;
+	return m_handle != nullptr;
 }
 
 bool File::close()
 {
-	if(m_handle != null)
+	if(m_handle != nullptr)
 	{
 		bool closed = PlatformManager::instance()->fileClose(m_handle);
-		m_handle = null;
+		m_handle = nullptr;
 		return closed;
 	}
 
@@ -127,7 +127,7 @@ bool File::close()
 
 uint32 File::read(void *v, uint32 size) const
 {
-	if(m_handle == null)
+	if(m_handle == nullptr)
 	{
 		OS_ASSERTFALSE();
 		return 0;
@@ -155,7 +155,7 @@ uint32 File::read(void *v, uint32 size) const
 
 uint32 File::write(const void *v, uint32 size)
 {
-	if(m_handle == null)
+	if(m_handle == nullptr)
 	{
 		OS_ASSERTFALSE();
 		return 0;
@@ -183,7 +183,7 @@ uint32 File::write(const void *v, uint32 size)
 
 bool File::seek(uint64 offset, SeekPosition from) const
 {
-	if(m_handle == null)
+	if(m_handle == nullptr)
 	{
 		OS_ASSERTFALSE();
 		return false;
@@ -194,7 +194,7 @@ bool File::seek(uint64 offset, SeekPosition from) const
 
 uint64 File::position() const
 {
-	if(m_handle == null)
+	if(m_handle == nullptr)
 	{
 		OS_ASSERTFALSE();
 		return 0;
@@ -205,7 +205,7 @@ uint64 File::position() const
 
 uint64 File::size() const
 {
-	if(m_handle == null)
+	if(m_handle == nullptr)
 	{
 		OS_ASSERTFALSE();
 		return 0;
@@ -227,7 +227,7 @@ uint64 File::size() const
 
 bool File::flush()
 {
-	if(m_handle == null)
+	if(m_handle == nullptr)
 	{
 		OS_ASSERTFALSE();
 		return false;
@@ -238,7 +238,7 @@ bool File::flush()
 
 bool File::eof() const
 {
-	if(m_handle == null)
+	if(m_handle == nullptr)
 	{
 		OS_ASSERTFALSE();
 		return true;

@@ -38,8 +38,8 @@ HttpProxy::HttpProxy(shared_ptr<boost::asio::io_service> service, shared_ptr<TCP
 																								  m_socket(socket),
 																								  m_rawResponse(OS_NEW Buffer())
 {
-	OS_ASSERT(m_service != null);
-	OS_ASSERT(m_socket != null);
+	OS_ASSERT(m_service != nullptr);
+	OS_ASSERT(m_socket != nullptr);
 
 	// N.B.: non usare m_socket->get_io_service() (crasha, da verificare il motivo)
 	m_sslContext = createAsioSSLObject<boost::asio::ssl::context, boost::asio::ssl::context_base::method>(*service, boost::asio::ssl::context::sslv23);
@@ -57,7 +57,7 @@ const Buffer & HttpProxy::getResponse() const
 
 bool HttpProxy::perform(shared_ptr<HttpRequest> request)
 {
-	if(request == null || socket == null)
+	if(request == nullptr || socket == nullptr)
 	{
 		OS_ASSERTFALSE();
 		return false;
@@ -68,7 +68,7 @@ bool HttpProxy::perform(shared_ptr<HttpRequest> request)
 	Buffer rawRequest;
 	rawRequest.write(rawHeaders.data(), static_cast<uint32>(rawHeaders.size()));
 	shared_ptr<HttpContent> content = request->getContent();
-	if(content != null && content->empty() == false)
+	if(content != nullptr && content->empty() == false)
 		rawRequest.write(content->getContent().getData(), content->getContent().getSize());
 
 	return perform(request->getRawUrl(), rawRequest);

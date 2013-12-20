@@ -531,6 +531,13 @@ struct IPortalDatabase_wrapper : ::osiris::IPortalDatabase, ::osiris::PythonWrap
         return boost::python::object( result );
     }
 
+    static boost::python::object queryValue( ::osiris::IPortalDatabase const & inst, ::osiris::String const & sql ){
+        ::osiris::PythonThreadSaver __pythreadSaver;
+        ::osiris::DataItem result = inst.queryValue(sql);
+        __pythreadSaver.restore();
+        return boost::python::object( result );
+    }
+
     static boost::python::object removeObject( ::osiris::IPortalDatabase & inst, ::boost::shared_ptr< osiris::ObjectsIObject > object ){
         ::osiris::PythonThreadSaver __pythreadSaver;
         bool result = inst.removeObject(object);
@@ -1314,6 +1321,16 @@ void register_IPortalDatabase_class(){
                 "peerExists"
                 , peerExists_function_type( &IPortalDatabase_wrapper::peerExists )
                 , ( ::boost::python::arg("inst"), ::boost::python::arg("ip") ) );
+        
+        }
+        { //::osiris::IPortalDatabase::queryValue
+        
+            typedef boost::python::object ( *queryValue_function_type )( ::osiris::IPortalDatabase const &,::osiris::String const & );
+            
+            IPortalDatabase_exposer.def( 
+                "queryValue"
+                , queryValue_function_type( &IPortalDatabase_wrapper::queryValue )
+                , ( ::boost::python::arg("inst"), ::boost::python::arg("sql") ) );
         
         }
         { //::osiris::IPortalDatabase::removeObject

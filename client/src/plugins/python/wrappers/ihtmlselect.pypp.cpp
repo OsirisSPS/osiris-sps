@@ -15,8 +15,8 @@
 #include "httprequest.h"
 #include "httpresponse.h"
 #include "httpsession.h"
-#include "htmllistbox.h"
 #include "htmlcombobox.h"
+#include "htmllistbox.h"
 #include "ihtmlselect.pypp.hpp"
 
 namespace bp = boost::python;
@@ -26,7 +26,7 @@ struct IHtmlSelect_wrapper : ::osiris::IHtmlSelect, ::osiris::PythonWrapper< ::o
     IHtmlSelect_wrapper( )
     : ::osiris::IHtmlSelect( )
       , ::osiris::PythonWrapper< ::osiris::IHtmlSelect >(){
-        // null constructor
+        // nullptr constructor
     
     }
 

@@ -15,7 +15,7 @@ struct IDbDriver_wrapper : ::osiris::IDbDriver, ::osiris::PythonWrapper< ::osiri
     IDbDriver_wrapper( )
     : ::osiris::IDbDriver( )
       , ::osiris::PythonWrapper< ::osiris::IDbDriver >(){
-        // null constructor
+        // nullptr constructor
     
     }
 

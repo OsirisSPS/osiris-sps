@@ -19,6 +19,7 @@
 #include "stdafx.h"
 #include "portalssyncjob.h"
 
+#include "dataentry.h"
 #include "iportaldatabase.h"
 #include "idbconnection.h"
 #include "idbresult.h"
@@ -53,7 +54,7 @@ PortalsSyncJob::~PortalsSyncJob()
 IJob::JobStatus PortalsSyncJob::run()
 {
 	shared_ptr<Portal> portal = getPortal();
-	if(portal == null)
+	if(portal == nullptr)
 		return jobComplete;
 
 	String povOrigin = portal->getSync();
@@ -63,7 +64,7 @@ IJob::JobStatus PortalsSyncJob::run()
 	NotificationsManager::instance()->notify(_S("Sync of '") + portal->getPovName() + _S("' started."));
 
 	shared_ptr<Portal> portalOrigin = PortalsSystem::instance()->getPortalByFullPov(povOrigin);
-	if(portalOrigin == null)
+	if(portalOrigin == nullptr)
 	{
 		NotificationsManager::instance()->notify(_S("Sync of '") + portal->getPovName() + _S("' failed, source portal unknown."));
 		return jobComplete;
@@ -71,14 +72,14 @@ IJob::JobStatus PortalsSyncJob::run()
 
 	// Open Source
 	shared_ptr<PortalsTransaction> transactionOrigin = portalOrigin->startTransaction(false);
-	if(transactionOrigin == null)
+	if(transactionOrigin == nullptr)
 	{
 		NotificationsManager::instance()->notify(_S("Sync of '") + portal->getPovName() + _S("' failed, unable to open the source database."));
 		return jobComplete;
 	}
 
 	shared_ptr<IPortalDatabase> databaseOrigin = transactionOrigin->getDatabase();
-	if(databaseOrigin == null)
+	if(databaseOrigin == nullptr)
 	{
 		NotificationsManager::instance()->notify(_S("Sync of '") + portal->getPovName() + _S("' failed, unable to open the source database."));
 		return jobComplete;
@@ -86,14 +87,14 @@ IJob::JobStatus PortalsSyncJob::run()
 
 	// Open Destination
 	shared_ptr<PortalsTransaction> transactionCurrent = portal->startTransaction(false);
-	if(transactionCurrent == null)
+	if(transactionCurrent == nullptr)
 	{
 		NotificationsManager::instance()->notify(_S("Sync of '") + portal->getPovName() + _S("' failed, unable to open the destination database."));
 		return jobComplete;
 	}
 
 	shared_ptr<IPortalDatabase> databaseCurrent = transactionCurrent->getDatabase();
-	if(databaseCurrent == null)
+	if(databaseCurrent == nullptr)
 	{
 		NotificationsManager::instance()->notify(_S("Sync of '") + portal->getPovName() + _S("' failed, unable to open the destination database."));
 		return jobComplete;
@@ -101,6 +102,8 @@ IJob::JobStatus PortalsSyncJob::run()
 
 
 	// Work!
+	DateTime lastSyncDate = portal->getOptions()->getLastSyncDate();
+
 	shared_ptr<DbSqlSelect> query(OS_NEW DbSqlSelect(DBTABLES::ENTRIES_TABLE));
 
 	query->count = true;
@@ -114,12 +117,15 @@ IJob::JobStatus PortalsSyncJob::run()
 	query->count = false;
 
 	query->fields.add(DbSqlField(DBTABLES::ID));
+	query->where.add(DbSqlField(DBTABLES::ENTRIES::INSERT_DATE, DBTABLES::ENTRIES_TABLE), Convert::toSQL(lastSyncDate), DbSqlCondition::cfMajor | DbSqlCondition::cfAnd);
 	//query->where.add(DBTABLES::ENTRIES::TYPE, Convert::toSQL(static_cast<uint32>(portalObjectTypeUser)), DbSqlCondition::cfEqual | DbSqlCondition::cfAnd);
 	shared_ptr<IDbResult> resultObjects = databaseOrigin->getConnection()->query(query);
 
 	DataTable table;
 	resultObjects->init(table);
 	DataTableRow row = table.addRow();
+
+	DateTime maxInsertDate;
 
 	uint32 parsedObject = 0;
 	while(resultObjects->end() == false)
@@ -128,14 +134,24 @@ IJob::JobStatus PortalsSyncJob::run()
 
 		ObjectID objectID = static_cast<String>(*row[0]).to_ascii();
 		shared_ptr<ObjectsIObject> object = portalOrigin->getObject(databaseOrigin, objectID);
-		if(object == null)
+		if(object == nullptr)
 		{
 			OS_ASSERTFALSE();
 			return jobComplete;
 		}
 
-		//if(databaseCurrent->needObject(objectID, object->submit_date))
-		object->store(databaseCurrent);
+		shared_ptr<DataEntry> entry = databaseOrigin->getEntry(object->id);
+		if(entry == nullptr)
+		{
+			OS_ASSERTFALSE();
+			return jobComplete;
+		}
+				
+		if( (maxInsertDate.isValid() == false) || (entry->insert_date > maxInsertDate) )
+			maxInsertDate = entry->insert_date;
+		
+		if(databaseCurrent->needObject(objectID.getString(), object->submit_date))		
+			object->store(databaseCurrent);
 		
 		resultObjects->moveNext();
 
@@ -144,6 +160,8 @@ IJob::JobStatus PortalsSyncJob::run()
 		m_progressPercentage = parsedObject / static_cast<double>(totalObjects);
 		//setProgressPercentage(progressPercentage);
 		//progressCallback(progressPercentage);
+
+		
 	}
 
 
@@ -163,6 +181,8 @@ IJob::JobStatus PortalsSyncJob::run()
 	// End
 	//portal->getOptions()->setLastOptimizationDate(DateTime::now());
 
+	portal->getOptions()->setLastSyncDate(maxInsertDate);
+
 	databaseOrigin->commit();
 	databaseCurrent->commit();
 
@@ -176,7 +196,7 @@ shared_ptr<IBackgroundJob::Details> PortalsSyncJob::getDetails() const
 	String jobName("sync");
 
 	shared_ptr<Portal> portal = getPortal();
-	if(portal != null)
+	if(portal != nullptr)
 	{
 		jobName.append(" - ");
 		jobName.append(portal->getPovName());

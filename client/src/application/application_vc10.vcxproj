@@ -129,7 +129,7 @@
       <AdditionalIncludeDirectories>$(IntDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Link>
-      <AdditionalDependencies>wxmsw29ud_core.lib;wxbase29ud.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>%(AdditionalDependencies)</AdditionalDependencies>
       <OutputFile>../../bin/windows/i386/vc10/$(Configuration)/osiris.exe</OutputFile>
       <SuppressStartupBanner>false</SuppressStartupBanner>
       <AdditionalLibraryDirectories>../../dependencies/lib/windows/i386/vc10/$(Configuration);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
@@ -178,7 +178,7 @@
       <AdditionalIncludeDirectories>$(IntDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Link>
-      <AdditionalDependencies>wxmsw29ud_core.lib;wxbase29ud.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>%(AdditionalDependencies)</AdditionalDependencies>
       <OutputFile>../../bin/windows/x86_64/vc10/$(Configuration)/osiris.exe</OutputFile>
       <SuppressStartupBanner>false</SuppressStartupBanner>
       <AdditionalLibraryDirectories>../../dependencies/lib/windows/x86_64/vc10/$(Configuration);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
@@ -228,7 +228,7 @@
       <AdditionalIncludeDirectories>$(IntDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Link>
-      <AdditionalDependencies>wxmsw29u_core.lib;wxbase29u.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>%(AdditionalDependencies)</AdditionalDependencies>
       <OutputFile>../../bin/windows/i386/vc10/$(Configuration)/osiris.exe</OutputFile>
       <SuppressStartupBanner>false</SuppressStartupBanner>
       <AdditionalLibraryDirectories>../../dependencies/lib/windows/i386/vc10/$(Configuration);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
@@ -281,7 +281,7 @@
       <AdditionalIncludeDirectories>$(IntDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Link>
-      <AdditionalDependencies>wxmsw29u_core.lib;wxbase29u.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>%(AdditionalDependencies)</AdditionalDependencies>
       <OutputFile>../../bin/windows/x86_64/vc10/$(Configuration)/osiris.exe</OutputFile>
       <SuppressStartupBanner>false</SuppressStartupBanner>
       <AdditionalLibraryDirectories>../../dependencies/lib/windows/x86_64/vc10/$(Configuration);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>

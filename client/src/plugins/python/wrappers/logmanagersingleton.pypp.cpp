@@ -14,7 +14,7 @@ struct StaticSingleton_less__osiris_scope_LogManager_comma__true__greater__wrapp
     StaticSingleton_less__osiris_scope_LogManager_comma__true__greater__wrapper( )
     : ::osiris::StaticSingleton<osiris::LogManager, true>( )
       , ::osiris::PythonWrapper< ::osiris::StaticSingleton< osiris::LogManager, true > >(){
-        // null constructor
+        // nullptr constructor
     
     }
 

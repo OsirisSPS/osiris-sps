@@ -32,11 +32,11 @@
 
 Result::Result(sqlite3 *connection, boost::recursive_mutex &cs) : m_lock(cs)
 {
-	OS_ASSERT(connection != null);
+	OS_ASSERT(connection != nullptr);
 	m_connection = connection;
 
 	m_end = true;
-	m_statement = null;
+	m_statement = nullptr;
 
 	// Nota: non richiamare nessuna funzione che potrebbe potenzialmente lanciare delle eccezioni dal costruttore
 }
@@ -46,7 +46,7 @@ Result::~Result()
 	// Finalizza l'sql corrente
 	_finalize();
 
-	m_connection = null;
+	m_connection = nullptr;
 }
 
 void Result::execute(const String &sql)
@@ -69,7 +69,7 @@ void Result::prepare(const String &sql)
 
 void Result::_prepare(const String &sql, bool finalize)
 {
-	OS_ASSERT(m_statement == null);
+	OS_ASSERT(m_statement == nullptr);
 
 	const void *buffer = sql.buffer();
 	size_t bytes = sql.buffer_size();
@@ -78,13 +78,13 @@ void Result::_prepare(const String &sql, bool finalize)
 	{
 		RealtimeStatsScopeTimer RSS(_S("Activity"), _S("Database - Activity"));
 
-		const void *reminder = null;
+		const void *reminder = nullptr;
 		int32 res = safe_sqlite_prepare(m_connection, buffer, static_cast<int32>(bytes), &m_statement, &reminder);
 		OS_EXCEPT_IF(res != SQLITE_OK, sqlite_last_error(m_connection, res));
 		
 		RSS.stop();
 
-		if(reminder != null)
+		if(reminder != nullptr)
 		{
 			size_t offset = std::distance(static_cast<const byte *>(buffer), static_cast<const byte *>(reminder));
 			OS_ASSERT(offset > 0 && offset <= bytes);
@@ -95,7 +95,7 @@ void Result::_prepare(const String &sql, bool finalize)
 		else
 		{
 			bytes = 0;
-			buffer = null;			
+			buffer = nullptr;			
 		}
 
 		_step();
@@ -107,7 +107,7 @@ void Result::_prepare(const String &sql, bool finalize)
 
 sqlite_int Result::_step()
 {	
-	if(m_statement == null)
+	if(m_statement == nullptr)
 		return SQLITE_OK;
 
 	RealtimeStatsScopeTimer RSS(_S("Activity"), _S("Database - Activity"));
@@ -120,14 +120,14 @@ sqlite_int Result::_step()
 
 sqlite_int Result::_finalize()
 {
-	if(m_statement == null)
+	if(m_statement == nullptr)
 		return SQLITE_OK;
 
 	RealtimeStatsScopeTimer RSS(_S("Activity"), _S("Database - Activity"));
 
 	sqlite_int res = safe_sqlite_finalize(m_statement);
 
-	m_statement = null;
+	m_statement = nullptr;
 	m_end = true;
 
 	// _finalize viene chiamata nel distruttore pertanto non deve lanciare un'eccezione in caso di errore

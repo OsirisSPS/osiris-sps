@@ -89,7 +89,7 @@ void ObjectsPollOption::exportXML(shared_ptr<XMLPortalExporter> exporter)
 	if(exporter->getWithStats())
 	{
 		shared_ptr<DataIStatistics> stats = exporter->getDatabase()->loadStatistics<DataPollOptionStats>(DBTABLES::POLLS_OPTIONS_STATS_TABLE, getEntityID().getString());
-		if(stats != null)
+		if(stats != nullptr)
 			stats->exportXML(exporter);
 	}
 }
@@ -212,7 +212,7 @@ void ObjectsPollOptionDescriptor::computeStatistics(shared_ptr<IPortalDatabase> 
 	DescriptorBase::computeStatistics(db, object);
 
 	shared_ptr<ObjectsPollOption> poll_option = objects_poll_option_cast(object);
-	OS_EXCEPT_IF(poll_option == null, "Invalid poll option");
+	OS_EXCEPT_IF(poll_option == nullptr, "Invalid poll option");
 
 	shared_ptr<DataPollOptionStats> stats(OS_NEW DataPollOptionStats());
 	stats->reference = poll_option->getEntityID().toUTF16();
@@ -222,7 +222,7 @@ void ObjectsPollOptionDescriptor::computeStatistics(shared_ptr<IPortalDatabase> 
 								and os_snapshot_users.visible=1 \
 								and os_polls_votes.parent = '%S' \
 								and os_polls_votes.reference = '%S' \
-								and os_polls_votes.score is not null").c_str(),
+								and os_polls_votes.score is not nullptr").c_str(),
 								poll_option->getParent().toUTF16().c_str(),
 								poll_option->getEntityID().toUTF16().c_str());
 

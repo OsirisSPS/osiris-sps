@@ -22,7 +22,7 @@ struct IdeSkin_wrapper : ::osiris::IdeSkin, ::osiris::PythonWrapper< ::osiris::I
     IdeSkin_wrapper( )
     : ::osiris::IdeSkin( )
       , ::osiris::PythonWrapper< ::osiris::IdeSkin >(){
-        // null constructor
+        // nullptr constructor
     
     }
 

@@ -130,7 +130,7 @@ static void worker_threads_proc2(shared_ptr<Thread> self, Condition *c, shared_p
 {
 	c->wait();
 
-	if(prev != null)
+	if(prev != nullptr)
 	{
 		prev->getID();		
 		prev->stop();
@@ -155,7 +155,7 @@ BOOST_AUTO_TEST_CASE(test_threads_group2)
 	ThreadsGroup<WorkerThread> threads;
 	for(uint32 i = 0; i < size; i++)
 	{
-		threads.add(shared_ptr<WorkerThread>(new WorkerThread(boost::bind(worker_threads_proc2, _1, &c, i == 0 ? null : threads.at(i - 1), i < (size - 1)))), false);
+		threads.add(shared_ptr<WorkerThread>(new WorkerThread(boost::bind(worker_threads_proc2, _1, &c, i == 0 ? nullptr : threads.at(i - 1), i < (size - 1)))), false);
 	}
 
 	threads.start();

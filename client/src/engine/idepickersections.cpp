@@ -80,12 +80,12 @@ void IdePickerSections::onLoad()
 	if(skins->empty() == false)
 	{
 		if(getShowSystem())
-			addSkin(null);
+			addSkin(nullptr);
 
 		for(IdeSystem::Skins::const_iterator i = skins->begin(); i != skins->end(); ++i)
 		{
 			shared_ptr<IdeSkin> skin = i->second;
-			if(skin != null)
+			if(skin != nullptr)
 				addSkin(skin);				
 		}
 	}
@@ -95,11 +95,11 @@ void IdePickerSections::onLoad()
 void IdePickerSections::addSkin(shared_ptr<IdeSkin> skin)
 {
 	/*
-	// If skin == null, system skin.
+	// If skin == nullptr, system skin.
 	String skinID = _S("system_skin");	
 	String name = getPage()->getText(_S("skin.system.name"));
 	String description = getPage()->getText(_S("skin.system.description"));
-	if(skin != null)
+	if(skin != nullptr)
 	{
 		skinID = skin->getID().toUTF16();
 		name = skin->getName();
@@ -113,7 +113,7 @@ void IdePickerSections::addSkin(shared_ptr<IdeSkin> skin)
 	html += _S(">");
 	String preview = getPage()->getSkin()->getImageUrl(_S("skin_undef.png"));
 
-	if(skin == null)
+	if(skin == nullptr)
 		preview = getPage()->getSkin()->getImageUrl(_S("skin_system.png"));
 	else if(skin->hasPreview())
 		preview = skin->getPreview();

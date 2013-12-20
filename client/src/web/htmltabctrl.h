@@ -52,7 +52,7 @@ public:
 
 // Operations
 public:
-	shared_ptr<HtmlTabPage> addPage(const String &caption = String::EMPTY, shared_ptr<HtmlImage> icon = null);
+	shared_ptr<HtmlTabPage> addPage(const String &caption = String::EMPTY, shared_ptr<HtmlImage> icon = nullptr);
 	shared_ptr<HtmlTabPage> addPage(const String &caption = String::EMPTY, const String &image_path = String::EMPTY);
 
 // Overridables

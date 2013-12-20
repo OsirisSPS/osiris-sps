@@ -55,9 +55,9 @@ END_EVENT_TABLE()
 //////////////////////////////////////////////////////////////////////
 
 IRCChannelPage::IRCChannelPage(IRCWindow *ircWindow, wxWindow *parent, shared_ptr<IIRCTarget> target) : WindowBase(ircWindow, parent, target),
-																										m_splitter(null),
-																										m_eventsCtrl(null),
-																										m_usersCtrl(null),
+																										m_splitter(nullptr),
+																										m_eventsCtrl(nullptr),
+																										m_usersCtrl(nullptr),
 																										m_imageList(16, 16)
 {
 	OS_ASSERT(target->getType() == ircTargetTypeChannel);
@@ -74,22 +74,22 @@ IRCChannelPage::~IRCChannelPage()
 shared_ptr<IRCUser> IRCChannelPage::getUserByIndex(int32 index) const
 {
 	OS_ASSERT(index != -1);
-	OS_ASSERT(m_usersCtrl != null);
+	OS_ASSERT(m_usersCtrl != nullptr);
 
 	shared_ptr<IRCSession> session = getSession();
-	if(session == null)
-		return null;
+	if(session == nullptr)
+		return nullptr;
 
 	return session->findUser(static_cast<uint32>(m_usersCtrl->GetItemData(index)));
 }
 
 shared_ptr<IRCUser> IRCChannelPage::getSelectedUser() const
 {
-	OS_ASSERT(m_usersCtrl != null);
+	OS_ASSERT(m_usersCtrl != nullptr);
 
 	int32 index = m_usersCtrl->GetNextItem(-1, wxLIST_NEXT_ALL, wxLIST_STATE_SELECTED | wxLIST_STATE_FOCUSED);
 	if(index == -1)
-		return null;
+		return nullptr;
 
 	return getUserByIndex(index);
 }
@@ -162,18 +162,18 @@ void IRCChannelPage::toggleSelectedUserMode(IRCModeType mode)
 
 void IRCChannelPage::toggleUserMode(shared_ptr<IRCUser> user, IRCModeType mode)
 {
-	if(user == null)
+	if(user == nullptr)
 	{
 		OS_ASSERTFALSE();
 		return;
 	}
 
 	shared_ptr<IRCRoom> room = getRoom();
-	if(room == null)
+	if(room == nullptr)
 		return;
 
 	shared_ptr<IRCRoom::UserDetails> userDetails = room->getUserDetails(user->getID());
-	if(userDetails == null)
+	if(userDetails == nullptr)
 	{
 		OS_ASSERTFALSE();
 		return;
@@ -208,14 +208,14 @@ void IRCChannelPage::kickSelectedUser()
 
 void IRCChannelPage::kickUser(shared_ptr<IRCUser> user)
 {
-	if(user == null)
+	if(user == nullptr)
 	{
 		OS_ASSERTFALSE();
 		return;
 	}
 
 	shared_ptr<IRCRoom> room = getRoom();
-	if(room == null)
+	if(room == nullptr)
 		return;
 
 	room->kickUser(user->getID());
@@ -226,7 +226,7 @@ void IRCChannelPage::onSendMessage(wxCommandEvent &e)
 	e.Skip();
 
 	shared_ptr<IRCUser> user = getSelectedUser();
-	if(user == null || user->isLocal())
+	if(user == nullptr || user->isLocal())
 		return;
 
 	getIRCWindow()->openChat(user->getID());		
@@ -250,25 +250,25 @@ void IRCChannelPage::onUserRightClick(wxListEvent &e)
 		return;
 
 	shared_ptr<IRCUser> targetUser = getUserByIndex(index);
-	if(targetUser == null || targetUser->isLocal())
+	if(targetUser == nullptr || targetUser->isLocal())
 		return;
 
 	shared_ptr<IRCRoom> room = getRoom();
-	if(room == null)
+	if(room == nullptr)
 	{
 		OS_ASSERTFALSE();
 		return;
 	}
 
 	shared_ptr<IRCRoom::UserDetails> localUserDetails = room->getLocalUserDetails();
-	if(localUserDetails == null)
+	if(localUserDetails == nullptr)
 	{
 		OS_ASSERTFALSE();
 		return;
 	}
 	
 	shared_ptr<IRCRoom::UserDetails> targetUserDetails = room->getUserDetails(targetUser->getID());
-	if(targetUserDetails == null)
+	if(targetUserDetails == nullptr)
 	{
 		OS_ASSERTFALSE();
 		return;
@@ -310,7 +310,7 @@ void IRCChannelPage::onUserRightClick(wxListEvent &e)
 		menu->AppendSubMenu(userMenu, conversions::from_utf16<wxString>(getText("ui.irc_channel_window.user_menu")));
 	}
 
-	OS_ASSERT(userMenu != null);
+	OS_ASSERT(userMenu != nullptr);
 	userMenu->Append(new wxMenuItem(menu.get(), cmdSendMessage, conversions::from_utf16<wxString>(getText("ui.irc_channel_window.user_menu.send_message"))));
 
 	PopupMenu(menu.get());	
@@ -328,7 +328,7 @@ void IRCChannelPage::onUserBan(wxCommandEvent &e)
 	e.Skip();
 
 	shared_ptr<IRCUser> user = getSelectedUser();
-	if(user != null)
+	if(user != nullptr)
 	{
 		toggleUserMode(user, ircModeTypeBan);
 		kickUser(user);
@@ -366,7 +366,7 @@ bool IRCChannelPage::matchMessageTarget(const std::string &sender, const std::st
 	OS_ASSERT(target.empty() == false);
 
 	shared_ptr<IRCRoom> room = getRoom();
-	if(room == null)
+	if(room == nullptr)
 		return false;
 
 	return room->getName() == target;
@@ -377,7 +377,7 @@ void IRCChannelPage::updatePage()
 	WindowBase::updatePage();
 
 	shared_ptr<IRCRoom> room = getRoom();
-	if(room == null)
+	if(room == nullptr)
 		return;
 
 	wxWindowUpdateLocker windowLocker(this);

@@ -7,7 +7,7 @@ class Page(osiris.IPortalPage):
 		osiris.IPortalPage.__init__(self, session)
 				
 	def getPageName(self):
-		return "portal.pages.trash"		
+		return "~portal.pages.trash"		
 		
 	def onInit(self):
 		osiris.IPortalPage.onInit(self)		
@@ -15,7 +15,7 @@ class Page(osiris.IPortalPage):
 	def onLoad(self):
 		osiris.IPortalPage.onLoad(self)		
 		
-		myBlock = osiris.IdeBlock(self.getText("portal.pages.trash.title"))
+		myBlock = osiris.IdeBlock(self.getText("~portal.pages.trash.title"))
 		myBlock.specialPage = True
 		myBlock.outerStyle = "clear:both";
 		

@@ -55,15 +55,15 @@ ObjectsICommentable::~ObjectsICommentable()
 bool ObjectsICommentable::_applyModel(String &str, shared_ptr<IPortalDatabase> database, shared_ptr<Portal> portal)
 {
 	OS_ASSERT(str.empty());
-	OS_ASSERT(portal != null);
+	OS_ASSERT(portal != nullptr);
 	OS_ASSERT(hasModel());
 
 	// Carica il modello di riferimento
 	shared_ptr<EntitiesEntity> model_entity = portal->getEntity(database, model);
-	if(model_entity != null)
+	if(model_entity != nullptr)
 	{
 		shared_ptr<ObjectsModel> text_model = objects_model_cast(model_entity->getCurrent());
-		if(text_model != null)
+		if(text_model != nullptr)
 		{
 			// Applica l'xml del testo al modello
 			return text_model->apply(content, str);
@@ -203,7 +203,7 @@ void ObjectsICommentable::exportXML(shared_ptr<XMLPortalExporter> exporter)
 	if(exporter->getWithStats())
 	{
 		shared_ptr<DataIStatistics> stats = exporter->getDatabase()->loadStatistics<DataDiscussionStats>(DBTABLES::DISCUSSIONS_STATS_TABLE, getEntityID().getString());
-		if(stats != null)
+		if(stats != nullptr)
 			stats->exportXML(exporter);
 	}
 }
@@ -331,7 +331,7 @@ void ObjectsICommentableDescriptor::createStatistics(shared_ptr<IPortalDatabase>
 	DescriptorBase::createStatistics(db, object);
 
 	shared_ptr<ObjectsICommentable> commentableObject = objects_commentable_cast(object);
-	OS_ASSERT(commentableObject != null);
+	OS_ASSERT(commentableObject != nullptr);
 
 	shared_ptr<DataDiscussionStats> statistics(OS_NEW DataDiscussionStats());
 
@@ -353,7 +353,7 @@ void ObjectsICommentableDescriptor::computeStatistics(shared_ptr<IPortalDatabase
 	DescriptorBase::computeStatistics(db, object);
 
 	shared_ptr<ObjectsICommentable> commentableObject = objects_commentable_cast(object);
-	OS_ASSERT(commentableObject != null);
+	OS_ASSERT(commentableObject != nullptr);
 
 	shared_ptr<DataDiscussionStats> stats(OS_NEW DataDiscussionStats());
 	stats->reference = commentableObject->getEntityID().toUTF16();
@@ -385,7 +385,7 @@ void ObjectsICommentableDescriptor::computeStatistics(shared_ptr<IPortalDatabase
 #else
 		shared_ptr<ObjectsIObject> primaryObject = db->getPortal()->getObject(db, commentableObject->getEntityID().toUTF16());
 
-		if(primaryObject != null)
+		if(primaryObject != nullptr)
 			stats->last_entry_date = primaryObject->submit_date;
 #endif
 	}

@@ -63,7 +63,7 @@ void LanguageFolder::addPath(const String &path)
 void LanguageFolder::addPath(const String &culture, const String &path)
 {
 	shared_ptr<LanguageCulture> currentCulture = LanguageManager::instance()->getCulture(culture);
-	if(currentCulture == null)
+	if(currentCulture == nullptr)
 		return;
 
 	String sPath = utils::makeFilePath(path, culture + _S(".xml"));
@@ -107,10 +107,10 @@ String LanguageFolder::findText(const String &culture, const String &name, bool 
 	{
 		// Lo cerco nella cultura padre
 		shared_ptr<LanguageCulture> currentCulture = LanguageManager::instance()->getCulture(culture);
-		if(currentCulture != null)
+		if(currentCulture != nullptr)
 		{
 			shared_ptr<LanguageCulture> parentCulture = currentCulture->getParent();
-			if(parentCulture != null)
+			if(parentCulture != nullptr)
 				return findText(parentCulture->getID(), name, false);			
 		}
 	}

@@ -22,9 +22,9 @@
 
 //////////////////////////////////////////////////////////////////////
 
-OS_WXWIDGETS_ENTRY_POINT()
+OS_UI_ENTRY_POINT()
 {
 	OS_INIT_LEAKS_DETECTION();
 
-	return runUI(OS_WXWIDGETS_ENTRY_POINT_ENUM_PARAMS);
+	return runUI(OS_UI_ENTRY_POINT_ENUM_PARAMS);
 }

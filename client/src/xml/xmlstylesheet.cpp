@@ -142,8 +142,8 @@ void XMLStylesheet::Context::onError(const String &error) const
 {
 	xalan::XalanDOMString str(m_impl.getMemoryManager());
 	str.assign(error.c_str());
-	// TODO: nella revisione corrente se m_locator->getSystemId() == null (ad esempio quando l'xsl sorgente è una stringa) causa un'assert nel costruttore di XSLException
-	if(m_locator->getSystemId() != null)
+	// TODO: nella revisione corrente se m_locator->getSystemId() == nullptr (ad esempio quando l'xsl sorgente è una stringa) causa un'assert nel costruttore di XSLException
+	if(m_locator->getSystemId() != nullptr)
 	{
 		m_impl.problem(xalan::XPathExecutionContext::eXSLTProcessor, xalan::XPathExecutionContext::eError, str, m_locator, m_node);
 	}
@@ -207,7 +207,7 @@ inline shared_ptr<XMLStylesheet> XMLStylesheet::Callback::getStylesheet() const 
 
 //////////////////////////////////////////////////////////////////////
 
-xalan::XObjectPtr XMLStylesheet::Callback::nullValue(null);
+xalan::XObjectPtr XMLStylesheet::Callback::nullValue(nullptr);
 
 //////////////////////////////////////////////////////////////////////
 
@@ -228,10 +228,10 @@ XMLStylesheet::Callback::~Callback()
 
 void XMLStylesheet::Callback::_construct(shared_ptr<IXMLFunction> function, shared_ptr<XMLStylesheet> stylesheet)
 {
-	OS_ASSERT(function != null);
+	OS_ASSERT(function != nullptr);
 	m_function = function;
 
-	OS_ASSERT(stylesheet != null);
+	OS_ASSERT(stylesheet != nullptr);
 	m_stylesheet = stylesheet;
 }
 
@@ -292,14 +292,14 @@ const xalan::XalanDOMString & XMLStylesheet::Callback::getError(xalan::XalanDOMS
 
 void XMLStylesheet::Callback::_extractNodeValueRecoursive(xalan::XalanNode *node, String &str) const
 {
-	if(node == null)
+	if(node == nullptr)
 		return;
 
 	// Estra il valore del nodo
 	str += static_cast<String>(node->getNodeValue().c_str());
 
 	// Scorre i figli del nodo
-	for(xalan::XalanNode *child = node->getFirstChild(); child != null; child = child->getNextSibling())
+	for(xalan::XalanNode *child = node->getFirstChild(); child != nullptr; child = child->getNextSibling())
 	{
 		// Estra il valore dei figli del nodo
 		_extractNodeValueRecoursive(child, str);
@@ -356,7 +356,7 @@ bool XMLStylesheet::Callback::_fromXalan(xalan::XPathExecutionContext &execution
 
 	case xalan::XObject::eTypeResultTreeFrag:			{
 															String value;
-															for(xalan::XalanNode *node = input->rtree().getFirstChild(); node != null; node = node->getNextSibling())
+															for(xalan::XalanNode *node = input->rtree().getFirstChild(); node != nullptr; node = node->getNextSibling())
 															{
 																_extractNodeValueRecoursive(node, value);
 															}
@@ -454,10 +454,10 @@ struct XMLStylesheet::impl
 			String path = systemId;
 
 			shared_ptr<XMLStylesheet> stylesheet = getStylesheet();
-			if(stylesheet != null)
+			if(stylesheet != nullptr)
 			{
 				shared_ptr<IXMLResolver> entityResolver = stylesheet->getResolver();
-				if(entityResolver != null)
+				if(entityResolver != nullptr)
 				{
 					String resolved;
 					if(entityResolver->resolve(path, resolved))
@@ -475,7 +475,7 @@ struct XMLStylesheet::impl
 		String m_path;
 	};
 
-	impl() : compiledStylesheet(null)
+	impl() : compiledStylesheet(nullptr)
 	{
 
 	}
@@ -487,7 +487,7 @@ struct XMLStylesheet::impl
 
 	String getLastError()
 	{
-		if(transformer != null)
+		if(transformer != nullptr)
             return transformer->getLastError();
 
         return String::EMPTY;
@@ -510,13 +510,13 @@ struct XMLStylesheet::impl
 	template <typename T>
 	bool doParse(shared_ptr<XMLStylesheet> stylesheet, T &source)
 	{
-		OS_ASSERT(stylesheet != null);
+		OS_ASSERT(stylesheet != nullptr);
 		reset();
 
-		OS_ASSERT(transformer == null);
+		OS_ASSERT(transformer == nullptr);
 		transformer.reset(OS_NEW_T(xalan::XalanTransformer));		// N.B.: XalanTransformer stranamente non è derivato da XMemory e quindi va allocato tramite OS_NEW_T
 
-		OS_ASSERT(entityResolver.get() == null);
+		OS_ASSERT(entityResolver.get() == nullptr);
 		entityResolver.reset(OS_NEW Resolver(stylesheet));
 		transformer->setEntityResolver(entityResolver.get());
 
@@ -539,13 +539,13 @@ struct XMLStylesheet::impl
 
 	void reset()
 	{
-		if(transformer != null)
+		if(transformer != nullptr)
 		{
-			if(compiledStylesheet != null)
+			if(compiledStylesheet != nullptr)
 			{
 				// Questa parte si potrebbe anche omettere visto che dovrebbe essere richiamata in automatico nel distruttore di XalanTransformer
 				transformer->destroyStylesheet(compiledStylesheet);
-				compiledStylesheet = null;
+				compiledStylesheet = nullptr;
 			}
 
 			transformer.reset();
@@ -556,7 +556,7 @@ struct XMLStylesheet::impl
 
 	bool transform(shared_ptr<XMLStylesheet> stylesheet, shared_ptr<XMLDocument> document, const xalan::XSLTResultTarget &target)
 	{
-		if(compiledStylesheet == null)
+		if(compiledStylesheet == nullptr)
 			return false;
 
 		xerces::AutoPtr<xerces::DOMDocument> doc = xerces::getImplementation()->createDocument();
@@ -591,8 +591,8 @@ struct XMLStylesheet::impl
 
 	void _initialize(shared_ptr<XMLStylesheet> stylesheet)
 	{
-		OS_ASSERT(stylesheet != null);
-		OS_ASSERT(transformer != null);
+		OS_ASSERT(stylesheet != nullptr);
+		OS_ASSERT(transformer != nullptr);
 
 		const Functions &externalFunctions = stylesheet->getFunctions();
 		// Registra le funzioni di callback
@@ -690,10 +690,10 @@ void XMLStylesheet::setStringParam(const String &name, const String &value)
 
 bool XMLStylesheet::registerFunction(shared_ptr<IXMLFunction> function)
 {
-	OS_ASSERT(function != null);
+	OS_ASSERT(function != nullptr);
 	OS_ASSERT(function->getName().empty() == false);
 
-	if(function == null || function->getName().empty() || hasFunction(function->getName()))
+	if(function == nullptr || function->getName().empty() || hasFunction(function->getName()))
 		return false;
 
 	return m_impl->functions.push_back(function->getName(), function);
@@ -701,7 +701,7 @@ bool XMLStylesheet::registerFunction(shared_ptr<IXMLFunction> function)
 
 bool XMLStylesheet::unregisterFunction(shared_ptr<IXMLFunction> function)
 {
-	OS_ASSERT(function != null);
+	OS_ASSERT(function != nullptr);
 	return m_impl->functions.remove(function->getName());
 }
 

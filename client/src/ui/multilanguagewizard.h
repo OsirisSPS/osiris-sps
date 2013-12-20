@@ -36,7 +36,7 @@ class MultilanguageWizard : public wxWizard,
 
 // Construction
 public:
-	MultilanguageWizard(wxWindow *parent = null, const String &title = String::EMPTY);
+	MultilanguageWizard(wxWindow *parent = nullptr, const String &title = String::EMPTY);
 	virtual ~MultilanguageWizard();
 
 // Operations

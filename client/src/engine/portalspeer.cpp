@@ -141,7 +141,7 @@ uint64 PortalsPeer::makeID(const String &ip, uint32 port)
 
 uint64 PortalsPeer::makeID(shared_ptr<IPAddress> address)
 {
-	if(address == null)
+	if(address == nullptr)
 	{
 		OS_ASSERTFALSE();
 		return 0;

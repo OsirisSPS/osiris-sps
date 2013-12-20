@@ -14,7 +14,7 @@ struct LogManager_wrapper : ::osiris::LogManager, ::osiris::PythonWrapper< ::osi
     LogManager_wrapper( )
     : ::osiris::LogManager( )
       , ::osiris::PythonWrapper< ::osiris::LogManager >(){
-        // null constructor
+        // nullptr constructor
     
     }
 

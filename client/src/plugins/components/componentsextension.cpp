@@ -131,7 +131,7 @@ bool ComponentsExtension::installExtension(shared_ptr<Portal> portal, shared_ptr
 		return false;
 
 	//shared_ptr<IPortalDatabase> db = portal->getDatabase();
-	OS_EXCEPT_IF(db == null || db->connected() == false, "Invalid portal database");
+	OS_EXCEPT_IF(db == nullptr || db->connected() == false, "Invalid portal database");
 
 	if(DatabasesSystem::instance()->loadSchema(db->getConnection(), schema) == false)
 		return false;

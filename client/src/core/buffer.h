@@ -113,7 +113,7 @@ public:
 	bool save(const String &filename) const;
 	bool save(shared_ptr<IStream> stream) const;
 
-	const byte * find(const byte *value, uint32 length, const byte *pos = null) const;
+	const byte * find(const byte *value, uint32 length, const byte *pos = nullptr) const;
 
 	bool erase(uint32 pos, uint32 count = npos);
 	bool eraseOffset();

@@ -14,7 +14,7 @@ struct StaticSingleton_less__osiris_scope_LanguageManager_comma__true__greater__
     StaticSingleton_less__osiris_scope_LanguageManager_comma__true__greater__wrapper( )
     : ::osiris::StaticSingleton<osiris::LanguageManager, true>( )
       , ::osiris::PythonWrapper< ::osiris::StaticSingleton< osiris::LanguageManager, true > >(){
-        // null constructor
+        // nullptr constructor
     
     }
 

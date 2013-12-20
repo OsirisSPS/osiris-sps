@@ -42,7 +42,7 @@ IIRCRoomPage::IIRCRoomPage(IRCWindow *ircWindow, wxWindow *parent, shared_ptr<II
 																								    m_target(target),
 																									m_enabled(true)
 {
-	OS_ASSERT(target != null);
+	OS_ASSERT(target != nullptr);
 }
 
 IIRCRoomPage::~IIRCRoomPage()
@@ -58,7 +58,7 @@ shared_ptr<IRCRoom> IIRCRoomPage::getRoom() const
 void IIRCRoomPage::addMessage(const std::string &user, const String &message)
 {
 	IRCTextCtrl *eventsCtrl = getEventsCtrl();
-	if(eventsCtrl == null)
+	if(eventsCtrl == nullptr)
 	{
 		OS_ASSERTFALSE();
 		return;
@@ -71,10 +71,10 @@ void IIRCRoomPage::addMessage(const std::string &user, const String &message)
 
 void IIRCRoomPage::updateControls(wxWindow *window, bool enabled)
 {
-	OS_ASSERT(window != null);
+	OS_ASSERT(window != nullptr);
 
 	wxWindowList &controls = window->GetChildren();
-	for(wxWindowListNode *control = controls.GetFirst(); control != null; control = control->GetNext())
+	for(wxWindowListNode *control = controls.GetFirst(); control != nullptr; control = control->GetNext())
 	{
 		updateControls(control->GetData(), enabled);
 		control->GetData()->Enable(enabled);
@@ -84,7 +84,7 @@ void IIRCRoomPage::updateControls(wxWindow *window, bool enabled)
 bool IIRCRoomPage::processCommand(const String &command)
 {
 	shared_ptr<IRCRoom> room = getRoom();
-	if(room == null)
+	if(room == nullptr)
 		return false;
 
 	return room->sendMessage(command);
@@ -95,11 +95,11 @@ void IIRCRoomPage::handlePageClosed()
 	WindowBase::handlePageClosed();
 
 	shared_ptr<IRCSession> session = getSession();
-	if(session == null)
+	if(session == nullptr)
 		return;
 
 	shared_ptr<IRCRoom> room = getRoom();
-	if(room == null)
+	if(room == nullptr)
 		return;
 	
 	session->leaveRoom(room);
@@ -112,10 +112,10 @@ void IIRCRoomPage::updatePage()
 	bool enabled = true;
 
 	shared_ptr<IRCSession> session = getSession();
-	if((session == null) || (session->getConnectionStatus() != ircConnectionStatusConnected))
+	if((session == nullptr) || (session->getConnectionStatus() != ircConnectionStatusConnected))
 		enabled = false;
 
-	if(getRoom() == null)
+	if(getRoom() == nullptr)
 		enabled = false;
 
 	if(m_enabled != enabled)

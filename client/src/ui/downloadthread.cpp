@@ -47,7 +47,7 @@ DownloadThread::~DownloadThread()
 
 void DownloadThread::_fireEvent(DownloadEvent &e)
 {
-	if(m_handler != null)
+	if(m_handler != nullptr)
 		//m_handler->ProcessEvent(event);
 		wxPostEvent(m_handler, e);
 }
@@ -62,7 +62,7 @@ void DownloadThread::run()
 	if(Url.GetError() == wxURL_NOERR)
 	{
 		wxInputStream *pIn_Stream = Url.GetInputStream();
-		if(pIn_Stream != null)
+		if(pIn_Stream != nullptr)
 		{
 			m_filesize = static_cast<uint32>(pIn_Stream->GetSize());
 			if(m_filesize != 0xFFFFFFFF)

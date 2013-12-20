@@ -45,7 +45,7 @@ Mirror::~Mirror()
 
 bool Mirror::isValidMirrorObject(shared_ptr<EntitiesEntity> mirrorEntity)
 {
-	if(mirrorEntity == null)
+	if(mirrorEntity == nullptr)
 		return false;
 
 	if(mirrorEntity->getObjectType() == portalObjectTypeInstance)
@@ -56,8 +56,8 @@ bool Mirror::isValidMirrorObject(shared_ptr<EntitiesEntity> mirrorEntity)
 
 uint32 Mirror::getRenderMode(shared_ptr<XMLNode> root)
 {
-	OS_ASSERT(root != null);
-	if(root != null)
+	OS_ASSERT(root != nullptr);
+	if(root != nullptr)
 	{
 		uint32 value = root->getAttributeUint32(OS_MODULES_MIRROR_RENDER_MODE);
 		switch(value)
@@ -76,7 +76,7 @@ uint32 Mirror::getRenderMode(shared_ptr<XMLNode> root)
 
 void Mirror::setRenderMode(shared_ptr<XMLNode> root, uint32 renderMode)
 {
-	if(root == null)
+	if(root == nullptr)
 	{
 		OS_ASSERTFALSE();
 		return;

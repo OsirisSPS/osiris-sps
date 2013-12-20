@@ -54,7 +54,7 @@ bool LanguageCulture::getTranslationDerivedAvaible()
 	shared_ptr<LanguageCulture> current = get_this_ptr();
 	for(;;)
 	{
-		if( (current == null) || (current->getID() == _S("inv")) )
+		if( (current == nullptr) || (current->getID() == _S("inv")) )
 			return false;
 
 		if(current->getTranslationAvaible())
@@ -72,7 +72,7 @@ bool LanguageCulture::isParentOf(const String &id)
 	shared_ptr<LanguageCulture> current = LanguageManager::instance()->getCulture(id);
 	for(;;)
 	{
-		if(current == null)
+		if(current == nullptr)
 			return false;
 
 		if(current->getID() == getID())
@@ -100,7 +100,7 @@ shared_ptr<LanguageCulture> LanguageCulture::getCulture(const String &id) const
 {
 	Cultures::const_iterator i = m_cultures.find(String(id).to_lower());
 	if(i == m_cultures.end())
-		return null;
+		return nullptr;
 
 	return i->second;
 }
@@ -123,7 +123,7 @@ void LanguageCulture::parse(shared_ptr<XMLNode> node)
 		LanguageManager::instance()->getCultures()[String(getID()).to_lower()] = get_this_ptr();
 
 		shared_ptr<XMLNode> nodeCultures = node->getNode(_S("cultures"));
-		if(nodeCultures != null)
+		if(nodeCultures != nullptr)
 		{
 			shared_ptr<XMLNodes> childs = nodeCultures->getNodes();
 			for(XMLNodes::const_iterator i = childs->begin(); i != childs->end(); ++i)
@@ -139,7 +139,7 @@ void LanguageCulture::parse(shared_ptr<XMLNode> node)
 		}
 
 		shared_ptr<XMLNode> nodeDataTimeFormatInfo = node->getNode(_S("dateTimeFormatInfo"));
-		if(nodeDataTimeFormatInfo != null)
+		if(nodeDataTimeFormatInfo != nullptr)
 		{
 			//m_calendarWeekRule = nodeDataTimeFormatInfo->getAttributeString(_S("calendarWeekRule"));
 			//m_dateSeparator = nodeDataTimeFormatInfo->getAttributeString(_S("dateSeparator"));
@@ -153,7 +153,7 @@ void LanguageCulture::parse(shared_ptr<XMLNode> node)
 			m_shortTimePattern = nodeDataTimeFormatInfo->getAttributeString(_S("shortTimePattern"));
 
 			shared_ptr<XMLNode> nodeDayNames = nodeDataTimeFormatInfo->getNode(_S("dayNames"));
-			if(nodeDayNames != null)
+			if(nodeDayNames != nullptr)
 			{
 				shared_ptr<XMLNodes> childs = nodeDayNames->getNodes();
 				for(XMLNodes::const_iterator i = childs->begin(); i != childs->end(); ++i)

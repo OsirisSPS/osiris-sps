@@ -96,11 +96,11 @@ public:
 	bool remove(const String &name);
 	void clear();
 
-	bool read(const Buffer &buff, const CryptKey *key = null);
-	bool write(Buffer &buff, bool compress = true, const CryptKey *key = null) const;
+	bool read(const Buffer &buff, const CryptKey *key = nullptr);
+	bool write(Buffer &buff, bool compress = true, const CryptKey *key = nullptr) const;
 
-	bool load(const String &filename, const CryptKey *key = null);
-	bool save(const String &filename, bool compress = true, const CryptKey *key = null) const;
+	bool load(const String &filename, const CryptKey *key = nullptr);
+	bool save(const String &filename, bool compress = true, const CryptKey *key = nullptr) const;
 
 	bool readItems(Buffer &buff);
 	bool writeItems(Buffer &buff) const;

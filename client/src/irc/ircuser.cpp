@@ -42,7 +42,7 @@ IRCUser::~IRCUser()
 bool IRCUser::isLocal() const
 {
 	shared_ptr<IRCSession> session = getSession();
-	if(session != null)
+	if(session != nullptr)
 		return session->isLocalUser(getName());
 
 	return false;
@@ -51,7 +51,7 @@ bool IRCUser::isLocal() const
 std::string IRCUser::getName() const
 {
 	shared_ptr<IRCSession> session = getSession();
-	if(session != null)
+	if(session != nullptr)
 		return session->getUserName(getID());
 
 	return constants::empty_string;

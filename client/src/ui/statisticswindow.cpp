@@ -119,7 +119,7 @@ void StatisticsWindow::createLayout()
 
 void StatisticsWindow::initWindow()
 {
-	OS_ASSERT(m_commandsPanel != null);
+	OS_ASSERT(m_commandsPanel != nullptr);
 	m_commandsPanel->getRenderer()->setBackgroundImage(wxImage(conversions::from_utf16<wxString>(Application::instance()->getResourcesFilePath(_S("window_commands_background.png"))), wxBITMAP_TYPE_PNG));
 
 	m_buttonClear->setImageNormal(wxImage(conversions::from_utf16<wxString>(Application::instance()->getResourcesFilePath(_S("stats_btn_clear_normal.png"))), wxBITMAP_TYPE_PNG));

@@ -104,7 +104,7 @@ extern "C" OS_SDK_API os_uint16 osiris_version_number();
 // Initialize the Osiris environment (must be called only once at startup)
 // argc [in]: command line arguments (can be 0)
 // argv [in, optional]: command line values
-// root [in, optional]: if argc is 0, root is required and must be a null terminated string of the path (utf-8 encoded) where Osiris looks for "system.xml"
+// root [in, optional]: if argc is 0, root is required and must be a nullptr terminated string of the path (utf-8 encoded) where Osiris looks for "system.xml"
 extern "C" OS_SDK_API os_result osiris_init(int argc, char *argv[], const char *root);
 
 //////////////////////////////////////////////////////////////////////
@@ -156,13 +156,13 @@ extern "C" OS_SDK_API os_result osiris_options_update();
 //////////////////////////////////////////////////////////////////////
 
 // Log a message
-// message [in, required]: null terminated string of the message (utf-8 encoded)
+// message [in, required]: nullptr terminated string of the message (utf-8 encoded)
 // level: the severity of the message (OS_SDK_LOG_LEVEL_*)
 extern "C" OS_SDK_API os_result osiris_log(const char *message, os_uint8 level);
 
 //////////////////////////////////////////////////////////////////////
 
-// message: null terminated string of the log message (utf-8 encoded)
+// message: nullptr terminated string of the log message (utf-8 encoded)
 // level: the severity of the message (OS_SDK_LOG_LEVEL_*)
 // timestamp: the timestamp of the message (localtime)
 typedef void (* os_log_handler)(const char * /*message*/, os_uint8 /*level*/, os_time /*timestamp*/);
@@ -173,7 +173,7 @@ extern "C" OS_SDK_API os_result osiris_log_handler(os_log_handler handler);
 //////////////////////////////////////////////////////////////////////
 
 // Process an osiris link and returns the parsed http url
-// link [in, required]: null terminated string of the link (utf-8 encoded) in the form of "osiris://"
+// link [in, required]: nullptr terminated string of the link (utf-8 encoded) in the form of "osiris://"
 // value [out, optional]: pointer to the buffer in which the value for the parsed link is returned
 // size [in/out, required]: pointer to the size, in bytes, of the "value" buffer (if "value" is NULL, it must be 0). On return, it will be set to the size returned if "value" is not NULL or the required size if "value" is NULL
 extern "C" OS_SDK_API os_result osiris_parse_link(const char *link, char *value, os_uint32 *size);

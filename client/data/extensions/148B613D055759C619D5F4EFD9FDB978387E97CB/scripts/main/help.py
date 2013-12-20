@@ -32,6 +32,9 @@ class Page(osiris.IMainPage):
 		
 		document.root.setAttributeString("version", osiris.Engine.instance().getVersionName(True))
 		
-		document.root.setAttributeString("href_about", osiris.PortalsSystem.instance().getMainLink("about"))		
 		document.root.setAttributeString("href_home", osiris.IsisSystem.instance().resolveItemLink("home"))
 		document.root.setAttributeString("href_forum", osiris.IsisSystem.instance().resolveItemLink("forum"))
+		
+def main(args):
+	page = Page(args[0])
+	page.transmit()

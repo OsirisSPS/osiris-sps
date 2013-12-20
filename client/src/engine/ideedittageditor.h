@@ -42,7 +42,7 @@ class EngineExport TagEditor : public IObjectEditor
 
 // Construction
 public:
-	TagEditor(shared_ptr<EntitiesEntity> entity = null, shared_ptr<EntitiesEntity> parent = null);
+	TagEditor(shared_ptr<EntitiesEntity> entity = nullptr, shared_ptr<EntitiesEntity> parent = nullptr);
 	virtual ~TagEditor();
 
 // IXSLRenderer interface

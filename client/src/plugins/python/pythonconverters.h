@@ -31,7 +31,7 @@ OS_NAMESPACE_BEGIN()
 template <typename T>
 struct PythonConverter
 {
-	// Controlla se l'oggetto Python è convertibile in T: se convertibile restituisce obj, altrimenti null
+	// Controlla se l'oggetto Python è convertibile in T: se convertibile restituisce obj, altrimenti nullptr
 	static void * convertible(PyObject *obj);
 	// Implementazione della conversione da Python a T
 	static void create(PyObject *obj, boost::python::converter::rvalue_from_python_stage1_data *data);

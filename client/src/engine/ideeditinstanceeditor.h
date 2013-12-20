@@ -46,7 +46,7 @@ class EngineExport InstanceEditor : public IObjectEditor
 
 // Construction
 public:
-	InstanceEditor(shared_ptr<EntitiesEntity> entity = null, shared_ptr<EntitiesEntity> parent = null);
+	InstanceEditor(shared_ptr<EntitiesEntity> entity = nullptr, shared_ptr<EntitiesEntity> parent = nullptr);
 	virtual ~InstanceEditor();
 
 // IXSLRenderer interface

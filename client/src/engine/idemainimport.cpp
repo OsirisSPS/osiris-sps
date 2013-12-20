@@ -67,15 +67,15 @@ Import::~Import()
 
 void Import::onImport()
 {
-	const Buffer *buffer = m_fileBrowser->getFileBuffer();
-	if(buffer == null)
+	const Buffer *buffer = m_fileBrowser->getFileBufferPtr();
+	if(buffer == nullptr)
 	{
 		showError(getText("main.pages.import.errors.invalid_file"));
 		return;
 	}
 
 	shared_ptr<TemporaryFile> file = Options::instance()->createTemporaryFile();
-	if(file == null)
+	if(file == nullptr)
 	{
 		showError(getText("main.pages.import.errors.invalid_file"));
 		return;
@@ -97,14 +97,14 @@ void Import::onImport()
 	shared_ptr<PortalsSerializer> serializer(OS_NEW PortalsSerializer());
 
 	shared_ptr<PortalsSerializer::IResult> result = serializer->parsePortalLink(file);
-	if(result == null)
+	if(result == nullptr)
 	{
 		showError(getText("main.pages.import.errors.invalid_file"));
 		return;
 	}
 
 	shared_ptr<OsirisLink> portalLink = result->getPortalLink();
-	if(portalLink == null)
+	if(portalLink == nullptr)
 	{
 		showError(getText("main.pages.import.errors.invalid_file"));
 		return;
@@ -122,7 +122,7 @@ void Import::onImport()
 	
 	/*
 	shared_ptr<Portal> portal = PortalsSystem::instance()->ensurePortal(portalLink, password);
-	if(portal == null)
+	if(portal == nullptr)
 	{
 		showError(getText("main.pages.import.errors.cannot_create_portal"));
 		return;
@@ -138,11 +138,6 @@ void Import::onImport()
 	ordered_map<std::wstring, std::wstring> params;
 	params.set(OS_PAGEJOBS_PARAM_JOB, conversions::to_wstring(jobID));
 	redirect(PortalsSystem::instance()->getMainLink("jobs", params));	
-}
-
-void Import::onCancel()
-{
-	redirect(PortalsSystem::instance()->getMainLink(OS_IDE_PAGE_OSIRIS));
 }
 
 String Import::getPageName() const
@@ -163,16 +158,10 @@ void Import::onLoad()
 	cmdImport->setID("cmdImport");
 	cmdImport->setIsDefault(true);
 	cmdImport->getEventClick()->connect(boost::bind(&Import::onImport, this));
-	
-	shared_ptr<IdeButton> cmdCancel(OS_NEW IdeButton(getText("main.pages.import.actions.cancel")));
-	cmdCancel->setID("cmdCancel");
-	cmdCancel->setIsDefault(false);
-	cmdCancel->getEventClick()->connect(boost::bind(&Import::onCancel, this));
-	
+		
 	pageTemplate->addChildParam(m_fileBrowser);
 	pageTemplate->addChildParam(m_portalPassword);
-	pageTemplate->addChildParam(cmdImport);
-	pageTemplate->addChildParam(cmdCancel);
+	pageTemplate->addChildParam(cmdImport);	
 }
 
 //////////////////////////////////////////////////////////////////////

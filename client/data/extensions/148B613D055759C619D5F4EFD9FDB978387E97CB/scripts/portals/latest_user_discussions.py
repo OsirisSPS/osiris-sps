@@ -40,6 +40,8 @@ class Page(osiris.IPortalPage):
 	def onPreRender(self):
 		osiris.IPortalPage.onPreRender(self)		
 		
+		if(self.accountSession.isGuest(self.database) == True):
+				return
 		
 		
 

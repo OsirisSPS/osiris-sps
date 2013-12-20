@@ -47,8 +47,8 @@ bool EventSource::empty() const
 
 shared_ptr<IEventCallback> EventSource::connect(shared_ptr<IEventCallback> callback)
 {
-	OS_ASSERT(callback != null);
-	if(callback != null)
+	OS_ASSERT(callback != nullptr);
+	if(callback != nullptr)
 	{
 		OS_LOCK(m_cs);
 

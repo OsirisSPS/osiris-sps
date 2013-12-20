@@ -38,7 +38,7 @@ namespace p2p {
 
 ExchangeSession::ExchangeSession(exchange_context_ptr context)
 {
-	OS_ASSERT(context != null);
+	OS_ASSERT(context != nullptr);
 	m_context = context;
 
 	// Inizializza la richiesta di default
@@ -47,8 +47,8 @@ ExchangeSession::ExchangeSession(exchange_context_ptr context)
 
 ExchangeSession::~ExchangeSession()
 {
-	// Gli oggetti devo essere stati serializzati prima della chiamata al distruttore a meno che il portale non sia stato rimosso (caso per cui potrebbe essere null)
-	OS_ASSERT(getNeedSerialization() == false || getPortal() == null);
+	// Gli oggetti devo essere stati serializzati prima della chiamata al distruttore a meno che il portale non sia stato rimosso (caso per cui potrebbe essere nullptr)
+	OS_ASSERT(getNeedSerialization() == false || getPortal() == nullptr);
 }
 
 exchange_context_ptr ExchangeSession::getContext() const
@@ -59,8 +59,8 @@ exchange_context_ptr ExchangeSession::getContext() const
 shared_ptr<Portal> ExchangeSession::getPortal() const
 {
 	exchange_context_ptr context = getContext();
-	if(context == null)
-		return null;
+	if(context == nullptr)
+		return nullptr;
 
 	return context->getPortal();
 }
@@ -102,7 +102,7 @@ bool ExchangeSession::isRequestedID(const ObjectID &id) const
 	// Ottiene la richiesta di oggetti corrente
 	request_ptr request = m_requests.get(rtObjects);
 	// Se esiste una richiesta di oggetti, verifica che figuri quello specificato
-	return request != null ? request->objectExists(id.toUTF16()) : false;
+	return request != nullptr ? request->objectExists(id.toUTF16()) : false;
 }
 
 bool ExchangeSession::isIncomingID(const ObjectID &id) const
@@ -153,7 +153,7 @@ request_ptr ExchangeSession::addRequest(RequestType type)
 	OS_LOCK(m_cs);
 
 	request_ptr request = m_requests.get(type);
-	if(request == null)
+	if(request == nullptr)
 	{
 		request.reset(OS_NEW Request(type));
 		m_requests.push_back(type, request);
@@ -222,7 +222,7 @@ void ExchangeSession::addObjectRequest(const ObjectID &id)
 
 	// Crea la richiesta di oggetti se necessario
 	request_ptr request = addRequest(rtObjects);
-	if(request != null)
+	if(request != nullptr)
 	{
 		// Accoda alla richiesta l'oggetto specificato
 		request->addObject(id.toUTF16());
@@ -236,7 +236,7 @@ void ExchangeSession::removeObjectRequest(const ObjectID &id)
 	// Ottiene la richiesta di oggetti corrente
 	request_ptr request = m_requests.get(rtObjects);
 	// Verifica che esista un richiesta di oggetti
-	if(request != null)
+	if(request != nullptr)
 	{
 		// Rimuove l'id specificato dalla richiesta
 		request->removeObject(id.toUTF16());
@@ -251,7 +251,7 @@ void ExchangeSession::removeObjectRequest(const ObjectID &id)
 
 void ExchangeSession::finalize(shared_ptr<Portal> portal)
 {
-    if(portal == null)
+    if(portal == nullptr)
     {
         OS_ASSERTFALSE();
         return;

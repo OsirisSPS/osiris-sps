@@ -47,7 +47,7 @@ class XMLExport IXMLHandler : public Object,
 
 // Construction
 public:
-	IXMLHandler(shared_ptr<XMLSchema> schema = null);
+	IXMLHandler(shared_ptr<XMLSchema> schema = nullptr);
 	virtual ~IXMLHandler();
 
 // Attributes

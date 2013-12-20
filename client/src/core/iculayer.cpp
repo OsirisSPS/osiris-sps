@@ -43,17 +43,17 @@ protected:
 	{
 		UErrorCode status = U_ZERO_ERROR;
 		m_converter = ucnv_open("ASCII", &status);
-		OS_ASSERT(m_converter != null);
+		OS_ASSERT(m_converter != nullptr);
 		OS_ASSERT(U_SUCCESS(status));
 	}
 
 public:
 	~AsciiConverter()
 	{
-		if(m_converter != null)
+		if(m_converter != nullptr)
 		{
 			ucnv_close(m_converter);
-			m_converter = null;
+			m_converter = nullptr;
 		}
 	}
 
@@ -61,14 +61,14 @@ public:
 public:
 	std::ustring fromAscii(const achar *str, icu_size length)
 	{
-		OS_ASSERT(m_converter != null);
+		OS_ASSERT(m_converter != nullptr);
 
 		std::ustring result;
-		if(str == null)
+		if(str == nullptr)
 			return result;
 
 		UErrorCode status = U_ZERO_ERROR;
-		icu_size size = ucnv_toUChars(m_converter, null, 0, str, length, &status);
+		icu_size size = ucnv_toUChars(m_converter, nullptr, 0, str, length, &status);
 		if(U_SUCCESS(status))
 		{
 			OS_ASSERT(size == 0);
@@ -99,12 +99,12 @@ public:
 
 	std::string toAscii(const std::ustring &str)
 	{
-		OS_ASSERT(m_converter != null);
+		OS_ASSERT(m_converter != nullptr);
 
 		std::string result;
 
 		UErrorCode status = U_ZERO_ERROR;
-		icu_size size = ucnv_fromUChars(m_converter, null, 0, str.data(), static_cast<icu_size>(str.size()), &status);
+		icu_size size = ucnv_fromUChars(m_converter, nullptr, 0, str.data(), static_cast<icu_size>(str.size()), &status);
 		if(U_SUCCESS(status))
 		{
 			OS_ASSERT(size == 0);
@@ -145,9 +145,9 @@ static std::ustring icu_transform(const std::ustring &str, bool lower)
 	icu_size size = 0;
 	UErrorCode status = U_ZERO_ERROR;
 	if(lower)
-		size = u_strToLower(null, 0, static_cast<const UChar *>(str.data()), static_cast<icu_size>(str.size()), null, &status);
+		size = u_strToLower(nullptr, 0, static_cast<const UChar *>(str.data()), static_cast<icu_size>(str.size()), nullptr, &status);
 	else
-		size = u_strToUpper(null, 0, static_cast<const UChar *>(str.data()), static_cast<icu_size>(str.size()), null, &status);
+		size = u_strToUpper(nullptr, 0, static_cast<const UChar *>(str.data()), static_cast<icu_size>(str.size()), nullptr, &status);
 
 	if(U_SUCCESS(status))
 	{
@@ -164,9 +164,9 @@ static std::ustring icu_transform(const std::ustring &str, bool lower)
     status = U_ZERO_ERROR;
 	scoped_array<uchar, os_deallocate_t> buffer(OS_ALLOCATE_T(uchar, size));
 	if(lower)
-		size = u_strToLower(static_cast<UChar *>(buffer.get()), size, static_cast<const UChar *>(str.data()), static_cast<icu_size>(str.size()), null, &status);
+		size = u_strToLower(static_cast<UChar *>(buffer.get()), size, static_cast<const UChar *>(str.data()), static_cast<icu_size>(str.size()), nullptr, &status);
 	else
-		size = u_strToUpper(static_cast<UChar *>(buffer.get()), size, static_cast<const UChar *>(str.data()), static_cast<icu_size>(str.size()), null, &status);
+		size = u_strToUpper(static_cast<UChar *>(buffer.get()), size, static_cast<const UChar *>(str.data()), static_cast<icu_size>(str.size()), nullptr, &status);
 
 	if(U_SUCCESS(status))
     {
@@ -200,12 +200,12 @@ std::string icu_utoascii(const std::ustring &str)
 std::ustring icu_utf8tou(const achar *str, icu_size length)
 {
 	std::ustring result;
-    if(str == null)
+    if(str == nullptr)
         return result;
 
     UErrorCode status = U_ZERO_ERROR;
     icu_size size = 0;
-    u_strFromUTF8(null, 0, &size, str, length, &status);
+    u_strFromUTF8(nullptr, 0, &size, str, length, &status);
 	if(U_SUCCESS(status))
 	{
 		OS_ASSERT(size == 0);
@@ -245,7 +245,7 @@ std::string icu_utoutf8(const std::ustring &str)
 
     UErrorCode status = U_ZERO_ERROR;
     icu_size size = 0;
-    u_strToUTF8(null, 0, &size, str.data(), static_cast<icu_size>(str.size()), &status);
+    u_strToUTF8(nullptr, 0, &size, str.data(), static_cast<icu_size>(str.size()), &status);
 	if(U_SUCCESS(status))
 	{
 		OS_ASSERT(size == 0);
@@ -277,7 +277,7 @@ std::string icu_utoutf8(const std::ustring &str)
 std::ustring icu_wtou(const wchar *str, icu_size length)
 {
 	std::ustring result;
-    if(str == null)
+    if(str == nullptr)
         return result;
 
 #ifdef OS_HAS_NATIVE_UCHAR
@@ -290,7 +290,7 @@ std::ustring icu_wtou(const wchar *str, icu_size length)
 #else
     UErrorCode status = U_ZERO_ERROR;
     icu_size size = 0;
-    u_strFromWCS(null, 0, &size, str, length, &status);
+    u_strFromWCS(nullptr, 0, &size, str, length, &status);
 	if(U_SUCCESS(status))
 	{
 		OS_ASSERT(size == 0);
@@ -338,7 +338,7 @@ std::wstring icu_utow(const std::ustring &str)
 
     UErrorCode status = U_ZERO_ERROR;
     icu_size size = 0;
-    u_strToWCS(null, 0, &size, str.data(), static_cast<icu_size>(str.size()), &status);
+    u_strToWCS(nullptr, 0, &size, str.data(), static_cast<icu_size>(str.size()), &status);
 	if(U_SUCCESS(status))
 	{
 		OS_ASSERT(size == 0);
@@ -389,7 +389,7 @@ std::ustring icu_format_string(const uchar *pattern, va_list args)
     va_list argscopy;
 
 	std::ustring formattedString;
-	if(pattern != null)
+	if(pattern != nullptr)
 	{
 		OS_ASSERT(String(pattern).find(_S("%c")) == String::npos);	// %c è considerato dall'icu come carattere ASCII non UNICODE, è necessario specificare %C per i caratteri UNICODE
 		OS_ASSERT(String(pattern).find(_S("%s")) == String::npos);	// %s è considerata dall'icu stringa ASCII non UNICODE, è necessario specificare %S per le stringhe UNICODE
@@ -398,7 +398,7 @@ std::ustring icu_format_string(const uchar *pattern, va_list args)
 		if(bufferSize > 0)
 		{
 			uchar *buffer = static_cast<uchar *>(OS_ALLOCATE(bufferSize * sizeof(uchar)));
-			while(buffer != null)
+			while(buffer != nullptr)
 			{
 #if OS_PLATFORM == OS_PLATFORM_WIN
 				// va_copy non è implementata sotto win
@@ -436,7 +436,7 @@ std::ustring icu_format_string(const uchar *pattern, va_list args)
 std::ustring icu_format_string(const uchar *pattern, va_list args)
 {
 	std::ustring formattedString;
-	if(pattern != null)
+	if(pattern != nullptr)
 	{
 		OS_ASSERT(String(pattern).find(_S("%c")) == String::npos);	// %c è considerato dall'icu come carattere ASCII non UNICODE, è necessario specificare %C per i caratteri UNICODE
 		OS_ASSERT(String(pattern).find(_S("%s")) == String::npos);	// %s è considerata dall'icu stringa ASCII non UNICODE, è necessario specificare %S per le stringhe UNICODE
@@ -445,7 +445,7 @@ std::ustring icu_format_string(const uchar *pattern, va_list args)
 		if(bufferSize > 0)
 		{
 			uchar *buffer = static_cast<uchar *>(OS_ALLOCATE(bufferSize * sizeof(uchar)));
-			while(buffer != null)
+			while(buffer != nullptr)
 			{
 				int32 result = u_vsnprintf_u(static_cast<UChar *>(buffer), bufferSize, static_cast<const UChar *>(pattern), args);
 				// In caso di errore viene restituito un valore negativo, altrimenti il valore viene troncato alla

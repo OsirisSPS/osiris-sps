@@ -54,8 +54,8 @@ MirrorViewer::~MirrorViewer()
 shared_ptr<IHtmlControl> MirrorViewer::renderContent(shared_ptr<EntitiesEntity> entity)
 {
 	shared_ptr<ObjectsICommentable> commentable = objects_commentable_cast(entity->getCurrent());
-	if(commentable == null)
-		return null;
+	if(commentable == nullptr)
+		return nullptr;
 
 	return shared_ptr<HtmlLiteral>(OS_NEW HtmlLiteral(getPage()->parseOml(commentable->getContent(), true, false, false, omlRenderModeOsiris, entity->getEntityID().getString())));
 }
@@ -63,8 +63,8 @@ shared_ptr<IHtmlControl> MirrorViewer::renderContent(shared_ptr<EntitiesEntity> 
 shared_ptr<IHtmlControl> MirrorViewer::renderViewer(shared_ptr<EntitiesEntity> entity)
 {
 	shared_ptr<ObjectsIDescriptor> descriptor = ObjectsSystem::instance()->getDescriptor(entity->getObjectType());
-	if(descriptor == null)
-		return null;
+	if(descriptor == nullptr)
+		return nullptr;
 		
 	return descriptor->createViewControl(entity);
 }
@@ -74,14 +74,14 @@ void MirrorViewer::onLoad()
 	ViewerBase::onLoad();
 
 	shared_ptr<XMLNode> root = getModuleDocument()->getRoot();
-	if(root != null)
+	if(root != nullptr)
 	{
 		EntityID entityID = root->getAttributeString(OS_MODULES_MIRROR_OBJECT_ID).to_ascii();
 
 		shared_ptr<IHtmlControl> mirrorControl;
 
 		shared_ptr<EntitiesEntity> mirrorEntity = getPortal()->getEntity(getDatabase(), entityID);
-		if(mirrorEntity != null)
+		if(mirrorEntity != nullptr)
 		{
 			if(Mirror::isValidMirrorObject(mirrorEntity))
 			{
@@ -103,8 +103,8 @@ void MirrorViewer::onLoad()
 			}
 		}
 
-		// TODO: se mirrorControl == null andrebbe creato un controllo che visualizza un messaggio di errore
-		if(mirrorControl != null)
+		// TODO: se mirrorControl == nullptr andrebbe creato un controllo che visualizza un messaggio di errore
+		if(mirrorControl != nullptr)
 		{
 			mirrorControl->setID(_S("mirror"));
 			getControls()->add(mirrorControl);

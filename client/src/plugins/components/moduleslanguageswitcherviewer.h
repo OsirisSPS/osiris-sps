@@ -40,6 +40,7 @@ public:
 
 // ModuleViewer overrides
 protected:
+	virtual void onInit();
 	virtual void onLoad();
 
 // Events:

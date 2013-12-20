@@ -119,7 +119,7 @@ void IdeSearchQuery::onPreRender()
 void IdeSearchQuery::onChangeOffset(IEvent *e)
 {	
 	HtmlEvent *htmlEvent = dynamic_cast<HtmlEvent *>(e);
-	if(htmlEvent == null)
+	if(htmlEvent == nullptr)
 		return;
 
 	m_query->setOffset(conversions::from_utf16<uint32>(htmlEvent->get(0)));
@@ -130,7 +130,7 @@ void IdeSearchQuery::onChangeOffset(IEvent *e)
 void IdeSearchQuery::onFilterAlphabetic(IEvent *e)
 {
 	HtmlEvent *htmlEvent = dynamic_cast<HtmlEvent *>(e);
-	if(htmlEvent == null)
+	if(htmlEvent == nullptr)
 		return;
 
 	String letter = htmlEvent->get(0);
@@ -142,7 +142,7 @@ void IdeSearchQuery::onFilterAlphabetic(IEvent *e)
 
 void IdeSearchQuery::doSearch()
 {
-	if(m_globalParams != null)
+	if(m_globalParams != nullptr)
 		m_globalParams->fillQuery();
 	
 	if( (m_query->getShowFilterAlphabetic()) )

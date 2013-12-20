@@ -81,7 +81,7 @@ shared_ptr<IExtensionsComponent> ObjectsSection::getComponent(shared_ptr<Portal>
 	if(component != ExtensionsComponentID::EMPTY)
 		return ExtensionsSystem::instance()->getComponent(component);
 	else
-		return null;
+		return nullptr;
 }
 
 // VERYURGENT: threadsafe nelle varie ObjectsSection::get...
@@ -89,7 +89,7 @@ shared_ptr<IExtensionsComponent> ObjectsSection::getComponent(shared_ptr<Portal>
 shared_ptr<ObjectsSection> ObjectsSection::getRootSection()
 {
 	static shared_ptr<ObjectsSection> root_section;
-	if(root_section == null)
+	if(root_section == nullptr)
 	{
 		root_section.reset(OS_NEW ObjectsSection());
 		root_section->entity = ObjectsSystem::instance()->getRootID();
@@ -106,7 +106,7 @@ shared_ptr<ObjectsSection> ObjectsSection::getRootSection()
 shared_ptr<ObjectsSection> ObjectsSection::getRecursiveSection()
 {
 	static shared_ptr<ObjectsSection> recursive_section;
-	if(recursive_section == null)
+	if(recursive_section == nullptr)
 	{
 		recursive_section.reset(OS_NEW ObjectsSection());
 		recursive_section->entity = ObjectsSystem::instance()->getRecursiveID();
@@ -123,7 +123,7 @@ shared_ptr<ObjectsSection> ObjectsSection::getRecursiveSection()
 shared_ptr<ObjectsSection> ObjectsSection::getOrphanSection()
 {
 	static shared_ptr<ObjectsSection> orphan_section;
-	if(orphan_section == null)
+	if(orphan_section == nullptr)
 	{
 		orphan_section.reset(OS_NEW ObjectsSection());
 		orphan_section->entity = ObjectsSystem::instance()->getOrphanID();
@@ -140,7 +140,7 @@ shared_ptr<ObjectsSection> ObjectsSection::getOrphanSection()
 shared_ptr<ObjectsSection> ObjectsSection::getSkippedSection()
 {
 	static shared_ptr<ObjectsSection> skipped_section;
-	if(skipped_section == null)
+	if(skipped_section == nullptr)
 	{
 		skipped_section.reset(OS_NEW ObjectsSection());
 		skipped_section->entity = ObjectsSystem::instance()->getSkippedID();
@@ -210,7 +210,7 @@ void ObjectsSection::exportXML(shared_ptr<XMLPortalExporter> exporter)
 	}
 
 	shared_ptr<IExtensionsComponent> component = getComponent(exporter->getPortal());
-	if(component != null)
+	if(component != nullptr)
 		component->exportXML(getEntityID(), exporter);
 }
 
@@ -354,10 +354,10 @@ void ObjectsSectionDescriptor::createStatistics(shared_ptr<IPortalDatabase> db, 
 	DescriptorBase::createStatistics(db, object);
 
 	shared_ptr<ObjectsSection> section = objects_section_cast(object);
-	if(section != null)
+	if(section != nullptr)
 	{
 		shared_ptr<IExtensionsComponent> component = section->getComponent(db->getPortal());
-		if(component != null)
+		if(component != nullptr)
 			component->createStatistics(db, object);
 	}
 }
@@ -367,10 +367,10 @@ void ObjectsSectionDescriptor::computeStatistics(shared_ptr<IPortalDatabase> db,
 	DescriptorBase::computeStatistics(db, object);
 
 	shared_ptr<ObjectsSection> section = objects_section_cast(object);
-	if(section != null)
+	if(section != nullptr)
 	{
 		shared_ptr<IExtensionsComponent> component = section->getComponent(db->getPortal());
-		if(component != null)
+		if(component != nullptr)
 			component->computeStatistics(db, object);
 	}
 }
@@ -380,10 +380,10 @@ void ObjectsSectionDescriptor::removeStatistics(shared_ptr<IPortalDatabase> db, 
 	DescriptorBase::removeStatistics(db, object);
 
 	shared_ptr<ObjectsSection> section = objects_section_cast(object);
-	if(section != null)
+	if(section != nullptr)
 	{
 		shared_ptr<IExtensionsComponent> component = section->getComponent(db->getPortal());
-		if(component != null)
+		if(component != nullptr)
 			component->removeStatistics(db, object);
 	}
 }

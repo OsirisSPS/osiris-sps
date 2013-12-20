@@ -86,7 +86,7 @@ void IdePickerCulture::addCulture(shared_ptr<XMLNode> node, shared_ptr<LanguageC
 	if(id == current)
 		node_culture->setAttributeBool(_S("current"), true);
 	String parent = String::EMPTY;
-	if (culture->getParent() != null)
+	if (culture->getParent() != nullptr)
 		parent = culture->getParent()->getID();
 	node_culture->setAttributeString(_S("parent"), parent);
 	node_culture->setAttributeString(_S("LCID"), conversions::to_utf16(culture->getLCID()));

@@ -73,7 +73,7 @@ void ObjectsPoll::exportXML(shared_ptr<XMLPortalExporter> exporter)
 	if(exporter->getWithStats())
 	{
 		shared_ptr<DataIStatistics> stats = exporter->getDatabase()->loadStatistics<DataPollStats>(DBTABLES::POLLS_STATS_TABLE, getEntityID().getString());
-		if(stats != null)
+		if(stats != nullptr)
 			stats->exportXML(exporter);
 	}
 }
@@ -211,7 +211,7 @@ void ObjectsPollDescriptor::computeStatistics(shared_ptr<IPortalDatabase> db, sh
 								os_snapshot_users.id = os_polls_votes.author \
 								and os_snapshot_users.visible=1 \
 								and os_polls_votes.parent = '%S' \
-								and os_polls_votes.score is not null").c_str(),
+								and os_polls_votes.score is not nullptr").c_str(),
 								poll->getEntityID().toUTF16().c_str());
 
 	DataTable table;

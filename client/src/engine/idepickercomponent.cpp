@@ -69,7 +69,7 @@ void IdePickerComponent::onLoad()
 {
 	ControlBase::onLoad();
 		
-	addComponent(null);
+	addComponent(nullptr);
 	const ExtensionsSystem::Components &components = ExtensionsSystem::instance()->getComponents();
 	for(ExtensionsSystem::Components::const_iterator i = components.begin(); i != components.end(); ++i)
 	{
@@ -81,12 +81,12 @@ void IdePickerComponent::onLoad()
 
 void IdePickerComponent::addComponent(shared_ptr<IExtensionsComponent> component)
 {
-	// If skin == null, system skin.
+	// If skin == nullptr, system skin.
 
 	String id;
 	String name;
 	String description;
-	if(component == null)
+	if(component == nullptr)
 	{
 		name = _S("section.components.none");
 	}

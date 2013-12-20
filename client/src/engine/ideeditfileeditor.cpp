@@ -88,12 +88,12 @@ shared_ptr<ObjectsIRevisionable> FileEditor::createObject()
 {
 	String file_name;
 	String file_type;
-	const Buffer *file_data = null;
+	const Buffer *file_data = nullptr;
 
 	if(isRevision() && m_enableBrowser->getCheck() == false)
 	{
 		shared_ptr<ObjectsFile> currentFile = objects_file_cast(getCurrent());
-		if(currentFile != null)
+		if(currentFile != nullptr)
 		{
 			file_name = currentFile->file_name;
 			file_type = currentFile->file_type;
@@ -104,11 +104,11 @@ shared_ptr<ObjectsIRevisionable> FileEditor::createObject()
 	{
 		file_name = m_browser->getFileName();
 		file_type = m_browser->getFileType();
-		file_data = m_browser->getFileBuffer();
+		file_data = m_browser->getFileBufferPtr();
 	}
 
-	if(file_data == null)
-		return null;
+	if(file_data == nullptr)
+		return nullptr;
 
 	shared_ptr<ObjectsFile> file(OS_NEW ObjectsFile());
 	file->title = algorithms::trim_copy(m_title->getValue());
@@ -132,7 +132,7 @@ void FileEditor::onPreRender()
 		if(getPostBack() == false)
 		{
 			shared_ptr<ObjectsFile> current = objects_file_cast(getCurrent());
-			if(current != null)
+			if(current != nullptr)
 			{
 				m_title->setValue(current->title);
      			m_description->setValue(current->description);

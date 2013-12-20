@@ -112,7 +112,7 @@ struct Collections
 					else
 						array.push_front(result.first);
 
-					if(h != null)
+					if(h != nullptr)
 						accessTo(h)->onInsert(result.first->first, result.first->second);
 				}
 			}
@@ -125,7 +125,7 @@ struct Collections
 					if(result.second)
 					{
 						array.push_back(result.first);
-						if(h != null)
+						if(h != nullptr)
 							accessTo(h)->onInsert(result.first->first, result.first->second);
 					}
 				}
@@ -137,7 +137,7 @@ struct Collections
 				if(i == map.end())
 					return false;
 
-				if(h != null)
+				if(h != nullptr)
 					accessTo(h)->onRemove(i->first, i->second);
 
 				utils::remove(array, i);
@@ -148,7 +148,7 @@ struct Collections
 
 			inline static void clear(collection_map &map, collection_array &array, handler *h)
 			{
-				if(h != null)
+				if(h != nullptr)
 					accessTo(h)->onClear();
 
 				array.clear();
@@ -185,7 +185,7 @@ struct Collections
 					else
 						array.push_front(result.first);
 
-					if(h != null)
+					if(h != nullptr)
 						accessTo(h)->onInsert(result.first->first, result.first->second);
 				}
 			}
@@ -198,7 +198,7 @@ struct Collections
 					if(result.second)
 					{
 						array.push_back(result.first);
-						if(h != null)
+						if(h != nullptr)
 							accessTo(h)->onInsert(result.first->first, result.first->second);
 					}
 				}
@@ -210,7 +210,7 @@ struct Collections
 				if(i == map.end())
 					return false;
 
-				if(h != null)
+				if(h != nullptr)
 					accessTo(h)->onRemove(i->first, i->second);
 
 				boost::checked_delete(i->second);
@@ -222,7 +222,7 @@ struct Collections
 
 			inline static void clear(collection_map &map, collection_array &array, handler *h)
 			{
-				if(h != null)
+				if(h != nullptr)
 					accessTo(h)->onClear();
 
 				array.clear();
@@ -264,7 +264,7 @@ struct Collections
 					else
 						array.push_front(result.first);
 
-					if(h != null)
+					if(h != nullptr)
 						accessTo(h)->onInsert(result.first->first, result.first->second.get());
 				}
 			}
@@ -277,7 +277,7 @@ struct Collections
 					if(result.second)
 					{
 						array.push_back(result.first);
-						if(h != null)
+						if(h != nullptr)
 							accessTo(h)->onInsert(result.first->first, result.first->second.get());
 					}
 				}
@@ -289,7 +289,7 @@ struct Collections
 				if(i == map.end())
 					return false;
 
-				if(h != null)
+				if(h != nullptr)
 					accessTo(h)->onRemove(i->first, i->second.get());
 
 				utils::remove(array, i);
@@ -300,7 +300,7 @@ struct Collections
 
 			inline static void clear(collection_map &map, collection_array &array, handler *h)
 			{
-				if(h != null)
+				if(h != nullptr)
 					accessTo(h)->onClear();
 
 				array.clear();
@@ -413,12 +413,12 @@ struct Collections
 
 	// Construction
 	public:
-		basic_collection(handler_ptr handler = null) : m_handler(handler)
+		basic_collection(handler_ptr handler = nullptr) : m_handler(handler)
 		{
 
 		}
 
-		basic_collection(const self &collection) : m_handler(null)
+		basic_collection(const self &collection) : m_handler(nullptr)
 		{
 			*this = collection;
 		}
@@ -455,7 +455,7 @@ struct Collections
 			if(mi != m_map.end())
 				return mi->second;
 
-			return null;
+			return nullptr;
 		}
 
 	// Operations
@@ -611,7 +611,7 @@ public:
 	const S & value_at(typename CollectionBase::size_type index) const
 	{
 		S *value = CollectionBase::value_at(index);
-		if(value != null)
+		if(value != nullptr)
 			return *value;
 
 		return Traits::empty;
@@ -620,7 +620,7 @@ public:
 	const S & get(const S &key) const
 	{
 		S *value = CollectionBase::get(key);
-		if(value != null)
+		if(value != nullptr)
 			return *value;
 
 		return Traits::empty;
@@ -629,7 +629,7 @@ public:
 	void set(const S &key, const S &value)
 	{
 		S *current = CollectionBase::get(key);
-		if(current != null)
+		if(current != nullptr)
 			*current = value;
 		else
 			CollectionBase::push_back(key, new S(value));

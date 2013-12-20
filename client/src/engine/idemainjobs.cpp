@@ -55,14 +55,14 @@ Jobs::~Jobs()
 
 void Jobs::exportJobs(shared_ptr<XMLExporter> exporter, const Engine::BackgroundJobs &jobs, bool completed)
 {
-	OS_ASSERT(exporter != null);
+	OS_ASSERT(exporter != nullptr);
 
 	bool showAll = m_showAll->getCheck();
 
 	for(Engine::BackgroundJobs::const_iterator i = jobs.begin(); i != jobs.end(); ++i)
 	{
 		shared_ptr<IBackgroundJob> job = *i;
-		if(job == null)
+		if(job == nullptr)
 		{
 			OS_ASSERTFALSE();
 			continue;
@@ -75,11 +75,11 @@ void Jobs::exportJobs(shared_ptr<XMLExporter> exporter, const Engine::Background
 
 bool Jobs::exportJob(shared_ptr<XMLExporter> exporter, shared_ptr<IBackgroundJob> job, bool completed)
 {
-	OS_ASSERT(exporter != null);
-	OS_ASSERT(job != null);
+	OS_ASSERT(exporter != nullptr);
+	OS_ASSERT(job != nullptr);
 
 	shared_ptr<IBackgroundJob::Details> jobDetails = job->getDetails();
-	if(jobDetails == null)
+	if(jobDetails == nullptr)
 	{
 		OS_ASSERTFALSE();
 		return false;
@@ -149,11 +149,11 @@ void Jobs::onPreRender()
 		exporter->setAttributeString(_S("highlight"), getRequest()->getUrlParam(_W("job")));
 
 	shared_ptr<Engine::BackgroundJobs> jobs = Engine::instance()->getBackgroundJobs();
-	if(jobs != null)
+	if(jobs != nullptr)
 		exportJobs(exporter, *jobs, false);
 
 	jobs = Engine::instance()->getLastCompletedBackgroundJobs();
-	if(jobs != null)
+	if(jobs != nullptr)
 		exportJobs(exporter, *jobs, true);	
 }
 

@@ -39,7 +39,7 @@ public:
 	EnableThisPtrTester(shared_ptr<EnableThisPtrTester> &ptr)
 	{
 		ptr = get_this_ptr();
-		BOOST_CHECK(ptr != null);
+		BOOST_CHECK(ptr != nullptr);
 	}
 };
 
@@ -93,7 +93,7 @@ BOOST_AUTO_TEST_CASE(test_enable_this_ptr)
 			BOOST_CHECK(ptr3.use_count() == ptr4.use_count());
 		}
 
-		BOOST_CHECK(tester.get_this_ptr() != null);			// Verifica che dopo la distruzione di tutti gli shared_ptr il weak_ptr interno venga reinizializzato
+		BOOST_CHECK(tester.get_this_ptr() != nullptr);			// Verifica che dopo la distruzione di tutti gli shared_ptr il weak_ptr interno venga reinizializzato
 	}
 }
 

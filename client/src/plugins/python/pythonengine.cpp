@@ -158,8 +158,8 @@ private:
 			OS_ASSERT(m_locksCount > 0);
 
 			// N.B.: non richiamare qui PyEval_SaveThread perchè internamente fa una PyEval_ReleaseLock
-			PyThreadState *savedThread = PyThreadState_Swap(null);	
-			OS_ASSERT(savedThread != null);
+			PyThreadState *savedThread = PyThreadState_Swap(nullptr);	
+			OS_ASSERT(savedThread != nullptr);
 			return savedThread;
 		}
 
@@ -168,7 +168,7 @@ private:
 			OS_ASSERT(m_mutex.try_lock() == false);		// questa funzione va loccata a monte
 
 			// N.B.: non richiamare qui PyEval_RestoreThread perchè internamente fa una PyEval_AcquireLock
-			OS_ASSERT(savedThread != null);
+			OS_ASSERT(savedThread != nullptr);
 			PyThreadState_Swap(savedThread);			
 		}
 
@@ -229,7 +229,7 @@ void PythonEngine::ThreadsManager::ensureLock()
 	// N.B.: più thread contemporaneamente devono poter chiamare PyEval_AcquireLock quindi non loccare m_mutex
 
 	shared_ptr<ThreadData> threadData = getThread(boost::this_thread::get_id(), true);
-	OS_ASSERT(threadData != null);
+	OS_ASSERT(threadData != nullptr);
 	threadData->acquireLock();
 }
 
@@ -240,7 +240,7 @@ void PythonEngine::ThreadsManager::releaseLock()
 	boost::thread::id threadID = boost::this_thread::get_id();
 
 	shared_ptr<ThreadData> threadData = getThread(threadID, false);
-	if(threadData == null)
+	if(threadData == nullptr)
 	{
 		OS_ASSERTFALSE();
 		return;
@@ -258,7 +258,7 @@ PyThreadState * PythonEngine::ThreadsManager::saveThread()
 	// N.B.: più thread contemporaneamente devono poter chiamare PyEval_SaveThread quindi non loccare m_mutex
 
 	shared_ptr<ThreadData> threadData = getThread(boost::this_thread::get_id(), true);
-	OS_ASSERT(threadData != null);
+	OS_ASSERT(threadData != nullptr);
 	return threadData->saveThread();
 }
 
@@ -267,7 +267,7 @@ void PythonEngine::ThreadsManager::restoreThread(PyThreadState *threadState)
 	// N.B.: più thread contemporaneamente devono poter chiamare PyEval_RestoreThread quindi non loccare m_mutex
 
 	shared_ptr<ThreadData> threadData = getThread(boost::this_thread::get_id(), true);
-	if(threadData == null)
+	if(threadData == nullptr)
 	{
 		OS_ASSERTFALSE();
 		return;
@@ -285,7 +285,7 @@ shared_ptr<PythonEngine::ThreadsManager::ThreadData> PythonEngine::ThreadsManage
 		return i->second;
 
 	if(ensure == false)
-		return null;
+		return nullptr;
 
 	shared_ptr<ThreadData> threadData(OS_NEW ThreadData(false));
 	m_threadsMap[threadID] = threadData;
@@ -345,7 +345,7 @@ shared_ptr<IBackgroundJob::Details> PythonEngine::InterpretersJob::getDetails() 
 
 //////////////////////////////////////////////////////////////////////
 
-PythonEngine::PythonEngine() : m_globalState(null),
+PythonEngine::PythonEngine() : m_globalState(nullptr),
 							   m_exceptionHandler(OS_NEW_T(boost::python::detail::exception_handler)(&PythonEngine::invokeCallback)),
 							   m_initialized(false)
 {
@@ -355,7 +355,7 @@ PythonEngine::PythonEngine() : m_globalState(null),
 PythonEngine::~PythonEngine()
 {
 	cleanup();
-	OS_ASSERT(m_globalState == null);
+	OS_ASSERT(m_globalState == nullptr);
 }
 
 boost::recursive_mutex & PythonEngine::getInterpreterMutex(PyThreadState *state)
@@ -480,30 +480,30 @@ bool PythonEngine::getLastError(std::string &type, std::string &message, std::st
 	type.clear();
 	message.clear();
 
-	if(PyErr_Occurred() == null)
+	if(PyErr_Occurred() == nullptr)
 		return false;
 
-	PyObject *ptype = null;
-	PyObject *pvalue = null;
-	PyObject *pcallstack = null;
+	PyObject *ptype = nullptr;
+	PyObject *pvalue = nullptr;
+	PyObject *pcallstack = nullptr;
     PyErr_Fetch(&ptype, &pvalue, &pcallstack);
 	PyErr_NormalizeException(&ptype, &pvalue, &pcallstack);
 
-    if(ptype != null)
+    if(ptype != nullptr)
 	{
 		PyObject *str = PyObject_Str(ptype);
         type = PyString_AsString(str);
 		Py_XDECREF(str);
 	}
 
-	if(pvalue != null)
+	if(pvalue != nullptr)
 	{
 		PyObject *str = PyObject_Str(pvalue);
 		message = PyString_AsString(str);
 		Py_XDECREF(str);
 	}
 
-	if(pcallstack != null)
+	if(pcallstack != nullptr)
 		callstack = getTracebackString(pcallstack);
 
 	if(reset)
@@ -571,11 +571,11 @@ bool PythonEngine::init(const String &modulesPath, const String &homePath)
 	Py_InitializeEx(0);		// Skips initialization registration of the signal handlers, which might be useful when Python is embedded
 	PyEval_InitThreads();
 
-	OS_ASSERT(m_threadsManager == null);
+	OS_ASSERT(m_threadsManager == nullptr);
 	m_threadsManager.reset(OS_NEW ThreadsManager(boost::this_thread::get_id()));
 
 	m_globalState = PyThreadState_Get();
-	if(m_globalState == null)
+	if(m_globalState == nullptr)
 	{
 		OS_ASSERTFALSE();
 		return false;
@@ -599,14 +599,14 @@ void PythonEngine::cleanup()
 	boost::mutex::scoped_lock lock(m_interpretersCS);
 	m_interpreters.clear();
 
-	if(m_globalState != null)
+	if(m_globalState != nullptr)
 	{
 		releaseInterpreterLock(m_globalState);
 
 		Lock lock;
 
 		PyThreadState_Swap(m_globalState);
-		m_globalState = null;
+		m_globalState = nullptr;
 
 		m_modulesMap.clear();
 
@@ -627,14 +627,14 @@ bool PythonEngine::loadModule(const char *module_name, void (*module_function)(v
 
 	try
 	{
-		OS_ASSERT(module_name != null);
-		OS_ASSERT(module_function != null);
+		OS_ASSERT(module_name != nullptr);
+		OS_ASSERT(module_function != nullptr);
 
 		boost::python::detail::init_module(module_name, module_function);
 
 		// N.B.: internamente boost::python (nella versione attuale 1.38) effettua già un catch di boost::python::error_already_set,
 		// pertanto qui è necessario verificare che non sia stato settato alcun errore (resettandolo in caso contrario)
-		if(PyErr_Occurred() != null)
+		if(PyErr_Occurred() != nullptr)
 		{
 			logLastError(true);
 			PyErr_Clear();
@@ -736,17 +736,17 @@ shared_ptr<PythonInterpreter> PythonEngine::createInterpreter()
 	if(requireInterpreters)
 		queueInterpretersJob();
 
-	if(interpreter == null)
+	if(interpreter == nullptr)
 		interpreter = allocateInterpreter(true);
 
-	OS_ASSERT(interpreter != null);
+	OS_ASSERT(interpreter != nullptr);
 	return interpreter;
 }
 
 bool PythonEngine::cacheInterpreter()
 {
 	shared_ptr<PythonInterpreter> interpreter = allocateInterpreter(false);
-	if(interpreter == null)
+	if(interpreter == nullptr)
 		return false;
 
 	boost::mutex::scoped_lock lock(m_interpretersCS);
@@ -767,23 +767,23 @@ shared_ptr<PythonInterpreter> PythonEngine::allocateInterpreter(bool force)
 	else
 	{
 		if(evalLock.try_lock() == false)
-			return null;
+			return nullptr;
 	}
 
 	if(m_initialized == false)
-		return null;		// Possibile in fase di chiusura
+		return nullptr;		// Possibile in fase di chiusura
 
-	PyThreadState *state = null;
+	PyThreadState *state = nullptr;
 
 	{
 		Lock lock;
 		state = Py_NewInterpreter();
 	}
 
-	if(state == null)
+	if(state == nullptr)
 	{
 		OS_ASSERTFALSE();
-		return null;
+		return nullptr;
 	}
 
 	initInterpreterLock(state);
@@ -805,14 +805,14 @@ shared_ptr<PythonInterpreter> PythonEngine::allocateInterpreter(bool force)
 				if(PyDict_Merge(dictionary.ptr(), static_cast<boost::python::object>(i->second.attr(OS_PYTHON_MODULE_DICTIONARY)).ptr(), 0) != 0)
 				{
 					OS_ASSERTFALSE();
-					return null;
+					return nullptr;
 				}
 			}
 		}
 		catch(const boost::python::error_already_set &)
 		{
 			logLastError(true);
-			return null;
+			return nullptr;
 		}
 	}
 
@@ -821,7 +821,7 @@ shared_ptr<PythonInterpreter> PythonEngine::allocateInterpreter(bool force)
 
 void PythonEngine::initInterpreterLock(PyThreadState *state)
 {
-	OS_ASSERT(state != null);
+	OS_ASSERT(state != nullptr);
 
 	boost::mutex::scoped_lock lock(m_interpretersLockMutex);
 
@@ -831,7 +831,7 @@ void PythonEngine::initInterpreterLock(PyThreadState *state)
 
 void PythonEngine::releaseInterpreterLock(PyThreadState *state)
 {
-	OS_ASSERT(state != null);
+	OS_ASSERT(state != nullptr);
 
 	boost::mutex::scoped_lock lock(m_interpretersLockMutex);
 
@@ -853,7 +853,7 @@ void PythonEngine::queueInterpretersJob()
 	boost::mutex::scoped_lock lock(m_interpretersCS);
 
 	shared_ptr<IJob> interpretersJob = m_interpretersJob.lock();
-	if((interpretersJob != null) && (interpretersJob->getStatus() == IJob::jobIncomplete))
+	if((interpretersJob != nullptr) && (interpretersJob->getStatus() == IJob::jobIncomplete))
 		return;
 
 	shared_ptr<IBackgroundJob> job(OS_NEW InterpretersJob(Engine::instance()->peekBackgroundJobID()));

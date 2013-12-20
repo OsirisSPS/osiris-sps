@@ -47,7 +47,7 @@ Documentation::~Documentation()
 void Documentation::initXML(shared_ptr<XMLDocument> document)
 {
 	shared_ptr<XMLNode> root = document->getRoot();
-	if(root == null)
+	if(root == nullptr)
 		root = document->create("documentation");
 
 	if(root->getAttributes()->exists("toc_layout") == false)	
@@ -79,8 +79,8 @@ shared_ptr<ExtensionsComponentEditor> Documentation::createEditor(shared_ptr<Ent
 
 shared_ptr<ExtensionsComponentViewer> Documentation::createViewer(shared_ptr<EntitiesEntity> entity)
 {
-	if(entity != null && entity->getObjectType() != portalObjectTypeSection)
-		return null;	// Il componente renderizza solo se stesso o un oggetto di tipo sezione
+	if(entity != nullptr && entity->getObjectType() != portalObjectTypeSection)
+		return nullptr;	// Il componente renderizza solo se stesso o un oggetto di tipo sezione
 
 	return shared_ptr<ExtensionsComponentViewer>(OS_NEW DocumentationViewer(entity));
 }

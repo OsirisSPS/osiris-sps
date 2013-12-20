@@ -211,7 +211,7 @@ String TimerPerformanceManager::toHtml()
 		uint32 *thread = boost::any_cast<uint32>(&threadID);
 
 		output += _S("<tr>");
-		output += String::format(_S("<td>%S</td><td>%06.4f</td><td>%u</td>").c_str(), desc.c_str(), delay, thread != null ? *thread : 0);
+		output += String::format(_S("<td>%S</td><td>%06.4f</td><td>%u</td>").c_str(), desc.c_str(), delay, thread != nullptr ? *thread : 0);
 		output += _S("</tr>");
 	}
 

@@ -30,8 +30,8 @@
 
   <xsl:template match="settings">
 
-    <xsl:call-template name="block_big">
-      <xsl:with-param name="title" select="lang:text('main.pages.settings.title')"/>        
+    <xsl:call-template name="block_page">
+      <xsl:with-param name="prefix" select="'main.pages.settings'"/>        
       <xsl:with-param name="content">
         <div style="display:none" data-os-otype="tab" data-os-storage="portal.settings">
           <xsl:attribute name="data-os-startPage">

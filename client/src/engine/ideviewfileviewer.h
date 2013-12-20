@@ -35,7 +35,7 @@ class FileViewer : public CommentableObjectViewer
 
 // Construction
 public:
-	FileViewer(shared_ptr<EntitiesEntity> entity = null);
+	FileViewer(shared_ptr<EntitiesEntity> entity = nullptr);
 	virtual ~FileViewer();
 
 // IXSLRenderer interface

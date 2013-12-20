@@ -77,7 +77,7 @@ bool CacheSystem::check(const String& key)
 	OS_LOCK(m_cs);
 
 	shared_ptr<Item> item = m_items[key];
-	if(item == null)
+	if(item == nullptr)
 		return false;
 
 	if(item->expiration != DateTime::EMPTY)
@@ -105,7 +105,7 @@ DataItem CacheSystem::get(const String& key)
 		return DataItem();
 
 	shared_ptr<Item> item = m_items[key];
-	if(item != null)
+	if(item != nullptr)
 		return item->item;
 	else
 	{
@@ -119,7 +119,7 @@ bool CacheSystem::remove(const String& key)
 	OS_LOCK(m_cs);
 
 	shared_ptr<Item> item = m_items[key];
-	if(item != null)
+	if(item != nullptr)
 	{
 		m_currentSize -= item->size;
 		m_items.erase(key);

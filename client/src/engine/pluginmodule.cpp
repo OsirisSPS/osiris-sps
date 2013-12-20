@@ -30,9 +30,9 @@ OS_NAMESPACE_BEGIN()
 //////////////////////////////////////////////////////////////////////
 
 PluginModule::PluginModule(shared_ptr<Plugin> plugin) : m_plugin(plugin),
-														m_interface(null)
+														m_interface(nullptr)
 {
-	OS_ASSERT(plugin != null);
+	OS_ASSERT(plugin != nullptr);
 }
 
 PluginModule::~PluginModule()
@@ -48,10 +48,10 @@ bool PluginModule::load(const String &filename)
 	if(lib->load(filename))
 	{
 		PluginInterfaceCallback callback = reinterpret_cast<PluginInterfaceCallback>(lib->findProcedure(BOOST_PP_STRINGIZE(OS_PLUGIN_ENTRYPOINT)));
-		if(callback != null)
+		if(callback != nullptr)
 		{
 			m_interface = callback();
-			if(m_interface != null)
+			if(m_interface != nullptr)
 			{
 				m_lib = lib;
 				return true;
@@ -65,27 +65,27 @@ bool PluginModule::load(const String &filename)
 void PluginModule::unload()
 {
 	// Non richiamare il metodo unload visto che la dll potrebbe essere referenziata da qualcun altro (nel caso non lo sia il distruttore la dealloca in automatico)	
-	m_lib = null;
-	m_interface = null;
+	m_lib = nullptr;
+	m_interface = nullptr;
 }
 
 bool PluginModule::initialize()
 {
 	shared_ptr<Plugin> plugin = getPlugin();
-	if(plugin == null)
+	if(plugin == nullptr)
 	{
 		OS_ASSERTFALSE();
 		return false;
 	}
 
-	OS_ASSERT(m_interface != null);
-	return (m_interface != null && m_interface->initialize != null) ? m_interface->initialize(*plugin) : false;
+	OS_ASSERT(m_interface != nullptr);
+	return (m_interface != nullptr && m_interface->initialize != nullptr) ? m_interface->initialize(*plugin) : false;
 }
 
 bool PluginModule::terminate()
 {
-	OS_ASSERT(m_interface != null);
-	return (m_interface != null && m_interface->terminate != null) ? m_interface->terminate() : false;
+	OS_ASSERT(m_interface != nullptr);
+	return (m_interface != nullptr && m_interface->terminate != nullptr) ? m_interface->terminate() : false;
 }
 
 //////////////////////////////////////////////////////////////////////

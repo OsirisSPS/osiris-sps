@@ -45,7 +45,7 @@ IPacket::HEADER::HEADER()
 
 IPacket::IPacket(PacketType type)
 {
-	m_data = null;
+	m_data = nullptr;
 	m_type = type;
 	m_index = 0;
 }
@@ -53,12 +53,12 @@ IPacket::IPacket(PacketType type)
 IPacket::~IPacket()
 {
 	delete m_data;
-	m_data = null;	
+	m_data = nullptr;	
 }
 
 DataTree * IPacket::getData() const
 {
-	if(m_data == null)
+	if(m_data == nullptr)
 		m_data = OS_NEW DataTree();
 
 	return m_data;
@@ -75,7 +75,7 @@ bool IPacket::read(const Buffer &buffer)
 bool IPacket::write(Buffer &buffer)
 {
 	// N.B.: il pacchetto potrebbe non avere body, non chiamare getData()
-	if(m_data == null)
+	if(m_data == nullptr)
 		return true;
 
 	return m_data->write(buffer);

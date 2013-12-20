@@ -105,7 +105,7 @@ const Buffer & IdeSession::getPublicKey() const
 	/*
 	OS_LOCK(m_cs);
 
-	if(m_user != null)
+	if(m_user != nullptr)
 		return m_user->public_key;
 
 	return Buffer::EMPTY;
@@ -121,7 +121,7 @@ const DateTime & IdeSession::getReferenceDate() const
 {
 	OS_LOCK(m_cs);
 
-	if(m_account != null)
+	if(m_account != nullptr)
 		return m_account->getReferenceDate();
 
 	return DateTime::EMPTY;
@@ -132,7 +132,7 @@ shared_ptr<IdeSkin> IdeSession::getCurrentSkin() const
 {
 	shared_ptr<IdeSkin> skin;
 
-	if(m_account != null)
+	if(m_account != nullptr)
 	{
 		SkinID skinID = m_account->getSkinID();
 		if(skinID.empty() == false)
@@ -141,7 +141,7 @@ shared_ptr<IdeSkin> IdeSession::getCurrentSkin() const
 
 
 	// Se l'account non ha una skin specifica usa quella del portale
-	if(skin == null || skin->isValid() == false)
+	if(skin == nullptr || skin->isValid() == false)
 		skin = IdeSystem::instance()->getDefaultSkin();
 
 	return skin;
@@ -150,7 +150,7 @@ shared_ptr<IdeSkin> IdeSession::getCurrentSkin() const
 String IdeSession::getLanguage() const
 {
 	shared_ptr<IdeAccount> account = getAccount();
-	if(account != null && account->hasLanguage())
+	if(account != nullptr && account->hasLanguage())
 		return account->getLanguage();
 
 	return Options::instance()->getDefaultLanguage();
@@ -176,7 +176,7 @@ ObjectID IdeSession::getUserID() const
 {
 	OS_LOCK(m_cs);
 
-	if(m_account == null)
+	if(m_account == nullptr)
 		return ObjectID::EMPTY;
 	else
 		return DataAccount::getReferenceUser(m_publicKey); // TOOPTIMIZE: We can save that, to avoid SHA every time in the page?	
@@ -184,7 +184,7 @@ ObjectID IdeSession::getUserID() const
 
 bool IdeSession::isPortalGuest(shared_ptr<IPortalDatabase> database)
 {
-	if(getUser(database) == null)
+	if(getUser(database) == nullptr)
 		return true;
 
 	return getSessionPortal(database->getPortal())->getGuest();
@@ -192,8 +192,8 @@ bool IdeSession::isPortalGuest(shared_ptr<IPortalDatabase> database)
 
 shared_ptr<ObjectsUser> IdeSession::getUser(shared_ptr<IPortalDatabase> database) const
 {
-	if(m_account == null)
-		return null;
+	if(m_account == nullptr)
+		return nullptr;
 
 	ObjectID userID = getUserID();
 	shared_ptr<ObjectsUser> user = objects_user_cast(database->getPortal()->getObject(database, userID));
@@ -203,12 +203,12 @@ shared_ptr<ObjectsUser> IdeSession::getUser(shared_ptr<IPortalDatabase> database
 
 bool IdeSession::hasUserX(shared_ptr<IPortalDatabase> database) const
 {
-	return (getUser(database) != null);
+	return (getUser(database) != nullptr);
 }
 
 LanguageResult IdeSession::portalLogin(shared_ptr<IPortalDatabase> database)
 {
-	if(getUser(database) == null)
+	if(getUser(database) == nullptr)
 	{
 		DateTime now = IsisSystem::instance()->getInternetDateTime();
 		if(now.isNull())
@@ -223,8 +223,8 @@ LanguageResult IdeSession::portalLogin(shared_ptr<IPortalDatabase> database)
 		user->birth_date = DateTime::EMPTY;
 		user->misc = String::EMPTY;
 		user->mark = String::EMPTY;
-		user->show_mark = true;
-		user->show_avatar = true;
+		//user->show_mark = true;
+		//user->show_avatar = true;
 
 		LanguageResult result = user->create(database, m_privateKey);
 
@@ -252,7 +252,7 @@ bool IdeSession::loginAutomatic(const String &id)
 
 	shared_ptr<IdeAccount> account = IdeAccountsManager::instance()->getByID(id);
 	// Verifica che l'account sia valido e abbia l'autologin
-	if(account != null && account->getAccount()->hasAutologin())
+	if(account != nullptr && account->getAccount()->hasAutologin())
 	{
 		return login(account->getID(), account->getRealPassword());
 	}
@@ -267,7 +267,7 @@ bool IdeSession::login(const String &accountID, const String &password, bool sav
 	OS_LOCK(m_cs);
 
 	shared_ptr<IdeAccount> account = IdeAccountsManager::instance()->getByID(accountID);
-	if(account == null)
+	if(account == nullptr)
 		return false;
 		
 	// Verifica che la password specificata coincida
@@ -285,7 +285,7 @@ bool IdeSession::login(const String &accountID, const String &password, bool sav
 	/*
 	// Carica l'utente di riferimento
 	m_user = _loadUser(database, account, m_publicKey, m_privateKey);
-	if(m_user == null)
+	if(m_user == nullptr)
 		return false;
 	*/
 
@@ -309,7 +309,7 @@ void IdeSession::logout(bool reset_password)
 {
 	OS_LOCK(m_cs);
 
-	if(m_account != null)
+	if(m_account != nullptr)
 	{
 		if(reset_password && m_account->getAccount()->hasAutologin())
 		{
@@ -332,7 +332,7 @@ void IdeSession::updateReferenceDate()
 {
 	OS_LOCK(m_cs);
 
-	if(m_account != null)
+	if(m_account != nullptr)
 	{
 		m_account->setReferenceDate(DateTime::now());
 		//m_account->updateAccount(database);
@@ -343,20 +343,20 @@ void IdeSession::updateReferenceDate()
 /*
 shared_ptr<ObjectsUser> IdeSession::_loadUser(shared_ptr<IPortalDatabase> database, shared_ptr<IdeAccount> account, const Buffer &public_key, const Buffer &private_key)
 {
-	OS_ASSERT(account != null);
+	OS_ASSERT(account != nullptr);
 
 	ObjectID userID = data::Account::getReferenceUser(public_key);
 	shared_ptr<ObjectsUser> userExists = objects_user_cast(getPortal()->getObject(database, userID.toUTF16()));
-	if(userExists != null)
+	if(userExists != nullptr)
 		return userExists;
 
 	// User creation
 	//if(database->__createUser(account->getAccount()->username, public_key, private_key, userID) == false)
-	//	return null;
+	//	return nullptr;
 
 	DateTime now;
 	if(Engine::instance()->getSynchronizedDateTime(now) == false)
-		return null;
+		return nullptr;
 
 	shared_ptr<ObjectsUser> user(OS_NEW ObjectsUser());
 	user->id = userID;
@@ -372,9 +372,9 @@ shared_ptr<ObjectsUser> IdeSession::_loadUser(shared_ptr<IPortalDatabase> databa
 
 	LanguageResult result = user->create(database, private_key);
 	if(result.empty() == false)
-		return null;
+		return nullptr;
 
-	OS_ASSERT(objects_user_cast(getPortal()->getObject(database, userID.toUTF16())) != null);
+	OS_ASSERT(objects_user_cast(getPortal()->getObject(database, userID.toUTF16())) != nullptr);
 	return objects_user_cast(getPortal()->getObject(database, userID.toUTF16()));
 }
 */

@@ -52,20 +52,20 @@ ObjectsResponse::~ObjectsResponse()
 shared_ptr<ObjectsIObject> ObjectsResponse::getObject(const ObjectID &id) const
 {
 	DataTree *root = getRoot();
-	OS_ASSERT(root != null);
+	OS_ASSERT(root != nullptr);
 	OS_ASSERT(root->exists(id.toUTF16()));
 
 	// Ottiene il puntatore alla root dell'oggetto
 	DataTree *objectData = root->getTP(id.toUTF16());
-	if(objectData == null)
-		return null;
+	if(objectData == nullptr)
+		return nullptr;
 
 	PortalObjectType objectType = Convert::toObjectType(static_cast<uint32>(objectData->getV(DBTABLES::ENTRIES::TYPE)));
 
 	// Alloca l'oggetto in base alla tipologia
 	shared_ptr<ObjectsIObject> object = ObjectsSystem::instance()->createObject(objectType);
-	if(object == null)
-		return null;
+	if(object == nullptr)
+		return nullptr;
 
     // Carica l'oggetto
 	object->read(id, *objectData);
@@ -76,7 +76,7 @@ shared_ptr<ObjectsIObject> ObjectsResponse::getObject(const ObjectID &id) const
 void ObjectsResponse::getObjects(StringList &ids)
 {
 	DataTree *root = getRoot();
-	if(root != null)
+	if(root != nullptr)
 		for(DataTree::iterator i = root->begin(); i != root->end(); ids.push_back(i->first), ++i);
 }
 
@@ -87,14 +87,14 @@ DataTree * ObjectsResponse::getRoot() const
 
 bool ObjectsResponse::insert(shared_ptr<IPortalDatabase> database, const String &id)
 {
-    if(database == null || id.empty())
+    if(database == nullptr || id.empty())
     {
         OS_ASSERTFALSE();
         return false;
     }
 
     shared_ptr<ObjectsIObject> object = database->getPortal()->getObject(database, id.to_ascii());
-    if(object == null)
+    if(object == nullptr)
         return false;
 
     return store(object);
@@ -102,16 +102,16 @@ bool ObjectsResponse::insert(shared_ptr<IPortalDatabase> database, const String 
 
 bool ObjectsResponse::store(const shared_ptr<ObjectsIObject> &object)
 {
-	OS_ASSERT(object != null);
+	OS_ASSERT(object != nullptr);
 
 	DataTree *root = getRoot();
 
-	OS_ASSERT(root != null);
+	OS_ASSERT(root != nullptr);
 	OS_ASSERT(root->exists(object->id->toUTF16()) == false);
 
 	// Crea la root dell'oggetto
 	DataTree *objectData = root->setT(object->id->toUTF16());
-	if(objectData == null)
+	if(objectData == nullptr)
 		return false;
 
 	// Salva l'oggetto
@@ -126,7 +126,7 @@ bool ObjectsResponse::create()
 bool ObjectsResponse::parse()
 {
 	// Valida il pacchetto se  presente la root degli oggetti
-	return getRoot() != null;
+	return getRoot() != nullptr;
 }
 
 //////////////////////////////////////////////////////////////////////

@@ -54,7 +54,7 @@ byte * FixedAllocator::allocate(uint32 size)
 	boost::mutex::scoped_lock lock(m_mutex);
 	
 	PoolAllocator<byte> *pool = findPool(roundSize(size));
-	if(pool != null)
+	if(pool != nullptr)
 		return pool->allocate();
 	else
 		return static_cast<byte *>(OS_ALLOCATE(size));
@@ -63,21 +63,21 @@ byte * FixedAllocator::allocate(uint32 size)
 shared_ptr<byte> FixedAllocator::allocateShared(uint32 size)
 {
 	byte *data = allocate(size);
-	if(data == null)
-		return null;
+	if(data == nullptr)
+		return nullptr;
 
 	return shared_ptr<byte>(data, boost::bind(&FixedAllocator::deallocate, this, _1, size));
 }
 
 void FixedAllocator::deallocate(byte *data, uint32 size)
 {
-	OS_ASSERT(data != null);
+	OS_ASSERT(data != nullptr);
 	OS_ASSERT(size > 0);
 
 	boost::mutex::scoped_lock lock(m_mutex);
 
 	PoolAllocator<byte> *pool = findPool(roundSize(size));
-	if(pool != null)
+	if(pool != nullptr)
 		pool->deallocate(data);
 	else
 		OS_DEALLOCATE(data);
@@ -111,7 +111,7 @@ PoolAllocator<byte> * FixedAllocator::findPool(uint32 size) const
 	if(i != m_pools.end())
 		return i->second;
 
-	return null;
+	return nullptr;
 }
 
 void FixedAllocator::clear()

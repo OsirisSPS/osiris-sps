@@ -27,12 +27,6 @@
 
 //////////////////////////////////////////////////////////////////////
 
-#define OS_NULL								nullptr
-
-#ifndef null
-	#define null							OS_NULL
-#endif
-
 #define OS_CURRENT_FILE                     __FILE__
 #define OS_CURRENT_LINE                     __LINE__
 #define OS_CURRENT_FUNCTION					BOOST_CURRENT_FUNCTION
@@ -58,6 +52,7 @@
 	#define OS_OVERRIDE						override
 #else
 	#define OS_OVERRIDE
+	#define nullptr							NULL
 #endif
 
 #define OS_MAKE_UINT8(l, h)					((uint8)(((uint8)(l)) & 0xF) | (((uint8)(h)) << 4))

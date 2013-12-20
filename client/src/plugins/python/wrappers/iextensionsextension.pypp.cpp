@@ -17,7 +17,7 @@ struct IExtensionsExtension_wrapper : ::osiris::IExtensionsExtension, ::osiris::
     IExtensionsExtension_wrapper( )
     : ::osiris::IExtensionsExtension( )
       , ::osiris::PythonWrapper< ::osiris::IExtensionsExtension >(){
-        // null constructor
+        // nullptr constructor
     
     }
 

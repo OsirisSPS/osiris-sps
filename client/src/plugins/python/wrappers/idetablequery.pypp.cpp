@@ -26,7 +26,7 @@ struct IdeTableQuery_wrapper : ::osiris::IdeTableQuery, ::osiris::PythonWrapper<
     IdeTableQuery_wrapper( )
     : ::osiris::IdeTableQuery( )
       , ::osiris::PythonWrapper< ::osiris::IdeTableQuery >(){
-        // null constructor
+        // nullptr constructor
     
     }
 
@@ -104,7 +104,7 @@ struct IdeTableQuery_wrapper : ::osiris::IdeTableQuery, ::osiris::PythonWrapper<
         return ::osiris::IHtmlControl::decodeEvent( boost::ref(command), boost::ref(eventName), boost::ref(e) );
     }
 
-    ::osiris::String encodeEvent( ::osiris::String const & eventName, ::osiris::HtmlEvent const * e=(null) ) const {
+    ::osiris::String encodeEvent( ::osiris::String const & eventName, ::osiris::HtmlEvent const * e=(nullptr) ) const {
         return ::osiris::IHtmlControl::encodeEvent( boost::ref(eventName), boost::python::ptr(e) );
     }
 
@@ -123,7 +123,7 @@ struct IdeTableQuery_wrapper : ::osiris::IdeTableQuery, ::osiris::PythonWrapper<
         return ::osiris::IHtmlControl::getSession( );
     }
 
-    virtual void onEvent( ::osiris::String const & name, ::osiris::IEvent * e=(null) ){
+    virtual void onEvent( ::osiris::String const & name, ::osiris::IEvent * e=(nullptr) ){
         ::osiris::PythonState __pystate(getPythonThreadState());
         if( ::osiris::PythonOverride func_onEvent = this->get_override( "onEvent" ) )
             func_onEvent( boost::ref(name), boost::python::ptr(e) );
@@ -133,7 +133,7 @@ struct IdeTableQuery_wrapper : ::osiris::IdeTableQuery, ::osiris::PythonWrapper<
         }
     }
     
-    virtual void default_onEvent( ::osiris::String const & name, ::osiris::IEvent * e=(null) ){
+    virtual void default_onEvent( ::osiris::String const & name, ::osiris::IEvent * e=(nullptr) ){
         ::osiris::PythonThreadSaver __pythreadSaver;
         ::osiris::IHtmlControl::onEvent( boost::ref(name), boost::python::ptr(e) );
     }
@@ -272,13 +272,9 @@ void register_IdeTableQuery_class(){
         ::boost::python::scope IdeTableQuery_scope( IdeTableQuery_exposer );
         ::boost::python::enum_< ::osiris::IdeTableQuery::ColumnType>("ColumnType")
             .value("ctString", ::osiris::IdeTableQuery::ctString)
-<<<<<<< HEAD
             .value("ctEntityID", ::osiris::IdeTableQuery::ctEntityID)
             .value("ctObjectID", ::osiris::IdeTableQuery::ctObjectID)
             .value("ctUserID", ::osiris::IdeTableQuery::ctUserID)
-=======
-            .value("ctID", ::osiris::IdeTableQuery::ctEntityID)
->>>>>>> d0e943fe8f07f3262e5d61d5aab09c2b04880641
             .value("ctScore", ::osiris::IdeTableQuery::ctScore)
             .value("ctShortDateTime", ::osiris::IdeTableQuery::ctShortDateTime)
             .value("ctLongDateTime", ::osiris::IdeTableQuery::ctLongDateTime)
@@ -381,7 +377,7 @@ void register_IdeTableQuery_class(){
             IdeTableQuery_exposer.def( 
                 "encodeEvent"
                 , encodeEvent_function_type( &IdeTableQuery_wrapper::encodeEvent )
-                , ( ::boost::python::arg("eventName"), ::boost::python::arg("e")=(null) ) );
+                , ( ::boost::python::arg("eventName"), ::boost::python::arg("e")=(nullptr) ) );
         
         }
         { //::osiris::IHtmlControl::getSession
@@ -402,7 +398,7 @@ void register_IdeTableQuery_class(){
             IdeTableQuery_exposer.def( 
                 "onEvent"
                 , onEvent_function_type( &IdeTableQuery_wrapper::default_onEvent )
-                , ( ::boost::python::arg("name"), ::boost::python::arg("e")=(null) ) );
+                , ( ::boost::python::arg("name"), ::boost::python::arg("e")=(nullptr) ) );
         
         }
         { //::osiris::IXSLRenderer< osiris::IPortalPageControl< osiris::IHtmlControl > >::onInit

@@ -287,7 +287,7 @@ String IOMLCode::encodeToMeasure(shared_ptr<OMLContext> context, shared_ptr<OMLI
 
 String IOMLCode::encodeToCss(shared_ptr<OMLContext> context, shared_ptr<OMLItem> i, const String& text)
 {
-	OS_ASSERT(context != null);
+	OS_ASSERT(context != nullptr);
 
 	if(text.empty())
 		return String::EMPTY;
@@ -427,7 +427,7 @@ String IOMLCode::encodeBody(shared_ptr<OMLContext> context, const String& text, 
 	if(postProcess)
 	{
 		// Emoticons
-		if( (context->getMode() != omlRenderModeSearch) && (context->getPage() != null) )
+		if( (context->getMode() != omlRenderModeSearch) && (context->getPage() != nullptr) )
 		{
 			String valueLower = value;
 			valueLower.to_lower();
@@ -541,7 +541,7 @@ String IOMLCode::encodeResourceUrlEx(shared_ptr<OMLContext> context, shared_ptr<
 		}
 		else if(osirisLink.getType() == OsirisLink::linkFile)
 		{
-			shared_ptr<Portal> portal = null;
+			shared_ptr<Portal> portal = nullptr;
 
 			shared_ptr<const IPortalPage> page = context->getPortalPage();
 
@@ -549,7 +549,7 @@ String IOMLCode::encodeResourceUrlEx(shared_ptr<OMLContext> context, shared_ptr<
 			{
 				PortalID portalID = osirisLink.getPortal();
 									
-				if( (page != null) && (portalID == page->getPortal()->getPortalID()) ) // Force the use of the current POV
+				if( (page != nullptr) && (portalID == page->getPortal()->getPortalID()) ) // Force the use of the current POV
 					portal = page->getPortal();
 				else
 				{
@@ -559,21 +559,21 @@ String IOMLCode::encodeResourceUrlEx(shared_ptr<OMLContext> context, shared_ptr<
 			else
 			{
 				shared_ptr<const IPortalPage> page = context->getPortalPage();
-				if(page != null)
+				if(page != nullptr)
 				{
 					portal = page->getPortal();
 				}
 			}
 						
-			if(portal != null)
+			if(portal != nullptr)
 			{
 				String id = osirisLink.getParam("id");
 				
 				shared_ptr<EntitiesEntity> entity = portal->getEntity(page->getDatabase(), EntityID(id.to_ascii()));
 
-				shared_ptr<ObjectsIObject> current = entity ? entity->getCurrent() : null;
+				shared_ptr<ObjectsIObject> current = entity ? entity->getCurrent() : nullptr;
 
-				if( (current != null) && (current->getObjectType() == portalObjectTypeFile) )
+				if( (current != nullptr) && (current->getObjectType() == portalObjectTypeFile) )
 				{
 					src = portal->getFileLink(id.to_ascii());					
 					entityID = id.to_ascii();
@@ -697,7 +697,7 @@ String IOMLCode::encodeUrl(shared_ptr<OMLContext> context, shared_ptr<OMLItem> i
 				else
 				{
 					shared_ptr<Portal> externalPortal = PortalsSystem::instance()->getPortalByFullPov(pov);
-					if(externalPortal == null)
+					if(externalPortal == nullptr)
 					{
 						// We don't have the requested portal.
 						return String::EMPTY;

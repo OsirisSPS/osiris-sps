@@ -30,7 +30,7 @@ struct ExtensionsComponentControl_wrapper : ::osiris::ExtensionsComponentControl
     ExtensionsComponentControl_wrapper( )
     : ::osiris::ExtensionsComponentControl( )
       , ::osiris::PythonWrapper< ::osiris::ExtensionsComponentControl >(){
-        // null constructor
+        // nullptr constructor
     
     }
 

@@ -163,7 +163,7 @@ void IdeTableQuery::onPreRender()
 						// Sbagliata
 						shared_ptr<XMLPortalExporter> exporter(OS_NEW XMLPortalExporter(node_data_row_item, getPage(), XMLPortalExporter::emLite));
 						shared_ptr<ObjectsIObject> object = getPage()->getObject(value.to_ascii());
-						if(object != null)
+						if(object != nullptr)
 						{
 							object->exportXML(exporter);
 						}
@@ -172,7 +172,7 @@ void IdeTableQuery::onPreRender()
 					{
 						shared_ptr<XMLPortalExporter> exporter(OS_NEW XMLPortalExporter(node_data_row_item, getPage(), XMLPortalExporter::emLite));
 						shared_ptr<ObjectsIObject> object = getPage()->getObject(value.to_ascii());
-						if(object != null)
+						if(object != nullptr)
 						{
 							object->exportXML(exporter);
 						}
@@ -181,7 +181,7 @@ void IdeTableQuery::onPreRender()
 					{
 						shared_ptr<XMLPortalExporter> exporter(OS_NEW XMLPortalExporter(node_data_row_item, getPage(), XMLPortalExporter::emLite));
 						shared_ptr<ObjectsIObject> object = getPage()->getObject(value.to_ascii());
-						if(object != null)
+						if(object != nullptr)
 						{
 							object->exportXML(exporter);
 						}

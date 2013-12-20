@@ -214,8 +214,8 @@ void OptionsWizardPageProxy::saveOptions()
 	if(proxySelection != -1)
 	{
 		wxCustomClientData<uint32> *proxyTypeData = dynamic_cast<wxCustomClientData<uint32> *>(m_proxyType->GetClientObject(proxySelection));
-		OS_ASSERT(proxyTypeData != null);
-		if(proxyTypeData != null)
+		OS_ASSERT(proxyTypeData != nullptr);
+		if(proxyTypeData != nullptr)
 			Options::instance()->setOption(Options::net_options::proxy_type, proxyTypeData->getValue());
 	}
 

@@ -63,36 +63,37 @@ OS_NAMESPACE_BEGIN()
 PortalsOptionsShared::PortalsOptionsShared(const shared_ptr<Portal> portal) : m_portal(portal),
 																	 m_options(OS_NEW XMLOptions())
 {
-	m_options->ensureOption(_S("portal.name"), String::EMPTY, true);
-	m_options->ensureOption(_S("portal.description"), String::EMPTY, true);
-	m_options->ensureOption(_S("threshold.authors"), static_cast<int32>(rtNotNegative), true);
-	m_options->ensureOption(_S("threshold.editors"), static_cast<int32>(rtPositive), true);	
-	m_options->ensureOption(_S("avatar.maxwidth"), static_cast<uint32>(256), true);
-	m_options->ensureOption(_S("avatar.maxheight"), static_cast<uint32>(256), true);
-	m_options->ensureOption(_S("objects.physical_remove"), false, true);
-	m_options->ensureOption(_S("objects.physical_remove_days"), static_cast<int32>(0), true);
-	m_options->ensureOption(_S("objects.maxsize"), static_cast<uint32>(128 * 1024), true);
-	m_options->ensureOption(_S("objects.allow_future"), false, true);
-	m_options->ensureOption(_S("objects.allow_unsigned"), false, true);
-	m_options->ensureOption(_S("objects.bad_words"), String::EMPTY, true);
+	m_options->ensureOption(_S("acp.portal.name"), String::EMPTY, true);
+	m_options->ensureOption(_S("acp.portal.description"), String::EMPTY, true);
+	m_options->ensureOption(_S("acp.threshold.authors"), static_cast<int32>(rtNotNegative), true);
+	m_options->ensureOption(_S("acp.threshold.editors"), static_cast<int32>(rtPositive), true);	
+	m_options->ensureOption(_S("acp.pov.whitelist"), String::EMPTY, true);
+	m_options->ensureOption(_S("acp.pov.blacklist"), String::EMPTY, true);
+	m_options->ensureOption(_S("acp.avatar.maxwidth"), static_cast<uint32>(256), true);
+	m_options->ensureOption(_S("acp.avatar.maxheight"), static_cast<uint32>(256), true);
+	m_options->ensureOption(_S("acp.objects.physical_remove"), false, true);
+	m_options->ensureOption(_S("acp.objects.physical_remove_days"), static_cast<int32>(0), true);
+	m_options->ensureOption(_S("acp.objects.maxsize"), static_cast<uint32>(128 * 1024), true);
+	m_options->ensureOption(_S("acp.objects.allow_future"), false, true);
+	m_options->ensureOption(_S("acp.objects.allow_unsigned"), false, true);
+	m_options->ensureOption(_S("acp.objects.bad_words"), String::EMPTY, true);
 
 
-	m_options->ensureOption(_S("register.terms"), String::EMPTY, true);
-	m_options->ensureOption(_S("layout.image"), String::EMPTY, true);
-	m_options->ensureOption(_S("layout.tile.color.bg"), String::EMPTY, true);
-	m_options->ensureOption(_S("layout.tile.color.fg"), String::EMPTY, true);	
+	m_options->ensureOption(_S("acp.register.terms"), String::EMPTY, true);
+	m_options->ensureOption(_S("acp.layout.tile.image"), String::EMPTY, true);
+	m_options->ensureOption(_S("acp.layout.tile.color.bg"), String::EMPTY, true);
+	m_options->ensureOption(_S("acp.layout.tile.color.fg"), String::EMPTY, true);	
 
-	// CSS globale. Per abolire il modulo "Custom CSS".
-	m_options->ensureOption(_S("layout.css"), String::EMPTY, true);
+	m_options->ensureOption(_S("acp.layout.css"), String::EMPTY, true);
 
 	// Modulo del componente root
-	m_options->ensureOption(_S("layout.component"), String::EMPTY, true);
+	m_options->ensureOption(_S("acp.layout.component"), String::EMPTY, true);
 
 	// Skin
-	m_options->ensureOption(_S("layout.skin.id"), String::EMPTY, true);
-	m_options->ensureOption(_S("layout.skin.params"), String::EMPTY, true);
+	m_options->ensureOption(_S("acp.layout.skin.id"), String::EMPTY, true);
+	m_options->ensureOption(_S("acp.layout.skin.params"), String::EMPTY, true);
 
-	m_options->ensureOption(_S("layout.header"), true, true);
+	m_options->ensureOption(_S("acp.layout.header"), true, true);
 		
 	// Lista di POV (solo UserID) accettati.
 	// m_options->ensureOption(_S("pov.whitelist"), String::EMPTY);
@@ -110,15 +111,17 @@ std::string PortalsOptionsShared::getAcceptableHash() const
 	// Compute an unique ID that identify the combinations of shared options that can change acceptables rules below.
 	std::string raw;
 		
-	addToMap(raw, "threshold.authors");
-	addToMap(raw, "threshold.editors");
-	addToMap(raw, "avatar.maxwidth");
-	addToMap(raw, "avatar.maxheight");
-	addToMap(raw, "objects.physical_remove");
-	addToMap(raw, "objects.maxsize");
-	addToMap(raw, "objects.allow_future");
-	addToMap(raw, "objects.allow_unsigned");
-	addToMap(raw, "objects.bad_words");
+	addToMap(raw, "acp.threshold.authors");
+	addToMap(raw, "acp.threshold.editors");
+	addToMap(raw, "acp.pov.whitelist");
+	addToMap(raw, "acp.pov.blacklist");
+	addToMap(raw, "acp.avatar.maxwidth");
+	addToMap(raw, "acp.avatar.maxheight");
+	addToMap(raw, "acp.objects.physical_remove");
+	addToMap(raw, "acp.objects.maxsize");
+	addToMap(raw, "acp.objects.allow_future");
+	addToMap(raw, "acp.objects.allow_unsigned");
+	addToMap(raw, "acp.objects.bad_words");
 	
 	std::string hash = CryptManager::instance()->SHA(raw.c_str(), raw.length()).toHex();
 	
@@ -135,212 +138,232 @@ void PortalsOptionsShared::addToMap(std::string &raw, const std::string &name) c
 
 String PortalsOptionsShared::getPortalName() const
 {
-	return m_options->getOption(_S("portal.name"));
+	return m_options->getOption(_S("acp.portal.name"));
 }
 
 void PortalsOptionsShared::setPortalName(const String &name)
 {
-	m_options->setOption(_S("portal.name"), name);
+	m_options->setOption(_S("acp.portal.name"), name);
 }
 
 String PortalsOptionsShared::getPortalDescription() const
 {
-	return m_options->getOption(_S("portal.description"));
+	return m_options->getOption(_S("acp.portal.description"));
 }
 
 void PortalsOptionsShared::setPortalDescription(const String &description)
 {
-	m_options->setOption(_S("portal.description"), description);
+	m_options->setOption(_S("acp.portal.description"), description);
 }
 
 ObjectsReputationThreshold PortalsOptionsShared::getAuthorsReputationThreshold() const
 {
-	return Convert::toReputationThreshold(static_cast<int32>(m_options->getOption(_S("threshold.authors"))));	
+	return Convert::toReputationThreshold(static_cast<int32>(m_options->getOption(_S("acp.threshold.authors"))));	
 }
 
 void PortalsOptionsShared::setAuthorsReputationThreshold(const ObjectsReputationThreshold &threshold)
 {
-	m_options->setOption(_S("threshold.authors"), static_cast<int32>(threshold));
+	m_options->setOption(_S("acp.threshold.authors"), static_cast<int32>(threshold));
 }
 
 ObjectsReputationThreshold PortalsOptionsShared::getEditorsReputationThreshold() const
 {
-	return Convert::toReputationThreshold(static_cast<int32>(m_options->getOption(_S("threshold.editors"))));	
+	return Convert::toReputationThreshold(static_cast<int32>(m_options->getOption(_S("acp.threshold.editors"))));	
 }
 
 void PortalsOptionsShared::setEditorsReputationThreshold(const ObjectsReputationThreshold &threshold)
 {
-	m_options->setOption(_S("threshold.editors"), static_cast<int32>(threshold));
+	m_options->setOption(_S("acp.threshold.editors"), static_cast<int32>(threshold));
+}
+
+String PortalsOptionsShared::getPovWhiteList() const
+{
+	return m_options->getOption(_S("acp.pov.whitelist"));
+}
+
+void PortalsOptionsShared::setPovWhiteList(const String &value)
+{
+	m_options->setOption(_S("acp.pov.whitelist"),value);
+}
+
+String PortalsOptionsShared::getPovBlackList() const
+{
+	return m_options->getOption(_S("acp.pov.blacklist"));
+}
+
+void PortalsOptionsShared::setPovBlackList(const String &value)
+{
+	m_options->setOption(_S("acp.pov.blacklist"),value);
 }
 
 uint32 PortalsOptionsShared::getAvatarMaxWidth() const
 {
-	return m_options->getOption(_S("avatar.maxwidth"));
+	return m_options->getOption(_S("acp.avatar.maxwidth"));
 }
 
 void PortalsOptionsShared::setAvatarMaxWidth(const uint32 &value)
 {
-	m_options->setOption(_S("avatar.maxwidth"),value);
+	m_options->setOption(_S("acp.avatar.maxwidth"),value);
 }
 
 uint32 PortalsOptionsShared::getAvatarMaxHeight() const
 {
-	return m_options->getOption(_S("avatar.maxheight"));
+	return m_options->getOption(_S("acp.avatar.maxheight"));
 }
 
 void PortalsOptionsShared::setAvatarMaxHeight(const uint32 &value)
 {
-	m_options->setOption(_S("avatar.maxheight"),value);
+	m_options->setOption(_S("acp.avatar.maxheight"),value);
 }
 
 bool PortalsOptionsShared::getObjectsPhysicalRemove() const
 {
-	return m_options->getOption(_S("objects.physical_remove"));
+	return m_options->getOption(_S("acp.objects.physical_remove"));
 }
 
 void PortalsOptionsShared::setObjectsPhysicalRemove(const bool &value)
 {
-	m_options->setOption(_S("objects.physical_remove"),value);
+	m_options->setOption(_S("acp.objects.physical_remove"),value);
 }
 
 int32 PortalsOptionsShared::getObjectsPhysicalRemoveDays() const
 {
-	return m_options->getOption(_S("objects.physical_remove_days"));
+	return m_options->getOption(_S("acp.objects.physical_remove_days"));
 }
 
 void PortalsOptionsShared::setObjectsPhysicalRemoveDays(const int32 &value)
 {
-	m_options->setOption(_S("objects.physical_remove_days"),value);
+	m_options->setOption(_S("acp.objects.physical_remove_days"),value);
 }
 
 uint32 PortalsOptionsShared::getObjectsMaxSize() const
 {
-	return m_options->getOption(_S("objects.maxsize"));
+	return m_options->getOption(_S("acp.objects.maxsize"));
 }
 
 void PortalsOptionsShared::setObjectsMaxSize(const uint32 &value)
 {
-	m_options->setOption(_S("objects.maxsize"),value);
+	m_options->setOption(_S("acp.objects.maxsize"),value);
 }
 
 bool PortalsOptionsShared::getAllowObjectInFuture() const
 {
-	return m_options->getOption(_S("objects.allow_future"));
+	return m_options->getOption(_S("acp.objects.allow_future"));
 }
 
 void PortalsOptionsShared::setAllowObjectInFuture(const bool &value)
 {
-	m_options->setOption(_S("objects.allow_future"),value);
+	m_options->setOption(_S("acp.objects.allow_future"),value);
 }
 
 bool PortalsOptionsShared::getAllowObjectUnsigned() const
 {
-	return m_options->getOption(_S("objects.allow_unsigned"));
+	return m_options->getOption(_S("acp.objects.allow_unsigned"));
 }
 
 void PortalsOptionsShared::setAllowObjectUnsigned(const bool &value)
 {
-	m_options->setOption(_S("objects.allow_unsigned"),value);
+	m_options->setOption(_S("acp.objects.allow_unsigned"),value);
 }
 
 String PortalsOptionsShared::getBadWords() const
 {
-	return m_options->getOption(_S("objects.bad_words"));
+	return m_options->getOption(_S("acp.objects.bad_words"));
 }
 
 void PortalsOptionsShared::setBadWords(const String &value)
 {
-	m_options->setOption(_S("objects.bad_words"), value);
+	m_options->setOption(_S("acp.objects.bad_words"), value);
 }
 
 String PortalsOptionsShared::getRegisterTerms() const
 {
-	return m_options->getOption(_S("register.terms"));
+	return m_options->getOption(_S("acp.register.terms"));
 }
 
 void PortalsOptionsShared::setRegisterTerms(const String &value)
 {
-	m_options->setOption(_S("register.terms"),value);
+	m_options->setOption(_S("acp.register.terms"),value);
 }
 
 ObjectID PortalsOptionsShared::getLayoutTileImage() const
 {
-	return m_options->getOption(_S("layout.tile.image")).getStringAscii();
+	return m_options->getOption(_S("acp.layout.tile.image")).getStringAscii();
 }
 
 void PortalsOptionsShared::setLayoutTileImage(const ObjectID &value)
 {
-	m_options->setOption(_S("layout.tile.image"), value.toUTF16());
+	m_options->setOption(_S("acp.layout.tile.image"), value.toUTF16());
 }
 
 String PortalsOptionsShared::getLayoutTileColorBackground() const
 {
-	return m_options->getOption(_S("layout.tile.color.bg"));
+	return m_options->getOption(_S("acp.layout.tile.color.bg"));
 }
 
 void PortalsOptionsShared::setLayoutTileColorBackground(const String &value)
 {
-	m_options->setOption(_S("layout.tile.color.bg"),value);
+	m_options->setOption(_S("acp.layout.tile.color.bg"),value);
 }
 
 String PortalsOptionsShared::getLayoutTileColorForeground() const
 {
-	return m_options->getOption(_S("layout.tile.color.fg"));
+	return m_options->getOption(_S("acp.layout.tile.color.fg"));
 }
 
 void PortalsOptionsShared::setLayoutTileColorForeground(const String &value)
 {
-	m_options->setOption(_S("layout.tile.color.fg"),value);
+	m_options->setOption(_S("acp.layout.tile.color.fg"),value);
 }
 
 String PortalsOptionsShared::getLayoutCss() const
 {
-	return m_options->getOption(_S("layout.css"));
+	return m_options->getOption(_S("acp.layout.css"));
 }
 
 void PortalsOptionsShared::setLayoutCss(const String &value)
 {
-	m_options->setOption(_S("layout.css"),value);
+	m_options->setOption(_S("acp.layout.css"),value);
 }
 
 String PortalsOptionsShared::getLayoutComponent() const
 {
-	return m_options->getOption(_S("layout.component"));
+	return m_options->getOption(_S("acp.layout.component"));
 }
 
 void PortalsOptionsShared::setLayoutComponent(const String &value)
 {
-	m_options->setOption(_S("layout.component"),value);
+	m_options->setOption(_S("acp.layout.component"),value);
 }
 
 String PortalsOptionsShared::getLayoutSkin() const
 {
-	return m_options->getOption(_S("layout.skin.id"));
+	return m_options->getOption(_S("acp.layout.skin.id"));
 }
 
 void PortalsOptionsShared::setLayoutSkin(const String &value)
 {
-	m_options->setOption(_S("layout.skin.id"),value);
+	m_options->setOption(_S("acp.layout.skin.id"),value);
 }
 
 String PortalsOptionsShared::getLayoutSkinParams() const
 {
-	return m_options->getOption(_S("layout.skin.params"));
+	return m_options->getOption(_S("acp.layout.skin.params"));
 }
 
 void PortalsOptionsShared::setLayoutSkinParams(const String &value)
 {
-	m_options->setOption(_S("layout.skin.params"), value);
+	m_options->setOption(_S("acp.layout.skin.params"), value);
 }
 
 bool PortalsOptionsShared::getLayoutHeader() const
 {
-	return m_options->getOption(_S("layout.header"));
+	return m_options->getOption(_S("acp.layout.header"));
 }
 
 void PortalsOptionsShared::setLayoutHeader(const bool &value)
 {
-	m_options->setOption(_S("layout.header"), value);
+	m_options->setOption(_S("acp.layout.header"), value);
 }
 
 
@@ -393,8 +416,8 @@ void PortalsOptionsShared::reload(const shared_ptr<IPortalDatabase> &database)
 {	
 	clear();
 
-	// Remember: getPortal()->getPovUser() maybe null, if the portal is subscribed and it's empty.
-	if(getPortal()->getPovUser() == null)
+	// Remember: getPortal()->getPovUser() maybe nullptr, if the portal is subscribed and it's empty.
+	if(getPortal()->getPovUser() == nullptr)
 		return;
 
 	// RAFFO: Immagina sottoscrizione da zero, userebbe i parametri di default finchè non gli arriva l'utente del POV.

@@ -90,7 +90,7 @@ private:
 
 pimpl<StreamFilter>::StreamLayerNone::StreamLayerNone(shared_ptr<IStream> stream) : m_stream(stream)
 {
-	OS_ASSERT(stream != null);
+	OS_ASSERT(stream != nullptr);
 }
 
 pimpl<StreamFilter>::StreamLayerNone::~StreamLayerNone()
@@ -100,7 +100,7 @@ pimpl<StreamFilter>::StreamLayerNone::~StreamLayerNone()
 
 uint32 pimpl<StreamFilter>::StreamLayerNone::read(void *v, uint32 size) const
 {
-	if(m_next != null)
+	if(m_next != nullptr)
 		return m_next->read(v, size);
 
 	return m_stream->read(v, size);
@@ -108,7 +108,7 @@ uint32 pimpl<StreamFilter>::StreamLayerNone::read(void *v, uint32 size) const
 
 uint32 pimpl<StreamFilter>::StreamLayerNone::write(const void *v, uint32 size)
 {
-	if(m_next != null)
+	if(m_next != nullptr)
 		return m_next->write(v, size);
 
 	return m_stream->write(v, size);
@@ -149,7 +149,7 @@ bool pimpl<StreamFilter>::StreamLayerNone::flush()
 
 pimpl<StreamFilter>::pimpl(shared_ptr<IStream> stream) : m_stream(stream)
 {
-	OS_ASSERT(stream != null);
+	OS_ASSERT(stream != nullptr);
 	OS_ASSERT(stream->is_open());
 	addLayer(shared_ptr<StreamLayerNone>(OS_NEW StreamLayerNone(stream)));
 }
@@ -164,7 +164,7 @@ pimpl<StreamFilter>::~pimpl()
 
 void pimpl<StreamFilter>::addLayer(shared_ptr<IStreamLayer> layer)
 {
-	if(layer == null)
+	if(layer == nullptr)
 	{
 		OS_ASSERTFALSE();
 		return;

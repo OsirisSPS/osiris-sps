@@ -33,7 +33,7 @@ class PythonState::locked_error_already_set : public boost::python::error_alread
 public:
 	locked_error_already_set(shared_ptr<PythonState> state) : m_state(state)
 	{
-		OS_ASSERT(state != null);
+		OS_ASSERT(state != nullptr);
 	}
 
 	virtual ~locked_error_already_set() throw()
@@ -83,7 +83,7 @@ void PythonState::enter()
 
 		if(m_state != _PyThreadState_Current)
 		{
-			OS_ASSERT(m_state != null);
+			OS_ASSERT(m_state != nullptr);
 			PyThreadState_Swap(m_state);			
 			m_swapped = true;
 		}
@@ -96,7 +96,7 @@ void PythonState::leave()
 	{
 		OS_ASSERT(m_locked);
 
-		PyThreadState_Swap(null);
+		PyThreadState_Swap(nullptr);
 		m_swapped = false;
 	}
 

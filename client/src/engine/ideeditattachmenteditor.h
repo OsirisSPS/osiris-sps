@@ -44,7 +44,7 @@ class AttachmentEditor : public IObjectEditor
 
 // Construction
 public:
-	AttachmentEditor(shared_ptr<EntitiesEntity> entity = null, shared_ptr<EntitiesEntity> parent = null);
+	AttachmentEditor(shared_ptr<EntitiesEntity> entity = nullptr, shared_ptr<EntitiesEntity> parent = nullptr);
 	virtual ~AttachmentEditor();
 
 // IXSLRenderer interface

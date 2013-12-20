@@ -123,7 +123,7 @@ BandwidthManager::interval_ptr BandwidthManager::getInterval() const
 {
 	OS_LOCK(m_cs);
 
-	if(m_interval == null)
+	if(m_interval == nullptr)
 	{
 		m_interval.reset(OS_NEW Interval());
 	}
@@ -138,7 +138,7 @@ BandwidthManager::interval_ptr BandwidthManager::getInterval() const
 
 void BandwidthManager::addSocket(ILimitedConnection *socket)
 {
-	OS_ASSERT(socket != null);
+	OS_ASSERT(socket != nullptr);
 	OS_LOCK(m_cs);
 	
 	OS_ASSERT(m_sockets.find(socket) == m_sockets.end());
@@ -147,7 +147,7 @@ void BandwidthManager::addSocket(ILimitedConnection *socket)
 
 void BandwidthManager::removeSocket(ILimitedConnection *socket)
 {
-	OS_ASSERT(socket != null);
+	OS_ASSERT(socket != nullptr);
 	OS_LOCK(m_cs);
 
 	OS_ASSERT(m_sockets.find(socket) != m_sockets.end());
@@ -156,7 +156,7 @@ void BandwidthManager::removeSocket(ILimitedConnection *socket)
 
 uint32 BandwidthManager::limitDownload(ILimitedConnection *socket, uint32 requiredDownload) const
 {
-	OS_ASSERT(socket != null);
+	OS_ASSERT(socket != nullptr);
 	OS_LOCK(m_cs);
 
 	if(m_maxDownload != OS_NET_UNLIMITED_BANDWIDTH)
@@ -170,7 +170,7 @@ uint32 BandwidthManager::limitDownload(ILimitedConnection *socket, uint32 requir
 
 uint32 BandwidthManager::limitUpload(ILimitedConnection *socket, uint32 requiredUpload) const
 {
-	OS_ASSERT(socket != null);
+	OS_ASSERT(socket != nullptr);
 	OS_LOCK(m_cs);
 
 	if(m_maxUpload != OS_NET_UNLIMITED_BANDWIDTH)
@@ -184,7 +184,7 @@ uint32 BandwidthManager::limitUpload(ILimitedConnection *socket, uint32 required
 
 void BandwidthManager::handleDownload(ILimitedConnection *socket, uint32 bytes)
 {
-	OS_ASSERT(socket != null);
+	OS_ASSERT(socket != nullptr);
 	OS_LOCK(m_cs);
 
 	// Aggiorna il numero di bytes scaricati nell'intervallo corrente
@@ -195,7 +195,7 @@ void BandwidthManager::handleDownload(ILimitedConnection *socket, uint32 bytes)
 
 void BandwidthManager::handleUpload(ILimitedConnection *socket, uint32 bytes)
 {
-	OS_ASSERT(socket != null);
+	OS_ASSERT(socket != nullptr);
 	OS_LOCK(m_cs);
 
 	// Aggiorna il numero di bytes inviati nell'intervallo corrente

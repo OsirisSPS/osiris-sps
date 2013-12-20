@@ -65,7 +65,7 @@ bool LanguageManager::hasCulture(const String &id) const
 bool LanguageManager::hasCultureNotNeutral(const String &id) const
 {
 	shared_ptr<LanguageCulture> culture = getCulture(id);
-	if(culture != null)
+	if(culture != nullptr)
 		return !culture->isNeutralCulture();
 
 	return false;
@@ -75,7 +75,7 @@ shared_ptr<LanguageCulture> LanguageManager::getCulture(const String &id) const
 {
 	Cultures::const_iterator i = m_cultures.find(String(id).to_lower());
 	if(i == m_cultures.end())
-		return null;
+		return nullptr;
 
 	return i->second;
 }
@@ -140,7 +140,7 @@ String LanguageManager::findText(const String &culture, const String &name, bool
 String LanguageManager::localize(const String &id) const
 {
 	shared_ptr<LanguageCulture> culture = getCulture(id);	
-	if(culture != null)
+	if(culture != nullptr)
 	{
 		if(culture->isNeutralCulture())
 			return culture->getDefaultNotNeutral();
@@ -158,7 +158,7 @@ void LanguageManager::loadCultures(const String &path)
 		return;
 
 	shared_ptr<XMLNode> cultures = document->getRoot();
-	if(cultures == null)
+	if(cultures == nullptr)
 		return;
 
 	OS_ASSERT(cultures->getAttributeString(ID) == "inv");
@@ -170,7 +170,7 @@ void LanguageManager::loadCultures(const String &path)
 
 void LanguageManager::addListener(shared_ptr<LanguageFolderListener> listener)
 {
-	if(listener == null)
+	if(listener == nullptr)
 	{
 		OS_ASSERTFALSE();
 		return;

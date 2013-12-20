@@ -93,10 +93,10 @@ shared_ptr<ObjectsIObject> ObjectsIDescriptor::loadObject(shared_ptr<IPortalData
 
 	DataTable result;
 	if(db->execute(select, result) == false)
-		return null;
+		return nullptr;
 
 	if(result.rows() != 1)
-		return null;
+		return nullptr;
 
 	shared_ptr<ObjectsIObject> object = createObject();
 	object->read(result[0]);
@@ -115,17 +115,17 @@ bool ObjectsIDescriptor::hasStatistics()
 
 shared_ptr<ISearchOptions> ObjectsIDescriptor::getSearchOptions()
 {
-	return null;
+	return nullptr;
 }
 
 ide::edit::editor_ptr ObjectsIDescriptor::createEditControl(shared_ptr<EntitiesEntity> entity, shared_ptr<EntitiesEntity> parent)
 {
-	return null;
+	return nullptr;
 }
 
 ide::view::viewer_ptr ObjectsIDescriptor::createViewControl(shared_ptr<EntitiesEntity> entity)
 {
-	return null;
+	return nullptr;
 }
 
 void ObjectsIDescriptor::createStatistics(shared_ptr<IPortalDatabase> db, shared_ptr<ObjectsIObject> object)

@@ -76,7 +76,7 @@ bool PythonCodeContext::parseString(const String &str)
 
 bool PythonCodeContext::execute(shared_ptr<IExtensionsExtension> extension, bool loaded)
 {
-	if(m_interpreter == null)
+	if(m_interpreter == nullptr)
 	{
 		OS_ASSERTFALSE();
 		return false;

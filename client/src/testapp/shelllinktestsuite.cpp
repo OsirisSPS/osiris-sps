@@ -32,7 +32,7 @@ static void test_empty_shell_link(OsirisLink &link)
 	BOOST_CHECK(link.empty());
 	BOOST_CHECK(link.toString().empty());
 	BOOST_CHECK(link.getType() == OsirisLink::linkInvalid);
-	//BOOST_CHECK(link.getLink() == null);
+	//BOOST_CHECK(link.getLink() == nullptr);
 }
 
 BOOST_AUTO_TEST_CASE(test_shell_link_common)

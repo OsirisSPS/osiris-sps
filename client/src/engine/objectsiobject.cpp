@@ -53,7 +53,7 @@ OS_NAMESPACE_BEGIN()
 ObjectsIObject::ObjectsIObject(PortalObjectType object_type, uint32 object_version) : RecordBase(dataRecordTypeObject),
 																		m_objectType(object_type)
 {
-	OS_ASSERT(getDescriptor() != null);
+	OS_ASSERT(getDescriptor() != nullptr);
 
 	version = object_version;
 }
@@ -81,7 +81,7 @@ uint32 ObjectsIObject::getSize() const
 	{
 		Buffer buff;
 		// Salva il datatree in un buffer non compresso e non criptato
-		if(data.write(buff, false, null))
+		if(data.write(buff, false, nullptr))
             return buff.getSize();
 	}
 
@@ -182,11 +182,11 @@ shared_ptr<ObjectsIObject> ObjectsIObject::clone() const
 {
 	DataTree data;
 	if(write(data) == false)
-		return null;
+		return nullptr;
 
 	shared_ptr<ObjectsIObject> object = getDescriptor()->createObject();
 	if(object->read(id, data) == false)
-		return null;
+		return nullptr;
 
 	return object;
 }
@@ -441,7 +441,7 @@ LanguageResult ObjectsIObject::acceptable(shared_ptr<IPortalDatabase> database) 
 	bool valid = validate(database);
 	if(valid == false)
 	{
-		bool valid = validate(database); // PAZZO
+		bool valid = validate(database); 
 		return LanguageResult("invalid");
 	}
 
@@ -452,7 +452,7 @@ LanguageResult ObjectsIObject::acceptable(shared_ptr<IPortalDatabase> database) 
 	if(isUser() == false)
 	{
 		shared_ptr<ObjectsUser> user = objects_user_cast(database->getPortal()->getObject(database, getAuthor()));
-		if(user == null)
+		if(user == nullptr)
 			return LanguageResult("author_unknown");
 
 		if(isSigned())
@@ -463,7 +463,47 @@ LanguageResult ObjectsIObject::acceptable(shared_ptr<IPortalDatabase> database) 
 		}
 	}
 
-	
+	// Pov WhiteList
+	{
+		String povList = database->getPortal()->getOptionsShared()->getPovWhiteList();
+		String povCurrent = pov->getString();
+		if(povList != _S("*"))
+		{
+			bool found = false;
+			if(povList.empty())
+				found = (povCurrent == database->getPortal()->getPovID().getString());
+			else						
+			{
+				StringVector values;
+				utils::split(povList, _S(";"), values);
+				for(uint32 i = 0; i < values.size(); i++)
+				{
+					if(values[i] == povCurrent)
+					{
+						found = true;
+						break;
+					}			
+				}
+			}
+
+			if(found == false)
+				return LanguageResult("pov_rejected");
+		}		
+	}
+
+	// Pov BlackList
+	{
+		String povList = database->getPortal()->getOptionsShared()->getPovBlackList();
+		String povCurrent = pov->getString();
+
+		StringVector values;
+		utils::split(povList, _S(";"), values);
+		for(uint32 i = 0; i < values.size(); i++)
+		{
+			if(values[i] == povCurrent)
+				return LanguageResult("pov_rejected");			
+		}		
+	}
 
 	// Objects Max Size
 	uint32 size = getSize();
@@ -533,7 +573,7 @@ bool ObjectsIObject::onCreate(const shared_ptr<IPortalDatabase> &db, const Buffe
 		// Genera un nuovo id per l'oggetto
 		// TOCHECK: Perchè solo per i revisionabili? forse CLODOURGENT
 		shared_ptr<ObjectsIRevisionable> revision = objects_revisionable_cast(get_this_ptr<ObjectsIObject>());
-		if(revision != null)			
+		if(revision != nullptr)			
 		{			
 			id = ObjectID::generate();
 		}

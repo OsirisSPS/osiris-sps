@@ -39,7 +39,7 @@ MemFile::~MemFile()
 
 bool MemFile::open()
 {
-	if(m_buffer == null)
+	if(m_buffer == nullptr)
 		m_buffer.reset(OS_NEW Buffer());
 
 	return true;
@@ -47,7 +47,7 @@ bool MemFile::open()
 
 bool MemFile::is_open() const
 {
-	return m_buffer != null;
+	return m_buffer != nullptr;
 }
 
 bool MemFile::close()
@@ -58,7 +58,7 @@ bool MemFile::close()
 
 uint32 MemFile::read(void *v, uint32 size) const
 {
-	if(m_buffer == null)
+	if(m_buffer == nullptr)
 		return 0;
 
 	return m_buffer->read(v, size);
@@ -66,7 +66,7 @@ uint32 MemFile::read(void *v, uint32 size) const
 
 uint32 MemFile::write(const void *v, uint32 size)
 {
-	if(m_buffer == null)
+	if(m_buffer == nullptr)
 		return 0;
 
 	return m_buffer->write(v, size);
@@ -74,7 +74,7 @@ uint32 MemFile::write(const void *v, uint32 size)
 
 bool MemFile::seek(uint64 offset, SeekPosition from) const
 {
-	if(m_buffer == null)
+	if(m_buffer == nullptr)
 		return false;
 
 	// Il buffer opera su un uint32 pertanto la conversione non causa problemi
@@ -108,7 +108,7 @@ bool MemFile::seek(uint64 offset, SeekPosition from) const
 
 uint64 MemFile::position() const
 {
-	if(m_buffer == null)
+	if(m_buffer == nullptr)
 		return 0;
 
 	return m_buffer->getOffset();
@@ -116,7 +116,7 @@ uint64 MemFile::position() const
 
 uint64 MemFile::size() const
 {
-	if(m_buffer == null)
+	if(m_buffer == nullptr)
 		return 0;
 
 	return m_buffer->getSize();
@@ -124,12 +124,12 @@ uint64 MemFile::size() const
 
 bool MemFile::flush()
 {
-	return m_buffer != null;
+	return m_buffer != nullptr;
 }
 
 bool MemFile::eof() const
 {
-	if(m_buffer == null)
+	if(m_buffer == nullptr)
 		return true;
 
 	return m_buffer->getPosition() == m_buffer->getEndPosition();

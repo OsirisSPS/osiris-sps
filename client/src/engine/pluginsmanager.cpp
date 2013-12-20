@@ -56,7 +56,7 @@ shared_ptr<Plugin> PluginsManager::getPlugin(const String &id) const
 	if(i != m_plugins.end())
 		return i->second;
 
-	return null;
+	return nullptr;
 }
 
 String PluginsManager::getDataPath() const

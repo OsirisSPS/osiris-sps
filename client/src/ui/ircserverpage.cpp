@@ -40,9 +40,9 @@ END_EVENT_TABLE()
 //////////////////////////////////////////////////////////////////////
 
 IRCServerPage::IRCServerPage(IRCWindow *ircWindow, wxWindow *parent) : WindowBase(ircWindow, parent),
-																	   m_eventsCtrl(null),
-																	   m_channelsCtrl(null),
-																	   m_splitter(null)
+																	   m_eventsCtrl(nullptr),
+																	   m_channelsCtrl(nullptr),
+																	   m_splitter(nullptr)
 {
 	createLayout();
 	initWindow();
@@ -71,7 +71,7 @@ void IRCServerPage::updateChannels()
 	m_channelsCtrl->DeleteAllItems();
 
 	shared_ptr<IRCSession> session = getSession();
-	if(session == null)
+	if(session == nullptr)
 	{
 		OS_ASSERTFALSE();
 		return;
@@ -81,7 +81,7 @@ void IRCServerPage::updateChannels()
 	for(IRCSession::Channels::const_iterator i = channels->begin(); i != channels->end(); ++i)
 	{
 		shared_ptr<IRCChannel> channel = i->second;
-		if(channel == null)
+		if(channel == nullptr)
 		{
 			OS_ASSERTFALSE();
 			continue;
@@ -176,7 +176,7 @@ bool IRCServerPage::processCommand(const String &command)
 	OS_ASSERT(command.ends_with(OS_IRC_COMMANDS_TERMINATOR) == false);
 
 	shared_ptr<IRCSession> session = getSession();
-	if(session == null)
+	if(session == nullptr)
 		return false;
 
 	return session->addRequest(shared_ptr<IRCCommandRaw>(OS_NEW IRCCommandRaw(session, command.to_utf8() + OS_IRC_COMMANDS_TERMINATOR)), true);

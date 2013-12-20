@@ -77,7 +77,7 @@ void test_collections(T &collection)
 
 	BOOST_CHECK(collection.exists(3));
 	BOOST_CHECK(collection.exists(5) == false);
-	BOOST_CHECK(collection.get(4) != null);
+	BOOST_CHECK(collection.get(4) != nullptr);
 
 	collection.push_front(0, typename T::type_ptr(new String("foo")));
 	BOOST_CHECK(*collection.front() == _S("foo"));
@@ -90,7 +90,7 @@ void test_collections(T &collection)
 	BOOST_CHECK(collection.key_at(0) == 1);
 	BOOST_CHECK(*collection.value_at(0) == _S("alfa"));
 	BOOST_CHECK(*collection[1] == _S("alfa"));
-	BOOST_CHECK(collection[0] == null);
+	BOOST_CHECK(collection[0] == nullptr);
 }
 
 //////////////////////////////////////////////////////////////////////

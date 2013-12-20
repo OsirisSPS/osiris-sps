@@ -178,7 +178,7 @@ void OptionsWizardPageGeneral::initWindow()
 
 void OptionsWizardPageGeneral::loadCulture(shared_ptr<LanguageCulture> culture)
 {
-	if(culture == null)
+	if(culture == nullptr)
 		return;
 
     if(culture->getTranslationDerivedAvaible() && culture->isNeutralCulture() == false)
@@ -227,7 +227,7 @@ void OptionsWizardPageGeneral::saveOptions()
 	if(item != -1)
 	{
 		wxStringClientData *itemData = dynamic_cast<wxStringClientData *>(m_languageComboBox->GetClientObject(item));
-		if(itemData != null)
+		if(itemData != nullptr)
 		{
 			Options::instance()->setOption(Options::language_options::id, conversions::to_utf16(itemData->GetData()));
 		}

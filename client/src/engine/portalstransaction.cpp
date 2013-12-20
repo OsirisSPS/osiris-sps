@@ -54,7 +54,7 @@ void PortalsTransaction::setExclusiveAccess(bool exclusiveAccess)
 {
 	if(exclusiveAccess)
 	{
-		if(m_lock == null)
+		if(m_lock == nullptr)
 		{
 			m_lockData->addExclusiveRequest();
 			m_lock.reset(OS_NEW_T(boost::recursive_mutex::scoped_lock)(m_lockData->getDatabaseExclusiveLock()));

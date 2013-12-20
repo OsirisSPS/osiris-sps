@@ -43,7 +43,7 @@ const String Connection::NAME = _S("name");
 
 Connection::Connection(const String &database, shared_ptr<IDbOptions> options, shared_ptr<IDbDriver> driver) : ConnectionBase(database, options, driver)
 {
-	m_connection = null;
+	m_connection = nullptr;
 
 	m_showSql = OS_NAMESPACE_NAME::Options::instance()->getOption<bool>(_S("developer.show_sql"));	
 
@@ -60,7 +60,7 @@ Connection::~Connection()
 String Connection::_getPath() const
 {
 	shared_ptr<Driver> driver = boost::dynamic_pointer_cast<Driver>(getDriver());
-	if(driver == null)
+	if(driver == nullptr)
 	{
 		OS_ASSERTFALSE();
 		return String::EMPTY;
@@ -96,7 +96,7 @@ void Connection::connect(const String &filename)
 
 void Connection::_check(sqlite3 *connection)
 {
-	OS_EXCEPT_IF(m_connection == null, "Connection not opened");
+	OS_EXCEPT_IF(m_connection == nullptr, "Connection not opened");
 }
 
 #ifdef OS_ENABLE_DATABASE_ANALYZE
@@ -123,8 +123,8 @@ String Connection::preAnalyze(const String &sql)
 	if(sql.find(_S("os_monitor")) != String::npos)
 		return _S("");
 
-	static shared_ptr<Connection> connectionAnalyze = null;
-	if(connectionAnalyze == null)
+	static shared_ptr<Connection> connectionAnalyze = nullptr;
+	if(connectionAnalyze == nullptr)
 	{
 		shared_ptr<Driver> driver = boost::dynamic_pointer_cast<Driver>(getDriver());
 		String path = driver->getDatabasePath(_S("monitor.db"));
@@ -187,11 +187,11 @@ String Connection::preAnalyze(const String &sql)
 			indexUsed.trim();
 		}
 
-		String sqlInsert = String::format(_S("insert into os_monitor values ('%S','%S',%u,%u,%u,%d,%d,'%S','%S')").c_str(), m_filename.c_str(), keySql.c_str(), conn, thread != null ? *thread : 0, trans, order, from, detail.c_str(), indexUsed.c_str());
+		String sqlInsert = String::format(_S("insert into os_monitor values ('%S','%S',%u,%u,%u,%d,%d,'%S','%S')").c_str(), m_filename.c_str(), keySql.c_str(), conn, thread != nullptr ? *thread : 0, trans, order, from, detail.c_str(), indexUsed.c_str());
 		doExecute(connectionAnalyze->m_connection, sqlInsert);
 	}
 
-	String trace = String::format(_S("Sqlite monitor: sql='%S',conn=%u,thread=%u,trans=%u\n").c_str(), sql.c_str(), conn, thread != null ? *thread : 0, trans);
+	String trace = String::format(_S("Sqlite monitor: sql='%S',conn=%u,thread=%u,trans=%u\n").c_str(), sql.c_str(), conn, thread != nullptr ? *thread : 0, trans);
 	//OS_TRACE(trace);
 
 	//RealtimeStatsManager::signal(_S("Sqlite ") + keySql.mid(0,6), 1, RealtimeStatsCounter::ctRelative, _S("items"));
@@ -206,10 +206,10 @@ void Connection::open()
 
 void Connection::close()
 {
-	if(m_connection != null)
+	if(m_connection != nullptr)
 	{
 		sqlite3_close(m_connection);
-		m_connection = null;
+		m_connection = nullptr;
 	}
 }
 
@@ -308,7 +308,7 @@ void Connection::doQuery(sqlite3 *connection, const String &sql, DataTable &tabl
 	table.clear();
 
 	shared_ptr<Result> result = doQuery(connection, sql);
-	if(result != null)
+	if(result != nullptr)
 		result->bind(table);
 }
 

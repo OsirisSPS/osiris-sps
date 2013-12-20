@@ -170,18 +170,18 @@ void IsisEndpoint::update(shared_ptr<ConnectionsManager> connectionsManager)
 		return;
 	}	
 
-	if(connectionsManager == null)
+	if(connectionsManager == nullptr)
 	{
 		OS_ASSERTFALSE();
 		return;
 	}	
 
 	shared_ptr<IsisConnection> activeConnection = getActiveConnection();
-	if(activeConnection != null)
+	if(activeConnection != nullptr)
 		return;	
 
 	shared_ptr<Portal> portal = PortalsSystem::instance()->getPortal(m_portalID, m_povID);
-	if(portal == null)
+	if(portal == nullptr)
 		return;	
 
 	activeConnection.reset(OS_NEW IsisConnection(portal, get_this_ptr(), connectionsManager, Engine::instance()->createTCPSocket(connectionsManager->getService(), true, true), m_url));
@@ -196,7 +196,7 @@ void IsisEndpoint::close()
     OS_LOCK(m_cs);
 
 	shared_ptr<IsisConnection> activeConnection = getActiveConnection();
-	if(activeConnection != null)
+	if(activeConnection != nullptr)
 		activeConnection->notifyCompleted();
 }
 
@@ -205,7 +205,7 @@ void IsisEndpoint::parseSystemInformation(shared_ptr<XMLNode> root)
 	OS_LOCK(m_cs);
 	
 	shared_ptr<XMLNode> optionsNode = root->getNode(OS_XMLOPTIONS_NODE_ROOT);
-	if(optionsNode != null)
+	if(optionsNode != nullptr)
 	{
 		m_isisOptions.parseXMLNode(optionsNode);
 
@@ -235,7 +235,7 @@ bool IsisEndpoint::canStart()
 	}
 	
 	shared_ptr<Portal> portal = PortalsSystem::instance()->getPortal(m_portalID, m_povID);
-	if(portal == null)
+	if(portal == nullptr)
 	{
 		setLastEvent(_S("Disabled, portal not found."));
 		return false;	
@@ -243,7 +243,7 @@ bool IsisEndpoint::canStart()
 
 	/*
 	entities::snapshot_profile_ptr profile = portal->getSnapshotManager()->getProfile(getSnapshotProfileID());
-	if(profile == null)
+	if(profile == nullptr)
 	{
 		// Non c'è il profilo, è necessario chiamare la "system" per costruirlo, quindi ok.
 		return true;
@@ -251,7 +251,7 @@ bool IsisEndpoint::canStart()
 	else
 	{
 	*/
-		//bool snapshotReady = ( (profile != null) && (profile->getStabilityStatus() == entities::ssDone) );
+		//bool snapshotReady = ( (profile != nullptr) && (profile->getStabilityStatus() == entities::ssDone) );
 		bool snapshotReady = (portal->getSnapshotManager()->getStabilityStatus() == EntitiesSnapshotManager::ssDone);
 		if(snapshotReady)
 		{

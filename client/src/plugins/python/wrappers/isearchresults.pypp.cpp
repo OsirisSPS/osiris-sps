@@ -6,8 +6,8 @@
 #include "__call_policies.pypp.hpp"
 #include "isearchresults.h"
 #include "searchresult.h"
-#include "searchresultsdatabase.h"
 #include "searchresultslucene.h"
+#include "searchresultsdatabase.h"
 #include "isearchresults.pypp.hpp"
 
 namespace bp = boost::python;
@@ -17,7 +17,7 @@ struct ISearchResults_wrapper : ::osiris::ISearchResults, ::osiris::PythonWrappe
     ISearchResults_wrapper( )
     : ::osiris::ISearchResults( )
       , ::osiris::PythonWrapper< ::osiris::ISearchResults >(){
-        // null constructor
+        // nullptr constructor
     
     }
 
@@ -234,8 +234,8 @@ void register_ISearchResults_class(){
         ::boost::python::implicitly_convertible< boost::shared_ptr< ::osiris::ISearchResults >, boost::shared_ptr< ::boost::noncopyable_::noncopyable > >();
         ::boost::python::implicitly_convertible< boost::shared_ptr< ::osiris::ISearchResults >, boost::shared_ptr< ::osiris::enable_this_ptr< osiris::ISearchResults > > >();
         ::boost::python::implicitly_convertible< boost::shared_ptr< ::osiris::ISearchResults >, boost::shared_ptr< ::osiris::Object > >();
-        ::boost::python::implicitly_convertible< boost::shared_ptr< ::osiris::SearchResultsDatabase >, boost::shared_ptr< ::osiris::ISearchResults > >();
         ::boost::python::implicitly_convertible< boost::shared_ptr< ::osiris::SearchResultsLucene >, boost::shared_ptr< ::osiris::ISearchResults > >();
+        ::boost::python::implicitly_convertible< boost::shared_ptr< ::osiris::SearchResultsDatabase >, boost::shared_ptr< ::osiris::ISearchResults > >();
     }
 
 }

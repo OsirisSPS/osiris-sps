@@ -82,20 +82,20 @@ shared_ptr<HttpData> IHttpMethod::serialize() const
     shared_ptr<HttpData> content = createContent();
 
 	shared_ptr<HttpData> header = createHeader(content);
-	if(header == null)
+	if(header == nullptr)
 	{
 	    OS_ASSERTFALSE();
-		return null;
+		return nullptr;
 	}
 
 	// TODO: aggiungere gli headers comuni (valorizzare anche gli attributi relativi al content es.: length, type, ecc...)
 
-    if(content != null)
+    if(content != nullptr)
         header->writeHeaderParam(OS_HTTP_PARAM_CONTENTLENGTH, conversions::to_string(content->getSize()));
 
 	header->writeHeaderLineTerminator();
 
-	if(content != null)
+	if(content != nullptr)
         header->write(content->getData(), content->getSize());
 
 	return header;
@@ -113,7 +113,7 @@ IHttpMethod::MethodStatus IHttpMethod::writeData(const void *data, uint32 size)
 									{
 										// Ricerca il terminatore di fine header
 										const char *terminator = reinterpret_cast<const char *>(m_buffer->find(reinterpret_cast<const byte *>(httpHeaderTerminator.c_str()), static_cast<uint32>(httpHeaderTerminator.size())));
-										if(terminator != null)
+										if(terminator != nullptr)
 										{
 											char *pHeaders = reinterpret_cast<char *>(m_buffer->getData());
 											// Calcola la dimensione dell'header
@@ -184,7 +184,7 @@ void IHttpMethod::changeStatus(MethodStatus status)
 shared_ptr<HttpData> IHttpMethod::createContent() const
 {
     if(m_content->empty())
-        return null;
+        return nullptr;
 
     shared_ptr<HttpData> content(OS_NEW HttpData());
     // Scrive il contenuto del metodo (se valorizzato)

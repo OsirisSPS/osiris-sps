@@ -68,10 +68,10 @@ IObjectEditor::IObjectEditor(PortalObjectType type, shared_ptr<EntitiesEntity> e
 {
 	OS_ASSERT(type != portalObjectTypeUnknown);
 
-	OS_EXCEPT_IF(entity != null && entity->getObjectType() != type, "Invalid object type");
+	OS_EXCEPT_IF(entity != nullptr && entity->getObjectType() != type, "Invalid object type");
 	m_entity = entity;
 
-	OS_EXCEPT_IF(parent != null && parent->allowChild(type) == false, "Invalid child");
+	OS_EXCEPT_IF(parent != nullptr && parent->allowChild(type) == false, "Invalid child");
 	m_parent = parent;
 
 	OS_ASSERT(IPortalDatabase::isRevisionable(type));
@@ -128,10 +128,10 @@ const EntityID & IObjectEditor::getParentID() const
 EntityID IObjectEditor::getParentID() const
 #endif
 {
-	if(m_parent != null)
+	if(m_parent != nullptr)
 		return m_parent->getEntityID();
 
-	if(m_entity != null)
+	if(m_entity != nullptr)
 		return m_entity->getParentID();
 
 	return EntityID::EMPTY;
@@ -144,10 +144,10 @@ EntityID IObjectEditor::getEntityID() const
 #endif
 {
 	/*
-	if( (m_entity != null) && (m_entity->getPrimary() != null) )
+	if( (m_entity != nullptr) && (m_entity->getPrimary() != nullptr) )
 		return m_entity->getPrimary()->id;
 	*/
-	if(m_entity != null) 
+	if(m_entity != nullptr) 
 		return m_entity->getEntityID();
 
 	return EntityID::EMPTY;
@@ -156,7 +156,7 @@ EntityID IObjectEditor::getEntityID() const
 void IObjectEditor::onCreateObject()
 {
 	shared_ptr<ObjectsIRevisionable> object = createObject();
-	if(object == null)
+	if(object == nullptr)
 	{
 		getPage()->showError(getPage()->getText(_S("object.editor.error")));
 		return;
@@ -239,8 +239,8 @@ void IObjectEditor::onInit()
 	}
 
 	double currentPosition = 0;
-	shared_ptr<EntitiesEntity> parentEntity = (m_parent != null) ? m_parent : m_entity->getParent(getDatabase());
-	if((m_entity != null) && (m_entity->getCurrent() != null))
+	shared_ptr<EntitiesEntity> parentEntity = (m_parent != nullptr) ? m_parent : m_entity->getParent(getDatabase());
+	if((m_entity != nullptr) && (m_entity->getCurrent() != nullptr))
 		currentPosition = m_entity->getCurrent()->position;
 	m_position->setPosition(parentEntity, currentPosition);
 

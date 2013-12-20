@@ -104,7 +104,7 @@ void ModelEditor::onPreRender()
 	if(isRevision() && getPostBack() == false)
 	{
 		shared_ptr<ObjectsModel> current = objects_model_cast(getCurrent());
-		if(current != null)
+		if(current != nullptr)
 		{
 			m_title->setValue(current->title);
      		m_description->setValue(current->description);

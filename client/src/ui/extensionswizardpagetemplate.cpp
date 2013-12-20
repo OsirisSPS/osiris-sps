@@ -83,7 +83,7 @@ shared_ptr<ExtensionsWizardPageTemplate::TemplateDetails> ExtensionsWizardPageTe
 	if(i != m_templatesMap.end())
 		return i->second;
 
-	return null;
+	return nullptr;
 }
 
 void ExtensionsWizardPageTemplate::createLayout()
@@ -200,7 +200,7 @@ void ExtensionsWizardPageTemplate::loadTemplates()
 {
 	OS_ASSERT(m_templatesMap.empty());
 
-	m_templateType->Select(addTemplate("None", null));
+	m_templateType->Select(addTemplate("None", nullptr));
 
 	String templatesFolder = utils::makeFolderPath(Application::instance()->getTemplatesPath(), "extensions");
 
@@ -215,7 +215,7 @@ void ExtensionsWizardPageTemplate::loadTemplates()
 			if(FileSystem::instance()->fileExists(filename))
 			{
 				shared_ptr<TemplateDetails> details = loadTemplate(folder, filename);
-				if(details != null)
+				if(details != nullptr)
 				{
 					int32 index = m_templateType->Append(conversions::from_utf16<wxString>(details->getName()));
 					if(index != -1)
@@ -236,20 +236,20 @@ shared_ptr<ExtensionsWizardPageTemplate::TemplateDetails> ExtensionsWizardPageTe
 {
 	shared_ptr<XMLDocument> document(OS_NEW XMLDocument());
 	if(document->parseFile(filename) == false)
-		return null;
+		return nullptr;
 
 	shared_ptr<XMLNode> root = document->getRoot();
-	if(root == null)
+	if(root == nullptr)
 	{
 		OS_ASSERTFALSE();
-		return null;
+		return nullptr;
 	}
 
 	String name = root->getAttributeString("name");
 	if(name.empty())
 	{
 		OS_ASSERTFALSE();
-		return null;
+		return nullptr;
 	}
 
 	shared_ptr<TemplateDetails> details(OS_NEW TemplateDetails(folder));
@@ -261,17 +261,17 @@ shared_ptr<ExtensionsWizardPageTemplate::TemplateDetails> ExtensionsWizardPageTe
 	StringList files;
 	
 	shared_ptr<XMLNode> nodeFiles = root->getNode("files");
-	if(nodeFiles == null)
+	if(nodeFiles == nullptr)
 	{
 		OS_ASSERTFALSE();
-		return null;
+		return nullptr;
 	}
 
 	shared_ptr<XMLNodes> nodeFilesNodes = nodeFiles->getNodes();
-	if(nodeFiles == null)
+	if(nodeFiles == nullptr)
 	{
 		OS_ASSERTFALSE();
-		return null;
+		return nullptr;
 	}
 
 	for(XMLNodes::const_iterator i = nodeFilesNodes->begin(); i != nodeFilesNodes->end(); ++i)
@@ -283,7 +283,7 @@ shared_ptr<ExtensionsWizardPageTemplate::TemplateDetails> ExtensionsWizardPageTe
 		if(details->addFile(nodeFile->getAttributeString("target"), nodeFile->getAttributeString("source"), nodeFile->getAttributeBool("script"), nodeFile->getAttributeBool("macro")) == false)
 		{
 			OS_ASSERTFALSE();
-			return null;
+			return nullptr;
 		}
 	}	
 
@@ -312,15 +312,15 @@ void ExtensionsWizardPageTemplate::updateCurrentTemplate()
 		details = m_templatesMap[index];
 	}
 
-	bool enable = details != null;
+	bool enable = details != nullptr;
 	
 	m_templateAuthorLabel->Enable(enable);
 	m_templateAuthor->Enable(enable);
-	m_templateAuthor->SetLabel(conversions::from_utf16<wxString>(details != null ? details->getAuthor() : _S("-")));
+	m_templateAuthor->SetLabel(conversions::from_utf16<wxString>(details != nullptr ? details->getAuthor() : _S("-")));
 
 	m_templateDescriptionLabel->Enable(enable);
 	m_templateDescription->Enable(enable);
-	m_templateDescription->SetLabel(conversions::from_utf16<wxString>(details != null ? details->getDescription() : _S("-")));
+	m_templateDescription->SetLabel(conversions::from_utf16<wxString>(details != nullptr ? details->getDescription() : _S("-")));
 }
 
 void ExtensionsWizardPageTemplate::onTemplateSelChanged(wxCommandEvent &e)

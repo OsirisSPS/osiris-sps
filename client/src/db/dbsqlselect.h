@@ -95,7 +95,7 @@ protected:
 inline DbSqlSelect::ConnectionType DbSqlSelect::getConnectionType() const { return m_connectionType; }
 inline void DbSqlSelect::setConnectionType(ConnectionType type) { m_connectionType = type; }
 inline shared_ptr<DbSqlSelect> DbSqlSelect::getConnection() const { return m_connection; }
-inline bool DbSqlSelect::isCompound() const { return m_connection != null; }
+inline bool DbSqlSelect::isCompound() const { return m_connection != nullptr; }
 
 //////////////////////////////////////////////////////////////////////
 

@@ -14,7 +14,7 @@ struct Options_wrapper : ::osiris::Options, ::osiris::PythonWrapper< ::osiris::O
     Options_wrapper( )
     : ::osiris::Options( )
       , ::osiris::PythonWrapper< ::osiris::Options >(){
-        // null constructor
+        // nullptr constructor
     
     }
 

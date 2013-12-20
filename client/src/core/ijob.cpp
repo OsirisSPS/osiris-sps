@@ -110,7 +110,7 @@ public:
 pimpl<IJob>::JobRunner::JobRunner(pimpl<IJob> *job, IJob::JobStatus status) : m_job(job),
 																			  m_status(status)
 {
-	OS_ASSERT(job != null);
+	OS_ASSERT(job != nullptr);
 }
 
 pimpl<IJob>::JobRunner::~JobRunner()
@@ -162,7 +162,7 @@ bool pimpl<IJob>::getRunnable(uint32 *timeout) const
 {
     OS_LOCK(m_cs);
 
-	if(timeout != null)
+	if(timeout != nullptr)
 		*timeout = 0;
 
 	if(m_delay.is_not_a_date_time())
@@ -173,7 +173,7 @@ bool pimpl<IJob>::getRunnable(uint32 *timeout) const
 	if(now >= m_delay)
 		return true;
 
-	if(timeout != null)
+	if(timeout != nullptr)
 	{
 		OS_ASSERT((m_delay - now).total_milliseconds() == static_cast<uint64>(static_cast<uint32>((m_delay - now).total_milliseconds())));		// Non dovrebbe esserci perdita di dati
 		*timeout = static_cast<uint32>((m_delay - now).total_milliseconds());

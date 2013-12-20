@@ -48,18 +48,18 @@ XMLManager::~XMLManager()
 
 bool XMLManager::parseBuffer(const Buffer &buffer, IXMLHandler *handler, shared_ptr<XMLSchema> schema, const String &encoding)
 {
-	xerces::MemBufInputSource inputSource(reinterpret_cast<const XMLByte *>(buffer.getData()), static_cast<XMLSize_t>(buffer.getSize()), static_cast<const XMLCh *>(null), false);
+	xerces::MemBufInputSource inputSource(reinterpret_cast<const XMLByte *>(buffer.getData()), static_cast<XMLSize_t>(buffer.getSize()), static_cast<const XMLCh *>(nullptr), false);
 	// N.B.: non settare una stringa vuota
 	if(encoding.empty() == false)
 		inputSource.setEncoding(encoding.c_str());
 
-	return xerces::parseSource(inputSource, handler, schema != null ? schema->m_impl->getSource() : null);
+	return xerces::parseSource(inputSource, handler, schema != nullptr ? schema->m_impl->getSource() : nullptr);
 }
 
 bool XMLManager::parseFile(const String &filename, IXMLHandler *handler, shared_ptr<XMLSchema> schema)
 {
 	xerces::LocalFileInputSource inputSource(filename.c_str());
-	return xerces::parseSource(inputSource, handler, schema != null ? schema->m_impl->getSource() : null);
+	return xerces::parseSource(inputSource, handler, schema != nullptr ? schema->m_impl->getSource() : nullptr);
 }
 
 bool XMLManager::parseString(const String &str, IXMLHandler *handler, shared_ptr<XMLSchema> schema)
@@ -67,20 +67,20 @@ bool XMLManager::parseString(const String &str, IXMLHandler *handler, shared_ptr
 	xerces::MemBufInputSource inputSource(reinterpret_cast<const XMLByte *>(str.buffer()), static_cast<XMLSize_t>(str.buffer_size()), "", false);
 	inputSource.setEncoding(String(OS_XML_ENCODING_UTF16).c_str());
 
-	return xerces::parseSource(inputSource, handler, schema != null ? schema->m_impl->getSource() : null);
+	return xerces::parseSource(inputSource, handler, schema != nullptr ? schema->m_impl->getSource() : nullptr);
 }
 
 bool XMLManager::parseStringUTF8(const std::string &str, IXMLHandler *handler, shared_ptr<XMLSchema> schema)
 {
-	xerces::MemBufInputSource inputSource(reinterpret_cast<const XMLByte *>(str.data()), static_cast<XMLSize_t>(str.size()), static_cast<const XMLCh *>(null), false);
+	xerces::MemBufInputSource inputSource(reinterpret_cast<const XMLByte *>(str.data()), static_cast<XMLSize_t>(str.size()), static_cast<const XMLCh *>(nullptr), false);
 	inputSource.setEncoding(String(OS_XML_ENCODING_UTF8).c_str());
 
-	return xerces::parseSource(inputSource, handler, schema != null ? schema->m_impl->getSource() : null);
+	return xerces::parseSource(inputSource, handler, schema != nullptr ? schema->m_impl->getSource() : nullptr);
 }
 
 bool XMLManager::parseStream(shared_ptr<IStream> stream, IXMLHandler *handler, shared_ptr<XMLSchema> schema, const String &encoding)
 {
-	if(stream == null)
+	if(stream == nullptr)
 	{
 		OS_ASSERTFALSE();
 		return false;
@@ -91,14 +91,14 @@ bool XMLManager::parseStream(shared_ptr<IStream> stream, IXMLHandler *handler, s
 	if(encoding.empty() == false)
 		inputSource.setEncoding(encoding.c_str());
 
-	return xerces::parseSource(inputSource, handler, schema != null ? schema->m_impl->getSource() : null);
+	return xerces::parseSource(inputSource, handler, schema != nullptr ? schema->m_impl->getSource() : nullptr);
 }
 
 bool XMLManager::parseUrl(const HttpUrl &url, IXMLHandler *handler, const String &userAgent, shared_ptr<boost::asio::io_service> service, shared_ptr<TCPSocket> socket, shared_ptr<XMLSchema> schema)
 {
 	OS_ASSERT(url.empty() == false);
 
-	if(service == null || socket == null)
+	if(service == nullptr || socket == nullptr)
 	{
 		OS_ASSERTFALSE();
 		return false;
@@ -165,7 +165,7 @@ bool XMLManager::writeStringUTF8(const XMLDocument &document, std::string &str) 
 
 bool XMLManager::writeStream(const XMLDocument &document, shared_ptr<IStream> stream, const String &encoding) const
 {
-	if(stream == null)
+	if(stream == nullptr)
 	{
 		OS_ASSERTFALSE();
 		return false;

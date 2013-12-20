@@ -34,7 +34,7 @@ void centerWindow(wxWindow *window)
 {
 	// Fix MAC (wxWidgets 2.9.0): CenterOnScreen() non funziona, Center() non va in alcuni casi
 
-	OS_ASSERT(window != null);
+	OS_ASSERT(window != nullptr);
 
 	wxSize size;
 	window->GetSize(&size.x, &size.y);

@@ -62,7 +62,7 @@ void SectionStats::exportXML(shared_ptr<XMLPortalExporter> exporter)
 	if(last_topic->empty() == false)
 	{
 		shared_ptr<EntitiesEntity> lastTopicEntity = exporter->getPage()->getPortal()->getEntity(exporter->getDatabase(), last_topic);
-		if(lastTopicEntity != null)
+		if(lastTopicEntity != nullptr)
 		{
 			shared_ptr<XMLPortalExporter> lastTopicExporter = exporter->createChild<XMLPortalExporter>(exporter->getNodeStats()->addChild(OS_FORUMS_SECTION_STATS_LAST_TOPIC));
 			lastTopicExporter->setWithStats(false);		// Per evitare di andare in ricorsivo
@@ -73,7 +73,7 @@ void SectionStats::exportXML(shared_ptr<XMLPortalExporter> exporter)
 	if(last_message->empty() == false)
 	{
 		shared_ptr<EntitiesEntity> lastMessageEntity = exporter->getPage()->getPortal()->getEntity(exporter->getDatabase(), last_message);
-		if(lastMessageEntity != null)
+		if(lastMessageEntity != nullptr)
 		{
 			shared_ptr<XMLPortalExporter> lastMessageExporter = exporter->createChild<XMLPortalExporter>(exporter->getNodeStats()->addChild(OS_FORUMS_SECTION_STATS_LAST_MESSAGE));
 			lastMessageExporter->setWithStats(false);		// Per evitare di andare in ricorsivo

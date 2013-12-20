@@ -14,7 +14,7 @@ struct StaticSingleton_less__osiris_scope_Options_comma__true__greater__wrapper 
     StaticSingleton_less__osiris_scope_Options_comma__true__greater__wrapper( )
     : ::osiris::StaticSingleton<osiris::Options, true>( )
       , ::osiris::PythonWrapper< ::osiris::StaticSingleton< osiris::Options, true > >(){
-        // null constructor
+        // nullptr constructor
     
     }
 

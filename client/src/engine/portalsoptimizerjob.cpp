@@ -50,7 +50,7 @@ PortalsOptimizerJob::~PortalsOptimizerJob()
 IJob::JobStatus PortalsOptimizerJob::run()
 {
 	shared_ptr<Portal> portal = getPortal();
-	if(portal == null)
+	if(portal == nullptr)
 		return jobComplete;
 
 	NotificationsManager::instance()->notify(_S("Optimization of '") + portal->getPovName() + _S("' started."));
@@ -84,7 +84,7 @@ shared_ptr<IBackgroundJob::Details> PortalsOptimizerJob::getDetails() const
 	String jobName(Engine::instance()->getText("job.optimizer"));
 
 	shared_ptr<Portal> portal = getPortal();
-	if(portal != null)
+	if(portal != nullptr)
 	{
 		jobName.append(" - ");
 		jobName.append(portal->getPovName());

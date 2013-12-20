@@ -60,13 +60,13 @@ String Forum::getName()
 
 shared_ptr<ExtensionsComponentEditor> Forum::createEditor(shared_ptr<EntitiesEntity> entity)
 {
-	return null;
+	return nullptr;
 }
 
 shared_ptr<ExtensionsComponentViewer> Forum::createViewer(shared_ptr<EntitiesEntity> entity)
 {
-	if(entity != null && entity->getObjectType() != portalObjectTypeText)
-		return null;	// Il componente renderizza solo se stesso o un oggetto di tipo testo
+	if(entity != nullptr && entity->getObjectType() != portalObjectTypeText)
+		return nullptr;	// Il componente renderizza solo se stesso o un oggetto di tipo testo
 
 	return shared_ptr<ExtensionsComponentViewer>(OS_NEW ForumViewer(entity));
 }
@@ -85,7 +85,7 @@ void Forum::exportXML(const EntityID &id, shared_ptr<XMLPortalExporter> exporter
 	if(exporter->getWithStats())
 	{
 		shared_ptr<DataIStatistics> stats = exporter->getDatabase()->loadStatistics<ForumStats>(OS_FORUMS_FORUM_STATS_TABLE, id.toUTF16());
-		if(stats != null)
+		if(stats != nullptr)
 			stats->exportXML(exporter);
 	}
 }

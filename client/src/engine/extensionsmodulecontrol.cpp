@@ -40,7 +40,7 @@ ExtensionsModuleControl::~ExtensionsModuleControl()
 
 bool ExtensionsModuleControl::init(shared_ptr<IExtensionsModule> module, const String &title, const EntityID &instance, const String &xml)
 {
-	// module può essere null. Ad esempio InvalidModule.
+	// module può essere nullptr. Ad esempio InvalidModule.
 
 	m_module = module;
 	m_title = title;
@@ -52,7 +52,7 @@ bool ExtensionsModuleControl::init(shared_ptr<IExtensionsModule> module, const S
 			return false;
 	}
 
-	if(module != null)
+	if(module != nullptr)
 		module->initXML(getModuleDocument());
 
 	return true;

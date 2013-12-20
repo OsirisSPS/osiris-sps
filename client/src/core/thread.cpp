@@ -156,7 +156,7 @@ void pimpl<Thread>::stop()
 
 		m_status = isStopped;
 
-		OS_ASSERT(m_thread != null);
+		OS_ASSERT(m_thread != nullptr);
 
 		id = m_id;
 		thread = m_thread;
@@ -182,7 +182,7 @@ void pimpl<Thread>::join()
 
 void pimpl<Thread>::join(const boost::any &id, shared_ptr<boost::thread> thread)
 {
-	if(thread == null)
+	if(thread == nullptr)
 		return;
 
 	// N.B.: la terminazione di un thread deve essere effettuata da un thread esterno altrimenti la join non terminerebbe mai...

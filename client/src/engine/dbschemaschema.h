@@ -96,7 +96,7 @@ inline const Version & DbSchemaSchema::getPrevVersion() const { return m_prevVer
 inline const DbSchemaTables & DbSchemaSchema::getTables() const { return m_tables; }
 inline uint32 DbSchemaSchema::getTablesCount() const { return static_cast<uint32>(m_tables.size()); }
 
-inline bool DbSchemaSchema::hasTable(const String &name, bool checkOldName) const { return getTable(name, checkOldName) != null; }
+inline bool DbSchemaSchema::hasTable(const String &name, bool checkOldName) const { return getTable(name, checkOldName) != nullptr; }
 
 //////////////////////////////////////////////////////////////////////
 

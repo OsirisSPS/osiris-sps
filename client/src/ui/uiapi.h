@@ -26,7 +26,7 @@ DECLARE_LOCAL_EVENT_TYPE(wxEVT_DOWNLOAD, wxID_EVENT_DOWNLOAD)
 
 #define EVT_DOWNLOAD(fn) DECLARE_EVENT_TABLE_ENTRY( \
 	wxEVT_DOWNLOAD, static_cast<wxWindowID>(wxID_ANY), static_cast<wxWindowID>(wxID_ANY), (wxObjectEventFunction) (wxEventFunction) \
-	(DownloadEventFunction) & fn, (wxObject *) null ),
+	(DownloadEventFunction) & fn, (wxObject *) nullptr ),
 
 //////////////////////////////////////////////////////////////////////
 

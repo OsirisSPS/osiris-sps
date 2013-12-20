@@ -152,7 +152,7 @@ inline void StdAllocator<T, A>::construct(pointer p, const T &v)
 template <typename T, typename A>
 inline void StdAllocator<T, A>::destroy(pointer p)
 {
-	OS_ASSERT(p != null);
+	OS_ASSERT(p != nullptr);
 	p->~T();
 }
 

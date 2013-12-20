@@ -57,7 +57,7 @@
 
   <xsl:template name="object-container">
     <xsl:param name="content" />
-		<div data-os-entity="{@entity}">
+    <div data-os-entity="{@entity}">
       <xsl:attribute name="class">
         <xsl:if test="@showable = 'false'">
           <xsl:text> os_object_hidden </xsl:text>
@@ -67,7 +67,7 @@
         </xsl:if>
       </xsl:attribute>
       <xsl:copy-of select="$content"/>
-    </div>		
+    </div>
   </xsl:template>
   
 
@@ -226,25 +226,24 @@
       
       <td style="padding-left:{$indent*10}px">
         <xsl:call-template name="object-container">
-          <xsl:with-param name="content">											
-						<table class="os_table_none">
+          <xsl:with-param name="content">
+            <table class="os_table_none">
               <tr>
                 <td>
                   <xsl:call-template name="object-icon"/>
                 </td>
                 <td width="100%">
-									<a href="{@view_href}">
+                  <a href="{@view_href}">
                     <xsl:value-of select="system:parse(@title, false(), false(), true())" disable-output-escaping="yes" />
                   </a>
                   <xsl:if test="@description != ''">
                     <div class="os_object_description">
                       <xsl:value-of select="system:parse(@description)" disable-output-escaping="yes"/>
                     </div>
-                  </xsl:if>																		
-								</td>
+                  </xsl:if>
+                </td>
               </tr>
-            </table>            						
-						
+            </table>            
           </xsl:with-param>
         </xsl:call-template>
       </td>
@@ -615,25 +614,21 @@
     <!-- stile da applicare all'immagine -->
     <xsl:param name="style"/>
 
-		<xsl:variable name="suffix">
-			<xsl:if test="$new">
-				<xsl:value-of select="'_new'"/>
-			</xsl:if>
-			<xsl:if test="$hot">
-				<xsl:value-of select="'_hot'"/>
-			</xsl:if>
-			<xsl:if test="$node">
-				<xsl:value-of select="'_node'"/>
-			</xsl:if>
-		</xsl:variable>
-
     <xsl:variable name="src">
       <xsl:value-of select="'images/states/'"/>
-      <xsl:value-of select="$type"/>
-			<xsl:value-of select="$suffix"/>
+      <xsl:value-of select="$type"/>      
+      <xsl:if test="$new">
+        <xsl:value-of select="'_new'"/>
+      </xsl:if>
+      <xsl:if test="$hot">
+        <xsl:value-of select="'_hot'"/>
+      </xsl:if>
+      <xsl:if test="$node">
+        <xsl:value-of select="'_node'"/>
+      </xsl:if>
       <xsl:value-of select="'.gif'"/>
     </xsl:variable>    
-    <img src="{system:resource-url(string($src))}" data-os-tooltip="{$suffix}">
+    <img src="{system:resource-url(string($src))}">
       <xsl:if test="$style">
         <xsl:attribute name="style">
           <xsl:value-of select="$style"/>

@@ -64,7 +64,7 @@ public:
 		MemoryTracker::instance();
 #endif // OS_ENABLE_MEMORY_TRACKER
 
-		xerces::XMLPlatformUtils::Initialize(XERCES_CPP_NAMESPACE::XMLUni::fgXercescDefaultLocale, null, null, &m_memoryManager);
+		xerces::XMLPlatformUtils::Initialize(XERCES_CPP_NAMESPACE::XMLUni::fgXercescDefaultLocale, nullptr, nullptr, &m_memoryManager);
 		xalan::XalanTransformer::initialize(m_memoryManager);
 
 		registerLibraries();
@@ -138,7 +138,7 @@ IXMLHandler::impl::impl(IXMLHandler *handler, shared_ptr<XMLSchema> schema) : m_
 																			  m_schema(schema),
 																			  m_stopParser(false)
 {
-	OS_ASSERT(handler != null);	
+	OS_ASSERT(handler != nullptr);	
 }
 
 IXMLHandler::impl::~impl()
@@ -233,14 +233,14 @@ void pimpl<XMLSchema>::parseString(const String &str)
 
 void pimpl<XMLSchema>::parseBuffer(const Buffer &buffer)
 {
-	m_source.reset(OS_XERCES_NEW xerces::MemBufInputSource(reinterpret_cast<const XMLByte *>(buffer.getData()), static_cast<XMLSize_t>(buffer.getSize()), static_cast<const XMLCh *>(null), false));
+	m_source.reset(OS_XERCES_NEW xerces::MemBufInputSource(reinterpret_cast<const XMLByte *>(buffer.getData()), static_cast<XMLSize_t>(buffer.getSize()), static_cast<const XMLCh *>(nullptr), false));
 }
 
 //////////////////////////////////////////////////////////////////////
 
 XMLStreamInput::XMLStreamInput(shared_ptr<IStream> stream) : m_stream(stream)
 {
-	OS_ASSERT(stream != null);	
+	OS_ASSERT(stream != nullptr);	
 }
 
 XMLStreamInput::~XMLStreamInput()
@@ -265,14 +265,14 @@ XMLSize_t XMLStreamInput::readBytes(XMLByte * const toFill, const XMLSize_t maxT
 
 const XMLCh * XMLStreamInput::getContentType() const
 {
-	return null;
+	return nullptr;
 }
 
 //////////////////////////////////////////////////////////////////////
 
 XMLStreamInputSource::XMLStreamInputSource(shared_ptr<IStream> stream) : m_stream(stream)
 {
-	OS_ASSERT(stream != null);	
+	OS_ASSERT(stream != nullptr);	
 }
 
 XMLStreamInputSource::~XMLStreamInputSource()
@@ -294,7 +294,7 @@ xerces::BinInputStream * XMLStreamInputSource::makeStream() const
 
 XMLStreamFormatTarget::XMLStreamFormatTarget(shared_ptr<IStream> stream) : m_stream(stream)
 {
-	OS_ASSERT(stream != null);
+	OS_ASSERT(stream != nullptr);
 }
 
 XMLStreamFormatTarget::~XMLStreamFormatTarget()
@@ -332,7 +332,7 @@ public:
 	XMLPScanTokenScope(SAX2XMLReader *parser, XMLPScanToken &scanToken) : m_parser(parser),
 																		  m_scanToken(scanToken)
 	{
-		OS_ASSERT(parser != null);
+		OS_ASSERT(parser != nullptr);
 	}
 
 	~XMLPScanTokenScope()
@@ -349,7 +349,7 @@ private:
 
 DOMImplementation * getImplementation()
 {
-	return DOMImplementationRegistry::getDOMImplementation(null);
+	return DOMImplementationRegistry::getDOMImplementation(nullptr);
 }
 
 bool parseSource(const InputSource &source, OS_NAMESPACE_NAME::IXMLHandler *handler, InputSource *xsd)
@@ -360,23 +360,23 @@ bool parseSource(const InputSource &source, OS_NAMESPACE_NAME::IXMLHandler *hand
 
 	try
 	{
-		if(handler != null)
+		if(handler != nullptr)
 		{
 			handler->setStopParser(false);
 			parser->setContentHandler(handler->getImpl());
 			parser->setErrorHandler(handler->getImpl());
 		}
 
-		if(xsd != null)
+		if(xsd != nullptr)
 		{
 			// Carica lo schema
 			Grammar *grammar = parser->loadGrammar(*xsd, Grammar::SchemaGrammarType, true);
-			if(grammar == null)
+			if(grammar == nullptr)
 			{
 				OS_NAMESPACE_NAME::String error = _S("Invalid xml schema");
 
 				const XMLCh *id = xsd->getSystemId();
-				if(id != null)
+				if(id != nullptr)
 				{
 					error += _S(", id=");
 					error += id;
@@ -404,7 +404,7 @@ bool parseSource(const InputSource &source, OS_NAMESPACE_NAME::IXMLHandler *hand
 
 			while(parser->getErrorCount() == 0)
 			{
-				if(handler != null && handler->getStopParser())
+				if(handler != nullptr && handler->getStopParser())
 					break;
 
 				if(parser->parseNext(scanToken) == false)
@@ -519,11 +519,11 @@ bool exportToTarget(const OS_NAMESPACE_NAME::XMLDocument &document, XMLFormatTar
 bool convertDocument(const OS_NAMESPACE_NAME::XMLDocument &document, DOMDocument *doc)
 {
 	OS_NAMESPACE_NAME::shared_ptr<OS_NAMESPACE_NAME::XMLNode> rootNode = document.getRoot();
-	if(rootNode == null)
+	if(rootNode == nullptr)
 		return false;
 
 	DOMElement *root_element = doc->createElement(rootNode->getName().c_str());
-	if(root_element == null)
+	if(root_element == nullptr)
 		return false;
 
 	doc->appendChild(root_element);
@@ -532,7 +532,7 @@ bool convertDocument(const OS_NAMESPACE_NAME::XMLDocument &document, DOMDocument
 
 bool convertNode(OS_NAMESPACE_NAME::shared_ptr<OS_NAMESPACE_NAME::XMLNode> node, DOMElement *element)
 {
-	if(element == null)
+	if(element == nullptr)
 		return false;
 
 	OS_NAMESPACE_NAME::shared_ptr<OS_NAMESPACE_NAME::XMLAttributes> attributes = node->getAttributes();
@@ -550,7 +550,7 @@ bool convertNode(OS_NAMESPACE_NAME::shared_ptr<OS_NAMESPACE_NAME::XMLNode> node,
 	for(OS_NAMESPACE_NAME::XMLNodes::const_iterator i = nodes->begin(); i != nodes->end(); ++i)
 	{
 		DOMElement *child_element = element->getOwnerDocument()->createElement((*i)->getName().c_str());
-		if(child_element == null)
+		if(child_element == nullptr)
 			return false;
 
 		element->appendChild(child_element);

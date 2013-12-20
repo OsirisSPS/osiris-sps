@@ -22,7 +22,7 @@ struct HtmlMetaTag_wrapper : ::osiris::HtmlMetaTag, ::osiris::PythonWrapper< ::o
     HtmlMetaTag_wrapper( )
     : ::osiris::HtmlMetaTag( )
       , ::osiris::PythonWrapper< ::osiris::HtmlMetaTag >(){
-        // null constructor
+        // nullptr constructor
     
     }
 

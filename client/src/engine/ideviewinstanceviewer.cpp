@@ -68,7 +68,7 @@ void InstanceViewer::onLoad()
 	ControlBase::onLoad();
 
 	shared_ptr<EntitiesEntity> entity = getEntity();
-	if(entity == null)
+	if(entity == nullptr)
 		return;
 
 	// URGENT: assolutamente da sistemare !
@@ -79,7 +79,7 @@ void InstanceViewer::onLoad()
 	OS_LOCK(getPortal()->getPortalLock());
 
 	shared_ptr<ObjectsInstance> instance = objects_instance_cast(entity->getCurrent());
-	if(instance == null)
+	if(instance == nullptr)
 		return;
 
 	shared_ptr<XMLPortalExporter> instanceExporter(OS_NEW XMLPortalExporter(getDocument()->create(OS_PORTAL_OBJECT_INSTANCE_TYPENAME), getPage(), XMLPortalExporter::emFull));
@@ -95,10 +95,10 @@ void InstanceViewer::onLoad()
 
 	/*
 	extensions::module_ptr module = ExtensionsSystem::instance()->getModule(instance->module);
-	if(module != null && module->getUseCache())
+	if(module != nullptr && module->getUseCache())
 	{
 		data::instance_cache_ptr cache = getDatabase()->getInstanceCache(getLoggedUser()->getAccount()->getID(), instance->getPrimary());
-		if(cache == null)
+		if(cache == nullptr)
 		{
 			createCache = true;
 
@@ -133,14 +133,14 @@ void InstanceViewer::onLoad()
 		instance_viewer = createInstanceViewer(instance);
 	//}
 
-	OS_ASSERT(instance_viewer != null);
+	OS_ASSERT(instance_viewer != nullptr);
 	getTemplate()->addChildParam(instance_viewer, _S("viewer"));
 }
 
 shared_ptr<IHtmlControl> InstanceViewer::createInstanceViewer(shared_ptr<ObjectsInstance> instance)
 {
 	shared_ptr<ExtensionsModuleViewer> viewer = ExtensionsSystem::instance()->createModuleViewer(instance->module, true);
-	OS_EXCEPT_IF(viewer == null, "Invalid instance module");
+	OS_EXCEPT_IF(viewer == nullptr, "Invalid instance module");
 	viewer->init(ExtensionsSystem::instance()->getModule(instance->module), instance->title, getEntityID(), instance->data);
 
 	if(viewer->getShowBlock())

@@ -53,7 +53,7 @@ shared_ptr<ObjectsIObject> ObjectsObjectsCache::load(const ObjectID &id, IPortal
 		return ObjectsSection::getSkippedSection();
 
 	
-	OS_ASSERT(db != null);
+	OS_ASSERT(db != nullptr);
 	return db->loadObject(id);
 }
 

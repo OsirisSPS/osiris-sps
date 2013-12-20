@@ -44,7 +44,7 @@ class EngineExport ObjectsRequest : public IPacket
 
 // Construction
 public:
-	ObjectsRequest(const StringList *objects = null);
+	ObjectsRequest(const StringList *objects = nullptr);
 	virtual ~ObjectsRequest();
 
 private:

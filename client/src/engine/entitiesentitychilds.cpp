@@ -44,8 +44,8 @@ EntitiesEntities::~EntitiesEntities()
 shared_ptr<EntitiesEntity> EntitiesEntities::get(shared_ptr<IPortalDatabase> database, const value_type &id) const
 {
 	shared_ptr<EntitiesEntity> parent = getParent();
-	if(parent == null)
-		return null;
+	if(parent == nullptr)
+		return nullptr;
 	
 	return database->getPortal()->getSnapshotManager()->getEntity(database, id);
 }

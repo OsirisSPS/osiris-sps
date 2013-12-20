@@ -18,7 +18,7 @@ struct IHttpMethod_wrapper : ::osiris::IHttpMethod, ::osiris::PythonWrapper< ::o
     IHttpMethod_wrapper( )
     : ::osiris::IHttpMethod( )
       , ::osiris::PythonWrapper< ::osiris::IHttpMethod >(){
-        // null constructor
+        // nullptr constructor
     
     }
 

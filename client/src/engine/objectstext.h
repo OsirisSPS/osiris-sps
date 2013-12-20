@@ -70,8 +70,8 @@ public:
 public:
 	virtual shared_ptr<ISearchOptions> getSearchOptions();
 
-	virtual ide::edit::editor_ptr createEditControl(shared_ptr<EntitiesEntity> entity = null, shared_ptr<EntitiesEntity> parent = null);
-	virtual ide::view::viewer_ptr createViewControl(shared_ptr<EntitiesEntity> entity = null);
+	virtual ide::edit::editor_ptr createEditControl(shared_ptr<EntitiesEntity> entity = nullptr, shared_ptr<EntitiesEntity> parent = nullptr);
+	virtual ide::view::viewer_ptr createViewControl(shared_ptr<EntitiesEntity> entity = nullptr);
 };
 
 //////////////////////////////////////////////////////////////////////

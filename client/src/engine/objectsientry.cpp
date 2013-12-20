@@ -92,7 +92,7 @@ void ObjectsIEntry::exportXML(shared_ptr<XMLPortalExporter> exporter)
 void ObjectsIEntry::exportAuthor(shared_ptr<XMLPortalExporter> exporter)
 {
 	shared_ptr<ObjectsUser> authorObj = objects_user_cast(exporter->getPage()->getObject(author));
-	if(authorObj == null)
+	if(authorObj == nullptr)
 		return;
 
 	shared_ptr<XMLPortalExporter> authorExporter(OS_NEW XMLPortalExporter(exporter->getNode(DBTABLES::AUTHOR), exporter->getPage(), exporter->getMode()));
@@ -108,7 +108,7 @@ bool ObjectsIEntry::onCreate(const shared_ptr<IPortalDatabase> &db, const Buffer
 		return false;
 
 	shared_ptr<ObjectsUser> user = objects_user_cast(db->getPortal()->getObject(db, author));
-	if(user == null)
+	if(user == nullptr)
 		return false;
 
 	// TODOCIP, TOCLEAN: Servono ancora le validateRecord?

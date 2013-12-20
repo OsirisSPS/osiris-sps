@@ -24,7 +24,7 @@ struct HtmlPager_wrapper : ::osiris::HtmlPager, ::osiris::PythonWrapper< ::osiri
     HtmlPager_wrapper( )
     : ::osiris::HtmlPager( )
       , ::osiris::PythonWrapper< ::osiris::HtmlPager >(){
-        // null constructor
+        // nullptr constructor
     
     }
 

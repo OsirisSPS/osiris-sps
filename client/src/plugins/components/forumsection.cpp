@@ -61,13 +61,13 @@ String Section::getName()
 
 shared_ptr<ExtensionsComponentEditor> Section::createEditor(shared_ptr<EntitiesEntity> entity)
 {
-	return null;
+	return nullptr;
 }
 
 shared_ptr<ExtensionsComponentViewer> Section::createViewer(shared_ptr<EntitiesEntity> entity)
 {
-	if(entity != null)
-		return null;		// Il componente effettua la render solo su se stesso
+	if(entity != nullptr)
+		return nullptr;		// Il componente effettua la render solo su se stesso
 
 	return shared_ptr<ExtensionsComponentViewer>(OS_NEW SectionViewer());
 }
@@ -86,7 +86,7 @@ void Section::exportXML(const EntityID &id, shared_ptr<XMLPortalExporter> export
 	if(exporter->getWithStats())
 	{
 		shared_ptr<DataIStatistics> stats = exporter->getDatabase()->loadStatistics<SectionStats>(OS_FORUMS_SECTION_STATS_TABLE, id.toUTF16());
-		if(stats != null)
+		if(stats != nullptr)
 			stats->exportXML(exporter);
 	}
 }

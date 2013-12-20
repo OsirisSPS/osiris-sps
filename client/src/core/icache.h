@@ -65,7 +65,7 @@ public:
 	// Restituisce true se l'oggetto specificato  presente nella cache
 	bool exists(key_ref key);
 
-	// Ricerca l'oggetto specificato (restituisce null nel caso non esista)
+	// Ricerca l'oggetto specificato (restituisce nullptr nel caso non esista)
 	pointer_type find(key_ref key);
 
 	// Rimuove un oggetto dalla cache
@@ -188,7 +188,7 @@ typename ICache <K, T, S, nullable>::pointer_type ICache <K, T, S, nullable>::_e
 	else
 		ptr = load(key, s);
 	
-	if(nullable || ptr != null)
+	if(nullable || ptr != nullptr)
 		insert(key, ptr);
 
 	return ptr;

@@ -21,7 +21,7 @@ struct HtmlWriter_wrapper : ::osiris::HtmlWriter, ::osiris::PythonWrapper< ::osi
     HtmlWriter_wrapper( )
     : ::osiris::HtmlWriter( )
       , ::osiris::PythonWrapper< ::osiris::HtmlWriter >(){
-        // null constructor
+        // nullptr constructor
     
     }
 

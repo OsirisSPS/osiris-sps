@@ -44,7 +44,7 @@ shared_ptr<IPortalDatabase> PortalsDatabasesCache::createEntry()
     if(m_portal.openDatabase(database))
 		return database;
 
-	return null;
+	return nullptr;
 }
 
 //////////////////////////////////////////////////////////////////////

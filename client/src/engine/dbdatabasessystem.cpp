@@ -82,13 +82,13 @@ shared_ptr<IDbDriver> DatabasesSystem::getDriver(const std::string &name) const
 			return *i;
 	}
 
-	return null;
+	return nullptr;
 }
 
 shared_ptr<IDbDriver> DatabasesSystem::getDefaultDriver() const
 {
 	shared_ptr<IDbDriver> driver = getDriver(Options::instance()->getOption<String>(Options::db_options::default_driver).to_ascii());
-	if(driver == null && m_drivers.empty() == false)
+	if(driver == nullptr && m_drivers.empty() == false)
 		driver = m_drivers.front();
 
 	return driver;
@@ -96,7 +96,7 @@ shared_ptr<IDbDriver> DatabasesSystem::getDefaultDriver() const
 
 bool DatabasesSystem::addDriver(shared_ptr<IDbDriver> driver)
 {
-	if(driver == null)
+	if(driver == nullptr)
 	{
 		OS_ASSERTFALSE();
 		return false;
@@ -130,7 +130,7 @@ bool DatabasesSystem::createDatabase(shared_ptr<IDbDriver> driver, const String 
 		OS_LOG_ERROR(e.what());
 	}
 
-	if(connection != null)
+	if(connection != nullptr)
 	{
 		// Carica lo schema specificato
 		done = loadSchema(connection, schema);
@@ -147,8 +147,8 @@ bool DatabasesSystem::createDatabase(shared_ptr<IDbDriver> driver, const String 
 
 bool DatabasesSystem::loadSchema(shared_ptr<IDbConnection> connection, shared_ptr<DbSchemaSchema> schema)
 {
-	OS_ASSERT(connection != null);
-	OS_ASSERT(schema != null);
+	OS_ASSERT(connection != nullptr);
+	OS_ASSERT(schema != nullptr);
 
 	try
 	{
@@ -184,7 +184,7 @@ String DatabasesSystem::getName() const
 bool DatabasesSystem::start(bool recovery)
 {
 	shared_ptr<IDbDriver> driver = getDefaultDriver();
-	if(driver == null)
+	if(driver == nullptr)
 	{
 		OS_LOG_ERROR(_S("Need a default database driver"));
 		return false;

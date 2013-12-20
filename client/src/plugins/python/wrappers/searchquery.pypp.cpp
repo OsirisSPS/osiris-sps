@@ -22,7 +22,7 @@ struct SearchQuery_wrapper : ::osiris::SearchQuery, ::osiris::PythonWrapper< ::o
     SearchQuery_wrapper( )
     : ::osiris::SearchQuery( )
       , ::osiris::PythonWrapper< ::osiris::SearchQuery >(){
-        // null constructor
+        // nullptr constructor
     
     }
 

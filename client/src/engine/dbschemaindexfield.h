@@ -45,7 +45,7 @@ public:
 
 // Construction
 public:
-	DbSchemaIndexField(shared_ptr<DbSchemaIndex> table = null);
+	DbSchemaIndexField(shared_ptr<DbSchemaIndex> table = nullptr);
 	virtual ~DbSchemaIndexField();
 
 // Attributes

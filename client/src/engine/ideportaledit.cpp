@@ -150,7 +150,7 @@ String Edit::getAddMoveUrl(shared_ptr<Portal> portal, const ObjectID &id, const 
 
 void Edit::exportHistory(shared_ptr<EntitiesEntity> entity, shared_ptr<XMLPortalExporter> exporter)
 {
-	OS_ASSERT(entity != null);
+	OS_ASSERT(entity != nullptr);
 
 	if(ObjectsSystem::instance()->isVirtual(entity->getEntityID()))
 		return;
@@ -167,7 +167,7 @@ void Edit::exportHistory(shared_ptr<EntitiesEntity> entity, shared_ptr<XMLPortal
 	for(StringList::const_iterator i = results.begin(); i != results.end(); ++i)
 	{
 		shared_ptr<ObjectsIObject> revision = objects_revisionable_cast(getLoggedUser()->getObject(*i));
-		if(revision != null)
+		if(revision != nullptr)
 		{
 			_exportRevision(nodeHistory, entity, revision);
 		}
@@ -182,7 +182,7 @@ void Edit::exportHistory(shared_ptr<EntitiesEntity> entity, shared_ptr<XMLPortal
 	for(StringList::const_iterator i = results.begin(); i != results.end(); ++i)
 	{
 		shared_ptr<ObjectsIObject> entry = objects_revisionable_cast(getObject((*i).to_ascii()));
-		if(entry != null)
+		if(entry != nullptr)
 		{
 			_exportRevision(nodeHistory, entity, entry);
 		}
@@ -192,7 +192,7 @@ void Edit::exportHistory(shared_ptr<EntitiesEntity> entity, shared_ptr<XMLPortal
 void Edit::exportParent(shared_ptr<EntitiesEntity> entity, shared_ptr<XMLPortalExporter> exporter)
 {
 	shared_ptr<EntitiesEntity> parentEntity = entity->getParent(getDatabase());
-	if(parentEntity != null)
+	if(parentEntity != nullptr)
 	{
 		shared_ptr<XMLPortalExporter> parentExporter(OS_NEW XMLPortalExporter(exporter->createNode(_S("parent")), get_this_ptr<IPortalPage>(), XMLPortalExporter::emLite));
 		parentEntity->exportXML(parentExporter);
@@ -248,7 +248,7 @@ void Edit::exportChilds(shared_ptr<EntitiesEntity> entity, shared_ptr<XMLPortalE
 		for(EntitiesEntities::iterator i = section_childs->begin(); i != section_childs->end(); ++i)
 		{
 			shared_ptr<EntitiesEntity> child_entity = section_childs->get(getDatabase(), *i);
-			if(child_entity != null)
+			if(child_entity != nullptr)
 			{
 				shared_ptr<XMLPortalExporter> childExporter(OS_NEW XMLPortalExporter(objects_node->addChild(OS_PORTAL_OBJECT_OBJECT_TYPENAME), get_this_ptr<IPortalPage>(), XMLPortalExporter::emFull));
 				child_entity->exportXML(childExporter);
@@ -262,7 +262,7 @@ void Edit::exportChilds(shared_ptr<EntitiesEntity> entity, shared_ptr<XMLPortalE
 String Edit::getPageHref(uint32 offset) const
 {
 	String href;
-	if(m_entity != null)
+	if(m_entity != nullptr)
 	{
 		ordered_map<std::wstring, std::wstring> params;
 		if(offset != 0)
@@ -276,7 +276,7 @@ String Edit::getPageHref(uint32 offset) const
 
 void Edit::_exportRevision(shared_ptr<XMLNode> node, shared_ptr<EntitiesEntity> entity, shared_ptr<ObjectsIObject> revision)
 {
-	if(revision != null)
+	if(revision != nullptr)
 	{
 		shared_ptr<XMLPortalExporter> revisionExporter(OS_NEW XMLPortalExporter(node->addChild(OS_PORTAL_OBJECT_OBJECT_TYPENAME), get_this_ptr<IPortalPage>(), XMLPortalExporter::emLite));
 		revision->exportXML(revisionExporter);
@@ -320,13 +320,13 @@ void Edit::onLoad()
 	bool isVirtual = ObjectsSystem::instance()->isVirtual(id);	
 	bool isReadOnly = (getSessionAccount()->isPortalGuest(getDatabase()));
 
-	if(m_entity == null)
+	if(m_entity == nullptr)
 	{
 		showError(getText(_S("ide.messages.unknown_object")));
 		return;
 	}
 
-	if (m_entity->getCurrent() == null)
+	if (m_entity->getCurrent() == nullptr)
 	{
 		showError(getText(_S("ide.messages.invalid_object")));
 		return;
@@ -386,7 +386,7 @@ void Edit::onLoad()
 		case acAddChild:
 		{
 			PortalObjectType ot = getUrlAddChildObjectType();
-			activity_ctrl = ObjectsSystem::instance()->getDescriptor(ot)->createEditControl(null, m_entity);
+			activity_ctrl = ObjectsSystem::instance()->getDescriptor(ot)->createEditControl(nullptr, m_entity);
 			activity_ctrl->setID(_S("activity"));
 			m_template->addChildParam(activity_ctrl);
 		} break;
@@ -411,10 +411,10 @@ void Edit::onPreRender()
 {
 	PageBase::onPreRender();
 
-	if(m_entity == null)
+	if(m_entity == nullptr)
 		return;
 		
-	if (m_entity->getCurrent() == null)
+	if (m_entity->getCurrent() == nullptr)
 		return;
 
 	EntityID id = m_entity->getEntityID();
@@ -476,7 +476,7 @@ void Edit::onPreRender()
 				shared_ptr<EntitiesEntity> objectEntity = getPortal()->getEntity(getDatabase(), objectID.to_ascii());
 
 				// Se l'oggetto pu essere figlio
-				if( (objectEntity != null) && (m_entity->allowChild(objectEntity->getObjectType())) && (objectEntity->getParentID()!=id) )
+				if( (objectEntity != nullptr) && (m_entity->allowChild(objectEntity->getObjectType())) && (objectEntity->getParentID()!=id) )
 				{
 					PortalObjectType objectOt = objectEntity->getObjectType();
 
@@ -511,7 +511,7 @@ void Edit::onPreRender()
 
 	/*
 	// L'history lo esporto solo se action = acHistory
-	if(entity != null)
+	if(entity != nullptr)
 	{
 		shared_ptr<XMLPortalExporter> exporter(OS_NEW XMLPortalExporter(node_object, get_this_ptr<IPortalPage>(), XMLPortalExporter::emFull));
 		entity->exportXML(exporter);
@@ -590,7 +590,7 @@ void Edit::onPreRender()
 				shared_ptr<EntitiesEntity> objectEntity = getLoggedUser()->getEntity(getDatabase(), objectID.to_ascii());
 
 				// Se l'oggetto pu essere figlio
-				if( (objectEntity != null) && (m_entity->allowChild(objectEntity->getObjectType())) && (objectEntity->getParentID()!=id) )
+				if( (objectEntity != nullptr) && (m_entity->allowChild(objectEntity->getObjectType())) && (objectEntity->getParentID()!=id) )
 				{
 					PortalObjectType objectOt = objectEntity->getObjectType();
 
@@ -621,7 +621,7 @@ void Edit::onPreRender()
 				shared_ptr<EntitiesEntity> objectEntity = getPortal()->getEntity(getDatabase(), objectID.to_ascii());
 
 				// Se l'oggetto pu essere figlio
-				if( (objectEntity != null) && (m_entity->allowChild(objectEntity->getObjectType())) && (objectEntity->getParentID() != id) && (objectID != id.getString()) )
+				if( (objectEntity != nullptr) && (m_entity->allowChild(objectEntity->getObjectType())) && (objectEntity->getParentID() != id) && (objectID != id.getString()) )
 				{
 					found = true;
 					break;
@@ -654,7 +654,7 @@ void Edit::onPreRender()
 	if( (isReadOnly == false) && (isVirtual == false) )
 	{
 		// Add revision delete
-		if( (current != null) && (current->visible) )
+		if( (current != nullptr) && (current->visible) )
 		{
 			//String actionName = _S("delete");
 			//String actionHref = getUrl(getPortal(), id, acDelete);
@@ -667,7 +667,7 @@ void Edit::onPreRender()
 
 void Edit::onSelect()
 {
-	if(m_entity == null)
+	if(m_entity == nullptr)
 		return;
 
 	EntityID id = m_entity->getEntityID();
@@ -677,7 +677,7 @@ void Edit::onSelect()
 
 void Edit::onUnselect()
 {
-	if(m_entity == null)
+	if(m_entity == nullptr)
 		return;
 
 	EntityID id = m_entity->getEntityID();
@@ -687,10 +687,10 @@ void Edit::onUnselect()
 
 void Edit::onDelete()
 {
-	if(m_entity == null)
+	if(m_entity == nullptr)
 		return;
 		
-	if (m_entity->getCurrent() == null)
+	if (m_entity->getCurrent() == nullptr)
 		return;
 
 	//ObjectID id = m_entity->getPrimary()->id;
@@ -725,13 +725,13 @@ void Edit::onDelete()
 void Edit::onMove(IEvent *e)
 {
 	HtmlEvent *htmlEvent = dynamic_cast<HtmlEvent *>(e);
-	if(htmlEvent == null)
+	if(htmlEvent == nullptr)
 		return;
 
-	if(m_entity == null)
+	if(m_entity == nullptr)
 		return;
 
-	if (m_entity->getCurrent() == null)
+	if (m_entity->getCurrent() == nullptr)
 		return;
 
 	//ObjectID id = m_entity->getPrimary()->id;
@@ -744,7 +744,7 @@ void Edit::onMove(IEvent *e)
 	{
 		/*
 		shared_ptr<EntitiesEntity> movedEntity = getPortal()->getEntity(getDatabase(), movedId);
-		if(movedEntity == null)
+		if(movedEntity == nullptr)
 			OS_EXCEPTION("Invalid entity");
 
 		
@@ -778,13 +778,13 @@ void Edit::onMove(IEvent *e)
 void Edit::onRestore(IEvent *e)
 {
 	HtmlEvent *htmlEvent = dynamic_cast<HtmlEvent *>(e);
-	if(htmlEvent == null)
+	if(htmlEvent == nullptr)
 		return;
 
-	if(m_entity == null)
+	if(m_entity == nullptr)
 		return;
 
-	if (m_entity->getCurrent() == null)
+	if (m_entity->getCurrent() == nullptr)
 		return;
 
 	//ObjectID id = m_entity->getPrimary()->id;

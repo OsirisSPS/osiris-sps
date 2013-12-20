@@ -40,17 +40,17 @@ IRCConnection::IRCConnection(shared_ptr<IRCSession> session, shared_ptr<TCPSocke
 																																				m_socket(socket),
 																																				m_buffer(OS_NEW_T(boost::asio::streambuf), os_delete_t())
 {
-	OS_ASSERT(session != null);
+	OS_ASSERT(session != nullptr);
 	OS_ASSERT(connectionsManager);
 
 	shared_ptr<boost::asio::io_service> service = connectionsManager->getService();
-	OS_ASSERT(service != null);
+	OS_ASSERT(service != nullptr);
 
 	m_resolver = createAsioObject<boost::asio::ip::tcp::resolver>(*service);
 	m_sslContext = createAsioSSLObject<boost::asio::ssl::context, boost::asio::ssl::context_base::method>(*service, boost::asio::ssl::context::sslv23);
 //	m_sslSocket = createAsioSSLObject<boost::asio::ssl::stream<TCPSocket>, boost::asio::ssl::context &>(*service, *m_sslContext);
 	// VERYURGENT: verificare se sotto Linux da comunque i problemi riportati nelle note di asio.h/asio_ssl.h (in tal caso creare un wrapper di allocazione/deallocazione)
-	OS_ASSERT(m_socket != null);
+	OS_ASSERT(m_socket != nullptr);
 	m_sslStream.reset(OS_NEW_T(boost::asio::ssl::stream<TCPSocket &>)(*m_socket, *m_sslContext), os_delete_t());
 }
 
@@ -64,7 +64,7 @@ boost::posix_time::time_duration IRCConnection::getTimeout() const
 	uint32 timeout = OS_IRC_DEFAULT_TIMEOUT;
 
 	shared_ptr<IRCSession> session = getSession();
-	if(session != null)
+	if(session != nullptr)
 		timeout = session->getTimeout();
 
 	return boost::posix_time::milliseconds(timeout);
@@ -73,7 +73,7 @@ boost::posix_time::time_duration IRCConnection::getTimeout() const
 bool IRCConnection::getEnableSSL() const
 {
 	shared_ptr<IRCSession> session = getSession();
-	if(session != null)
+	if(session != nullptr)
 		return session->getEnableSSL();
 
 	return false;
@@ -82,12 +82,12 @@ bool IRCConnection::getEnableSSL() const
 void IRCConnection::poll()
 {
 	shared_ptr<IRCSession> session = getSession();
-	if(session != null)
+	if(session != nullptr)
 	{
 		for(;;)
 		{
 			shared_ptr<IIRCCommand> request = session->popRequest();
-			if(request == null)
+			if(request == nullptr)
 				break;
 
 			pollCommand(request);
@@ -130,7 +130,7 @@ void IRCConnection::resolveIP(shared_ptr<ConnectionScope> scope)
 	notifyStatusChanged(ircConnectionStatusConnecting);
 
 	shared_ptr<IRCSession> session = getSession();
-	if(session != null)
+	if(session != nullptr)
 	{
 		OS_ASSERT(session->getServer().empty() == false);
 		OS_ASSERT(session->getPort() != 0);
@@ -244,7 +244,7 @@ void IRCConnection::pollCallback(const boost::system::error_code &e, size_t tran
 bool IRCConnection::handleResponse(const std::string &command)
 {
 	shared_ptr<IRCSession> session = getSession();
-	if(session == null)
+	if(session == nullptr)
 		return false;
 
 	return session->handleResponse(command);
@@ -262,7 +262,7 @@ void IRCConnection::readCommand(shared_ptr<ConnectionScope> scope)
 
 void IRCConnection::writeCommand(shared_ptr<IIRCCommand> command, shared_ptr<ConnectionScope> scope)
 {
-	if(command == null)
+	if(command == nullptr)
 	{
 		OS_ASSERTFALSE();
 		return;
@@ -287,7 +287,7 @@ void IRCConnection::writeCommand(shared_ptr<IIRCCommand> command, shared_ptr<Con
 
 void IRCConnection::pollCommand(shared_ptr<IIRCCommand> command)
 {
-	if(command == null)
+	if(command == nullptr)
 	{
 		OS_ASSERTFALSE();
 		return;
@@ -313,33 +313,33 @@ void IRCConnection::pollCommand(shared_ptr<IIRCCommand> command)
 void IRCConnection::notifyStatusChanged(IRCConnectionStatus status)
 {
 	shared_ptr<IRCSession> session = getSession();
-	if(session != null)
+	if(session != nullptr)
 		session->notifyConnectionStatusChanged(status);
 }
 
 void IRCConnection::notifyCommand(shared_ptr<IIRCCommand> command)
 {
-	if(command == null)
+	if(command == nullptr)
 	{
 		OS_ASSERTFALSE();
 		return;
 	}
 
 	shared_ptr<IRCSession> session = getSession();
-	if(session != null)
+	if(session != nullptr)
 		session->notifyCommand(command);
 }
 
 void IRCConnection::update(shared_ptr<ConnectionScope> scope)
 {
-	OS_ASSERT(scope != null);
+	OS_ASSERT(scope != nullptr);
 
 	shared_ptr<IRCSession> session = getSession();
-	if(session == null)
+	if(session == nullptr)
 		return;
 
 	shared_ptr<IIRCCommand> command = session->popRequest();
-	if(command != null)
+	if(command != nullptr)
 		writeCommand(command, scope);
 	else
 		readCommand(scope);	

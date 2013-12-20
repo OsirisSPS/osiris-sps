@@ -45,7 +45,7 @@ HtmlFileBrowser::~HtmlFileBrowser()
 String HtmlFileBrowser::getFileName() const
 {
 	shared_ptr<HttpPostParam> param = _getPostParam();
-	if(param != null)
+	if(param != nullptr)
 	{
 		// N.B.: alcuni browser restituiscono il path completo mentre altri solo il nome del file
 		return FileSystem::instance()->getFileName(param->getFilename());
@@ -57,19 +57,19 @@ String HtmlFileBrowser::getFileName() const
 String HtmlFileBrowser::getFileType() const
 {
 	shared_ptr<HttpPostParam> param = _getPostParam();
-	if(param != null)
+	if(param != nullptr)
 		return param->getContentType();
 
 	return String::EMPTY;
 }
 
-const Buffer * HtmlFileBrowser::getFileBuffer() const
+const Buffer * HtmlFileBrowser::getFileBufferPtr() const
 {
 	shared_ptr<HttpPostParam> param = _getPostParam();
-	if(param != null)
+	if(param != nullptr)
 		return param->getBuffer();
 
-	return null;
+	return nullptr;
 }
 
 shared_ptr<HttpPostParam> HtmlFileBrowser::_getPostParam() const
@@ -77,7 +77,7 @@ shared_ptr<HttpPostParam> HtmlFileBrowser::_getPostParam() const
 	if(getPostBack() && hasID())
         return getRequest()->getPostParam(getTarget().to_wide());
 
-	return null;
+	return nullptr;
 }
 
 void HtmlFileBrowser::renderAttributes(HtmlWriter &writer)

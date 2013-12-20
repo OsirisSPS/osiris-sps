@@ -51,17 +51,17 @@ public:
 // Operations
 public:
 	// Carica la stringa specificata
-	bool parseBuffer(const Buffer &buffer, IXMLHandler *handler, shared_ptr<XMLSchema> schema = null, const String &encoding = OS_XML_ENCODING_UTF8);
+	bool parseBuffer(const Buffer &buffer, IXMLHandler *handler, shared_ptr<XMLSchema> schema = nullptr, const String &encoding = OS_XML_ENCODING_UTF8);
 	// Carica il file specificato
-	bool parseFile(const String &filename, IXMLHandler *handler, shared_ptr<XMLSchema> schema = null);
+	bool parseFile(const String &filename, IXMLHandler *handler, shared_ptr<XMLSchema> schema = nullptr);
 	// Carica la stringa specificata
-	bool parseString(const String &str, IXMLHandler *handler, shared_ptr<XMLSchema> schema = null);
+	bool parseString(const String &str, IXMLHandler *handler, shared_ptr<XMLSchema> schema = nullptr);
 	// Carica una stringa utf8
-	bool parseStringUTF8(const std::string &str, IXMLHandler *handler, shared_ptr<XMLSchema> schema = null);
+	bool parseStringUTF8(const std::string &str, IXMLHandler *handler, shared_ptr<XMLSchema> schema = nullptr);
 	// Carica lo stream specificato
-	bool parseStream(shared_ptr<IStream> stream, IXMLHandler *handler, shared_ptr<XMLSchema> schema = null, const String &encoding = OS_XML_ENCODING_UTF8);
+	bool parseStream(shared_ptr<IStream> stream, IXMLHandler *handler, shared_ptr<XMLSchema> schema = nullptr, const String &encoding = OS_XML_ENCODING_UTF8);
 	// Carica l'url specificato
-	bool parseUrl(const HttpUrl &url, IXMLHandler *handler, const String &userAgent, shared_ptr<boost::asio::io_service> service, shared_ptr<TCPSocket> socket, shared_ptr<XMLSchema> schema = null);
+	bool parseUrl(const HttpUrl &url, IXMLHandler *handler, const String &userAgent, shared_ptr<boost::asio::io_service> service, shared_ptr<TCPSocket> socket, shared_ptr<XMLSchema> schema = nullptr);
 
 	// Salva il documento su un buffer
 	bool writeBuffer(const XMLDocument &document, Buffer &buffer, const String &encoding = OS_XML_ENCODING_UTF8) const;
@@ -75,11 +75,11 @@ public:
 	bool writeStream(const XMLDocument &document, shared_ptr<IStream> stream, const String &encoding = OS_XML_ENCODING_UTF8) const;	
 	
 	// Restituisce true se il buffer specificato è un xml valido
-	bool validateBuffer(const Buffer &buffer, shared_ptr<XMLSchema> schema = null) const;
+	bool validateBuffer(const Buffer &buffer, shared_ptr<XMLSchema> schema = nullptr) const;
 	// Restituisce true se il file specificato è un xml valido
-	bool validateFile(const String &filename, shared_ptr<XMLSchema> schema = null) const;
+	bool validateFile(const String &filename, shared_ptr<XMLSchema> schema = nullptr) const;
 	// Restituisce true se la stringa specificata è un xml valido
-	bool validateString(const String &str, shared_ptr<XMLSchema> schema = null) const;
+	bool validateString(const String &str, shared_ptr<XMLSchema> schema = nullptr) const;
 };
 
 //////////////////////////////////////////////////////////////////////

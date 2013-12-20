@@ -52,7 +52,7 @@ class pimpl<PlatformManager>::RegKey
 {
 // Construction
 public:
-	RegKey(HKEY handle = null);
+	RegKey(HKEY handle = nullptr);
 	~RegKey();
 
 // Operations
@@ -80,7 +80,7 @@ inline pimpl<PlatformManager>::RegKey::operator PHKEY() { return &m_handle; }
 
 static unsigned int ansi_from_ucs2_length(const wchar *s)
 {
-    if(s == null)
+    if(s == nullptr)
         return 0;
 
     return ::WideCharToMultiByte(CP_ACP, 0, s, -1, NULL, 0, NULL, NULL);
@@ -88,7 +88,7 @@ static unsigned int ansi_from_ucs2_length(const wchar *s)
 
 static unsigned int ucs2_from_ansi_length(const char *s)
 {
-    if(s == null)
+    if(s == nullptr)
         return 0;
 
     return ::MultiByteToWideChar(CP_ACP, MB_PRECOMPOSED, s, -1, NULL, 0);
@@ -96,7 +96,7 @@ static unsigned int ucs2_from_ansi_length(const char *s)
 
 static unsigned int utf8_from_ucs2_length(const wchar *s)
 {
-    if(s == null)
+    if(s == nullptr)
         return 0;
 
     return ::WideCharToMultiByte(CP_UTF8, 0, s, -1, NULL, 0, NULL, NULL);
@@ -104,7 +104,7 @@ static unsigned int utf8_from_ucs2_length(const wchar *s)
 
 static unsigned int ucs2_from_utf8_length(const char *s)
 {
-    if(s == null)
+    if(s == nullptr)
         return 0;
 
 	return ::MultiByteToWideChar(CP_UTF8, 0, s, -1, NULL, 0);
@@ -131,16 +131,16 @@ void pimpl<PlatformManager>::RegKey::attach(HKEY handle)
 HKEY pimpl<PlatformManager>::RegKey::detach()
 {
 	HKEY handle = m_handle;
-	m_handle = null;
+	m_handle = nullptr;
 	return handle;
 }
 
 void pimpl<PlatformManager>::RegKey::close()
 {
-	if(m_handle != null)
+	if(m_handle != nullptr)
 	{
 		RegCloseKey(m_handle);
-		m_handle = null;
+		m_handle = nullptr;
 	}
 }
 
@@ -211,7 +211,7 @@ String pimpl<PlatformManager>::getExpandedEnvironmentPath(const String &path) co
 String pimpl<PlatformManager>::getUserDataPath() const
 {
 	wchar path[_MAX_PATH];
-	if(SUCCEEDED(SHGetFolderPath(null, CSIDL_APPDATA, NULL, 0, path)))
+	if(SUCCEEDED(SHGetFolderPath(nullptr, CSIDL_APPDATA, NULL, 0, path)))
 		return path;
 
 	return String::EMPTY;
@@ -288,11 +288,11 @@ handle pimpl<PlatformManager>::loadLibrary(const String &libraryName) const
 	wchar path[MAX_PATH];
 	OS_ZEROMEMORY(path, MAX_PATH);
 
-	wchar *filename = null;
+	wchar *filename = nullptr;
 	::GetFullPathName(libraryName.c_str(), MAX_PATH, path, &filename);
-	HMODULE hModule = LoadLibraryEx(path, null, LOAD_WITH_ALTERED_SEARCH_PATH);
+	HMODULE hModule = LoadLibraryEx(path, nullptr, LOAD_WITH_ALTERED_SEARCH_PATH);
 
-	if(hModule == null)
+	if(hModule == nullptr)
 	{
 		String error = _S("Error loading library '") + libraryName + _S("'");
 
@@ -321,10 +321,10 @@ boost::any pimpl<PlatformManager>::getCurrentThreadID()
 
 bool pimpl<PlatformManager>::setThreadPriority(const boost::any &threadID, TaskPriority priority)
 {
-	OS_ASSERT(boost::any_cast<uint32>(&threadID) != null);
+	OS_ASSERT(boost::any_cast<uint32>(&threadID) != nullptr);
 
 	HANDLE hThread = OpenThread(THREAD_ALL_ACCESS, FALSE, boost::any_cast<uint32>(threadID));
-	if(hThread == null)
+	if(hThread == nullptr)
 		return false;
 
     bool done = SetThreadPriority(hThread, convertThreadPriority(priority)) == TRUE;
@@ -335,8 +335,8 @@ bool pimpl<PlatformManager>::setThreadPriority(const boost::any &threadID, TaskP
 
 bool pimpl<PlatformManager>::compareThreadsID(const boost::any &first, const boost::any &second)
 {
-	OS_ASSERT(boost::any_cast<uint32>(&first) != null);
-	OS_ASSERT(boost::any_cast<uint32>(&second) != null);
+	OS_ASSERT(boost::any_cast<uint32>(&first) != nullptr);
+	OS_ASSERT(boost::any_cast<uint32>(&second) != nullptr);
 
 	return boost::any_cast<uint32>(first) == boost::any_cast<uint32>(second);
 }
@@ -349,8 +349,8 @@ uint32 pimpl<PlatformManager>::getCurrentProcessID()
 shared_ptr<PlatformManager::ProcessDetails> pimpl<PlatformManager>::getProcessDetails(uint32 processID)
 {
 	HANDLE processHandle = ::OpenProcess(PROCESS_QUERY_INFORMATION | PROCESS_VM_READ, FALSE, static_cast<DWORD>(processID));
-	if(processHandle == null)
-		return null;
+	if(processHandle == nullptr)
+		return nullptr;
 
 	DWORD exitCode = 0; 
 	if(GetExitCodeProcess(processHandle, &exitCode) == FALSE)
@@ -391,7 +391,7 @@ void pimpl<PlatformManager>::trace(const std::string &str, const char *file, siz
 {
 	// N.B.: non usare qui una String::format per evitare che in fase di terminazione vengano fatte allocazioni/deallocazioni custom
 
-	if(file != null && line != 0)
+	if(file != nullptr && line != 0)
 	{
 		std::stringstream stream;
 		stream << file << " (" << line << "): ";
@@ -424,7 +424,7 @@ bool pimpl<PlatformManager>::contentTypeFromExtension(const String &extension, S
 		wchar buffer[_MAX_PATH];
 		DWORD size = _MAX_PATH;
 		DWORD type = REG_SZ;
-		if(RegQueryValueEx(hKey, _S("Content Type").c_str(), null, &type, reinterpret_cast<LPBYTE>(buffer), &size) == ERROR_SUCCESS)
+		if(RegQueryValueEx(hKey, _S("Content Type").c_str(), nullptr, &type, reinterpret_cast<LPBYTE>(buffer), &size) == ERROR_SUCCESS)
 		{
 			content_type = buffer;
 			done = true;
@@ -455,7 +455,7 @@ bool pimpl<PlatformManager>::extensionFromContentType(const String &content_type
 					wchar buffer[_MAX_PATH];
 					DWORD size = _MAX_PATH;
 					DWORD type = REG_SZ;
-					if(RegQueryValueEx(hKey, _S("Extension").c_str(), null, &type, reinterpret_cast<LPBYTE>(buffer), &size) == ERROR_SUCCESS)
+					if(RegQueryValueEx(hKey, _S("Extension").c_str(), nullptr, &type, reinterpret_cast<LPBYTE>(buffer), &size) == ERROR_SUCCESS)
 					{
 						extension = buffer;
 						done = true;
@@ -478,10 +478,10 @@ bool pimpl<PlatformManager>::extensionFromContentType(const String &content_type
 
 bool pimpl<PlatformManager>::execute(const String &command,const String &parameters)
 {
-	LPCWSTR lpParameters = null;
+	LPCWSTR lpParameters = nullptr;
 	if(parameters.empty() == false)
 		lpParameters = parameters.c_str();
-	ShellExecute(null, _S("open").c_str(), command.c_str(), lpParameters, null, SW_SHOWNORMAL);
+	ShellExecute(nullptr, _S("open").c_str(), command.c_str(), lpParameters, nullptr, SW_SHOWNORMAL);
 	return true;
 }
 
@@ -529,14 +529,14 @@ String pimpl<PlatformManager>::getLastError() const
 {
 	String error;
 
-	LPVOID lpMsgBuf = null;
+	LPVOID lpMsgBuf = nullptr;
 	if(FormatMessage(FORMAT_MESSAGE_ALLOCATE_BUFFER | FORMAT_MESSAGE_FROM_SYSTEM | FORMAT_MESSAGE_IGNORE_INSERTS,
-					 null,
+					 nullptr,
                      GetLastError(),
 					 MAKELANGID(LANG_NEUTRAL, SUBLANG_DEFAULT),
 					 reinterpret_cast<LPTSTR>(&lpMsgBuf),
 					 0,
-					 null))
+					 nullptr))
 	{
 		error = utils::safeString(reinterpret_cast<LPCTSTR>(lpMsgBuf));
 		LocalFree(lpMsgBuf);
@@ -592,7 +592,7 @@ bool pimpl<PlatformManager>::fileEof(FILE *handle)
 
 bool pimpl<PlatformManager>::fileStats(FILE *handle, boost::posix_time::ptime *timeCreation, boost::posix_time::ptime *timeLastModify, boost::posix_time::ptime *timeLastAccess)
 {
-	if(handle == null)
+	if(handle == nullptr)
 	{
 		OS_ASSERTFALSE();
 		return false;
@@ -602,13 +602,13 @@ bool pimpl<PlatformManager>::fileStats(FILE *handle, boost::posix_time::ptime *t
 	if(fstat(fileno(handle), &stats) != 0)
 		return false;
 
-	if(timeCreation != null)
+	if(timeCreation != nullptr)
 		*timeCreation = boost::posix_time::from_time_t(stats.st_ctime);
 
-	if(timeLastAccess != null)
+	if(timeLastAccess != nullptr)
 		*timeLastAccess = boost::posix_time::from_time_t(stats.st_atime);
 
-	if(timeLastModify != null)
+	if(timeLastModify != nullptr)
 		*timeLastModify = boost::posix_time::from_time_t(stats.st_mtime);
 
 	return true;

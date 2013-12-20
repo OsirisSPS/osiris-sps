@@ -96,7 +96,7 @@ void Assistant::onLoad()
 	shared_ptr<XMLNode> nodeRoot = document->create(_S("object"));
 
 	shared_ptr<EntitiesEntity> entity = getLoggedUser()->getEntity(getDatabase(), id);	
-	if(entity != null)
+	if(entity != nullptr)
 	{
 		shared_ptr<XMLPortalExporter> exporter(OS_NEW XMLPortalExporter(nodeRoot, get_this_ptr<IPortalPage>(), true, true));
 		entity->exportXML(exporter);		

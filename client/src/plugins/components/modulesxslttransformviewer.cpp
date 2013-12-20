@@ -55,7 +55,7 @@ void XsltTransformViewer::onLoad()
 	ViewerBase::onLoad();
 
 	shared_ptr<XMLNode> root = getModuleDocument()->getRoot();
-	if(root != null)
+	if(root != nullptr)
 	{
 		String xmlStr = root->getAttributeString(OS_MODULES_XSLTTRANSFORM_XML);
 		String xslStr = root->getAttributeString(OS_MODULES_XSLTTRANSFORM_XSL);

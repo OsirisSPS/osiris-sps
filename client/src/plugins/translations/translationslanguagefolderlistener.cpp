@@ -97,7 +97,7 @@ void TranslationsLanguageFolderListener::trackKey(const String &name, bool known
 
 void TranslationsLanguageFolderListener::install()
 {
-	if(g_instance != null)
+	if(g_instance != nullptr)
 	{
 		OS_ASSERTFALSE();
 		return;
@@ -109,7 +109,7 @@ void TranslationsLanguageFolderListener::install()
 
 void TranslationsLanguageFolderListener::uninstall(bool report)
 {
-	if(g_instance == null)
+	if(g_instance == nullptr)
 	{
 		OS_ASSERTFALSE();
 		return;
@@ -170,14 +170,14 @@ void TranslationsLanguageFolderListener::reportKeys(const Keys &keys)
 	OS_ASSERT(keysKnown.empty() == false || keysUnknown.empty() == false);
 
 	shared_ptr<boost::asio::io_service> service = createAsioService();
-	if(service == null)
+	if(service == nullptr)
 	{
 		OS_ASSERTFALSE();
 		return;
 	}
 
 	shared_ptr<TCPSocket> socket = Engine::instance()->createTCPSocket(service, true, true);
-	if(socket == null)
+	if(socket == nullptr)
 	{
 		OS_ASSERTFALSE();
 		return;
@@ -185,7 +185,7 @@ void TranslationsLanguageFolderListener::reportKeys(const Keys &keys)
 
 	shared_ptr<HttpClient> client(OS_NEW HttpClient(service, socket));
 	shared_ptr<HttpRequest> request = client->getRequest();
-	OS_ASSERT(request != null);	
+	OS_ASSERT(request != nullptr);	
 
 	request->setMethod(httpMethodPost);
 	

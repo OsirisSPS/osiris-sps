@@ -35,7 +35,7 @@ class AttachmentViewer : public IObjectViewer
 
 // Construction
 public:
-	AttachmentViewer(shared_ptr<EntitiesEntity> entity = null);
+	AttachmentViewer(shared_ptr<EntitiesEntity> entity = nullptr);
 	virtual ~AttachmentViewer();
 
 // IXSLRenderer interface

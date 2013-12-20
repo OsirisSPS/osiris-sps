@@ -68,8 +68,8 @@ public:
 
 // Operations
 public:
-	bool ensureOption(const String &name, const DataItem &value, bool publicOption, shared_ptr<IOptionValidator> validator = null);
-	bool ensureOption(const String &name, const DataItem &value, const DataItem &defaultValue, bool publicOption, shared_ptr<IOptionValidator> validator = null);
+	bool ensureOption(const String &name, const DataItem &value, bool publicOption, shared_ptr<IOptionValidator> validator = nullptr);
+	bool ensureOption(const String &name, const DataItem &value, const DataItem &defaultValue, bool publicOption, shared_ptr<IOptionValidator> validator = nullptr);
 
 	void parseString(const String &str);
 	void parseXML(shared_ptr<XMLDocument> document);

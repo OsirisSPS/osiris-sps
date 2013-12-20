@@ -109,7 +109,7 @@ private:
 	void clear()
 	{
 		deleter()(m_ptr);
-		m_ptr = null;
+		m_ptr = nullptr;
 	}
 
 private:

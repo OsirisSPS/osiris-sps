@@ -85,7 +85,7 @@ shared_ptr<ConnectionStatusGuard> IsisConnection::lockStatus()
 	OS_LOCK(m_statusCS);
 
 	shared_ptr<ConnectionStatusGuard> statusGuard = m_statusGuard.lock();
-	if(statusGuard == null)
+	if(statusGuard == nullptr)
 	{
 		statusGuard.reset(OS_NEW ConnectionStatusGuard(get_this_ptr(), m_status));
 		m_statusGuard = statusGuard;
@@ -100,7 +100,7 @@ void IsisConnection::run()
 
 	m_status->setStatus(IsisConnectionStatus::isSendRequest);
 
-	step(null, null);
+	step(nullptr, nullptr);
 
 	ConnectionBase::run();
 }
@@ -109,7 +109,7 @@ boost::posix_time::time_duration IsisConnection::getTimeout() const
 {
 	// TODO: solo nel caso in cui lo stato sia l'attesa della risposta di request.php restituisce il timeout "isis" che viene passato dall'endpoint nel costruttore
 	shared_ptr<IsisEndpoint> endPoint = getEndpoint();
-	if((endPoint != null) && (m_status->getStatus() == IsisConnectionStatus::isReceiveRequest))
+	if((endPoint != nullptr) && (m_status->getStatus() == IsisConnectionStatus::isReceiveRequest))
 	{
 		uint32 timeout = endPoint->getIsisOptions().getOption(_S("tuning.request.timeout"));
 		if(timeout > 300 * 1000000)
@@ -132,10 +132,10 @@ void IsisConnection::onResponseCompleted(shared_ptr<ConnectionScope> scope)
 	OS_ISIS_CONNECTION_STATUS_GUARD();
 
 	shared_ptr<HttpResponse> response = getResponse();
-	OS_ASSERT(response != null);
+	OS_ASSERT(response != nullptr);
 
 	shared_ptr<HttpContent> responseContent = response->getContent();
-	OS_ASSERT(responseContent != null);
+	OS_ASSERT(responseContent != nullptr);
 
 	if(response->getStatusCode() != 200)
 	{
@@ -240,12 +240,12 @@ shared_ptr<HttpRequest> IsisConnection::initializeRequest(const String &url)
 	m_response.reset(OS_NEW HttpResponse());
 
 	shared_ptr<IsisEndpoint> endPoint = getEndpoint();
-	if(endPoint == null)
-		return null;
+	if(endPoint == nullptr)
+		return nullptr;
 
 	shared_ptr<Portal> portal = getPortal();
-	if(portal == null)
-		return null;
+	if(portal == nullptr)
+		return nullptr;
 
 	shared_ptr<HttpRequest> request = getRequest();
 
@@ -298,11 +298,11 @@ void IsisConnection::step(shared_ptr<ConnectionScope> scope, shared_ptr<XMLNode>
 	OS_ISIS_CONNECTION_STATUS_GUARD();
 
 	shared_ptr<IsisEndpoint> endPoint = getEndpoint();
-	if(endPoint == null)
+	if(endPoint == nullptr)
 		return;
 
 	shared_ptr<Portal> portal = getPortal();
-	if(portal == null)
+	if(portal == nullptr)
 		return;
 	
 	try
@@ -311,7 +311,7 @@ void IsisConnection::step(shared_ptr<ConnectionScope> scope, shared_ptr<XMLNode>
 		/*
 		entities::snapshot_profile_ptr profile = portal->getSnapshotManager()->getProfile(endPoint->getSnapshotProfileID());
 		// Se non c'è il profilo, e non sto ricevendo un "system", chiamo la system in modo da costruirlo.
-		if( (profile == null) && (m_status->getStatus() != IsisConnectionStatus::isReceiveSystem) )
+		if( (profile == nullptr) && (m_status->getStatus() != IsisConnectionStatus::isReceiveSystem) )
 		{
 			m_status->setStatus(IsisConnectionStatus::isSendSystem);
 		}
@@ -362,7 +362,7 @@ void IsisConnection::step(shared_ptr<ConnectionScope> scope, shared_ptr<XMLNode>
 																}
 
 																shared_ptr<ObjectsUser> user = objects_user_cast(portal->getObject(database, endPoint->getUser().toUTF16()));
-																if(user == null)
+																if(user == nullptr)
 																{
 																	error(scope, _S("Unknown requested user for anarchic portal."), false, false);
 																	return;
@@ -389,7 +389,7 @@ void IsisConnection::step(shared_ptr<ConnectionScope> scope, shared_ptr<XMLNode>
 															realtimeStatsSet(1);
 
 															shared_ptr<HttpRequest> request = initializeRequest(_S("request.php"));
-															if(request == null)
+															if(request == nullptr)
 															{
 																OS_ASSERTFALSE();
 																return;
@@ -452,7 +452,7 @@ void IsisConnection::step(shared_ptr<ConnectionScope> scope, shared_ptr<XMLNode>
 																// Qui eseguo la richiesta in locale
 
 																shared_ptr<boost::asio::io_service> service = getService();
-																OS_EXCEPT_IF(service == null, "Internal error (null service)");
+																OS_EXCEPT_IF(service == nullptr, "Internal error (nullptr service)");
 
 																HttpClient client(service, Engine::instance()->createTCPSocket(service, false, false));
 
@@ -501,7 +501,7 @@ void IsisConnection::step(shared_ptr<ConnectionScope> scope, shared_ptr<XMLNode>
 																const Buffer &localResponseContent = client.getResponse()->getContent()->getContent();
 
 																shared_ptr<HttpRequest> request = initializeRequest(_S("response.php"));
-																if(request == null)
+																if(request == nullptr)
 																{
 																	OS_ASSERTFALSE();
 																	return;
@@ -557,7 +557,7 @@ void IsisConnection::step(shared_ptr<ConnectionScope> scope, shared_ptr<XMLNode>
 															realtimeStatsSet(5);
 
 															m_status->setStatus(IsisConnectionStatus::isSendRequest);
-															step(scope, null);
+															step(scope, nullptr);
 														}
 
 														break;
@@ -584,7 +584,7 @@ void IsisConnection::error(shared_ptr<ConnectionScope> scope, const String& desc
 		// L'utente dovrà ri-attivarlo a mano.
 
 		shared_ptr<IsisEndpoint> endpoint = getEndpoint();
-		if(endpoint != null)
+		if(endpoint != nullptr)
 		{
 			endpoint->setEnabled(false);
 			endpoint->setLastEvent(_S("Fatal Error: ") + desc);
@@ -623,11 +623,11 @@ void IsisConnection::log(const String &desc)
 	m_status->setLastEvent(desc);
 
 	shared_ptr<IsisEndpoint> endpoint = getEndpoint();
-	if(endpoint == null)
+	if(endpoint == nullptr)
 		return;
 
 	shared_ptr<Portal> portal = getPortal();
-	if(portal == null)
+	if(portal == nullptr)
 		return;
 
 	String endPointUrl = endpoint->getUrl().toString();
@@ -639,11 +639,11 @@ void IsisConnection::log(const String &desc)
 void IsisConnection::realtimeStatsSet(const uint32 &status)
 {
 	shared_ptr<IsisEndpoint> endpoint = getEndpoint();
-	if(endpoint == null)
+	if(endpoint == nullptr)
 		return;
 
 	//shared_ptr<Portal> portal = getPortal();
-	//if(portal == null)
+	//if(portal == nullptr)
 	//	return;
 	//String endPointUrl = endPoint->getUrl().toString();
 	//String suffix = String::format(_S(" (portal:'%S' isis:'%S')").c_str(), portal->getName().c_str(), endPointUrl.c_str());

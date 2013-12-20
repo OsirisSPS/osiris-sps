@@ -47,47 +47,47 @@ shared_ptr<EntitiesEntity> EntitiesEntitiesCache::load(const EntityID &id, IPort
 {
 	// URGENT
 	/*
-	OS_ASSERT(snapshotProfile != null);
+	OS_ASSERT(snapshotProfile != nullptr);
 
 	shared_ptr<ObjectsIRevisionable> object = objects_revisionable_cast(snapshotProfile->getPortal()->getObject(id));
-	if(object == null)
-		return null;
+	if(object == nullptr)
+		return nullptr;
 
 	// Se l'id specificato  di una revisione, deve cmq essere trattato come se l'entit non esistesse.
 	// Questo perch concettualmente il fatto che l'ID di un'entit sia l'ID della entry primaria  solo una comodit nostra.
 	if(object->isPrimary() == false)
-		return null;
+		return nullptr;
 
 	return entity_ptr(OS_NEW Entity(snapshotProfile->get_this_ptr(), object));
 	*/
 	OS_ASSERT(false);
-	return null;
+	return nullptr;
 }
 
 shared_ptr<EntitiesEntity> EntitiesEntitiesCache::myGet(const shared_ptr<IPortalDatabase> database, const EntityID &id)
 {
 	/*
 	entity_ptr ptr = find(id);
-	if(ptr == null)
+	if(ptr == nullptr)
 	{
 		//ptr = load(key, source);
 		shared_ptr<ObjectsIRevisionable> object = objects_revisionable_cast(profile->getPortal()->getObject(id, database));
-		if(object == null)
-			return null;
+		if(object == nullptr)
+			return nullptr;
 
 		// Se l'id specificato  di una revisione, deve cmq essere trattato come se l'entit non esistesse.
 		// Questo perch concettualmente il fatto che l'ID di un'entit sia l'ID della entry primaria  solo una comodit nostra.
 		if(object->isPrimary() == false)
-			return null;
+			return nullptr;
 
 		ptr.reset(OS_NEW Entity(database, profile, object));
 	}
-	if(ptr != null)
+	if(ptr != nullptr)
 		insert(id, ptr);
 	return ptr;
 	*/
 
-	shared_ptr<EntitiesEntity> ptr = null;
+	shared_ptr<EntitiesEntity> ptr = nullptr;
 	if(exists(id))
 	{
 		ptr = find(id);
@@ -96,10 +96,10 @@ shared_ptr<EntitiesEntity> EntitiesEntitiesCache::myGet(const shared_ptr<IPortal
 	{
 		ptr.reset(OS_NEW EntitiesEntity());
 		if(ptr->load(database, id) == false)
-			ptr = null;
+			ptr = nullptr;
 		/*
 		shared_ptr<ObjectsIRevisionable> object = objects_revisionable_cast(database->getPortal()->getObject(database, id.toUTF16()));
-		if(object != null)
+		if(object != nullptr)
 		{
 			OS_ASSERT(object->isEntity());
 
@@ -107,7 +107,7 @@ shared_ptr<EntitiesEntity> EntitiesEntitiesCache::myGet(const shared_ptr<IPortal
 			// Questo perch concettualmente il fatto che l'ID di un'entit sia l'ID della entry primaria  solo una comodit nostra.
 			ptr.reset(OS_NEW EntitiesEntity());
 			if(ptr->load(database, object) == false)
-				ptr = null;			
+				ptr = nullptr;			
 		}
 		*/
 	}

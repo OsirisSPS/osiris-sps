@@ -38,8 +38,7 @@
     </xsl:call-template>    
   </xsl:template>
 
-	<!--
-	<xsl:template name="block_page">
+  <xsl:template name="block_page">
     <xsl:param name="prefix" />
     <xsl:param name="body" />
     <xsl:param name="content" />
@@ -55,9 +54,9 @@
     <xsl:if test="$content">
       <xsl:copy-of select="$content"/>
     </xsl:if>
+
   </xsl:template>
-	-->
-	
+
   <xsl:template name="block_item">
     <xsl:param name="title" />
     <xsl:param name="innerStyle" />
@@ -112,8 +111,7 @@
       </xsl:if>
     </div>
   </xsl:template>
-	
-	<!--
+
   <xsl:template name="block_heading">
     <xsl:param name="title" />
     <xsl:param name="href" />
@@ -158,7 +156,6 @@
     </div>
     <div style="clear:both;"></div>
   </xsl:template>
-	-->
 
   <xsl:template name="block_minimal">
     <xsl:param name="title" />
@@ -170,18 +167,6 @@
     <xsl:param name="storage" />
     <xsl:param name="content" />
 
-		<xsl:call-template name="block_small">
-			<xsl:with-param name="title" select="$title"/>
-			<xsl:with-param name="href" select="$href"/>
-			<xsl:with-param name="innerStyle" select="$innerStyle"/>
-			<xsl:with-param name="outerStyle" select="$outerStyle"/>
-			<xsl:with-param name="body" select="$body"/>
-			<xsl:with-param name="startClose" select="$startClose"/>
-			<xsl:with-param name="storage" select="$storage"/>
-			<xsl:with-param name="content" select="$content"/>
-		</xsl:call-template>
-
-		<!--
     <div class="os_block_minimal" data-os-otype="roller" data-os-allowClose="true">
       <xsl:if test="$outerStyle">
         <xsl:attribute name="style">
@@ -231,7 +216,6 @@
       </div>      
     </div>
     <div style="clear:both;"></div>
-		-->
   </xsl:template>
   
   <xsl:template name="block_small">

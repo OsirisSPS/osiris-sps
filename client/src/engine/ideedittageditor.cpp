@@ -72,7 +72,7 @@ void TagEditor::onPreRender()
 	if(isRevision() && getPostBack() == false)
 	{
 		shared_ptr<ObjectsTag> current = objects_tag_cast(getCurrent());
-		if(current != null)
+		if(current != nullptr)
 			m_name->setValue(current->name);
 	}
 }

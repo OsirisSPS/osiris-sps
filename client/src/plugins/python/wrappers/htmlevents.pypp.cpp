@@ -15,7 +15,7 @@ struct EventsSource_less__osiris_scope_String_comma__osiris_scope_IEvent__greate
     EventsSource_less__osiris_scope_String_comma__osiris_scope_IEvent__greater__wrapper( )
     : ::osiris::EventsSource<osiris::String, osiris::IEvent>( )
       , ::osiris::PythonWrapper< ::osiris::EventsSource< osiris::String, osiris::IEvent > >(){
-        // null constructor
+        // nullptr constructor
     
     }
 

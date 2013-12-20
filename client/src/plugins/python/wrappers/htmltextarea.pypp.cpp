@@ -23,7 +23,7 @@ struct HtmlTextArea_wrapper : ::osiris::HtmlTextArea, ::osiris::PythonWrapper< :
     HtmlTextArea_wrapper( )
     : ::osiris::HtmlTextArea( )
       , ::osiris::PythonWrapper< ::osiris::HtmlTextArea >(){
-        // null constructor
+        // nullptr constructor
     
     }
 

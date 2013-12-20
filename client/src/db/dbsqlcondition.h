@@ -107,7 +107,7 @@ inline void DbSqlCondition::setValue(const String &value) { m_conditionValue = v
 
 inline shared_ptr<DbSqlICommand> DbSqlCondition::getCommand() const { return m_conditionCommand; }
 inline void DbSqlCondition::setCommand(shared_ptr<DbSqlICommand> command) { m_conditionCommand = command; m_conditionValue.clear(); }
-inline bool DbSqlCondition::hasCommand() const { return m_conditionCommand != null; }
+inline bool DbSqlCondition::hasCommand() const { return m_conditionCommand != nullptr; }
 
 inline uint32 DbSqlCondition::getFlags() const { return m_flags; }
 inline void DbSqlCondition::setFlags(uint32 flags) { m_flags = flags; }

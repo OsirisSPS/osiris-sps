@@ -58,7 +58,7 @@ static bool pluginInitialize(Plugin &plugin)
 	// Py_GetBuildInfo
 
 	shared_ptr<ThirdPartyLibrary> pythonLibrary = ThirdPartyLibrariesReporter::instance()->addLibrary();
-	OS_ASSERT(pythonLibrary != null);
+	OS_ASSERT(pythonLibrary != nullptr);
 	pythonLibrary->setName("Python");
 	pythonLibrary->setVersion(PY_VERSION);
 	pythonLibrary->setDescription("Python is a remarkably powerful dynamic programming language that is used in a wide variety of application domains.");

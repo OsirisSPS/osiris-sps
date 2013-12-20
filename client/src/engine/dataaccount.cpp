@@ -38,7 +38,7 @@ OS_NAMESPACE_BEGIN()
 template <typename T>
 static void exportNodeValue(shared_ptr<XMLNode> node, const String &name, const DbValue<T> &value)
 {
-	OS_ASSERT(node != null);
+	OS_ASSERT(node != nullptr);
 
 	shared_ptr<XMLNode> child = node->addChild(name);
 	child->setData(value.toXML());
@@ -47,10 +47,10 @@ static void exportNodeValue(shared_ptr<XMLNode> node, const String &name, const 
 template <typename T>
 static void importNodeValue(shared_ptr<XMLNode> node, const String &name, DbValue<T> &value)
 {
-	OS_ASSERT(node != null);
+	OS_ASSERT(node != nullptr);
 
 	shared_ptr<XMLNode> child = node->getNode(name);
-	if(child != null)	// Il nodo potrebbe essere opzionale
+	if(child != nullptr)	// Il nodo potrebbe essere opzionale
 		value.fromXML(child->getData());
 }
 
@@ -214,14 +214,14 @@ shared_ptr<XMLDocument> DataAccount::exportXML() const
 	// Decodifica la chiave pubblica
 	Buffer public_key_clean;
 	if(decodePublicKey(real_password, public_key_clean) == false)
-		return null;
+		return nullptr;
 	exportNodeValue(root, DBTABLES::ACCOUNTS::PUBLIC_KEY + _S("_clean"), DbValue<Buffer>(public_key_clean));
 	public_key_clean.save(_S("d:\\temp\\osiris\\os_pub.ber"));
 
 	// Decodifica la chiave privata
 	Buffer private_key_clean;
 	if(decodePrivateKey(real_password, private_key_clean) == false)
-		return null;
+		return nullptr;
 	exportNodeValue(root, DBTABLES::ACCOUNTS::PRIVATE_KEY + _S("_clean"), DbValue<Buffer>(private_key_clean));
 	private_key_clean.save(_S("d:\\temp\\osiris\\os_priv.ber"));
 	*/
@@ -239,13 +239,13 @@ shared_ptr<XMLDocument> DataAccount::exportXML() const
 
 bool DataAccount::importXML(shared_ptr<XMLDocument> document)
 {
-	OS_ASSERT(document != null);
+	OS_ASSERT(document != nullptr);
 	shared_ptr<XMLNode> root = document->getRoot();
 
 	importNodeValue(root, DBTABLES::ACCOUNTS::ID, id);
 	importNodeValue(root, DBTABLES::ACCOUNTS::USERNAME, username);
 
-	if(root->getNode(DBTABLES::ACCOUNTS::PASSWORD) == null)
+	if(root->getNode(DBTABLES::ACCOUNTS::PASSWORD) == nullptr)
 	{
 		// First format: don't have the password, and public/private key are not encrypted.
 		// Used by external generator.		

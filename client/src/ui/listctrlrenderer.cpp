@@ -41,7 +41,7 @@ void ListCtrlRenderer::onEraseBackground(wxEraseEvent &e)
 
 	/*
 	wxListCtrl *listCtrl = getWindow<wxListCtrl>();
-	OS_ASSERT(listCtrl != null);
+	OS_ASSERT(listCtrl != nullptr);
 
 	// to prevent flickering, erase only content *outside* of the actual list items stuff
 	if(listCtrl->GetItemCount() == 0)
@@ -51,7 +51,7 @@ void ListCtrlRenderer::onEraseBackground(wxEraseEvent &e)
 	}
 
 	wxDC *dc = e.GetDC();
-	OS_ASSERT(dc != null);
+	OS_ASSERT(dc != nullptr);
 
 	// get some info
 	wxCoord width = 0;

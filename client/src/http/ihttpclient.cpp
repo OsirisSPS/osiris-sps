@@ -57,7 +57,7 @@ bool IHttpClient::loadVerifyFile(const std::string &filename, boost::asio::ssl::
 
 void IHttpClient::initRedirect(const HttpUrl &redirectUrl, shared_ptr<HttpRequest> request, shared_ptr<HttpResponse> response)
 {
-	if(request == null || response == null)
+	if(request == nullptr || response == nullptr)
 	{
 		OS_ASSERTFALSE();
 		return;

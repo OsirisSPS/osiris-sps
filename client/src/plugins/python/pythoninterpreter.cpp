@@ -32,7 +32,7 @@ OS_NAMESPACE_BEGIN()
 
 PythonInterpreter::PythonInterpreter(PyThreadState *state) : m_state(state)
 {
-	OS_ASSERT(m_state != null);
+	OS_ASSERT(m_state != nullptr);
 }
 
 PythonInterpreter::~PythonInterpreter()
@@ -46,7 +46,7 @@ PythonInterpreter::~PythonInterpreter()
 	PyGC_Collect();		// TODO: corretto? se non viene chiamato PyGC_Collect, Py_EndInterpreter viene richiamato prima della distruzione di oggetti creati nel contesto di riferimento
 
 	Py_EndInterpreter(m_state);	
-	m_state = null;
+	m_state = nullptr;
 }
 
 bool PythonInterpreter::execute(const String &source, bool fileSource, const boost::function<void(const boost::python::object &)> &defaultCallback, const boost::function<void(const boost::python::object &)> &errorCallback)
@@ -116,7 +116,7 @@ bool PythonInterpreter::invoke(const boost::function<void(const boost::python::o
 
 	PythonState scope(m_state);				// Deve essere in uno scope superiore al tracciamento di eventuali errori		
 
-	if(m_dictionary == null)
+	if(m_dictionary == nullptr)
 	{
 		OS_ASSERTFALSE();
 		return false;

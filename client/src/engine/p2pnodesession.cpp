@@ -57,7 +57,7 @@ LocalSession::~LocalSession()
 
 const Buffer & LocalSession::getModulus() const
 {
-	if(m_keyAgreement != null)
+	if(m_keyAgreement != nullptr)
 		return m_keyAgreement->getModulus();
 
 	return Buffer::EMPTY;
@@ -65,7 +65,7 @@ const Buffer & LocalSession::getModulus() const
 
 const Buffer & LocalSession::getGenerator() const
 {
-	if(m_keyAgreement != null)
+	if(m_keyAgreement != nullptr)
 		return m_keyAgreement->getGenerator();
 
 	return Buffer::EMPTY;
@@ -73,7 +73,7 @@ const Buffer & LocalSession::getGenerator() const
 
 const Buffer & LocalSession::getPublicKey() const
 {
-	if(m_keyAgreement != null)
+	if(m_keyAgreement != nullptr)
 		return m_keyAgreement->getPublicKey();
 
 	return Buffer::EMPTY;
@@ -129,7 +129,7 @@ shared_ptr<CryptKeyAgreement> LocalSession::initDH(const Buffer &modulus, const 
 
 bool LocalSession::agree(const Buffer &publicKey)
 {
-	if(m_keyAgreement == null)
+	if(m_keyAgreement == nullptr)
 		return false;
 
 	return m_keyAgreement->agree(publicKey, m_key);

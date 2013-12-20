@@ -47,7 +47,7 @@ Driver::Driver(const String &rootPath, shared_ptr<Thread> asyncThread) : m_rootP
 																	     m_asyncThread(asyncThread)
 {
 	OS_ASSERT(m_rootPath.empty() == false);
-	OS_ASSERT(asyncThread == null || asyncThread->running());
+	OS_ASSERT(asyncThread == nullptr || asyncThread->running());
 
 	// Fix di compatibilità per le directory con il vecchio nome 
 	// Compatibility - TOCLEAN
@@ -63,7 +63,7 @@ Driver::Driver(const String &rootPath, shared_ptr<Thread> asyncThread) : m_rootP
 
 Driver::~Driver()
 {
-	if(m_asyncThread != null)
+	if(m_asyncThread != nullptr)
 	{
 		m_asyncThread->stop();
 		m_asyncThread.reset();
@@ -147,7 +147,7 @@ shared_ptr<IDbConnection> Driver::createConnection(const std::string &database, 
 {
 	// 23/12/2008
 	if(databaseExists(database, options) == false)
-		return null;
+		return nullptr;
 	
 	return shared_ptr<IDbConnection>(OS_NEW Connection(database, options, get_this_ptr()));
 }

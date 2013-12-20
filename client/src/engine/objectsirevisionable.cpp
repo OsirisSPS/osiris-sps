@@ -104,7 +104,7 @@ void ObjectsIRevisionable::changeToRevision(shared_ptr<ObjectsIRevisionable> src
 
 	id = ObjectID::EMPTY;
 		
-	if(src != null)
+	if(src != nullptr)
 	{
 #ifdef OS_TODOCIP
 		entity = src->entity;
@@ -180,7 +180,7 @@ void ObjectsIRevisionable::exportBase(shared_ptr<XMLPortalExporter> exporter)
 			node->setAttributeString(DBTABLES::ID, getEntityID().toUTF16());
 
 			shared_ptr<ObjectsIRevisionable> primary = objects_revisionable_cast(exporter->getPage()->getObject(getEntityID().toObjectID()));
-			if(primary != null)
+			if(primary != nullptr)
 			{
 				node->setAttributeDateTime(DBTABLES::SUBMIT_DATE, primary->submit_date);
 				node->setAttributeDateTime(_S("revision_date"), submit_date);
@@ -379,7 +379,7 @@ void ObjectsIRevisionable::exportXML(shared_ptr<XMLPortalExporter> exporter)
 			node->setAttributeString(_S("revision"), id->toUTF16());
 
 			shared_ptr<ObjectsIRevisionable> primary = objects_revisionable_cast(exporter->getPage()->getObject(getEntityID().toObjectID()));
-			if(primary != null && primary->parent != parent)
+			if(primary != nullptr && primary->parent != parent)
 			{
 				node->setAttributeBool(_S("moved"), true);
 			}
@@ -401,13 +401,13 @@ void ObjectsIRevisionable::exportAuthor(shared_ptr<XMLPortalExporter> exporter)
 {
 #ifdef OS_TODOCIP
 	shared_ptr<ObjectsUser> authorCurrent = objects_user_cast(exporter->getPage()->getObject(author));
-	if(authorCurrent == null)
+	if(authorCurrent == nullptr)
 		return;
 
 	if(author != entity_author)
 	{
 		shared_ptr<ObjectsUser> authorEntity = objects_user_cast(exporter->getPage()->getObject(entity_author));
-		if(authorEntity == null)
+		if(authorEntity == nullptr)
 			return;
 
 		shared_ptr<XMLPortalExporter> editorExporter(OS_NEW XMLPortalExporter(exporter->getNode(_S("editor")), exporter->getPage(), exporter->getMode()));
@@ -424,16 +424,16 @@ void ObjectsIRevisionable::exportAuthor(shared_ptr<XMLPortalExporter> exporter)
 	
 #else
 	shared_ptr<ObjectsUser> authorObj = objects_user_cast(exporter->getPage()->getObject(author));
-	if(authorObj == null)
+	if(authorObj == nullptr)
 		return;
 
 	// Controlla se l'oggetto  una revisione
-	if(authorObj != null && isEntity() == false)
+	if(authorObj != nullptr && isEntity() == false)
 	{		
 		// Carica la primaria della revisione
 		shared_ptr<ObjectsIRevisionable> primary = objects_revisionable_cast(exporter->getPage()->getObject(getEntityID().toObjectID()));
 		// Controlla se l'autore della revisione non coincide con quello della primaria
-		if(primary != null && primary->author != authorObj->id)
+		if(primary != nullptr && primary->author != authorObj->id)
 		{
 			// Esporta l'autore della revisione sotto il nodo "editor"
 			shared_ptr<XMLPortalExporter> editorExporter(OS_NEW XMLPortalExporter(exporter->getNode(_S("editor")), exporter->getPage(), exporter->getMode()));
@@ -445,7 +445,7 @@ void ObjectsIRevisionable::exportAuthor(shared_ptr<XMLPortalExporter> exporter)
 	}
 
 	// Esporta l'autore della primaria
-	if(authorObj == null)
+	if(authorObj == nullptr)
 		return;
 	shared_ptr<XMLPortalExporter> authorExporter(OS_NEW XMLPortalExporter(exporter->getNode(DBTABLES::AUTHOR), exporter->getPage(), exporter->getMode()));
 	authorObj->exportXML(authorExporter);	
@@ -476,7 +476,7 @@ bool ObjectsIRevisionable::onCreate(const shared_ptr<IPortalDatabase> &db, const
 	{
 		// Carica la primaria della revisione
 		shared_ptr<ObjectsIRevisionable> primary_object = objects_revisionable_cast(portal->getObject(db, revision->toUTF16()));
-		if(primary_object == null)
+		if(primary_object == nullptr)
 			return false;
 
 		// La primaria deve essere valida
@@ -507,7 +507,7 @@ bool ObjectsIRevisionable::onCreate(const shared_ptr<IPortalDatabase> &db, const
 
 		// Carica il padre corrente
 		shared_ptr<ObjectsIObject> parent_object = portal->getObject(db, parent->toUTF16());
-		if(parent_object == null)
+		if(parent_object == nullptr)
 			return false;
 
 		// Il parent deve essere valido

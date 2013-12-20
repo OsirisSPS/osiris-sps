@@ -39,7 +39,7 @@ OS_NAMESPACE_BEGIN()
 
 OMLContext::OMLContext(shared_ptr<IPage> page, bool enableWarning, bool full, bool secure, bool row, OMLRenderMode mode, const String &refID, const String &fullUrl)
 {
-	//OS_ASSERT(!( (plain == false) && (page == null) ));
+	//OS_ASSERT(!( (plain == false) && (page == nullptr) ));
 
 	static uint32 currentID = 0;
 	currentID++;
@@ -157,7 +157,7 @@ void OMLContext::parseOml(const String& bbText)
 
 void OMLContext::parseCss(const String& cssText, bool encode)
 {
-	m_output = IOMLCode::encodeToCss(get_this_ptr(), null, cssText);
+	m_output = IOMLCode::encodeToCss(get_this_ptr(), nullptr, cssText);
 	if(encode)
 		m_output = HtmlParser::instance()->encode(m_output);
 }
@@ -208,7 +208,7 @@ void OMLContext::generateItems(shared_ptr<OMLItem> root, const std::wstring& tex
 					String tagName = textLower.substr(posStart+2,posEnd-posStart-2).c_str();
 
 					// Caso speciale ad hoc: se  un [/list], e il corrente  un [*], allora chiudo il precedente.
-					if( (current != null) && (current->getTagName() == _S("*")) && (tagName == _S("list")) )
+					if( (current != nullptr) && (current->getTagName() == _S("*")) && (tagName == _S("list")) )
 					{
 						current = closeItem(current);
 					}
@@ -264,7 +264,7 @@ void OMLContext::generateItems(shared_ptr<OMLItem> root, const std::wstring& tex
 				else
 				{
 					// Caso speciale ad hoc: se  un [*], e il corrente  un [*], allora chiudo il precedente.
-					if( (t->getTagName() == _S("*")) && (current != null) && (current->getTagName() == _S("*")) )
+					if( (t->getTagName() == _S("*")) && (current != nullptr) && (current->getTagName() == _S("*")) )
 					{
 						current = closeItem(current);
 					}
@@ -367,7 +367,7 @@ void OMLContext::generateItems(shared_ptr<OMLItem> root, const std::wstring& tex
 					tagName.to_lower();
 
 					// Caso speciale ad hoc: se  un [/list], e il corrente  un [*], allora chiudo il precedente.
-					if( (current != null) && (current->getTagName() == _S("*")) && (tagName == _S("list")) )
+					if( (current != nullptr) && (current->getTagName() == _S("*")) && (tagName == _S("list")) )
 					{
 						current = closeItem(current);
 					}
@@ -410,7 +410,7 @@ void OMLContext::generateItems(shared_ptr<OMLItem> root, const std::wstring& tex
 				}
 
 				// Caso speciale ad hoc: se  un [*], e il corrente  un [*], allora chiudo il precedente.
-				if( (t->getTagName() == _S("*")) && (current != null) && (current->getTagName() == _S("*")) )
+				if( (t->getTagName() == _S("*")) && (current != nullptr) && (current->getTagName() == _S("*")) )
 				{
 					current = closeItem(current);
 				}
@@ -583,7 +583,7 @@ void OMLContext::decrementRecursive()
 
 bool OMLContext::checkPortalPageAvailable(shared_ptr<OMLItem> i)
 {
-	if(getPortalPage() == null)
+	if(getPortalPage() == nullptr)
 	{
 		addWarning(String::format(_S("%S need to be used inside a portal.").c_str(), getFriendlyName(i).c_str()));
 		return false;
@@ -662,7 +662,7 @@ String OMLContext::getReport(const String& text, bool detailed) const
 		}
 		out += _S("[/list]");
 	}
-	if( (detailed) && (m_root != null) )
+	if( (detailed) && (m_root != nullptr) )
 	{
 		// Tree degli items
 		out = out + _S("[whisper=\"Item tree\"]") + generateReportTree(m_root, 0) + _S("[/whisper]");

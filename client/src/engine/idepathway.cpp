@@ -87,10 +87,10 @@ void IdePathway::add(shared_ptr<IPortalDatabase> database, shared_ptr<EntitiesEn
 	// Se viene rilevata una situazione di ricorsività, cio di un oggetto il padre lui stesso o uno dei figli,  come se il padre non fosse trovato.
 
 	Paths paths;
-	while((entity != null) && (entity->getEntityID() != ObjectsSystem::instance()->getRootID()) )
+	while((entity != nullptr) && (entity->getEntityID() != ObjectsSystem::instance()->getRootID()) )
 	{
 		shared_ptr<ObjectsIRevisionable> object = entity->getCurrent();
-		if(object == null)
+		if(object == nullptr)
 			break;
 
 		String title = object->getTitle();

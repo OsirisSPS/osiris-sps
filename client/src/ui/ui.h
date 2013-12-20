@@ -21,7 +21,21 @@
 
 //////////////////////////////////////////////////////////////////////
 
-extern "C" UIExport OS_WXWIDGETS_ENTRY_POINT_RETURN_VALUE runUI(OS_WXWIDGETS_ENTRY_POINT_DECLARE_PARAMS);
+#if OS_PLATFORM	== OS_PLATFORM_WIN
+    #define OS_UI_ENTRY_POINT_DECLARE_PARAMS	HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nCmdShow
+	#define OS_UI_ENTRY_POINT_ENUM_PARAMS		hInstance, hPrevInstance, lpCmdLine, nCmdShow
+	#define OS_UI_ENTRY_POINT_RETURN_VALUE		int
+	#define OS_UI_ENTRY_POINT()					OS_UI_ENTRY_POINT_RETURN_VALUE WINAPI WinMain(OS_UI_ENTRY_POINT_DECLARE_PARAMS)
+#else
+	#define OS_UI_ENTRY_POINT_DECLARE_PARAMS	int argc, char *argv[]
+	#define OS_UI_ENTRY_POINT_ENUM_PARAMS		argc, argv
+	#define OS_UI_ENTRY_POINT_RETURN_VALUE		int
+	#define OS_UI_ENTRY_POINT()					OS_UI_ENTRY_POINT_RETURN_VALUE main(OS_UI_ENTRY_POINT_DECLARE_PARAMS)
+#endif
+
+//////////////////////////////////////////////////////////////////////
+
+extern "C" UIExport OS_UI_ENTRY_POINT_RETURN_VALUE runUI(OS_UI_ENTRY_POINT_DECLARE_PARAMS);
 
 //////////////////////////////////////////////////////////////////////
 

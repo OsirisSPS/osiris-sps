@@ -31,15 +31,15 @@ OS_NAMESPACE_BEGIN()
 ConnectionStatusGuard::ConnectionStatusGuard(shared_ptr<IConnection> connection, shared_ptr<ConnectionStatus> status) : m_connection(connection),
 																														m_status(status)
 {
-	OS_ASSERT(connection != null);
-	OS_ASSERT(status != null);
+	OS_ASSERT(connection != nullptr);
+	OS_ASSERT(status != nullptr);
 }
 
 ConnectionStatusGuard::~ConnectionStatusGuard()
 {
 	shared_ptr<IConnection> connection = m_connection.lock();
 	// Controlla se la connessione è ancora valida e se lo stato è modificato
-	if(connection != null && m_status->resetModifiedFlag())
+	if(connection != nullptr && m_status->resetModifiedFlag())
 		connection->fireStateChanged();
 }
 

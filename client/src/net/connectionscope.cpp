@@ -51,7 +51,7 @@ void ConnectionScope::IListener::handleTimeout(const boost::system::error_code &
 
 ConnectionScope::ConnectionScope(shared_ptr<boost::asio::io_service> service, shared_ptr<IListener> listener) : m_listener(listener)
 {
-	OS_ASSERT(service != null);
+	OS_ASSERT(service != nullptr);
 	m_timer = createAsioObject<boost::asio::deadline_timer>(*service);
 
 	// N.B.: non è possibile qui chiamare una extendTimeout a causa della get_this_ptr che fa internamente		
@@ -62,7 +62,7 @@ ConnectionScope::~ConnectionScope()
 	cancelTimeout();
 
 	shared_ptr<IListener> listener = getListener();
-	if(listener != null)
+	if(listener != nullptr)
 		listener->onFinalize();
 }
 
@@ -82,8 +82,8 @@ shared_ptr<ConnectionScope> ConnectionScope::extendTimeout(const boost::posix_ti
 	if(m_timeout.total_milliseconds() > 0)
 	{
 		shared_ptr<IListener> listener = getListener();
-		OS_ASSERT(listener != null);
-		if(listener != null)
+		OS_ASSERT(listener != nullptr);
+		if(listener != nullptr)
 		{
 			m_timer->expires_from_now(m_timeout);
 			// N.B.: il callback deve essere effettuato sul listener e non sullo scope altrimenti si rischia che venga richiamato dopo che lo scope sia stato distrutto

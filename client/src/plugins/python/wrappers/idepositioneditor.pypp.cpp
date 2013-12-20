@@ -26,7 +26,7 @@ struct IdePositionEditor_wrapper : ::osiris::IdePositionEditor, ::osiris::Python
     IdePositionEditor_wrapper( )
     : ::osiris::IdePositionEditor( )
       , ::osiris::PythonWrapper< ::osiris::IdePositionEditor >(){
-        // null constructor
+        // nullptr constructor
     
     }
 

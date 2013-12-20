@@ -16,7 +16,7 @@ struct IStream_wrapper : ::osiris::IStream, ::osiris::PythonWrapper< ::osiris::I
     IStream_wrapper( )
     : ::osiris::IStream( )
       , ::osiris::PythonWrapper< ::osiris::IStream >(){
-        // null constructor
+        // nullptr constructor
     
     }
 

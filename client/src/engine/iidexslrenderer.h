@@ -111,7 +111,7 @@ void IXSLRenderer<T>::onInit()
 
 	// Carica lo stylesheet
 	m_stylesheet = ControlBase::getPage()->loadStylesheet(getTemplatePath());
-	if(m_stylesheet != null)
+	if(m_stylesheet != nullptr)
 	{
 		onInitStylesheet();
 

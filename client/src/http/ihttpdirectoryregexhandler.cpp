@@ -41,7 +41,7 @@ IHttpDirectoryRegexHandler::~IHttpDirectoryRegexHandler()
 bool IHttpDirectoryRegexHandler::addRegex(const String &regex, bool nocase)
 {
 	shared_ptr<boost::wregex> re = regex_create(regex, nocase);
-	if(re == null)
+	if(re == nullptr)
 		return false;
 
 	m_regexps.push_back(re);

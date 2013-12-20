@@ -38,7 +38,7 @@ class EngineExport DbSchemaTable : public Object,
 {
 // Construction
 public:
-	DbSchemaTable(shared_ptr<DbSchemaSchema> schema = null);
+	DbSchemaTable(shared_ptr<DbSchemaSchema> schema = nullptr);
 	virtual ~DbSchemaTable();
 
 // Attributes
@@ -110,8 +110,8 @@ inline uint32 DbSchemaTable::getFieldsCount() const { return static_cast<uint32>
 inline const DbSchemaIndexes & DbSchemaTable::getIndexes() const { return m_indexes; }
 inline uint32 DbSchemaTable::getIndexesCount() const { return static_cast<uint32>(m_indexes.size()); }
 
-inline bool DbSchemaTable::hasField(const String &name, bool checkOldName) const { return getField(name, checkOldName) != null; }
-inline bool DbSchemaTable::hasIndex(const String &name) const { return getIndex(name) != null; }
+inline bool DbSchemaTable::hasField(const String &name, bool checkOldName) const { return getField(name, checkOldName) != nullptr; }
+inline bool DbSchemaTable::hasIndex(const String &name) const { return getIndex(name) != nullptr; }
 
 //////////////////////////////////////////////////////////////////////
 

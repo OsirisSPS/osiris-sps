@@ -35,7 +35,7 @@ class ModelViewer : public CommentableObjectViewer
 
 // Construction
 public:
-	ModelViewer(shared_ptr<EntitiesEntity> entity = null);
+	ModelViewer(shared_ptr<EntitiesEntity> entity = nullptr);
 	virtual ~ModelViewer();
 
 // IXSLRenderer interface

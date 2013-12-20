@@ -33,7 +33,7 @@ ConnectionsManager::ConnectionsManager(shared_ptr<boost::asio::io_service> servi
 																									m_enabled(enabled),
 																									m_currentID(0)
 {
-	OS_ASSERT(service != null);
+	OS_ASSERT(service != nullptr);
 }
 
 ConnectionsManager::~ConnectionsManager()
@@ -47,7 +47,7 @@ shared_ptr<IConnection> ConnectionsManager::getConnection(uint32 id) const
 
 	Connections::const_iterator i = m_connections.find(id);
 	if(i == m_connections.end())
-		return null;
+		return nullptr;
 
 	return i->second;
 }
@@ -128,7 +128,7 @@ bool ConnectionsManager::_add(shared_ptr<IConnection> connection)
 	if(m_enabled == false)
 		return false;
 
-	if(connection == null || m_connections.find(connection->getID()) != m_connections.end())
+	if(connection == nullptr || m_connections.find(connection->getID()) != m_connections.end())
 	{
 		OS_ASSERTFALSE();
 		return false;
@@ -141,7 +141,7 @@ bool ConnectionsManager::_add(shared_ptr<IConnection> connection)
 
 bool ConnectionsManager::_remove(shared_ptr<IConnection> connection, bool close)
 {
-	if(connection == null)
+	if(connection == nullptr)
 	{
 		OS_ASSERTFALSE();
 		return false;

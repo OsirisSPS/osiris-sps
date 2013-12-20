@@ -74,7 +74,7 @@ ObjectsSigner::ObjectsSigner(const T &value)
 template <typename T>
 void ObjectsSigner::add(const DbValue<T> &value)
 {
-	// Aggiunge il valore solo nel caso non sia null (facilita l'aggiunta di nuovi campi in futuro se di default a null)
+	// Aggiunge il valore solo nel caso non sia nullptr (facilita l'aggiunta di nuovi campi in futuro se di default a nullptr)
 	if(value.isNull() == false)
 		add(value.get());
 }

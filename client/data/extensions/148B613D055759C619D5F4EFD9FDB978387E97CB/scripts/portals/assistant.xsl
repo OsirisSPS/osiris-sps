@@ -12,7 +12,7 @@
   
   <xsl:output method="html" indent="yes" omit-xml-declaration="yes"/>
 
-  <xsl:template match="/assistant">
+  <xsl:template match="/">
     <div id="assistant_dialog" title="TODO title assistant">
       <div class="os_content">
         bla bla bla

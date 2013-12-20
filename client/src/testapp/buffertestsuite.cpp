@@ -31,10 +31,10 @@ BOOST_AUTO_TEST_CASE(test_buffer_construction)
 	Buffer b1(64);
 
 	BOOST_CHECK(b1.empty());
-	BOOST_CHECK(b1.getData() == null);
-	BOOST_CHECK(b1.getPosition() == null);
-	BOOST_CHECK(b1.getEndPosition() == null);
-	BOOST_CHECK(b1.getAllocEndPosition() == null);
+	BOOST_CHECK(b1.getData() == nullptr);
+	BOOST_CHECK(b1.getPosition() == nullptr);
+	BOOST_CHECK(b1.getEndPosition() == nullptr);
+	BOOST_CHECK(b1.getAllocEndPosition() == nullptr);
 	BOOST_CHECK(b1.getAvailable() == 0);
 	BOOST_CHECK(b1.isReadable() == false);
 	BOOST_CHECK(b1.getOffset() == 0);
@@ -44,10 +44,10 @@ BOOST_AUTO_TEST_CASE(test_buffer_construction)
 
 	b1.reserve(100);
 	BOOST_CHECK(b1.empty() == false);
-	BOOST_CHECK(b1.getData() != null);
-	BOOST_CHECK(b1.getPosition() != null);
-	BOOST_CHECK(b1.getEndPosition() != null);
-	BOOST_CHECK(b1.getAllocEndPosition() != null);
+	BOOST_CHECK(b1.getData() != nullptr);
+	BOOST_CHECK(b1.getPosition() != nullptr);
+	BOOST_CHECK(b1.getEndPosition() != nullptr);
+	BOOST_CHECK(b1.getAllocEndPosition() != nullptr);
 	BOOST_CHECK(b1.getAvailable() == 100);
 	BOOST_CHECK(b1.isReadable());
 	BOOST_CHECK(b1.getSize() == 100);	
@@ -57,10 +57,10 @@ BOOST_AUTO_TEST_CASE(test_buffer_construction)
 	Buffer b2(b1);
 	BOOST_CHECK(b1 == b2);
 	BOOST_CHECK(b2.empty() == false);
-	BOOST_CHECK(b2.getData() != null);
-	BOOST_CHECK(b2.getPosition() != null);
-	BOOST_CHECK(b2.getEndPosition() != null);
-	BOOST_CHECK(b2.getAllocEndPosition() != null);
+	BOOST_CHECK(b2.getData() != nullptr);
+	BOOST_CHECK(b2.getPosition() != nullptr);
+	BOOST_CHECK(b2.getEndPosition() != nullptr);
+	BOOST_CHECK(b2.getAllocEndPosition() != nullptr);
 	BOOST_CHECK(b2.getAvailable() == 100);
 	BOOST_CHECK(b2.isReadable());
 	BOOST_CHECK(b2.getSize() == 100);	
@@ -71,10 +71,10 @@ BOOST_AUTO_TEST_CASE(test_buffer_construction)
 	b3 = b2;
 	BOOST_CHECK(b2 == b3);
 	BOOST_CHECK(b3.empty() == false);
-	BOOST_CHECK(b3.getData() != null);
-	BOOST_CHECK(b3.getPosition() != null);
-	BOOST_CHECK(b3.getEndPosition() != null);
-	BOOST_CHECK(b3.getAllocEndPosition() != null);
+	BOOST_CHECK(b3.getData() != nullptr);
+	BOOST_CHECK(b3.getPosition() != nullptr);
+	BOOST_CHECK(b3.getEndPosition() != nullptr);
+	BOOST_CHECK(b3.getAllocEndPosition() != nullptr);
 	BOOST_CHECK(b3.getAvailable() == 100);
 	BOOST_CHECK(b3.isReadable());
 	BOOST_CHECK(b3.getSize() == 100);	
@@ -83,10 +83,10 @@ BOOST_AUTO_TEST_CASE(test_buffer_construction)
 
 	b3.clear();
 	BOOST_CHECK(b3.empty());
-	BOOST_CHECK(b3.getData() == null);
-	BOOST_CHECK(b3.getPosition() == null);
-	BOOST_CHECK(b3.getEndPosition() == null);
-	BOOST_CHECK(b3.getAllocEndPosition() == null);
+	BOOST_CHECK(b3.getData() == nullptr);
+	BOOST_CHECK(b3.getPosition() == nullptr);
+	BOOST_CHECK(b3.getEndPosition() == nullptr);
+	BOOST_CHECK(b3.getAllocEndPosition() == nullptr);
 	BOOST_CHECK(b3.getAvailable() == 0);
 	BOOST_CHECK(b3.isReadable() == false);
 	BOOST_CHECK(b3.getOffset() == 0);

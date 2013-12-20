@@ -37,7 +37,7 @@ class CoreExport MemFile : public IStream
 
 // Construction
 public:
-	MemFile(shared_ptr<Buffer> buffer = null);
+	MemFile(shared_ptr<Buffer> buffer = nullptr);
 	virtual ~MemFile();
 
 // Attributes

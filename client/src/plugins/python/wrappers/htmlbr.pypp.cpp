@@ -23,7 +23,7 @@ struct HtmlBR_wrapper : ::osiris::HtmlBR, ::osiris::PythonWrapper< ::osiris::Htm
     HtmlBR_wrapper( )
     : ::osiris::HtmlBR( )
       , ::osiris::PythonWrapper< ::osiris::HtmlBR >(){
-        // null constructor
+        // nullptr constructor
     
     }
 

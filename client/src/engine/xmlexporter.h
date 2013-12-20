@@ -122,7 +122,7 @@ inline void XMLExporter::setAttributeString(const String &name, const String &va
 template <typename T>
 shared_ptr<T> XMLExporter::createChild(shared_ptr<XMLNode> node)
 {
-	OS_ASSERT(dynamic_cast<T *>(this) != null);
+	OS_ASSERT(dynamic_cast<T *>(this) != nullptr);
 	return shared_ptr<T>(OS_NEW T(node, dynamic_cast<const T &>(*this)));
 }
 

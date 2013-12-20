@@ -135,7 +135,7 @@ SkinnedWindow<T, R>::~SkinnedWindow()
 	RemoveEventHandler(m_renderer);
 
 	delete m_renderer;
-	m_renderer = null;
+	m_renderer = nullptr;
 }
 
 template <typename T, typename R>

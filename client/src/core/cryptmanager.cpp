@@ -123,7 +123,7 @@ inline Locked<CryptoPP::AutoSeededRandomPool>::unique pimpl<CryptManager>::getRa
 template <typename T>
 bool pimpl<CryptManager>::detectCompressor(const void *data, size_t size) const
 {
-	OS_ASSERT(data != null);
+	OS_ASSERT(data != nullptr);
 
 	try
 	{
@@ -146,7 +146,7 @@ bool pimpl<CryptManager>::detectCompressor(const void *data, size_t size) const
 template <typename T>
 bool pimpl<CryptManager>::detectCompressor(uint32 maxHeaderSize, shared_ptr<IStream> stream) const
 {
-	OS_ASSERT(stream != null);
+	OS_ASSERT(stream != nullptr);
 	OS_ASSERT(maxHeaderSize > 0);
 
 	scoped_array<byte, os_deallocate_t> buffer(OS_ALLOCATE_T(byte, maxHeaderSize));
@@ -172,7 +172,7 @@ Buffer pimpl<CryptManager>::hash_of(const void *data, size_t size) const
 
 void pimpl<CryptManager>::randomBlock(void *data, size_t size) const
 {
-    OS_ASSERT(data != null);
+    OS_ASSERT(data != nullptr);
 
 	OS_LOCK(m_cs);
     m_randomPool->GenerateBlock(reinterpret_cast<byte *>(data), static_cast<unsigned int>(size));
@@ -284,7 +284,7 @@ bool pimpl<CryptManager>::deflateCompress(const void *data, size_t size, Buffer 
 	{
 		compressed.clear();
 
-		CryptoPP::Deflator compressor(null, CryptoPP::deflateLevel<CryptoPP::Deflator>(level));
+		CryptoPP::Deflator compressor(nullptr, CryptoPP::deflateLevel<CryptoPP::Deflator>(level));
 		compressor.Put(static_cast<const byte *>(data), static_cast<unsigned int>(size));
 		compressor.MessageEnd();
 
@@ -338,7 +338,7 @@ bool pimpl<CryptManager>::zlibCompress(const void *data, size_t size, Buffer &co
 	{
 		compressed.clear();
 
-		CryptoPP::ZlibCompressor compressor(null, CryptoPP::deflateLevel<CryptoPP::ZlibCompressor>(level));
+		CryptoPP::ZlibCompressor compressor(nullptr, CryptoPP::deflateLevel<CryptoPP::ZlibCompressor>(level));
 		compressor.Put(static_cast<const byte *>(data), static_cast<unsigned int>(size));
 		compressor.MessageEnd();
 
@@ -454,10 +454,10 @@ Locked<CryptoPP::AutoSeededRandomPool>::unique CryptManager::getRandomPool() con
 
 uint32 CryptManager::CRC32(const void *data, size_t size) const
 {
-	OS_ASSERT(data != null);
+	OS_ASSERT(data != nullptr);
 	OS_ASSERT(size > 0);
 
-	if((data == null) || (size == 0))
+	if((data == nullptr) || (size == 0))
 	{
 		OS_ASSERTFALSE();
 		return 0;	// TODO: corretto?
@@ -687,7 +687,7 @@ bool CryptManager::rsaCheckKeys(const Buffer &privateKey, const Buffer &publicKe
 
 CompressorType CryptManager::detectCompressor(const void *data, size_t size)
 {
-	if(data == null)
+	if(data == nullptr)
 	{
 		OS_ASSERTFALSE();
 		return compressorTypeUnknown;
@@ -706,7 +706,7 @@ CompressorType CryptManager::detectCompressor(const void *data, size_t size)
 
 CompressorType CryptManager::detectCompressor(shared_ptr<IStream> stream)
 {
-	if(stream == null)
+	if(stream == nullptr)
 	{
 		OS_ASSERTFALSE();
 		return compressorTypeUnknown;
@@ -725,7 +725,7 @@ CompressorType CryptManager::detectCompressor(shared_ptr<IStream> stream)
 
 bool CryptManager::matchCompressor(const void *data, size_t size, CompressorType compressor)
 {
-	if(data == null)
+	if(data == nullptr)
 	{
 		OS_ASSERTFALSE();
 		return false;
@@ -749,7 +749,7 @@ bool CryptManager::matchCompressor(const void *data, size_t size, CompressorType
 
 bool CryptManager::matchCompressor(shared_ptr<IStream> stream, CompressorType compressor)
 {
-	if(stream == null)
+	if(stream == nullptr)
 	{
 		OS_ASSERTFALSE();
 		return false;

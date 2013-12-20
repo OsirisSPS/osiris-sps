@@ -14,11 +14,13 @@ class Page(osiris.IMainPage):
 		
 		self.addCss(self.skin.getResourceUrl("css/main/home.less"))
 		
-		#osiris.events.connect(self.events.get("onPortalRemove"), self.onPortalRemove)
-		#osiris.events.connect(self.events.get("onPortalSelfCreate"), self.onPortalSelfCreate)
+		osiris.events.connect(self.events.get("onPortalRemove"), self.onPortalRemove)
+		osiris.events.connect(self.events.get("onPortalSelfCreate"), self.onPortalSelfCreate)
 		
 				
 		
+		
+		self.showMessage("onload")		
 	
 	def onPreRender(self):
 		osiris.IMainPage.onPreRender(self)			
@@ -32,12 +34,7 @@ class Page(osiris.IMainPage):
 		if(osiris.ExtensionsSystem.instance().knownUpgradableCounter != -1):
 			root.attributes.set("upgradable_counter",osiris.ExtensionsSystem.instance().getKnownUpgradableCounter())
 			
-		if(osiris.IsisSystem.instance().getLatestOsirisVersion() != ""):
-			if(osiris.Engine.instance().getVersionName(False) != osiris.IsisSystem.instance().getLatestOsirisVersion()):
-				root.attributes.set("latest_osiris_notes", osiris.IsisSystem.instance().getLatestOsirisNotes())			
-			
-		#root.attributes.set("subscribe_self_portal_href",self.getEventCommand("onPortalSelfCreate"))		
-		root.attributes.set("subscribe_self_portal_href", osiris.PortalsSystem.instance().getMainLink("subscribe?mode=self"))		
+		root.attributes.set("subscribe_self_portal_href",self.getEventCommand("onPortalSelfCreate"))		
 		
 		if(self.sessionAccount.isLogged() == True):
 			root.attributes.set("session_user", self.sessionAccount.getUserID().string)
@@ -70,16 +67,12 @@ class Page(osiris.IMainPage):
 		
 		actionSubscribePortal = nodeActions.nodes.add("action")
 		actionSubscribePortal.attributes.set("name", "subscribe")
-		actionSubscribePortal.attributes.set("href", osiris.PortalsSystem.instance().getMainLink("subscribe?mode=subscribe"))
+		actionSubscribePortal.attributes.set("href", osiris.PortalsSystem.instance().getMainLink("subscribe"))
 		
 		if(self.sessionAccount.isLogged() == True):
 			actionCreatePortal = nodeActions.nodes.add("action")
 			actionCreatePortal.attributes.set("name", "create")
-			actionCreatePortal.attributes.set("href", osiris.PortalsSystem.instance().getMainLink("subscribe?mode=create"))		
-		
-		#actionNetwork = nodeActions.nodes.add("action")
-		#actionNetwork.attributes.set("name", "network")
-		#actionNetwork.attributes.set("href", osiris.PortalsSystem.instance().getMainLink("network"))		
+			actionCreatePortal.attributes.set("href", osiris.PortalsSystem.instance().getMainLink("create"))		
 		
 		actionIsis = nodeActions.nodes.add("action")
 		actionIsis.attributes.set("name", "isis")
@@ -123,21 +116,6 @@ class Page(osiris.IMainPage):
 		node.attributes.set("name", portal.name)
 		if portal.optionsShared.portalDescription != "":
 			node.attributes.set("description", portal.optionsShared.portalDescription)
-		
-		if portal.optionsShared.layoutTileImage.empty() == False:
-			node.attributes.set("tileHref", portal.getFileLink(portal.optionsShared.layoutTileImage));
-		
-		if portal.optionsShared.layoutTileColorBackground != "":
-			node.attributes.set("tileBackColor", portal.optionsShared.layoutTileColorBackground);
-		else:
-			node.attributes.set("tileBackColor", '#' + portal.portalID.getString()[3:6]);
-			
-		if portal.optionsShared.layoutTileColorForeground != "":
-			node.attributes.set("tileForeColor", portal.optionsShared.layoutTileColorForeground);
-		else:
-			node.attributes.set("tileForeColor", "#000000");
-		
-		
 				
 		# Manca da wrappare ObjectID...	
 		#nodeUser = node.nodes.add("user")		
@@ -146,8 +124,6 @@ class Page(osiris.IMainPage):
 		#if(userObject):
 		#	exporter = osiris.XMLPortalExporter(nodeUser, self, "full", false)
 		#	userObject.exportXML(exporter)
-		
-		node.attributes.set("password", portal.options.password)
 			
 		node.attributes.set("exchangeEnabled", "true" if portal.options.exchangeEnabled else "false")
 						
@@ -158,10 +134,8 @@ class Page(osiris.IMainPage):
 		node.attributes.set("lastObjectDate", portal.options.lastObjectDate.toXML())
 		
 		href = 	portal.getLink("view")
-		node.attributes.set("viewHref", portal.getLink("view"))
-
-		node.attributes.set("infoHref", portal.getLink("info"))
-						
+		node.attributes.set("href", href)
+				
 		nodeIsisEndpoints = node.nodes.add("isis")
 		isisEndpoints = portal.options.isisEndpoints;		
 		for isisEndpointID in isisEndpoints.keys():
@@ -170,16 +144,39 @@ class Page(osiris.IMainPage):
 			
 			nodeIsis.attributes.set("name",isisEndpoint.getName());
 			nodeIsis.attributes.set("url",isisEndpoint.url.toString());
-			nodeIsis.attributes.set("enabled",isisEndpoint.enabled);			
+			nodeIsis.attributes.set("enabled",isisEndpoint.enabled);
 			
-	#def onPortalRemove(self, args):		
-	#	self.showMessage(args[0])					
-	#	
-	#	portal = osiris.PortalsSystem.instance().getPortalByFullPov(args[0]);
-	#	if portal:
-	#		osiris.PortalsSystem.instance().removePortal(portal.portalID, portal.povID)
+	
+		nodeActions = node.nodes.add("actions")
+			
+		nodeAction = nodeActions.nodes.add("action")
+		nodeAction.attributes.set("name", "enter")
+		nodeAction.attributes.set("href", href)
+		nodeAction = nodeActions.nodes.add("action")
+		nodeAction.attributes.set("name", "accounts")
+		nodeAction.attributes.set("href", osiris.PortalsSystem.instance().getMainLink("accounts?portal=" + portal.getFullPovID()))
+		nodeAction = nodeActions.nodes.add("action")
+		nodeAction.attributes.set("name", "settings")
+		nodeAction.attributes.set("href", osiris.PortalsSystem.instance().getMainLink("settings?portal=" + portal.getFullPovID()))
 		
-	#def onPortalSelfCreate(self, args):		
-	#	self.showMessage("selfcreate!")					
+		nodeAction = nodeActions.nodes.add("action")
+		nodeAction.attributes.set("name", "invite")
+		nodeAction.attributes.set("call", portal.getLink("invite?mode=dialog"))
+					
+		nodeAction = nodeActions.nodes.add("action")
+		nodeAction.attributes.set("name", "remove")
+		#nodeAction.attributes.set("href", osiris.PortalsSystem.instance().getMainLink("removeportal?portal=" + portal.getFullPovID()))
+		nodeAction.attributes.set("href", self.getEventCommand("onPortalRemove",portal.getFullPovID()))					
+		nodeAction.attributes.set("confirm", "true")
+		
+	def onPortalRemove(self, args):		
+		self.showMessage(args[0])					
+		
+		portal = osiris.PortalsSystem.instance().getPortalByFullPov(args[0]);
+		if portal:
+			osiris.PortalsSystem.instance().removePortal(portal.portalID, portal.povID)
+		
+	def onPortalSelfCreate(self, args):		
+		self.showMessage("selfcreate!")					
 		
 

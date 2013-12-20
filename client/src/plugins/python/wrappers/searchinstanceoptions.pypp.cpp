@@ -21,7 +21,7 @@ struct SearchInstanceOptions_wrapper : ::osiris::SearchInstanceOptions, ::osiris
     SearchInstanceOptions_wrapper( )
     : ::osiris::SearchInstanceOptions( )
       , ::osiris::PythonWrapper< ::osiris::SearchInstanceOptions >(){
-        // null constructor
+        // nullptr constructor
     
     }
 

@@ -52,7 +52,7 @@ void RandomNumberGenerator::initGenerator()
 	// pertanto sarebbe necessario la funzione dispose() all'uscita di ogni thread
 	OS_ASSERT(m_threads.size() < 1000);	
 	// Effettua il seed per il thread corrente
-	srand((unsigned) time(null));
+	srand((unsigned) time(nullptr));
 }
 
 void RandomNumberGenerator::dispose()

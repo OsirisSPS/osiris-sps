@@ -118,7 +118,7 @@ template <typename K, typename E>
 void EventsSource<K, E>::fire(const Key &key, Event *e)
 {
 	shared_ptr<EventSource> source = find(key, false);
-	if(source != null)
+	if(source != nullptr)
 		source->fire(e);
 }
 

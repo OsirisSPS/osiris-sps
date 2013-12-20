@@ -84,13 +84,13 @@ AsyncHttpClient::AsyncHttpClient(shared_ptr<ConnectionsManager> connectionsManag
 																																						m_socket(socket)
 {
 	shared_ptr<boost::asio::io_service> service = connectionsManager->getService();
-	OS_ASSERT(service != null);
+	OS_ASSERT(service != nullptr);
 
 	m_resolver = createAsioObject<boost::asio::ip::tcp::resolver>(*service);
 	m_sslContext = createAsioSSLObject<boost::asio::ssl::context, boost::asio::ssl::context_base::method>(*service, boost::asio::ssl::context::sslv23);
 //	m_sslSocket = createAsioSSLObject<boost::asio::ssl::stream<TCPSocket>, boost::asio::ssl::context &>(*service, *m_sslContext);
 	// VERYURGENT: verificare se sotto Linux da comunque i problemi riportati nelle note di asio.h/asio_ssl.h (in tal caso creare un wrapper di allocazione/deallocazione)
-	OS_ASSERT(m_socket != null);
+	OS_ASSERT(m_socket != nullptr);
 	m_sslStream.reset(OS_NEW_T(boost::asio::ssl::stream<TCPSocket &>)(*m_socket, *m_sslContext), os_delete_t());
 }
 
@@ -163,7 +163,7 @@ void AsyncHttpClient::openConnection(boost::asio::ip::tcp::resolver::iterator en
 void AsyncHttpClient::sendRequest(shared_ptr<ConnectionScope> scope)
 {
 	shared_ptr<HttpData> data = m_request->serialize();
-	if(data == null)
+	if(data == nullptr)
 	{
 		OS_ASSERTFALSE();
 		return;
@@ -177,8 +177,8 @@ void AsyncHttpClient::sendRequest(shared_ptr<ConnectionScope> scope)
 
 void AsyncHttpClient::handleResponseCompleted(shared_ptr<ConnectionScope> scope)
 {
-	OS_ASSERT(m_request != null);
-	OS_ASSERT(m_response != null);	
+	OS_ASSERT(m_request != nullptr);
+	OS_ASSERT(m_response != nullptr);	
 
 	switch(m_response->getStatusCode())
 	{
@@ -186,8 +186,8 @@ void AsyncHttpClient::handleResponseCompleted(shared_ptr<ConnectionScope> scope)
 	case httpStatusMovedTemporarily:	
 										{
 											shared_ptr<HttpScope> httpScope = boost::dynamic_pointer_cast<HttpScope>(scope);
-											OS_ASSERT(httpScope != null);
-											if(httpScope != null)
+											OS_ASSERT(httpScope != nullptr);
+											if(httpScope != nullptr)
 											{
 												uint32 redirects = httpScope->getRedirects();
 												if(redirects > 0)													

@@ -59,7 +59,7 @@ int32 HtmlTabCtrl::getPagesCount() const
 String HtmlTabCtrl::getPageLink(uint32 index)
 {
 	OS_EXCEPT_IF(hasID() == false, "Invalid tabctrl id");
-	OS_EXCEPT_IF(getRequest() == null, "Invalid request object");
+	OS_EXCEPT_IF(getRequest() == nullptr, "Invalid request object");
 
 	ordered_map<std::wstring, std::wstring> params(getRequest()->getUrlParams());
 	params.set(getTarget().to_wide(), conversions::to_wstring(index));
@@ -75,7 +75,7 @@ shared_ptr<HtmlTabPage> HtmlTabCtrl::addPage(const String &caption, shared_ptr<H
 
 	m_pages->getControls()->add(page);
 
-	if(icon != null)
+	if(icon != nullptr)
 		page->getControls()->add(icon);
 
 	if(caption.empty() == false)

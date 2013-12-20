@@ -24,8 +24,7 @@
 
 //////////////////////////////////////////////////////////////////////
 
-#define OS_XERCES_NEW						new		// Xerces ha già un memory manager per le classi derivate da XMemory (vedere l'aggancio in XMLPlatformUtils::Initialize) per cui non serve richiamare le macro di allocazione/deallocazione
-#undef null
+#define OS_XERCES_NEW			new		// Xerces ha già un memory manager per le classi derivate da XMemory (vedere l'aggancio in XMLPlatformUtils::Initialize) per cui non serve richiamare le macro di allocazione/deallocazione
 
 #if OS_COMPILER	== OS_COMPILER_MSVC
 	#pragma warning(disable : 4244)		// 'conversion from <type> to <type>, possible loss of data'
@@ -73,8 +72,6 @@
 	#pragma warning(default : 4244)
 	#pragma warning(default : 4267)
 #endif
-
-#define null OS_NULL
 
 //////////////////////////////////////////////////////////////////////
 
@@ -132,14 +129,14 @@ class AutoPtr
 public:
 	AutoPtr(T *ptr)
 	{
-		OS_ASSERT(ptr != null);
+		OS_ASSERT(ptr != nullptr);
 		m_ptr = ptr;
 	}
 
 	~AutoPtr()
 	{
 		m_ptr->release();
-		m_ptr = null;
+		m_ptr = nullptr;
 	}
 
 // Operators

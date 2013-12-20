@@ -117,7 +117,7 @@ public:
 public:
 	//bool createAnarchicPortal(shared_ptr<PortalOptions> options);
 	//bool createMonarchicPortal(shared_ptr<PortalOptions> options);
-	shared_ptr<Portal> createPortal(shared_ptr<PortalOptions> options);
+	//shared_ptr<Portal> createPortal(shared_ptr<PortalOptions> options);
 	shared_ptr<Portal> subscribePortal(shared_ptr<PortalOptions> options);
 	bool deletePortal(shared_ptr<PortalOptions> options, const String &path);
 	shared_ptr<Portal> ensurePortal(shared_ptr<OsirisLink> link, const String &password = String::EMPTY);
@@ -200,8 +200,8 @@ inline shared_ptr<HttpVirtualDirectory> PortalsSystem::getPortalsDirectory() con
 inline shared_ptr<HttpVirtualDirectory> PortalsSystem::getMainDirectory() const { return m_mainDirectory; }
 inline shared_ptr<HttpEnumeratedDirectoryCallback> PortalsSystem::getTempDirectory() const { return m_tempDirectory; }
 
-inline bool PortalsSystem::hasPortal(const PortalID &id, const PovID &pov) const { return getPortal(id,pov) != null; }
-inline bool PortalsSystem::hasPortalByFullPov(const String &id) const { return getPortalByFullPov(id) != null; }
+inline bool PortalsSystem::hasPortal(const PortalID &id, const PovID &pov) const { return getPortal(id,pov) != nullptr; }
+inline bool PortalsSystem::hasPortalByFullPov(const String &id) const { return getPortalByFullPov(id) != nullptr; }
 
 inline shared_ptr<IsisService> PortalsSystem::getIsisService() const { return m_isisService; }
 

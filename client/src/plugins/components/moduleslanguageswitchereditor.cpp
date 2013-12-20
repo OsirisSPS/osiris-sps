@@ -101,8 +101,8 @@ void LanguageSwitcherEditor::onLoad()
 	if(stylesheet->parseFile(path))
 	{
 		// URGENT devo per forza creare un documento?
-		// Se il secondo parametro della XSLControl  null non crea il controllo,
-		// e non posso passare una "getDocument()" perch se  una nuova istanza  null pure lui...
+		// Se il secondo parametro della XSLControl  nullptr non crea il controllo,
+		// e non posso passare una "getDocument()" perch se  una nuova istanza  nullptr pure lui...
 		shared_ptr<XMLDocument> document(OS_NEW XMLDocument());
 		shared_ptr<XMLNode> root = document->create(OS_MODULES_LANGUAGESWITCHER_ROOT);
 

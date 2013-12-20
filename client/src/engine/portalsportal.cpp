@@ -245,11 +245,11 @@ void Portal::DatabaseLockData::updateExclusiveRequests(bool added)
 //////////////////////////////////////////////////////////////////////
 
 Portal::Portal(uint32 peersCacheSize, uint32 databasesCacheSize) : m_loaded(false),
-																   m_snapshotManager(null),
-																   m_optionsShared(null),
-																   m_objects(null),
-																   //m_accountsManager(null),
-																   m_messenger(null),
+																   m_snapshotManager(nullptr),
+																   m_optionsShared(nullptr),
+																   m_objects(nullptr),
+																   //m_accountsManager(nullptr),
+																   m_messenger(nullptr),
 																   m_lockData(OS_NEW DatabaseLockData()),
 																   m_peersCS(OS_NEW_T(boost::recursive_mutex), os_delete_t()),
 																   m_databasesCache(OS_NEW PortalsDatabasesCache(*this, databasesCacheSize)),
@@ -288,7 +288,7 @@ String Portal::getName() const
 
 	if(getOptionsShared())
 		name = getOptionsShared()->getPortalName();
-	if( (m_options != null) && (name == String::EMPTY) )
+	if( (m_options != nullptr) && (name == String::EMPTY) )
 		name = m_options->getName();
 
 	return name;
@@ -296,7 +296,7 @@ String Portal::getName() const
 
 const PortalID & Portal::getPortalID() const
 {
-	if(m_options != null)
+	if(m_options != nullptr)
 		return m_options->getPortalID();
 
 	OS_ASSERTFALSE();
@@ -305,7 +305,7 @@ const PortalID & Portal::getPortalID() const
 
 const PovID & Portal::getPovID() const
 {
-	if(m_options != null)
+	if(m_options != nullptr)
 		return m_options->getPovID();
 
 	OS_ASSERTFALSE();	
@@ -371,7 +371,7 @@ String Portal::getPovName() const
 
 	if(showUser)
 	{
-		if(getPovUser() != null)
+		if(getPovUser() != nullptr)
 			name += _S(" - ") + getPovUser()->name;
 		else
 			name += _S(" - ") + Engine::instance()->getText(_S("common.unknown"));
@@ -394,7 +394,7 @@ p2p::exchange_context_ptr Portal::getExchangeContext()
 	// Ottiene il contesto corrente
 	p2p::exchange_context_ptr exchangeContext = m_exchangeContext.lock();
 	// Controlla se il contesto  scaduto
-	if(exchangeContext == null)
+	if(exchangeContext == nullptr)
 	{
 		// Crea un nuovo contesto p2p
 		exchangeContext.reset(OS_NEW p2p::ExchangeContext(get_this_ptr()));
@@ -419,10 +419,10 @@ shared_ptr<EntitiesEntity> Portal::getEntity(const shared_ptr<IPortalDatabase> d
 shared_ptr<ObjectsIObject> Portal::getObject(shared_ptr<IPortalDatabase> database, const ObjectID &id)
 {
 	// URGENT: in fase di chiusura è possibile una chiamata a questa funzione successiva a "_clearManagers", da verificare...
-	if(m_objects == null)
+	if(m_objects == nullptr)
 	{
 		OS_ASSERTFALSE();
-		return null;
+		return nullptr;
 	}
 
 	return m_objects->get(id, database.get());
@@ -437,7 +437,7 @@ shared_ptr<ObjectsIObject> Portal::getObject(shared_ptr<IPortalDatabase> databas
 
 ObjectID Portal::getLastExchangedObject() const
 {
-	if(m_options != null)
+	if(m_options != nullptr)
 		return m_options->getLastExchangedObject();
 
 	return ObjectID::EMPTY;
@@ -445,7 +445,7 @@ ObjectID Portal::getLastExchangedObject() const
 
 void Portal::setLastExchangedObject(const ObjectID &lastExchangedObject)
 {
-    if(m_options == null)
+    if(m_options == nullptr)
 	{
 		OS_ASSERTFALSE();
 		return;
@@ -655,7 +655,7 @@ void Portal::runJobImporter(const String &url)
 
 void Portal::save()
 {
-	if(m_options != null)
+	if(m_options != nullptr)
 		m_options->writeToPath(getPath());
 }
 
@@ -672,7 +672,7 @@ bool Portal::load(const String &path, shared_ptr<PortalOptions> options, bool re
 	OS_ASSERT(path.empty() == false);
 	m_path = path;
 
-	OS_ASSERT(options != null);
+	OS_ASSERT(options != nullptr);
 	m_options = options;
 
 	// Inizializza le variabili
@@ -682,7 +682,7 @@ bool Portal::load(const String &path, shared_ptr<PortalOptions> options, bool re
 
 	// Apre la connessione al database
 	shared_ptr<PortalsTransaction> databaseTransaction = startTransaction(true);
-	if(databaseTransaction == null)
+	if(databaseTransaction == nullptr)
 	{
 		OS_LOG_ERROR(String::format(_S("Error opening portal's database of '%S'").c_str(), getName().c_str()));
 		return false;
@@ -773,18 +773,18 @@ bool Portal::load(const String &path, shared_ptr<PortalOptions> options, bool re
 
 bool Portal::openDatabase(shared_ptr<IPortalDatabase> &database)
 {
-	if(m_options == null)
+	if(m_options == nullptr)
 	{
 		OS_ASSERTFALSE();
 		return false;
 	}
 
 	shared_ptr<IDbDriver> driver = DatabasesSystem::instance()->getDriver(m_options->getDatabaseDriver().to_ascii());
-	if(driver == null)
+	if(driver == nullptr)
 		return false;
 
 	shared_ptr<IDbConnection> connection = driver->createConnection(m_options->getDatabaseName().to_ascii(), m_options->getDatabaseOptions());
-	if(connection == null)
+	if(connection == nullptr)
 		return false;
 
 	database.reset(OS_NEW DatabaseImpl(get_this_ptr(), connection));
@@ -797,7 +797,7 @@ String Portal::createAccount(shared_ptr<IPortalDatabase> database, shared_ptr<Da
 {
 	OS_LOCK(m_portalCS);
 
-	OS_ASSERT(account != null);
+	OS_ASSERT(account != nullptr);
 
 	if(getAccountsManager()->exists(account->id))
 	{
@@ -827,7 +827,7 @@ bool Portal::removeAccount(shared_ptr<IPortalDatabase> database, const String &i
 	OS_LOCK(m_portalCS);
 
 	shared_ptr<IdeAccount> account = m_accountsManager->getByID(id);
-	if(account == null)
+	if(account == nullptr)
 		return false;
 
 	account->setDeleted(true);
@@ -876,7 +876,7 @@ bool Portal::updateIsisStatus()
 	m_lastSuccessfulExchange = now;
 
 	shared_ptr<boost::asio::io_service> service = createAsioService();
-	if(service == null)
+	if(service == nullptr)
 	{
 		OS_ASSERTFALSE();
 		return false;
@@ -913,7 +913,7 @@ bool Portal::updateIsisStatus()
 		bool foundNodes = false;
 
         shared_ptr<XMLNode> ips = root->getNode(_S("ips"));
-        if(ips != null)
+        if(ips != nullptr)
         {
             shared_ptr<XMLNodes> ips_list = ips->getNodes();
             for(XMLNodes::const_iterator i = ips_list->begin(); i != ips_list->end(); ++i)
@@ -924,7 +924,7 @@ bool Portal::updateIsisStatus()
 
                 uint32 port = 0;
                 shared_ptr<XMLAttribute> portAttribute = (*i)->getAttribute(_S("port"));
-                if(portAttribute != null)
+                if(portAttribute != nullptr)
                     port = conversions::from_utf16<uint32>(portAttribute->getValue());
 
                 if(port == 0)
@@ -971,7 +971,7 @@ bool Portal::bootstrap(bool isNotify) // TOCLEAN, updateIsisStatus above is new 
 	m_lastSuccessfulExchange = now;
 
 	shared_ptr<boost::asio::io_service> service = createAsioService();
-	if(service == null)
+	if(service == nullptr)
 	{
 		OS_ASSERTFALSE();
 		return false;
@@ -1014,7 +1014,7 @@ bool Portal::bootstrap(bool isNotify) // TOCLEAN, updateIsisStatus above is new 
         bool foundNodes = false;
 
         shared_ptr<XMLNode> ips = root->getNode(_S("ips"));
-        if(ips != null)
+        if(ips != nullptr)
         {
             shared_ptr<XMLNodes> ips_list = ips->getNodes();
             for(XMLNodes::const_iterator i = ips_list->begin(); i != ips_list->end(); ++i)
@@ -1025,7 +1025,7 @@ bool Portal::bootstrap(bool isNotify) // TOCLEAN, updateIsisStatus above is new 
 
                 uint32 port = 0;
                 shared_ptr<XMLAttribute> portAttribute = (*i)->getAttribute(_S("port"));
-                if(portAttribute != null)
+                if(portAttribute != nullptr)
                     port = conversions::from_utf16<uint32>(portAttribute->getValue());
 
                 if(port == 0)
@@ -1084,7 +1084,7 @@ bool Portal::validateUsername(const String &username)
 std::string Portal::generateInviteLink(bool http) const
 {
 	shared_ptr<PortalOptions> options = getOptions();
-	if(options == null)
+	if(options == nullptr)
 	{
 		OS_ASSERTFALSE();
 		return "";
@@ -1158,7 +1158,7 @@ void Portal::unload()
 		OS_LOCK(m_databasesCacheCS);
 		m_databasesCache->clear();
 
-		if(m_options != null)
+		if(m_options != nullptr)
 		{
 			m_options->unload();
 
@@ -1301,13 +1301,13 @@ void Portal::_clearManagers()
 	m_objects.reset();
 	m_messenger.reset();
 	
-	if(m_snapshotManager != null)
+	if(m_snapshotManager != nullptr)
 	{
 		m_snapshotManager->unload();
 		m_snapshotManager.reset();
 	}
 
-	if(m_optionsShared != null)
+	if(m_optionsShared != nullptr)
 	{
 		m_optionsShared->unload();
 		m_optionsShared.reset();
@@ -1316,7 +1316,7 @@ void Portal::_clearManagers()
 
 bool Portal::onPreDatabaseVersionUpdate(shared_ptr<IPortalDatabase> database, const Version &fromVersion, const Version &toVersion)
 {
-	OS_ASSERT(database != null);
+	OS_ASSERT(database != nullptr);
 
 	/*
 	if(toVersion == OS_MAKEVERSION(3, 0))
@@ -1336,7 +1336,7 @@ bool Portal::onPreDatabaseVersionUpdate(shared_ptr<IPortalDatabase> database, co
 
 bool Portal::onPostDatabaseVersionUpdate(shared_ptr<IPortalDatabase> database, const Version &fromVersion, const Version &toVersion)
 {
-	OS_ASSERT(database != null);
+	OS_ASSERT(database != nullptr);
 
 #ifdef OS_TODOCIP
 	if(toVersion == OS_MAKEVERSION(0, 1))
@@ -1351,7 +1351,7 @@ bool Portal::onPostDatabaseVersionUpdate(shared_ptr<IPortalDatabase> database, c
 	if(toVersion == OS_MAKEVERSION(6, 0))
 	{
 		String patch;
-		patch.append(String::format(_S("update os_snapshot_objects set search_date = '%S' where search_date is null;").c_str(),DateTime::EMPTY.toString().c_str()));
+		patch.append(String::format(_S("update os_snapshot_objects set search_date = '%S' where search_date is nullptr;").c_str(),DateTime::EMPTY.toString().c_str()));
 		patch.append(_S("update os_snapshot_profiles set initialized=0;"));
 
 		NotificationsManager::instance()->notify(String::format(_S("Patching %S's database...").c_str(), getName().c_str()));
@@ -1601,8 +1601,8 @@ shared_ptr<PortalsTransaction> Portal::startTransaction(bool exclusiveAccess)
         database = m_databasesCache->peekEntry();
 	}
 
-	if(database == null)
-		return null;
+	if(database == nullptr)
+		return nullptr;
 
 	return startTransaction(database, exclusiveAccess);
 }

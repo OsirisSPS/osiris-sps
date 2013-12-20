@@ -69,7 +69,7 @@ void IdeSearchResults::onPreRender()
 	// N.B.: la generazione dell'xml va effettuata in fase di PreRender in modo da consentire dall'esterno
 	// di potersi agganciare all'evento di modifica della pagina e alterare la query di ricerca.
 
-	if(m_query != null && m_results != null)
+	if(m_query != nullptr && m_results != nullptr)
 	{
 		// Crea il documento per l'xsl
 		shared_ptr<XMLNode> nodeRoot = getDocument()->create(_S("results"));	

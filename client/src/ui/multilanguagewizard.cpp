@@ -47,11 +47,11 @@ MultilanguageWizard::~MultilanguageWizard()
 void MultilanguageWizard::updateControls()
 {
 	wxButton *buttonBackward = dynamic_cast<wxButton *>(FindWindow(wxID_BACKWARD));
-	if(buttonBackward != null)
+	if(buttonBackward != nullptr)
 		buttonBackward->SetLabel(conversions::from_utf16<wxString>(getText(_S("ui.wizard.buttons.back"))));
 
 	wxButton *buttonForward = dynamic_cast<wxButton *>(FindWindow(wxID_FORWARD));
-	if(buttonForward != null)
+	if(buttonForward != nullptr)
 	{
 		if(HasNextPage(GetCurrentPage()))
 			buttonForward->SetLabel(conversions::from_utf16<wxString>(getText(_S("ui.wizard.buttons.next"))));
@@ -60,8 +60,8 @@ void MultilanguageWizard::updateControls()
 	}
 
 	wxButton *buttonCancel = dynamic_cast<wxButton *>(FindWindow(wxID_CANCEL));
-	if(buttonCancel != null)
-		buttonCancel->SetLabel(conversions::from_utf16<wxString>(getText(_S("ui.wizard.buttons.cancel"))));	
+	if(buttonCancel != nullptr)
+		buttonCancel->SetLabel(conversions::from_utf16<wxString>(getText(_S("common.cancel"))));	
 }
 
 void MultilanguageWizard::OnWizardPageChanged(wxWizardEvent &e)

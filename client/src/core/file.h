@@ -58,7 +58,7 @@ public:
 	inline FILE * getHandle() const;
 
 	// Restituisce le statistiche sul file in UTC
-	bool getStats(boost::posix_time::ptime *timeCreation, boost::posix_time::ptime *timeLastModify = null, boost::posix_time::ptime *timeLastAccess = null) const;
+	bool getStats(boost::posix_time::ptime *timeCreation, boost::posix_time::ptime *timeLastModify = nullptr, boost::posix_time::ptime *timeLastAccess = nullptr) const;
 
 private:
 	static int32 convert(SeekPosition pos);

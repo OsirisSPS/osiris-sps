@@ -155,7 +155,7 @@ bool UPnPServer<T>::getUPnPMapped() const
 {
 	OS_LOCK(m_upnpCS);
 	
-	if(m_upnpService == null)
+	if(m_upnpService == nullptr)
 		return false;
 
 	return m_upnpService->getMapped();
@@ -166,7 +166,7 @@ void UPnPServer<T>::stopUPnP()
 {
 	OS_LOCK(m_upnpCS);
 
-	if(m_upnpService != null)
+	if(m_upnpService != nullptr)
 	{
 		m_upnpService->removePortMapping();
 		m_upnpService.reset();

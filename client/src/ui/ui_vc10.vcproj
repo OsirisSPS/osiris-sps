@@ -66,7 +66,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="wxmsw29ud_core.lib wxbase29ud.lib wxmsw29ud_adv.lib wxmsw29ud_aui.lib wxbase29ud_net.lib wxmsw29ud_richtext.lib ssleay32.lib libeay32.lib "
+				AdditionalDependencies="wxmsw30ud_core.lib wxbase30ud.lib wxmsw30ud_adv.lib wxmsw30ud_aui.lib wxbase30ud_net.lib wxmsw30ud_richtext.lib ssleay32.lib libeay32.lib "
 				OutputFile="../../bin/windows/i386/vc10/$(ConfigurationName)/ui.dll"
 				LinkIncremental="2"
 				AdditionalLibraryDirectories="../../dependencies/lib/windows/i386/vc10/$(ConfigurationName)"
@@ -151,7 +151,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="wxmsw29ud_core.lib wxbase29ud.lib wxmsw29ud_adv.lib wxmsw29ud_aui.lib wxbase29ud_net.lib wxmsw29ud_richtext.lib ssleay32.lib libeay32.lib "
+				AdditionalDependencies="wxmsw30ud_core.lib wxbase30ud.lib wxmsw30ud_adv.lib wxmsw30ud_aui.lib wxbase30ud_net.lib wxmsw30ud_richtext.lib ssleay32.lib libeay32.lib "
 				OutputFile="../../bin/windows/x86_64/vc10/$(ConfigurationName)/ui.dll"
 				LinkIncremental="2"
 				AdditionalLibraryDirectories="../../dependencies/lib/windows/x86_64/vc10/$(ConfigurationName)"
@@ -232,7 +232,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="wxmsw29u_core.lib wxbase29u.lib wxmsw29u_adv.lib  wxmsw29u_aui.lib wxbase29u_net.lib wxmsw29u_richtext.lib ssleay32.lib libeay32.lib "
+				AdditionalDependencies="wxmsw30u_core.lib wxbase30u.lib wxmsw30u_adv.lib  wxmsw30u_aui.lib wxbase30u_net.lib wxmsw30u_richtext.lib ssleay32.lib libeay32.lib "
 				OutputFile="../../bin/windows/i386/vc10/$(ConfigurationName)/ui.dll"
 				LinkIncremental="1"
 				AdditionalLibraryDirectories="../../dependencies/lib/windows/i386/vc10/$(ConfigurationName)"
@@ -314,7 +314,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="wxmsw29u_core.lib wxbase29u.lib wxmsw29u_adv.lib  wxmsw29u_aui.lib wxbase29u_net.lib wxmsw29u_richtext.lib ssleay32.lib libeay32.lib "
+				AdditionalDependencies="wxmsw30u_core.lib wxbase30u.lib wxmsw30u_adv.lib  wxmsw30u_aui.lib wxbase30u_net.lib wxmsw30u_richtext.lib ssleay32.lib libeay32.lib "
 				OutputFile="../../bin/windows/x86_64/vc10/$(ConfigurationName)/ui.dll"
 				LinkIncremental="1"
 				AdditionalLibraryDirectories="../../dependencies/lib/windows/x86_64/vc10/$(ConfigurationName)"

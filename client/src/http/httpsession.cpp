@@ -50,7 +50,7 @@ HttpSession::HttpSession(shared_ptr<IHttpServer> server, shared_ptr<TCPSocket> s
 																										 m_server(server),																		  																										 
 																										 m_socket(socket)																										 
 {
-	OS_ASSERT(m_socket != null);
+	OS_ASSERT(m_socket != nullptr);
 	initSession(timeout);	
 }
 
@@ -132,7 +132,7 @@ void HttpSession::reportStatusCode(HttpStatusCode status, const std::string &bod
 		responseBody = &defaultBody;
 	}
 
-	OS_ASSERT(responseBody != null);
+	OS_ASSERT(responseBody != nullptr);
 
 	uint32 length = static_cast<uint32>(responseBody->size());
 
@@ -208,7 +208,7 @@ void HttpSession::transmitFile(const String &filename, const std::string &mimeTy
 	
 	// Ottiene la data di ultima modifica del file
 	boost::posix_time::ptime timeLastModify(boost::date_time::not_a_date_time);
-	file->getStats(null, &timeLastModify);
+	file->getStats(nullptr, &timeLastModify);
 
 	// Ottiene la data del server
 	boost::posix_time::ptime timeCurrent = utils::system_time();
@@ -277,7 +277,7 @@ void HttpSession::transmitStream(shared_ptr<IStream> stream, const String &file_
 {
 	OS_ASSERT(getProcessed() == false);
 
-	OS_ASSERT(stream != null);
+	OS_ASSERT(stream != nullptr);
 	uint32 size = static_cast<uint32>(stream->size());
 
 	if(m_request->getMethod() == httpMethodGet && utils::ptime_is_valid(date) && m_request->hasModifiedSince() && date == m_request->getIfModifiedSince())
@@ -390,7 +390,7 @@ void HttpSession::handleRead(const boost::system::error_code &e, size_t bytes_tr
 	}
 
 	shared_ptr<HttpBuffer> requestBuffer = getRequestBuffer();
-	if(requestBuffer == null)
+	if(requestBuffer == nullptr)
 	{
 		handleError("invalid request buffer");
 		return;
@@ -425,7 +425,7 @@ void HttpSession::handleResponseBufferCompleted(const boost::system::error_code 
 	}
 
 	shared_ptr<IStream> responseStream = m_response->getResponseStream();
-	if(responseStream != null)
+	if(responseStream != nullptr)
 	{
 		if(responseStream->seekToBegin())				
 			sendResponseStream(responseStream, scope);
@@ -537,7 +537,7 @@ void HttpSession::processRequest(const String &url)
 	HttpPath path(url);
 
 	shared_ptr<IHttpServer> server = getServer();
-	OS_ASSERT(server != null);
+	OS_ASSERT(server != nullptr);
 
 	// Carica lo stato della sessione
 	m_state = server->getSessionState(get_this_ptr<HttpSession>(), path);
@@ -560,7 +560,7 @@ void HttpSession::initSession(uint32 timeout)
 void HttpSession::readRequest(shared_ptr<ConnectionScope> scope, bool keepAlive)
 {
 	shared_ptr<HttpBuffer> requestBuffer = getRequestBuffer();
-	if(requestBuffer == null)
+	if(requestBuffer == nullptr)
 	{
 		handleError("invalid request buffer");
 		return;
@@ -578,18 +578,18 @@ void HttpSession::sendResponse(shared_ptr<ConnectionScope> scope)
 	}
 	else
 	{
-		OS_ASSERT(m_response->getResponseStream() == null);
+		OS_ASSERT(m_response->getResponseStream() == nullptr);
 		handleResponseCompleted(scope);			
 	}
 }
 
 void HttpSession::sendResponseStream(shared_ptr<IStream> stream, shared_ptr<ConnectionScope> scope)
 {
-	OS_ASSERT(stream != null);
-	OS_ASSERT(scope != null);
+	OS_ASSERT(stream != nullptr);
+	OS_ASSERT(scope != nullptr);
 
 	shared_ptr<HttpBuffer> responseBuffer = getResponseBuffer();
-	if(responseBuffer == null)
+	if(responseBuffer == nullptr)
 	{
 		handleError("invalid request buffer");
 		return;
@@ -604,10 +604,10 @@ void HttpSession::sendResponseStream(shared_ptr<IStream> stream, shared_ptr<Conn
 
 shared_ptr<HttpBuffer> HttpSession::ensureBuffer(shared_ptr<HttpBuffer> &buffer) const
 {
-	if(buffer == null)
+	if(buffer == nullptr)
 	{
 		shared_ptr<IHttpServer> server = getServer();
-		if(server != null)
+		if(server != nullptr)
 			buffer = getServer()->peekHttpBuffer();
 	}
 	

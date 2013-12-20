@@ -85,7 +85,7 @@ User::~User()
 
 void User::onPathway2() const
 {
-	if(m_user == null)
+	if(m_user == nullptr)
 		return;
 
 	// Users
@@ -123,12 +123,12 @@ void User::createReputationsFeedback(const shared_ptr<XMLNode> &node, const shar
 
 	shared_ptr<XMLPortalExporter> fromExporter(OS_NEW XMLPortalExporter(node->addChild(_S("from")), get_this_ptr<IPortalPage>(), XMLPortalExporter::emLite));
 	shared_ptr<ObjectsUser> userFrom = objects_user_cast(getObject(feedback->getHashFrom().to_ascii()));
-	if(userFrom != null)
+	if(userFrom != nullptr)
 		userFrom->exportXML(fromExporter);
 
 	shared_ptr<XMLPortalExporter> toExporter(OS_NEW XMLPortalExporter(node->addChild(_S("to")), get_this_ptr<IPortalPage>(), XMLPortalExporter::emLite));
 	shared_ptr<ObjectsUser> userTo = objects_user_cast(getObject(feedback->getHashTo().to_ascii()));
-	if(userTo != null)
+	if(userTo != nullptr)
 		userTo->exportXML(toExporter);
 
 	for(ReputationsFeedback::const_iterator i = feedback->first_child(); i != feedback->last_child(); ++i)
@@ -156,7 +156,7 @@ void User::onInit()
 	if(id.empty() == false)
 		m_user = objects_user_cast(getObject(id));
 
-	if(m_user == null)
+	if(m_user == nullptr)
 	{
 		showError(_S("Utente non valido"));
 		return;
@@ -167,7 +167,7 @@ void User::onLoad()
 {
 	PageBase::onLoad();
 
-	if(m_user == null)
+	if(m_user == nullptr)
 		return;
 
 	ObjectID id = getUrlID().to_ascii();
@@ -235,7 +235,7 @@ void User::onLoad()
 				if(getPage()->getPostBack() == false)
 				{
 					shared_ptr<ObjectsReputation> rep = getPortal()->getReputationManager()->get(getDatabase(), getSessionAccount()->getUserID(), id);
-					if( (rep != null) && (rep->score != ReputationsScore::DEFAULT) )
+					if( (rep != nullptr) && (rep->score != ReputationsScore::DEFAULT) )
 					{
 						m_reputationValue->setValue(ReputationsScore::toString(rep->score));
 						m_reputationComment->setValue(rep->description);
@@ -345,7 +345,7 @@ void User::onLoad()
 	Utils::addAction(nodeActions, get_this_ptr<IPage>(), OS_PORTAL_OBJECT_USER_TYPENAME, _S("view_search"), getUrl(id.toUTF16(), acSearch), (action==acSearch), false);
 	if(getSessionAccount()->isPortalGuest(getDatabase()) == false)
 	{
-		Utils::addAction(nodeActions, get_this_ptr<IPage>(), OS_PORTAL_OBJECT_USER_TYPENAME, _S("send_private_message"), getPortal()->getSendMessageLink(id), false, false);
+		//Utils::addAction(nodeActions, get_this_ptr<IPage>(), OS_PORTAL_OBJECT_USER_TYPENAME, _S("send_private_message"), getPortal()->getSendMessageLink(id), false, false);
 	}
 //	Utils::addAction(nodeActions, get_this_ptr<IPage>(), OS_PORTAL_OBJECT_USER_TYPENAME, _S("view_objects"), getUrl(id, Action::acItems));
 
@@ -359,7 +359,7 @@ void User::onPreRender()
 {
 	PageBase::onPreRender();
 
-	if(m_user == null)
+	if(m_user == nullptr)
 		return;
 	
 	shared_ptr<XMLNode> nodeRoot = m_pageTemplate->getDocument()->getRoot();

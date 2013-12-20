@@ -61,8 +61,8 @@ View::~View()
 
 shared_ptr<IHtmlControl> View::createView(shared_ptr<EntitiesEntity> targetEntity) const
 {
-	if(targetEntity == null)
-		return null;
+	if(targetEntity == nullptr)
+		return nullptr;
 
 	shared_ptr<IHtmlControl> viewer;
 
@@ -80,10 +80,10 @@ shared_ptr<IHtmlControl> View::createView(shared_ptr<EntitiesEntity> targetEntit
 	if( (root) || (targetEntity->getObjectType() == portalObjectTypeSection) )
 	{
 		shared_ptr<ObjectsSection> targetSection = objects_section_cast(targetEntity->getCurrent());
-		if(targetSection != null)
+		if(targetSection != nullptr)
 		{
 			shared_ptr<IExtensionsComponent> targetComponent = targetSection->getComponent(getPortal());
-			checkComponent = (targetComponent == null);
+			checkComponent = (targetComponent == nullptr);
 			//checkComponent = targetSection->hasComponent() == false;
 		}
 	}
@@ -91,19 +91,19 @@ shared_ptr<IHtmlControl> View::createView(shared_ptr<EntitiesEntity> targetEntit
 	if(checkComponent)
 	{
 		shared_ptr<EntitiesEntity> currentEntity = targetEntity->getParent(getDatabase());
-		while(currentEntity != null)
+		while(currentEntity != nullptr)
 		{
 			if(currentEntity->getObjectType() == portalObjectTypeSection)
 			{
 				shared_ptr<ObjectsSection> section = objects_section_cast(currentEntity->getCurrent());
-				if(section != null)
+				if(section != nullptr)
 				{
 					shared_ptr<IExtensionsComponent> sectionComponent = section->getComponent(getPortal());
-					if(sectionComponent != null)
+					if(sectionComponent != nullptr)
 					{
 						// Controlla se il componente corrente  in grado di renderizzare l'entit
 						shared_ptr<ExtensionsComponentViewer> componentViewer = ExtensionsSystem::instance()->createComponentViewer(section->component, targetEntity);
-						if(componentViewer != null)
+						if(componentViewer != nullptr)
 						{
 							componentViewer->init(ExtensionsSystem::instance()->getComponent(section->component), targetID, section->data);
 							viewer = componentViewer;
@@ -118,10 +118,10 @@ shared_ptr<IHtmlControl> View::createView(shared_ptr<EntitiesEntity> targetEntit
 		}
 	}
 
-	if(viewer == null)
+	if(viewer == nullptr)
 	{
 		shared_ptr<ObjectsIDescriptor> targetDescriptor = ObjectsSystem::instance()->getDescriptor(root ? portalObjectTypeSection : targetEntity->getObjectType());
-		if(targetDescriptor != null)
+		if(targetDescriptor != nullptr)
 			viewer = targetDescriptor->createViewControl(targetEntity);
 	}
 
@@ -151,7 +151,7 @@ EntityID View::getTargetObject() const
 bool View::getShowInstance(shared_ptr<ObjectsInstance> instance) const
 {
 	// La pagina di view a differenza delle altre mostra le istanze in ogni circostanza se visibili
-	return instance != null;
+	return instance != nullptr;
 }
 
 uint32 View::loadInstances(const EntityID &ID)
@@ -183,11 +183,11 @@ void View::onLoad()
 
 	shared_ptr<EntitiesEntity> targetEntity = getPortal()->getEntity(getDatabase(), targetID);
 
-	if(targetEntity == null)
+	if(targetEntity == nullptr)
 	{
 		showError(getText(_S("ide.messages.unknown_object")));
 	}
-	else if (targetEntity->getCurrent() == null)
+	else if (targetEntity->getCurrent() == nullptr)
 	{
 		showError(getText(_S("ide.messages.invalid_object")));
 	}
@@ -218,7 +218,7 @@ void View::onLoad()
 		}
 	}
 
-	if(viewer != null)
+	if(viewer != nullptr)
 	{
 		viewer->setID(_S("view"));
 		getArea(pageAreaContent)->getControls()->add(viewer);

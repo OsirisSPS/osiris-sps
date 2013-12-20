@@ -23,7 +23,7 @@ struct HtmlTableRow_wrapper : ::osiris::HtmlTableRow, ::osiris::PythonWrapper< :
     HtmlTableRow_wrapper( )
     : ::osiris::HtmlTableRow( )
       , ::osiris::PythonWrapper< ::osiris::HtmlTableRow >(){
-        // null constructor
+        // nullptr constructor
     
     }
 

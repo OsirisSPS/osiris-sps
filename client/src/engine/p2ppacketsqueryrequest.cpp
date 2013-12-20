@@ -47,7 +47,7 @@ QueryRequest::~QueryRequest()
 void QueryRequest::getPeers(list<shared_ptr<IPAddress> >::type &addresses) const
 {
 	DataTree *pPeers = _getPeers();
-	if(pPeers != null)
+	if(pPeers != nullptr)
 	{
 		for(DataTree::iterator i = pPeers->begin(); i != pPeers->end(); ++i)
 		{

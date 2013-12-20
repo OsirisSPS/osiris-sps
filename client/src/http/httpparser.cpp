@@ -441,7 +441,7 @@ bool HttpParser::decodeMultiPartDataPostParams(const std::string &content, const
 			const char *pData = content.c_str() + start;
 			// Ricerca la terminazione dell'header del segmento
 			const char *pTerminator = strstr(pData, OS_HTTP_HEADER_TERMINATOR);
-			if(pTerminator != null)
+			if(pTerminator != nullptr)
 			{
 				// Calcola la dimensione dell'header
 				size_t header_length = static_cast<uint32>(pTerminator - pData);

@@ -312,7 +312,7 @@ void pimpl<PortalsPeersManager>::getPeersInfo(uint32 &activePeers, uint32 &activ
 {
 	OS_LOCK(m_cs);
 
-	OS_ASSERT(m_peersCS != null);
+	OS_ASSERT(m_peersCS != nullptr);
 	OS_LOCK(*m_peersCS);
 
 	activePeers = 0;
@@ -342,7 +342,7 @@ void pimpl<PortalsPeersManager>::getPeersInfo(uint32 &activePeers, uint32 &activ
 
 bool pimpl<PortalsPeersManager>::loadPeers(shared_ptr<IPortalDatabase> database)
 {
-	OS_ASSERT(database != null);
+	OS_ASSERT(database != nullptr);
 
 	shared_ptr<DbSqlSelect> selectStatement(OS_NEW DbSqlSelect(DBTABLES::PEERS_TABLE));
 	selectStatement->limit.setCount(getPeersCacheSize());
@@ -367,7 +367,7 @@ bool pimpl<PortalsPeersManager>::loadPeers(shared_ptr<IPortalDatabase> database)
 
 bool pimpl<PortalsPeersManager>::savePeers(shared_ptr<IPortalDatabase> database)
 {
-	OS_ASSERT(database != null);	
+	OS_ASSERT(database != nullptr);	
 
 	if(database->execute(String::format(_S("delete from %S").c_str(), DBTABLES::PEERS_TABLE.c_str())) == false)
 		return false;
@@ -392,7 +392,7 @@ void pimpl<PortalsPeersManager>::exportXML(shared_ptr<XMLNode> node) const
 {
 	OS_LOCK(m_cs);
 
-	OS_ASSERT(m_peersCS != null);
+	OS_ASSERT(m_peersCS != nullptr);
 	OS_LOCK(*m_peersCS);
 
 	int peers = 0;
@@ -479,7 +479,7 @@ bool pimpl<PortalsPeersManager>::storePeer(const String &ip, uint32 port, const 
 	}
 	else
 	{
-		OS_ASSERT(m_peersCS != null);
+		OS_ASSERT(m_peersCS != nullptr);
 		m_peers.push_back(shared_ptr<PortalsPeer>(OS_NEW PortalsPeer(m_peersCS, endpoint, origin)));
 	}
 
@@ -525,7 +525,7 @@ shared_ptr<PortalsPeer> pimpl<PortalsPeersManager>::peekPeer(T &view)
 
 	typename T::iterator i = view.begin();
 	if(i == view.end())
-		return null;
+		return nullptr;
 	
 	// Estrae il nodo in testa
 	shared_ptr<PortalsPeer> peer = *i;
@@ -573,7 +573,7 @@ shared_ptr<EventSource> PortalsPeersManager::getEventStorePeer() const
 
 bool PortalsPeersManager::savePeer(shared_ptr<IPAddress> address, bool validate, const String &origin)
 {
-	if(address == null)
+	if(address == nullptr)
 	{
 		OS_ASSERTFALSE();
 		return false;
@@ -672,7 +672,7 @@ void PortalsPeersManager::setPeersCacheSize(uint32 size)
 
 bool PortalsPeersManager::savePeer(shared_ptr<IPAddress> address, bool validate, const String &origin)
 {
-	if(address == null)
+	if(address == nullptr)
 	{
 		OS_ASSERTFALSE();
 		return false;
@@ -691,7 +691,7 @@ void PortalsPeersManager::validatePeer(shared_ptr<IPAddress> address)
 	OS_LOCK(m_cs);
 
 	shared_ptr<PortalsPeer> peer = m_peers.get(PortalsPeer::makeID(address));
-	if(peer != null)
+	if(peer != nullptr)
 		peer->validate();
 }
 
@@ -700,7 +700,7 @@ void PortalsPeersManager::invalidatePeer(shared_ptr<IPAddress> address)
 	OS_LOCK(m_cs);
 
 	shared_ptr<PortalsPeer> peer = m_peers.get(PortalsPeer::makeID(address));
-	if(peer != null)
+	if(peer != nullptr)
 		peer->invalidate();
 }
 
@@ -740,7 +740,7 @@ void PortalsPeersManager::addSupernode(shared_ptr<IPAddress> address)
 	OS_LOCK(m_cs);
 
 	shared_ptr<PortalsPeer> peer = m_peers.get(PortalsPeer::makeID(address));
-	if(peer != null)	// Il nodo potrebbe essere null in quanto rimosso per i limiti della cache
+	if(peer != nullptr)	// Il nodo potrebbe essere nullptr in quanto rimosso per i limiti della cache
 	{
 		OS_ASSERT(peer->getRetries() == 0);
 		peer->setSupernode(true);
@@ -769,7 +769,7 @@ void PortalsPeersManager::extractSupernodes(uint32 count, list<shared_ptr<Portal
 	do
 	{
 		shared_ptr<PortalsPeer> peer = m_peers.value_at(i);
-		OS_ASSERT(peer != null);
+		OS_ASSERT(peer != nullptr);
 		if(peer->getSupernode())
 			peers.push_back(peer);
 
@@ -786,7 +786,7 @@ void PortalsPeersManager::getPeersInfo(uint32 &activePeers, uint32 &activeSupern
 {
 	OS_LOCK(m_cs);
 
-	OS_ASSERT(m_peersCS != null);
+	OS_ASSERT(m_peersCS != nullptr);
 	OS_LOCK(*m_peersCS);
 
 	activePeers = 0;
@@ -816,7 +816,7 @@ void PortalsPeersManager::getPeersInfo(uint32 &activePeers, uint32 &activeSupern
 
 bool PortalsPeersManager::loadPeers(shared_ptr<IPortalDatabase> database)
 {
-	OS_ASSERT(database != null);
+	OS_ASSERT(database != nullptr);
 
 	shared_ptr<DbSqlSelect> selectStatement(OS_NEW DbSqlSelect(DBTABLES::PEERS));
 	selectStatement->limit.setCount(getPeersCacheSize());
@@ -843,7 +843,7 @@ bool PortalsPeersManager::loadPeers(shared_ptr<IPortalDatabase> database)
 
 bool PortalsPeersManager::savePeers(shared_ptr<IPortalDatabase> database)
 {
-	OS_ASSERT(database != null);
+	OS_ASSERT(database != nullptr);
 
 	OS_LOCK(m_cs);
 
@@ -880,13 +880,13 @@ bool PortalsPeersManager::storePeer(const String &ip, uint32 port, uint32 retrie
 
 		// URGENT: gestire il caso in cui venga lanciata un'eccezione per un IP non valido
 
-		OS_ASSERT(m_peersCS != null);
+		OS_ASSERT(m_peersCS != nullptr);
 
 		shared_ptr<PortalsPeer> peer(OS_NEW PortalsPeer(getPortal(), m_peersCS, ip, port, retries, origin));
 		uint64 id = peer->getID();
 
 		shared_ptr<PortalsPeer> existingPeer = m_peers.get(id);
-		if(existingPeer != null)
+		if(existingPeer != nullptr)
 		{
 			if(validate)
 				existingPeer->validate();

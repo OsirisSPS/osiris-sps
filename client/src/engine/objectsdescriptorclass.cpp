@@ -45,14 +45,14 @@ ObjectsIDescriptorClass::descriptors_classes & ObjectsIDescriptorClass::getClass
 
 void ObjectsIDescriptorClass::_register(ObjectsIDescriptorClass *class_type)
 {
-	OS_ASSERT(class_type != null);
+	OS_ASSERT(class_type != nullptr);
 
 	getClasses().push_back(class_type);
 }
 
 void ObjectsIDescriptorClass::_unregister(ObjectsIDescriptorClass *class_type)
 {
-	OS_ASSERT(class_type != null);
+	OS_ASSERT(class_type != nullptr);
 
 	descriptors_classes &classes = getClasses();
 

@@ -10,7 +10,7 @@
   <xsl:import href="http://www.osiris-sps.org/htdocs/templates/includes/actions.xsl"/>
   <xsl:import href="http://www.osiris-sps.org/htdocs/templates/includes/block.xsl"/>
   <xsl:import href="http://www.osiris-sps.org/htdocs/templates/includes/help.xsl"/>
-	
+  
   <xsl:output method="html" indent="yes" omit-xml-declaration="yes"/>
   
   <xsl:template match="/upgradable">
@@ -22,9 +22,8 @@
   </xsl:template>
 
   <xsl:template match="/home">
-		
-    <xsl:call-template name="block">
-      <xsl:with-param name="title" select="lang:text('main.pages.addons.title')"/>
+    <xsl:call-template name="block_page">
+      <xsl:with-param name="prefix" select="'main.pages.addons'"/>
       <xsl:with-param name="content">
         <xsl:if test="@online != 'true'">
           <xsl:call-template name="help-box">
@@ -112,7 +111,7 @@
   
   <xsl:template match="addon">
     <div>
-      <!--<xsl:param name="list"/>-->
+      <xsl:param name="list"/>
       <xsl:choose>
         <xsl:when test="@active != 'false'">
           <xsl:attribute name="class">
@@ -207,7 +206,7 @@
                     <xsl:text>:</xsl:text>
                   </td>
                   <td class="os_value">
-                    <xsl:value-of select="@version_installed"/>
+                    <xsl:value-of select="format-number(@version_installed,'##########.##')"/>
                   </td>
                 </tr>
               </xsl:if>
@@ -219,7 +218,7 @@
                     <xsl:text>:</xsl:text>
                   </td>
                   <td class="os_value">
-                    <xsl:value-of select="@version_repository"/>                    
+                    <xsl:value-of select="format-number(@version_repository,'##########.##')"/>                    
                   </td>
                 </tr>
               </xsl:if>
@@ -295,7 +294,7 @@
     <xsl:param name="mode"/>
     <xsl:param name="showTrust"/>
     <div id="addon_confirm">
-      <xsl:value-of select="lang:text(concat('main.pages.addons.',$action,'.description'))"/>      
+      <xsl:value-of select="lang:text(concat('main.pages.addons.',$action,'.description'))"/>
       <div data-os-url="/main/addons?act=addon&amp;id={@id}&amp;mode={$mode}&amp;trust={$showTrust}" data-os-wait="center">
       </div>
     </div>

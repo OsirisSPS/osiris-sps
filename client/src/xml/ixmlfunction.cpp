@@ -41,7 +41,7 @@ void IXMLFunction::IContext::reportError(const String &message)
 	m_errors++;
 
 	String str;
-	if(m_function != null)
+	if(m_function != nullptr)
 		str = String::format(_S("'%S': ").c_str(), m_function->getName().c_str());
 
 	if(message.empty())

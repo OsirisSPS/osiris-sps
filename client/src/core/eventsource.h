@@ -65,7 +65,7 @@ public:
 
 // Overridables
 public:
-	virtual void fire(IEvent *e = null);
+	virtual void fire(IEvent *e = nullptr);
 
 private:
 	mutable boost::mutex m_cs;

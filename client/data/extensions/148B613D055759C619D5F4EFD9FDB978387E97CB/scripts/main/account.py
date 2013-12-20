@@ -1,5 +1,5 @@
-import osiris
 import os
+import osiris
 import osiris.events
 
 class Page(osiris.IMainPage):
@@ -8,86 +8,147 @@ class Page(osiris.IMainPage):
 		self.ajax = (session.request.getUrlParam("act") != "")
 				
 	def getPageName(self):
-		return "main.pages.account"	
+		return "main.pages.account"
 		
-	def onLoad(self):	
+	def onInit(self):
+		osiris.IMainPage.onInit(self)	
+		
+		self.action = self.session.request.getUrlParam("act")	
+		
+		if(self.action == "register"):				
+			self.name = osiris.HtmlTextBox()
+			self.name.css = "os_input_full"
+			self.name.id = "name"
+			
+			self.password = osiris.HtmlTextBox()
+			self.password.id = "password"
+			self.password.attributes.set("data-os-otype","password")
+			self.password.attributes.set("data-os-login","page_name")
+			self.password.css = "os_input_full"		
+			self.password.password = True
+	
+			self.passwordChecker = osiris.HtmlTextBox()
+			self.passwordChecker.id = "passwordChecker"
+			self.passwordChecker.css = "os_input_full"
+			self.passwordChecker.password = True
+			
+			self.secretQuestion = osiris.HtmlTextBox()
+			self.secretQuestion.id = "secretQuestion"	
+			self.secretQuestion.css = "os_input_full"
+	
+			self.secretResponse = osiris.HtmlTextBox()
+			self.secretResponse.id = "secretResponse"
+			self.secretResponse.css = "os_input_full"
+			self.secretResponse.password = True
+	
+			self.secretResponseChecker = osiris.HtmlTextBox()
+			self.secretResponseChecker.id = "secretResponseChecker"
+			self.secretResponseChecker.password = True
+			
+			self.savePassword = osiris.HtmlCheckBox()
+			self.savePassword.id = "savePassword"
+			
+			self.cmdRegister = osiris.IdeButton(self.getText("portal.pages.register.actions.register"))
+			self.cmdRegister.id = "register"
+			self.cmdRegister.isDefault = True
+			osiris.events.connect(self.cmdRegister.eventClick, self.onRegister)
+					
+			self.cmdCancel = osiris.IdeButton(self.getText("common.actions.cancel"))
+			self.cmdCancel.id = "cancel"
+			osiris.events.connect(self.cmdCancel.eventClick, self.onCancel)		
+
+	def onLoad(self):
 		osiris.IMainPage.onLoad(self)
-		
-		self.act = self.session.request.getUrlParam("act")
-		if(self.act == ""):
-			self.act = "home"		
 				
-		self.document = osiris.XMLDocument()
-		self.root = self.document.create(self.act)
+		document = osiris.XMLDocument()
+		self.root = document.create("account")
 		template = osiris.HtmlXSLControl()
 		template.stylesheet = self.loadStylesheet(os.path.join(os.path.dirname(__file__), "account.xsl"))
-		template.document = self.document
-				
-		self.saveCommand = osiris.IdeButton(self.getText("common.actions.save"))
-		self.saveCommand.id = "saveCommand"
-		osiris.events.connect(self.saveCommand.eventClick, self.onSave)
-		template.addChildParam(self.saveCommand)
+		template.document = document
 		
-		self.txtName = osiris.HtmlTextBox()
-		self.txtName.id = "name"
-		template.addChildParam(self.txtName)
-
-		self.txtPassword = osiris.HtmlTextBox()
-		self.txtPassword.id = "password"
-		self.txtPassword.setPassword(True)
-		template.addChildParam(self.txtPassword)
-		
-		self.skinPicker = osiris.IdePickerSkin()
-		self.skinPicker.id = "skin"		
-		self.skinPicker.setShowSystem(True)
-		template.addChildParam(self.skinPicker)
-
-
-		self.languagePicker = osiris.IdePickerCulture()
-		self.languagePicker.id = "language"		
-		self.languagePicker.setShowSystem(True)
-		template.addChildParam(self.languagePicker)
-				
-		osiris.events.connect(self.events.get("onAccountExport"), self.onAccountExport)
-		self.document.root.attributes.set("export_href",self.getEventCommand("onAccountExport"))		
-
-		osiris.events.connect(self.events.get("onAccountRemove"), self.onAccountRemove)
-		self.document.root.attributes.set("remove_href",self.getEventCommand("onAccountRemove"))		
-
-		
-		
-		if(self.postBack == False):
-			self.txtName.value = self.getSessionAccount().account.name
-			self.txtPassword.value = self.getSessionAccount().account.getRealPassword()
-			self.skinPicker.value = self.getSessionAccount().account.skinID.getString()
-			self.languagePicker.value = self.getSessionAccount().language;
-						
 		if(self.ajax):
 			self.controls.add(template)
 		else:
-			self.getArea(osiris.pageAreaContent).controls.add(template)		
-	
-	def onPreRender(self):
-		osiris.IMainPage.onPreRender(self)
+			self.getArea(osiris.pageAreaContent).controls.add(template)
 		
-	def onAccountExport(self, args):
-		self.showMessage(args[0])		
+		
+		if(self.action == ""):		
+			accounts = osiris.IdeAccountsManager.instance().accounts
+		
+			nodeAccounts = self.root.nodes.add("accounts")
+		
+			for account in accounts:
+				nodeAccount = nodeAccounts.nodes.add("account")	
+				
+				nodeAccount.setAttributeString("id", account.id)
+				nodeAccount.setAttributeString("name", account.name)
+				nodeAccount.setAttributeDateTime("last_access", account.lastAccessDate)
+				nodeAccount.setAttributeBool("logged", osiris.IdeSystem.instance().isAccountLogged(account.id))		
+				
+				nodeActions = nodeAccount.nodes.add("actions")
+				
+				nodeActionLogin = nodeActions.nodes.add("action")
+				nodeActionLogin.attributes.set("name", "enter")
+				nodeActionLogin.attributes.set("href", "/main/accounts2?act=login&id=" + account.id)
+				
+				nodeActionRemove = nodeActions.nodes.add("action")
+				nodeActionRemove.attributes.set("name", "remove")
+				nodeActionRemove.attributes.set("href", "/main/accounts2?act=remove&id=" + account.id)
+				
+				nodeActionExport = nodeActions.nodes.add("action")
+				nodeActionExport.attributes.set("name", "export")
+				nodeActionExport.attributes.set("href", "/main/accounts2?act=export&id=" + account.id)
 
-	def onAccountRemove(self, args):
-		self.showMessage(args[0])		
+		
+		elif(self.action == "register"):		
+		
+			template.addChildParam(self.name)	
+			template.addChildParam(self.password)	
+			template.addChildParam(self.passwordChecker)	
+			template.addChildParam(self.savePassword)	
+			template.addChildParam(self.cmdRegister)	
+			template.addChildParam(self.cmdCancel)					
 			
-	def onSave(self, args):
-	
-		self.showMessage("Saved settings.")
-
-		database = osiris.Engine.instance().createSystemConnection()
+		elif(self.action == "export"):
+			account = osiris.IdeAccountsManager.instance().getByID(self.request.getUrlParam("id"))
+			if(account != None):
+				document = account.account.exportXML()
+				buffer = osiris.Buffer()
+				if(document.writeBuffer(buffer) == True):
+					name = account.name
+					#mime = osiris.MimeManager.instance().getMimeType("xml")
+					mime = "text/xml"					
+					self.session.transmitBuffer2(buffer, name, mime)
+					
+				
 		
-		self.getSessionAccount().account.name = self.txtName.value
-		if(self.getSessionAccount().account.setRealPassword(self.txtPassword.value) == False):
-			self.showError(self.getText("portal.pages.account.account.modify.error.invalid_password"))
+	def onRegister(self, args):		
+		name = self.name.value
+		
+		password = self.password.value
+		passwordChecker = self.passwordChecker.value
+		if password != passwordChecker:
+			self.showError(self.getText("portal.pages.register.error.passwordMismatch"))
 			return
-		self.getSessionAccount().account.setSkin(str(self.skinPicker.value))
-		self.getSessionAccount().account.setLanguage(self.languagePicker.value)
 		
-		osiris.IdeAccountsManager.instance().save(self.getSessionAccount().account)
-	
+		secretQuestion = self.secretQuestion.value
+		secretResponse = self.secretResponse.value
+		secretResponseChecker = self.secretResponseChecker.value
+		if secretResponse != secretResponseChecker:
+			self.showError(self.getText("portal.pages.register.error.answerMismatch"))
+			return
+		
+		savePassword = self.savePassword.check	
+		account = osiris.IdeAccountsManager.instance().createAccount(name, password, savePassword)
+		if account == None:
+			self.showError(self.getText("portal.pages.register.error.cannotCreate"))			
+		else:
+			self.loginAccountWithID(account.id, password)
+			self.redirect(osiris.PortalsSystem.instance().getMainLink("home"))
+			
+	def onCancel(self, args):
+		self.redirect(osiris.PortalsSystem.instance().getMainLink("home"))
+		
+def main(args):
+	page = Page(args[0])
+	page.transmit()

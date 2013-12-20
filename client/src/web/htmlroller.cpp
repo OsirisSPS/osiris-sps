@@ -51,7 +51,7 @@ HtmlRoller::~HtmlRoller()
 
 shared_ptr<HtmlDiv> HtmlRoller::getHeader()
 {
-	if(m_header == null)
+	if(m_header == nullptr)
 	{
 		m_header.reset(OS_NEW HtmlDiv());
 		m_header->getAttributes()->set(_S("data-os-roller"), _S("header"));
@@ -64,7 +64,7 @@ shared_ptr<HtmlDiv> HtmlRoller::getHeader()
 
 shared_ptr<HtmlDiv> HtmlRoller::getBody()
 {
-	if(m_body == null)
+	if(m_body == nullptr)
 	{
 		m_body.reset(OS_NEW HtmlDiv());
 		m_body->setCss(OS_CSS_ROLLER_BODY);

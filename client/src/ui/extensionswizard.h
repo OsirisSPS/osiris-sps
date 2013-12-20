@@ -41,7 +41,7 @@ class ExtensionsWizard : public MultilanguageWizard
 
 // Construction
 public:
-	ExtensionsWizard(wxWindow *parent = null, const String &title = String::EMPTY);
+	ExtensionsWizard(wxWindow *parent = nullptr, const String &title = String::EMPTY);
 	virtual ~ExtensionsWizard();
 
 // Operations

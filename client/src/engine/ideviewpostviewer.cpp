@@ -51,7 +51,7 @@ PostViewer::~PostViewer()
 
 void PostViewer::addPost(shared_ptr<EntitiesEntity> entity)
 {
-	if(entity != null)
+	if(entity != nullptr)
 		m_posts.push_back(entity);
 }
 
@@ -65,7 +65,7 @@ void PostViewer::onLoad()
 	ControlBase::onLoad();
 
 	shared_ptr<EntitiesEntity> post = getEntity();
-	if(post != null)
+	if(post != nullptr)
 	{
 		ordered_map<std::wstring, std::wstring> params;
 		params.set(OS_URL_PARAM_TARGET, post->getEntityID().toWide());

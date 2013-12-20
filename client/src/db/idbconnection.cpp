@@ -46,10 +46,10 @@ IDbConnection::IDbConnection(const String &database, shared_ptr<IDbOptions> opti
 {
 	m_database = database;
 
-	OS_ASSERT(options != null);
+	OS_ASSERT(options != nullptr);
 	m_options = options;
 
-	OS_ASSERT(driver != null);
+	OS_ASSERT(driver != nullptr);
 	m_driver = driver;
 }
 
@@ -91,7 +91,7 @@ shared_ptr<IDbResult> IDbConnection::query(const String &sql)
 		logError(sql, e);
 		throw(e);
 
-		return null;
+		return nullptr;
 	}
 }
 
@@ -146,14 +146,14 @@ DataItem IDbConnection::queryValue(const String &sql)
 	DataTable result;
 	if(query(sql, result))
 		if(result.rows() > 0 && result.columns() > 0)
-			value = *result[0][0];
+			value = *result[0][0];			
 	return value;
 }
 
 bool IDbConnection::query(const String &sql, DataTable &table)
 {
 	shared_ptr<IDbResult> result = query(sql);
-	if(result != null)
+	if(result != nullptr)
 	{
 		result->bind(table);
 		return true;

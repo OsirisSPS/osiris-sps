@@ -133,20 +133,20 @@ END_EVENT_TABLE()
 
 //////////////////////////////////////////////////////////////////////
 
-MainWindow::MainWindow() : WindowBase(null, static_cast<wxWindowID>(wxID_ANY), wxEmptyString, wxDefaultPosition, wxSize(500, 400), wxDEFAULT_FRAME_STYLE),
-						   m_p2pConnectionsWindow(null),
-						   m_isisConnectionsWindow(null),
-						   m_logWindow(null),
-						   m_statisticsWindow(null),
-						   m_ircWindow(null),
-						   m_gauge(null),
-						   m_pages(null),
-						   m_buttonHome(null),
-						   m_buttonWizard(null),
-						   m_buttonP2PEnable(null),
-						   m_buttonIsisEnable(null),
-						   m_captionInfo(null),
-						   m_captionStatus(null),
+MainWindow::MainWindow() : WindowBase(nullptr, static_cast<wxWindowID>(wxID_ANY), wxEmptyString, wxDefaultPosition, wxSize(500, 400), wxDEFAULT_FRAME_STYLE),
+						   m_p2pConnectionsWindow(nullptr),
+						   m_isisConnectionsWindow(nullptr),
+						   m_logWindow(nullptr),
+						   m_statisticsWindow(nullptr),
+						   m_ircWindow(nullptr),
+						   m_gauge(nullptr),
+						   m_pages(nullptr),
+						   m_buttonHome(nullptr),
+						   m_buttonWizard(nullptr),
+						   m_buttonP2PEnable(nullptr),
+						   m_buttonIsisEnable(nullptr),
+						   m_captionInfo(nullptr),
+						   m_captionStatus(nullptr),
 						   m_downloading(false),
 						   m_initialized(false),
 						   m_taskbar(new TaskBarIcon()),
@@ -164,10 +164,10 @@ MainWindow::MainWindow() : WindowBase(null, static_cast<wxWindowID>(wxID_ANY), w
 MainWindow::~MainWindow()
 {
 	delete m_backgroundJobsTimer;
-	m_backgroundJobsTimer = null;
+	m_backgroundJobsTimer = nullptr;
 
 	delete m_taskbar;
-	m_taskbar = null;
+	m_taskbar = nullptr;
 }
 
 void MainWindow::configureOptions(bool modeless)
@@ -280,7 +280,7 @@ void MainWindow::init(bool startBackground, bool restorePos)
 
 void MainWindow::logMessages(const list<shared_ptr<LogMessage> >::type &logs)
 {
-	if(m_logWindow != null)
+	if(m_logWindow != nullptr)
 		m_logWindow->logMessages(logs);
 
 	if(m_downloading == false && logs.empty() == false)
@@ -536,7 +536,7 @@ void MainWindow::initWindow()
 	m_buttonIsisEnable->setImageDownChecked(wxImage(conversions::from_utf16<wxString>(Application::instance()->getResourcesFilePath(_S("main_btn_isis_down_on.png"))), wxBITMAP_TYPE_PNG));
 	m_buttonIsisEnable->setImageOverChecked(wxImage(conversions::from_utf16<wxString>(Application::instance()->getResourcesFilePath(_S("main_btn_isis_over_on.png"))), wxBITMAP_TYPE_PNG));
 
-	OS_ASSERT(m_pages != null);
+	OS_ASSERT(m_pages != nullptr);
 	m_pages->SetSelection(0);
 	m_pages->SetPageBitmap(0, wxImage(conversions::from_utf16<wxString>(Application::instance()->getResourcesFilePath(_S("main_icons_p2p_connections.png"))), wxBITMAP_TYPE_PNG));
 	m_pages->SetPageBitmap(1, wxImage(conversions::from_utf16<wxString>(Application::instance()->getResourcesFilePath(_S("main_icons_isis_connections.png"))), wxBITMAP_TYPE_PNG));
@@ -544,7 +544,7 @@ void MainWindow::initWindow()
 	m_pages->SetPageBitmap(3, wxImage(conversions::from_utf16<wxString>(Application::instance()->getResourcesFilePath(_S("main_icons_statistics.png"))), wxBITMAP_TYPE_PNG));
 	m_pages->SetPageBitmap(4, wxImage(conversions::from_utf16<wxString>(Application::instance()->getResourcesFilePath(_S("main_icons_irc.png"))), wxBITMAP_TYPE_PNG));
 
-	OS_ASSERT(m_gauge != null);
+	OS_ASSERT(m_gauge != nullptr);
 	m_gauge->Show(false);
 
 	m_buttonHome->SetToolTip(conversions::from_utf16<wxString>(getText(_S("ui.mainframe.enter.tooltip"))));
@@ -562,16 +562,16 @@ void MainWindow::initWindow()
 
 void MainWindow::synchronizeCommands()
 {
-	OS_ASSERT(m_buttonP2PEnable != null);
+	OS_ASSERT(m_buttonP2PEnable != nullptr);
 	m_buttonP2PEnable->setChecked(Options::instance()->getOption<bool>(Options::p2p_options::enable));
 
-	OS_ASSERT(m_buttonIsisEnable != null);
+	OS_ASSERT(m_buttonIsisEnable != nullptr);
 	m_buttonIsisEnable->setChecked(Options::instance()->getOption<bool>(Options::isis_options::enable));
 }
 
 void MainWindow::resizeWindow()
 {
-	if(m_gauge == null)
+	if(m_gauge == nullptr)
 		return;
 
 	wxRect rect;
@@ -793,7 +793,7 @@ void MainWindow::onClose(wxCloseEvent &e)
 	if(m_closingInProgress)
 		return;
 
-	if(m_download != null && m_download->running())
+	if(m_download != nullptr && m_download->running())
 		return;
 
 	m_closingInProgress = true;

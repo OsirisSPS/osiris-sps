@@ -132,7 +132,7 @@ private:
 MemoryTracker::impl::Scope::Scope(MemoryTracker::impl *impl, boost::recursive_mutex &cs) : m_impl(impl),
 																						   m_lock(new boost::recursive_mutex::scoped_lock(cs))
 {
-	OS_ASSERT(m_impl != null);
+	OS_ASSERT(m_impl != nullptr);
 }
 
 MemoryTracker::impl::Scope::~Scope()
@@ -270,7 +270,7 @@ void MemoryTracker::impl::trackAllocation(void *ptr, size_t size, const char *fi
 
 	OS_ASSERT(m_finalizing == false);
 
-	if(ptr == null)
+	if(ptr == nullptr)
 	{
 		OS_ASSERTFALSE();
 		return;
@@ -294,8 +294,8 @@ void MemoryTracker::impl::trackDeallocation(void *ptr, const char *file, size_t 
 
 	OS_ASSERT(m_finalizing == false);
 
-	if(ptr == null)
-		return;		// free/delete null sono operazioni valide, quindi vanno gestite come casi speciali
+	if(ptr == nullptr)
+		return;		// free/delete nullptr sono operazioni valide, quindi vanno gestite come casi speciali
 
 	MemoryBlocks::iterator i = m_blocks.find(ptr);
 	// Se arriva in questa circostanza vuol dire che si sta tentando di allocare un blocco di memoria già precedentemente deallocato o di cui non è stata tracciata l'allocazione (ad esempio è stato allocato con una malloc standard e poi deallocato tramite allocatore)
@@ -346,7 +346,7 @@ void MemoryTracker::impl::trackReallocation(void *prev, void *ptr, size_t size, 
 	}
 	else
 	{
-		OS_ASSERT(prev == null);	// realloc(null, x) è un'operazione valida, negli altri casi l'indirizzo dovrebbe già essere stato salvato in precedenza
+		OS_ASSERT(prev == nullptr);	// realloc(nullptr, x) è un'operazione valida, negli altri casi l'indirizzo dovrebbe già essere stato salvato in precedenza
 		trackAllocation(ptr, size, file, line, function);
 	}
 }

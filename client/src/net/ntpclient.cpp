@@ -38,8 +38,8 @@ NTPClient::NTPClient(shared_ptr<boost::asio::io_service> service, shared_ptr<UDP
 																								  m_timeout(OS_NTP_REQUEST_TIMEOUT),
 																								  m_resolver(createAsioObject<boost::asio::ip::udp::resolver>(*service))
 {	
-	OS_ASSERT(m_service != null);
-	OS_ASSERT(m_socket != null);
+	OS_ASSERT(m_service != nullptr);
+	OS_ASSERT(m_socket != nullptr);
 	m_socket->open(boost::asio::ip::udp::v4());		// URGENT: non andrebbe a monte?
 }
 
@@ -52,10 +52,10 @@ shared_ptr<NTPResponse> NTPClient::query(shared_ptr<boost::asio::io_service> ser
 {
 	try
 	{
-		if(socket == null)
+		if(socket == nullptr)
 		{
 			OS_ASSERTFALSE();
-			return null;
+			return nullptr;
 		}
 		
 		shared_ptr<NTPClient> client(OS_NEW NTPClient(service, socket));
@@ -71,7 +71,7 @@ shared_ptr<NTPResponse> NTPClient::query(shared_ptr<boost::asio::io_service> ser
 		OS_LOG_ERROR(_S("Ntp error: ") + e.what());
 	}
 
-	return null;
+	return nullptr;
 }
 
 void NTPClient::query(const boost::asio::ip::udp::resolver::query &query)

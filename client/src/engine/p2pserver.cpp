@@ -107,7 +107,7 @@ bool P2PServer::getAllowConnection(shared_ptr<IConnection> connection) const
 
 	OS_LOCK(m_p2pServerCS);
 
-	OS_ASSERT(connection != null);
+	OS_ASSERT(connection != nullptr);
 	
 	if(isOutgoingConnection(connection))
 		return true;
@@ -138,7 +138,7 @@ shared_ptr<Portal> P2PServer::peekNextPortal(uint32 portals)
 
 bool P2PServer::isOutgoingConnection(shared_ptr<IConnection> connection) const
 {
-	return boost::dynamic_pointer_cast<P2PClient>(connection) != null;
+	return boost::dynamic_pointer_cast<P2PClient>(connection) != nullptr;
 }
 
 shared_ptr<P2PConnection> P2PServer::detectLoopbackConnection(const Buffer &public_key) const
@@ -147,11 +147,11 @@ shared_ptr<P2PConnection> P2PServer::detectLoopbackConnection(const Buffer &publ
 	for(ConnectionsManager::Connections::const_iterator i = connections->begin(); i != connections->end(); ++i)
 	{
 		shared_ptr<P2PConnection> connection = boost::dynamic_pointer_cast<P2PConnection>(i->second);
-		if(connection != null && connection->compareSessionKey(public_key))
+		if(connection != nullptr && connection->compareSessionKey(public_key))
 			return connection;		
 	}
 
-	return null;
+	return nullptr;
 }
 
 void P2PServer::_startClients()
@@ -168,10 +168,10 @@ void P2PServer::_startClients()
 			shared_ptr<Portal> portal = peekNextPortal(portals);
 
 			bool added = false;
-			if(portal != null && portal->getOptions()->getExchangeEnabled())
+			if(portal != nullptr && portal->getOptions()->getExchangeEnabled())
 			{
 				shared_ptr<PortalsPeer> peer = portal->getPeersManager()->peekPeer();
-				if(peer != null)
+				if(peer != nullptr)
 				{	
 					OS_ASSERT(IPAddress().setEndpoint(peer->getIP(), peer->getPort()));
 

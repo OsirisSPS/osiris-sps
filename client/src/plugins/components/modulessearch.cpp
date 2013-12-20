@@ -49,7 +49,7 @@ Search::~Search()
 void Search::initXML(shared_ptr<XMLDocument> document)
 {
 	shared_ptr<XMLNode> root = document->getRoot();
-	if(root == null)
+	if(root == nullptr)
 		root = document->create(OS_MODULES_SEARCH_ROOT);
 
 	if(root->getAttributes()->exists(_S("showParams")) == false)

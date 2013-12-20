@@ -735,8 +735,7 @@
 				if (this.color_none) {
 					this.element.val('');
 				} else if(!this.color.equals(this._parseHex(this.element.val()))) {
-					//this.element.val(this.color.toHex());
-					this.element.val(this.color.toCSS());
+					this.element.val(this.color.toHex());
 				}
 
 				this._setImageBackground();
@@ -1679,13 +1678,12 @@
 				return hexified;
 			};
 
-			this.toHex = function () {				
+			this.toHex = function () {
 				return this._hexify(this.r * 255) + this._hexify(this.g * 255) + this._hexify(this.b * 255);
 			};
 
 			this.toCSS = function () {
-				// return '#' + this.toHex(); // Clodo Hack
-				return 'rgba(' + (this.r * 255) + ',' + (this.g * 255) + ',' + (this.b * 255) + ',' + (this.a) + ')';
+				return '#' + this.toHex();
 			};
 
 			this.toHexAlpha = function () {

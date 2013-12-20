@@ -85,10 +85,10 @@ public:
 
 //////////////////////////////////////////////////////////////////////
 
-inline bool HttpPostParam::empty() const { return boost::get<boost::none_t>(&m_value) != null; }
+inline bool HttpPostParam::empty() const { return boost::get<boost::none_t>(&m_value) != nullptr; }
 
-inline bool HttpPostParam::isBuffer() const { return boost::get<Buffer>(&m_value) != null; }
-inline bool HttpPostParam::isString() const { return boost::get<std::wstring>(&m_value) != null; }
+inline bool HttpPostParam::isBuffer() const { return boost::get<Buffer>(&m_value) != nullptr; }
+inline bool HttpPostParam::isString() const { return boost::get<std::wstring>(&m_value) != nullptr; }
 
 inline const std::string & HttpPostParam::getContentType() const { return m_contentType; }
 inline void HttpPostParam::setContentType(const std::string &contentType) { m_contentType = contentType; }

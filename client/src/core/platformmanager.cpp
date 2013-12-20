@@ -145,7 +145,7 @@ uint32 PlatformManager::getCurrentProcessID()
 shared_ptr<PlatformManager::ProcessDetails> PlatformManager::getProcessDetails(uint32 processID)
 {
 	shared_ptr<PlatformManager::ProcessDetails> processDetails = m_impl->getProcessDetails(processID);
-	OS_ASSERT((processDetails == null) || (processDetails->executablePath == utils::standardisePath(processDetails->executablePath, false)));	// Se i dettagli del processo sono stati caricati, verifica che il path dell'eseguibile sia stato standardizzato
+	OS_ASSERT((processDetails == nullptr) || (processDetails->executablePath == utils::standardisePath(processDetails->executablePath, false)));	// Se i dettagli del processo sono stati caricati, verifica che il path dell'eseguibile sia stato standardizzato
 	return processDetails;
 }
 

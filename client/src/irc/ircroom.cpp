@@ -41,8 +41,8 @@ IRCRoom::UserDetails::UserDetails(shared_ptr<IRCRoom> room, shared_ptr<boost::re
 																					m_invisible(false),
 																					m_banned(false)
 {
-	OS_ASSERT(room != null);
-	OS_ASSERT(cs != null);
+	OS_ASSERT(room != nullptr);
+	OS_ASSERT(cs != nullptr);
 }
 
 IRCRoom::UserDetails::~UserDetails()
@@ -135,7 +135,7 @@ void IRCRoom::UserDetails::setBanned(bool banned)
 void IRCRoom::UserDetails::markModified()
 {
 	shared_ptr<IRCRoom> room = getRoom();
-	if(room != null)
+	if(room != nullptr)
 		room->markModified();
 }
 
@@ -145,7 +145,7 @@ IRCRoom::IRCRoom(shared_ptr<IIRCTarget> target) : m_target(target),
 												  m_cs(OS_NEW_T(boost::recursive_mutex), os_delete_t()),
 												  m_modified(true)		// Notifica lo stato iniziale
 {
-	OS_ASSERT(target != null);
+	OS_ASSERT(target != nullptr);
 }
 
 IRCRoom::~IRCRoom()
@@ -181,7 +181,7 @@ shared_ptr<IRCUser> IRCRoom::getUser(uint32 userID) const
 	if(i != m_users.end())
 		return i->second.first;
 	
-	return null;
+	return nullptr;
 }
 
 shared_ptr<IRCRoom::UserDetails> IRCRoom::getUserDetails(uint32 userID) const
@@ -192,20 +192,20 @@ shared_ptr<IRCRoom::UserDetails> IRCRoom::getUserDetails(uint32 userID) const
 	if(i != m_users.end())
 		return i->second.second;
 	
-	return null;
+	return nullptr;
 }
 
 shared_ptr<IRCRoom::UserDetails> IRCRoom::getLocalUserDetails()
 {
 	shared_ptr<IRCSession> session = getSession();
-	if(session == null)
-		return null;
+	if(session == nullptr)
+		return nullptr;
 
 	shared_ptr<IRCUser> user = session->getLocalUser();
-	if(user == null)
+	if(user == nullptr)
 	{
 		OS_ASSERTFALSE();
-		return null;
+		return nullptr;
 	}
 
 	return ensureUser(user);
@@ -225,7 +225,7 @@ void IRCRoom::notifyModified(const boost::signal<void (shared_ptr<IRCRoom>)> &ca
 bool IRCRoom::sendMessage(const String &message)
 {
 	shared_ptr<IRCSession> session = getSession();
-	if(session == null)
+	if(session == nullptr)
 		return false;
 
 	shared_ptr<IRCCommandMessage> command(OS_NEW IRCCommandMessage(session));	
@@ -239,11 +239,11 @@ bool IRCRoom::changeUserMode(uint32 userID, IRCModeType mode, bool enabled)
 	OS_ASSERT(getLocalUserDetails()->hasOperatorPrivileges());
 
 	shared_ptr<IRCUser> user = getUser(userID);
-	if(user == null)
+	if(user == nullptr)
 		return false;
 
 	shared_ptr<IRCSession> session = getSession();
-	if(session == null)
+	if(session == nullptr)
 		return false;
 
 	shared_ptr<IRCCommandMode> command(OS_NEW IRCCommandMode(session));
@@ -258,11 +258,11 @@ bool IRCRoom::kickUser(uint32 userID, const String &comment)
 	OS_ASSERT(getLocalUserDetails()->hasOperatorPrivileges());
 
 	shared_ptr<IRCUser> user = getUser(userID);
-	if(user == null)
+	if(user == nullptr)
 		return false;
 
 	shared_ptr<IRCSession> session = getSession();
-	if(session == null)
+	if(session == nullptr)
 		return false;
 
 	shared_ptr<IRCCommandKick> command(OS_NEW IRCCommandKick(session));
@@ -274,10 +274,10 @@ bool IRCRoom::kickUser(uint32 userID, const String &comment)
 
 shared_ptr<IRCRoom::UserDetails> IRCRoom::ensureUser(shared_ptr<IRCUser> user)
 {
-	if(user == null)
+	if(user == nullptr)
 	{
 		OS_ASSERTFALSE();
-		return null;
+		return nullptr;
 	}
 
 	OS_LOCK(*m_cs);
@@ -296,13 +296,13 @@ shared_ptr<IRCRoom::UserDetails> IRCRoom::ensureUser(shared_ptr<IRCUser> user)
 		m_modified = true;
 	}
 
-	OS_ASSERT(userDetails != null);
+	OS_ASSERT(userDetails != nullptr);
 	return userDetails;
 }
 
 void IRCRoom::removeUser(shared_ptr<IRCUser> user)
 {
-	if(user == null)
+	if(user == nullptr)
 	{
 		OS_ASSERTFALSE();
 		return;
@@ -324,7 +324,7 @@ void IRCRoom::leave()
 		return;
 
 	shared_ptr<IRCSession> session = getSession();
-	if(session != null)
+	if(session != nullptr)
 		session->leaveChannel(getName());
 }
 

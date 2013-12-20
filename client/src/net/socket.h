@@ -237,7 +237,7 @@ void Socket<P>::open(const protocol &p)
 template <typename P>
 void Socket<P>::open(const protocol &p, boost::system::error_code &e)
 {
-	if(m_layer != null)
+	if(m_layer != nullptr)
 		m_layer->open(p, e);
 	else
 		m_socket->open(p, e);
@@ -254,7 +254,7 @@ void Socket<P>::close()
 template <typename P>
 void Socket<P>::close(boost::system::error_code &e)
 {
-	if(m_layer != null)
+	if(m_layer != nullptr)
 		m_layer->close(e);
 	else
 		m_socket->close(e);

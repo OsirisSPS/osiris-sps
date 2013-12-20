@@ -15,21 +15,18 @@
   
   <xsl:template match="block">    
     <xsl:choose>            
-			<!--
       <xsl:when test="@page">
         <xsl:call-template name="block_page">
           <xsl:with-param name="prefix" select="@title"/>
           <xsl:with-param name="body" select="$body"/>
         </xsl:call-template>
       </xsl:when>
-			-->
       <xsl:when test="@type='none'">
         <xsl:call-template name="block_none">
           <xsl:with-param name="style" select="@style"/>
           <xsl:with-param name="body" select="$body"/>
         </xsl:call-template>
       </xsl:when>
-			<!--
       <xsl:when test="@type='heading'">
         <xsl:call-template name="block_heading">
           <xsl:with-param name="title" select="@title"/>
@@ -39,9 +36,8 @@
           <xsl:with-param name="body" select="$body"/>
         </xsl:call-template>
       </xsl:when>
-			-->
       <xsl:when test="@type='minimal'">
-        <xsl:call-template name="block_small">
+        <xsl:call-template name="block_minimal">
           <xsl:with-param name="title" select="@title"/>
           <xsl:with-param name="href" select="@href"/>
           <xsl:with-param name="innerStyle" select="@innerStyle"/>
@@ -49,7 +45,7 @@
           <xsl:with-param name="startClose" select="@startClose"/>
           <xsl:with-param name="body" select="$body"/>          
         </xsl:call-template>
-      </xsl:when>			
+      </xsl:when>
       <xsl:when test="@type='small'">
         <xsl:call-template name="block_small">
           <xsl:with-param name="title" select="@title"/>

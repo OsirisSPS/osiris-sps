@@ -41,12 +41,12 @@ shared_ptr<boost::wregex> regex_create(const String &regex, bool nocase)
 		OS_LOG_ERROR(e.what());		
 	}
 
-	return null;
+	return nullptr;
 }
 
 bool regex_match(const String &str, shared_ptr<boost::wregex> regex)
 {
-	if(regex == null)
+	if(regex == nullptr)
 	{
 		OS_ASSERTFALSE();
 		return false;
@@ -71,7 +71,7 @@ bool regex_match(const String &str, const boost::wregex &regex)
 
 String regex_replace(const String &str, shared_ptr<boost::wregex> regex, const String &format)
 {
-	if(regex == null)
+	if(regex == nullptr)
 	{
 		OS_ASSERTFALSE();
 		return String::EMPTY;

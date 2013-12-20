@@ -38,7 +38,7 @@ class EngineExport DbSchemaIndex : public Object,
 {
 // Construction
 public:
-	DbSchemaIndex(shared_ptr<DbSchemaTable> table = null);
+	DbSchemaIndex(shared_ptr<DbSchemaTable> table = nullptr);
 	virtual ~DbSchemaIndex();
 
 // Attributes
@@ -100,7 +100,7 @@ inline bool DbSchemaIndex::getUnique() const { return m_unique; }
 inline const DbSchemaIndexFields & DbSchemaIndex::getFields() const { return m_fields; }
 inline uint32 DbSchemaIndex::getFieldsCount() const { return static_cast<uint32>(m_fields.size()); }
 
-inline bool DbSchemaIndex::hasField(const String &name) const { return getField(name) != null; }
+inline bool DbSchemaIndex::hasField(const String &name) const { return getField(name) != nullptr; }
 
 //////////////////////////////////////////////////////////////////////
 

@@ -43,7 +43,7 @@ shared_ptr<IArchivesArchive> ArchivesZipArchiveFactory::openArchive(const String
 	if(archive->open(filename))
 		return archive;
 
-	return null;
+	return nullptr;
 }
 
 //////////////////////////////////////////////////////////////////////

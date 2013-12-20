@@ -43,12 +43,12 @@ shared_ptr<DataIStatistics> EntitiesStatisticsCache::load(const ObjectID &id, Id
 {
 	// URGENT
 	/*
-	OS_ASSERT(logged_user != null);
+	OS_ASSERT(logged_user != nullptr);
 	return logged_user->getDatabase()->getStatistics(logged_user->getAccount()->getID(), id, portalObjectTypeUnknown);
 	*/
 
 	OS_ASSERTFALSE();
-	return null;
+	return nullptr;
 }
 
 //////////////////////////////////////////////////////////////////////

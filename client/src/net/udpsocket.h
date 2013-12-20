@@ -56,7 +56,7 @@ public:
 template <typename T, typename H>
 void UDPSocket::async_send_to(const T &buffers, const endpoint_type &destination, const H &handler)
 {
-	if(m_layer != null)
+	if(m_layer != nullptr)
 		m_layer->async_send_to(buffers, destination, handler);
 	else
 		m_socket->async_send_to(buffers, destination, handler);
@@ -65,7 +65,7 @@ void UDPSocket::async_send_to(const T &buffers, const endpoint_type &destination
 template <typename T, typename H>
 void UDPSocket::async_receive_from(const T &buffers, endpoint_type &sender_endpoint, const H &handler)
 {
-	if(m_layer != null)
+	if(m_layer != nullptr)
 		m_layer->async_receive_from(buffers, sender_endpoint, handler);
 	else
 		m_socket->async_receive_from(buffers, sender_endpoint, handler);

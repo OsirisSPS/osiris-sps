@@ -35,7 +35,7 @@ class PollOptionViewer : public IObjectViewer
 
 // Construction
 public:
-	PollOptionViewer(shared_ptr<EntitiesEntity> entity = null);
+	PollOptionViewer(shared_ptr<EntitiesEntity> entity = nullptr);
 	virtual ~PollOptionViewer();
 
 // IXSLRenderer interface

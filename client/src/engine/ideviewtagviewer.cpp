@@ -62,7 +62,7 @@ void TagViewer::onLoad()
 	ControlBase::onLoad();
 
 	shared_ptr<ObjectsTag> tag = objects_tag_cast(getObject());
-	if(tag == null)
+	if(tag == nullptr)
 		return;
 
 	shared_ptr<XMLPortalExporter> exporter(OS_NEW XMLPortalExporter(getDocument()->create(tag->getDescriptor()->getTypeName()), getPage(), XMLPortalExporter::emFull));
@@ -116,9 +116,9 @@ void TagViewer::onLoad()
 				for(uint32 i = 0; i < rows; i++)
 				{
 					shared_ptr<EntitiesEntity> tagged_entity = getPortal()->getEntity(getDatabase(), static_cast<String>(*result[i][0]).to_ascii());
-					if(tagged_entity != null)
+					if(tagged_entity != nullptr)
 					{
-						if(node_objects == null)
+						if(node_objects == nullptr)
 							node_objects = exporter->getNode(OS_PORTAL_OBJECT_OBJECT_GROUPNAME);
 
 						shared_ptr<XMLPortalExporter> objectExporter(OS_NEW XMLPortalExporter(node_objects->addChild(OS_PORTAL_OBJECT_OBJECT_TYPENAME), exporter->getPage(), XMLPortalExporter::emLite));

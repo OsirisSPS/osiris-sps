@@ -82,7 +82,7 @@ void Maintenance::onLoad()
 	
 	/*
 	shared_ptr<Portal> portal = getPortalFromUrl();
-	if(portal == null)
+	if(portal == nullptr)
 	{
 		showError(_S("Invalid portal"));
 		return;
@@ -91,7 +91,7 @@ void Maintenance::onLoad()
 
 	if(getRequest()->hasUrlParam(_W("crash"))) // TEMP, x test crash report
 	{
-		int32 *pI=null;
+		int32 *pI=nullptr;
 		*pI = 5;
 	}
 
@@ -128,7 +128,7 @@ void Maintenance::onStabilityRestart()
 	{
 		shared_ptr<Portal> portal = *i;
 
-		if( (portalParam == null) || (portal == portalParam) )
+		if( (portalParam == nullptr) || (portal == portalParam) )
 		{
 			portal->getSnapshotManager()->resetStabilityStatus(EntitiesSnapshotManager::ssNone);			
 		}
@@ -144,7 +144,7 @@ void Maintenance::onStabilityRebuild()
 	{
 		shared_ptr<Portal> portal = *i;
 
-		if( (portalParam == null) || (portal == portalParam) )
+		if( (portalParam == nullptr) || (portal == portalParam) )
 		{
 			shared_ptr<PortalsTransaction> databaseWork = portal->startTransaction(true);
 			shared_ptr<IPortalDatabase> database = databaseWork->getDatabase();
@@ -166,7 +166,7 @@ void Maintenance::onLuceneRebuild()
 	{
 		shared_ptr<Portal> portal = *i;
 
-		if( (portalParam == null) || (portal == portalParam) )
+		if( (portalParam == nullptr) || (portal == portalParam) )
 		{
 			shared_ptr<PortalsTransaction> databaseWork = portal->startTransaction(true);
 			shared_ptr<IPortalDatabase> database = databaseWork->getDatabase();
@@ -188,7 +188,7 @@ void Maintenance::onLuceneOptimize()
 	{
 		shared_ptr<Portal> portal = *i;
 
-		if( (portalParam == null) || (portal == portalParam) )
+		if( (portalParam == nullptr) || (portal == portalParam) )
 		{
 			portal->getSnapshotManager()->optimizeSearchIndexes();			
 		}
@@ -205,7 +205,7 @@ void Maintenance::onDatabaseVacuum()
 	{
 		shared_ptr<Portal> portal = *i;
 
-		if( (portalParam == null) || (portal == portalParam) )
+		if( (portalParam == nullptr) || (portal == portalParam) )
 		{
 			shared_ptr<PortalsTransaction> databaseWork = portal->startTransaction(true);
 			shared_ptr<IPortalDatabase> database = databaseWork->getDatabase();
@@ -225,7 +225,7 @@ void Maintenance::onDatabaseRebuildIndexes()
 	{
 		shared_ptr<Portal> portal = *i;
 
-		if( (portalParam == null) || (portal == portalParam) )
+		if( (portalParam == nullptr) || (portal == portalParam) )
 		{
 			shared_ptr<PortalsTransaction> databaseWork = portal->startTransaction(true);
 			shared_ptr<IPortalDatabase> database = databaseWork->getDatabase();
@@ -249,7 +249,7 @@ void Maintenance::onDatabaseAnalyze()
 		{
 			shared_ptr<Portal> portal = *i;
 
-			if( (portalParam == null) || (portal == portalParam) )
+			if( (portalParam == nullptr) || (portal == portalParam) )
 			{
 				shared_ptr<PortalsTransaction> databaseWork = portal->startTransaction(true);
 				shared_ptr<IPortalDatabase> database = databaseWork->getDatabase();

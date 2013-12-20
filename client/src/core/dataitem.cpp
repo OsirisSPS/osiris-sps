@@ -375,7 +375,7 @@ DataItem DataItem::cast(ValueType type) const
 void DataItem::construct()
 {
 	m_type = vt_null;
-	m_value = null;
+	m_value = nullptr;
 }
 
 void DataItem::destroy()
@@ -418,7 +418,7 @@ void DataItem::destroy()
 	}
 
 	m_type = vt_null;
-	m_value = null;
+	m_value = nullptr;
 }
 
 bool DataItem::readBool(Buffer &buff)
@@ -754,7 +754,7 @@ bool DataItem::operator !=(const DataItem &v) const
 
 DataItem::operator bool *() const
 {
-	return m_type == vt_bool ? static_cast<bool *>(m_value) : null;
+	return m_type == vt_bool ? static_cast<bool *>(m_value) : nullptr;
 }
 
 DataItem::operator bool() const
@@ -791,7 +791,7 @@ DataItem::operator bool() const
 
 DataItem::operator byte *() const
 {
-	return m_type == vt_byte ? static_cast<byte *>(m_value) : null;
+	return m_type == vt_byte ? static_cast<byte *>(m_value) : nullptr;
 }
 
 DataItem::operator byte() const
@@ -825,7 +825,7 @@ DataItem::operator byte() const
 
 DataItem::operator int32 *() const
 {
-	return m_type == vt_int32 ? static_cast<int32 *>(m_value) : null;
+	return m_type == vt_int32 ? static_cast<int32 *>(m_value) : nullptr;
 }
 
 DataItem::operator int32() const
@@ -859,7 +859,7 @@ DataItem::operator int32() const
 
 DataItem::operator uint32 *() const
 {
-	return m_type == vt_uint32 ? static_cast<uint32 *>(m_value) : null;
+	return m_type == vt_uint32 ? static_cast<uint32 *>(m_value) : nullptr;
 }
 
 DataItem::operator uint32() const
@@ -893,7 +893,7 @@ DataItem::operator uint32() const
 
 DataItem::operator int64 *() const
 {
-	return m_type == vt_int64 ? static_cast<int64 *>(m_value) : null;
+	return m_type == vt_int64 ? static_cast<int64 *>(m_value) : nullptr;
 }
 
 DataItem::operator int64() const
@@ -927,7 +927,7 @@ DataItem::operator int64() const
 
 DataItem::operator uint64 *() const
 {
-	return m_type == vt_uint64 ? static_cast<uint64 *>(m_value) : null;
+	return m_type == vt_uint64 ? static_cast<uint64 *>(m_value) : nullptr;
 }
 
 DataItem::operator uint64() const
@@ -961,7 +961,7 @@ DataItem::operator uint64() const
 
 DataItem::operator double *() const
 {
-	return m_type == vt_double ? static_cast<double *>(m_value) : null;
+	return m_type == vt_double ? static_cast<double *>(m_value) : nullptr;
 }
 
 DataItem::operator double() const
@@ -995,7 +995,7 @@ DataItem::operator double() const
 
 DataItem::operator String *() const
 {
-	return m_type == vt_string ? static_cast<String *>(m_value) : null;
+	return m_type == vt_string ? static_cast<String *>(m_value) : nullptr;
 }
 
 DataItem::operator String() const
@@ -1029,7 +1029,7 @@ DataItem::operator String() const
 
 DataItem::operator Buffer *() const
 {
-	return m_type == vt_buffer ? static_cast<Buffer *>(m_value) : null;
+	return m_type == vt_buffer ? static_cast<Buffer *>(m_value) : nullptr;
 }
 
 DataItem::operator Buffer() const
@@ -1058,7 +1058,7 @@ DataItem::operator Buffer() const
 
 DataItem::operator DataTree *() const
 {
-	return m_type == vt_datatree ? static_cast<DataTree *>(m_value) : null;
+	return m_type == vt_datatree ? static_cast<DataTree *>(m_value) : nullptr;
 }
 
 DataItem::operator DataTree() const

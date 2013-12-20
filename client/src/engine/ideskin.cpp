@@ -118,14 +118,14 @@ bool IdeSkin::read(shared_ptr<XMLDocument> document)
 		return false;
 
 	shared_ptr<XMLNode> styles = root->getNode(STYLES);
-	if(styles != null)	// gli stili sono opzionali
+	if(styles != nullptr)	// gli stili sono opzionali
 	{
 		if(_parseStyles(styles) == false)
 			return false;
 	}
 
 	shared_ptr<XMLNode> scripts = root->getNode(SCRIPTS);
-	if(scripts != null)	// gli scripts sono opzionali
+	if(scripts != nullptr)	// gli scripts sono opzionali
 	{
 		if(_parseScripts(scripts) == false)
 			return false;
@@ -162,8 +162,8 @@ void IdeSkin::unload()
 
 void IdeSkin::apply(shared_ptr<HtmlPage> page)
 {
-	OS_ASSERT(page != null);
-	if(page == null || isValid() == false)
+	OS_ASSERT(page != nullptr);
+	if(page == nullptr || isValid() == false)
 		return;
 	
 	const StringList &styles = getStyles();
@@ -194,7 +194,7 @@ void IdeSkin::apply(shared_ptr<HtmlPage> page)
 /*
 String IdeSkin::getText(const String &culture, const String &name)
 {
-	OS_ASSERT(m_languageFolder != null);
+	OS_ASSERT(m_languageFolder != nullptr);
 	return m_languageFolder->getText(culture, name);
 }
 */
@@ -211,7 +211,7 @@ void IdeSkin::_clear()
 
 bool IdeSkin::_parseAttributes(const shared_ptr<XMLNode> &node)
 {
-	OS_ASSERT(node != null);
+	OS_ASSERT(node != nullptr);
 
 	m_id = node->getAttributeString(ID).to_ascii();
 	if(m_id.validate(false) == false)
@@ -245,7 +245,7 @@ bool IdeSkin::_parseAttributes(const shared_ptr<XMLNode> &node)
 
 bool IdeSkin::_parseStyles(const shared_ptr<XMLNode> &styles)
 {
-	OS_ASSERT(styles != null);
+	OS_ASSERT(styles != nullptr);
 
 	shared_ptr<XMLNodes> schema_styles = styles->getNodes();
 	// Scorre tutti gli stili dello schema
@@ -261,7 +261,7 @@ bool IdeSkin::_parseStyles(const shared_ptr<XMLNode> &styles)
 
 bool IdeSkin::_parseStyle(const shared_ptr<XMLNode> &style)
 {
-	OS_ASSERT(style != null);
+	OS_ASSERT(style != nullptr);
 
 	String css = style->getAttributeString(CSS);
 	if(css.empty() == false)
@@ -272,7 +272,7 @@ bool IdeSkin::_parseStyle(const shared_ptr<XMLNode> &style)
 
 bool IdeSkin::_parseScripts(const shared_ptr<XMLNode> &scripts)
 {
-	OS_ASSERT(scripts != null);
+	OS_ASSERT(scripts != nullptr);
 
 	shared_ptr<XMLNodes> schema_scripts = scripts->getNodes();
 	// Scorre tutti gli scripts dello schema
@@ -288,7 +288,7 @@ bool IdeSkin::_parseScripts(const shared_ptr<XMLNode> &scripts)
 
 bool IdeSkin::_parseScript(const shared_ptr<XMLNode> &script)
 {
-	OS_ASSERT(script != null);
+	OS_ASSERT(script != nullptr);
 
 	String js = script->getAttributeString(JS);
 	if(js.empty() == false)

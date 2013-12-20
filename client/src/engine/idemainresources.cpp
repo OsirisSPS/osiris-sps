@@ -62,7 +62,7 @@ bool Resources::transmitAvatar(const shared_ptr<IPortalDatabase> &database, cons
 
 	closeDatabase();
 
-	if(avatar == null)
+	if(avatar == nullptr)
 		return false;
 
 	const Buffer &buffer = avatar->file_data;
@@ -73,16 +73,16 @@ bool Resources::transmitAvatar(const shared_ptr<IPortalDatabase> &database, cons
 bool Resources::transmitFile(const shared_ptr<IPortalDatabase> &database, const String &hash)
 {
 	shared_ptr<EntitiesEntity> entity = database->getPortal()->getEntity(database, hash.to_ascii());
-	if(entity == null)
+	if(entity == nullptr)
 		return "";
-	if(entity->getCurrent() == null)
+	if(entity->getCurrent() == nullptr)
 		return "";
 
 	shared_ptr<ObjectsFile> file = database->getFile(entity->getCurrent()->id->toAscii());
 
 	closeDatabase();
 
-	if(file == null)
+	if(file == nullptr)
 		return false;
 
 	const Buffer &buffer = file->file_data;
@@ -108,7 +108,7 @@ bool Resources::isIsisAllowed() const
 bool Resources::transmit()
 {
 	shared_ptr<IPortalDatabase> database = getDatabase();
-	if(database == null)
+	if(database == nullptr)
 		return false;	// not found
 
 	String avatar = getRequest()->getUrlParam(PARAM_AVATAR);

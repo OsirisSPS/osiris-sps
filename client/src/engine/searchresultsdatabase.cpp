@@ -129,7 +129,7 @@ void SearchResultsDatabase::executeQuery(shared_ptr<IPortalDatabase> database, s
 			select->where.add(DbSqlField(DBTABLES::SNAPSHOT_OBJECTS::INSERT_DATE, DBTABLES::SNAPSHOT_OBJECTS_TABLE), Convert::toSQL(toInsertDate), DbSqlCondition::cfMinor | DbSqlCondition::cfEqual | DbSqlCondition::cfAnd);
 		}
 
-		// Non mostrare le entit virtuali. Dato che le entit virtuali hanno insertDate==null,
+		// Non mostrare le entit virtuali. Dato che le entit virtuali hanno insertDate==nullptr,
 		select->where.add(DbSqlField(DBTABLES::SNAPSHOT_OBJECTS::INSERT_DATE, DBTABLES::SNAPSHOT_OBJECTS_TABLE), Convert::toSQL(DateTime::EMPTY), DbSqlCondition::cfDifferent | DbSqlCondition::cfAnd);
 
 		// Se non deve mostrare gli oggetti cancellati forza la visibilit ad 1
@@ -186,7 +186,7 @@ void SearchResultsDatabase::executeQuery(shared_ptr<IPortalDatabase> database, s
 			{
 				// VERYURGENTRAZOR: Commentata perchè ho piallato il loggedUser come parametro... rivalutare la cosa
 				/*
-				if( (loggedUser != null) && loggedUser->isLogged() && (loggedUser->getGuestMode() == false))
+				if( (loggedUser != nullptr) && loggedUser->isLogged() && (loggedUser->getGuestMode() == false))
 				{
 					user = loggedUser->getUser()->id->toUTF16();
 				}

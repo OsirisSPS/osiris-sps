@@ -14,7 +14,7 @@ struct StaticSingleton_less__osiris_scope_HtmlParser_comma__true__greater__wrapp
     StaticSingleton_less__osiris_scope_HtmlParser_comma__true__greater__wrapper( )
     : ::osiris::StaticSingleton<osiris::HtmlParser, true>( )
       , ::osiris::PythonWrapper< ::osiris::StaticSingleton< osiris::HtmlParser, true > >(){
-        // null constructor
+        // nullptr constructor
     
     }
 

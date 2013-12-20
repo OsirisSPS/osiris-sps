@@ -43,7 +43,7 @@ class EngineExport PollEditor : public IObjectEditor
 
 // Construction
 public:
-	PollEditor(shared_ptr<EntitiesEntity> entity = null, shared_ptr<EntitiesEntity> parent = null);
+	PollEditor(shared_ptr<EntitiesEntity> entity = nullptr, shared_ptr<EntitiesEntity> parent = nullptr);
 	virtual ~PollEditor();
 
 // IXSLRenderer interface

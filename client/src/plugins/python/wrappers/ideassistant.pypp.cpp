@@ -26,7 +26,7 @@ struct IdeAssistant_wrapper : ::osiris::IdeAssistant, ::osiris::PythonWrapper< :
     IdeAssistant_wrapper( )
     : ::osiris::IdeAssistant( )
       , ::osiris::PythonWrapper< ::osiris::IdeAssistant >(){
-        // null constructor
+        // nullptr constructor
     
     }
 

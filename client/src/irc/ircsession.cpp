@@ -54,7 +54,7 @@ IRCSession::IRCSession(uint32 id, shared_ptr<ConnectionsManager> connectionsMana
 																					   m_timeout(OS_IRC_DEFAULT_TIMEOUT),
 																					   m_usersID(0)
 {
-	OS_ASSERT(connectionsManager != null);
+	OS_ASSERT(connectionsManager != nullptr);
 }
 
 IRCSession::~IRCSession()
@@ -88,7 +88,7 @@ std::string IRCSession::getServer() const
 
 void IRCSession::setServer(const std::string &server)
 {
-	OS_ASSERT(getConnection() == null);
+	OS_ASSERT(getConnection() == nullptr);
 
 	OS_LOCK(m_dataCS);
 	m_server = server;
@@ -102,7 +102,7 @@ uint32 IRCSession::getPort() const
 
 void IRCSession::setPort(uint32 port)
 {
-	OS_ASSERT(getConnection() == null);
+	OS_ASSERT(getConnection() == nullptr);
 
 	OS_LOCK(m_dataCS);
 	m_port = port;
@@ -116,7 +116,7 @@ bool IRCSession::getEnableSSL() const
 
 void IRCSession::setEnableSSL(bool enableSSL)
 {
-	OS_ASSERT(getConnection() == null);
+	OS_ASSERT(getConnection() == nullptr);
 
 	OS_LOCK(m_dataCS);
 	m_enableSSL = enableSSL;
@@ -130,7 +130,7 @@ uint32 IRCSession::getTimeout() const
 
 void IRCSession::setTimeout(uint32 timeout)
 {
-	OS_ASSERT(getConnection() == null);
+	OS_ASSERT(getConnection() == nullptr);
 
 	OS_LOCK(m_dataCS);
 	m_timeout = timeout;
@@ -156,7 +156,7 @@ std::string IRCSession::getUser() const
 
 void IRCSession::setUser(const std::string &user)
 {
-	OS_ASSERT(getConnection() == null);
+	OS_ASSERT(getConnection() == nullptr);
 
 	OS_LOCK(m_dataCS);
 	m_user = user;
@@ -170,7 +170,7 @@ std::string IRCSession::getNick() const
 
 void IRCSession::setNick(const std::string &nick)
 {
-	OS_ASSERT(getConnection() == null);
+	OS_ASSERT(getConnection() == nullptr);
 
 	OS_LOCK(m_dataCS);
 	m_nick = nick;
@@ -208,21 +208,21 @@ Locked<const IRCSession::Channels>::unique IRCSession::getChannels() const
 
 shared_ptr<IRCConnection> IRCSession::openConnection(shared_ptr<TCPSocket> socket)
 {
-	if(socket == null)
+	if(socket == nullptr)
 	{
 		OS_ASSERTFALSE();
-		return null;
+		return nullptr;
 	}
 
 	OS_LOCK(m_dataCS);
 
 	shared_ptr<IRCConnection> connection = m_connection.lock();
-	if(connection != null)
+	if(connection != nullptr)
 		return connection;
 
 	shared_ptr<ConnectionsManager> connectionsManager = m_connectionsManager.lock();
-	if(connectionsManager == null)
-		return null;
+	if(connectionsManager == nullptr)
+		return nullptr;
 
 	clear();
 	
@@ -240,7 +240,7 @@ void IRCSession::closeConnection()
 	OS_LOCK(m_dataCS);
 
 	shared_ptr<IRCConnection> connection = m_connection.lock();
-	if(connection == null)
+	if(connection == nullptr)
 	{
 		OS_ASSERT(m_connectionStatus == ircConnectionStatusDisconnected);
 		return;
@@ -249,7 +249,7 @@ void IRCSession::closeConnection()
 	m_connection.reset();
 
 	shared_ptr<ConnectionsManager> connectionsManager = m_connectionsManager.lock();
-	if(connectionsManager != null)
+	if(connectionsManager != nullptr)
 		connectionsManager->removeConnection(connection, true);
 }
 
@@ -257,13 +257,13 @@ bool IRCSession::handleResponse(const std::string &command)
 {
 	IRCParser parser;
 	shared_ptr<IIRCCommand> response = parser.parse(get_this_ptr(), command);
-	if(response != null)
+	if(response != nullptr)
 	{
 		processResponse(response);
 		notifyCommand(response);
 
 	    shared_ptr<IIRCCommand> reply = response->getReply();
-		if(reply != null)
+		if(reply != nullptr)
 			addRequest(reply, false);
 	}
 	else
@@ -276,7 +276,7 @@ bool IRCSession::handleResponse(const std::string &command)
 
 bool IRCSession::addRequest(shared_ptr<IIRCCommand> request, bool update)
 {
-	if(request == null)
+	if(request == nullptr)
 	{
 		OS_ASSERTFALSE();
 		return false;
@@ -290,7 +290,7 @@ bool IRCSession::addRequest(shared_ptr<IIRCCommand> request, bool update)
 	if(update)
 	{
 		shared_ptr<IRCConnection> connection = m_connection.lock();
-		if(connection != null)
+		if(connection != nullptr)
 			connection->poll();
 	}
 
@@ -302,7 +302,7 @@ shared_ptr<IIRCCommand> IRCSession::popRequest()
 	OS_LOCK(m_dataCS);
 
 	if(m_requests.empty())
-		return null;
+		return nullptr;
 
 	return utils::pop_front(m_requests);
 }
@@ -369,7 +369,7 @@ void IRCSession::notifyConnectionStatusChanged(IRCConnectionStatus connectionSta
 
 void IRCSession::notifyCommand(shared_ptr<IIRCCommand> command)
 {
-	OS_ASSERT(command != null);
+	OS_ASSERT(command != nullptr);
 	OS_ASSERT(command->getSession() == get_this_ptr());
 
 	OS_LOCK(m_signalsCS);
@@ -384,12 +384,12 @@ shared_ptr<IRCRoom> IRCSession::findRoom(const std::string &name) const
 	if(i != m_rooms.end())
 		return i->second;
 
-	return null;
+	return nullptr;
 }
 
 bool IRCSession::leaveRoom(shared_ptr<IRCRoom> room)
 {
-	if(room == null)
+	if(room == nullptr)
 	{
 		OS_ASSERTFALSE();
 		return false;
@@ -417,7 +417,7 @@ shared_ptr<IRCUser> IRCSession::findUser(const std::string &name) const
 	if(i != m_users.end())
 		return i->second;
 
-	return null;
+	return nullptr;
 }
 
 shared_ptr<IRCUser> IRCSession::findUser(uint32 id) const
@@ -430,15 +430,15 @@ shared_ptr<IRCUser> IRCSession::findUser(uint32 id) const
 			return i->second;
 	}
 
-	return null;
+	return nullptr;
 }
 
 shared_ptr<IRCRoom> IRCSession::ensureRoom(shared_ptr<IIRCTarget> target, bool update)
 {
-	if(target == null)
+	if(target == nullptr)
 	{
 		OS_ASSERTFALSE();
-		return null;
+		return nullptr;
 	}
 
 	OS_LOCK(m_dataCS);
@@ -460,7 +460,7 @@ shared_ptr<IRCRoom> IRCSession::ensureRoom(shared_ptr<IIRCTarget> target, bool u
 		needUpdate = true;
 	}
 
-	OS_ASSERT(room != null);
+	OS_ASSERT(room != nullptr);
 
 	if(needUpdate && update)
 		updateRoom(room, false);
@@ -488,7 +488,7 @@ boost::signals::connection IRCSession::registerRoomsCallback(const boost::signal
 
 void IRCSession::processResponse(shared_ptr<IIRCCommand> command)
 {
-	OS_ASSERT(command != null);
+	OS_ASSERT(command != nullptr);
 	
 	switch(command->getType())
 	{
@@ -500,7 +500,7 @@ void IRCSession::processResponse(shared_ptr<IIRCCommand> command)
 
 	case ircCommandTypeChannel:				{
 												shared_ptr<IRCCommandChannel> commandChannel = boost::dynamic_pointer_cast<IRCCommandChannel>(command);
-												OS_ASSERT(commandChannel != null);
+												OS_ASSERT(commandChannel != nullptr);
 												validateChannel(commandChannel->getChannelName(), commandChannel->getChannelDescription(), commandChannel->getChannelUsers());
 											}
 
@@ -579,10 +579,10 @@ void IRCSession::invalidateChannels()
 shared_ptr<IRCChannel> IRCSession::validateChannel(const std::string &name, const std::string &description, uint32 users)
 {
 	shared_ptr<IRCChannel> channel = ensureChannel(name);
-	if(channel == null)
+	if(channel == nullptr)
 	{
 		OS_ASSERTFALSE();
-		return null;
+		return nullptr;
 	}
 
 	channel->setAvailable(true);
@@ -616,7 +616,7 @@ void IRCSession::updateChannels(bool notify)
 
 void IRCSession::updateRoom(shared_ptr<IRCRoom> room, bool force)
 {
-	OS_ASSERT(room != null);
+	OS_ASSERT(room != nullptr);
 
 	OS_LOCK(m_signalsCS);
 	room->notifyModified(m_roomsSignal, force);
@@ -649,7 +649,7 @@ shared_ptr<IRCChannel> IRCSession::ensureChannel(const std::string &name)
 		m_channels[name] = channel;
 	}
 
-	OS_ASSERT(channel != null);
+	OS_ASSERT(channel != nullptr);
 	return channel;
 }
 
@@ -661,7 +661,7 @@ shared_ptr<IRCChannel> IRCSession::findChannel(const std::string &name) const
 	if(i != m_channels.end())
 		return i->second;
 
-	return null;
+	return nullptr;
 }
 
 shared_ptr<IRCUser> IRCSession::ensureUser(const std::string &name)
@@ -682,7 +682,7 @@ shared_ptr<IRCUser> IRCSession::ensureUser(const std::string &name)
 		m_usersID++;
 	}
 
-	OS_ASSERT(user != null);
+	OS_ASSERT(user != nullptr);
 	return user;
 }
 
@@ -705,7 +705,7 @@ bool IRCSession::renameUser(const std::string &oldName, const std::string &newNa
 
 void IRCSession::processCommandMessage(shared_ptr<IRCCommandMessage> command)
 {
-	OS_ASSERT(command != null);
+	OS_ASSERT(command != nullptr);
 
 	OS_LOCK(m_dataCS);
 
@@ -723,7 +723,7 @@ void IRCSession::processCommandMessage(shared_ptr<IRCCommandMessage> command)
 
 void IRCSession::processCommandJoin(shared_ptr<IRCCommandJoin> command)
 {
-	OS_ASSERT(command != null);
+	OS_ASSERT(command != nullptr);
 
 	shared_ptr<IRCRoom> room;
 
@@ -741,24 +741,24 @@ void IRCSession::processCommandJoin(shared_ptr<IRCCommandJoin> command)
 		else
 			channel = findChannel(channelName);
 		
-		if(channel != null)
+		if(channel != nullptr)
 		{
 			room = ensureRoom(channel, false);
-			OS_ASSERT(room != null);
+			OS_ASSERT(room != nullptr);
 
 			std::string nickname;
 			IRCUserType userType = ircUserTypeNormal;
 			if(IRCParser::parseNickname(command->getNick(), nickname, userType))
 			{
 				shared_ptr<IRCRoom::UserDetails> userDetails = room->ensureUser(ensureUser(nickname));				
-				OS_ASSERT(userDetails != null);
-				if(userDetails != null)
+				OS_ASSERT(userDetails != nullptr);
+				if(userDetails != nullptr)
 					userDetails->setType(userType);
 			}
 		}		
 	}
 
-	if(room != null)
+	if(room != nullptr)
 		updateRoom(room, false);	
 }
 
@@ -769,13 +769,13 @@ void IRCSession::processCommandKick(shared_ptr<IRCCommandKick> command)
 
 void IRCSession::processCommandMode(shared_ptr<IRCCommandMode> command)
 {
-	OS_ASSERT(command != null);
+	OS_ASSERT(command != nullptr);
 
 	if(command->getTargetType() != ircTargetTypeChannel)
 		return;
 
 	shared_ptr<IRCRoom> room = findRoom(command->getTarget());
-	if(room == null)
+	if(room == nullptr)
 	{
 		OS_ASSERTFALSE();
 		return;
@@ -786,7 +786,7 @@ void IRCSession::processCommandMode(shared_ptr<IRCCommandMode> command)
 		user = findUser(command->getArg());
 
 	shared_ptr<IRCRoom::UserDetails> userDetails;
-	if(user != null)
+	if(user != nullptr)
 		userDetails = room->getUserDetails(user->getID());
 
 	const IRCCommandMode::ModeOptions &modes = command->getModeOptions();
@@ -797,28 +797,28 @@ void IRCSession::processCommandMode(shared_ptr<IRCCommandMode> command)
 		case ircModeTypeUnknown:		
 										break;
 
-		case ircModeTypeOperator:		if(userDetails != null)
+		case ircModeTypeOperator:		if(userDetails != nullptr)
 											userDetails->setType(i->second ? ircUserTypeOperator : ircUserTypeNormal);
 
 										break;
 
-		case ircModeTypeHalfOperator:	if(userDetails != null)
+		case ircModeTypeHalfOperator:	if(userDetails != nullptr)
 											userDetails->setType(i->second ? ircUserTypeHalfOperator : ircUserTypeNormal);
 
 										break;
 
 
-		case ircModeTypeVoice:			if(userDetails != null)
+		case ircModeTypeVoice:			if(userDetails != nullptr)
 											userDetails->setVoice(i->second);
 
 										break;
 
-		case ircModeTypeInvisible:		if(userDetails != null)
+		case ircModeTypeInvisible:		if(userDetails != nullptr)
 											userDetails->setInvisible(i->second);
 
 										break;
 
-		case ircModeTypeBan:			if(userDetails != null)
+		case ircModeTypeBan:			if(userDetails != nullptr)
 											userDetails->setBanned(i->second);
 
 										break;
@@ -838,7 +838,7 @@ void IRCSession::processCommandPart(shared_ptr<IRCCommandPart> command)
 
 void IRCSession::processCommandNames(shared_ptr<IRCCommandNames> command)
 {
-	OS_ASSERT(command != null);
+	OS_ASSERT(command != nullptr);
 
 	OS_LOCK(m_dataCS);	
 
@@ -850,7 +850,7 @@ void IRCSession::processCommandNames(shared_ptr<IRCCommandNames> command)
 	}
 
 	shared_ptr<IRCRoom> room = r->second;
-	OS_ASSERT(room != null);
+	OS_ASSERT(room != nullptr);
 	
 	const IRCCommandNames::Users &users = command->getUsers();
 	for(IRCCommandNames::Users::const_iterator i = users.begin(); i != users.end(); ++i)
@@ -860,8 +860,8 @@ void IRCSession::processCommandNames(shared_ptr<IRCCommandNames> command)
 		if(IRCParser::parseNickname(*i, nickname, userType))
 		{	
 			shared_ptr<IRCRoom::UserDetails> userDetails = room->ensureUser(ensureUser(nickname));				
-			OS_ASSERT(userDetails != null);
-			if(userDetails != null)
+			OS_ASSERT(userDetails != nullptr);
+			if(userDetails != nullptr)
 				userDetails->setType(userType);
 		}
 	}	
@@ -869,7 +869,7 @@ void IRCSession::processCommandNames(shared_ptr<IRCCommandNames> command)
 
 void IRCSession::processCommandEndOfNames(shared_ptr<IRCCommandEndOfNames> command)
 {
-	OS_ASSERT(command != null);
+	OS_ASSERT(command != nullptr);
 
 	shared_ptr<IRCRoom> room;
 
@@ -886,16 +886,16 @@ void IRCSession::processCommandEndOfNames(shared_ptr<IRCCommandEndOfNames> comma
 		room = i->second;
 	}
 
-	OS_ASSERT(room != null);
+	OS_ASSERT(room != nullptr);
 	updateRoom(room, false);
 }
 
 void IRCSession::processCommandQuit(shared_ptr<IRCCommandQuit> command)
 {
-	OS_ASSERT(command != null);
+	OS_ASSERT(command != nullptr);
 
 	shared_ptr<IRCUser> user = findUser(command->getNick());
-	if(user == null)
+	if(user == nullptr)
 	{
 		OS_ASSERTFALSE();
 		return;
@@ -915,7 +915,7 @@ void IRCSession::processCommandQuit(shared_ptr<IRCCommandQuit> command)
 
 void IRCSession::processCommandNick(shared_ptr<IRCCommandNick> command)
 {
-	OS_ASSERT(command != null);
+	OS_ASSERT(command != nullptr);
 
 	if(renameUser(command->getOldNick(), command->getNewNick()) == false)
 	{
@@ -955,12 +955,12 @@ void IRCSession::removeUserFromRoom(const std::string &roomName, const std::stri
 				return;
 			}
 
-			OS_ASSERT(room != null);
+			OS_ASSERT(room != nullptr);
 			room->removeUser(u->second);
 		}
 	}
 
-	OS_ASSERT(room != null);
+	OS_ASSERT(room != nullptr);
 	updateRoom(room, force);
 }
 

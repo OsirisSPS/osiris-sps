@@ -34,18 +34,18 @@ OS_NAMESPACE_BEGIN()
 BOOST_AUTO_TEST_CASE(test_allocators_macros)
 {
 	void *p = OS_ALLOCATE(100);
-	BOOST_CHECK(p != null);
+	BOOST_CHECK(p != nullptr);
 
 	p = OS_REALLOCATE(p, 200);
-	BOOST_CHECK(p != null);
+	BOOST_CHECK(p != nullptr);
 
 	OS_DEALLOCATE(p);
-	p = null;
+	p = nullptr;
 
-	OS_DEALLOCATE(null);
+	OS_DEALLOCATE(nullptr);
 
 	p = OS_REALLOCATE(p, 300);
-	BOOST_CHECK(p != null);
+	BOOST_CHECK(p != nullptr);
 
 	OS_DEALLOCATE(p);
 }
@@ -54,18 +54,18 @@ template <typename T>
 static void test_allocator_type()
 {
 	void *p = T::allocate(100);
-	BOOST_CHECK(p != null);
+	BOOST_CHECK(p != nullptr);
 
 	p = T::reallocate(p, 200);
-	BOOST_CHECK(p != null);
+	BOOST_CHECK(p != nullptr);
 
 	T::deallocate(p);
-	p = null;
+	p = nullptr;
 
-	T::deallocate(null);
+	T::deallocate(nullptr);
 
 	p = T::reallocate(p, 300);
-	BOOST_CHECK(p != null);
+	BOOST_CHECK(p != nullptr);
 
 	T::deallocate(p);
 }

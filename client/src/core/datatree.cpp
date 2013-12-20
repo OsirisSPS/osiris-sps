@@ -67,7 +67,7 @@ DataTree::~DataTree()
 
 void DataTree::construct()
 {
-	m_parent = null;
+	m_parent = nullptr;
 	m_items = OS_NEW_T(DataItems)(this);
 }
 
@@ -76,19 +76,19 @@ void DataTree::destroy()
 	clear();
 
 	OS_DELETE_T(m_items);
-	m_items = null;
+	m_items = nullptr;
 }
 
 const DataItem & DataTree::getV(const String &name) const
 {
 	DataItem *item = getVP(name);
-	return item != null ? *item : DataItem::EMPTY;
+	return item != nullptr ? *item : DataItem::EMPTY;
 }
 
 DataItem DataTree::getV(const String &name, const DataItem &defaultValue) const
 {
 	DataItem *item = getVP(name);
-	if(item == null)
+	if(item == nullptr)
 		return defaultValue;
 
 	return *item;
@@ -108,10 +108,10 @@ const DataTree & DataTree::getT(const String &name) const
 DataTree * DataTree::getTP(const String &name) const
 {
 	DataItem *item = get(name);
-	if(item != null && item->isDataTree())
+	if(item != nullptr && item->isDataTree())
 		return *item;
 
-	return null;
+	return nullptr;
 }
 
 DataItem * DataTree::setV(const String &name, const DataItem &v)
@@ -163,7 +163,7 @@ bool DataTree::read(const Buffer &buff, const CryptKey *key)
 	Buffer decryptedBuffer;
 	if((header.flags & ENCRYPTBIT) == ENCRYPTBIT)
 	{
-		if(key == null)
+		if(key == nullptr)
 			return false;
 
 		pInput->seekToBegin();
@@ -222,7 +222,7 @@ bool DataTree::write(Buffer &buff, bool compress, const CryptKey *key) const
 	}
 
 	Buffer encryptedBuffer;
-	if(key != null)
+	if(key != nullptr)
 	{
 		pOutput->seekToBegin();
 
@@ -319,10 +319,10 @@ DataItem * DataTree::set(const String &name, const DataItem &v)
 {
 	OS_ASSERT(name.empty() == false);
 	if(name.empty())
-		return null;
+		return nullptr;
 
 	DataItem *item = getVP(name);
-	if(item != null)
+	if(item != nullptr)
 	{
 		*item = v;
 	}
@@ -337,7 +337,7 @@ DataItem * DataTree::set(const String &name, const DataItem &v)
 
 void DataTree::onInsert(const String &name, DataItem *v)
 {
-	OS_ASSERT(v != null);
+	OS_ASSERT(v != nullptr);
 	if(v->isDataTree())
 	{
 		DataTree *tree = *v;
@@ -351,11 +351,11 @@ void DataTree::onRemove(const String &name, DataItem *v)
 	// rimosso, ma non cancellato fisicamente, pertanto bisogna resettarne il riferimento all'elemento padre.
 	// Se si modificasse la base DataItem tale operazione non sarebbe necessaria
 
-	OS_ASSERT(v != null);
+	OS_ASSERT(v != nullptr);
 	if(v->isDataTree())
 	{
 		DataTree *tree = *v;
-		tree->m_parent = null;
+		tree->m_parent = nullptr;
 	}
 }
 
@@ -369,7 +369,7 @@ void DataTree::onClear()
 		if(item->isDataTree())
 		{
 			DataTree *tree = *item;
-			tree->m_parent = null;
+			tree->m_parent = nullptr;
 		}
 	}
 }
@@ -391,7 +391,7 @@ bool DataTree::operator ==(const DataTree &v) const
 	for(DataItems::iterator i = begin(); i != end(); ++i)
 	{
 		DataItem *item = v.getVP(i->first);
-		if(item == null)
+		if(item == nullptr)
 			return false;
 
 		if(getV(i->first) != *item)

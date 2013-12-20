@@ -155,7 +155,7 @@ inline const String & IdeSession::getSessionID() const { return m_session; }
 inline shared_ptr<IdeAccount> IdeSession::getAccount() const { return m_account; }
 //inline shared_ptr<ObjectsUser> IdeSession::getUser() const { return m_user; }
 
-inline bool IdeSession::isLogged() const { return (m_account != null); }
+inline bool IdeSession::isLogged() const { return (m_account != nullptr); }
 
 //////////////////////////////////////////////////////////////////////
 

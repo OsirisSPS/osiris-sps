@@ -60,7 +60,7 @@ public:
 
 // Operations
 public:
-	ReputationsScore compute(shared_ptr<IPortalDatabase> database, const ObjectID &hash_from, const ObjectID &hash_to, const shared_ptr<ReputationsFeedback> &feedback = null);
+	ReputationsScore compute(shared_ptr<IPortalDatabase> database, const ObjectID &hash_from, const ObjectID &hash_to, const shared_ptr<ReputationsFeedback> &feedback = nullptr);
 	// TOCLEAN
 	//void remove(shared_ptr<IPortalDatabase> database, const Buffer &private_key, const ObjectID &hash_from, const ObjectID &hash_to);
 

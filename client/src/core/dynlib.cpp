@@ -29,7 +29,7 @@ OS_NAMESPACE_BEGIN()
 
 DynLib::DynLib(const String &filename)
 {
-	m_handle = null;
+	m_handle = nullptr;
 
 	if(filename.empty() == false)
 		load(filename);
@@ -42,7 +42,7 @@ DynLib::~DynLib()
 
 void * DynLib::findProcedure(const String &procedure) const
 {
-	OS_EXCEPT_IF(m_handle == null, "Invalid library handle");
+	OS_EXCEPT_IF(m_handle == nullptr, "Invalid library handle");
 	return PlatformManager::instance()->findProcedure(m_handle, procedure);
 }
 
@@ -52,15 +52,15 @@ bool DynLib::load(const String &filename)
 
 	OS_ASSERT(filename.ends_with(OS_SHARED_LIBRARY_EXTENSION) == false);
 	m_handle = PlatformManager::instance()->loadLibrary(filename + _S(".") + OS_SHARED_LIBRARY_EXTENSION);
-	return m_handle != null;
+	return m_handle != nullptr;
 }
 
 void DynLib::unload()
 {
-	if(m_handle != null)
+	if(m_handle != nullptr)
 	{
 		PlatformManager::instance()->unloadLibrary(m_handle);
-		m_handle = null;
+		m_handle = nullptr;
 	}
 }
 

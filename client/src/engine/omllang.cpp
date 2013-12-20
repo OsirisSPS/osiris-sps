@@ -146,10 +146,10 @@ int32 OMLLang::getCultureDepth(shared_ptr<OMLContext> context, const String &req
 {
 	int32 depth = 0;
 
-	OS_ASSERT(context->getPage() != null);
+	OS_ASSERT(context->getPage() != nullptr);
 	String current = context->getPage()->getLanguage();	
 	shared_ptr<LanguageCulture> culture = LanguageManager::instance()->getCulture(current);
-	while(culture != null)
+	while(culture != nullptr)
 	{
 		if(culture->getID() == required)
 		{

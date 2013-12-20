@@ -35,8 +35,8 @@ function extensionActionConfirmed(action, id, token)
 }
 
 function extensionActionCompleted(action, id)
-{	
-	  ajaxUrl = "/main/addons?act=addon&id=" + id + "&actions=yes";
+{
+    ajaxUrl = "/main/addons?act=addon&id=" + id + "&actions=yes";
         
     osDynamicDiv(osGetById(id + "_recommended"), ajaxUrl + "&mode=remote");
     osDynamicDiv(osGetById(id + "_catalog"), ajaxUrl + "&mode=remote");

@@ -27,7 +27,7 @@ OS_NAMESPACE_BEGIN()
 
 ISocketLayerImpl<boost::asio::ip::tcp>::ISocketLayerImpl(shared_ptr<socket_type> socket) : m_socket(socket)
 {
-	OS_ASSERT(socket != null);
+	OS_ASSERT(socket != nullptr);
 }
 
 ISocketLayerImpl<boost::asio::ip::tcp>::~ISocketLayerImpl() 
@@ -39,7 +39,7 @@ ISocketLayerImpl<boost::asio::ip::tcp>::~ISocketLayerImpl()
 
 ISocketLayerImpl<boost::asio::ip::udp>::ISocketLayerImpl(shared_ptr<socket_type> socket) : m_socket(socket)
 {
-	OS_ASSERT(socket != null);
+	OS_ASSERT(socket != nullptr);
 }
 
 ISocketLayerImpl<boost::asio::ip::udp>::~ISocketLayerImpl() 

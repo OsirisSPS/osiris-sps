@@ -63,7 +63,7 @@ DataItem * DataTableRow::getPtr(const String &column) const
 DataItem DataTableRow::get(uint32 column) const
 {
 	DataItem* result = getPtr(column);
-	if(result == null)
+	if(result == nullptr)
 		return DataItem();
 	else
 		return *result;	
@@ -72,7 +72,7 @@ DataItem DataTableRow::get(uint32 column) const
 DataItem DataTableRow::get(const String &column) const
 {
 	DataItem* result = getPtr(column);
-	if(result == null)
+	if(result == nullptr)
 		return DataItem();
 	else
 		return *result;	
@@ -165,14 +165,14 @@ DataItem * DataTable::getPtr(uint32 row, uint32 column) const
 	if(exists(row, column))
 		return (*m_values)[m_columns * row + column];
 
-	return null;
+	return nullptr;
 }
 
 DataItem * DataTable::getPtr(uint32 row, const String &column) const
 {
 	uint32 index = getIndex(column);
 	if(index == npos)
-		return null;
+		return nullptr;
 
 	return getPtr(row, index);
 }
@@ -180,7 +180,7 @@ DataItem * DataTable::getPtr(uint32 row, const String &column) const
 DataItem DataTable::get(uint32 row, uint32 column) const
 {
 	DataItem* result = getPtr(row, column);
-	if(result == null)
+	if(result == nullptr)
 		return DataItem();
 	else
 		return *result;	
@@ -189,7 +189,7 @@ DataItem DataTable::get(uint32 row, uint32 column) const
 DataItem DataTable::get(uint32 row, const String &column) const
 {
 	DataItem* result = getPtr(row, column);
-	if(result == null)
+	if(result == nullptr)
 		return DataItem();
 	else
 		return *result;	

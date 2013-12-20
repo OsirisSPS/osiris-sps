@@ -62,7 +62,7 @@ SafeVar<bool> IsisConnectionsWindow::s_valid(false);
 //////////////////////////////////////////////////////////////////////
 
 IsisConnectionsWindow::IsisConnectionsWindow(wxWindow *parent, wxWindowID id, const wxPoint &pos, const wxSize &size, long style) : WindowBase(parent, id, pos, size, style),
-																																	m_connectionsCtrl(null),
+																																	m_connectionsCtrl(nullptr),
 																																	m_imageList(16, 16),
 																																	m_connectionsLimit(OS_UI_ISIS_CONNECTIONS_LIMIT)
 {
@@ -76,10 +76,10 @@ IsisConnectionsWindow::IsisConnectionsWindow(wxWindow *parent, wxWindowID id, co
 	initWindow();
 
 	shared_ptr<IsisService> isisService = PortalsSystem::instance()->getIsisService();
-	if(isisService != null)
+	if(isisService != nullptr)
 	{
 		shared_ptr<ConnectionsManager> connectionsManager = isisService->getConnectionsManager();
-		if(connectionsManager != null)
+		if(connectionsManager != nullptr)
 		{
 			// Inizializza le connessioni attive
 			Locked<const ConnectionsManager::Connections>::unique activeConnections = connectionsManager->getConnections();
@@ -103,7 +103,7 @@ IsisConnectionsWindow::~IsisConnectionsWindow()
 	s_valid = false;
 
 	delete m_timer;
-	m_timer = null;
+	m_timer = nullptr;
 }
 
 shared_ptr<ConnectionInfo> IsisConnectionsWindow::getConnectionInfo(uint32 connectionID) const
@@ -151,7 +151,7 @@ void IsisConnectionsWindow::createLayout()
 
 void IsisConnectionsWindow::initWindow()
 {
-	OS_ASSERT(m_connectionsCtrl != null);
+	OS_ASSERT(m_connectionsCtrl != nullptr);
 	m_connectionsCtrl->InsertColumn(columnStatus, conversions::from_utf16<wxString>(getText(_S("ui.isisconnectionswindow.column_status"))), wxLIST_FORMAT_LEFT, 100);
 	m_connectionsCtrl->InsertColumn(columnPortal, conversions::from_utf16<wxString>(getText(_S("ui.isisconnectionswindow.column_portal"))), wxLIST_FORMAT_LEFT, 100);
 	m_connectionsCtrl->InsertColumn(columnName, conversions::from_utf16<wxString>(getText(_S("ui.isisconnectionswindow.column_name"))), wxLIST_FORMAT_LEFT, 100);
@@ -162,7 +162,7 @@ void IsisConnectionsWindow::initWindow()
 
 void IsisConnectionsWindow::resizeWindow()
 {
-	if(m_connectionsCtrl == null)
+	if(m_connectionsCtrl == nullptr)
 		return;
 
 	m_connectionsCtrl->SetSize(GetSize());
@@ -182,7 +182,7 @@ void IsisConnectionsWindow::refreshConnectionItem(uint32 connectionID)
 {
 	// Carica i dettagli sulla connessione
 	shared_ptr<ConnectionInfo> connectionInfo = getConnectionInfo(connectionID);
-	if(connectionInfo == null || connectionInfo->getModified() == false)
+	if(connectionInfo == nullptr || connectionInfo->getModified() == false)
 		return;		// Il riferimento alla connessione potrebbe essere stato rimosso in seguito al superamento del limite
 
 	int32 connectionItem = -1;
@@ -205,7 +205,7 @@ void IsisConnectionsWindow::refreshConnectionItem(uint32 connectionID)
 
 	// Aggiorna i dettagli sulla connessione
 	shared_ptr<IsisConnectionStatus> connectionStatus = boost::dynamic_pointer_cast<IsisConnectionStatus>(connectionInfo->getConnectionStatus());
-	if(connectionStatus == null)
+	if(connectionStatus == nullptr)
 	{
 		OS_ASSERTFALSE();
 		return;
@@ -240,7 +240,7 @@ void IsisConnectionsWindow::refreshConnectionItem(uint32 connectionID)
 	m_connectionsCtrl->SetItem(connectionItem, columnStatus, conversions::from_utf16<wxString>(status));
 
 	shared_ptr<Portal> portal = connectionStatus->getPortal();
-	m_connectionsCtrl->SetItem(connectionItem, columnPortal, portal != null ? conversions::from_utf16<wxString>(portal->getName()) : conversions::from_utf16<wxString>(_S("?")));
+	m_connectionsCtrl->SetItem(connectionItem, columnPortal, portal != nullptr ? conversions::from_utf16<wxString>(portal->getName()) : conversions::from_utf16<wxString>(_S("?")));
 
     m_connectionsCtrl->SetItem(connectionItem, columnName, conversions::from_utf16<wxString>(connectionStatus->getName()));
 
@@ -257,7 +257,7 @@ void IsisConnectionsWindow::removeConnectionItem(uint32 connectionID)
 	if(connectionItem == -1)
 		return;
 
-	OS_ASSERT(getConnectionInfo(connectionID) == null);
+	OS_ASSERT(getConnectionInfo(connectionID) == nullptr);
 	m_connectionsCtrl->DeleteItem(connectionItem);
 }
 
@@ -300,7 +300,7 @@ void IsisConnectionsWindow::refreshConnectionInfo(shared_ptr<IConnection> connec
 	OS_LOCK(m_cs);
 
 	shared_ptr<IsisConnection> isisConnection = boost::dynamic_pointer_cast<IsisConnection>(connection);
-	if(isisConnection == null)
+	if(isisConnection == nullptr)
 	{
 		OS_ASSERTFALSE();
 		return;
@@ -311,7 +311,7 @@ void IsisConnectionsWindow::refreshConnectionInfo(shared_ptr<IConnection> connec
 
 	switch(e)
 	{
-	case connectionAdded:		OS_ASSERT(connectionInfo == null);
+	case connectionAdded:		OS_ASSERT(connectionInfo == nullptr);
 
 								// Salva la nuova connessione
 								connectionInfo.reset(OS_NEW ConnectionInfo(connectionID, DateTime::now()));
@@ -325,7 +325,7 @@ void IsisConnectionsWindow::refreshConnectionInfo(shared_ptr<IConnection> connec
 
 								break;
 
-	case connectionUpdated:		if(connectionInfo != null)
+	case connectionUpdated:		if(connectionInfo != nullptr)
 								{
 									// Aggiorna la data dell'ultimo aggiornamento sulla connessione
 									connectionInfo->setLastAction(DateTime::now());
@@ -335,7 +335,7 @@ void IsisConnectionsWindow::refreshConnectionInfo(shared_ptr<IConnection> connec
 
 								break;
 
-	case connectionRemoved:		if(connectionInfo != null)
+	case connectionRemoved:		if(connectionInfo != nullptr)
 									connectionInfo->setRemoved(true);
 
 								break;
@@ -361,7 +361,7 @@ void IsisConnectionsWindow::handleConnectionEvent(shared_ptr<IConnection> connec
 {
 	// N.B.: il callback può essere chiamato da threads diversi pertanto ogni notifica deve essere fatta via post
 
-	if(connection == null)
+	if(connection == nullptr)
 	{
 		OS_ASSERTFALSE();
 		return;
@@ -386,7 +386,7 @@ void IsisConnectionsWindow::handleConnectionStateChanged(shared_ptr<IConnection>
 {
 	// N.B.: il callback può essere chiamato da threads diversi pertanto ogni notifica deve essere fatta via post
 
-	if(connection == null)
+	if(connection == nullptr)
 	{
 		OS_ASSERTFALSE();
 		return;

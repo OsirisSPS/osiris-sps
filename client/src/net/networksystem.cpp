@@ -47,7 +47,7 @@ String NetworkSystem::getLocalAddress() const
     if(gethostname(szHost, sizeof(szHost)) == 0)
 	{
 		hostent *host = gethostbyname(szHost);
-		if(host != null && host->h_length == 4 && host->h_addr_list[0] != null)
+		if(host != nullptr && host->h_length == 4 && host->h_addr_list[0] != nullptr)
 		{
 			struct in_addr addr;
 			memcpy(&addr, host->h_addr_list[0], sizeof(struct in_addr));

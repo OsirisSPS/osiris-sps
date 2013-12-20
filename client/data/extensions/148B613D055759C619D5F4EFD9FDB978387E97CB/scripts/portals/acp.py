@@ -48,9 +48,9 @@ class Page(osiris.IPortalPage):
 				povOfUserHref = povOfUser.getLink("view")
 			else:
 				params  = { }
-				params["mode"] = "fork"
 				params["name"] = self.portal.optionsShared.portalName
-				params["id"] = self.portal.portalID.toWide()
+				params["portal"] = self.portal.portalID.toWide()
+				params["user"] = self.sessionAccount.userID.toWide()
 				povOfUserHref = osiris.PortalsSystem.instance().getMainLink("subscribe", params)
 				
 			self.root.setAttributeString("povOfUserHref", povOfUserHref);		
@@ -65,7 +65,10 @@ class Page(osiris.IPortalPage):
 			self.saveCommand.id = "saveCommand"
 			osiris.events.connect(self.saveCommand.eventClick, self.onSave)
 			template.addChildParam(self.saveCommand)
-      			
+            
+			osiris.events.connect(self.events.get("onCreatePov"), self.onCreatePov)
+			self.root.setAttributeString("onCreatePov_href", self.getEventCommand("onCreatePov"))
+		
 			self.portalName = osiris.HtmlTextBox()
 			self.portalName.id = "portalName"		
 			self.portalName.size = 80			
@@ -79,21 +82,6 @@ class Page(osiris.IPortalPage):
 			self.portalDescription.css = "os_input_full"
 			template.addChildParam(self.portalDescription)
 			
-			self.authorsReputationThreshold = osiris.HtmlComboBox()
-			self.authorsReputationThreshold.id = "authorsReputationThreshold"
-			template.addChildParam(self.authorsReputationThreshold)
-			self.authorsReputationThreshold.addOption(self.getText("reputation.threshold.all"), "0")			
-			self.authorsReputationThreshold.addOption(self.getText("reputation.threshold.negative"), "1")		
-			self.authorsReputationThreshold.addOption(self.getText("reputation.threshold.not_negative"), "2")		
-			self.authorsReputationThreshold.addOption(self.getText("reputation.threshold.positive"), "3")					
-			
-			self.editorsReputationThreshold = osiris.HtmlComboBox()
-			self.editorsReputationThreshold.id = "editorsReputationThreshold"
-			template.addChildParam(self.editorsReputationThreshold)
-			self.editorsReputationThreshold.addOption(self.getText("reputation.threshold.all"), "0")			
-			self.editorsReputationThreshold.addOption(self.getText("reputation.threshold.negative"), "1")		
-			self.editorsReputationThreshold.addOption(self.getText("reputation.threshold.not_negative"), "2")		
-			self.editorsReputationThreshold.addOption(self.getText("reputation.threshold.positive"), "3")					
 			
 			
 			# Layout
@@ -103,22 +91,10 @@ class Page(osiris.IPortalPage):
 			self.layoutComponent.css = "os_input_full"
 			template.addChildParam(self.layoutComponent)
 			
-			#self.registerTerms = osiris.IdeOMLEditor()
-			#self.registerTerms.id = "registerTerms"		
-			#self.registerTerms.css = "os_input_full"
-			#template.addChildParam(self.registerTerms)
-			
-			self.layoutTileImage = osiris.IdePickerObject()
-			self.layoutTileImage.id = "layoutTileImage"		
-			template.addChildParam(self.layoutTileImage)
-			
-			self.layoutTileColorBackground = osiris.IdePickerColor()
-			self.layoutTileColorBackground.id = "layoutTileColorBackground"		
-			template.addChildParam(self.layoutTileColorBackground)
-			
-			self.layoutTileColorForeground = osiris.IdePickerColor()
-			self.layoutTileColorForeground.id = "layoutTileColorForeground"		
-			template.addChildParam(self.layoutTileColorForeground)
+			self.registerTerms = osiris.IdeOMLEditor()
+			self.registerTerms.id = "registerTerms"		
+			self.registerTerms.css = "os_input_full"
+			template.addChildParam(self.registerTerms)
 			
 			self.layoutSkinParams = osiris.IdeOMLEditor()
 			self.layoutSkinParams.id = "layoutSkinParams"		
@@ -169,16 +145,11 @@ class Page(osiris.IPortalPage):
 				# Main
 				self.portalName.value = self.portal.optionsShared.portalName
 				self.portalDescription.value = self.portal.optionsShared.portalDescription
-				self.authorsReputationThreshold.value = self.portal.optionsShared.authorsReputationThreshold;
-				self.editorsReputationThreshold.value = self.portal.optionsShared.editorsReputationThreshold;				
 				
 				# Layout
 				
 				self.layoutComponent.value = self.portal.optionsShared.layoutComponent								
-				#self.registerTerms.value = self.portal.optionsShared.registerTerms
-				self.layoutTileImage.value = self.portal.optionsShared.layoutTileImage
-				self.layoutTileColorBackground.value = self.portal.optionsShared.layoutTileColorBackground
-				self.layoutTileColorForeground.value = self.portal.optionsShared.layoutTileColorForeground
+				self.registerTerms.value = self.portal.optionsShared.registerTerms
 				self.layoutSkinParams.value = self.portal.optionsShared.layoutSkinParams
 				self.layoutCss.value = self.portal.optionsShared.layoutCss
 				self.layoutHeader.check = self.portal.optionsShared.layoutHeader
@@ -212,16 +183,11 @@ class Page(osiris.IPortalPage):
 		
 		self.portal.optionsShared.portalName = self.portalName.value
 		self.portal.optionsShared.portalDescription = self.portalDescription.value
-		self.portal.optionsShared.authorsReputationThreshold = osiris.ObjectsReputationThreshold(int(self.authorsReputationThreshold.value))
-		self.portal.optionsShared.editorsReputationThreshold = osiris.ObjectsReputationThreshold(int(self.editorsReputationThreshold.value))		
 		
 		# Layout
 		
 		self.portal.optionsShared.layoutComponent = self.layoutComponent.value
-		#self.portal.optionsShared.registerTerms = self.registerTerms.value
-		self.portal.optionsShared.layoutTileImage = self.layoutTileImage.value
-		self.portal.optionsShared.layoutTileColorBackground = self.layoutTileColorBackground.value
-		self.portal.optionsShared.layoutTileColorForeground = self.layoutTileColorForeground.value
+		self.portal.optionsShared.registerTerms = self.registerTerms.value
 		self.portal.optionsShared.layoutSkinParams = self.layoutSkinParams.value
 		self.portal.optionsShared.layoutCss = self.layoutCss.value
 		self.portal.optionsShared.layoutHeader = self.layoutHeader.check
@@ -244,7 +210,10 @@ class Page(osiris.IPortalPage):
 			self.showError("Settings invalid.")
 			
 		return
-	
+
+	def onCreatePov(self, args):
+		self.showMessage("alternative pov!")					
+
 def main(args):
 	page = Page(args[0])
 	page.transmit()

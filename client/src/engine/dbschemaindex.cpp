@@ -59,13 +59,13 @@ shared_ptr<DbSchemaIndexField> DbSchemaIndex::getField(const String &name) const
 			return *i;
 	}
 
-	return null;
+	return nullptr;
 }
 
 const String & DbSchemaIndex::getTableName() const
 {
 	shared_ptr<DbSchemaTable> table = getTable();
-	if(table != null)
+	if(table != nullptr)
 		return table->getName();
 
 	return String::EMPTY;
@@ -73,8 +73,8 @@ const String & DbSchemaIndex::getTableName() const
 
 bool DbSchemaIndex::parse(shared_ptr<XMLNode> nodeIndex)
 {
-	OS_ASSERT(nodeIndex != null);
-	if(nodeIndex == null)
+	OS_ASSERT(nodeIndex != nullptr);
+	if(nodeIndex == nullptr)
 		return false;
 
 	if(_parseName(nodeIndex->getAttributeString(NAME)) == false)
@@ -99,7 +99,7 @@ bool DbSchemaIndex::parse(shared_ptr<XMLNode> nodeIndex)
 
 bool DbSchemaIndex::compare(shared_ptr<DbSchemaIndex> second)
 {
-	OS_ASSERT(second != null);
+	OS_ASSERT(second != nullptr);
 
 	// Controlla se le proprietà dell'indice sono diverse
 
@@ -128,7 +128,7 @@ bool DbSchemaIndex::compare(shared_ptr<DbSchemaIndex> second)
 
 void DbSchemaIndex::_addField(shared_ptr<DbSchemaIndexField> field)
 {
-	if(field == null)
+	if(field == nullptr)
 	{
 		OS_ASSERTFALSE();
 		return;
@@ -158,8 +158,8 @@ bool DbSchemaIndex::_parseUnique(const String &value)
 
 bool DbSchemaIndex::_parseFields(shared_ptr<XMLNode> nodeIndex)
 {
-	OS_ASSERT(nodeIndex != null);
-	if(nodeIndex == null)
+	OS_ASSERT(nodeIndex != nullptr);
+	if(nodeIndex == nullptr)
 		return false;
 
 	shared_ptr<XMLNodes> nodeChilds = nodeIndex->getNodes();
@@ -184,7 +184,7 @@ bool DbSchemaIndex::_parseField(shared_ptr<XMLNode> nodeField)
 
 String DbSchemaIndex::_generateIndexName(shared_ptr<DbSchemaTable> table, const DbSchemaIndexFields &fields)
 {
-	if(table == null || fields.empty())
+	if(table == nullptr || fields.empty())
 	{
 		OS_ASSERTFALSE();
 		return String::EMPTY;

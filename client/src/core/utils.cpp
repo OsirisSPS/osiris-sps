@@ -91,7 +91,7 @@ String desplit(const StringVector &v, const String &separator, size_t start)
 
 String safeString(const uchar *str)
 {
-	if(str != null)
+	if(str != nullptr)
 		return str;
 
 	return String::EMPTY;
@@ -364,7 +364,7 @@ std::string generateHashMerge(std::string hash1, std::string hash2, bool add)
     HRESULT hRes = E_FAIL;
     DWORD dwRet = 0;
     CComPtr<IShellLink> ipShellLink;
-        // buffer that receives the null-terminated string
+        // buffer that receives the nullptr-terminated string
 
         // for the drive and path
 

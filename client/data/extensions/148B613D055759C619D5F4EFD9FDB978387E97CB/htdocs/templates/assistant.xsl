@@ -205,9 +205,7 @@
                       <xsl:apply-templates select="objects/object" mode="row-tech"/>
                     </xsl:when>
                     <xsl:otherwise>
-											<div class="os_message_nodata">
-												<xsl:value-of select="lang:text('assistant.pages.objects.none')"/>
-											</div>
+                      <xsl:value-of select="lang:text('assistant.pages.objects.none')"/>
                     </xsl:otherwise>
                   </xsl:choose>
                 </div>

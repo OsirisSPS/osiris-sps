@@ -1,2 +1,0 @@
-extension = None
-omlAnubis = None

@@ -48,7 +48,7 @@ class EngineExport IObjectViewer : public IXSLRenderer<IPortalPageControl<IHtmlC
 
 // Construction
 public:
-	IObjectViewer(shared_ptr<EntitiesEntity> entity = null);
+	IObjectViewer(shared_ptr<EntitiesEntity> entity = nullptr);
 	virtual ~IObjectViewer();
 
 // Attributes
@@ -98,7 +98,7 @@ protected:
 //////////////////////////////////////////////////////////////////////
 
 inline shared_ptr<EntitiesEntity> IObjectViewer::getEntity() const { return m_entity; }
-inline shared_ptr<ObjectsIRevisionable> IObjectViewer::getObject() const { return (m_entity != null) ? m_entity->getCurrent() : null; }
+inline shared_ptr<ObjectsIRevisionable> IObjectViewer::getObject() const { return (m_entity != nullptr) ? m_entity->getCurrent() : nullptr; }
 
 //////////////////////////////////////////////////////////////////////
 

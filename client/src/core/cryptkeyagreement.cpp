@@ -144,7 +144,7 @@ bool pimpl<CryptKeyAgreement>::agree(const Buffer &publicKey, CryptKey &agreedKe
 {
 	try
 	{
-		if(m_dh == null)
+		if(m_dh == nullptr)
 		{
 			OS_ASSERTFALSE();
 			return false;
@@ -201,7 +201,7 @@ bool pimpl<CryptKeyAgreement>::createKeyPair(CryptoPP::AutoSeededRandomPool &ran
 {
 	try
 	{
-		OS_ASSERT(m_dh != null);
+		OS_ASSERT(m_dh != nullptr);
 
 		OS_ASSERT(m_publicKey.empty());
 		m_publicKey.reserve(m_dh->PublicKeyLength());

@@ -39,7 +39,7 @@ ObjectsRequest::ObjectsRequest(const StringList *objects) : PacketBase(ptObjects
 	// Crea la root degli oggetti
 	getData()->setT(OBJECTS);
 	// Controlla se sono stati specificati degli oggetti
-	if(objects != null)
+	if(objects != nullptr)
 	{
 		// Carica gli oggetti da richiedere
 		for(StringList::const_iterator i = objects->begin(); i != objects->end(); request(*i), ++i);
@@ -54,7 +54,7 @@ ObjectsRequest::~ObjectsRequest()
 void ObjectsRequest::getObjects(StringList &objects)
 {
 	DataTree *root = getRoot();
-	if(root != null)
+	if(root != nullptr)
 	{
 		// Scandisce tutti gli oggetti richiesti
 		for(DataTree::iterator i = root->begin(); i != root->end(); ++i)
@@ -86,7 +86,7 @@ bool ObjectsRequest::create()
 bool ObjectsRequest::parse()
 {
 	// Valida il pacchetto se  presente la root delle richieste
-	return getRoot() != null;
+	return getRoot() != nullptr;
 }
 
 //////////////////////////////////////////////////////////////////////

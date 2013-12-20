@@ -125,7 +125,7 @@ String OMLHtml::processHtml(shared_ptr<OMLItem> i, shared_ptr<OMLContext> contex
 		// 0- No, 1- Su conferma, 2- Sempre
 		shared_ptr<const IPortalPage> page = context->getPortalPage();		
 		uint32 allowedMode = 0;
-		if(page != null)
+		if(page != nullptr)
 			allowedMode = page->getOption(Options::anonymity_options::html_mode);		
 		
 		if(allowedMode == 0)

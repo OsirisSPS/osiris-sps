@@ -55,7 +55,7 @@ RealtimeStatsScopeTimer::RealtimeStatsScopeTimer(const String &group, const Stri
 	
 	//shared_ptr<RealtimeStatsScopeTimerCounter>
 	m_counter = boost::dynamic_pointer_cast<RealtimeStatsScopeTimerCounter>(RealtimeStatsManager::get(name));
-	if(m_counter == null)
+	if(m_counter == nullptr)
 	{
 		m_counter.reset(OS_NEW RealtimeStatsScopeTimerCounter());
 		m_counter->m_group = group;
@@ -68,22 +68,22 @@ RealtimeStatsScopeTimer::RealtimeStatsScopeTimer(const String &group, const Stri
 
 RealtimeStatsScopeTimer::~RealtimeStatsScopeTimer()
 {
-	if(m_counter != null)
+	if(m_counter != nullptr)
 	{
 		m_counter->stop();
-		m_counter = null;
+		m_counter = nullptr;
 	}
 }
 
 void RealtimeStatsScopeTimer::start()
 {
-	if(m_counter != null)
+	if(m_counter != nullptr)
 		m_counter->start();
 }
 
 void RealtimeStatsScopeTimer::stop()
 {
-	if(m_counter != null)
+	if(m_counter != nullptr)
 		m_counter->stop();
 }
 
@@ -410,7 +410,7 @@ shared_ptr<RealtimeStatsCounter> RealtimeStatsManager::get(const String &name)
 	if(i != m_counters.end())
 		return i->second;
 	else
-		return null;	
+		return nullptr;	
 }
 
 bool RealtimeStatsManager::isActive(const String &name)
@@ -418,7 +418,7 @@ bool RealtimeStatsManager::isActive(const String &name)
 	OS_LOCK(getLock());
 
 	shared_ptr<RealtimeStatsCounter> counter = get(name);
-	if(counter != null)
+	if(counter != nullptr)
 		return counter->m_active;
 	
 	return false;
@@ -454,11 +454,11 @@ shared_ptr<RealtimeStatsCounter> RealtimeStatsManager::add(const String &group, 
 	if(temporary)
 	{
 		if(matchPreset(group) == false)
-			return null;
+			return nullptr;
 	}
 	
 	shared_ptr<RealtimeStatsCounter> counter = get(name);
-	if(counter != null)
+	if(counter != nullptr)
 		return counter;
 	else
 	{
@@ -476,7 +476,7 @@ shared_ptr<RealtimeStatsCounter> RealtimeStatsManager::add(const String &group, 
 weak_ptr<RealtimeStatsScopeTimer> RealtimeStatsManager::addScopeTimer(const String &group, const String &name)
 {
 	if(m_pause)
-		return null;
+		return nullptr;
 
 	return weak_ptr<OS_NEW RealtimeStatsScopeTimer>(new RealtimeStatsScopeTimer(group,name));
 	
@@ -493,7 +493,7 @@ void RealtimeStatsManager::usePreset(const String& name)
 {
 	OS_LOCK(getLock());
 
-	m_currentPreset = null;
+	m_currentPreset = nullptr;
 	for(PresetsVector::iterator i = m_presets.begin(); i != m_presets.end(); i++)
 	{		
 		shared_ptr<RealtimeStatsPreset> preset2 = *i;
@@ -526,7 +526,7 @@ void RealtimeStatsManager::usePreset(const String& name)
 
 bool RealtimeStatsManager::matchPreset(const String& group)
 {
-	if(m_currentPreset == null)
+	if(m_currentPreset == nullptr)
 		return false;
 	if(m_currentPreset->getName() == _S("All"))
 		return  true;

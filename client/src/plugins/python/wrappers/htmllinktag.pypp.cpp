@@ -22,7 +22,7 @@ struct HtmlLinkTag_wrapper : ::osiris::HtmlLinkTag, ::osiris::PythonWrapper< ::o
     HtmlLinkTag_wrapper( )
     : ::osiris::HtmlLinkTag( )
       , ::osiris::PythonWrapper< ::osiris::HtmlLinkTag >(){
-        // null constructor
+        // nullptr constructor
     
     }
 

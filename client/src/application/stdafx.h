@@ -24,7 +24,6 @@
 // Prerequisites
 #include "coreconfig.h"
 #include "uiconfig.h"
-#include "wxwidgets.h"
 
 //////////////////////////////////////////////////////////////////////
 

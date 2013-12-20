@@ -21,9 +21,9 @@
 
 //////////////////////////////////////////////////////////////////////
 
-extern "C" UIExport OS_WXWIDGETS_ENTRY_POINT_RETURN_VALUE runUI(OS_WXWIDGETS_ENTRY_POINT_DECLARE_PARAMS)
+extern "C" UIExport OS_UI_ENTRY_POINT_RETURN_VALUE runUI(OS_UI_ENTRY_POINT_DECLARE_PARAMS)
 {
-	return wxEntry(OS_WXWIDGETS_ENTRY_POINT_ENUM_PARAMS);
+	return wxEntry(OS_UI_ENTRY_POINT_ENUM_PARAMS);
 }
 
 //////////////////////////////////////////////////////////////////////

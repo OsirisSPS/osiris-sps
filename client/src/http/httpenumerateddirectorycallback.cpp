@@ -54,7 +54,7 @@ shared_ptr<HttpDirectoryCallback> HttpEnumeratedDirectoryCallback::addDirectoryC
 	if(addDirectory(directory) == false)
 	{
 		OS_ASSERTFALSE();
-		return null;
+		return nullptr;
 	}
 
 	return directory;

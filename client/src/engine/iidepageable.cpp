@@ -70,7 +70,7 @@ bool IIdePageable::adjustOffset(const uint32 &total_items, const uint32 &items_t
 
 void IIdePageable::createPager(shared_ptr<IdeSkin> skin, shared_ptr<XMLNode> node, uint32 total_items, uint32 items_to_show, uint32 offset)
 {
-	OS_ASSERT(skin != null);
+	OS_ASSERT(skin != nullptr);
 
 	if(items_to_show == 0)
 		return;

@@ -21,7 +21,7 @@ struct SearchAttachmentOptions_wrapper : ::osiris::SearchAttachmentOptions, ::os
     SearchAttachmentOptions_wrapper( )
     : ::osiris::SearchAttachmentOptions( )
       , ::osiris::PythonWrapper< ::osiris::SearchAttachmentOptions >(){
-        // null constructor
+        // nullptr constructor
     
     }
 

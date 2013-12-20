@@ -88,7 +88,7 @@ void Isis::onLoad()
 
 		shared_ptr<PortalOptions> portalOptions = portal->getOptions();
 
-		if(portalOptions != null)
+		if(portalOptions != nullptr)
 		{
 			Locked<const PortalOptions::IsisEndpoints>::unique isisEndpoints = portalOptions->getIsisEndpoints();
 			if(isisEndpoints->empty() == false)

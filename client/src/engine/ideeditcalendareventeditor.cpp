@@ -111,7 +111,7 @@ void CalendarEventEditor::onPreRender()
 	if(isRevision() && getPostBack() == false)
 	{
 		shared_ptr<ObjectsCalendarEvent> current = objects_calendar_event_cast(getCurrent());
-		if(current != null)
+		if(current != nullptr)
 		{
 			m_title->setValue(current->title);
 			m_description->setValue(current->description);

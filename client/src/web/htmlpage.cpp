@@ -50,7 +50,7 @@ HtmlPage::HtmlPage(shared_ptr<HttpSession> session) : m_session(session),
 													  m_viewStates(OS_NEW DataTree()),
 													  m_pageMode(httpPageModeFull)
 {
-	OS_ASSERT(session != null);
+	OS_ASSERT(session != nullptr);
 
 	setID(ID);
 
@@ -79,7 +79,7 @@ HtmlPage::~HtmlPage()
 
 const DataTree & HtmlPage::getViewStates() const
 {
-	OS_ASSERT(m_viewStates != null);
+	OS_ASSERT(m_viewStates != nullptr);
 	return *m_viewStates;
 }
 
@@ -104,13 +104,13 @@ void HtmlPage::addCss(const String &url)
 
 void HtmlPage::addMetaTag(shared_ptr<HtmlMetaTag> metatag)
 {
-	if(metatag != null)
+	if(metatag != nullptr)
 		m_metatags.push_back(metatag);
 }
 
 void HtmlPage::addLinkTag(shared_ptr<HtmlLinkTag> linktag)
 {
-	if(linktag != null)
+	if(linktag != nullptr)
 		m_linktags.push_back(linktag);
 }
 
@@ -276,7 +276,7 @@ void HtmlPage::renderForm(HtmlWriter &writer)
 
 void HtmlPage::renderViewState(HtmlWriter &writer)
 {
-	OS_ASSERT(m_viewStates != null);
+	OS_ASSERT(m_viewStates != nullptr);
 	m_viewStates->clear();
 	// Salva lo stato dei controlli
 	saveViewState(*m_viewStates);
@@ -343,13 +343,13 @@ void HtmlPage::renderJavascripts(HtmlWriter &writer)
 void HtmlPage::loadViewState()
 {
 	shared_ptr<HttpPostParam> viewState = getRequest()->getPostParam(VIEW_STATE.to_wide());
-	if(viewState != null)
+	if(viewState != nullptr)
 	{
 		Buffer decoded;
 		if(decoded.fromHex(utils::wtoa(viewState->getString())))
 		{
 			decoded.seekToBegin();
-			OS_ASSERT(m_viewStates != null);
+			OS_ASSERT(m_viewStates != nullptr);
 			OS_EXCEPT_IF(m_viewStates->read(decoded) == false, "Invalid view state");
 		}
 	}
@@ -359,15 +359,15 @@ void HtmlPage::raiseEvents()
 {
 	// Carica il target dell'evento
 	shared_ptr<HttpPostParam> eventTarget = getRequest()->getPostParam(CTL_ID.to_wide());
-	if(eventTarget != null)
+	if(eventTarget != nullptr)
 	{
 		// Ricerca il target dell'evento
 		shared_ptr<IHtmlControl> control = findTarget(eventTarget->getString());
-		if(control != null)
+		if(control != nullptr)
 		{
 			// Carica il parametro dell'evento
 			shared_ptr<HttpPostParam> eventArg = getRequest()->getPostParam(CTL_ARG.to_wide());
-			if(eventArg != null)
+			if(eventArg != nullptr)
 			{
 				// Lancia l'evento
 				control->raiseEvent(eventArg->getString());

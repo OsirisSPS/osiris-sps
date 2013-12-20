@@ -75,7 +75,7 @@ shared_ptr<P2pMachine> P2PSystem::addMachine(const Buffer &id, const Buffer &pub
 
 bool P2PSystem::isKnownMachine(const Buffer &id) const
 {
-	return getMachine(id) != null;
+	return getMachine(id) != nullptr;
 }
 
 shared_ptr<P2pMachine> P2PSystem::getMachine(const Buffer &id) const
@@ -92,7 +92,7 @@ void P2PSystem::updateServer()
 {	
 	try
 	{
-		OS_ASSERT(m_server != null);
+		OS_ASSERT(m_server != nullptr);
 
 		// Controlla se l'allineamento è disabilitato
 		if(Options::instance()->getOption<bool>(Options::p2p_options::enable) == false)
@@ -192,7 +192,7 @@ void P2PSystem::updateServer()
 
 void P2PSystem::stopServer()
 {
-	OS_ASSERT(m_server != null);
+	OS_ASSERT(m_server != nullptr);
 	m_server->stop();
 }
 

@@ -181,7 +181,7 @@ shared_ptr<ObjectsMessage> DataLocalMessage::decode(const Buffer &private_key)
 	if(message->decode(private_key, session, content))
 		return message;
 		
-	return null;
+	return nullptr;
 }
 
 void DataLocalMessage::exportXML(shared_ptr<XMLPortalExporter> exporter, const String &subject, const String &body, bool secure)
@@ -200,7 +200,7 @@ void DataLocalMessage::exportXML(shared_ptr<XMLPortalExporter> exporter, const S
 	node->setAttributeString(_S("href"), exporter->getPortal()->getPrivateMessageLink(id, true));
 
 	shared_ptr<ObjectsUser> user = objects_user_cast(exporter->getPage()->getObject(author));
-	if(user != null)
+	if(user != nullptr)
 		user->exportXML(exporter->createChild<XMLPortalExporter>(exporter->createNode(DBTABLES::AUTHOR)));	
 }
 

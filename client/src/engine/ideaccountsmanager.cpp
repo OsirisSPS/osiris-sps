@@ -19,6 +19,7 @@
 #include "stdafx.h"
 #include "ideaccountsmanager.h"
 
+#include "buffer.h"
 #include "convert.h"
 #include "dataaccount.h"
 #include "idbconnection.h"
@@ -29,6 +30,9 @@
 #include "engine.h"
 #include "ideaccount.h"
 #include "lock.h"
+#include "options.h"
+#include "xmldocument.h"
+#include "xmlschema.h"
 
 //////////////////////////////////////////////////////////////////////
 
@@ -74,7 +78,7 @@ bool IdeAccountsManager::hasAccounts() const
 
 bool IdeAccountsManager::hasAccount(const String &id)
 {
-	return getByID(id) != null;
+	return getByID(id) != nullptr;
 }
 
 shared_ptr<IdeAccount> IdeAccountsManager::getByID(const String &id)
@@ -87,7 +91,7 @@ shared_ptr<IdeAccount> IdeAccountsManager::getByID(const String &id)
 			return *i;
 	}
 
-	return null;
+	return nullptr;
 }
 
 shared_ptr<IdeAccount> IdeAccountsManager::getByName(const String &username)
@@ -100,7 +104,7 @@ shared_ptr<IdeAccount> IdeAccountsManager::getByName(const String &username)
 			return *i;
 	}
 
-	return null;
+	return nullptr;
 }
 
 bool IdeAccountsManager::exists(const String &id) const
@@ -141,7 +145,7 @@ shared_ptr<IdeAccount> IdeAccountsManager::createAccount(shared_ptr<DataAccount>
 	if(dataAccount->insert(connection) == false)
 	{
 		OS_ASSERTFALSE();
-		return null;
+		return nullptr;
 	}
 
 	shared_ptr<IdeAccount> account(OS_NEW IdeAccount(dataAccount));
@@ -157,12 +161,12 @@ shared_ptr<IdeAccount> IdeAccountsManager::createAccount(const String &username,
 
 	/*
 	if(validateUsername(username) == false || password.empty())
-		return null;
+		return nullptr;
 	*/
 	if(username.empty())
-		return null;
+		return nullptr;
 	if(password.empty())
-		return null;
+		return nullptr;
 
 	Buffer public_key;
 	Buffer private_key;
@@ -170,7 +174,7 @@ shared_ptr<IdeAccount> IdeAccountsManager::createAccount(const String &username,
 	if(CryptManager::instance()->rsaGenerateKeys(rsaType2048, private_key, public_key) == false)
 	{
 		OS_ASSERTFALSE();
-		return null;
+		return nullptr;
 	}
 
 	// Genera l'id dell'utente associato all'account sulla base della chiave pubblica
@@ -189,7 +193,7 @@ shared_ptr<IdeAccount> IdeAccountsManager::createAccount(const String &username,
 	if(account->encodeKeys(password, public_key, private_key) == false)
 	{
 		OS_ASSERTFALSE();
-		return null;
+		return nullptr;
 	}
 
 	/*
@@ -220,7 +224,7 @@ shared_ptr<IdeAccount> IdeAccountsManager::createAccount(const String &username,
 bool IdeAccountsManager::remove(const String &id)
 {
 	shared_ptr<IdeAccount> account = getByID(id);
-	if(account == null)
+	if(account == nullptr)
 		return false;
 
 	account->setDeleted(true);
@@ -244,6 +248,26 @@ void IdeAccountsManager::save(shared_ptr<IdeAccount> account)
 {
 	shared_ptr<IDbConnection> connection = Engine::instance()->createSystemConnection();
 	account->getAccount()->update(connection);
+}
+
+bool IdeAccountsManager::import(const Buffer &buffer)
+{
+	shared_ptr<XMLSchema> schema(OS_NEW XMLSchema());
+	schema->parseFile(utils::makeFilePath(utils::makeFolderPath(Options::instance()->getSharePath(),OS_SCHEMAS_PATH), OS_SCHEMA_ACCOUNT));
+
+	shared_ptr<XMLDocument> document(OS_NEW XMLDocument(schema));
+	if(document->parseBuffer(buffer) == false)
+		return false;
+	
+	shared_ptr<DataAccount> dataAccount(OS_NEW DataAccount());
+	if(dataAccount->importXML(document) == false)
+		return false;
+	
+	shared_ptr<IdeAccount> account = IdeAccountsManager::instance()->createAccount(dataAccount);
+	if(account == nullptr)
+		return false;
+
+	return true;	
 }
 
 bool IdeAccountsManager::_load(shared_ptr<IDbConnection> database, const String &id)
@@ -283,7 +307,7 @@ bool IdeAccountsManager::_load(shared_ptr<IDbConnection> database, const String 
 
 	// Carica l'account specificato
 	shared_ptr<DataAccount> data_account = database->getAccount(id);
-	if(data_account == null)
+	if(data_account == nullptr)
 	{
 		OS_ASSERTFALSE();
 		return false;

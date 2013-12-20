@@ -44,7 +44,7 @@ class EngineExport CalendarEventEditor : public IObjectEditor
 
 // Construction
 public:
-	CalendarEventEditor(shared_ptr<EntitiesEntity> entity = null, shared_ptr<EntitiesEntity> parent = null);
+	CalendarEventEditor(shared_ptr<EntitiesEntity> entity = nullptr, shared_ptr<EntitiesEntity> parent = nullptr);
 	virtual ~CalendarEventEditor();
 
 // IXSLRenderer interface

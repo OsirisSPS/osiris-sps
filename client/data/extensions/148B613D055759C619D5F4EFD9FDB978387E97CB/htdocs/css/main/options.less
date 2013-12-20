@@ -2,13 +2,51 @@
 
 #filterbox
 {
-	display:inline-block;
-	margin-right:20px;
+	float:right;
+	width:300px;
 	padding:10px;	
 }
 
-#options_tab
+.os_options_counter
 {
-	clear:both;
+	display:inline-block;
+	margin-left:10px;
+	margin-right:10px;
+	width:80px;
+	text-align:center;
+	font-size:0.8em;	
+	
+	.rounded(5px);
+	.drop-shadow(0, 0, 2px, 0.2);
+	
 }
 
+.os_option
+{
+	display:none;
+	clear:both;	
+	margin:3px;
+	border:1px solid #eeeeee;
+	padding:3px;
+}
+
+.os_option:hover
+{
+	background-color:#fafafa;	
+}
+
+.os_option_name
+{
+	border:1px solid transparent;
+	float:left;
+	width:30%;
+	padding:5px;
+}
+
+.os_option_value
+{
+	border:1px solid transparent;
+	float:right;
+	width:65%;
+	padding:5px;
+}

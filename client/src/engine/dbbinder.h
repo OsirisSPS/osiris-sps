@@ -66,7 +66,7 @@ template <typename T>
 void DbBinder::get(const DataTableRow &row, const String &field, T &v)
 {
 	DataItem *value = row[field];
-	OS_EXCEPT_IF(value == null, String::format(_S("'%S': invalid value").c_str(), field.c_str()));
+	OS_EXCEPT_IF(value == nullptr, String::format(_S("'%S': invalid value").c_str(), field.c_str()));
 
 	v = *value;
 }
@@ -75,14 +75,14 @@ template <typename T, typename V>
 void DbBinder::get(const DataTableRow &row, const String &field, T &v, const V &def)
 {
 	DataItem *value = row[field];
-	if(value == null)
+	if(value == nullptr)
 	{
 	    v = def;
 	}
 	else
 	{
 	    V *value_ptr = static_cast<V *>(*value);
-	    if(value_ptr != null)
+	    if(value_ptr != nullptr)
             // Se la tipologia coincide evita una copia temporanea dell'oggetto
             v = *value_ptr;
         else

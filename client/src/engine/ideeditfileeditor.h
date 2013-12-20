@@ -44,7 +44,7 @@ class EngineExport FileEditor : public IObjectEditor
 
 // Construction
 public:
-	FileEditor(shared_ptr<EntitiesEntity> entity = null, shared_ptr<EntitiesEntity> parent = null);
+	FileEditor(shared_ptr<EntitiesEntity> entity = nullptr, shared_ptr<EntitiesEntity> parent = nullptr);
 	virtual ~FileEditor();
 
 // IXSLRenderer interface

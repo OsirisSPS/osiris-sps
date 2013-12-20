@@ -84,7 +84,7 @@ bool ObjectsPost::validate(shared_ptr<IPortalDatabase> database) const
 			// Il campo reference di un post pu essere assegnato solo ad un post o ad un oggetto che accetta come figli i post
 
 			shared_ptr<ObjectsIDescriptor> descriptor = ObjectsSystem::instance()->getDescriptor(reference->getObjectType());
-			if(descriptor == null || descriptor->allowChild(portalObjectTypePost) == false)
+			if(descriptor == nullptr || descriptor->allowChild(portalObjectTypePost) == false)
 				return false;
 		}
 	}

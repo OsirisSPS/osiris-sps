@@ -31,7 +31,11 @@
                 <xsl:with-param name="prefix" select="'user.actions'"/>
               </xsl:call-template>
             </xsl:for-each>
-          
+
+          <div class="os_content_box">
+            Qui, se è già presente il portale dell'utente, click su "Visit".
+            Altrimenti, se a livello utente "portal" è a true, link "Subscribe/Follow".
+          </div>
         </td>
         <td width="100%">
           <div class="os_tab_left_bodies">
@@ -46,7 +50,6 @@
               </xsl:call-template>
             </xsl:if>
 
-						<!--
             <xsl:if test="@subpage = 'invite'">
               <xsl:call-template name="block">
                 <xsl:with-param name="title">
@@ -82,12 +85,11 @@
                 </xsl:with-param>
               </xsl:call-template>
             </xsl:if>
-						-->
 
             <xsl:if test="@subpage = 'reputations'">
               <xsl:call-template name="block">
                 <xsl:with-param name="title">
-                  <xsl:value-of select="lang:text('user.actions.view_reputations')"/>									
+                  <xsl:value-of select="lang:text('user.actions.view_reputations')"/>
                 </xsl:with-param>
                 <xsl:with-param name="content">
                   <div style="display:none" data-os-otype="tab">

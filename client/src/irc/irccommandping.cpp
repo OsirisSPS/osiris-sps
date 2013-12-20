@@ -46,8 +46,8 @@ IRCCommandType IRCCommandPing::getType() const
 shared_ptr<IIRCCommand> IRCCommandPing::getReply() const
 {
 	shared_ptr<IRCSession> session = getSession();
-	if(session == null)
-		return null;
+	if(session == nullptr)
+		return nullptr;
 
     return shared_ptr<IIRCCommand>(OS_NEW IRCCommandPong(session, m_code));
 }

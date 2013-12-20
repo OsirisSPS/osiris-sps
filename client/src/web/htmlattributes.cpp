@@ -53,7 +53,7 @@ shared_ptr<HtmlAttribute> HtmlAttributes::get(const String &name) const
 	if(i != m_attributes.end())
 		return *i;
 
-	return null;
+	return nullptr;
 }
 
 shared_ptr<HtmlAttribute> HtmlAttributes::get(size_t index) const
@@ -64,7 +64,7 @@ shared_ptr<HtmlAttribute> HtmlAttributes::get(size_t index) const
 shared_ptr<HtmlAttribute> HtmlAttributes::set(const String &name, const String &value)
 {
 	shared_ptr<HtmlAttribute> attribute = get(name);
-	if(attribute != null)
+	if(attribute != nullptr)
 	{
 		attribute->setValue(value);
 	}
@@ -87,7 +87,7 @@ void HtmlAttributes::remove(const String &name)
 const String & HtmlAttributes::value_of(const String &name)
 {
 	shared_ptr<HtmlAttribute> attribute = get(name);
-	if(attribute != null)
+	if(attribute != nullptr)
 		return attribute->getValue();
 
 	return String::EMPTY;
@@ -109,7 +109,7 @@ shared_ptr<HtmlAttribute> HtmlAttributes::_findByIndex(size_t index) const
 	if(index < size())
 		return m_attributes[index];
 
-	return null;
+	return nullptr;
 }
 
 //////////////////////////////////////////////////////////////////////

@@ -77,14 +77,14 @@ END_EVENT_TABLE()
 
 IRCWindow::IRCWindow(wxWindow *parent, wxWindowID id, const wxPoint &pos, const wxSize &size, long style) : WindowBase(parent, id, pos, size, style),
 																											m_ircService(OS_NEW IRCService()),
-																											m_pages(null),
-																											m_serverPage(null),
-																											m_buttonToggleConnection(null),
-																											m_buttonEditOptions(null),
-																											m_buttonRefreshChannels(null),
-																											m_buttonClearServerMessages(null),
-																											m_messageCtrl(null),
-																											m_sendButton(null),
+																											m_pages(nullptr),
+																											m_serverPage(nullptr),
+																											m_buttonToggleConnection(nullptr),
+																											m_buttonEditOptions(nullptr),
+																											m_buttonRefreshChannels(nullptr),
+																											m_buttonClearServerMessages(nullptr),
+																											m_messageCtrl(nullptr),
+																											m_sendButton(nullptr),
 																											m_historyLocked(false),
 																											m_notifySound(false)
 {
@@ -106,7 +106,7 @@ IRCWindow::IRCWindow(wxWindow *parent, wxWindowID id, const wxPoint &pos, const 
 	Options::instance()->subscribeUpdateHandler(boost::bind(&IRCWindow::updateOptions, this));
 
 	initSession();
-	OS_ASSERT(m_session != null);
+	OS_ASSERT(m_session != nullptr);
 
 	createLayout();
 	initWindow();
@@ -133,7 +133,7 @@ IIRCPage * IRCWindow::getActivePage() const
 		return m_serverPage;
 	}
 
-	OS_ASSERT(dynamic_cast<IIRCPage *>(m_pages->GetPage(activePage)) != null);
+	OS_ASSERT(dynamic_cast<IIRCPage *>(m_pages->GetPage(activePage)) != nullptr);
 	return dynamic_cast<IIRCPage *>(m_pages->GetPage(activePage));
 }
 
@@ -143,15 +143,15 @@ IIRCRoomPage * IRCWindow::getRoomPage(const std::string &name) const
 	for(size_t i = 0; i < pages; ++i)
 	{
 		IIRCRoomPage *page = dynamic_cast<IIRCRoomPage *>(m_pages->GetPage(i));
-		if(page != null)
+		if(page != nullptr)
 		{
 			shared_ptr<IIRCTarget> pageTarget = page->getTarget();
-			if(pageTarget != null && pageTarget->getName() == name)
+			if(pageTarget != nullptr && pageTarget->getName() == name)
 				return page;
 		}
 	}
 
-	return null;
+	return nullptr;
 }
 
 bool IRCWindow::getRequireOptions() const
@@ -175,7 +175,7 @@ bool IRCWindow::Destroy()
 
 void IRCWindow::notifyPage(IIRCPage *page)
 {
-	OS_ASSERT(page != null);
+	OS_ASSERT(page != nullptr);
 
 	int32 pageIndex = m_pages->GetPageIndex(page);
 	if(m_pages->GetSelection() != pageIndex)
@@ -185,7 +185,7 @@ void IRCWindow::notifyPage(IIRCPage *page)
 void IRCWindow::openChannel(const std::string &name)
 {
 	IIRCPage *page = getRoomPage(name);
-	if(page != null)
+	if(page != nullptr)
 	{
 		int32 pageIndex = m_pages->GetPageIndex(page);
 		OS_ASSERT(pageIndex != -1);
@@ -200,11 +200,11 @@ void IRCWindow::openChannel(const std::string &name)
 bool IRCWindow::openChat(uint32 userID)
 {
 	shared_ptr<IRCSession> session = getSession();
-	if(session == null)
+	if(session == nullptr)
 		return false;
 
 	shared_ptr<IRCUser> user = session->findUser(userID);
-	if(user == null)
+	if(user == nullptr)
 	{
 		OS_ASSERTFALSE();
 		return false;
@@ -214,7 +214,7 @@ bool IRCWindow::openChat(uint32 userID)
 		return false;
 
 	IIRCPage *page = getRoomPage(user->getName());
-	if(page != null)
+	if(page != nullptr)
 	{
 		int32 pageIndex = m_pages->GetPageIndex(page);
 		OS_ASSERT(pageIndex != -1);
@@ -274,8 +274,8 @@ void IRCWindow::playSoundFile(SoundEvent sound)
 
 void IRCWindow::initSession()
 {
-	OS_ASSERT(m_ircService != null);
-	OS_ASSERT(m_session == null);
+	OS_ASSERT(m_ircService != nullptr);
+	OS_ASSERT(m_session == nullptr);
 	m_session = m_ircService->addSession();
 	m_session->setClientName(Engine::getVersionName(false));
 
@@ -336,14 +336,14 @@ void IRCWindow::createLayout()
 
 void IRCWindow::initWindow()
 {
-	OS_ASSERT(m_commandsPanel != null);
+	OS_ASSERT(m_commandsPanel != nullptr);
 	m_commandsPanel->getRenderer()->setBackgroundImage(wxImage(conversions::from_utf16<wxString>(Application::instance()->getResourcesFilePath(_S("window_commands_background.png"))), wxBITMAP_TYPE_PNG));
 
 	m_pageNotifyBitmap = wxBitmap(wxImage(conversions::from_utf16<wxString>(Application::instance()->getResourcesFilePath(_S("irc_icons_page_notify.png"))), wxBITMAP_TYPE_PNG));
 	OS_ASSERT(m_pageNotifyBitmap.IsOk());
 
-	OS_ASSERT(m_serverPage == null);
-	OS_ASSERT(m_session != null);
+	OS_ASSERT(m_serverPage == nullptr);
+	OS_ASSERT(m_session != nullptr);
 	m_serverPage = new IRCServerPage(this, m_pages);
 	addPage(m_serverPage, _S("Status"), false);
 
@@ -384,7 +384,7 @@ void IRCWindow::initWindow()
 
 void IRCWindow::cleanupWindow()
 {
-	m_messageCtrl->Disconnect(wxEVT_COMMAND_TEXT_ENTER, wxCommandEventHandler(IRCWindow::onSendMessage), null, this);
+	m_messageCtrl->Disconnect(wxEVT_COMMAND_TEXT_ENTER, wxCommandEventHandler(IRCWindow::onSendMessage), nullptr, this);
 	m_messageCtrl->Disconnect(wxEVT_COMMAND_TEXT_UPDATED, wxCommandEventHandler(IRCWindow::onMessageUpdated), NULL, this);
 	m_messageCtrl->Disconnect(wxEVT_KEY_DOWN, wxKeyEventHandler(IRCWindow::onMessageKeyDown), NULL, this);
 
@@ -401,7 +401,7 @@ void IRCWindow::notifyCallback(IRCSession::NotifyType notify)
 
 void IRCWindow::commandsCallback(shared_ptr<IIRCCommand> command)
 {
-	OS_ASSERT(command != null);
+	OS_ASSERT(command != nullptr);
 
 	{
 		OS_LOCK(m_cs);
@@ -413,7 +413,7 @@ void IRCWindow::commandsCallback(shared_ptr<IIRCCommand> command)
 
 void IRCWindow::roomsCallback(shared_ptr<IRCRoom> room)
 {
-	OS_ASSERT(room != null);
+	OS_ASSERT(room != nullptr);
 
 	{
 		OS_LOCK(m_cs);
@@ -425,13 +425,13 @@ void IRCWindow::roomsCallback(shared_ptr<IRCRoom> room)
 
 void IRCWindow::updateConnectionStatus()
 {
-	OS_ASSERT(m_session != null);
+	OS_ASSERT(m_session != nullptr);
 
 	updateControls();
 
 	if(m_session->getConnectionStatus() == ircConnectionStatusConnected)
 	{
-		OS_ASSERT(m_session != null);
+		OS_ASSERT(m_session != nullptr);
 
 		refreshChannels();
 
@@ -443,25 +443,25 @@ void IRCWindow::updateConnectionStatus()
 
 void IRCWindow::handleCommand(shared_ptr<IIRCCommand> command)
 {
-	OS_ASSERT(m_serverPage != null);
+	OS_ASSERT(m_serverPage != nullptr);
 	m_serverPage->handleCommand(command);
 
 	if(command->getType() == ircCommandTypeMessage)
 	{
 		shared_ptr<IRCSession> session = getSession();
-		if(session != null)
+		if(session != nullptr)
 		{
 			SoundEvent sound = soundEventNone;
-			IIRCPage *handler = null;
+			IIRCPage *handler = nullptr;
 
 			shared_ptr<IRCCommandMessage> message = boost::dynamic_pointer_cast<IRCCommandMessage>(command);
 			handler = dispatchMessage(message->isLocal() ? session->getNick() : message->getSender(), message->getTarget(), message->getMessage());
-			if(handler != null)
+			if(handler != nullptr)
 				sound = soundEventMessage;
 
 			if(sound != soundEventNone)
 			{
-				if(handler != null)
+				if(handler != nullptr)
 				{
 					if(m_pages->GetSelection() != m_pages->GetPageIndex(handler))
 						m_notifySound = true;
@@ -508,12 +508,12 @@ bool IRCWindow::updateCommands()
 		else
 		{
 			command = utils::pop_front(m_commands);
-			OS_ASSERT(command != null);
+			OS_ASSERT(command != nullptr);
 			pending = m_commands.size() > 0;
 		}
 	}
 
-	if(command != null)
+	if(command != nullptr)
 		handleCommand(command);
 
 	return pending;
@@ -521,7 +521,7 @@ bool IRCWindow::updateCommands()
 
 void IRCWindow::updatePagesStyle()
 {
-	OS_ASSERT(m_serverPage != null);
+	OS_ASSERT(m_serverPage != nullptr);
 
 	int32 selection = m_pages->GetSelection();
 	if(selection == -1)
@@ -553,12 +553,12 @@ bool IRCWindow::updateRooms()
 		else
 		{
 			room = utils::pop_front(m_pendingRooms);
-			OS_ASSERT(room != null);
+			OS_ASSERT(room != nullptr);
 			pending = m_pendingRooms.size() > 0;
 		}
 	}
 
-	if(room != null)
+	if(room != nullptr)
 		updateRoom(room);
 
 	return pending;
@@ -566,10 +566,10 @@ bool IRCWindow::updateRooms()
 
 void IRCWindow::updateRoom(shared_ptr<IRCRoom> room)
 {
-	OS_ASSERT(room != null);
+	OS_ASSERT(room != nullptr);
 
 	IIRCRoomPage *roomPage = getRoomPage(room->getName());
-	if(roomPage == null)
+	if(roomPage == nullptr)
 	{
 		switch(room->getType())
 		{
@@ -584,11 +584,11 @@ void IRCWindow::updateRoom(shared_ptr<IRCRoom> room)
 									break;
 		}
 
-		OS_ASSERT(roomPage != null);
+		OS_ASSERT(roomPage != nullptr);
 		addPage(roomPage, String::EMPTY, true);
 	}
 
-	OS_ASSERT(roomPage != null);
+	OS_ASSERT(roomPage != nullptr);
 	m_pages->SetPageText(m_pages->GetPageIndex(roomPage), conversions::from_string<wxString>(room->getName()));
 	roomPage->updatePage();
 
@@ -597,13 +597,13 @@ void IRCWindow::updateRoom(shared_ptr<IRCRoom> room)
 
 IIRCPage * IRCWindow::dispatchMessage(const std::string &sender, const std::string &target, const String &message)
 {
-	IIRCPage *handler = null;
+	IIRCPage *handler = nullptr;
 
 	size_t count = m_pages->GetPageCount();
 	for(size_t i = 0; i < count; ++i)
 	{
 		IIRCRoomPage *page = dynamic_cast<IIRCRoomPage *>(m_pages->GetPage(i));
-		if(page != null)
+		if(page != nullptr)
 		{
 			if(page->matchMessageTarget(sender, target))
 			{
@@ -618,13 +618,13 @@ IIRCPage * IRCWindow::dispatchMessage(const std::string &sender, const std::stri
 
 bool IRCWindow::addPage(IIRCPage *page, const String &caption, bool select)
 {
-	if(page == null)
+	if(page == nullptr)
 	{
 		OS_ASSERTFALSE();
 		return false;
 	}
 
-	OS_ASSERT(m_pages != null);
+	OS_ASSERT(m_pages != nullptr);
 	if(m_pages->AddPage(page, conversions::from_utf16<wxString>(caption), select, wxNullBitmap) == false)
 		return false;
 
@@ -638,8 +638,8 @@ void IRCWindow::updateAllPages()
 	for(size_t i = 0; i < count; ++i)
 	{
 		IIRCPage *page = dynamic_cast<IIRCPage *>(m_pages->GetPage(i));
-		OS_ASSERT(page != null);
-		if(page != null)
+		OS_ASSERT(page != nullptr);
+		if(page != nullptr)
 			page->updatePage();
 	}
 }
@@ -677,7 +677,7 @@ void IRCWindow::updateOptions()
 
 void IRCWindow::refreshChannels()
 {
-	if(m_session != null)
+	if(m_session != nullptr)
 		m_session->requestChannelsList();
 }
 
@@ -689,7 +689,7 @@ void IRCWindow::openConnection()
 	if(getRequireOptions())
 		return;
 
-	if(m_ircService == null)
+	if(m_ircService == nullptr)
 		return;
 
 	m_session->openConnection(Engine::instance()->createTCPSocket(m_ircService->getService(), true, true));
@@ -697,7 +697,7 @@ void IRCWindow::openConnection()
 
 void IRCWindow::closeConnection()
 {
-	if(m_session != null)
+	if(m_session != nullptr)
 		m_session->closeConnection();
 }
 
@@ -753,7 +753,7 @@ void IRCWindow::resetHistoryPosition()
 
 void IRCWindow::updateControls()
 {
-	OS_ASSERT(m_session != null);
+	OS_ASSERT(m_session != nullptr);
 
 	IRCConnectionStatus connectionStatus = m_session->getConnectionStatus();
 
@@ -762,9 +762,9 @@ void IRCWindow::updateControls()
 	IIRCPage *activePage = getActivePage();
 
 	IIRCRoomPage *roomPage = dynamic_cast<IIRCRoomPage *>(activePage);
-	if(roomPage != null)
+	if(roomPage != nullptr)
 	{
-		if(roomPage->getRoom() == null)
+		if(roomPage->getRoom() == nullptr)
 			enableMessageCommands = false;
 	}
 
@@ -801,8 +801,8 @@ void IRCWindow::onSendMessage(wxCommandEvent &e)
 	else
 	{
 		IIRCPage *activePage = getActivePage();
-		OS_ASSERT(activePage != null);
-		if(activePage != null)
+		OS_ASSERT(activePage != nullptr);
+		if(activePage != nullptr)
 			activePage->processCommand(command);
 	}
 
@@ -869,8 +869,8 @@ void IRCWindow::onPageClose(wxAuiNotebookEvent &e)
 	else
 	{
 		IIRCPage *page = dynamic_cast<IIRCPage *>(m_pages->GetPage(e.GetSelection()));
-		OS_ASSERT(page != null);
-		if(page != null)
+		OS_ASSERT(page != nullptr);
+		if(page != nullptr)
 			page->handlePageClosed();
 	}
 }

@@ -69,7 +69,7 @@ String OMLUrl::specialUrlDecode(const String &url) const
 
 void OMLUrl::generateBodyFromUrl(shared_ptr<OMLContext> context, const String& url, String& preBody, String& body, String& afterBody) const
 {
-	OS_ASSERT(context->getPage() != null);
+	OS_ASSERT(context->getPage() != nullptr);
 
 	OsirisLink osirisLink(url.to_ascii());
 

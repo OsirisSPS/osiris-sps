@@ -141,6 +141,13 @@ struct IPortalPage_wrapper : ::osiris::IPortalPage, ::osiris::PythonWrapper< ::o
         return boost::python::object( result );
     }
 
+    static boost::python::object getStabilityStatus( ::osiris::IPortalPage & inst ){
+        ::osiris::PythonThreadSaver __pythreadSaver;
+        ::osiris::String result = inst.getStabilityStatus();
+        __pythreadSaver.restore();
+        return boost::python::object( result );
+    }
+
     static boost::python::object getRequestIsisUrl( ::osiris::IPortalPage const & inst ){
         ::osiris::PythonThreadSaver __pythreadSaver;
         ::osiris::String result = inst.getRequestIsisUrl();
@@ -1183,6 +1190,15 @@ void register_IPortalPage_class(){
             IPortalPage_exposer.def( 
                 "getLoadInstances"
                 , getLoadInstances_function_type( &IPortalPage_wrapper::getLoadInstances ) );
+        
+        }
+        { //::osiris::IPortalPage::getStabilityStatus
+        
+            typedef boost::python::object ( *getStabilityStatus_function_type )( ::osiris::IPortalPage & );
+            
+            IPortalPage_exposer.def( 
+                "getStabilityStatus"
+                , getStabilityStatus_function_type( &IPortalPage_wrapper::getStabilityStatus ) );
         
         }
         { //::osiris::IPortalPage::getRequestIsisUrl

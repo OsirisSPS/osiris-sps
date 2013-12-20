@@ -329,17 +329,17 @@ bool CompatibilityManager::razorPortalDatabaseUpgrade(const shared_ptr<IPortalDa
 	database->execute(_S("update os_votes set signature=x'00'"));
 
 	// Other conversions
-	database->execute(_S("update os_entries set entity=null where entity='';\r\n"));
-	database->execute(_S("update os_calendar_events set entity=null where entity='';\r\n"));
-	database->execute(_S("update os_files set entity=null where entity='';\r\n"));
-	database->execute(_S("update os_instances set entity=null where entity='';\r\n"));
-	database->execute(_S("update os_models set entity=null where entity='';\r\n"));
-	database->execute(_S("update os_polls set entity=null where entity='';\r\n"));
-	database->execute(_S("update os_polls_options set entity=null where entity='';\r\n"));
-	database->execute(_S("update os_posts set entity=null where entity='';\r\n"));
-	database->execute(_S("update os_sections set entity=null where entity='';\r\n"));
-	database->execute(_S("update os_tags set entity=null where entity='';\r\n"));
-	database->execute(_S("update os_texts set entity=null where entity='';\r\n"));
+	database->execute(_S("update os_entries set entity=nullptr where entity='';\r\n"));
+	database->execute(_S("update os_calendar_events set entity=nullptr where entity='';\r\n"));
+	database->execute(_S("update os_files set entity=nullptr where entity='';\r\n"));
+	database->execute(_S("update os_instances set entity=nullptr where entity='';\r\n"));
+	database->execute(_S("update os_models set entity=nullptr where entity='';\r\n"));
+	database->execute(_S("update os_polls set entity=nullptr where entity='';\r\n"));
+	database->execute(_S("update os_polls_options set entity=nullptr where entity='';\r\n"));
+	database->execute(_S("update os_posts set entity=nullptr where entity='';\r\n"));
+	database->execute(_S("update os_sections set entity=nullptr where entity='';\r\n"));
+	database->execute(_S("update os_tags set entity=nullptr where entity='';\r\n"));
+	database->execute(_S("update os_texts set entity=nullptr where entity='';\r\n"));
 		
 	database->execute(_S("update os_attributes set pov='") + povID.toUTF16() + _S("';\r\n"));
 	database->execute(_S("update os_avatars set pov='") + povID.toUTF16() + _S("';\r\n"));
@@ -431,7 +431,7 @@ bool CompatibilityManager::razorPortalDatabaseUpgrade(const shared_ptr<IPortalDa
 	database->execute(_S("update os_entries set entity_date=(select entity_date from os_tags where os_entries.entity = os_tags.entity) where type=9;\r\n"));
 	database->execute(_S("update os_entries set entity_date=(select entity_date from os_texts where os_entries.entity = os_texts.entity) where type=5;\r\n"));
 
-	database->execute(_S("update os_entries set entity=null,entity_author=null,entity_date=null where type not in (16,8,4,15,12,13,6,3,9,5);\r\n"));
+	database->execute(_S("update os_entries set entity=nullptr,entity_author=nullptr,entity_date=nullptr where type not in (16,8,4,15,12,13,6,3,9,5);\r\n"));
 
 	database->execute(_S("drop index os_files_index_entity_temp;\r\n"));
 	database->execute(_S("drop index os_texts_index_entity_temp;\r\n"));
@@ -895,7 +895,7 @@ void CompatibilityManager::migrateAccounts(const shared_ptr<IPortalDatabase> &da
 void CompatibilityManager::resigner(const shared_ptr<IPortalDatabase> &database, shared_ptr<IdeSession> session)
 {
 	shared_ptr<ObjectsUser> user = session->getUser(database);
-	if(user != null)
+	if(user != nullptr)
 	{
 		Buffer signature = user->signature;
 		if( (signature.getSize() == 1) && (signature.getAt(0) == 0) )
@@ -912,7 +912,7 @@ void CompatibilityManager::resigner(const shared_ptr<IPortalDatabase> &database,
 				String author = result.get(r,_S("author"));
 
 				shared_ptr<ObjectsIObject> object = database->getPortal()->getObject(database, id.to_ascii());
-				if(object != null)
+				if(object != nullptr)
 				{
 					LanguageResult acceptable = object->acceptable(database);
 					if(acceptable.empty())
@@ -920,7 +920,7 @@ void CompatibilityManager::resigner(const shared_ptr<IPortalDatabase> &database,
 						if( (entityAuthor == user->id->toUTF16()) && (author == user->id->toUTF16()) )
 						{
 							shared_ptr<ObjectsIRevisionable> revisionable = objects_revisionable_cast(object);			
-							if(revisionable != null)
+							if(revisionable != nullptr)
 							{
 								bool done = revisionable->signEntity(session->getPrivateKey(), database->getPortal()->getPortalID());
 								OS_ASSERT(done);

@@ -31,7 +31,7 @@ OS_NAMESPACE_BEGIN()
 P2PClient::P2PClient(shared_ptr<IPAddress> address, shared_ptr<P2PServer> server, uint32 timeout, const String &origin) : ConnectionBase(server, Engine::instance()->createTCPSocket(server->getService(), true, false), timeout, true, origin),
 																														  m_address(address)
 {
-	OS_ASSERT(address != null);
+	OS_ASSERT(address != nullptr);
 }
 
 P2PClient::~P2PClient()

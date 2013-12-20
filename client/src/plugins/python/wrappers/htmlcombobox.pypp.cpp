@@ -24,7 +24,7 @@ struct HtmlComboBox_wrapper : ::osiris::HtmlComboBox, ::osiris::PythonWrapper< :
     HtmlComboBox_wrapper( )
     : ::osiris::HtmlComboBox( )
       , ::osiris::PythonWrapper< ::osiris::HtmlComboBox >(){
-        // null constructor
+        // nullptr constructor
     
     }
 

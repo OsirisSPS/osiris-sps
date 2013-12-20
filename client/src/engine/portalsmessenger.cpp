@@ -77,14 +77,14 @@ shared_ptr<DataLocalMessage> Messenger::getMessage(shared_ptr<IPortalDatabase> d
 
 	DataTable result;
 	if(database->execute(select, result) == false)
-		return null;
+		return nullptr;
 
 	if(result.rows() != 1)
-		return null;
+		return nullptr;
 
 	shared_ptr<DataLocalMessage> message(OS_NEW DataLocalMessage());
 	if(message->read(result[0]) == false)
-		return null;
+		return nullptr;
 
 	if(markAsRead && message->getStatus() != messageStatusRead)
 	{

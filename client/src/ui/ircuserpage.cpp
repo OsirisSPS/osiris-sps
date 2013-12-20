@@ -35,7 +35,7 @@ END_EVENT_TABLE()
 //////////////////////////////////////////////////////////////////////
 
 IRCUserPage::IRCUserPage(IRCWindow *ircWindow, wxWindow *parent, shared_ptr<IIRCTarget> target) : WindowBase(ircWindow, parent, target),
-																								  m_eventsCtrl(null)
+																								  m_eventsCtrl(nullptr)
 {
 	OS_ASSERT(target->getType() == ircTargetTypeUser);
 
@@ -75,11 +75,11 @@ bool IRCUserPage::matchMessageTarget(const std::string &sender, const std::strin
 	OS_ASSERT(target.empty() == false);
 
 	shared_ptr<IRCSession> session = getSession();
-	if(session == null)
+	if(session == nullptr)
 		return false;
 
 	shared_ptr<IRCRoom> room = getRoom();
-	if(room == null)
+	if(room == nullptr)
 		return false;
 
 	if((session->getNick() == sender) && (room->getName() == target))

@@ -1,2 +1,0 @@
-﻿Under GIT/SVN we have the extensions sources in the 'client/data/extensions' directory.
-The presence of this file ensure that extensions are NEVER overwritten by default extensions installation.

@@ -118,7 +118,7 @@ inline void IHttpDirectory::setRestriction(Restrictions restriction) { m_restric
 inline const String & IHttpDirectory::getName() const { return m_name; }
 inline shared_ptr<IHttpDirectory> IHttpDirectory::getParent() const { return m_parent.lock(); }
 
-inline bool IHttpDirectory::hasDirectory(const String &name) const { return getDirectory(name) != null; }
+inline bool IHttpDirectory::hasDirectory(const String &name) const { return getDirectory(name) != nullptr; }
 
 //////////////////////////////////////////////////////////////////////
 

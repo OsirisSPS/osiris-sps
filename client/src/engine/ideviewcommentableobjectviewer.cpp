@@ -85,7 +85,7 @@ String CommentableObjectViewer::getCreatePostLink(const EntityID &quoted_object)
 
 String CommentableObjectViewer::getEditObjectLink(shared_ptr<ObjectsIRevisionable> object) const
 {
-	if(object == null)
+	if(object == nullptr)
 	{
 		OS_ASSERTFALSE();
 		return String::EMPTY;
@@ -99,13 +99,13 @@ String CommentableObjectViewer::localizePost(const EntityID &id)
 	String href;
 
 	shared_ptr<EntitiesEntity> entity = getPortal()->getEntity(getDatabase(), id);
-	if(entity != null)
+	if(entity != nullptr)
 	{
 		shared_ptr<ObjectsPost> post = objects_post_cast(entity->getCurrent());
-		if(post != null)
+		if(post != nullptr)
 		{
 			shared_ptr<EntitiesEntity> parent_entity = getPortal()->getEntity(getDatabase(), post->getParent());
-			if(parent_entity != null)
+			if(parent_entity != nullptr)
 			{
 				shared_ptr<DbSqlSelect> select;
 				// Ottiene la select per l'estrazione dei posts
@@ -138,7 +138,7 @@ String CommentableObjectViewer::localizePost(const EntityID &id)
 void CommentableObjectViewer::onViewObject()
 {
 	shared_ptr<ObjectsIRevisionable> object = getObject();
-	if(object == null)
+	if(object == nullptr)
 		return;
 
 	shared_ptr<XMLPortalExporter> exporter(OS_NEW XMLPortalExporter(getDocument()->create(object->getDescriptor()->getTypeName()), getPage(), XMLPortalExporter::emFull));
@@ -159,10 +159,10 @@ void CommentableObjectViewer::onCreatePost()
 	if(quoted_id.empty() == false)
 	{
 		quoted_entity = getPortal()->getEntity(getDatabase(), quoted_id);
-		if(quoted_entity != null)
+		if(quoted_entity != nullptr)
 		{
 			shared_ptr<ObjectsIObject> quoted_object = quoted_entity->getCurrent();
-			if(quoted_object != null)
+			if(quoted_object != nullptr)
 			{
 				quoted_text = OMLQuote::quoteObject(quoted_entity->getEntityID(), quoted_object->getContent());
 				quoted_text += _S("\r\n");
@@ -172,11 +172,11 @@ void CommentableObjectViewer::onCreatePost()
 
 	shared_ptr<ObjectsIRevisionable> object = getObject();
 
-	shared_ptr<edit::PostEditor> post_editor(OS_NEW edit::PostEditor(null, getEntity()));
+	shared_ptr<edit::PostEditor> post_editor(OS_NEW edit::PostEditor(nullptr, getEntity()));
 	post_editor->setID(_S("postEditor"));
 	post_editor->setTitle(_S("re: ") + object->getTitle());
 	post_editor->setContent(quoted_text);
-	if(quoted_entity != null)
+	if(quoted_entity != nullptr)
 		post_editor->setReference(quoted_entity->getEntityID());
 
 	post_editor->setRedirectionType(edit::IObjectEditor::rtViewParent);
@@ -220,7 +220,7 @@ void CommentableObjectViewer::renderObject(shared_ptr<XMLPortalExporter> exporte
 
 void CommentableObjectViewer::renderPosts(shared_ptr<XMLPortalExporter> exporter)
 {
-	if(getObject() == null || getObject()->allowChild(portalObjectTypePost) == false)
+	if(getObject() == nullptr || getObject()->allowChild(portalObjectTypePost) == false)
 		return;
 
 	// Calcola il numero totale di posts
@@ -243,11 +243,11 @@ void CommentableObjectViewer::renderPosts(shared_ptr<XMLPortalExporter> exporter
 	{
 		// Carica la riposta corrente
 		shared_ptr<EntitiesEntity> post_entity = post_childs->get(getDatabase(), *i);
-		if(post_entity != null)
+		if(post_entity != nullptr)
 		{
 			// Calcola la revisione corrente della risposta
 			shared_ptr<ObjectsPost> current_post = objects_post_cast(post_entity->getCurrent());
-			if(current_post != null)
+			if(current_post != nullptr)
 				posts.push_back(current_post);
 		}
 	}

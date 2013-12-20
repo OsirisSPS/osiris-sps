@@ -42,7 +42,7 @@ DataIStatistics::~DataIStatistics()
 
 bool DataIStatistics::create_ZZZ(shared_ptr<IPortalDatabase> db)
 {
-	OS_ASSERT(db != null);	
+	OS_ASSERT(db != nullptr);	
 	return db->insertRecord(get_this_ptr());
 }
 

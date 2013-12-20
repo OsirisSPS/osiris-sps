@@ -61,7 +61,7 @@ EntitiesEntity::ChildsInfo::ChildsInfo(uint32 c, const String &s) : count(c),
 
 EntitiesEntity::EntitiesEntity()
 {
-	//m_revisions = null;
+	//m_revisions = nullptr;
 
 	clear();
 }
@@ -117,7 +117,7 @@ bool EntitiesEntity::load(const shared_ptr<IPortalDatabase> &database, const Ent
 			if(currentID.empty())
 				return false;
 			m_current = objects_revisionable_cast(database->getPortal()->getObject(database, currentID));
-			if(m_current == null)
+			if(m_current == nullptr)
 				return false;				
 			*/
 
@@ -160,7 +160,7 @@ void EntitiesEntity::clear()
 	m_countersMap.clear();
 
 	//OS_DELETE_T(m_revisions);
-	//m_revisions = null;
+	//m_revisions = nullptr;
 }
 
 void EntitiesEntity::clearChildsCache()
@@ -173,23 +173,23 @@ void EntitiesEntity::clearChildsCache()
 shared_ptr<EntitiesEntity> EntitiesEntity::getParent(shared_ptr<IPortalDatabase> database) const
 {
 	// Se  la root, non ha padre.
-	if(m_current == null)
-		return null;
+	if(m_current == nullptr)
+		return nullptr;
 
 	if(getEntityID() == ObjectsSystem::instance()->getRootID())
-		return null;
+		return nullptr;
 
 	return database->getPortal()->getSnapshotManager()->getEntity(database, m_parent);
 }
 
 PortalObjectType EntitiesEntity::getObjectType() const
 {
-	return m_current != null ? m_current->getObjectType() : portalObjectTypeUnknown;
+	return m_current != nullptr ? m_current->getObjectType() : portalObjectTypeUnknown;
 }
 
 bool EntitiesEntity::isVisible() const
 {
-	return ( (m_current != null) && (m_current->isVisible()) );
+	return ( (m_current != nullptr) && (m_current->isVisible()) );
 }
 
 DateTime EntitiesEntity::getEntitySubmitDate() const
@@ -209,7 +209,7 @@ shared_ptr<EntitiesEntities> EntitiesEntity::getChilds(const shared_ptr<IPortalD
 
 shared_ptr<EntitiesEntities> EntitiesEntity::getChilds(const shared_ptr<IPortalDatabase> &database, const ObjectsTypes &types, const RangeUint32 &range, shared_ptr<DbSqlSelect> select) const
 {
-	OS_ASSERT(select != null);
+	OS_ASSERT(select != nullptr);
 	OS_ASSERT(select->count == false);
 
 	OS_LOCK(m_cs);
@@ -222,7 +222,7 @@ shared_ptr<EntitiesEntities> EntitiesEntity::getChilds(const shared_ptr<IPortalD
 
 	shared_ptr<EntitiesEntities> childs = m_childs.get(childsKey);
 	// Controlla se i figli della tipologia specificata sono gi stati caricati in precedenza
-	if(childs != null)
+	if(childs != nullptr)
 	{
 		if(childs->getRange() == range && childs->getSql() == sql)
 			return childs;	// Se il range in cui sono stati caricati i figli e l'sql di estrazione corrispondono non serve effettuare nuovamente il caricamento...
@@ -320,7 +320,7 @@ uint32 EntitiesEntity::getChildsCount(const shared_ptr<IPortalDatabase> &databas
 
 uint32 EntitiesEntity::getChildsCount(const shared_ptr<IPortalDatabase> &database, const ObjectsTypes &types, shared_ptr<DbSqlSelect> select) const
 {
-	OS_ASSERT(select == null || select->count);		// Se  stata specificata una select valida dovrebbe essere di conteggio
+	OS_ASSERT(select == nullptr || select->count);		// Se  stata specificata una select valida dovrebbe essere di conteggio
 
 	OS_LOCK(m_cs);
 
@@ -425,11 +425,11 @@ const StringList & EntitiesEntity::getRevisions(const shared_ptr<IPortalDatabase
 {
 	OS_LOCK(m_cs);
 
-	if(m_revisions == null)
+	if(m_revisions == nullptr)
 	{
 		m_revisions = OS_NEW_T(StringList);
 
-		if(m_primary != null) // OS_TODOCIP: da togliere?
+		if(m_primary != nullptr) // OS_TODOCIP: da togliere?
 		{
 			String entityID = getEntityID().toUTF16();
 #ifdef OS_TODOCIP
@@ -456,12 +456,12 @@ const StringList & EntitiesEntity::getRevisions(const shared_ptr<IPortalDatabase
 
 bool EntitiesEntity::allowChild(PortalObjectType type) const
 {
-	return (m_current != null) ? m_current->allowChild(type) : false;
+	return (m_current != nullptr) ? m_current->allowChild(type) : false;
 }
 
 bool EntitiesEntity::allowChild(shared_ptr<EntitiesEntity> second) const
 {
-	OS_ASSERT(second != null);
+	OS_ASSERT(second != nullptr);
 	return allowChild(second->getObjectType());
 } 
 
@@ -498,7 +498,7 @@ String EntitiesEntity::getChildsKey(const ObjectsTypes &types)
 
 void EntitiesEntity::exportXML(shared_ptr<XMLPortalExporter> exporter)
 {
-	if(m_current == null)
+	if(m_current == nullptr)
 		return;
 
 	m_current->exportXML(exporter);
@@ -514,7 +514,7 @@ void EntitiesEntity::exportXML(shared_ptr<XMLPortalExporter> exporter)
 	if(m_section != getPrimaryID())
 	{
 		entity_ptr section = getLoggedUser()->getEntity(m_section);
-		if(section != null)
+		if(section != nullptr)
 		{
 			shared_ptr<XMLNode> nodeSection = exporter->getRoot()->addChild(_S("section"));
 			shared_ptr<XMLPortalExporter> exporterSection(OS_NEW XMLExporter(nodeSection, getPage(), false));
@@ -557,7 +557,7 @@ void EntitiesEntity::_getSql(const shared_ptr<IPortalDatabase> &database, const 
 {
 	shared_ptr<DbSqlSelect> statement = select;
 	// Controlla se non  stato specificato alcun statement
-	if(statement == null)
+	if(statement == nullptr)
 		// Carica lo statement di default
 		getChildsStatement(database, types, range, count, false, false, statement);
 

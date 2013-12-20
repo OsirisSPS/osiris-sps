@@ -61,7 +61,7 @@ String DocumentationViewer::getPageHref(uint32 offset) const
 	String href;
 
 	shared_ptr<EntitiesEntity> entity = m_entity;
-	if(entity != null)
+	if(entity != nullptr)
 	{
 		ordered_map<std::wstring, std::wstring> params;
 		if(offset != 0)
@@ -78,10 +78,10 @@ void DocumentationViewer::onLoad()
 	ViewerBase::onLoad();
 
 	shared_ptr<XMLNode> root = getComponentDocument()->getRoot();
-	OS_ASSERT(root != null);
+	OS_ASSERT(root != nullptr);
 
 	shared_ptr<EntitiesEntity> entity = m_entity;
-	if(entity == null)
+	if(entity == nullptr)
 		entity = getEntity(getDatabase());
 
 	/* Defaults
@@ -107,18 +107,18 @@ void DocumentationViewer::onLoad()
 
 	shared_ptr<XMLPortalExporter> contentsExporter = exporter->createChild<XMLPortalExporter>(_S("contents"));
 
-	if(entity != null)
+	if(entity != nullptr)
 		_render(entity, contentsExporter, 0, contentLevel, true, true);
 
 	shared_ptr<XMLPortalExporter> subindexExporter = exporter->createChild<XMLPortalExporter>(_S("subindex"));
 
-	if(entity != null)
+	if(entity != nullptr)
 		_render(entity, subindexExporter, 0, subindexLevel, subindexShowTexts, false);
 }
 
 void DocumentationViewer::_render(shared_ptr<EntitiesEntity> entity, shared_ptr<XMLPortalExporter> exporter, uint32 level, uint32 levelMax, bool withTexts, bool forContent)
 {
-	if(entity == null)
+	if(entity == nullptr)
 		return;
 
 	if(levelMax == 0) // Disabled.
@@ -140,7 +140,7 @@ void DocumentationViewer::_render(shared_ptr<EntitiesEntity> entity, shared_ptr<
 	if(exportTexts)
 	{
 		shared_ptr<EntitiesEntities> texts = entity->getChilds(getDatabase(), portalObjectTypeText, RangeUint32(0, 0), EntitiesEntity::coPositionAsc);
-		if(texts != null && texts->empty() == false)
+		if(texts != nullptr && texts->empty() == false)
 		{
 			shared_ptr<XMLNode> nodeTexts = exporter->getRoot()->addChild(_S("texts"));
 			for(EntitiesEntities::const_iterator i = texts->begin(); i != texts->end(); ++i)
@@ -163,7 +163,7 @@ void DocumentationViewer::_render(shared_ptr<EntitiesEntity> entity, shared_ptr<
 	if(exportSections)
 	{
 		shared_ptr<EntitiesEntities> subSections = entity->getChilds(getDatabase(), portalObjectTypeSection, RangeUint32(0, 0), EntitiesEntity::coPositionAsc);
-		if(subSections != null && subSections->empty() == false)
+		if(subSections != nullptr && subSections->empty() == false)
 		{
 			shared_ptr<XMLNode> nodeSubSections = exporter->getRoot()->addChild(_S("sections"));
 			for(EntitiesEntities::const_iterator i = subSections->begin(); i != subSections->end(); ++i)

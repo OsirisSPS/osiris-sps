@@ -21,7 +21,7 @@ struct SearchFileOptions_wrapper : ::osiris::SearchFileOptions, ::osiris::Python
     SearchFileOptions_wrapper( )
     : ::osiris::SearchFileOptions( )
       , ::osiris::PythonWrapper< ::osiris::SearchFileOptions >(){
-        // null constructor
+        // nullptr constructor
     
     }
 

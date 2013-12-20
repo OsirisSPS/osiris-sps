@@ -82,7 +82,7 @@ protected:
 //////////////////////////////////////////////////////////////////////
 
 inline const list<shared_ptr<IDbDriver> >::type & DatabasesSystem::getDrivers() const { return m_drivers; }
-inline bool DatabasesSystem::hasDriver(const std::string &name) const { return getDriver(name) != null; }
+inline bool DatabasesSystem::hasDriver(const std::string &name) const { return getDriver(name) != nullptr; }
 
 //////////////////////////////////////////////////////////////////////
 

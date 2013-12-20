@@ -48,7 +48,7 @@ shared_ptr<XMLNode> XMLDocument::getRoot() const
 void XMLDocument::setRoot(shared_ptr<XMLNode> root)
 {
 	m_root = root;
-	if(m_root != null)
+	if(m_root != nullptr)
 		m_root->setDocument(get_this_ptr());
 }
 
@@ -107,7 +107,7 @@ void XMLDocument::onEndDocument()
 
 void XMLDocument::onStartElement(const String &name, const StringCollection<String> &attributes)
 {
-	if(m_root == null)
+	if(m_root == nullptr)
 	{
 		m_root.reset(OS_NEW XMLNode(name, get_this_ptr()));
 		m_current = m_root;
@@ -125,13 +125,13 @@ void XMLDocument::onStartElement(const String &name, const StringCollection<Stri
 
 void XMLDocument::onEndElement(const String &name)
 {
-	OS_ASSERT(m_current != null);
+	OS_ASSERT(m_current != nullptr);
 	m_current = m_current->getParent();
 }
 
 void XMLDocument::onCharacters(const String &str)
 {
-	OS_ASSERT(m_current != null);
+	OS_ASSERT(m_current != nullptr);
 	m_current->addData(str);
 }
 

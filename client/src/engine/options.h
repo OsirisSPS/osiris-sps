@@ -292,8 +292,8 @@ public:
 	void toDefault();
 
 	template <typename T>
-	bool ensureOption(const String &name, const T &value, bool publicOption, shared_ptr<IOptionValidator> validator = null);
-	bool ensureOptionValue(const String &name, const DataItem &value, bool publicOption, shared_ptr<IOptionValidator> validator = null);
+	bool ensureOption(const String &name, const T &value, bool publicOption, shared_ptr<IOptionValidator> validator = nullptr);
+	bool ensureOptionValue(const String &name, const DataItem &value, bool publicOption, shared_ptr<IOptionValidator> validator = nullptr);
 
 	void subscribeInitHandler(const InitEvent::slot_type &handler);
 	template <typename T>
@@ -314,12 +314,12 @@ private:
 	bool initEnvironment();
 
 	template <typename T>
-	bool ensureUserOption(const String &name, const T &value, bool publicOption, shared_ptr<IOptionValidator> validator = null);
-	bool ensureUserOptionValue(const String &name, const DataItem &value, bool publicOption, shared_ptr<IOptionValidator> validator = null);
+	bool ensureUserOption(const String &name, const T &value, bool publicOption, shared_ptr<IOptionValidator> validator = nullptr);
+	bool ensureUserOptionValue(const String &name, const DataItem &value, bool publicOption, shared_ptr<IOptionValidator> validator = nullptr);
 
 	template <typename T>
-	bool ensureSystemOption(const String &name, const T &value, shared_ptr<IOptionValidator> validator = null);
-	bool ensureSystemOptionValue(const String &name, const DataItem &value, shared_ptr<IOptionValidator> validator = null);
+	bool ensureSystemOption(const String &name, const T &value, shared_ptr<IOptionValidator> validator = nullptr);
+	bool ensureSystemOptionValue(const String &name, const DataItem &value, shared_ptr<IOptionValidator> validator = nullptr);
 
 	bool loadSystemOptions(const String &rootPath);
 	bool initUserOptions();

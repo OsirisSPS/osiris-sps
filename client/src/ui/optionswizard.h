@@ -43,7 +43,7 @@ class OptionsWizard : public MultilanguageWizard
 
 // Construction
 public:
-	OptionsWizard(wxWindow *parent = null, const String &title = String::EMPTY);
+	OptionsWizard(wxWindow *parent = nullptr, const String &title = String::EMPTY);
 	virtual ~OptionsWizard();
 
 // Operations

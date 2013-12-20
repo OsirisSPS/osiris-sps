@@ -95,14 +95,14 @@ bool LanguageVocabolary::load()
 bool LanguageVocabolary::load(shared_ptr<XMLDocument> document)
 {
 	shared_ptr<XMLNode> root = document->getRoot();
-	if(root == null)
+	if(root == nullptr)
 	{
 		OS_ASSERTFALSE();
 		return false;
 	}
 
 	shared_ptr<XMLNodes> childs = root->getNodes();
-	if(childs == null)
+	if(childs == nullptr)
 	{
 		OS_ASSERTFALSE();
 		return false;
@@ -115,14 +115,14 @@ bool LanguageVocabolary::load(shared_ptr<XMLDocument> document)
 
 void LanguageVocabolary::parse(shared_ptr<XMLNode> node)
 {
-	OS_ASSERT(node != null);
+	OS_ASSERT(node != nullptr);
 
 	if(node->getName() == KEY)
 	{
 		shared_ptr<XMLAttribute> name = node->getAttribute(NAME);
 		shared_ptr<XMLAttribute> value = node->getAttribute(VALUE);
 
-		if(name != null && value != null)
+		if(name != nullptr && value != nullptr)
 			setText(name->getValue(), value->getValue());
 	}
 }

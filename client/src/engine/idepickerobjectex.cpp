@@ -110,7 +110,7 @@ void IdePickerObjectEx::onPreRender()
 void IdePickerObjectEx::followParent(StringMap& opens, shared_ptr<EntitiesEntity> entity)
 {
 	shared_ptr<EntitiesEntity> parent = entity->getParent(getDatabase());
-	if(parent != null)
+	if(parent != nullptr)
 	{
 		opens[parent->getEntityID().toUTF16()] = true;
 		if(parent->getEntityID() != ObjectsSystem::instance()->getRootID())
@@ -123,7 +123,7 @@ void IdePickerObjectEx::exportObject(StringMap& opens, shared_ptr<EntitiesEntity
 	shared_ptr<XMLNode> node = nodeParent->addChild(_S("object"));
 	shared_ptr<XMLPortalExporter> exporter(OS_NEW XMLPortalExporter(node, getPage(), XMLPortalExporter::emLite));
 	shared_ptr<ObjectsIRevisionable> object = entity->getCurrent();
-	if(object != null)
+	if(object != nullptr)
 		object->exportXML(exporter);
 
 	String id = entity->getEntityID().toUTF16();
@@ -209,7 +209,7 @@ String IdePickerObjectEx::getTemplatePath()
 void IdePickerObjectEx::onOpen(IEvent *e)
 {
 	HtmlEvent *htmlEvent = dynamic_cast<HtmlEvent *>(e);
-	if(htmlEvent == null)
+	if(htmlEvent == nullptr)
 		return;
 
 	String id = htmlEvent->get(0);
@@ -224,7 +224,7 @@ void IdePickerObjectEx::onOpen(IEvent *e)
 void IdePickerObjectEx::onSelect(IEvent *e)
 {
 	HtmlEvent *htmlEvent = dynamic_cast<HtmlEvent *>(e);
-	if(htmlEvent == null)
+	if(htmlEvent == nullptr)
 		return;
 
 	String id = htmlEvent->get(0);

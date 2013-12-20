@@ -16,7 +16,7 @@ struct IdeSystem_wrapper : ::osiris::IdeSystem, ::osiris::PythonWrapper< ::osiri
     IdeSystem_wrapper( )
     : ::osiris::IdeSystem( )
       , ::osiris::PythonWrapper< ::osiris::IdeSystem >(){
-        // null constructor
+        // nullptr constructor
     
     }
 

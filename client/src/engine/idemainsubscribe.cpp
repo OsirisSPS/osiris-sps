@@ -107,13 +107,13 @@ shared_ptr<HtmlTextBox> Subscribe::getDriverOptionControl(const String &driverNa
 		control = i->second;
 	}
 
-	OS_ASSERT(control != null);
+	OS_ASSERT(control != nullptr);
 	return control;
 }
 
 bool Subscribe::initControlValue(shared_ptr<IHtmlInput> control, const String &paramName)
 {
-	OS_ASSERT(control != null);
+	OS_ASSERT(control != nullptr);
 	OS_ASSERT(paramName.empty() == false);
 
 	std::wstring value = getRequest()->getUrlParam(paramName.to_wide());
@@ -255,7 +255,7 @@ void Subscribe::onInit()
 	if(getPostBack() == false)
 	{
 		shared_ptr<IDbDriver> defaultDriver = DatabasesSystem::instance()->getDefaultDriver();
-		if(defaultDriver != null)
+		if(defaultDriver != nullptr)
 			m_databaseDriver->setValue(defaultDriver->getName());
 	}
 }
@@ -267,10 +267,10 @@ void Subscribe::onLoad()
 	// Opzioni driver
 
 	m_driver = DatabasesSystem::instance()->getDriver(m_databaseDriver->getValue().to_ascii());
-	if(m_driver != null)
+	if(m_driver != nullptr)
 	{
 		m_driverOptions = m_driver->createOptions();
-		if(m_driverOptions != null)
+		if(m_driverOptions != nullptr)
 		{
 			const ordered_map<String, String> &driverParams = m_driverOptions->getParams();
 			for(ordered_map<String, String>::const_iterator i = driverParams.begin(); i != driverParams.end(); ++i)
@@ -327,13 +327,13 @@ void Subscribe::onPreRender()
 
 	bool viewParams = m_showPortalParams->getCheck();
 
-	OS_ASSERT(m_rowPortalLink != null);
+	OS_ASSERT(m_rowPortalLink != nullptr);
 	m_rowPortalLink->setVisible(!viewParams);
-	OS_ASSERT(m_rowName != null);
+	OS_ASSERT(m_rowName != nullptr);
 	m_rowName->setVisible(viewParams);
-	OS_ASSERT(m_rowID != null);
+	OS_ASSERT(m_rowID != nullptr);
 	m_rowID->setVisible(viewParams);
-	OS_ASSERT(m_rowUser != null);
+	OS_ASSERT(m_rowUser != nullptr);
 	m_rowUser->setVisible(viewParams);
 }
 
@@ -344,7 +344,7 @@ void Subscribe::onCancel()
 
 void Subscribe::onSubscribe()
 {
-	if(m_driver == null)
+	if(m_driver == nullptr)
 	{
 		reportError(httpStatusServiceUnavailable);
 		return;
@@ -369,19 +369,19 @@ void Subscribe::onSubscribe()
 	}
 
 	shared_ptr<Portal> currentPortal = PortalsSystem::instance()->getPortal(portalID, portalPov);
-	if(currentPortal != null)
+	if(currentPortal != nullptr)
 	{
 		redirect(currentPortal->getLink("view"));
 		return;
 	}
 
-	if(m_driverOptions != null)
+	if(m_driverOptions != nullptr)
 	{
 		const ordered_map<String, String> &driverParams = m_driverOptions->getParams();
 		for(ordered_map<String, String>::const_iterator i = driverParams.begin(); i != driverParams.end(); ++i)
 		{
 			shared_ptr<IHtmlInput> optionControl = getDriverOptionControl(m_driver->getName(), i->first);
-			if(optionControl != null)
+			if(optionControl != nullptr)
 			{
 				const String &paramValue = optionControl->getValue();
 				if(paramValue.empty() == false)
@@ -400,7 +400,7 @@ void Subscribe::onSubscribe()
 	options->setDatabaseOptions(m_driverOptions);
 
 	shared_ptr<Portal> portal = PortalsSystem::instance()->subscribePortal(options);
-	if(portal != null)
+	if(portal != nullptr)
 		//redirect(PortalsSystem::instance()->getAccountsLink(PortalsSystem::instance()->getPortal(portalID, portalUser)));
 		redirect(PortalsSystem::instance()->getPortalLink(portal, "view"));
 	else

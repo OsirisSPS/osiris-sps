@@ -2,19 +2,14 @@ import os
 import osiris
 import sys
 
-# enable debugger
-import ptvsd
-ptvsd.enable_attach(secret = '')	# optionally define a password
-#ptvsd.wait_for_attach()		# optional
-
 import globalvars
 
 # "Main" pages
 sys.path.append(os.path.join(os.path.dirname(__file__), "main"))
-import account
 import addons
 import omlhelp
 import bbobject
+import create
 import error
 import external
 import help
@@ -26,14 +21,13 @@ import mcp
 import network
 import redirect
 import register_main
-import subscribe
+import account
 import accounts2
 
 # "Portals" pages
 sys.path.append(os.path.join(os.path.dirname(__file__), "portals"))
 import assistant
 import changes
-import info
 import latest_discussions
 import latest_user_discussions
 import login
@@ -69,9 +63,6 @@ class MainHandler(osiris.IHttpDirectoryHandler):
 		
 		if(relPage == "about"):
 			page = about.MainPage(session)			
-			
-		if(relPage == "account"):
-			page = account.Page(session)			
 	
 		if(relPage == "addons"):
 			page = addons.Page(session)			
@@ -81,6 +72,9 @@ class MainHandler(osiris.IHttpDirectoryHandler):
 			
 		if(relPage == "bbobject"):
 			page = bbobject.Page(session)			
+			
+		if(relPage == "create"):
+			page = create.Page(session)			
 			
 		if(relPage == "error"):
 			page = error.Page(session)			
@@ -115,8 +109,8 @@ class MainHandler(osiris.IHttpDirectoryHandler):
 		if(relPage == "register"):
 			page = register_main.Page(session)			
 			
-		if(relPage == "subscribe"):
-			page = subscribe.Page(session)					
+		if(relPage == "account"):
+			page = account.Page(session)			
 			
 		if(relPage == "accounts2"):
 			page = accounts2.Page(session)			
@@ -146,9 +140,6 @@ class PortalsHandler(osiris.IHttpDirectoryHandler):
 		if(relPage == "assistant2"):
 			page = assistant.Page(session)			
 	
-		if(relPage == "info"):
-			page = info.Page(session)			
-			
 		if(relPage == "changes"):
 			page = changes.Page(session)			
 			

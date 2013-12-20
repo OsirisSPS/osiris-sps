@@ -52,7 +52,7 @@ bool HttpPostParam::isTextPlain() const
 const std::wstring & HttpPostParam::getString() const
 {
 	const std::wstring *value = boost::get<const std::wstring>(&m_value);
-	if(value != null)
+	if(value != nullptr)
 		return *value;
 
 	return constants::empty_wstring;

@@ -39,7 +39,7 @@ class XMLExport XMLDocument : public IXMLHandler,
 
 // Construction
 public:
-	XMLDocument(shared_ptr<XMLSchema> schema = null);
+	XMLDocument(shared_ptr<XMLSchema> schema = nullptr);
 	virtual ~XMLDocument();
 
 // Attributes

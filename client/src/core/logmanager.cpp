@@ -163,10 +163,10 @@ void pimpl<LogManager>::log(const String &message, LogLevel level, const std::st
 bool pimpl<LogManager>::flush()
 {
 	shared_ptr<LogMessage> message = peekMessage();
-	if(message == null)
+	if(message == nullptr)
 		return false;
 
-	while(message != null)
+	while(message != nullptr)
 	{
 		{
 			OS_LOCK(m_signalCS);
@@ -184,7 +184,7 @@ shared_ptr<LogMessage> pimpl<LogManager>::peekMessage()
 	OS_LOCK(m_dataCS);
 
 	if(m_messages.empty())
-		return null;
+		return nullptr;
 
 	shared_ptr<LogMessage> message = m_messages.front();
 	m_messages.pop_front();

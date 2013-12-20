@@ -115,7 +115,7 @@ public:
 	uint64 filePosition(FILE *handle);
 	bool fileFlush(FILE *handle);
 	bool fileEof(FILE *handle);
-	bool fileStats(FILE *handle, boost::posix_time::ptime *timeCreation, boost::posix_time::ptime *timeLastModify = null, boost::posix_time::ptime *timeLastAccess = null);
+	bool fileStats(FILE *handle, boost::posix_time::ptime *timeCreation, boost::posix_time::ptime *timeLastModify = nullptr, boost::posix_time::ptime *timeLastAccess = nullptr);
 
 	void debugBreak();
 

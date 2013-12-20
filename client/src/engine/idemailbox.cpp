@@ -116,9 +116,9 @@ void IdeMailBox::renderFolder(MessageFolder folder, shared_ptr<XMLNode> node)
 		{
 			shared_ptr<DataLocalMessage> local_message = *i;
 			shared_ptr<ObjectsMessage> message = local_message->decode(getSessionAccount()->getPrivateKey());
-			if(message != null)
+			if(message != nullptr)
 			{
-				if(node_messages == null)
+				if(node_messages == nullptr)
 					node_messages = node->addChild(_S("messages"));
 
 				shared_ptr<XMLPortalExporter> messageExporter(OS_NEW XMLPortalExporter(node_messages->addChild(_S("message")), getPage(), XMLPortalExporter::emLite));
@@ -159,17 +159,17 @@ void IdeMailBox::renderMessage(const ObjectID &id, shared_ptr<XMLNode> node)
 	shared_ptr<ObjectsMessage> message;
 
 	shared_ptr<DataLocalMessage> local_message = getPortal()->getMessenger()->getMessage(getPage()->getDatabase(), getSessionAccount(), id, true);
-	if(local_message != null)
+	if(local_message != nullptr)
 	{
 		// Decodifica il messaggio
 		message = local_message->decode(getSessionAccount()->getPrivateKey());
 	}
 
-	if(message == null)
+	if(message == nullptr)
 		return;
 
 	shared_ptr<OMLContext> messageContext = getPage()->parseOmlEx(message->body, false, true, getSecure(), false, omlRenderModeOsiris, String::EMPTY, String::EMPTY);
-	if(messageContext == null)
+	if(messageContext == nullptr)
 		return;
 
 	shared_ptr<XMLPortalExporter> messageExporter(OS_NEW XMLPortalExporter(node, getPage(), XMLPortalExporter::emFull));
@@ -178,7 +178,7 @@ void IdeMailBox::renderMessage(const ObjectID &id, shared_ptr<XMLNode> node)
 	shared_ptr<XMLNode> node_actions = node->addChild(_S("actions"));
 
 	shared_ptr<ObjectsUser> author = objects_user_cast(getPage()->getObject(local_message->author));
-	if(author != null)
+	if(author != nullptr)
 	{
 		shared_ptr<XMLNode> action_reply = node_actions->addChild(_S("action"));
 		action_reply->setAttributeString(_S("name"), _S("reply"));
@@ -207,10 +207,10 @@ void IdeMailBox::renderMessage(const ObjectID &id, shared_ptr<XMLNode> node)
 		if(unsafe == false)
 		{
 			shared_ptr<ObjectsUser> messageAuthor = objects_user_cast(getPage()->getObject(local_message->author));
-			if(messageAuthor != null)
+			if(messageAuthor != nullptr)
 			{
 				shared_ptr<OMLContext> markContext = getPage()->parseOmlEx(messageAuthor->mark, false, true, getSecure(), false, omlRenderModeOsiris, String::EMPTY, String::EMPTY);
-				if(markContext != null)
+				if(markContext != nullptr)
 					unsafe = markContext->getSecureCheck() == false;
 			}
 		}
@@ -233,7 +233,7 @@ void IdeMailBox::_renderFolder(MessageFolder folder)
 void IdeMailBox::onDeleteMessage(IEvent *e)
 {
 	HtmlEvent *htmlEvent = dynamic_cast<HtmlEvent *>(e);
-	if(htmlEvent == null)
+	if(htmlEvent == nullptr)
 		return;
 
 	ObjectID id = htmlEvent->get(0).to_ascii();
@@ -249,7 +249,7 @@ void IdeMailBox::onDeleteMessage(IEvent *e)
 void IdeMailBox::onRestoreMessage(IEvent *e)
 {
 	HtmlEvent *htmlEvent = dynamic_cast<HtmlEvent *>(e);
-	if(htmlEvent == null)
+	if(htmlEvent == nullptr)
 		return;
 
 	ObjectID id = htmlEvent->get(0).to_ascii();
@@ -265,7 +265,7 @@ void IdeMailBox::onRestoreMessage(IEvent *e)
 void IdeMailBox::onReadAllMessages(IEvent *e)
 {
 	HtmlEvent *htmlEvent = dynamic_cast<HtmlEvent *>(e);
-	if(htmlEvent == null)
+	if(htmlEvent == nullptr)
 		return;
 
 	MessageFolder folder = conversions::from_utf16<MessageFolder>(htmlEvent->get(0));
@@ -281,7 +281,7 @@ void IdeMailBox::onReadAllMessages(IEvent *e)
 void IdeMailBox::onDeleteAllMessages(IEvent *e)
 {
 	HtmlEvent *htmlEvent = dynamic_cast<HtmlEvent *>(e);
-	if(htmlEvent == null)
+	if(htmlEvent == nullptr)
 		return;
 
 	MessageFolder folder = conversions::from_utf16<MessageFolder>(htmlEvent->get(0));
@@ -311,7 +311,7 @@ void IdeMailBox::onDeleteAllMessages(IEvent *e)
 void IdeMailBox::onChangeOffset(IEvent *e)
 {
 	HtmlEvent *htmlEvent = dynamic_cast<HtmlEvent *>(e);
-	if(htmlEvent == null)
+	if(htmlEvent == nullptr)
 		return;
 
 	m_offset = conversions::from_utf16<uint32>(htmlEvent->get(0));

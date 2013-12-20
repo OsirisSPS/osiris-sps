@@ -49,13 +49,13 @@ HttpContent::~HttpContent()
 
 const Buffer & HttpContent::getContent() const
 {
-	OS_ASSERT(m_content != null);
+	OS_ASSERT(m_content != nullptr);
 	return *m_content;
 }
 
 bool HttpContent::empty() const
 {
-	OS_ASSERT(m_content != null);
+	OS_ASSERT(m_content != nullptr);
 	return m_content->empty();
 }
 
@@ -82,7 +82,7 @@ std::string HttpContent::toString() const
 
 	if(empty() == false)
 	{
-		OS_ASSERT(m_content != null);
+		OS_ASSERT(m_content != nullptr);
 		str.assign(reinterpret_cast<const achar *>(m_content->getData()), m_content->getSize());
 	}
 
@@ -91,7 +91,7 @@ std::string HttpContent::toString() const
 
 void HttpContent::processData(const byte *data, uint32 size)
 {
-	OS_ASSERT(m_content != null);
+	OS_ASSERT(m_content != nullptr);
 	m_content->write(data, size);
 
 	uint32 availableContent = m_content->getSize();
@@ -105,10 +105,10 @@ void HttpContent::processData(const byte *data, uint32 size)
 
 void HttpContent::processChunkedData(const byte *data, uint32 size)
 {
-	if(m_buffer == null)
+	if(m_buffer == nullptr)
 		m_buffer.reset(OS_NEW Buffer());
 
-	OS_ASSERT(m_buffer != null);
+	OS_ASSERT(m_buffer != nullptr);
 	m_buffer->write(data, size);
 
 	const byte *bufferData = m_buffer->getData();
@@ -130,7 +130,7 @@ void HttpContent::processChunkedData(const byte *data, uint32 size)
 
 			if(m_waitingLength == 0)
 			{
-				OS_ASSERT(m_content != null);
+				OS_ASSERT(m_content != nullptr);
 				m_content->write(bufferData + m_chunkStart, m_chunkSize);
 
 				m_chunkStart += m_chunkSize;
@@ -197,7 +197,7 @@ void HttpContent::processChunkedData(const byte *data, uint32 size)
 
 void HttpContent::update(bool completed, bool valid)
 {
-	OS_ASSERT(m_content != null);
+	OS_ASSERT(m_content != nullptr);
 
 	m_completed = completed;
 	m_valid = valid;

@@ -136,7 +136,7 @@ inline bool convertible(T1 value)
 template <typename T>
 inline T safe_string(typename T::const_pointer str)
 {
-	if(str != null)
+	if(str != nullptr)
 		return T(str);
 
 	return T();

@@ -176,7 +176,7 @@ shared_ptr<NodeStatus> NodeStatus::clone() const
 	connectionStatus->m_downloadedObjects = m_downloadedObjects;
 	connectionStatus->m_uploadedObjects = m_uploadedObjects;
 	connectionStatus->m_lastEvent = m_lastEvent;
-	if(m_peer != null)
+	if(m_peer != nullptr)
 		connectionStatus->m_peer.reset(OS_NEW IPAddress(*m_peer));
 
 	return connectionStatus;

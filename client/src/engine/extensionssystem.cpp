@@ -68,7 +68,7 @@ shared_ptr<IExtensionsCodeProvider> ExtensionsSystem::getCodeProvider(const Stri
 			return *i;
 	}
 
-	return null;
+	return nullptr;
 }
 
 shared_ptr<IExtensionsComponent> ExtensionsSystem::getComponent(const ExtensionsComponentID &id) const
@@ -76,14 +76,14 @@ shared_ptr<IExtensionsComponent> ExtensionsSystem::getComponent(const Extensions
 	OS_LOCK(m_cs);
 
 	Components::const_iterator i = m_components.find(id.toUTF16());
-	return i != m_components.end() ? i->second : null;
+	return i != m_components.end() ? i->second : nullptr;
 }
 
 bool ExtensionsSystem::hasComponent(const ExtensionsComponentID &id) const
 {
 	OS_LOCK(m_cs);
 
-	return getComponent(id) != null;
+	return getComponent(id) != nullptr;
 }
 
 shared_ptr<IExtensionsExtension> ExtensionsSystem::getExtension(const ExtensionID &id) const
@@ -94,14 +94,14 @@ shared_ptr<IExtensionsExtension> ExtensionsSystem::getExtension(const ExtensionI
 	if(i != m_extensions.end())
 		return i->second;
 
-	return null;
+	return nullptr;
 }
 
 bool ExtensionsSystem::hasExtension(const ExtensionID &id) const
 {
 	OS_LOCK(m_cs);
 
-	return getExtension(id) != null;
+	return getExtension(id) != nullptr;
 }
 
 shared_ptr<IExtensionsModule> ExtensionsSystem::getModule(const ExtensionsModuleID &id) const
@@ -109,14 +109,14 @@ shared_ptr<IExtensionsModule> ExtensionsSystem::getModule(const ExtensionsModule
 	OS_LOCK(m_cs);
 
 	Modules::const_iterator i = m_modules.find(id.toUTF16());
-	return i != m_modules.end() ? i->second : null;
+	return i != m_modules.end() ? i->second : nullptr;
 }
 
 bool ExtensionsSystem::hasModule(const ExtensionsModuleID &id) const
 {
 	OS_LOCK(m_cs);
 
-	return getModule(id) != null;
+	return getModule(id) != nullptr;
 }
 
 String ExtensionsSystem::getDataPath() const
@@ -145,14 +145,14 @@ bool ExtensionsSystem::registerCodeProvider(shared_ptr<IExtensionsCodeProvider> 
 {
 	OS_LOCK(m_cs);
 
-	if(codeProvider == null)
+	if(codeProvider == nullptr)
 	{
 		OS_ASSERTFALSE();
 		return false;
 	}
 
 	String name = codeProvider->getName();
-	if(getCodeProvider(name) != null)
+	if(getCodeProvider(name) != nullptr)
 	{
 		OS_LOG_ERROR(_S("Code provider '") + name + _S(" 'already registered"));
 		return false;
@@ -173,7 +173,7 @@ bool ExtensionsSystem::registerComponent(shared_ptr<IExtensionsComponent> compon
 {
 	OS_LOCK(m_cs);
 
-	if(component == null)
+	if(component == nullptr)
 	{
 		OS_ASSERTFALSE();
 		return false;
@@ -192,7 +192,7 @@ bool ExtensionsSystem::registerComponent(shared_ptr<IExtensionsComponent> compon
 	*/
 
 	shared_ptr<IExtensionsComponent> existing = getComponent(id);
-	if(existing != null)
+	if(existing != nullptr)
 	{
 		OS_LOG_ERROR(_S("Duplicated component: ") + existing->getName() + _S(", ") + name);
 		OS_ASSERTFALSE();
@@ -207,7 +207,7 @@ void ExtensionsSystem::unregisterComponent(shared_ptr<IExtensionsComponent> comp
 {
 	OS_LOCK(m_cs);
 
-	if(component == null)
+	if(component == nullptr)
 	{
 		OS_ASSERTFALSE();
 		return;
@@ -227,7 +227,7 @@ bool ExtensionsSystem::registerModule(shared_ptr<IExtensionsModule> module)
 {
 	OS_LOCK(m_cs);
 
-	if(module == null)
+	if(module == nullptr)
 	{
 		OS_ASSERTFALSE();
 		return false;
@@ -247,7 +247,7 @@ bool ExtensionsSystem::registerModule(shared_ptr<IExtensionsModule> module)
 
 //#ifndef OS_DEBUG
 	shared_ptr<IExtensionsModule> existing = getModule(id);
-	if(existing != null)
+	if(existing != nullptr)
 	{
 		OS_LOG_ERROR(_S("Duplicated module: ") + existing->getName() + _S(", ") + name);
 		return false;
@@ -262,7 +262,7 @@ void ExtensionsSystem::unregisterModule(shared_ptr<IExtensionsModule> module)
 {
 	OS_LOCK(m_cs);
 
-	if(module == null)
+	if(module == nullptr)
 	{
 		OS_ASSERTFALSE();
 		return;
@@ -293,7 +293,7 @@ shared_ptr<ExtensionsComponentEditor> ExtensionsSystem::createComponentEditor(co
 	OS_LOCK(m_cs);
 
 	shared_ptr<IExtensionsComponent> component = getComponent(id);
-	return component != null ? component->createEditor(entity) : null;
+	return component != nullptr ? component->createEditor(entity) : nullptr;
 }
 
 shared_ptr<ExtensionsComponentViewer> ExtensionsSystem::createComponentViewer(const ExtensionsComponentID &id, shared_ptr<EntitiesEntity> entity, bool force)
@@ -301,13 +301,13 @@ shared_ptr<ExtensionsComponentViewer> ExtensionsSystem::createComponentViewer(co
 	OS_LOCK(m_cs);
 
 	shared_ptr<IExtensionsComponent> component = getComponent(id);
-	if(component != null)
+	if(component != nullptr)
 		return component->createViewer(entity);
 
 	if(force)
 		return shared_ptr<ExtensionsComponentViewer>(OS_NEW ExtensionsInvalidComponent(id));
 
-	return null;
+	return nullptr;
 }
 
 shared_ptr<ExtensionsModuleEditor> ExtensionsSystem::createModuleEditor(const ExtensionsModuleID &id)
@@ -322,7 +322,7 @@ shared_ptr<ExtensionsModuleViewer> ExtensionsSystem::createModuleViewer(const Ex
 	OS_LOCK(m_cs);
 
 	shared_ptr<ExtensionsModuleViewer> viewer = allocModuleViewer(id);
-	if(viewer == null && ensure)
+	if(viewer == nullptr && ensure)
 		viewer.reset(OS_NEW ExtensionsInvalidModule(id));
 
 	return viewer;
@@ -332,7 +332,7 @@ bool ExtensionsSystem::loadExtension(shared_ptr<IExtensionsExtension> extension)
 {
 	OS_LOCK(m_cs);
 
-	if(extension == null)
+	if(extension == nullptr)
 	{
 		OS_ASSERTFALSE();
 		return false;
@@ -348,7 +348,7 @@ bool ExtensionsSystem::loadExtension(shared_ptr<IExtensionsExtension> extension)
 	}
 
 	shared_ptr<IExtensionsExtension> existing = getExtension(id);
-	if(existing != null)
+	if(existing != nullptr)
 	{
 		OS_LOG_ERROR(_S("Duplicated extension: ") + existing->getName() + _S(", ") + name);
 		return false;
@@ -522,7 +522,7 @@ shared_ptr<ExtensionsModuleEditor> ExtensionsSystem::allocModuleEditor(const Ext
 	OS_LOCK(m_cs);
 
 	shared_ptr<IExtensionsModule> module = getModule(id);
-	return module != null ? module->createEditor() : null;
+	return module != nullptr ? module->createEditor() : nullptr;
 }
 
 shared_ptr<ExtensionsModuleViewer> ExtensionsSystem::allocModuleViewer(const ExtensionsModuleID &id)
@@ -530,7 +530,7 @@ shared_ptr<ExtensionsModuleViewer> ExtensionsSystem::allocModuleViewer(const Ext
 	OS_LOCK(m_cs);
 
 	shared_ptr<IExtensionsModule> module = getModule(id);
-	return module != null ? module->createViewer() : null;
+	return module != nullptr ? module->createViewer() : nullptr;
 }
 
 void ExtensionsSystem::clear()

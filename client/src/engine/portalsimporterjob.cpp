@@ -77,16 +77,16 @@ pimpl<PortalsImporterJob>::pimpl(shared_ptr<Portal> portal, shared_ptr<IStream> 
 																						 m_stream(stream),																						 
 																						 m_serializer(OS_NEW PortalsSerializer())
 {
-	OS_ASSERT(portal != null);
-	OS_ASSERT(stream != null);	
+	OS_ASSERT(portal != nullptr);
+	OS_ASSERT(stream != nullptr);	
 }
 
 pimpl<PortalsImporterJob>::pimpl(shared_ptr<Portal> portal, const String &url) : m_portal(portal),
-																				 m_stream(null),																						 
+																				 m_stream(nullptr),																						 
 																				 m_url(url),
 																				 m_serializer(OS_NEW PortalsSerializer())
 {
-	OS_ASSERT(portal != null);	
+	OS_ASSERT(portal != nullptr);	
 }
 
 pimpl<PortalsImporterJob>::~pimpl()
@@ -120,10 +120,10 @@ void pimpl<PortalsImporterJob>::run()
 
 	m_status = String::EMPTY;
 
-	if(m_stream != null)
+	if(m_stream != nullptr)
 	{
 		shared_ptr<Portal> portal = m_portal.lock();
-		if(portal == null || m_stream == null)
+		if(portal == nullptr || m_stream == nullptr)
 			return;
 
 		m_status = "importing";
@@ -157,7 +157,7 @@ void pimpl<PortalsImporterJob>::run()
 				shared_ptr<MemFile> content(OS_NEW MemFile(response->getContent()->getContentPtr()));
 				
 				shared_ptr<Portal> portal = m_portal.lock();
-				if(portal == null)
+				if(portal == nullptr)
 					return;
 
 				m_serializer->setStopped(false);
@@ -209,7 +209,7 @@ void PortalsImporterJob::stop()
 IJob::JobStatus PortalsImporterJob::run()
 {
 	shared_ptr<Portal> portal = m_impl->getPortal();
-	if(portal == null)
+	if(portal == nullptr)
 		return jobComplete;
 
 	NotificationsManager::instance()->notify(_S("Import on '") + portal->getName() + _S("' started."));
@@ -226,7 +226,7 @@ shared_ptr<IBackgroundJob::Details> PortalsImporterJob::getDetails() const
 	String jobName(Engine::instance()->getText("job.importer"));
 
 	shared_ptr<Portal> portal = m_impl->getPortal();
-	if(portal != null)
+	if(portal != nullptr)
 	{
 		jobName.append(" - ");
 		jobName.append(portal->getName());
@@ -238,11 +238,11 @@ shared_ptr<IBackgroundJob::Details> PortalsImporterJob::getDetails() const
 	details->setStatus(status.to_wide());
 
 	shared_ptr<PortalsSerializer> serializer = m_impl->getSerializer();	
-	if(serializer != null)
+	if(serializer != nullptr)
 		details->setPercentage(serializer->getProgressPercentage());
 
 	shared_ptr<PortalsSerializer::IResult> result = m_impl->getResult();
-	if(portal != null && result != null)
+	if(portal != nullptr && result != nullptr)
 	{
 		// TOTRANSLATE
 		String msg = _S("[center][url=\"{@url}\"]Enter in portal[/url][/center][br/][br/][sub]Objects: [b]{@total}[/b], Imported: [b]{@imported}[/b], Skipped: [b]{@skipped}[/b], Invalid: [b]{@invalid}[/b][/sub]");

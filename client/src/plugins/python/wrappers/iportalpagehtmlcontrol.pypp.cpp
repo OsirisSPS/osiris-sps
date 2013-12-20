@@ -15,14 +15,14 @@
 #include "httprequest.h"
 #include "httpresponse.h"
 #include "httpsession.h"
-#include "idetablequery.h"
-#include "idesearchglobalparams.h"
-#include "ideassistant.h"
-#include "idesearchquery.h"
+#include "idevoteeditor.h"
 #include "idepickerobjectex.h"
 #include "idemailbox.h"
 #include "idesearchresults.h"
-#include "idevoteeditor.h"
+#include "idetablequery.h"
+#include "idesearchglobalparams.h"
+#include "idesearchquery.h"
+#include "ideassistant.h"
 #include "iportalpagehtmlcontrol.pypp.hpp"
 
 namespace bp = boost::python;
@@ -32,7 +32,7 @@ struct IPortalPageControl_less__osiris_scope_IHtmlControl__greater__wrapper : ::
     IPortalPageControl_less__osiris_scope_IHtmlControl__greater__wrapper( )
     : ::osiris::IPortalPageControl<osiris::IHtmlControl>( )
       , ::osiris::PythonWrapper< ::osiris::IPortalPageControl< osiris::IHtmlControl > >(){
-        // null constructor
+        // nullptr constructor
     
     }
 

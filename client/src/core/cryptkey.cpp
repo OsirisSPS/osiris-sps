@@ -85,7 +85,7 @@ inline uint32 pimpl<CryptKey>::getHMACSize()
 
 const Buffer & pimpl<CryptKey>::updateKey(const void *data, uint32 size, bool reset)
 {
-	OS_EXCEPT_IF(data == null || size == 0, "Invalid key");
+	OS_EXCEPT_IF(data == nullptr || size == 0, "Invalid key");
 
 	// N.B.: NON modificare il metodo di generazione/derivazione di una chiave altrimenti
 	// si falsano tutti i dati codificati in precedenza
@@ -110,7 +110,7 @@ const Buffer & pimpl<CryptKey>::updateKey(const void *data, uint32 size, bool re
 
 const Buffer & pimpl<CryptKey>::updateIV(const void *data, uint32 size)
 {
-	OS_EXCEPT_IF(data == null || size == 0, "Invalid iv");
+	OS_EXCEPT_IF(data == nullptr || size == 0, "Invalid iv");
 
 	// N.B.: NON modificare il metodo di calcolo di un IV a partire da un buffer altrimenti
 	// si falsano tutti i dati codificati in precedenza
@@ -122,7 +122,7 @@ const Buffer & pimpl<CryptKey>::updateIV(const void *data, uint32 size)
 
 Buffer pimpl<CryptKey>::generateHMAC(const void *data, uint32 size) const
 {
-	OS_ASSERT(data != null && size > 0);
+	OS_ASSERT(data != nullptr && size > 0);
 
     Buffer hmac;
 	hmac.reserve(CryptoPP::HMAC<CryptoPP::SHA>::DIGESTSIZE);

@@ -40,7 +40,7 @@ class WebExport HtmlXSLControl : public IHtmlControl
 
 // Construction
 public:
-	HtmlXSLControl(shared_ptr<XMLStylesheet> stylesheet = null, shared_ptr<XMLDocument> document = null);
+	HtmlXSLControl(shared_ptr<XMLStylesheet> stylesheet = nullptr, shared_ptr<XMLDocument> document = nullptr);
 	virtual ~HtmlXSLControl();
 
 // Attributes

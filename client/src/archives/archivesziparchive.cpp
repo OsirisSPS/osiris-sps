@@ -102,15 +102,15 @@ pimpl<ArchivesZipArchive>::ArchivesZipArchiveStream::~ArchivesZipArchiveStream()
 
 bool pimpl<ArchivesZipArchive>::ArchivesZipArchiveStream::is_open() const
 {
-	return m_zzipFile != null;
+	return m_zzipFile != nullptr;
 }
 
 bool pimpl<ArchivesZipArchive>::ArchivesZipArchiveStream::close()
 {
-	if(m_zzipFile != null)
+	if(m_zzipFile != nullptr)
 	{
 		zzip_file_close(m_zzipFile);
-		m_zzipFile = null;
+		m_zzipFile = nullptr;
 	}
 
 	return true;
@@ -118,7 +118,7 @@ bool pimpl<ArchivesZipArchive>::ArchivesZipArchiveStream::close()
 
 uint32 pimpl<ArchivesZipArchive>::ArchivesZipArchiveStream::read(void *v, uint32 size) const
 {
-	if(m_zzipFile == null)
+	if(m_zzipFile == nullptr)
 	{
 		OS_ASSERTFALSE();
 		return 0;
@@ -264,27 +264,27 @@ shared_ptr<IStream> pimpl<ArchivesZipArchive>::ArchivesZipArchiveEntry::openStre
 	OS_ASSERT(isFolder() == false);
 
 	if(m_name.empty())
-		return null;
+		return nullptr;
 
 	shared_ptr<ArchivesZipArchive> zipArchive = boost::dynamic_pointer_cast<ArchivesZipArchive>(getArchive());
-	if(zipArchive == null)
+	if(zipArchive == nullptr)
 	{
 		OS_ASSERTFALSE();
-		return null;
+		return nullptr;
 	}
 
 	ZZIP_DIR *zzipDirectory = zipArchive->getImpl()->getDirectory();
-	if(zzipDirectory == null)
+	if(zzipDirectory == nullptr)
 	{
 		OS_ASSERTFALSE();
-		return null;
+		return nullptr;
 	}
 
 	// VERYURGENT: verificare zzip unicode
 
 	// N.B.: non usare qui utils::makeFilePath perchè internamente nella zzip i path devono essere sempre separati da '/'
 	ZZIP_FILE *zzipFile = zzip_file_open(zzipDirectory, (m_path + m_name).to_ascii().c_str(), ZZIP_ONLYZIP | ZZIP_CASELESS);
-    if(zzipFile == null)
+    if(zzipFile == nullptr)
 	{
 		String error = "Cannot open '" + m_name + "'";
 		String message = pimpl<ArchivesZipArchive>::getZzipErrorDescription(static_cast<zzip_error_t>(zzip_error(zzipDirectory)));
@@ -292,7 +292,7 @@ shared_ptr<IStream> pimpl<ArchivesZipArchive>::ArchivesZipArchiveEntry::openStre
 			error += ": " + message;
 
 		OS_LOG_ERROR(error);
-		return null;
+		return nullptr;
 	}
 
 	return shared_ptr<IStream>(OS_NEW pimpl<ArchivesZipArchive>::ArchivesZipArchiveStream(zzipFile, m_uncompressedSize));
@@ -317,7 +317,7 @@ void pimpl<ArchivesZipArchive>::ArchivesZipArchiveEntry::splitFilename(const Str
 
 //////////////////////////////////////////////////////////////////////
 
-pimpl<ArchivesZipArchive>::pimpl() : m_root(null)
+pimpl<ArchivesZipArchive>::pimpl() : m_root(nullptr)
 {
 
 }
@@ -336,7 +336,7 @@ bool pimpl<ArchivesZipArchive>::open(shared_ptr<IArchivesArchive> archive, const
 {
 	close();
 
-	OS_ASSERT(m_root == null);
+	OS_ASSERT(m_root == nullptr);
 
 	// VERYURGENT: verificare zzip unicode
 
@@ -365,10 +365,10 @@ bool pimpl<ArchivesZipArchive>::open(shared_ptr<IArchivesArchive> archive, const
 
 void pimpl<ArchivesZipArchive>::close()
 {
-	if(m_root != null)
+	if(m_root != nullptr)
     {
 		zzip_dir_close(m_root);
-        m_root = null;        
+        m_root = nullptr;        
 	}
 
 	m_entries.clear();

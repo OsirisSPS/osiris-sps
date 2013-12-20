@@ -36,7 +36,7 @@ const String DbSchemaField::NAME = _S("name");
 const String DbSchemaField::OLD_NAME = _S("old_name");
 const String DbSchemaField::TYPE = _S("type");
 const String DbSchemaField::SIZE = _S("size");
-const String DbSchemaField::ALLOW_NULL = _S("null");
+const String DbSchemaField::ALLOW_NULL = _S("nullptr");
 const String DbSchemaField::DEFAULT = _S("default");
 const String DbSchemaField::PRIMARY = _S("primary");
 
@@ -65,7 +65,7 @@ DbSchemaField::~DbSchemaField()
 const String & DbSchemaField::getTableName() const
 {
 	shared_ptr<DbSchemaTable> table = getTable();
-	if(table != null)
+	if(table != nullptr)
 		return table->getName();
 
 	return String::EMPTY;
@@ -73,8 +73,8 @@ const String & DbSchemaField::getTableName() const
 
 bool DbSchemaField::parse(shared_ptr<XMLNode> nodeField)
 {
-	OS_ASSERT(nodeField != null);
-	if(nodeField == null)
+	OS_ASSERT(nodeField != nullptr);
+	if(nodeField == nullptr)
 		return false;
 
 	if(_parseName(nodeField->getAttributeString(NAME)) == false)

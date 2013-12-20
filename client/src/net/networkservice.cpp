@@ -110,7 +110,7 @@ void NetworkService::handleIdle()
 
 void NetworkService::startTimer()
 {
-	if(m_impl->timer == null)
+	if(m_impl->timer == nullptr)
 		return;
 
 	m_impl->timer->expires_from_now(boost::posix_time::seconds(1));

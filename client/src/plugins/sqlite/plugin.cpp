@@ -202,7 +202,7 @@ static bool pluginInitialize(Plugin &plugin)
 		return false;
 
 	shared_ptr<ThirdPartyLibrary> sqliteLibrary = ThirdPartyLibrariesReporter::instance()->addLibrary();
-	OS_ASSERT(sqliteLibrary != null);
+	OS_ASSERT(sqliteLibrary != nullptr);
 	sqliteLibrary->setName("Sqlite");
 	sqliteLibrary->setVersion(sqlite3_libversion());
     sqliteLibrary->setDescription("SQLite is a in-process library that implements a self-contained, serverless, zero-configuration, transactional SQL database engine.");

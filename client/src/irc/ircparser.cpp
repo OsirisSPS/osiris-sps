@@ -57,19 +57,19 @@ shared_ptr<IIRCCommand> IRCParser::parse(shared_ptr<IRCSession> session, const s
 {
 	OS_ASSERT(algorithms::trim_copy(str) == str);
 
-	if(session == null)
+	if(session == nullptr)
 	{
 		OS_ASSERTFALSE();
-		return null;
+		return nullptr;
 	}
 
 	size_t pos = str.find(" ");
 	if(pos == std::string::npos)
-		return null;
+		return nullptr;
 
 	std::string prefix = algorithms::left(str, pos);
 	if(prefix.empty())
-		return null;
+		return nullptr;
 
 	if(algorithms::starts_with(prefix, ":"))
 	{
@@ -169,7 +169,7 @@ shared_ptr<IIRCCommand> IRCParser::parse(shared_ptr<IRCSession> session, const s
 		}
 	}
 
-	return null;
+	return nullptr;
 }
 
 bool IRCParser::parseNickname(const std::string &str, std::string &name, IRCUserType &type)
@@ -202,11 +202,11 @@ shared_ptr<IIRCCommand> IRCParser::parseCommandChannel(shared_ptr<IRCSession> se
 	
 	// Salta il 'target' del comando
 	if(algorithms::tokenize_next(content, " ", pos).empty())	
-		return null;
+		return nullptr;
 
 	std::string channelName = algorithms::tokenize_next(content, " ", pos);
 	if(channelName.empty())
-		return null;
+		return nullptr;
 
 	std::string channelUsers = algorithms::tokenize_next(content, " ", pos);
 	std::string channelDescription;
@@ -225,14 +225,14 @@ shared_ptr<IIRCCommand> IRCParser::parseCommandEndOfNames(shared_ptr<IRCSession>
 	if(algorithms::tokenize_next(content, " ", pos).empty())	
 	{
 		OS_ASSERTFALSE();
-		return null;
+		return nullptr;
 	}
 
 	std::string channel = algorithms::tokenize_next(content, " :", pos);
 	if(channel.empty())
 	{
 		OS_ASSERTFALSE();
-		return null;
+		return nullptr;
 	}
 
 	return shared_ptr<IRCCommandEndOfNames>(OS_NEW IRCCommandEndOfNames(session, channel));	
@@ -251,7 +251,7 @@ shared_ptr<IIRCCommand> IRCParser::parseCommandKick(shared_ptr<IRCSession> sessi
 	if(tokensCount < 2)
 	{
 		OS_ASSERTFALSE();
-		return null;
+		return nullptr;
 	}
 
 	std::string channel = tokens[0];
@@ -279,7 +279,7 @@ shared_ptr<IIRCCommand> IRCParser::parseCommandMode(shared_ptr<IRCSession> sessi
 	if(tokensCount < 2)
 	{
 		OS_ASSERTFALSE();
-		return null;
+		return nullptr;
 	}
 
 	std::string target = tokens[0];	
@@ -341,14 +341,14 @@ shared_ptr<IIRCCommand> IRCParser::parseCommandNames(shared_ptr<IRCSession> sess
 	if(pos == std::string::npos)
 	{
 		OS_ASSERTFALSE();
-		return null;
+		return nullptr;
 	}
 
 	std::string channel = algorithms::tokenize_next(content, " :", pos);
 	if(channel.empty())
 	{
 		OS_ASSERTFALSE();
-		return null;
+		return nullptr;
 	}
 	
 	shared_ptr<IRCCommandNames> command(OS_NEW IRCCommandNames(session, channel));
@@ -375,12 +375,12 @@ shared_ptr<IIRCCommand> IRCParser::parseCommandPart(shared_ptr<IRCSession> sessi
 
 shared_ptr<IIRCCommand> IRCParser::parseCommandPing(shared_ptr<IRCSession> session, const std::string &content)
 {
-	OS_ASSERT(session != null);
+	OS_ASSERT(session != nullptr);
 
 	if(content.empty())
 	{
 		OS_ASSERTFALSE();
-		return null;
+		return nullptr;
 	}
 
 	return shared_ptr<IIRCCommand>(OS_NEW IRCCommandPing(session, content));
@@ -392,7 +392,7 @@ shared_ptr<IIRCCommand> IRCParser::parseCommandPrivmsg(shared_ptr<IRCSession> se
 
 	size_t pos = content.find(" ");
 	if(pos == std::string::npos)
-		return null;
+		return nullptr;
 
 	std::string target = algorithms::left(content, pos);
 	OS_ASSERT(user != target);
@@ -400,7 +400,7 @@ shared_ptr<IIRCCommand> IRCParser::parseCommandPrivmsg(shared_ptr<IRCSession> se
 	std::string message = algorithms::trim_left_copy(algorithms::mid(content, pos + 1), boost::algorithm::is_any_of(":"));
 	// Controlla se il messaggio un è comando CTC
 	if(algorithms::starts_with(message, "\x01"))		
-		return null;	// TODO: CTC non supportato
+		return nullptr;	// TODO: CTC non supportato
 
 	shared_ptr<IRCCommandMessage> command(OS_NEW IRCCommandMessage(session));
 	command->setSender(user);

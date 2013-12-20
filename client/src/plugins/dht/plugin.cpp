@@ -44,7 +44,7 @@ static bool pluginInitialize(Plugin &plugin)
 
 static bool pluginTerminate()
 {
-	if(g_dht != null)
+	if(g_dht != nullptr)
 	{
 		g_dht->stop();
 		g_dht.reset();

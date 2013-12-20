@@ -16,7 +16,7 @@ struct IIdePageable_wrapper : ::osiris::IIdePageable, ::osiris::PythonWrapper< :
     IIdePageable_wrapper( )
     : ::osiris::IIdePageable( )
       , ::osiris::PythonWrapper< ::osiris::IIdePageable >(){
-        // null constructor
+        // nullptr constructor
     
     }
 

@@ -84,10 +84,10 @@ const DataTree & IHtmlControl::getViewState() const
 	OS_ASSERT(getTarget().empty() == false);
 
 	shared_ptr<HtmlPage> page = getPage();
-	if(page != null && hasID())
+	if(page != nullptr && hasID())
 	{	
 		DataTree *view_state = page->getViewStates().getTP(getTarget());
-		if(view_state != null)
+		if(view_state != nullptr)
             return *view_state;
 	}
 
@@ -123,7 +123,7 @@ String IHtmlControl::getTarget() const
 
 	String target;
 	shared_ptr<const IHtmlControl> current = get_this_ptr();
-	while(current != null)
+	while(current != nullptr)
 	{
 		const String &id = current->getID();		
 		if(id.empty() == false)
@@ -182,7 +182,7 @@ bool IHtmlControl::getVisible() const
 		return false;
 
 	shared_ptr<IHtmlControl> parent = getParent();
-	if(parent != null)
+	if(parent != nullptr)
 		return parent->getVisible();
 
 	return true;
@@ -197,7 +197,7 @@ String IHtmlControl::encodeEvent(const String &eventName, const HtmlEvent *e) co
 {
 	OS_EXCEPT_IF(eventName.find(_S(":")) != String::npos, "Invalid event name");
 	
-	if((e == null) || e->empty())
+	if((e == nullptr) || e->empty())
 		return eventName;
     
 	return eventName + _S(":") + e->encode();
@@ -222,7 +222,7 @@ bool IHtmlControl::decodeEvent(const String &command, String &eventName, HtmlEve
 shared_ptr<IHtmlControl> IHtmlControl::findTarget(const String &target)
 {
 	if(target.empty()) 
-		return null;
+		return nullptr;
 
 	if(m_id == target) 
 		return get_this_ptr();
@@ -236,7 +236,7 @@ shared_ptr<IHtmlControl> IHtmlControl::findTarget(const String &target)
 		if(m_id.empty() == false)
 		{
 			if(targetIn != m_id) 
-				return null;
+				return nullptr;
 		   
 			targetNew = target.mid(pos + 1);
 		}
@@ -245,11 +245,11 @@ shared_ptr<IHtmlControl> IHtmlControl::findTarget(const String &target)
 	for(HtmlControls::const_iterator i = m_controls->begin(); i != m_controls->end(); ++i)
 	{
 		shared_ptr<IHtmlControl> child = (*i)->findTarget(targetNew);
-		if(child != null) 
+		if(child != nullptr) 
 			return child;
 	}
 
-	return null;
+	return nullptr;
 }
 
 void IHtmlControl::render(shared_ptr<HtmlPage> page, HtmlWriter &writer)
@@ -282,7 +282,7 @@ void IHtmlControl::renderChilds(HtmlWriter &writer)
 {
 	writer.indent();
 
-	OS_ASSERT(getPage() != null);
+	OS_ASSERT(getPage() != nullptr);
 	for(HtmlControls::iterator i = m_controls->begin(); i != m_controls->end(); (*i)->render(getPage(), writer), ++i);
 
 	writer.unindent();
@@ -326,7 +326,7 @@ bool IHtmlControl::ensureStatus(shared_ptr<HtmlPage> page, const Status &status)
 	if(page->getSession()->getProcessed())
 			return false;
 
-	if(getPage() == null) 
+	if(getPage() == nullptr) 
 		m_page = page;
 
 	if(status == csNone)
@@ -405,7 +405,7 @@ void IHtmlControl::onInit()
 		OS_ASSERT(getTarget().empty() == false);
 
 		DataTree *state = getPage()->getViewStates().getTP(getTarget());
-		if(state != null)
+		if(state != nullptr)
             onLoadViewState(*state);
 	}	
 }

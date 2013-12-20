@@ -53,8 +53,8 @@ IdeAccount::~IdeAccount()
 	if(getDeleted())
 	{
 		shared_ptr<Portal> portal = getPortal();
-		OS_ASSERT(portal != null);
-		if(portal != null)
+		OS_ASSERT(portal != nullptr);
+		if(portal != nullptr)
 		{
 			portal->deleteAccount(getID());
 		}
@@ -92,7 +92,7 @@ bool Account::isLogged() const
 /* // TOCLEAN
 shared_ptr<ObjectsUser> IdeAccount::loadUser(shared_ptr<IPortalDatabase> database)
 {
-	OS_ASSERT(database != null);
+	OS_ASSERT(database != nullptr);
 
 	shared_ptr<ObjectsUser> user;
 

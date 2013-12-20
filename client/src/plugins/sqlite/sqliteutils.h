@@ -26,8 +26,8 @@ namespace sqlite {
 //////////////////////////////////////////////////////////////////////
 
 int32 safe_sqlite_finalize(sqlite3_stmt *stmt);
-int32 safe_sqlite_prepare(sqlite3 *db, const String &sql, sqlite3_stmt **stmt, const void **reminder = null);
-int32 safe_sqlite_prepare(sqlite3 *db, const void *buffer, int32 bytes, sqlite3_stmt **stmt, const void **reminder = null);
+int32 safe_sqlite_prepare(sqlite3 *db, const String &sql, sqlite3_stmt **stmt, const void **reminder = nullptr);
+int32 safe_sqlite_prepare(sqlite3 *db, const void *buffer, int32 bytes, sqlite3_stmt **stmt, const void **reminder = nullptr);
 int32 safe_sqlite_step(sqlite3_stmt *stmt);
 
 std::string sqlite_error_code(int32 code);

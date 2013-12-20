@@ -14,7 +14,7 @@ struct StaticSingleton_less__osiris_scope_ThirdPartyLibrariesReporter_comma__tru
     StaticSingleton_less__osiris_scope_ThirdPartyLibrariesReporter_comma__true__greater__wrapper( )
     : ::osiris::StaticSingleton<osiris::ThirdPartyLibrariesReporter, true>( )
       , ::osiris::PythonWrapper< ::osiris::StaticSingleton< osiris::ThirdPartyLibrariesReporter, true > >(){
-        // null constructor
+        // nullptr constructor
     
     }
 

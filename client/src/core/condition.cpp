@@ -51,14 +51,14 @@ Condition::~Condition()
 bool Condition::isValid() const
 {
 	boost::timed_mutex::scoped_lock lock(m_impl->mutex);
-	return m_impl->condition != null;
+	return m_impl->condition != nullptr;
 }
 
 void Condition::create()
 {
 	boost::timed_mutex::scoped_lock lock(m_impl->mutex);
 
-	if(m_impl->condition == null)
+	if(m_impl->condition == nullptr)
 		m_impl->condition.reset(OS_NEW_T(boost::condition), os_delete_t());
 }
 	
@@ -66,7 +66,7 @@ void Condition::reset()
 {
 	boost::timed_mutex::scoped_lock lock(m_impl->mutex);
 
-	if(m_impl->condition != null)
+	if(m_impl->condition != nullptr)
 	{
 		m_impl->condition->notify_all();
 		m_impl->condition.reset();
@@ -77,7 +77,7 @@ bool Condition::wait()
 {
 	boost::timed_mutex::scoped_lock lock(m_impl->mutex);
 
-	if(m_impl->condition == null)
+	if(m_impl->condition == nullptr)
 		return false;
 
 	// N.B.: effettua una copia per evitare che una possibile reset distrugga l'oggetto (in questo modo verrebbe distrutto all'uscita della funzione)
@@ -91,7 +91,7 @@ bool Condition::wait(uint32 millisec)
 {
 	boost::timed_mutex::scoped_lock lock(m_impl->mutex);
 	
-	if(m_impl->condition == null)
+	if(m_impl->condition == nullptr)
 		return false;
 
 	// N.B.: effettua una copia per evitare che una possibile reset distrugga l'oggetto (in questo modo verrebbe distrutto all'uscita della funzione)
@@ -105,14 +105,14 @@ void Condition::signal()
 
 	{
 		boost::timed_mutex::scoped_lock lock(m_impl->mutex);
-		if(m_impl->condition == null)
+		if(m_impl->condition == nullptr)
 			return;
 
 		// N.B.: effettua una copia per evitare che una possibile reset distrugga l'oggetto (in questo modo verrebbe distrutto all'uscita della funzione)
 		condition = m_impl->condition;
 	}
 	
-	OS_ASSERT(condition != null);
+	OS_ASSERT(condition != nullptr);
 	condition->notify_all();
 }
 

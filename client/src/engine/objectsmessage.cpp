@@ -116,11 +116,11 @@ bool ObjectsMessage::_fromString(const String &str)
 
 	shared_ptr<XMLNode> root = document->getRoot();
 	shared_ptr<XMLNode> subject_node = root->getNode(OS_MESSAGE_XML_SUBJECT);
-	if(subject_node != null)
+	if(subject_node != nullptr)
 		subject = subject_node->getData();
 
 	shared_ptr<XMLNode> body_node = root->getNode(OS_MESSAGE_XML_BODY);
-	if(body_node != null)
+	if(body_node != nullptr)
 		body = body_node->getData();
 
 	return true;

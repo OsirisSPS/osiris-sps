@@ -55,7 +55,7 @@ public:
 	virtual uint64 getCompressedSize() const = 0;
 	// Restituisce la dimensione decompressa del file (0 nel caso di directory)
 	virtual uint64 getUncompressedSize() const = 0;
-	// Apre lo stream del file (restituisce sempre null nel caso di directory)
+	// Apre lo stream del file (restituisce sempre nullptr nel caso di directory)
 	virtual shared_ptr<IStream> openStream() const = 0;
 
 private:

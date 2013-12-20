@@ -71,7 +71,7 @@ ExtensionsWizard::~ExtensionsWizard()
 void ExtensionsWizard::run()
 {
 	wxSizer *sizer = GetSizer();
-	if(sizer != null)
+	if(sizer != nullptr)
 	{
 		// Il bordo della colonna principale nel wizard viene settato a 5px e, non essendo al momento
 		// regolabile, viene qui modificato in questo modo...
@@ -122,7 +122,7 @@ void ExtensionsWizard::OnWizardFinished(wxWizardEvent &e)
 	{
 		if((*i).script)
 		{
-			if(nodeScripts == null)
+			if(nodeScripts == nullptr)
 				nodeScripts = nodeRoot->addChild(OS_EXTENSION_XML_NODE_SCRIPTS);
 
 			shared_ptr<XMLNode> nodeScript = nodeScripts->addChild(OS_EXTENSION_XML_NODE_SCRIPT);

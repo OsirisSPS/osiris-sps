@@ -19,7 +19,7 @@ struct PortalsSystem_wrapper : ::osiris::PortalsSystem, ::osiris::PythonWrapper<
     PortalsSystem_wrapper( )
     : ::osiris::PortalsSystem( )
       , ::osiris::PythonWrapper< ::osiris::PortalsSystem >(){
-        // null constructor
+        // nullptr constructor
     
     }
 
@@ -217,13 +217,6 @@ struct PortalsSystem_wrapper : ::osiris::PortalsSystem, ::osiris::PythonWrapper<
         ::osiris::PythonThreadSaver __pythreadSaver;
         inst.addPortalsListener(listener);
         __pythreadSaver.restore();
-    }
-
-    static boost::python::object createPortal( ::osiris::PortalsSystem & inst, ::boost::shared_ptr< osiris::PortalOptions > options ){
-        ::osiris::PythonThreadSaver __pythreadSaver;
-        ::boost::shared_ptr<osiris::Portal> result = inst.createPortal(options);
-        __pythreadSaver.restore();
-        return boost::python::object( result );
     }
 
     static boost::python::object ensurePortal( ::osiris::PortalsSystem & inst, ::boost::shared_ptr< osiris::OsirisLink > link, ::osiris::String const & password=(osiris::String::EMPTY) ){
@@ -605,16 +598,6 @@ void register_PortalsSystem_class(){
                 "addPortalsListener"
                 , addPortalsListener_function_type( &PortalsSystem_wrapper::addPortalsListener )
                 , ( ::boost::python::arg("inst"), ::boost::python::arg("listener") ) );
-        
-        }
-        { //::osiris::PortalsSystem::createPortal
-        
-            typedef boost::python::object ( *createPortal_function_type )( ::osiris::PortalsSystem &,::boost::shared_ptr<osiris::PortalOptions> );
-            
-            PortalsSystem_exposer.def( 
-                "createPortal"
-                , createPortal_function_type( &PortalsSystem_wrapper::createPortal )
-                , ( ::boost::python::arg("inst"), ::boost::python::arg("options") ) );
         
         }
         { //::osiris::PortalsSystem::ensurePortal

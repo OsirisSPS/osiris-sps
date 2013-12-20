@@ -92,7 +92,7 @@
     <ClCompile>
       <Optimization>Disabled</Optimization>
       <AdditionalIncludeDirectories>../../dependencies/include/common;../../dependencies/include/common/wxwidgets;../../dependencies/include/windows/i386/vc10/$(Configuration)/wxwidgets;../core;../xml;../web;../lang;../skin;../net;../engine;../http;../upnp;../irc;../db;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;_USRDLL;OS_UI_LIB;UNICODE;WXUSINGDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;_USRDLL;OS_UI_LIB;UNICODE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <MinimalRebuild>false</MinimalRebuild>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
@@ -103,7 +103,7 @@
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
     </ClCompile>
     <Link>
-      <AdditionalDependencies>wxmsw29ud_core.lib;wxbase29ud.lib;wxmsw29ud_adv.lib;wxmsw29ud_aui.lib;wxbase29ud_net.lib;wxmsw29ud_richtext.lib;ssleay32.lib;libeay32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>wxmsw30ud_core.lib;wxbase30ud.lib;wxmsw30ud_adv.lib;wxmsw30ud_aui.lib;wxbase30ud_net.lib;wxmsw30ud_richtext.lib;wxmsw30ud_html.lib;wxbase30ud_xml.lib;wxexpatd.lib;wxjpegd.lib;wxtiffd.lib;wxzlibd.lib;wxpngd.lib;ssleay32.lib;libeay32.lib;Winmm.lib;Comctl32.lib;Rpcrt4.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <OutputFile>../../bin/windows/i386/vc10/$(Configuration)/ui.dll</OutputFile>
       <AdditionalLibraryDirectories>../../dependencies/lib/windows/i386/vc10/$(Configuration);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <IgnoreAllDefaultLibraries>false</IgnoreAllDefaultLibraries>
@@ -121,7 +121,7 @@
     <ClCompile>
       <Optimization>Disabled</Optimization>
       <AdditionalIncludeDirectories>../../dependencies/include/common;../../dependencies/include/common/wxwidgets;../../dependencies/include/windows/x86_64/vc10/$(Configuration)/wxwidgets;../core;../xml;../web;../lang;../skin;../net;../engine;../http;../upnp;../irc;../db;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;_USRDLL;OS_UI_LIB;UNICODE;WXUSINGDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;_USRDLL;OS_UI_LIB;UNICODE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <MinimalRebuild>true</MinimalRebuild>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
@@ -132,7 +132,7 @@
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
     </ClCompile>
     <Link>
-      <AdditionalDependencies>wxmsw29ud_core.lib;wxbase29ud.lib;wxmsw29ud_adv.lib;wxmsw29ud_aui.lib;wxbase29ud_net.lib;wxmsw29ud_richtext.lib;ssleay32.lib;libeay32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>wxmsw30ud_core.lib;wxbase30ud.lib;wxmsw30ud_adv.lib;wxmsw30ud_aui.lib;wxbase30ud_net.lib;wxmsw30ud_richtext.lib;wxmsw30ud_html.lib;wxbase30ud_xml.lib;wxexpatd.lib;wxjpegd.lib;wxtiffd.lib;wxzlibd.lib;wxpngd.lib;ssleay32.lib;libeay32.lib;Winmm.lib;Comctl32.lib;Rpcrt4.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <OutputFile>../../bin/windows/x86_64/vc10/$(Configuration)/ui.dll</OutputFile>
       <AdditionalLibraryDirectories>../../dependencies/lib/windows/x86_64/vc10/$(Configuration);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <IgnoreAllDefaultLibraries>false</IgnoreAllDefaultLibraries>
@@ -146,7 +146,7 @@
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='release|Win32'">
     <ClCompile>
       <AdditionalIncludeDirectories>../../dependencies/include/common;../../dependencies/include/common/wxwidgets;../../dependencies/include/windows/i386/vc10/$(Configuration)/wxwidgets;../core;../xml;../web;../lang;../skin;../net;../engine;../http;../upnp;../irc;../db;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_USRDLL;OS_UI_LIB;UNICODE;WXUSINGDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_USRDLL;OS_UI_LIB;UNICODE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <RuntimeTypeInfo>true</RuntimeTypeInfo>
       <PrecompiledHeader>Use</PrecompiledHeader>
@@ -155,7 +155,7 @@
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
     </ClCompile>
     <Link>
-      <AdditionalDependencies>wxmsw29u_core.lib;wxbase29u.lib;wxmsw29u_adv.lib;wxmsw29u_aui.lib;wxbase29u_net.lib;wxmsw29u_richtext.lib;ssleay32.lib;libeay32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>wxmsw30u_core.lib;wxbase30u.lib;wxmsw30u_adv.lib;wxmsw30u_aui.lib;wxbase30u_net.lib;wxmsw30u_richtext.lib;wxmsw30u_html.lib;wxbase30u_xml.lib;wxexpat.lib;wxjpeg.lib;wxtiff.lib;wxzlib.lib;wxpng.lib;ssleay32.lib;libeay32.lib;Winmm.lib;Comctl32.lib;Rpcrt4.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <OutputFile>../../bin/windows/i386/vc10/$(Configuration)/ui.dll</OutputFile>
       <AdditionalLibraryDirectories>../../dependencies/lib/windows/i386/vc10/$(Configuration);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -172,7 +172,7 @@
     </Midl>
     <ClCompile>
       <AdditionalIncludeDirectories>../../dependencies/include/common;../../dependencies/include/common/wxwidgets;../../dependencies/include/windows/x86_64/vc10/$(Configuration)/wxwidgets;../core;../xml;../web;../lang;../skin;../net;../engine;../http;../upnp;../irc;../db;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_USRDLL;OS_UI_LIB;UNICODE;WXUSINGDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_USRDLL;OS_UI_LIB;UNICODE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <RuntimeTypeInfo>true</RuntimeTypeInfo>
       <PrecompiledHeader>Use</PrecompiledHeader>
@@ -181,7 +181,7 @@
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
     </ClCompile>
     <Link>
-      <AdditionalDependencies>wxmsw29u_core.lib;wxbase29u.lib;wxmsw29u_adv.lib;wxmsw29u_aui.lib;wxbase29u_net.lib;wxmsw29u_richtext.lib;ssleay32.lib;libeay32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>wxmsw30u_core.lib;wxbase30u.lib;wxmsw30u_adv.lib;wxmsw30u_aui.lib;wxbase30u_net.lib;wxmsw30u_richtext.lib;wxmsw30u_html.lib;wxbase30u_xml.lib;wxexpat.lib;wxjpeg.lib;wxtiff.lib;wxzlib.lib;wxpng.lib;ssleay32.lib;libeay32.lib;Winmm.lib;Comctl32.lib;Rpcrt4.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <OutputFile>../../bin/windows/x86_64/vc10/$(Configuration)/ui.dll</OutputFile>
       <AdditionalLibraryDirectories>../../dependencies/lib/windows/x86_64/vc10/$(Configuration);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <GenerateDebugInformation>true</GenerateDebugInformation>

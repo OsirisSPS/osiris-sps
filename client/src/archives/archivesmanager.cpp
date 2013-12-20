@@ -48,7 +48,7 @@ ArchivesManager::~ArchivesManager()
 
 void ArchivesManager::registerFactory(shared_ptr<IArchivesArchiveFactory> factory)
 {
-	if(factory == null)
+	if(factory == nullptr)
 	{
 		OS_ASSERTFALSE();
 		return;
@@ -69,11 +69,11 @@ shared_ptr<IArchivesArchive> ArchivesManager::open(const String &filename)
 	for(Factories::const_iterator i = m_factories.begin(); i != m_factories.end(); ++i)
 	{
 		shared_ptr<IArchivesArchive> archive = (*i)->openArchive(filename);
-		if(archive != null)
+		if(archive != nullptr)
 			return archive;
 	}
 
-	return null;
+	return nullptr;
 }
 
 bool ArchivesManager::extract(const String &filename, const String &path)
@@ -82,7 +82,7 @@ bool ArchivesManager::extract(const String &filename, const String &path)
 		return false;
 
 	shared_ptr<IArchivesArchive> archive = open(filename);
-	if(archive == null)
+	if(archive == nullptr)
 		return false;
 	
 	shared_array<byte> buffer;
@@ -120,7 +120,7 @@ bool ArchivesManager::extract(const String &filename, const String &path)
 		else
 		{
 			shared_ptr<IStream> entryInputStream = entry->openStream();
-			if(entryInputStream == null)
+			if(entryInputStream == nullptr)
 				return false;			
 
 			shared_ptr<File> entryOutputStream(OS_NEW File());

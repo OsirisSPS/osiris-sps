@@ -42,7 +42,7 @@ public:
 
 // Construction
 public:
-	LanguageCulture(shared_ptr<LanguageCulture> parent = null);
+	LanguageCulture(shared_ptr<LanguageCulture> parent = nullptr);
 	virtual ~LanguageCulture();
 
 // Attributes

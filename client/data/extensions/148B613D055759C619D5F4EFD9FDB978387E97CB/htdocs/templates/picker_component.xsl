@@ -16,7 +16,7 @@
   </xsl:template>
 
   <xsl:template match="component">
-    <a id="{@group}_{@key}" href="{@href}">
+    <a id="{@key}" href="{@href}">
       <xsl:value-of select="system:parse(@name, false(), false(), true())"/>
     </a>
   </xsl:template>

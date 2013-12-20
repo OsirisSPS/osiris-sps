@@ -50,8 +50,8 @@ bool FileLogger::open(const String &filename)
 
 void FileLogger::log(shared_ptr<LogMessage> message)
 {
-	OS_ASSERT(message != null);
-	OS_ASSERT(m_file != null && m_file->is_open());
+	OS_ASSERT(message != nullptr);
+	OS_ASSERT(m_file != nullptr && m_file->is_open());
 
 	String line;
 	if(getLogTimestamp())

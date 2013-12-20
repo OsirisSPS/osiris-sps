@@ -47,8 +47,8 @@ IConnection::~IConnection()
 shared_ptr<boost::asio::io_service> IConnection::getService() const
 {
 	shared_ptr<ConnectionsManager> connectionsManager = getConnectionsManager();
-	if(connectionsManager == null)
-		return null;
+	if(connectionsManager == nullptr)
+		return nullptr;
 
 	return connectionsManager->getService();
 }
@@ -72,7 +72,7 @@ void IConnection::close(bool graceful)
 void IConnection::notifyCompleted()
 {
 	shared_ptr<ConnectionsManager> connectionsManager = getConnectionsManager();
-	if(connectionsManager != null)
+	if(connectionsManager != nullptr)
 		connectionsManager->removeConnection(get_this_ptr(), true);	
 }
 

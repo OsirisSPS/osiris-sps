@@ -116,6 +116,7 @@ public:
 	bool execute(const String &sql, DataTable &table) const;
 	bool execute(shared_ptr<DbSqlICommand> command) const;
 	bool execute(shared_ptr<DbSqlICommand> command, DataTable &table) const;
+	DataItem queryValue(const String &sql) const;
 	//bool executeStatement(const String &sql, const DbSqlValues &values) const;
 
 	//virtual uint32 executeEx(const String &sql);
@@ -175,7 +176,7 @@ public:
 	LanguageResult votePoll(shared_ptr<ObjectsUser> user, const Buffer &private_key, shared_ptr<ObjectsPoll> poll, EntityID poll_option);
 	LanguageResult unvotePoll(shared_ptr<ObjectsUser> user, const Buffer &private_key, shared_ptr<ObjectsPoll> poll);
 
-	// Se object == null rimuove tutte le statistiche del profilo, altrimenti solo quello sull'oggetto specificato
+	// Se object == nullptr rimuove tutte le statistiche del profilo, altrimenti solo quello sull'oggetto specificato
 	bool removeProfileStatistics(const String &table, ObjectOrEntityID reference);
 
 	template <typename T>
@@ -346,10 +347,10 @@ shared_ptr<T> IPortalDatabase::_recordFromSQL(shared_ptr<DbSqlICommand> sql) con
 
 	DataTable result;
 	if(execute(sql, result) == false)
-		return ptr;		// null
+		return ptr;		// nullptr
 
 	if(result.rows() != 1)
-		return ptr;		// null
+		return ptr;		// nullptr
 
 	ptr.reset(OS_NEW_T(T), os_delete_t());
 	ptr->read(result[0]);

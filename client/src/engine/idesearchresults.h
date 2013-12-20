@@ -42,7 +42,7 @@ class EngineExport IdeSearchResults :	public IXSLRenderer<IPortalPageControl<IHt
 
 // Construction
 public:
-	IdeSearchResults(shared_ptr<SearchQuery> query = null, shared_ptr<ISearchResults> results = null);
+	IdeSearchResults(shared_ptr<SearchQuery> query = nullptr, shared_ptr<ISearchResults> results = nullptr);
 	virtual ~IdeSearchResults();
 
 // Attributes

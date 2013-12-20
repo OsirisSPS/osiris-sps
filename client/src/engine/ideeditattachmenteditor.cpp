@@ -78,12 +78,12 @@ shared_ptr<ObjectsIRevisionable> AttachmentEditor::createObject()
 {
 	String file_name;
 	String file_type;
-	const Buffer *file_data = null;
+	const Buffer *file_data = nullptr;
 
 	if(isRevision() && m_enableBrowser->getCheck() == false)
 	{
 		shared_ptr<ObjectsAttachment> currentAttachment = objects_attachment_cast(getCurrent());
-		if(currentAttachment != null)
+		if(currentAttachment != nullptr)
 		{
 			file_name = currentAttachment->file_name;
 			file_type = currentAttachment->file_type;
@@ -94,11 +94,11 @@ shared_ptr<ObjectsIRevisionable> AttachmentEditor::createObject()
 	{
 		file_name = m_browser->getFileName();
 		file_type = m_browser->getFileType();
-		file_data = m_browser->getFileBuffer();
+		file_data = m_browser->getFileBufferPtr();
 	}
 
-	if(file_data == null)
-		return null;
+	if(file_data == nullptr)
+		return nullptr;
 
 	shared_ptr<ObjectsAttachment> attachment(OS_NEW ObjectsAttachment());
 	attachment->file_name = algorithms::trim_copy(file_name);

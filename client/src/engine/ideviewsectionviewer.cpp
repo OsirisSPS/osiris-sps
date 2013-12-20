@@ -67,18 +67,18 @@ void SectionViewer::onLoad()
 	ControlBase::onLoad();
 
 	shared_ptr<EntitiesEntity> entity = getEntity();
-	if(entity == null)
+	if(entity == nullptr)
 		return;
 
 	shared_ptr<ObjectsSection> section = objects_section_cast(entity->getCurrent());
-	if(section != null)
+	if(section != nullptr)
 	{
 		ExtensionsComponentID component = section->getComponentID(getPortal());
 		//shared_ptr<IExtensionsComponent> sectionComponent = section->getComponent(getPortal());
 		if(component != ExtensionsComponentID::EMPTY)
 		{
-			shared_ptr<ExtensionsComponentViewer> componentViewer = ExtensionsSystem::instance()->createComponentViewer(component, null);
-			if(componentViewer != null)
+			shared_ptr<ExtensionsComponentViewer> componentViewer = ExtensionsSystem::instance()->createComponentViewer(component, nullptr);
+			if(componentViewer != nullptr)
 			{
 				componentViewer->init(ExtensionsSystem::instance()->getComponent(component), entity->getEntityID(), section->data);
 				//componentViewer->init(section->getPrimary(), section->data);

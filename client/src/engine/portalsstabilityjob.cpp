@@ -48,13 +48,13 @@ PortalsStabilityJob::~PortalsStabilityJob()
 IJob::JobStatus PortalsStabilityJob::run()
 {
 	shared_ptr<Portal> portal = getPortal();
-	if(portal == null)
+	if(portal == nullptr)
 		return jobComplete;
 
 	portal->setStabilizePending(false);
 
 	EntitiesSnapshotManager *manager = portal->getSnapshotManager(); // URGENT
-	if(manager == null)
+	if(manager == nullptr)
 		return jobComplete;
 
 	bool result = manager->update(get_this_ptr());
@@ -95,7 +95,7 @@ shared_ptr<IBackgroundJob::Details> PortalsStabilityJob::getDetails() const
 	String jobName(Engine::instance()->getText("job.stability"));
 
 	shared_ptr<Portal> portal = getPortal();
-	if(portal != null)
+	if(portal != nullptr)
 	{
 		jobName.append(" - ");
 		jobName.append(portal->getPovName());

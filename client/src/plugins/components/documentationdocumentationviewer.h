@@ -46,7 +46,7 @@ class DocumentationViewer : public IXSLRenderer<ExtensionsComponentViewer>,
 
 // Construction
 public:
-	DocumentationViewer(shared_ptr<EntitiesEntity> entity = null);
+	DocumentationViewer(shared_ptr<EntitiesEntity> entity = nullptr);
 	virtual ~DocumentationViewer();
 
 // IXSLRenderer interface

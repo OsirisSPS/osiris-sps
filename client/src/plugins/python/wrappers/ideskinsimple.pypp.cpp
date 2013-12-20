@@ -21,7 +21,7 @@ struct IdeSkinSimple_wrapper : ::osiris::IdeSkinSimple, ::osiris::PythonWrapper<
     IdeSkinSimple_wrapper( )
     : ::osiris::IdeSkinSimple( )
       , ::osiris::PythonWrapper< ::osiris::IdeSkinSimple >(){
-        // null constructor
+        // nullptr constructor
     
     }
 

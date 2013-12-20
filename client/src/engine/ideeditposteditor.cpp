@@ -109,7 +109,7 @@ void PostEditor::onPreRender()
 	if(isRevision() && getPostBack() == false)
 	{
 		shared_ptr<ObjectsPost> current = objects_post_cast(getCurrent());
-		if(current != null)
+		if(current != nullptr)
 		{
 			m_title->setValue(current->title);
      		m_content->setValue(current->content);

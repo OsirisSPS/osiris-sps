@@ -48,7 +48,7 @@ Feed::~Feed()
 void Feed::initXML(shared_ptr<XMLDocument> document)
 {
 	shared_ptr<XMLNode> root = document->getRoot();
-	if(root == null)
+	if(root == nullptr)
 		root = document->create(OS_MODULES_FEED_ROOT);
 
 	if(root->getAttributes()->exists(OS_MODULES_FEED_URL) == false)

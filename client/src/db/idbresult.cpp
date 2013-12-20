@@ -52,7 +52,7 @@ void IDbResult::bind(DataTableRow &row)
 	for(uint32 i = 0; i < count; i++)
 	{
 		DataItem *value = row[i];
-		OS_EXCEPT_IF(value == null, "Invalid row value !");
+		OS_EXCEPT_IF(value == nullptr, "Invalid row value !");
 		value->clear();
 
 		get(i, *value);

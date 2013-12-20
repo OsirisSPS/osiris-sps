@@ -30,12 +30,12 @@ OS_NAMESPACE_BEGIN()
 
 XMLExporter::XMLExporter(shared_ptr<XMLNode> root) : m_root(root)
 {
-	OS_ASSERT(root != null);	
+	OS_ASSERT(root != nullptr);	
 }
 
 XMLExporter::XMLExporter(shared_ptr<XMLNode> root, const XMLExporter &second) : m_root(root)
 {
-	OS_ASSERT(root != null);	
+	OS_ASSERT(root != nullptr);	
 }
 
 XMLExporter::~XMLExporter()
@@ -46,7 +46,7 @@ XMLExporter::~XMLExporter()
 shared_ptr<XMLNode> XMLExporter::getNode(const String &name, bool ensure) const
 {
 	shared_ptr<XMLNode> node = m_root->getNode(name);
-	if(node == null && ensure)
+	if(node == nullptr && ensure)
 		return createNode(name);
 
 	return node;

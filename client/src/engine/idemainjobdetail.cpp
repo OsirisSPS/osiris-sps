@@ -84,7 +84,7 @@ void JobDetail::onLoad()
 
 	shared_ptr<Engine::BackgroundJobs> jobs = Engine::instance()->getBackgroundJobs();	
 
-	if(jobs != null)
+	if(jobs != nullptr)
 	{
 		for(i = jobs->begin(); i != jobs->end(); ++i)
 		{
@@ -97,7 +97,7 @@ void JobDetail::onLoad()
 	}
 
 	jobs = Engine::instance()->getLastCompletedBackgroundJobs();
-	if(jobs != null)
+	if(jobs != nullptr)
 	{
 		for(i = jobs->begin(); i != jobs->end(); ++i)
 		{

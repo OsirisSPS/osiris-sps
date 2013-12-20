@@ -58,14 +58,14 @@ String OMLQuote::processHtml(shared_ptr<OMLItem> i, shared_ptr<OMLContext> conte
 		if(i->hasParam(_S("id")))
 		{
 			shared_ptr<const IPortalPage> page = context->getPortalPage();
-			if(page != null)
+			if(page != nullptr)
 			{
 				String id = i->getParam(_S("id"));
 				shared_ptr<EntitiesEntity> entity = page->getPortal()->getEntity(page->getDatabase(), id.to_ascii());
-				if(entity != null)
+				if(entity != nullptr)
 				{
 					shared_ptr<ObjectsIRevisionable> current = entity->getCurrent();
-					if(current != null)
+					if(current != nullptr)
 					{
 						if(current->isVisible())
 						{

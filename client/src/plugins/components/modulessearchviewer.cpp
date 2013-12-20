@@ -78,7 +78,7 @@ void SearchViewer::onInit()
 	ViewerBase::onInit();
 
 	shared_ptr<XMLNode> root = getModuleDocument()->getRoot();
-	if(root != null)
+	if(root != nullptr)
 		m_query->readXml(root);
 }
 
@@ -94,7 +94,7 @@ void SearchViewer::onLoad()
 	setID(controlID);
 		
 	shared_ptr<XMLNode> root = getModuleDocument()->getRoot();
-	if(root != null)
+	if(root != nullptr)
 	{
 		//String style = root->getAttributeString(OS_MODULES_LANGUAGESWITCHER_STYLE);
 		//String cultures = root->getAttributeString(OS_MODULES_LANGUAGESWITCHER_CULTURES);
@@ -129,7 +129,7 @@ void SearchViewer::onPreRender()
 void SearchViewer::doFeed()
 {
 	shared_ptr<XMLNode> root = getModuleDocument()->getRoot();
-	if(root != null)
+	if(root != nullptr)
 	{
 		String title = getPortal()->getOptions()->getName() + _S(" - ") + getTitle();
 		String description = root->getAttributeString(_S("rssDescription"));		

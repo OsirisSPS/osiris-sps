@@ -522,9 +522,9 @@ bool Options::save()
 	Options::instance()->setOption(Options::system_options::last_version_major, OS_OSIRIS_VERSION_MAJOR);
 	Options::instance()->setOption(Options::system_options::last_version_minor, OS_OSIRIS_VERSION_MINOR);
 
-	// N.B.: è necessario qui farsi restituire sempre un documento valido altrimenti, nel caso in cui tutte le opzioni siano al valore di default, verrebbe restituito null e il file delle opzioni non verrebbe aggiornato
+	// N.B.: è necessario qui farsi restituire sempre un documento valido altrimenti, nel caso in cui tutte le opzioni siano al valore di default, verrebbe restituito nullptr e il file delle opzioni non verrebbe aggiornato
     shared_ptr<XMLDocument> document = m_userOptions->toXML(false);
-    if(document == null)
+    if(document == nullptr)
 	{
 		OS_ASSERTFALSE();	// In seguito a m_userOptions->toXML(false) il documento restituito dovrebbe essere sempre valido
         return false;
@@ -600,7 +600,7 @@ shared_ptr<TemporaryFile> Options::createTemporaryFile()
 	if(file->open(filename, File::ofReadWrite) == false)
 	{
 		OS_ASSERTFALSE();
-		return null;
+		return nullptr;
 	}
 
 	return file;
@@ -687,7 +687,7 @@ bool Options::initUserOptions()
 
 bool Options::loadOptions(XMLOptions *options, const String &filename, bool withSchema)
 {
-	OS_ASSERT(options != null);
+	OS_ASSERT(options != nullptr);
 
 	if(FileSystem::instance()->fileExists(filename) == false)
 		return false;
@@ -709,7 +709,7 @@ bool Options::loadOptions(XMLOptions *options, const String &filename, bool with
 
 bool Options::ensureOption(XMLOptions *options, const String &name, const DataItem &value, bool publicOption, shared_ptr<IOptionValidator> validator)
 {
-	OS_ASSERT(options != null);
+	OS_ASSERT(options != nullptr);
 
 	OS_LOCK(m_dataCS);
 	return options->ensureOption(name, value, publicOption, validator);

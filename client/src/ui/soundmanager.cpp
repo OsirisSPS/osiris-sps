@@ -59,7 +59,7 @@ shared_ptr<wxSound> SoundManager::loadSound(const String &filename)
 	boost::recursive_mutex::scoped_lock lock(m_mutex);
 
 	if(m_enabled == false)
-		return null;
+		return nullptr;
 
 	String standardisedPath = utils::standardisePath(filename, false);
 	OS_ASSERT(FileSystem::instance()->isRelativePath(standardisedPath) == false);
@@ -72,7 +72,7 @@ shared_ptr<wxSound> SoundManager::loadSound(const String &filename)
 	if(sound->Create(conversions::from_utf16<wxString>(standardisedPath)) == false)
 	{
 		OS_ASSERTFALSE();
-		return null;
+		return nullptr;
 	}
 
 	m_sounds[standardisedPath] = sound;
@@ -82,8 +82,8 @@ shared_ptr<wxSound> SoundManager::loadSound(const String &filename)
 shared_ptr<wxSound> SoundManager::playSound(const String &filename, uint32 mode)
 {
 	shared_ptr<wxSound> sound = loadSound(filename);
-	if(sound == null)
-		return null;
+	if(sound == nullptr)
+		return nullptr;
 
 	sound->Play(mode);
 	return sound;

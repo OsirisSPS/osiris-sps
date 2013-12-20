@@ -46,14 +46,14 @@ void IEventCallback::disconnect()
 	while(m_sources.empty() == false)
 	{
 		shared_ptr<EventSource> source = utils::pop_front(m_sources).lock();
-		if(source != null)
+		if(source != nullptr)
 			source->disconnect(get_this_ptr());
 	}
 }
 
 void IEventCallback::attach(shared_ptr<EventSource> source)
 {
-	if(source != null)
+	if(source != nullptr)
 	{
 		OS_LOCK(m_cs);
 		m_sources.push_back(source);

@@ -41,8 +41,8 @@ IXMLSerializable::~IXMLSerializable()
 shared_ptr<XMLDocument> IXMLSerializable::exportDocument() const
 {
 	shared_ptr<XMLNode> rootNode = exportNode();
-	if(rootNode == null)
-		return null;
+	if(rootNode == nullptr)
+		return nullptr;
 
 	shared_ptr<XMLDocument> document(OS_NEW XMLDocument());
 	document->setRoot(rootNode);
@@ -51,7 +51,7 @@ shared_ptr<XMLDocument> IXMLSerializable::exportDocument() const
 
 bool IXMLSerializable::importDocument(shared_ptr<XMLDocument> document)
 {
-	if(document == null)
+	if(document == nullptr)
 	{
 		OS_ASSERTFALSE();
 		return false;

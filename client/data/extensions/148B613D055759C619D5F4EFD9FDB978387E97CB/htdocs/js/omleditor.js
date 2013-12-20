@@ -4,10 +4,38 @@ Osiris OMLEditor javascript library.
 
 Osiris.OmlEditor =
 {
-	init: function (src) {
+	init: function(src)
+	{
 		var area = $(src).find("textarea")[0];
-
-		$(area).autosize();		
+		
+		// Osiris 1.0 : Don't work anymore... need to fix
+		/*
+		
+    // JQuery autoresize    
+    area.autoResize(
+    {
+      // On resize:
+      onResize : function() 
+      {
+        jQuery(this).css({opacity:0.8});
+      },
+      // After resize:
+      animateCallback : function() 
+      {
+        jQuery(this).css({opacity:1});
+      },
+      // Quite slow animation:
+      animateDuration : 300,
+      // More extra space:
+      extraSpace : 0,
+      // Limit
+      //limit : 10000,
+      }
+    );  
+    
+    // Manual trigger for the first time:
+    area.autoResize({}).trigger('change');            
+    */
 	}
 }
 

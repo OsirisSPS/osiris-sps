@@ -16,10 +16,10 @@
 #include "httprequest.h"
 #include "httpresponse.h"
 #include "httpsession.h"
-#include "idehelpbox.h"
-#include "idebutton.h"
-#include "ideomleditor.h"
 #include "ideblock.h"
+#include "ideomleditor.h"
+#include "idebutton.h"
+#include "idehelpbox.h"
 #include "ipagexslrendererhtmlcontrol.pypp.hpp"
 
 namespace bp = boost::python;
@@ -29,7 +29,7 @@ struct IXSLRenderer_less__osiris_scope_IPageControl_less__osiris_scope_IHtmlCont
     IXSLRenderer_less__osiris_scope_IPageControl_less__osiris_scope_IHtmlControl__greater___greater__wrapper( )
     : ::osiris::IXSLRenderer<osiris::IPageControl<osiris::IHtmlControl> >( )
       , ::osiris::PythonWrapper< ::osiris::IXSLRenderer< osiris::IPageControl< osiris::IHtmlControl > > >(){
-        // null constructor
+        // nullptr constructor
     
     }
 

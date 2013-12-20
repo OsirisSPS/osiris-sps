@@ -129,7 +129,7 @@ void Settings::displayMessage()
 
 bool Settings::initIsisControlValue(shared_ptr<IHtmlInput> control, const String &paramName)
 {
-	OS_ASSERT(control != null);
+	OS_ASSERT(control != nullptr);
 	OS_ASSERT(paramName.empty() == false);
 
 	std::wstring value = getRequest()->getUrlParam(paramName.to_wide());
@@ -150,14 +150,14 @@ void Settings::onLoad()
 	PageBase::onLoad();
 
 	shared_ptr<Portal> portal = getPortalFromUrl();
-	if(portal == null)
+	if(portal == nullptr)
 	{
 		showError(_S("Invalid portal"));
 		return;
 	}
 
 	shared_ptr<PortalOptions> portalOptions = portal->getOptions();
-	if(portalOptions == null)
+	if(portalOptions == nullptr)
 	{
 		OS_ASSERTFALSE();
 		return;
@@ -202,7 +202,7 @@ void Settings::onLoad()
 		}
 	}
 
-	if(m_editedIsisEndpoint != null)
+	if(m_editedIsisEndpoint != nullptr)
 		pageExporter->createAction(_S("edit"), getEventCommand(EVENT_ONEDITISISENDPOINT), OS_PAGE_SETTINGS_GROUP_ISIS);
 	else
 		pageExporter->createAction(_S("add"), getEventCommand(EVENT_ONADDISISENDPOINT), OS_PAGE_SETTINGS_GROUP_ISIS);
@@ -260,8 +260,8 @@ void Settings::onLoad()
 		m_loginEnabled->setCheck(portal->getOptions()->getLoginEnabled());
 		m_registerEnabled->setCheck(portal->getOptions()->getRegisterEnabled());
 				
-		bool showIsis = (m_editedIsisEndpoint != null) || conversions::from_utf16<bool>(getRequest()->getUrlParam(PARAM_ISIS));
-		if(m_editedIsisEndpoint != null)
+		bool showIsis = (m_editedIsisEndpoint != nullptr) || conversions::from_utf16<bool>(getRequest()->getUrlParam(PARAM_ISIS));
+		if(m_editedIsisEndpoint != nullptr)
 		{
 			m_isisName->setValue(m_editedIsisEndpoint->getName());
 			m_isisUrl->setValue(m_editedIsisEndpoint->getUrl().toString());
@@ -286,7 +286,7 @@ void Settings::onLoad()
 void Settings::onSaveOptions(IEvent *e)
 {
 	shared_ptr<Portal> portal = getPortalFromUrl();
-	if(portal == null)
+	if(portal == nullptr)
 	{
 		showError(_S("Invalid portal"));
 		return;
@@ -317,18 +317,18 @@ void Settings::onSaveOptions(IEvent *e)
 void Settings::onRemoveIsisEndpoint(IEvent *e)
 {
 	HtmlEvent *htmlEvent = dynamic_cast<HtmlEvent *>(e);
-	if(htmlEvent == null)
+	if(htmlEvent == nullptr)
 		return;
 
 	shared_ptr<Portal> portal = getPortalFromUrl();
-	if(portal == null)
+	if(portal == nullptr)
 	{
 		OS_ASSERTFALSE();
 		return;
 	}
 
 	shared_ptr<PortalOptions> portalOptions = portal->getOptions();
-	if(portalOptions == null)
+	if(portalOptions == nullptr)
 	{
 		OS_ASSERTFALSE();
 		return;
@@ -359,7 +359,7 @@ void Settings::onRemoveIsisEndpoint(IEvent *e)
 void Settings::onAddIsisEndpoint(IEvent *e)
 {
 	shared_ptr<Portal> portal = getPortalFromUrl();
-	if(portal == null)
+	if(portal == nullptr)
 		return;
 
 	String isisUrl = algorithms::trim_copy(m_isisUrl->getValue());
@@ -387,7 +387,7 @@ void Settings::onAddIsisEndpoint(IEvent *e)
 
 void Settings::onEditIsisEndpoint(IEvent *e)
 {
-	if(m_editedIsisEndpoint == null)
+	if(m_editedIsisEndpoint == nullptr)
 	{
 		OS_ASSERTFALSE();
 		return;
@@ -400,7 +400,7 @@ void Settings::onEditIsisEndpoint(IEvent *e)
 	m_editedIsisEndpoint->setLastEvent(String::EMPTY); // 0.14
 
 	shared_ptr<Portal> portal = getPortalFromUrl();
-	if(portal == null)
+	if(portal == nullptr)
 	{
 		OS_ASSERTFALSE();
 		return;

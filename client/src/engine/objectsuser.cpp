@@ -58,12 +58,12 @@ uint32 ObjectsUser::VERSION = OS_PORTAL_OBJECT_USER_VERSION;
 
 ObjectsUser::ObjectsUser() : ObjectBase(portalObjectTypeUser, OS_PORTAL_OBJECT_USER_VERSION)
 {
-	authors_threshold = rtInherit;
-	editors_threshold = rtInherit;
+	//authors_threshold = rtInherit;
+	//editors_threshold = rtInherit;
 	gender = ugUnspecified;
-	show_mark = true;
-	show_avatar = true;
-	time_offset = 0;
+	//show_mark = true;
+	//show_avatar = true;
+	//time_offset = 0;
 }
 
 ObjectsUser::~ObjectsUser()
@@ -73,10 +73,12 @@ ObjectsUser::~ObjectsUser()
 
 shared_ptr<ObjectsAvatar> ObjectsUser::getAvatar(const shared_ptr<IPortalDatabase> &db) const
 {
+	/*
 	if(show_avatar == false)
-		return null;
+		return nullptr;
+	*/
 
-	OS_ASSERT(db != null);
+	OS_ASSERT(db != nullptr);
 	return db->getAvatar(getAvatarID());
 }
 
@@ -88,12 +90,13 @@ ObjectID ObjectsUser::getAvatarID() const
 
 bool ObjectsUser::hasAvatar(const shared_ptr<IPortalDatabase> &db) const
 {
-	return getAvatar(db) != null;
+	return getAvatar(db) != nullptr;
 }
 
 bool ObjectsUser::hasMark() const
 {
-	return show_mark && (mark->empty() == false);
+	//return show_mark && (mark->empty() == false);
+	return (mark->empty() == false);
 }
 
 /*
@@ -155,7 +158,7 @@ bool ObjectsUser::validate(shared_ptr<IPortalDatabase> database) const
 		return false;
 
 	// TODO: validazione della mail
-
+	/*
 	if(contacts->empty() == false)
 	{
 		shared_ptr<XMLSchema> schema(OS_NEW XMLSchema());
@@ -165,6 +168,7 @@ bool ObjectsUser::validate(shared_ptr<IPortalDatabase> database) const
 		if(document->parseString(contacts) == false)
 			return false;
 	}
+	*/
 
 	return true;
 }
@@ -203,21 +207,23 @@ void ObjectsUser::exportXML(shared_ptr<XMLPortalExporter> exporter)
 		node->setAttributeDateTime(DBTABLES::USERS::BIRTH_DATE, birth_date);
 		if(gender != static_cast<uint32>(ugUnspecified))
 			node->setAttributeUint32(DBTABLES::USERS::GENDER, gender);
-		node->setAttributeString(DBTABLES::USERS::LOCATION, location);
-		node->setAttributeInt32(DBTABLES::USERS::TIME_OFFSET, time_offset);
-		node->setAttributeString(DBTABLES::USERS::LANGUAGE, language);
+		//node->setAttributeString(DBTABLES::USERS::LOCATION, location);
+		//node->setAttributeInt32(DBTABLES::USERS::TIME_OFFSET, time_offset);
+		//node->setAttributeString(DBTABLES::USERS::LANGUAGE, language);
 		if(misc->empty() == false)
 			node->setAttributeString(DBTABLES::USERS::MISC, misc);
 		if(mark->empty() == false)
 			node->setAttributeString(DBTABLES::USERS::MARK, mark);
-		node->setAttributeBool(DBTABLES::USERS::SHOW_MARK, show_mark);
-		node->setAttributeBool(DBTABLES::USERS::SHOW_AVATAR, show_avatar);
+		//node->setAttributeBool(DBTABLES::USERS::SHOW_MARK, show_mark);
+		//node->setAttributeBool(DBTABLES::USERS::SHOW_AVATAR, show_avatar);
+		/*
 		if(email->empty() == false)
 			node->setAttributeString(DBTABLES::USERS::EMAIL, email);
 		if(website->empty() == false)
 			node->setAttributeString(DBTABLES::USERS::WEBSITE, website);
 		if(contacts->empty() == false)
 			node->setAttributeString(DBTABLES::USERS::CONTACTS, contacts);
+		*/
 	}
 
 	if(exporter->getMode() != XMLPortalExporter::emData)
@@ -225,7 +231,7 @@ void ObjectsUser::exportXML(shared_ptr<XMLPortalExporter> exporter)
 		node->setAttributeString(_S("view_href"), exporter->getPortal()->getUserLink(id));
 
 		portals::profile_ptr profile = exporter->getPortal()->getProfile(exporter->getDatabase(), id);
-		if(profile != null)
+		if(profile != nullptr)
 		{
 			node->setAttributeString(_S("score_value"), profile->getScore().getStringValue());
 			node->setAttributeString(_S("score_comment"), profile->getScore().getDescription());
@@ -234,7 +240,7 @@ void ObjectsUser::exportXML(shared_ptr<XMLPortalExporter> exporter)
 		if(exporter->getMode() == XMLPortalExporter::emFull)
 		{
 			shared_ptr<ObjectsAvatar> avatar = getAvatar(exporter->getDatabase());
-			if(avatar != null)
+			if(avatar != nullptr)
 			{
 				node->setAttributeString(_S("avatar"), exporter->getPortal()->getAvatarLink(avatar->id, avatar->submit_date));
 			}
@@ -247,7 +253,7 @@ void ObjectsUser::exportXML(shared_ptr<XMLPortalExporter> exporter)
 	if(exporter->getWithStats())
 	{
 		shared_ptr<DataIStatistics> stats = exporter->getDatabase()->loadStatistics<DataUserStats>(DBTABLES::USERS_STATS_TABLE, id->getString());
-		if(stats != null)
+		if(stats != nullptr)
 			stats->exportXML(exporter);
 	}
 }
@@ -260,21 +266,21 @@ bool ObjectsUser::onSign(const shared_ptr<ObjectsSigner> &signer) const
 	signer->add(public_key);
 	signer->add(name);
 	signer->add(description);
-	signer->add(authors_threshold);
-	signer->add(editors_threshold);
+	//signer->add(authors_threshold);
+	//signer->add(editors_threshold);
 	signer->add(join_date);
 	signer->add(birth_date);
 	signer->add(gender);
-	signer->add(location);
-	signer->add(time_offset);
-	signer->add(language);
+	//signer->add(location);
+	//signer->add(time_offset);
+	//signer->add(language);
 	signer->add(misc);
 	signer->add(mark);
-	signer->add(show_mark);
-	signer->add(show_avatar);
-	signer->add(email);
-	signer->add(website);
-	signer->add(contacts);
+	//signer->add(show_mark);
+	//signer->add(show_avatar);
+	//signer->add(email);
+	//signer->add(website);
+	//signer->add(contacts);
 	signer->add(options); // Razor only
 
 	return true;
@@ -288,21 +294,21 @@ bool ObjectsUser::onRead(const ObjectID &id, const DataTree &data)
 	public_key.read(data, DBTABLES::USERS::PUBLIC_KEY);
 	name.read(data, DBTABLES::USERS::NAME);
 	description.read(data, DBTABLES::USERS::DESCRIPTION);
-	authors_threshold.read(data, DBTABLES::USERS::AUTHORS_THRESHOLD);
-	editors_threshold.read(data, DBTABLES::USERS::EDITORS_THRESHOLD);
+	//authors_threshold.read(data, DBTABLES::USERS::AUTHORS_THRESHOLD);
+	//editors_threshold.read(data, DBTABLES::USERS::EDITORS_THRESHOLD);
 	join_date.read(data, DBTABLES::USERS::JOIN_DATE);
 	birth_date.read(data, DBTABLES::USERS::BIRTH_DATE);
 	gender.read(data, DBTABLES::USERS::GENDER);
-	location.read(data, DBTABLES::USERS::LOCATION);
-	time_offset.read(data, DBTABLES::USERS::TIME_OFFSET);
-	language.read(data, DBTABLES::USERS::LANGUAGE);
+	//location.read(data, DBTABLES::USERS::LOCATION);
+	//time_offset.read(data, DBTABLES::USERS::TIME_OFFSET);
+	//language.read(data, DBTABLES::USERS::LANGUAGE);
 	misc.read(data, DBTABLES::USERS::MISC);
 	mark.read(data, DBTABLES::USERS::MARK);
-	show_mark.read(data, DBTABLES::USERS::SHOW_MARK);
-	show_avatar.read(data, DBTABLES::USERS::SHOW_AVATAR);
-	email.read(data, DBTABLES::USERS::EMAIL);
-	website.read(data, DBTABLES::USERS::WEBSITE);
-	contacts.read(data, DBTABLES::USERS::CONTACTS);
+	//show_mark.read(data, DBTABLES::USERS::SHOW_MARK);
+	//show_avatar.read(data, DBTABLES::USERS::SHOW_AVATAR);
+	//email.read(data, DBTABLES::USERS::EMAIL);
+	//website.read(data, DBTABLES::USERS::WEBSITE);
+	//contacts.read(data, DBTABLES::USERS::CONTACTS);
 	options.read(data, DBTABLES::USERS::OPTIONS);
 
 	return true;
@@ -316,21 +322,21 @@ bool ObjectsUser::onWrite(DataTree &data) const
 	public_key.write(data, DBTABLES::USERS::PUBLIC_KEY);
 	name.write(data, DBTABLES::USERS::NAME);
 	description.write(data, DBTABLES::USERS::DESCRIPTION);
-	authors_threshold.write(data, DBTABLES::USERS::AUTHORS_THRESHOLD);
-	editors_threshold.write(data, DBTABLES::USERS::EDITORS_THRESHOLD);
+	//authors_threshold.write(data, DBTABLES::USERS::AUTHORS_THRESHOLD);
+	//editors_threshold.write(data, DBTABLES::USERS::EDITORS_THRESHOLD);
 	join_date.write(data, DBTABLES::USERS::JOIN_DATE);
 	birth_date.write(data, DBTABLES::USERS::BIRTH_DATE);
 	gender.write(data, DBTABLES::USERS::GENDER);
-	location.write(data, DBTABLES::USERS::LOCATION);
-	time_offset.write(data, DBTABLES::USERS::TIME_OFFSET);
-	language.write(data, DBTABLES::USERS::LANGUAGE);
+	//location.write(data, DBTABLES::USERS::LOCATION);
+	//time_offset.write(data, DBTABLES::USERS::TIME_OFFSET);
+	//language.write(data, DBTABLES::USERS::LANGUAGE);
 	misc.write(data, DBTABLES::USERS::MISC);
 	mark.write(data, DBTABLES::USERS::MARK);
-	show_mark.write(data, DBTABLES::USERS::SHOW_MARK);
-	show_avatar.write(data, DBTABLES::USERS::SHOW_AVATAR);
-	email.write(data, DBTABLES::USERS::EMAIL);
-	website.write(data, DBTABLES::USERS::WEBSITE);
-	contacts.write(data, DBTABLES::USERS::CONTACTS);
+	//show_mark.write(data, DBTABLES::USERS::SHOW_MARK);
+	//show_avatar.write(data, DBTABLES::USERS::SHOW_AVATAR);
+	//email.write(data, DBTABLES::USERS::EMAIL);
+	//website.write(data, DBTABLES::USERS::WEBSITE);
+	//contacts.write(data, DBTABLES::USERS::CONTACTS);
 	options.write(data, DBTABLES::USERS::OPTIONS);
 
 	return true;
@@ -344,21 +350,21 @@ bool ObjectsUser::onRead(const DataTableRow &row)
 	public_key.read(row, DBTABLES::USERS::PUBLIC_KEY);
 	name.read(row, DBTABLES::USERS::NAME);
 	description.read(row, DBTABLES::USERS::DESCRIPTION);
-	authors_threshold.read(row, DBTABLES::USERS::AUTHORS_THRESHOLD);
-	editors_threshold.read(row, DBTABLES::USERS::EDITORS_THRESHOLD);
+	//authors_threshold.read(row, DBTABLES::USERS::AUTHORS_THRESHOLD);
+	//editors_threshold.read(row, DBTABLES::USERS::EDITORS_THRESHOLD);
 	join_date.read(row, DBTABLES::USERS::JOIN_DATE);
 	birth_date.read(row, DBTABLES::USERS::BIRTH_DATE);
 	gender.read(row, DBTABLES::USERS::GENDER);
-	location.read(row, DBTABLES::USERS::LOCATION);
-	time_offset.read(row, DBTABLES::USERS::TIME_OFFSET);
-	language.read(row, DBTABLES::USERS::LANGUAGE);
+	//location.read(row, DBTABLES::USERS::LOCATION);
+	//time_offset.read(row, DBTABLES::USERS::TIME_OFFSET);
+	//language.read(row, DBTABLES::USERS::LANGUAGE);
 	misc.read(row, DBTABLES::USERS::MISC);
 	mark.read(row, DBTABLES::USERS::MARK);
-	show_mark.read(row, DBTABLES::USERS::SHOW_MARK);
-	show_avatar.read(row, DBTABLES::USERS::SHOW_AVATAR);
-	email.read(row, DBTABLES::USERS::EMAIL);
-	website.read(row, DBTABLES::USERS::WEBSITE);
-	contacts.read(row, DBTABLES::USERS::CONTACTS);
+	//show_mark.read(row, DBTABLES::USERS::SHOW_MARK);
+	//show_avatar.read(row, DBTABLES::USERS::SHOW_AVATAR);
+	//email.read(row, DBTABLES::USERS::EMAIL);
+	//website.read(row, DBTABLES::USERS::WEBSITE);
+	//contacts.read(row, DBTABLES::USERS::CONTACTS);
 	options.read(row, DBTABLES::USERS::OPTIONS);
 
 	return true;
@@ -372,21 +378,21 @@ bool ObjectsUser::onWrite(DbSqlValues &values) const
 	public_key.write(values, DBTABLES::USERS::PUBLIC_KEY);
 	name.write(values, DBTABLES::USERS::NAME);
 	description.write(values, DBTABLES::USERS::DESCRIPTION);
-	authors_threshold.write(values, DBTABLES::USERS::AUTHORS_THRESHOLD);
-	editors_threshold.write(values, DBTABLES::USERS::EDITORS_THRESHOLD);
+	//authors_threshold.write(values, DBTABLES::USERS::AUTHORS_THRESHOLD);
+	//editors_threshold.write(values, DBTABLES::USERS::EDITORS_THRESHOLD);
 	join_date.write(values, DBTABLES::USERS::JOIN_DATE);
 	birth_date.write(values, DBTABLES::USERS::BIRTH_DATE);
 	gender.write(values, DBTABLES::USERS::GENDER);
-	location.write(values, DBTABLES::USERS::LOCATION);
-	time_offset.write(values, DBTABLES::USERS::TIME_OFFSET);
-	language.write(values, DBTABLES::USERS::LANGUAGE);
+	//location.write(values, DBTABLES::USERS::LOCATION);
+	//time_offset.write(values, DBTABLES::USERS::TIME_OFFSET);
+	//language.write(values, DBTABLES::USERS::LANGUAGE);
 	misc.write(values, DBTABLES::USERS::MISC);
 	mark.write(values, DBTABLES::USERS::MARK);
-	show_mark.write(values, DBTABLES::USERS::SHOW_MARK);
-	show_avatar.write(values, DBTABLES::USERS::SHOW_AVATAR);
-	email.write(values, DBTABLES::USERS::EMAIL);
-	website.write(values, DBTABLES::USERS::WEBSITE);
-	contacts.write(values, DBTABLES::USERS::CONTACTS);
+	//show_mark.write(values, DBTABLES::USERS::SHOW_MARK);
+	//show_avatar.write(values, DBTABLES::USERS::SHOW_AVATAR);
+	//email.write(values, DBTABLES::USERS::EMAIL);
+	//website.write(values, DBTABLES::USERS::WEBSITE);
+	//contacts.write(values, DBTABLES::USERS::CONTACTS);
 	options.write(values, DBTABLES::USERS::OPTIONS);
 
 	return true;
@@ -471,7 +477,7 @@ void ObjectsUserDescriptor::computeStatistics(shared_ptr<IPortalDatabase> db, sh
 	// N.B. CLODOURGENT così però non conta voti, reputazioni etc e l'utente stesso. DEVO valorizzare entity_author = author per questi.
 #ifdef OS_TODOCIP
 	uint32 revisionable = db->getConnection()->value_of(String::format(_S("select count(*) from os_entries where entity_author='%S'").c_str(), userId.c_str()));
-	uint32 other = db->getConnection()->value_of(String::format(_S("select count(*) from os_entries where author='%S' and entity is null").c_str(), userId.c_str()));
+	uint32 other = db->getConnection()->value_of(String::format(_S("select count(*) from os_entries where author='%S' and entity is nullptr").c_str(), userId.c_str()));
 	stats->objects = revisionable + other;
 #else
 		stats->objects = db->value_of(String::format(_S("select count(*) from os_entries where author='%S'").c_str(), userId.c_str()));

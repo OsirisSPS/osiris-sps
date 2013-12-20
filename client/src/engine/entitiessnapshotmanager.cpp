@@ -180,7 +180,7 @@ void EntitiesSnapshotManager::onInsertObject(const shared_ptr<IPortalDatabase> &
 	updateLastActionTick();
 
 	getPortal()->getOptions()->updateLastObjectDate();
-	getPortal()->getOptions()->updateAlignmentHash(object->id, true);
+	getPortal()->getOptions()->updateAlignmentHash(object->id, object->submit_date, true);
 	//getPortal()->save(); // TOOPTIMIZE.. saving alignmenthash is important, if a crash occur maybe unaligned.
 	
 	getPortal()->getObjects()->remove(object->id);
@@ -277,6 +277,10 @@ void EntitiesSnapshotManager::onUpdateObject(const shared_ptr<IPortalDatabase> &
 	updateLastActionTick();
 	getPortal()->getOptions()->updateLastObjectDate();
 
+	// PAZZO, DEBUGGARE, DEVE RIMUOVERE IL VECCHIO...
+	getPortal()->getOptions()->updateAlignmentHash(object->id, object->submit_date, false);
+	getPortal()->getOptions()->updateAlignmentHash(object->id, object->submit_date, true);
+
 	getPortal()->getObjects()->remove(object->id);
 
     switch(object->getObjectType())
@@ -313,7 +317,7 @@ void EntitiesSnapshotManager::onRemovingObject(const shared_ptr<IPortalDatabase>
 
 	updateLastActionTick();
 
-	getPortal()->getOptions()->updateAlignmentHash(object->id, false);
+	getPortal()->getOptions()->updateAlignmentHash(object->id, object->submit_date, false);
 
 	// 05/01/2012 Razor: per me sta roba non dovrebbe servir +
 
@@ -493,7 +497,7 @@ void EntitiesSnapshotManager::ensure(const shared_ptr<IPortalDatabase> &database
 	
 #ifndef OS_TODOCIP
 	shared_ptr<ObjectsIRevisionable> primaryObj = objects_revisionable_cast(getPortal()->getObject(database, primaryID.toUTF16()));
-	if(primaryObj == null)
+	if(primaryObj == nullptr)
 		return;
 #endif
 
@@ -508,8 +512,8 @@ void EntitiesSnapshotManager::ensure(const shared_ptr<IPortalDatabase> &database
 	// Per ora quando invalido un oggetto, al posto di togliere tutti i figli in ricorsivo,
 	// svuoto direttamente tutta la cache.
 	shared_ptr<EntitiesEntity> currentEntity = getEntities()->find(primaryID);
-	//currentEntity = null; // Se decommentato, funziona tutto cmq senza usare la cache. // FABRYURGENT
-	if(currentEntity != null)
+	//currentEntity = nullptr; // Se decommentato, funziona tutto cmq senza usare la cache. // FABRYURGENT
+	if(currentEntity != nullptr)
 	{
 		// Uso i dati in cache
 		objectType = currentEntity->getObjectType();
@@ -547,13 +551,13 @@ void EntitiesSnapshotManager::ensure(const shared_ptr<IPortalDatabase> &database
 	}
 
 	bool needFirstPhase = false;
-	// Se la stability_date  a null, va calcolata la prima fase.
+	// Se la stability_date  a nullptr, va calcolata la prima fase.
 	if(currentStabilityDate.isNull()) needFirstPhase = true;
 
 	/*
 	// Se la stability_date  minore della stability_date del profilo, allora va calcolata la prima fase.
 	// Se le reputazioni vengono modificate, o le soglie, tutto va ricalcolato come prima fase perch potrebbe variare la corrente,
-	// ma il cambio di reputazioni non ha settato a null tutti i record della os_snapshot_objects.
+	// ma il cambio di reputazioni non ha settato a nullptr tutti i record della os_snapshot_objects.
 	if( (currentStabilityDate.isValid()) && (currentStabilityDate<profile->getStabilityDate(database)) )
 		needFirstPhase = true;
 	*/
@@ -632,7 +636,7 @@ void EntitiesSnapshotManager::ensure(const shared_ptr<IPortalDatabase> &database
 				currentObj = objects_revisionable_cast(getPortal()->getObject(database, currentID));
 
 			// Calcola la insert_date
-			if(currentObj != null)
+			if(currentObj != nullptr)
 			{
 				DataTable result;
 				String sql=String::format(_S("select insert_date from os_entries where id='%S'").c_str(), currentID.toUTF16().c_str());
@@ -642,7 +646,7 @@ void EntitiesSnapshotManager::ensure(const shared_ptr<IPortalDatabase> &database
 			}
 
 			// Calcola il position
-			if(currentObj != null)
+			if(currentObj != nullptr)
 			{
 				position = currentObj->position;
 				title = currentObj->getTitle();
@@ -663,15 +667,15 @@ void EntitiesSnapshotManager::ensure(const shared_ptr<IPortalDatabase> &database
 					shared_ptr<ObjectsSection> oldCurrentObj = objects_section_cast(getPortal()->getObject(database, oldCurrentID));
 					shared_ptr<ObjectsSection> newCurrentObj = objects_section_cast(currentObj);
 
-					if( (oldCurrentObj != null) && (newCurrentObj != null) && (oldCurrentObj->component == newCurrentObj->component) )
+					if( (oldCurrentObj != nullptr) && (newCurrentObj != nullptr) && (oldCurrentObj->component == newCurrentObj->component) )
 					{
 						// Nulla da fare
 					}
 					else
 					{
-						if(oldCurrentObj != null)
+						if(oldCurrentObj != nullptr)
 							oldCurrentObj->getDescriptor()->removeStatistics(database, oldCurrentObj);
-						if(newCurrentObj != null)
+						if(newCurrentObj != nullptr)
 							newCurrentObj->getDescriptor()->createStatistics(database, newCurrentObj);
 					}
 				}
@@ -705,7 +709,7 @@ void EntitiesSnapshotManager::ensure(const shared_ptr<IPortalDatabase> &database
 			primaryID.toUTF16().c_str());
 		database->execute(sql);
 
-		if(currentEntry != null)
+		if(currentEntry != nullptr)
 			currentParent = currentEntry->parent;
 
 		// Lo rimuovo dalla cache
@@ -734,7 +738,7 @@ void EntitiesSnapshotManager::ensure(const shared_ptr<IPortalDatabase> &database
 		{
 			parentID = currentParent;
 		}
-		else if(currentEntry == null)
+		else if(currentEntry == nullptr)
 		{
 			parentID = ObjectsSystem::instance()->getSkippedID();
 		}
@@ -746,10 +750,10 @@ void EntitiesSnapshotManager::ensure(const shared_ptr<IPortalDatabase> &database
 		if(primaryID != ObjectsSystem::instance()->getRootID())
 		{
 #ifdef OS_TODOCIP
-			if( (currentEntry != null) && (currentEntry->parent != currentEntry->getEntityParent()) )
+			if( (currentEntry != nullptr) && (currentEntry->parent != currentEntry->getEntityParent()) )
 				recursiveGuilties[primaryID.toUTF16()] = true;
 #else
-			if( (currentEntry != null) && (currentEntry->parent != primaryObj->parent) )
+			if( (currentEntry != nullptr) && (currentEntry->parent != primaryObj->parent) )
 				recursiveGuilties[primaryID.toUTF16()] = true;
 #endif
 
@@ -764,7 +768,7 @@ void EntitiesSnapshotManager::ensure(const shared_ptr<IPortalDatabase> &database
 			else
 			{
 				shared_ptr<EntitiesEntity> parentEntity = getEntity(database, parentID);
-				if(parentEntity == null)
+				if(parentEntity == nullptr)
 				{
 					parentID = ObjectsSystem::instance()->getOrphanID();
 					// Virtual ensurata a mano.
@@ -806,19 +810,19 @@ void EntitiesSnapshotManager::ensure(const shared_ptr<IPortalDatabase> &database
 			{
 				shared_ptr<EntitiesEntity> parentEntity = getEntity(database, parentID);
 
-				OS_ASSERT(parentEntity != null);
-				if(parentEntity == null)
+				OS_ASSERT(parentEntity != nullptr);
+				if(parentEntity == nullptr)
 					return;
 
 				depth = parentEntity->getDepth()+1;
 
 
-				if( (currentEntry != null) && (objectType == portalObjectTypeSection) )
+				if( (currentEntry != nullptr) && (objectType == portalObjectTypeSection) )
 					sectionID = primaryID;
 				else
 					sectionID = parentEntity->getSectionID();
 
-				if(currentEntry == null)
+				if(currentEntry == nullptr)
 				{
 					visible = false;
 				}
@@ -859,7 +863,7 @@ void EntitiesSnapshotManager::ensure(const shared_ptr<IPortalDatabase> &database
 
 			// 0.12 Se il padre è in cache, svuoto la cache dei figli
 			shared_ptr<EntitiesEntity> parentEntityCache = getEntities()->find(parentID);
-			if(parentEntityCache != null)
+			if(parentEntityCache != nullptr)
 				parentEntityCache->clearChildsCache();
 
 			ensureHit[primaryID.toUTF16()] = 2; // Segno che sto questa entità è stata stabilizzata completamente.
@@ -940,29 +944,29 @@ ReputationsScore EntitiesSnapshotManager::computeUserStability(const shared_ptr<
 void EntitiesSnapshotManager::computeStatistics(const shared_ptr<IPortalDatabase> &database, const ObjectOrEntityID &id)
 {
 #ifdef OS_TODOCIP
-	shared_ptr<ObjectsIObject> object = null;
+	shared_ptr<ObjectsIObject> object = nullptr;
 	
 	shared_ptr<EntitiesEntity> entity = getEntity(database, EntityID(id.to_ascii()));	
-	if(entity != null)
+	if(entity != nullptr)
 		object = entity->getCurrent();
 	else
 		object = getPortal()->getObject(database, ObjectID(id.to_ascii()));
 	
 #else
 	shared_ptr<ObjectsIObject> object = getPortal()->getObject(database, id.toUTF16());
-	OS_ASSERT(object != null);
-	if( (object != null) && (IPortalDatabase::isRevisionable(object->getObjectType())) )
+	OS_ASSERT(object != nullptr);
+	if( (object != nullptr) && (IPortalDatabase::isRevisionable(object->getObjectType())) )
 	{
 		shared_ptr<EntitiesEntity> entity = getEntity(database, id.toEntityID());
-		OS_ASSERT(entity != null);
-		if(entity != null)
+		OS_ASSERT(entity != nullptr);
+		if(entity != nullptr)
 			object = entity->getCurrent();
 		else
-			object = null;
+			object = nullptr;
 	}
 #endif
 
-	if(object != null)
+	if(object != nullptr)
 		object->getDescriptor()->computeStatistics(database, object);
 }
 
@@ -991,14 +995,14 @@ void SnapshotManager::updateObjectSearch(const shared_ptr<IPortalDatabase> &data
 
 	OS_ASSERT(entity != NULL);
 	shared_ptr<ObjectsIRevisionable> current = entity->getCurrent();
-	bool visible = ( (entity->getVisible()) && (current != null) );
+	bool visible = ( (entity->getVisible()) && (current != nullptr) );
 	RSUSO0.stop();
 
 	// URGENT, da togliere e usare current->insert_date.
 	// Calcola la insert_date
 	RealtimeStatsScopeTimer RSUSO1(_S("Debug"), _S("Debug: uso1")); // 9%
 	DateTime insertDate;
-	if(current != null)
+	if(current != nullptr)
 	{
 		// URGENT, da togliere e usare current->insert_date.
 		// Calcola la insert_date
@@ -1039,7 +1043,7 @@ void EntitiesSnapshotManager::updateUserStatistics(const shared_ptr<IPortalDatab
 bool EntitiesSnapshotManager::canStabilityRun(bool withThis, shared_ptr<IJob> job)
 {
 	// Se "update()" è richiamato sincrono.
-	if(job == null)
+	if(job == nullptr)
 		return true;
 
 	// withThis serve xchè se è chiamata dopo che è stato preso il database dalla update(), quella non deve essere considerata...
@@ -1060,13 +1064,13 @@ bool EntitiesSnapshotManager::update(shared_ptr<IJob> job)
 	if(!canStabilityRun(false, job))
 	{
 		// Attesa per evitare innumerevoli inutili chiamate. Potrebbe essere stability.delta_start/5.
-		if(job != null)
+		if(job != nullptr)
 			job->applyDelay(2000);
 		return false;
 	}
 	else
 	{
-		if(job != null)
+		if(job != nullptr)
 			job->resetDelay();
 	}
 	
@@ -1077,14 +1081,14 @@ bool EntitiesSnapshotManager::update(shared_ptr<IJob> job)
 	if(getStabilityStatus() == ssDone)
 	{
 		newPriority = 0;
-		if(job != null)
+		if(job != nullptr)
 			job->setPriority(taskPriorityIdle);
 		return true;
 	}
 	else if(getStabilityStatus() == ssNone)
 	{
 		setStabilityStatus(ssAccept);
-		if(job != null)
+		if(job != nullptr)
 			job->setPriority(taskPriorityCritical);
 	}
 	else
@@ -1100,7 +1104,7 @@ bool EntitiesSnapshotManager::update(shared_ptr<IJob> job)
 			if(computeStabilityAccept(database, job))
 			{
 				setStabilityStatus(ssPrepare);
-				if(job != null)
+				if(job != nullptr)
 					job->setPriority(taskPriorityHigh);
 			}
 		}
@@ -1109,7 +1113,7 @@ bool EntitiesSnapshotManager::update(shared_ptr<IJob> job)
 			if(computeStabilityPrepare(database, job))
 			{
 				setStabilityStatus(ssStabilityUsers);
-				if(job != null)
+				if(job != nullptr)
 					job->setPriority(taskPriorityHigh);
 			}
 		}
@@ -1118,7 +1122,7 @@ bool EntitiesSnapshotManager::update(shared_ptr<IJob> job)
 			if(computeStabilityUsers(database, job))
 			{
 				setStabilityStatus(ssStabilityObjects);
-				if(job != null)
+				if(job != nullptr)
 					job->setPriority(taskPriorityAboveNormal);
 			}
 		}
@@ -1127,7 +1131,7 @@ bool EntitiesSnapshotManager::update(shared_ptr<IJob> job)
 			if(computeStabilityObjects(database, job))
 			{
 				setStabilityStatus(ssStatisticsObjects);
-				if(job != null)
+				if(job != nullptr)
 					job->setPriority(taskPriorityNormal);
 			}
 		}
@@ -1136,7 +1140,7 @@ bool EntitiesSnapshotManager::update(shared_ptr<IJob> job)
 			if(computeStatisticsObjects(database, job))
 			{
 				setStabilityStatus(ssStatisticsUsers);
-				if(job != null)
+				if(job != nullptr)
 					job->setPriority(taskPriorityBelowNormal);
 			}
 		}
@@ -1145,7 +1149,7 @@ bool EntitiesSnapshotManager::update(shared_ptr<IJob> job)
 			if(computeStatisticsUsers(database, job))
 			{
 				setStabilityStatus(ssSearchObjects);
-				if(job != null)
+				if(job != nullptr)
 					job->setPriority(taskPriorityLow);
 			}
 		}
@@ -1154,7 +1158,7 @@ bool EntitiesSnapshotManager::update(shared_ptr<IJob> job)
 			if(computeSearchObjects(database, job))
 			{
 				setStabilityStatus(ssFinalize);
-				if(job != null)
+				if(job != nullptr)
 					job->setPriority(taskPriorityIdle);
 			}
 		}
@@ -1163,7 +1167,7 @@ bool EntitiesSnapshotManager::update(shared_ptr<IJob> job)
 			if(computeFinalize(database, job))
 			{
 				setStabilityStatus(ssDone);
-				if(job != null)
+				if(job != nullptr)
 					job->setPriority(taskPriorityIdle);
 			}
 		}
@@ -1189,12 +1193,12 @@ bool EntitiesSnapshotManager::computeStabilityAccept(const shared_ptr<IPortalDat
 		ObjectID id = static_cast<String>(result.get(r,_S("id"))).to_ascii();
 
 		shared_ptr<ObjectsIObject> object = getPortal()->getObject(database, id);
-		OS_ASSERT(object!=null);
+		OS_ASSERT(object!=nullptr);
 
 		LanguageResult acceptedMessage = object->acceptable(database);
 		if(acceptedMessage.empty())
 		{
-			sql = _S("update os_entries set rank=0, accept_msg=null where id='") + id.toUTF16() + _S("'"); // Mark as accepted
+			sql = _S("update os_entries set rank=0, accept_msg=nullptr where id='") + id.toUTF16() + _S("'"); // Mark as accepted
 			database->execute(sql);
 
 			// createObjectRecord? e abolisco la Prepare?
@@ -1248,12 +1252,12 @@ bool EntitiesSnapshotManager::computeStabilityPrepare(const shared_ptr<IPortalDa
 	if(skip == false)
 	{
 		DataTable result;
-		// N.B. Non filtro i tipi di oggetto, dato che gli oggetti non revisionabili hanno 'revision'==null.
+		// N.B. Non filtro i tipi di oggetto, dato che gli oggetti non revisionabili hanno 'revision'==nullptr.
 		RealtimeStatsScopeTimer RSS2(_S("Debug"), _S("SnapshotManager::computeStabilityPrepare::objects enumeration"));
 #ifdef OS_TODOCIP
 		//String sql=String::format(_S("select distinct entity_id as id from os_entries where not exists(select reference from os_snapshot_objects where reference=entity_id) limit %d").c_str(),getObjectsStep());
 		
-		String sql=String::format(_S("select distinct entity_id as id from os_entries where entity_id is not null and not exists(select reference from os_snapshot_objects where reference=entity_id)").c_str());
+		String sql=String::format(_S("select distinct entity_id as id from os_entries where entity_id is not nullptr and not exists(select reference from os_snapshot_objects where reference=entity_id)").c_str());
 #else
 		String sql=String::format(_S("select id from os_entries where revision='' and not exists(select reference from os_snapshot_objects where reference=id) limit %d").c_str(),getObjectsStep());
 #endif
@@ -1265,7 +1269,7 @@ bool EntitiesSnapshotManager::computeStabilityPrepare(const shared_ptr<IPortalDa
 			String id=result.get(r,_S("id"));
 
 			shared_ptr<ObjectsIRevisionable> primary=objects_revisionable_cast(getPortal()->getObject(database, id));
-			OS_ASSERT(primary!=null);
+			OS_ASSERT(primary!=nullptr);
 
 			createObjectRecord(database, primary);
 
@@ -1293,7 +1297,7 @@ bool EntitiesSnapshotManager::computeStabilityPrepare(const shared_ptr<IPortalDa
 			String user_id=result.get(r,_S("id"));
 
 			shared_ptr<ObjectsUser> user=objects_user_cast(getPortal()->getObject(database, user_id));
-			OS_ASSERT(user!=null);
+			OS_ASSERT(user!=nullptr);
 
 			OS_TRACE("Start SnapshotManager::computeStabilityPrepare - createUserRecord\n");
 			createUserRecord(database, user);
@@ -1690,7 +1694,7 @@ bool EntitiesSnapshotManager::computeFinalize(const shared_ptr<IPortalDatabase> 
 					ObjectID id = static_cast<String>(result.get(r,_S("id"))).to_ascii();
 
 					shared_ptr<ObjectsIObject> object = database->getPortal()->getObject(database, id);
-					OS_ASSERT(object != null);
+					OS_ASSERT(object != nullptr);
 
 					//database->removeRecord(object); // CLODOURGENT tolto per sicurezza, decommentare semplicemente dopo test esaustivi.
 
@@ -1847,7 +1851,7 @@ void EntitiesSnapshotManager::invalidateObject(const shared_ptr<IPortalDatabase>
 	if( (invalidateStability == false) && (invalidateStatistics == false) )
 		return;
 
-	if(object == null)
+	if(object == nullptr)
 		return;
 
 	EntityID entityID = object->getEntityID();
@@ -1912,8 +1916,8 @@ void EntitiesSnapshotManager::invalidateObject(const shared_ptr<IPortalDatabase>
 		invalidateObject(database, object->getParent(), invalidateParentStability, invalidateParentStatistics, false, true);
 
 		// Determino se il padre  cambiato (revisione di move), se s invalido anche il padre vecchio.
-		if( (entityInCache != null) &&
-			(entityInCache->getCurrent() != null) &&
+		if( (entityInCache != nullptr) &&
+			(entityInCache->getCurrent() != nullptr) &&
 			(entityInCache->getCurrent()->getParent() != object->getParent()) )
 		{
 			//resetObjectStability(database, entityInCache->getCurrent()->getParent(), invalidateParentStability, invalidateParentStatistics);
@@ -1998,8 +2002,8 @@ void EntitiesSnapshotManager::invalidateEntity(const shared_ptr<IPortalDatabase>
 			invalidateEntity(database, parent, invalidateParentStability, invalidateParentStatistics);
 
 			// Determino se il padre  cambiato (revisione di move), se s invalido anche il padre vecchio.
-			if( (entityInCache != null) &&
-				(entityInCache->getCurrent() != null) &&
+			if( (entityInCache != nullptr) &&
+				(entityInCache->getCurrent() != nullptr) &&
 				(entityInCache->getCurrent()->getParent() != parent) )
 			{
 				invalidateEntity(database, entityInCache->getCurrent()->getParent(), invalidateParentStability, invalidateParentStatistics);
@@ -2066,7 +2070,8 @@ bool EntitiesSnapshotManager::rebuildAlignmentHash(const shared_ptr<IPortalDatab
 	for(uint32 r=0;r<result.rows();r++)
 	{
 		ObjectID id = static_cast<String>(result.get(r,_S("id"))).to_ascii();
-		getPortal()->getOptions()->updateAlignmentHash(id, true);
+		shared_ptr<ObjectsIObject> object = database->getPortal()->getObject(database, id);
+		getPortal()->getOptions()->updateAlignmentHash(object->id, object->submit_date, true);
 	}
 
 	getPortal()->save();
@@ -2155,8 +2160,8 @@ void EntitiesSnapshotManager::ensureSnapshot(shared_ptr<IPortalDatabase> databas
 		// Snapshot objects records
 		{
 			DataTable result;
-			// "where entity is not null" == revisionable objects.
-			String sql=String::format(_S("select id from os_entries where entity is not null").c_str());
+			// "where entity is not nullptr" == revisionable objects.
+			String sql=String::format(_S("select id from os_entries where entity is not nullptr").c_str());
 			database->execute(sql, result);		
 
 			for(uint32 r=0;r<result.rows();r++)
@@ -2164,7 +2169,7 @@ void EntitiesSnapshotManager::ensureSnapshot(shared_ptr<IPortalDatabase> databas
 				ObjectID id = static_cast<String>(result.get(r,_S("id"))).to_ascii();
 
 				shared_ptr<ObjectsIRevisionable> obj = objects_revisionable_cast(getPortal()->getObject(database, id));
-				OS_ASSERT(obj!=null);
+				OS_ASSERT(obj!=nullptr);
 
 				createObjectRecord(database, obj);
 			}
@@ -2181,7 +2186,7 @@ void EntitiesSnapshotManager::ensureSnapshot(shared_ptr<IPortalDatabase> databas
 				ObjectID userID = static_cast<String>(result.get(r,_S("id"))).to_ascii();
 
 				shared_ptr<ObjectsUser> user=objects_user_cast(getPortal()->getObject(database, userID));
-				OS_ASSERT(user!=null);
+				OS_ASSERT(user!=nullptr);
 								
 				createUserRecord(database, user);
 			}
@@ -2462,7 +2467,7 @@ void EntitiesSnapshotManager::initSearchIndexes()
 
 void EntitiesSnapshotManager::openSearchIndexWriter()
 {
-	if(m_impl->luceneIndexWriter != null)
+	if(m_impl->luceneIndexWriter != nullptr)
 		return;
 
 	OS_LOCK(m_searchCS);
@@ -2502,12 +2507,12 @@ void EntitiesSnapshotManager::openSearchIndexWriter()
 
 void EntitiesSnapshotManager::closeSearchIndexWriter()
 {
-	if(m_impl->luceneIndexWriter != null)
+	if(m_impl->luceneIndexWriter != nullptr)
 	{
 		OS_LOCK(m_searchCS);
 
 		m_impl->luceneIndexWriter->close();
-		m_impl->luceneIndexWriter = null;
+		m_impl->luceneIndexWriter = nullptr;
 	}
 }
 
@@ -2578,13 +2583,13 @@ void EntitiesSnapshotManager::updateObjectSearch(const shared_ptr<IPortalDatabas
 	RealtimeStatsScopeTimer RSRX(_S("Debug"), _S("Debug: SnapshotProfile::updateSearchObject::extractInfo"));
 	shared_ptr<EntitiesEntity> entity = getEntity(database, primaryID);
 	shared_ptr<ObjectsIRevisionable> currentObj = entity->getCurrent();
-	bool visible = ( (entity->getVisible()) && (currentObj != null) );
+	bool visible = ( (entity->getVisible()) && (currentObj != nullptr) );
 	//const double &score = entity->getScore(); // TOCLEAN_SNAPSHOT_SCORE. Se vorrò riprestinare la modalità di ordinamento "reputazioni" nelle ricerche, ha senso che qui rintraccio l'utente e prendo lo score da lì.
 	const EntityID &sectionID = entity->getSectionID();
 
 	DateTime insertDate;
 	ObjectID currentID;
-	if(currentObj != null)
+	if(currentObj != nullptr)
 	{
 		currentID = currentObj->id;
 		// URGENT, da togliere e usare current->insert_date.
@@ -2717,8 +2722,8 @@ void EntitiesSnapshotManager::updateObjectSearch(const shared_ptr<IPortalDatabas
 				{
 					// Su una totale "computeSearchObjects" di 230 sec, questa "parse" impiega circa 55 secondi. Il 24%.
 					RealtimeStatsScopeTimer RSA2C(_S("Debug"), _S("Debug: SnapshotProfile::updateSearchObject::parse content"));
-					title = OMLManager::instance()->parse(title, null, true, false, false, omlRenderModeSearch, primaryID.getString(), String::EMPTY);
-					content = OMLManager::instance()->parse(content, null, true, false, false, omlRenderModeSearch, primaryID.getString(), String::EMPTY);
+					title = OMLManager::instance()->parse(title, nullptr, true, false, false, omlRenderModeSearch, primaryID.getString(), String::EMPTY);
+					content = OMLManager::instance()->parse(content, nullptr, true, false, false, omlRenderModeSearch, primaryID.getString(), String::EMPTY);
 					RSA2C.stop();
 				}
 
@@ -2934,7 +2939,7 @@ ObjectsReputationThreshold SnapshotProfile::getAuthorsReputationThreshold() cons
 	}
 	else
 	{
-		if( (m_user == null) || (m_user->authors_threshold.isNull()) )
+		if( (m_user == nullptr) || (m_user->authors_threshold.isNull()) )
 			return rtNotNegative;
 		else
 			return Convert::toReputationThreshold(m_user->authors_threshold);
@@ -2950,7 +2955,7 @@ ObjectsReputationThreshold SnapshotProfile::getEditorsReputationThreshold() cons
 	}
 	else
 	{
-		if( (m_user == null) || (m_user->authors_threshold.isNull()) )
+		if( (m_user == nullptr) || (m_user->authors_threshold.isNull()) )
 			return rtNotNegative;
 		else
 			return Convert::toReputationThreshold(m_user->editors_threshold);

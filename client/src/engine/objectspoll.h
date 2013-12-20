@@ -87,12 +87,12 @@ public:
 	virtual void getAllowedChilds(ObjectsTypes &allowed_childs) const;
 	virtual bool hasStatistics();
 	virtual shared_ptr<ISearchOptions> getSearchOptions();
-	virtual ide::edit::editor_ptr createEditControl(shared_ptr<EntitiesEntity> entity = null, shared_ptr<EntitiesEntity> parent = null);
+	virtual ide::edit::editor_ptr createEditControl(shared_ptr<EntitiesEntity> entity = nullptr, shared_ptr<EntitiesEntity> parent = nullptr);
 	virtual ide::view::viewer_ptr createViewControl(shared_ptr<EntitiesEntity> entity);
 
 	virtual void createStatistics(shared_ptr<IPortalDatabase> db, shared_ptr<ObjectsIObject> object);
 	virtual void computeStatistics(shared_ptr<IPortalDatabase> db, shared_ptr<ObjectsIObject> object);
-	virtual void removeStatistics(shared_ptr<IPortalDatabase> db, shared_ptr<ObjectsIObject> object = null);
+	virtual void removeStatistics(shared_ptr<IPortalDatabase> db, shared_ptr<ObjectsIObject> object = nullptr);
 };
 
 //////////////////////////////////////////////////////////////////////

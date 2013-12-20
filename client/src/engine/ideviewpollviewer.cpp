@@ -67,7 +67,7 @@ void PollViewer::onInit()
 {
 	ControlBase::onInit();
 
-	if( (getEntity() == null) || (getObject() == null) )
+	if( (getEntity() == nullptr) || (getObject() == nullptr) )
 		return;
 
 	if(getSessionAccount()->isPortalGuest(getDatabase()) == false)
@@ -82,7 +82,7 @@ void PollViewer::renderObject(shared_ptr<XMLPortalExporter> exporter, shared_ptr
 
 	if(getSessionAccount()->isPortalGuest(getDatabase()) == false)
 	{
-		if(m_vote != null && m_vote->isNull() == false)
+		if(m_vote != nullptr && m_vote->isNull() == false)
 		{
 			exporter->createAction(_S("unvote"), getEventCommand(EVENT_ONUNVOTE));
 		}
@@ -95,18 +95,18 @@ void PollViewer::renderObject(shared_ptr<XMLPortalExporter> exporter, shared_ptr
 	for(EntitiesEntities::iterator i = poll_childs->begin(); i != poll_childs->end(); ++i)
 	{
 		shared_ptr<EntitiesEntity> poll_option_entity = poll_childs->get(getDatabase(), *i);
-		if(poll_option_entity != null)
+		if(poll_option_entity != nullptr)
 		{
 			shared_ptr<ObjectsPollOption> poll_option = objects_poll_option_cast(poll_option_entity->getCurrent());
-			if(poll_option != null)
+			if(poll_option != nullptr)
 			{
-				if(options_node == null)
+				if(options_node == nullptr)
 				{
                     options_node = exporter->getNode(poll_option_descriptor->getGroupName());
 				}
 
 				shared_ptr<XMLNode> option_node = options_node->addChild(poll_option_descriptor->getTypeName());
-				exportPollOption(option_node, poll_option, m_vote != null ? m_vote->isReferencedTo(poll_option->getEntityID()) : false);
+				exportPollOption(option_node, poll_option, m_vote != nullptr ? m_vote->isReferencedTo(poll_option->getEntityID()) : false);
 			}
 		}
 	}
@@ -140,14 +140,14 @@ void PollViewer::exportPollOption(const shared_ptr<XMLNode> &option_node, shared
 void PollViewer::onVote(IEvent *e)
 {
 	HtmlEvent *htmlEvent = dynamic_cast<HtmlEvent *>(e);
-	if(htmlEvent == null)
+	if(htmlEvent == nullptr)
 		return;
 
 	if(getSessionAccount()->isPortalGuest(getDatabase()))
 		return;
 
 	shared_ptr<EntitiesEntity> option_entity = getPortal()->getEntity(getDatabase(), htmlEvent->get(0).to_ascii());
-	if(option_entity != null)
+	if(option_entity != nullptr)
 	{
 		LanguageResult result = getDatabase()->votePoll(getSessionAccount()->getUser(getDatabase()), getSessionAccount()->getPrivateKey(), objects_poll_cast(getEntity()->getCurrent()), option_entity->getEntityID());
 		if(result.empty())

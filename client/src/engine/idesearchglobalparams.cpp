@@ -103,7 +103,7 @@ void IdeSearchGlobalParams::onInit()
 {
 	ControlBase::onInit();
 
-	OS_ASSERT(m_query != null);
+	OS_ASSERT(m_query != nullptr);
 
 	// Crea il documento per l'xsl
 	shared_ptr<XMLNode> nodeRoot = getDocument()->create(_S("globalParams"));	

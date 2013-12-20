@@ -91,7 +91,7 @@ OS_NAMESPACE_BEGIN()
 
 IPortalDatabase::IPortalDatabase(shared_ptr<IDbConnection> connection) : m_binder(OS_NEW DbBinder())
 {
-	OS_EXCEPT_IF(connection == null, "Invalid connection");
+	OS_EXCEPT_IF(connection == nullptr, "Invalid connection");
 
 	m_connection = connection;
 	m_connected = false;
@@ -220,7 +220,7 @@ bool IPortalDatabase::needObject(const String &id, const DateTime &submit_date) 
 		return false;
 
 	shared_ptr<DataEntry> existing = getEntry(id.to_ascii());
-	if(existing == null)
+	if(existing == nullptr)
 		return true;	// L'entry non esiste pertanto l'oggetto  necessario...
 
 	if(isUpdatable(existing->getObjectType()) == false) // CLODOURGENT
@@ -309,10 +309,10 @@ shared_ptr<ObjectsIObject> IPortalDatabase::loadObject(const ObjectID &id)
 	PortalObjectType objectType = Convert::toObjectType(static_cast<uint32>(getConnection()->value_of(_S("select type from os_entries where id=") + Convert::toSQL(id.toUTF16()))));
 
 	if(objectType == portalObjectTypeUnknown)
-		return null;
+		return nullptr;
 
 	shared_ptr<ObjectsIDescriptor> descriptor = ObjectsSystem::instance()->getDescriptor(objectType);
-	return descriptor != null ? descriptor->loadObject(get_this_ptr(), id) : null;
+	return descriptor != nullptr ? descriptor->loadObject(get_this_ptr(), id) : nullptr;
 }
 
 /*
@@ -431,6 +431,18 @@ bool IPortalDatabase::execute(shared_ptr<DbSqlICommand> command, DataTable &resu
 	return false;
 }
 
+DataItem IPortalDatabase::queryValue(const String &sql) const
+{
+	try
+	{
+		return m_connection->queryValue(sql);
+	}
+	catch(std::exception &e)
+	{
+		logError(sql, e);
+		return DataItem();
+	}
+}
 
 
 /*
@@ -438,7 +450,7 @@ uint32 IPortalDatabase::executeEx(const String &sql)
 {
 	_query();
 
-	OS_ASSERT(m_connection != null);
+	OS_ASSERT(m_connection != nullptr);
 
 	uint32 result = 0;
 	try
@@ -576,7 +588,7 @@ bool IPortalDatabase::updateRecord(shared_ptr<DataIRecord> record)
 
 		shared_ptr<DataEntry> entry = getEntry(object->id);
 		// Carica l'entry associata all'oggetto
-		if(entry != null)
+		if(entry != nullptr)
 		{
 			entry->type = Convert::toUint32(object->getObjectType());		
 			entry->submit_date = object->submit_date;
@@ -681,7 +693,7 @@ bool IPortalDatabase::removeRecord(shared_ptr<DataIRecord> record)
 bool IPortalDatabase::removeObject(shared_ptr<ObjectsIObject> object)
 {
 	shared_ptr<DataEntry> entry = getEntry(object->id);
-	if(entry != null)
+	if(entry != nullptr)
 	{
 		// Richiama la remove base per richiamare l'evento di cancellazione del record
 		return removeRecord(entry);
@@ -825,7 +837,7 @@ void IPortalDatabase::computeVotesStats(shared_ptr<ObjectsIRevisionable> object,
 		where \
 		ts.reference = tv.author and \
 		ts.score %S and \
-		tv.score is not null and \
+		tv.score is not nullptr and \
 		tv.reference = '%S'").c_str(),
 		getPortal()->getSnapshotManager()->getReputationSqlRule(getPortal()->getOptionsShared()->getAuthorsReputationThreshold()).c_str(),
 		object->getPrimary().toUTF16().c_str());
@@ -882,7 +894,7 @@ bool IPortalDatabase::increaseEntryRank(const ObjectID &id)
 {
 	/*
 	shared_ptr<DataEntry> ptr = getEntry(id);
-	if(ptr == null)
+	if(ptr == nullptr)
 		return false;
 
 	ptr->rank = __increaseRank(ptr->rank, OS_ENTRYRANK_INCREASEFACTOR);
@@ -896,7 +908,7 @@ bool IPortalDatabase::decreaseEntryRank(const ObjectID &id)
 {
 	/*
 	shared_ptr<DataEntry> ptr = getEntry(id);
-	if(ptr == null)
+	if(ptr == nullptr)
 		return false;
 
 	if(ptr->rank == 0)
@@ -919,7 +931,7 @@ LanguageResult IPortalDatabase::setUserAvatar(shared_ptr<ObjectsUser> user, cons
 		
 	bool exists = true;
 	shared_ptr<ObjectsAvatar> avatar = getAvatar(user->getAvatarID());
-	if(avatar == null)
+	if(avatar == nullptr)
 	{
 		exists = false;
 
@@ -1073,7 +1085,7 @@ shared_ptr<DataUserStats> IPortalDatabase::loadUserStats(const String &reference
 LanguageResult IPortalDatabase::_signAndInsert(shared_ptr<ObjectsIObject> object, const Buffer &private_key)
 {
 	/*
-	OS_EXCEPT_IF(getPortal() == null, "Invalid database");		// L'id del database deve essere valido
+	OS_EXCEPT_IF(getPortal() == nullptr, "Invalid database");		// L'id del database deve essere valido
 
 	// Firma l'oggetto con la chiave privata specificata e lo associa all'id del database
 	if(object->sign(private_key, getPortal()->getPortalID(), getPortal()->getUserID()) == false)
@@ -1090,7 +1102,7 @@ LanguageResult IPortalDatabase::_signAndInsert(shared_ptr<ObjectsIObject> object
 
 LanguageResult IPortalDatabase::_signAndUpdate(shared_ptr<ObjectsIObject> object, const Buffer &private_key, bool updateSubmitDate)
 {
-	OS_EXCEPT_IF(getPortal() == null, "Invalid database");		// L'id del database deve essere valido
+	OS_EXCEPT_IF(getPortal() == nullptr, "Invalid database");		// L'id del database deve essere valido
 
 	// Controlla se aggiornare la data dell'oggetto
 	if(updateSubmitDate)
@@ -1282,17 +1294,17 @@ bool IPortalDatabase::_createEntry(shared_ptr<ObjectsIObject> object, const uint
 	entry->rank = rank;
 
 	// N.B.: il campo revision di un'entry segue questa logica:
-	// - null se non  un oggetto revisionabile
+	// - nullptr se non  un oggetto revisionabile
 	// - "" se  una primaria
 	// - id se  una revisione
 	// la stessa logica viene seguita per il parent
 
 #ifdef OS_TODOCIP
 	shared_ptr<ObjectsIRevisionable> revisionable = objects_revisionable_cast(object);
-	if(revisionable != null)
+	if(revisionable != nullptr)
 	{
-		// IMPORTANTE: i campi parent e revision di un oggetto revisionabile non devono essere mai lasciati a null,
-		// se dovesse succedere le note descritte in precedenza non sarebbero rispettate quando si copia il valore nell'entry (potrebbe finirci null)
+		// IMPORTANTE: i campi parent e revision di un oggetto revisionabile non devono essere mai lasciati a nullptr,
+		// se dovesse succedere le note descritte in precedenza non sarebbero rispettate quando si copia il valore nell'entry (potrebbe finirci nullptr)
 
 		OS_ASSERT(revisionable->parent.isNull() == false);
 		OS_ASSERT(revisionable->entity.isNull() == false);
@@ -1327,10 +1339,10 @@ bool IPortalDatabase::_createEntry(shared_ptr<ObjectsIObject> object, const uint
 #else
 
 	shared_ptr<ObjectsIRevisionable> revisionable = objects_revisionable_cast(object);
-	if(revisionable != null)
+	if(revisionable != nullptr)
 	{
-		// IMPORTANTE: i campi parent e revision di un oggetto revisionabile non devono essere mai lasciati a null,
-		// se dovesse succedere le note descritte in precedenza non sarebbero rispettate quando si copia il valore nell'entry (potrebbe finirci null)
+		// IMPORTANTE: i campi parent e revision di un oggetto revisionabile non devono essere mai lasciati a nullptr,
+		// se dovesse succedere le note descritte in precedenza non sarebbero rispettate quando si copia il valore nell'entry (potrebbe finirci nullptr)
 		
 		OS_ASSERT(revisionable->parent.isNull() == false);
 		OS_ASSERT(revisionable->revision.isNull() == false);
@@ -1361,7 +1373,7 @@ bool IPortalDatabase::_validateObject(const shared_ptr<ObjectsIObject> &object) 
 
 	shared_ptr<ObjectsUser> author = getUser(object->getAuthor()); // CLODOURGENT, qui è un giro che fà quando salvo il record, mentre dovrebbe farlo prima insieme all'acceptable
 	// Carica l'autore dell'oggetto
-	if(author == null)
+	if(author == nullptr)
 		return false;
 
 	// Verifica la firma digitale dell'oggetto sulla base del proprio autore
@@ -1420,7 +1432,7 @@ bool IPortalDatabase::_updateObject(const shared_ptr<ObjectsIObject> &object)
 
 	shared_ptr<DataEntry> entry = getEntry(object->id);
 	// Carica l'entry associata all'oggetto
-	if(entry != null)
+	if(entry != nullptr)
 	{
 		entry->type = Convert::toUint32(object->getObjectType());		
 		entry->submit_date = object->submit_date;
@@ -1575,7 +1587,7 @@ bool IPortalDatabase::_removeObject(const shared_ptr<ObjectsIObject> &object)
 	if(done)
 	{
 		shared_ptr<DataEntry> entry = getEntry(object->id);
-		if(entry != null)
+		if(entry != nullptr)
 		{
 			// Richiama la remove base per richiamare l'evento di cancellazione del record
 			done = removeRecord(entry);
@@ -1646,8 +1658,8 @@ bool IPortalDatabase::__createObject(shared_ptr<ObjectsIObject> object, PortalOb
 	// OS_TODOCIP: Suppongo che isPrimary è TRUE, perchè chiamata sempre con TRUE questa, gli oggetti revisionabili seguono un'altro giro e non usano questa helper.
 	bool isPrimary = true;
 
-	OS_ASSERT(object != null);
-	if(object == null)
+	OS_ASSERT(object != nullptr);
+	if(object == nullptr)
 		return false;
 
 	// Controlla se non  stato specificato un id valido
@@ -1694,7 +1706,7 @@ bool IPortalDatabase::__createEntry(objects::entry_ptr entry, PortalObjectType t
 
 	// Carica l'utente di riferimento
 	shared_ptr<ObjectsUser> user = getUser(author);
-	if(user == null)
+	if(user == nullptr)
 		return false;
 
 	// Assicura che l'utente sia valido
@@ -1705,7 +1717,7 @@ bool IPortalDatabase::__createEntry(objects::entry_ptr entry, PortalObjectType t
 	if(CryptManager::instance()->rsaCheckKeys(private_key, user->public_key) == false)
 		return false;
 
-	OS_ASSERT(entry != null);
+	OS_ASSERT(entry != nullptr);
 	if(__createObject(entry, type, id, submit_date, version) == false)
 		return false;
 
@@ -1718,10 +1730,10 @@ bool IPortalDatabase::__createEntry(objects::entry_ptr entry, PortalObjectType t
 /*
 bool IPortalDatabase::__createRevisionable(shared_ptr<ObjectsIRevisionable> revisionable, PortalObjectType type, bool isPrimary, ObjectID &id, const DateTime &submit_date, const uint32 &version, const String &author, const ObjectID &parent, shared_ptr<ObjectsIRevisionable> primary, bool visible, double position, const Buffer &private_key)
 {
-	OS_ASSERT(revisionable != null);
+	OS_ASSERT(revisionable != nullptr);
 
 	// Controlla se l'oggetto  una revisione
-	if(primary != null)
+	if(primary != nullptr)
 	{
 		// Controlla se la primaria specificata in realt corrisponde ad una revisione
 		if(primary->isRevision())
@@ -1744,7 +1756,7 @@ bool IPortalDatabase::__createRevisionable(shared_ptr<ObjectsIRevisionable> revi
 	{
 		// Carica il padre corrente
 		shared_ptr<ObjectsIObject> parent_object = getObject(parent);
-		if(parent_object == null)
+		if(parent_object == nullptr)
 			return false;
 
 		// Assicura che il padre sia un oggetto valido
@@ -1760,7 +1772,7 @@ bool IPortalDatabase::__createRevisionable(shared_ptr<ObjectsIRevisionable> revi
 		return false;
 
 	revisionable->parent = parent;
-	if(primary != null)
+	if(primary != nullptr)
         revisionable->revision = primary->id;
     else
         revisionable->revision = ObjectID::EMPTY;
@@ -1778,7 +1790,7 @@ bool IPortalDatabase::__createRevisionable(shared_ptr<ObjectsIRevisionable> revi
 /*
 bool IPortalDatabase::__createPrimary(shared_ptr<ObjectsIRevisionable> revisionable, PortalObjectType type, ObjectID &id, const DateTime &submit_date, const uint32 &version, const String &author, const String &parent, const Buffer &private_key)
 {
-	return __createRevisionable(revisionable, type, true, id, submit_date, version, author, parent.to_ascii(), null, true, 0, private_key);
+	return __createRevisionable(revisionable, type, true, id, submit_date, version, author, parent.to_ascii(), nullptr, true, 0, private_key);
 }
 */
 
@@ -1787,7 +1799,7 @@ bool IPortalDatabase::__createRevision(shared_ptr<ObjectsIRevisionable> revision
 {
 	// Carica la base della revisione
 	shared_ptr<ObjectsIRevisionable> primary = getRevisionable(revision.to_ascii());
-	if(primary == null)
+	if(primary == nullptr)
 		return false;
 
 	return __createRevisionable(revisionable, type, false, id, submit_date, version, author, parent.to_ascii(), primary, visible, position, private_key);
@@ -1853,11 +1865,11 @@ bool IPortalDatabase::__insertObject(shared_ptr<ObjectsIObject> object, const Bu
 /*
 bool IPortalDatabase::__createRevisionDelete(shared_ptr<ObjectsIRevisionable> revisionable, ObjectID &id, const String &author, const Buffer &private_key)
 {
-	if(revisionable == null)
+	if(revisionable == nullptr)
 		return false;
 
 	shared_ptr<ObjectsIRevisionable> delete_revision = objects_revisionable_cast(revisionable->clone());
-	if(delete_revision == null)
+	if(delete_revision == nullptr)
 		return false;
 
 	return __createRevisionImpl(delete_revision, delete_revision->getObjectType(), id, DateTime::EMPTY, delete_revision->version, author, revisionable->getParent().toUTF16(), revisionable->getPrimary().toUTF16(), false, 0, private_key);
@@ -1865,11 +1877,11 @@ bool IPortalDatabase::__createRevisionDelete(shared_ptr<ObjectsIRevisionable> re
 
 bool IPortalDatabase::__createRevisionMove(shared_ptr<ObjectsIRevisionable> revisionable, const String &newParent, ObjectID &id, const String &author, const Buffer &private_key)
 {
-	if(revisionable == null)
+	if(revisionable == nullptr)
 		return false;
 
 	shared_ptr<ObjectsIRevisionable> move_revision = objects_revisionable_cast(revisionable->clone());
-	if(move_revision == null)
+	if(move_revision == nullptr)
 		return false;
 
 	return __createRevisionImpl(move_revision, move_revision->getObjectType(), id, DateTime::EMPTY, move_revision->version, author, newParent, revisionable->getPrimary().toUTF16(), revisionable->visible, 0, private_key);
@@ -1877,11 +1889,11 @@ bool IPortalDatabase::__createRevisionMove(shared_ptr<ObjectsIRevisionable> revi
 
 bool IPortalDatabase::__createRevisionRestore(shared_ptr<ObjectsIRevisionable> revision, ObjectID &id, const String &author, const Buffer &private_key)
 {
-	if(revision == null)
+	if(revision == nullptr)
 		return false;
 
 	shared_ptr<ObjectsIRevisionable> new_revision = objects_revisionable_cast(revision->clone());
-	if(new_revision == null)
+	if(new_revision == nullptr)
 		return false;
 
 	return __createRevisionImpl(new_revision, new_revision->getObjectType(), id, DateTime::EMPTY, new_revision->version, author, new_revision->getParent().toUTF16(), new_revision->getPrimary().toUTF16(), new_revision->visible, new_revision->position, private_key);
@@ -1958,7 +1970,7 @@ LanguageResult IPortalDatabase::__voteObject(shared_ptr<ObjectsUser> user, const
 	bool exists = true;
 
 	shared_ptr<ObjectsVote> vote = getVote(vote_id);
-	if(vote == null)
+	if(vote == nullptr)
 	{
 		exists = false;
 
@@ -2001,7 +2013,7 @@ LanguageResult IPortalDatabase::__votePoll(shared_ptr<ObjectsUser> user, const B
 
 	shared_ptr<ObjectsPollVote> vote = getPollVote(poll_vote_id);
 	
-	if(vote == null)
+	if(vote == nullptr)
 	{
 		exists = false;
 

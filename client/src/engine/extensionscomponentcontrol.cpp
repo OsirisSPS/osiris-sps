@@ -56,7 +56,7 @@ bool ExtensionsComponentControl::init(shared_ptr<IExtensionsComponent> component
 			return false;
 	}
 
-	if(component != null)
+	if(component != nullptr)
 		component->initXML(getComponentDocument());
 
 	return true;

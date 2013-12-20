@@ -1775,7 +1775,7 @@ struct Image::impl
 		fipMemoryIO mem;
 		if(m_image.saveToMemory(convert(type != itUnknown ? type : m_type), mem))
 		{
-			BYTE *data = null;
+			BYTE *data = nullptr;
 			DWORD size = 0;
 			if(mem.acquire(&data, &size))
                 return buffer.write(data, size) == size;

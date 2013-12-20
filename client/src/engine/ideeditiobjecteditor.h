@@ -56,7 +56,7 @@ public:
 
 // Construction
 public:
-	IObjectEditor(PortalObjectType type, shared_ptr<EntitiesEntity> entity = null, shared_ptr<EntitiesEntity> parent = null);
+	IObjectEditor(PortalObjectType type, shared_ptr<EntitiesEntity> entity = nullptr, shared_ptr<EntitiesEntity> parent = nullptr);
 	virtual ~IObjectEditor();
 
 // Attributes
@@ -118,9 +118,9 @@ private:
 
 inline shared_ptr<EntitiesEntity> IObjectEditor::getEntity() const { return m_entity; }
 inline shared_ptr<EntitiesEntity> IObjectEditor::getParent() const { return m_parent; }
-inline shared_ptr<ObjectsIRevisionable> IObjectEditor::getCurrent() const { return m_entity != null ? m_entity->getCurrent() : null; }
+inline shared_ptr<ObjectsIRevisionable> IObjectEditor::getCurrent() const { return m_entity != nullptr ? m_entity->getCurrent() : nullptr; }
 
-inline bool IObjectEditor::isRevision() const { return m_entity != null; }
+inline bool IObjectEditor::isRevision() const { return m_entity != nullptr; }
 
 inline IObjectEditor::RedirectionType IObjectEditor::getRedirectionType() const { return m_redirectionType; }
 inline void IObjectEditor::setRedirectionType(RedirectionType redirection) { m_redirectionType = redirection; }

@@ -35,7 +35,7 @@ class CalendarEventViewer : public CommentableObjectViewer
 
 // Construction
 public:
-	CalendarEventViewer(shared_ptr<EntitiesEntity> entity = null);
+	CalendarEventViewer(shared_ptr<EntitiesEntity> entity = nullptr);
 	virtual ~CalendarEventViewer();
 
 // IXSLRenderer interface

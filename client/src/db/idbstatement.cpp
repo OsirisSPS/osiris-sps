@@ -41,7 +41,7 @@ shared_ptr<IDbParameter> IDbStatement::addParameter()
 	OS_EXCEPT_IF(index >= neededParameters(), "Invalid statement parameters");
 
 	shared_ptr<IDbParameter> parameter = createParameter(index);
-	if(parameter != null)
+	if(parameter != nullptr)
 		m_parameters.push_back(parameter);
 
 	return parameter;

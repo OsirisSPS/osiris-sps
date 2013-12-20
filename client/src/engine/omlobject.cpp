@@ -150,7 +150,7 @@ String OMLObject::processHtml(shared_ptr<OMLItem> i, shared_ptr<OMLContext> cont
 	else if(i->getTagName() == _S("object"))
 	{
 		shared_ptr<const IPortalPage> page = context->getPortalPage();
-		if(page == null)
+		if(page == nullptr)
 			return String::EMPTY;
 
 		String src;
@@ -178,7 +178,7 @@ String OMLObject::processHtml(shared_ptr<OMLItem> i, shared_ptr<OMLContext> cont
 		String trustedDomains = String::EMPTY;
 		String trustedTypes = String::EMPTY;
 
-		if(page != null)
+		if(page != nullptr)
 		{
 			allowedMode = static_cast<uint32>(page->getOption(Options::anonymity_options::object_mode));
 			trustedDomains = static_cast<String>(page->getOption(Options::anonymity_options::object_trusted_domains));
@@ -204,7 +204,7 @@ String OMLObject::processHtml(shared_ptr<OMLItem> i, shared_ptr<OMLContext> cont
 			{
 				allowedMode=2;
 			}
-			else if( (page != null) && (allowTrusting) )
+			else if( (page != nullptr) && (allowTrusting) )
 			{
 				ordered_map<std::wstring, std::wstring> params;
 				params.set(_W("name"), _W("domain"));
@@ -225,7 +225,7 @@ String OMLObject::processHtml(shared_ptr<OMLItem> i, shared_ptr<OMLContext> cont
 			{
 				allowedMode=2;
 			}
-			else if( (page != null) && (allowTrusting) )
+			else if( (page != nullptr) && (allowTrusting) )
 			{
 				ordered_map<std::wstring, std::wstring> params;
 				params.set(_W("name"), _W("type"));

@@ -118,11 +118,11 @@ template <typename T, typename C>
 shared_ptr<T> IGrowableCache<T, C>::peekEntry()
 {
 	shared_ptr<T> entry = peekAvailableEntry();
-	if(entry != null)
+	if(entry != nullptr)
 		return entry;
 
 	entry = createEntry();
-	if(entry != null)
+	if(entry != nullptr)
 		m_entries.push_back(entry);
 
 	return entry;
@@ -141,7 +141,7 @@ shared_ptr<T> IGrowableCache<T, C>::peekAvailableEntry()
 		if((*current).unique())
 		{
 			// Controlla se non è stata trovata ancora un'entry disponibile
-			if(entry == null)
+			if(entry == nullptr)
 			{
 				// Salva l'entry disponibile
 				entry = *current;
@@ -154,7 +154,7 @@ shared_ptr<T> IGrowableCache<T, C>::peekAvailableEntry()
 
 			if(m_optimalSize == boost::none || m_optimalSize.get() >= static_cast<uint32>(m_entries.size()))
 			{
-				OS_ASSERT(entry != null);
+				OS_ASSERT(entry != nullptr);
 				break;
 			}
 		}

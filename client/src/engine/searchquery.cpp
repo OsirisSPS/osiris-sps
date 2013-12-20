@@ -41,7 +41,7 @@ OS_NAMESPACE_BEGIN()
 
 shared_ptr<SearchQuery> SearchQuery::getSections()
 {
-	static shared_ptr<SearchQuery> section = null;
+	static shared_ptr<SearchQuery> section = nullptr;
 	if(section == NULL)
 	{
 		section = shared_ptr<SearchQuery>(OS_NEW SearchQuery());
@@ -53,7 +53,7 @@ shared_ptr<SearchQuery> SearchQuery::getSections()
 
 shared_ptr<SearchQuery> SearchQuery::getForums()
 {
-	static shared_ptr<SearchQuery> forums = null;
+	static shared_ptr<SearchQuery> forums = nullptr;
 	if(forums == NULL)
 	{
 		forums = shared_ptr<SearchQuery>(OS_NEW SearchQuery());
@@ -72,7 +72,7 @@ SearchQuery::SearchQuery()
 	{
 		PortalObjectType type = i->first;
 		shared_ptr<ISearchOptions> options = i->second->getSearchOptions();
-		if(options != null)
+		if(options != nullptr)
 			m_options[type] = options;
 	}
 
@@ -221,7 +221,7 @@ shared_ptr<ISearchResults> SearchQuery::search(shared_ptr<IPortalDatabase> datab
 		for(uint32 i = 0; i < totalResults; i++)
 		{
 			shared_ptr<SearchResult> result = results->getResult(database, i, true);
-			if(result != null)
+			if(result != nullptr)
 				items[result->getID().toUTF16()] = true;
 		}
 		bool partial = results->getPartial();
@@ -338,7 +338,7 @@ void SearchQuery::computeParentsList(shared_ptr<IPortalDatabase> database, share
 
 void SearchQuery::computeParentsList(shared_ptr<IPortalDatabase> database, shared_ptr<Portal> portal, const shared_ptr<EntitiesEntity> entity, StringList &out) const
 {
-	if(entity == null)
+	if(entity == nullptr)
 		return;
 
 	if(entity->getObjectType() != portalObjectTypeSection)
@@ -363,7 +363,7 @@ shared_ptr<ISearchOptions> SearchQuery::getOption(const PortalObjectType type)
 	if(i != m_options.end())
 		return i->second;
 
-	return null;
+	return nullptr;
 }
 
 //////////////////////////////////////////////////////////////////////

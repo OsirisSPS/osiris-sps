@@ -55,17 +55,17 @@ IObjectViewer::~IObjectViewer()
 /*
 shared_ptr<ObjectsIRevisionable> IObjectViewer::getPrimaryObject() const
 {
-	return m_entity != null ? m_entity->getPrimary() : null;
+	return m_entity != nullptr ? m_entity->getPrimary() : nullptr;
 }
 
 shared_ptr<ObjectsIRevisionable> IObjectViewer::getCurrentObject() const
 {
-	return m_entity != null ? m_entity->getCurrent() : null;
+	return m_entity != nullptr ? m_entity->getCurrent() : nullptr;
 }
 
 const ObjectID & IObjectViewer::getPrimaryID() const
 {
-	if(m_entity != null)
+	if(m_entity != nullptr)
 		return m_entity->getPrimary()->id;
 
 	return ObjectID::EMPTY;
@@ -75,7 +75,7 @@ const ObjectID & IObjectViewer::getPrimaryID() const
 #ifdef OS_TODOCIP
 const EntityID & IObjectViewer::getEntityID() const
 {
-	if(m_entity != null)
+	if(m_entity != nullptr)
 		return m_entity->getEntityID();
 
 	return EntityID::EMPTY;
@@ -83,7 +83,7 @@ const EntityID & IObjectViewer::getEntityID() const
 #else
 EntityID IObjectViewer::getEntityID() const
 {
-	if(m_entity != null)
+	if(m_entity != nullptr)
 		return m_entity->getEntityID();
 
 	return EntityID::EMPTY;
@@ -104,7 +104,7 @@ void IObjectViewer::renderVote(shared_ptr<XMLPortalExporter> exporter) const
 
 void IObjectViewer::renderTags(shared_ptr<XMLPortalExporter> exporter) const
 {
-	if(m_entity == null)
+	if(m_entity == nullptr)
 		return;
 
 	shared_ptr<EntitiesEntities> tags = m_entity->getChilds(getDatabase(), portalObjectTypeTag);
@@ -114,7 +114,7 @@ void IObjectViewer::renderTags(shared_ptr<XMLPortalExporter> exporter) const
 		for(EntitiesEntities::iterator i = tags->begin(); i != tags->end(); ++i)
 		{
 			shared_ptr<EntitiesEntity> tag = tags->get(getDatabase(), *i);
-			if(tag != null)
+			if(tag != nullptr)
 			{
 				shared_ptr<XMLPortalExporter> tagExporter(OS_NEW XMLPortalExporter(tags_node->addChild(ObjectsSystem::instance()->getTypeName(portalObjectTypeTag)), getPage(), XMLPortalExporter::emFull));
 				tag->exportXML(tagExporter);
@@ -126,7 +126,7 @@ void IObjectViewer::renderTags(shared_ptr<XMLPortalExporter> exporter) const
 String IObjectViewer::getPageHref(uint32 offset) const
 {
 	String href;
-	if(m_entity != null)
+	if(m_entity != nullptr)
 	{
 		ordered_map<std::wstring, std::wstring> params;
 		if(offset != 0)
@@ -142,7 +142,7 @@ void IObjectViewer::onLoad()
 {
 	ControlBase::onLoad();
 
-	if( (getEntity() == null) || (getObject() == null) )
+	if( (getEntity() == nullptr) || (getObject() == nullptr) )
 		return;
 
 	shared_ptr<ObjectsIRevisionable> object = getEntity()->getCurrent();
@@ -162,9 +162,9 @@ void IObjectViewer::onPreRender()
 
 	// TODO: da sistemare...adesso  stato messo qui per consentire al vote_editor di inizializzarsi nella onInit,
 	// verr pulito quando i controlli riceveranno gli eventi di init e compagnia non appena vengono aggiunti ai controlli del padre
-	if(m_vote != null)
+	if(m_vote != nullptr)
 	{
-		OS_ASSERT(m_voteEditor != null);
+		OS_ASSERT(m_voteEditor != nullptr);
 		if(m_vote->isNull())
 			m_voteEditor->setNull();
 		else
@@ -174,7 +174,7 @@ void IObjectViewer::onPreRender()
 
 void IObjectViewer::onUpdateVote()
 {
-	if( (getEntity() == null) || (getObject() == null) )
+	if( (getEntity() == nullptr) || (getObject() == nullptr) )
 		return;
 
 	LanguageResult result;

@@ -53,7 +53,7 @@ void TextViewer::onLoad()
 	ViewerBase::onLoad();
 
 	shared_ptr<XMLNode> root = getModuleDocument()->getRoot();
-	if(root != null)
+	if(root != nullptr)
 	{
 		String text = root->getAttributeString(OS_MODULES_TEXT_TEXT);
 		String style = root->getAttributeString(OS_MODULES_TEXT_STYLE);

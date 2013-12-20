@@ -40,7 +40,7 @@ DbSqlSelect::~DbSqlSelect()
 
 void DbSqlSelect::createConnection(shared_ptr<DbSqlSelect> select, ConnectionType type)
 {
-	OS_ASSERT(select != null);
+	OS_ASSERT(select != nullptr);
 
 	m_connection = select;
 	m_connectionType = type;

@@ -135,7 +135,7 @@ bool SnapshotOptions::_readXML(shared_ptr<XMLDocument> document)
 	clear();
 
 	shared_ptr<XMLNode> root = document->getRoot();
-	if(root == null)
+	if(root == nullptr)
 		return false;
 
 	m_snapshotOptions.parseXMLNode(root);

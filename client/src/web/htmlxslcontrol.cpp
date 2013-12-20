@@ -57,7 +57,7 @@ const String & HtmlXSLControl::getChildParam(shared_ptr<IHtmlControl> child) con
 
 void HtmlXSLControl::setChildParam(shared_ptr<IHtmlControl> child, const String &param)
 {
-    OS_EXCEPT_IF(child == null || getControls()->exists(child) == false, "Invalid child");
+    OS_EXCEPT_IF(child == nullptr || getControls()->exists(child) == false, "Invalid child");
 	OS_EXCEPT_IF(hasChildParam(child), "Child already assigned to a param");
 
 	// Associa il controllo ad un parametro
@@ -66,7 +66,7 @@ void HtmlXSLControl::setChildParam(shared_ptr<IHtmlControl> child, const String 
 
 void HtmlXSLControl::addChildParam(shared_ptr<IHtmlControl> child)
 {
-	if(child == null || child->hasID() == false)
+	if(child == nullptr || child->hasID() == false)
 	{
 		OS_ASSERTFALSE();
 		return;
@@ -85,13 +85,13 @@ void HtmlXSLControl::onRender(HtmlWriter &writer)
 {
 	OS_TIMER_PERFORMANCE(TP, _S("HtmlXSLControl::onRender"));
 
-	if(m_stylesheet == null)
+	if(m_stylesheet == nullptr)
 	{
 	//	OS_ASSERTFALSE();
 		return;
 	}
 
-	if(m_document == null || m_document->getRoot() == null)
+	if(m_document == nullptr || m_document->getRoot() == nullptr)
 	{
 	//	OS_ASSERTFALSE();
 		return;

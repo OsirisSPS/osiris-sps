@@ -39,7 +39,7 @@ BOOST_AUTO_TEST_CASE(test_datatree_serialization)
 	DataTree dt1;
 	
 	Buffer buffer;
-	BOOST_CHECK(dt1.write(buffer, false, null));
+	BOOST_CHECK(dt1.write(buffer, false, nullptr));
 	BOOST_CHECK(buffer.empty() == false);
 
 	buffer.seekToBegin();

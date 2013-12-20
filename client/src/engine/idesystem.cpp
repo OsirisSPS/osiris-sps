@@ -97,7 +97,7 @@ shared_ptr<IConnection> IdeSystem::HttpServer::createConnection()
 //////////////////////////////////////////////////////////////////////
 
 IdeSystem::IdeSystem() : m_server(OS_NEW HttpServer(Engine::getDefaultHttpUserAgent())),
-						 //m_accountsManager(null),
+						 //m_accountsManager(nullptr),
 						 m_eventBeforePageRender(OS_NEW EventSource()),
 						 m_eventAfterPageRender(OS_NEW EventSource())
 {
@@ -123,10 +123,10 @@ shared_ptr<IdeSkin> IdeSystem::getSkin(const SkinID &id, bool load) const
 		return i->second;
 
 	if(load == false)
-		return null;
+		return nullptr;
 
 	// 0.14
-	return null;
+	return nullptr;
 
 	// 0.13
 	/*
@@ -146,7 +146,7 @@ shared_ptr<IdeSkin> IdeSystem::getDefaultSkin() const
 	
 	SkinID defaultSkinID = SkinID(Options::instance()->getOption<String>(Options::ide_options::skin_id).to_ascii());
 	shared_ptr<IdeSkin> defaultSkin = getSkin(defaultSkinID, false);
-	if(defaultSkin == null)
+	if(defaultSkin == nullptr)
 	{
 		defaultSkinID = SkinID(OS_IDE_SKIN_DEFAULT.to_ascii());
 		defaultSkin = getSkin(defaultSkinID, false);
@@ -163,7 +163,7 @@ Locked<const IdeSystem::Skins>::unique IdeSystem::getAvailableSkins() const
 
 String IdeSystem::getLocalUrl(const String &relativeUrl) const
 {
-	OS_ASSERT(m_server != null);
+	OS_ASSERT(m_server != nullptr);
 
 	String localUrl;
 	if(m_server->running())
@@ -214,7 +214,7 @@ void IdeSystem::updateServer()
 	
 	try
 	{
-		OS_ASSERT(m_server != null);
+		OS_ASSERT(m_server != nullptr);
 
 		// Controlla se l'allineamento è disabilitato
 		if(Options::instance()->getOption<bool>(Options::web_options::enable) == false)
@@ -300,7 +300,7 @@ void IdeSystem::updateServer()
 
 void IdeSystem::stopServer()
 {
-	OS_ASSERT(m_server != null);
+	OS_ASSERT(m_server != nullptr);
 	m_server->stop();
 }
 
@@ -326,7 +326,7 @@ bool IdeSystem::updateDefaultSkin()
 
 	m_defaultSkin = UniqueID(Options::instance()->getOption<String>(Options::ide_options::skin_id).to_ascii());
 	shared_ptr<IdeSkin> defaultSkin = getSkin(m_defaultSkin, true);
-	if(defaultSkin == null)
+	if(defaultSkin == nullptr)
 		return false;
 
 	String skinSchema = Options::instance()->getOption<String>(Options::ide_options::skin_schema);
@@ -341,7 +341,7 @@ void IdeSystem::registerSkin(shared_ptr<IdeSkin> skin)
 {
 	OS_LOCK(m_cs);
 
-	if(skin == null)
+	if(skin == nullptr)
 		return;
 
 	OS_LOG_INFO("Skin '" + skin->getName() + "' registered.");
@@ -353,7 +353,7 @@ void IdeSystem::unregisterSkin(shared_ptr<IdeSkin> skin)
 {
 	OS_LOCK(m_cs);
 
-	if(skin == null)
+	if(skin == nullptr)
 		return;
 
 	if(m_skins.exists(skin->getID()))

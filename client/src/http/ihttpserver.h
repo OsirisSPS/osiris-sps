@@ -115,7 +115,7 @@ private:
 inline const std::string & IHttpServer::getName() const { return m_name; }
 
 inline shared_ptr<IHttpDirectory> IHttpServer::getRootDirectory() const { return m_root; }
-inline bool IHttpServer::hasDirectory(const String &name) const { return getDirectory(name) != null; }
+inline bool IHttpServer::hasDirectory(const String &name) const { return getDirectory(name) != nullptr; }
 inline boost::shared_mutex & IHttpServer::getRequestMutex() { return m_requestsCS; }
 
 //////////////////////////////////////////////////////////////////////

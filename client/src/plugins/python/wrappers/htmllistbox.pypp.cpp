@@ -24,7 +24,7 @@ struct HtmlListBox_wrapper : ::osiris::HtmlListBox, ::osiris::PythonWrapper< ::o
     HtmlListBox_wrapper( )
     : ::osiris::HtmlListBox( )
       , ::osiris::PythonWrapper< ::osiris::HtmlListBox >(){
-        // null constructor
+        // nullptr constructor
     
     }
 

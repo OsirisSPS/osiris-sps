@@ -28,7 +28,7 @@ OS_NAMESPACE_BEGIN()
 DbSqlCreateTable::DbSqlCreateTable(shared_ptr<DbSchemaTable> table) : DbSqlICommand(ctCreateTable),
 																		m_table(table)
 {
-	OS_ASSERT(m_table != null);
+	OS_ASSERT(m_table != nullptr);
 }
 
 DbSqlCreateTable::~DbSqlCreateTable()

@@ -40,7 +40,7 @@ HttpVirtualDirectory::~HttpVirtualDirectory()
 
 void HttpVirtualDirectory::addHandler(shared_ptr<IHttpDirectoryHandler> handler)
 {
-	if(handler == null)
+	if(handler == nullptr)
 	{
 		OS_ASSERTFALSE();
 		return;

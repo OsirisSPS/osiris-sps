@@ -65,7 +65,7 @@ shared_ptr<IJob> SchedulableThread::getJob(uint32 id) const
 			return *i;
 	}
 
-	return null;
+	return nullptr;
 }
 
 bool SchedulableThread::hasJobs() const
@@ -78,8 +78,8 @@ uint32 SchedulableThread::addJob(shared_ptr<IJob> job)
 {
 	OS_LOCK(m_jobsCS);
 
-	OS_ASSERT(job != null);
-	if(job != null)
+	OS_ASSERT(job != nullptr);
+	if(job != nullptr)
 	{
 		// N.B.: a parità di priorità il nuovo job deve essere successivo a quelli accodati in precedenza
 
@@ -142,7 +142,7 @@ bool SchedulableThread::executeNextJob(uint32 timeout)
 {
 	// Attende un nuovo job da eseguire
 	shared_ptr<IJob> job = peekJob(timeout);
-	if(job == null)
+	if(job == nullptr)
 		return false;
 
 	// Esegue il job
@@ -187,7 +187,7 @@ shared_ptr<IJob> SchedulableThread::peekJob(uint32 timeout)
 			m_jobEvent.wait(timeout);
 			// Verifica che il thread non sia stato fermato durante l'attesa (unica condizione per cui m_jobEvent.isValid() possa essere "false")
 			if(m_jobEvent.isValid() == false)
-				return null;
+				return nullptr;
 		}
 	}
 
@@ -204,12 +204,12 @@ shared_ptr<IJob> SchedulableThread::peekJob(uint32 timeout)
 		}
 	}
 
-    return null;
+    return nullptr;
 }
 
 void SchedulableThread::executeJob(shared_ptr<IJob> job)
 {
-	if(job == null)
+	if(job == nullptr)
 	{
 		OS_ASSERTFALSE();
 		return;

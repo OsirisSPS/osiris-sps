@@ -47,18 +47,18 @@ profile_ptr ProfilesCache::load(const ObjectID &id, IdeSession *session)
 {
 	/*
 	shared_ptr<ObjectsUser> user = objects_user_cast(logged_user->getObject(id));
-	if(user == null)
-		return null;
+	if(user == nullptr)
+		return nullptr;
 
 	return profile_ptr(OS_NEW Profile(logged_user->getPortal(), logged_user->getDatabase(), logged_user->getSnapshotProfile(), user));
 	*/
 	OS_ASSERT(false);
-	return null;
+	return nullptr;
 }
 
 profile_ptr ProfilesCache::myGet(shared_ptr<IPortalDatabase> database, const ObjectID &id)
 {
-	profile_ptr ptr = null;
+	profile_ptr ptr = nullptr;
 	if(exists(id))
 	{
 		ptr = find(id);
@@ -66,7 +66,7 @@ profile_ptr ProfilesCache::myGet(shared_ptr<IPortalDatabase> database, const Obj
 	else
 	{
 		shared_ptr<ObjectsUser> user = objects_user_cast(database->getPortal()->getObject(database, id));
-		if(user != null)
+		if(user != nullptr)
 		{
 			ptr.reset(OS_NEW Profile(database->getPortal(), database, user));
 		}

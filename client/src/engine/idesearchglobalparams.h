@@ -44,7 +44,7 @@ class EngineExport IdeSearchGlobalParams : public IXSLRenderer<IPortalPageContro
 
 // Construction
 public:
-	IdeSearchGlobalParams(shared_ptr<SearchQuery> query = null);
+	IdeSearchGlobalParams(shared_ptr<SearchQuery> query = nullptr);
 	virtual ~IdeSearchGlobalParams();
 
 // Attributes

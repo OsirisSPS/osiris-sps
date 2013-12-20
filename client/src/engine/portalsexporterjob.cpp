@@ -46,7 +46,7 @@ PortalsExporterJob::PortalsExporterJob(uint32 id, shared_ptr<Portal> portal, con
 																											m_format(format),
 																											m_serializer(OS_NEW PortalsSerializer())
 {
-	OS_ASSERT(portal != null);
+	OS_ASSERT(portal != nullptr);
 
 	m_filename = FileSystem::instance()->createValidFilename(portal->getName());
 	if(m_filename.empty())
@@ -55,7 +55,7 @@ PortalsExporterJob::PortalsExporterJob(uint32 id, shared_ptr<Portal> portal, con
 		m_filename = FileSystem::instance()->makeFilename(m_filename, getExtension());
 
 	m_downloadDirectory = PortalsSystem::instance()->getTempDirectory()->addDirectoryCallback(boost::bind(&PortalsExporterJob::handleDownloadRequest, this, _1, _2));
-	OS_ASSERT(m_downloadDirectory != null);
+	OS_ASSERT(m_downloadDirectory != nullptr);
 
 	m_serializer->getProgressEvent()->connect(boost::bind(&PortalsExporterJob::onProgress, this));
 }
@@ -84,7 +84,7 @@ std::string PortalsExporterJob::getExtension()
 
 bool PortalsExporterJob::handleDownloadRequest(shared_ptr<HttpSession> session, const HttpPath &path)
 {
-	if(m_file == null)
+	if(m_file == nullptr)
 	{
 		OS_ASSERTFALSE();
 		return false;
@@ -114,7 +114,7 @@ void PortalsExporterJob::stop()
 IJob::JobStatus PortalsExporterJob::run()
 {
 	shared_ptr<Portal> portal = getPortal();
-	if(portal == null)
+	if(portal == nullptr)
 		return jobComplete;
 
 	NotificationsManager::instance()->notify(_S("Exporting of '") + portal->getName() + _S("' started."));
@@ -122,7 +122,7 @@ IJob::JobStatus PortalsExporterJob::run()
 	m_file.reset();
 
 	shared_ptr<TemporaryFile> file = Options::instance()->createTemporaryFile();
-	if(file == null)
+	if(file == nullptr)
 	{
 		OS_LOG_ERROR("Cannot create temporary file for export");
 		return jobComplete;
@@ -145,7 +145,7 @@ shared_ptr<IBackgroundJob::Details> PortalsExporterJob::getDetails() const
 	String jobName(Engine::instance()->getText("job.exporter"));
 
 	shared_ptr<Portal> portal = getPortal();
-	if(portal != null)
+	if(portal != nullptr)
 	{
 		jobName.append(" - ");
 		jobName.append(portal->getName());
@@ -153,7 +153,7 @@ shared_ptr<IBackgroundJob::Details> PortalsExporterJob::getDetails() const
 
 	shared_ptr<Details> details(OS_NEW Details(jobName.to_wide()));
 	details->setPercentage(m_serializer->getProgressPercentage());
-	if(m_file != null && m_downloadDirectory != null)
+	if(m_file != nullptr && m_downloadDirectory != nullptr)
 	{
 		// TOTRANSLATE
 		String msg = _S("[center][url=\"{@url}\"]Click here for download[/url][/center]");

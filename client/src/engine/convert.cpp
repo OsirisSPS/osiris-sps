@@ -53,7 +53,7 @@ uint32 Convert::toUint32(const String &v)
 
 double Convert::toDouble(const String &v)
 {
-    return os_strtod(v.c_str(), null);
+    return os_strtod(v.c_str(), nullptr);
 }
 
 String Convert::toString(bool v)

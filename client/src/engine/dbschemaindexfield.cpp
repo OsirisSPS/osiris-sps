@@ -52,8 +52,8 @@ DbSchemaIndexField::~DbSchemaIndexField()
 
 bool DbSchemaIndexField::parse(shared_ptr<XMLNode> nodeField)
 {
-	OS_ASSERT(nodeField != null);
-	if(nodeField == null)
+	OS_ASSERT(nodeField != nullptr);
+	if(nodeField == nullptr)
 		return false;
 
 	if(_parseName(nodeField->getAttributeString(NAME)) == false)
@@ -67,7 +67,7 @@ bool DbSchemaIndexField::parse(shared_ptr<XMLNode> nodeField)
 
 bool DbSchemaIndexField::compare(shared_ptr<DbSchemaIndexField> second)
 {
-	OS_ASSERT(second != null);
+	OS_ASSERT(second != nullptr);
 
 	if(getName() != second->getName())
 		return false;

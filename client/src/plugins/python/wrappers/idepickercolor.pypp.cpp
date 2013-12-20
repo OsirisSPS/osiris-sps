@@ -25,7 +25,7 @@ struct IdePickerColor_wrapper : ::osiris::IdePickerColor, ::osiris::PythonWrappe
     IdePickerColor_wrapper( )
     : ::osiris::IdePickerColor( )
       , ::osiris::PythonWrapper< ::osiris::IdePickerColor >(){
-        // null constructor
+        // nullptr constructor
     
     }
 

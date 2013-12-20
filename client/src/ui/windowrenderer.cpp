@@ -37,7 +37,7 @@ END_EVENT_TABLE()
 
 WindowRenderer::WindowRenderer(wxWindow *window)
 {
-	OS_ASSERT(window != null);
+	OS_ASSERT(window != nullptr);
 	m_window = window;
 	m_mouseOver = false;
 }

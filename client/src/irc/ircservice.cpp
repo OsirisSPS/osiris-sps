@@ -44,10 +44,10 @@ IRCService::~IRCService()
 shared_ptr<IRCSession> IRCService::addSession()
 {
 	shared_ptr<ConnectionsManager> connectionsManager = getConnectionsManager();
-	if(connectionsManager == null)
+	if(connectionsManager == nullptr)
 	{
 		OS_ASSERTFALSE();
-		return null;
+		return nullptr;
 	}
 
 	OS_LOCK(m_cs);

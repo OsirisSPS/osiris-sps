@@ -63,7 +63,7 @@ void IHtmlInput::onInit()
 		// Ottiene il parametro associato al controllo
 		shared_ptr<HttpPostParam> param = getRequest()->getPostParam(getTarget().to_wide());
 		// Verifica che sia stato postato un parametro relativo al controllo
-		if(param != null)
+		if(param != nullptr)
 			// Inizializza il valore del controllo
             m_value = param->getString();
 		/*

@@ -64,7 +64,7 @@ void DataDiscussionStats::exportXML(shared_ptr<XMLPortalExporter> exporter)
 	if(last_entry->empty() == false)
 	{
 		shared_ptr<EntitiesEntity> lastEntryEntity = exporter->getPage()->getPortal()->getEntity(exporter->getDatabase(), last_entry);
-		if(lastEntryEntity != null)
+		if(lastEntryEntity != nullptr)
 		{
 			shared_ptr<XMLPortalExporter> lastEntryExporter = exporter->createChild<XMLPortalExporter>(exporter->getNodeStats()->addChild(DBTABLES::DISCUSSIONS_STATS::LAST_ENTRY));
 			lastEntryExporter->setWithStats(false);			// Per evitare di andare in ricorsivo se l'entry coincide con l'oggetto

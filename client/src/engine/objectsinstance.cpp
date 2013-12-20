@@ -141,7 +141,7 @@ void ObjectsInstance::exportXML(shared_ptr<XMLPortalExporter> exporter)
 	}
 
 	shared_ptr<IExtensionsModule> module = getModule();
-	if(module != null)
+	if(module != nullptr)
 		module->exportXML(getEntityID(), exporter);	
 }
 

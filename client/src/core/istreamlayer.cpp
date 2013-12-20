@@ -43,7 +43,7 @@ uint64 IStreamLayer::available() const
 
 bool IStreamLayer::seek(uint64 offset, SeekPosition from)
 {
-	if(m_next != null)
+	if(m_next != nullptr)
 		return m_next->seek(offset, from);
 
 	return false;
@@ -51,7 +51,7 @@ bool IStreamLayer::seek(uint64 offset, SeekPosition from)
 
 uint64 IStreamLayer::position() const
 {
-	if(m_next != null)
+	if(m_next != nullptr)
 		return m_next->position();
 
 	return 0;
@@ -59,7 +59,7 @@ uint64 IStreamLayer::position() const
 
 uint64 IStreamLayer::size() const
 {
-	if(m_next != null)
+	if(m_next != nullptr)
 		return m_next->size();
 
 	return 0;
@@ -67,7 +67,7 @@ uint64 IStreamLayer::size() const
 
 bool IStreamLayer::close()
 {
-	if(m_next != null && m_next->close() == false)
+	if(m_next != nullptr && m_next->close() == false)
 		return false;
 
 	return true;
@@ -75,7 +75,7 @@ bool IStreamLayer::close()
 
 bool IStreamLayer::flush()
 {
-	if(m_next != null && m_next->flush() == false)
+	if(m_next != nullptr && m_next->flush() == false)
 		return false;
 
 	return true;

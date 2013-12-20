@@ -171,7 +171,7 @@ bool IApplication::start()
 		return false;
 
 	// N.B.: è necessario avviare il thread di listener dopo aver avviato l'engine in modo da evitare di processare comandi prima che quest'ultimo sia stato inizializzato
-	if(m_notifyListener != null)
+	if(m_notifyListener != nullptr)
 		m_notifyListener->start();
 
 	return true;
@@ -179,7 +179,7 @@ bool IApplication::start()
 
 void IApplication::stop()
 {
-	if(m_notifyListener != null)
+	if(m_notifyListener != nullptr)
 		m_notifyListener->stop();
 
     if(Engine::exists())
@@ -307,7 +307,7 @@ void IApplication::cleanupProcess()
 {
 	OS_ASSERT(isPrimaryProcess());
 
-	if(m_notifyListener != null)
+	if(m_notifyListener != nullptr)
 	{
 		OS_ASSERT(m_notifyListener->running() == false);
 		m_notifyListener.reset();
@@ -413,15 +413,15 @@ bool IApplication::queryPrimaryProcessID(uint32 currentProcessID, uint32 &primar
 	}
 
 	shared_ptr<PlatformManager::ProcessDetails> lastProcessDetails = PlatformManager::instance()->getProcessDetails(lastProcessID);
-	if(lastProcessDetails == null)
+	if(lastProcessDetails == nullptr)
 		return false;
 
 	// N.B.: non è sufficiente verificare se il processo è ancora attivo in quanto potrebbe essere terminato e il sistema operativo
 	// abbia assegnato ad un nuovo processo l'ID appena letto, pertanto, se disponibile, bisogna verificare che i path degli eseguibili coincidano
 
 	shared_ptr<PlatformManager::ProcessDetails> currentProcessDetails = PlatformManager::instance()->getProcessDetails(currentProcessID);
-	OS_ASSERT(currentProcessDetails != null);	// I dettagli sul processo corrente dovrebbero essere sempre disponibili
-	if(currentProcessDetails != null)
+	OS_ASSERT(currentProcessDetails != nullptr);	// I dettagli sul processo corrente dovrebbero essere sempre disponibili
+	if(currentProcessDetails != nullptr)
 	{
 		// Verifica che sia stato possibile determinare il path degli eseguibili di entrambe i processi
 		if((currentProcessDetails->executablePath.empty() == false) && (lastProcessDetails->executablePath.empty() == false))

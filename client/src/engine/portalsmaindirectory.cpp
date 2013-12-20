@@ -105,7 +105,7 @@ bool MainDirectory::handle(shared_ptr<HttpSession> session, const HttpPath &path
 												break;
 			}
 
-			return page != null ? page->transmit() : false;
+			return page != nullptr ? page->transmit() : false;
 		}
 	}
 

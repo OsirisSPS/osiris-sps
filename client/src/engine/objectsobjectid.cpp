@@ -72,7 +72,7 @@ String ObjectID::getObjectTypeName() const
 	if(type != portalObjectTypeUnknown)
 	{
 		shared_ptr<ObjectsIDescriptor> descriptor = ObjectsSystem::instance()->getDescriptor(type);
-		if(descriptor != null)
+		if(descriptor != nullptr)
 			return descriptor->getTypeName();
 	}
 
@@ -146,7 +146,7 @@ bool ObjectID::_validate(bool allow_null, bool require_primary) const
 	if(ID::validate(allow_null) == false)
 		return false;
 
-	// Verifica il caso sia richiesta una primaria ma sia ammesso null
+	// Verifica il caso sia richiesta una primaria ma sia ammesso nullptr
 	if(allow_null && empty())
 		return true;
 
@@ -257,7 +257,7 @@ bool EntityID::_validate(bool allow_null, bool require_primary) const
 	if(ID::validate(allow_null) == false)
 		return false;
 
-	// Verifica il caso sia richiesta una primaria ma sia ammesso null
+	// Verifica il caso sia richiesta una primaria ma sia ammesso nullptr
 	if(allow_null && empty())
 		return true;
 

@@ -24,7 +24,7 @@
 
 //////////////////////////////////////////////////////////////////////
 
-#define OS_IMPLEMENT_SINGLETON(s)		template<> s * OS_NAMESPACE_NAME::DynamicSingleton<s>::s_instance = null;
+#define OS_IMPLEMENT_SINGLETON(s)		template<> s * OS_NAMESPACE_NAME::DynamicSingleton<s>::s_instance = nullptr;
 
 //////////////////////////////////////////////////////////////////////
 
@@ -61,14 +61,14 @@ protected:
 template <typename T>
 T * DynamicSingleton<T>::instance()
 {
-	OS_ASSERT(s_instance != null);
+	OS_ASSERT(s_instance != nullptr);
 	return s_instance;
 }
 
 template <typename T>
 bool DynamicSingleton<T>::exists()
 {
-    return s_instance != null;
+    return s_instance != nullptr;
 }
 
 //////////////////////////////////////////////////////////////////////
@@ -76,15 +76,15 @@ bool DynamicSingleton<T>::exists()
 template <typename T>
 DynamicSingleton<T>::DynamicSingleton()
 {
-	OS_ASSERT(s_instance == null);
+	OS_ASSERT(s_instance == nullptr);
 	s_instance = static_cast<T *>(this);
 }
 
 template <typename T>
 DynamicSingleton<T>::~DynamicSingleton()
 {
-	OS_ASSERT(s_instance != null);
-	s_instance = null;
+	OS_ASSERT(s_instance != nullptr);
+	s_instance = nullptr;
 }
 
 template <typename T>
@@ -219,7 +219,7 @@ T * StaticSingleton<T, lazy>::instance()
 
 	// N.B.: non tenere "instance" a livello globale in quanto non POD (m_initializer è POD) e pertanto potrebbe causare problemi di inizializzazione (instance.ptr verrebbe reinizializzato a 0 dopo la initInstance)
 	boost::call_once(m_initializer, &initInstance);
-	OS_ASSERT(ptr().get() != null);
+	OS_ASSERT(ptr().get() != nullptr);
 	return ptr().get();
 }
 
@@ -234,7 +234,7 @@ inline scoped_ptr<T> & StaticSingleton<T, lazy>::ptr()
 template <typename T, bool lazy>
 void StaticSingleton<T, lazy>::initInstance()
 {
-	OS_ASSERT(ptr().get() == null);
+	OS_ASSERT(ptr().get() == nullptr);
 	ptr().reset(new Impl());
 }
 

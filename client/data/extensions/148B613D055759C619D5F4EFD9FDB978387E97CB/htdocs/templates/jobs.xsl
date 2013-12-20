@@ -18,8 +18,8 @@
   <xsl:param name="showAll"/>
 
   <xsl:template match="jobs">    
-    <xsl:call-template name="block">
-      <xsl:with-param name="title" select="lang:text('main.pages.jobs.title')"/>      
+    <xsl:call-template name="block_page">
+      <xsl:with-param name="prefix" select="'main.pages.jobs'"/>      
       <xsl:with-param name="content">
         <xsl:call-template name="jobsTable"/>             
       </xsl:with-param>
@@ -68,8 +68,6 @@
     <div class="os_commands_right">
       <xsl:value-of select="$showAll" disable-output-escaping="yes"/>
     </div>
-
-		<div style="clear:both"></div>
 
     <xsl:for-each select="actions/action">
       <xsl:call-template name="action-row">

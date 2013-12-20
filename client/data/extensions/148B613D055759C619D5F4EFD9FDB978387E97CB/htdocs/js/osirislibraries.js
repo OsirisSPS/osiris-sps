@@ -37,8 +37,6 @@ var OsirisLibraries =
             
             // Language
             $.getScript(Osiris.adjustStaticUrl("/htdocs/js/lang.js"));
-            
-            $.getScript(Osiris.adjustStaticUrl("/htdocs/js/libraries/ripple.js"));
 
             /* ------------------------------------------------------------
             jQuery - passStrengthener
@@ -63,7 +61,7 @@ var OsirisLibraries =
             ------------------------------------------------------------ */
                        
             $.getScript(Osiris.adjustStaticUrl("/htdocs/js/jquery/jquery.autoresize.js"));
-			
+
             /* ------------------------------------------------------------
             jQuery - DataTables
             ------------------------------------------------------------ */
@@ -173,26 +171,26 @@ var OsirisLibraries =
                 jQuery - ColorPicker
                 ------------------------------------------------------------ */
                 
-                if (otype == "color") {
-                	$(src).css('width', "0px");
-									$(src).css('opacity', "0");
-						
-									$(src).colorpicker({
-										alpha: true,
-										buttonImage: '/htdocs/images/controls/color.png',
-										buttonImageOnly: true,
-										showOn: 'both',
-										showSwatches: true,
-										showNoneButton: false,
-										buttonColorize: true,
-										showButtonPanel: false,
-										colorFormat: '#rxgxbxax',
-										//colorFormat: 'RGBA',
-										limit: '',
-										parts: 'full',
-										zIndex: 9000
+                /*
+                if (otype == "colorpicker") {
+                	alert('pciker');
+                	
+                	$(src).ColorPicker({
+										color: '#0000ff',
+										onShow: function (colpkr) {
+											$(colpkr).fadeIn(500);
+											return false;
+										},
+										onHide: function (colpkr) {
+											$(colpkr).fadeOut(500);
+											return false;
+										},
+										onChange: function (hsb, hex, rgb) {
+											$('#colorSelector div').css('backgroundColor', '#' + hex);
+										}
 									});
-                }                
+                }
+                */
             }            
         }
     }

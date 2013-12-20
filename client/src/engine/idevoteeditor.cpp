@@ -77,7 +77,7 @@ void IdeVoteEditor::onInit()
 
 	m_values->setID(_S("values"));
 
-	m_values->addOption(getPage()->getText(_S("vote_editor.votes.null")), _S(""));
+	m_values->addOption(getPage()->getText(_S("vote_editor.votes.nullptr")), _S(""));
 	for(uint32 i = OS_PORTAL_OBJECT_VOTE_MIN; i <= OS_PORTAL_OBJECT_VOTE_MAX; i+=2)
 	{
 		String value = conversions::to_utf16<uint32>(i);

@@ -46,6 +46,20 @@ static boost::python::object getEditorsReputationThreshold_5323bb6850ef01838f1cc
     return boost::python::object( result );
 }
 
+static boost::python::object getPovWhiteList_7cab2511348c37743023bec4e51f4984( ::osiris::PortalsOptionsShared const & inst ){
+    ::osiris::PythonThreadSaver __pythreadSaver;
+    ::osiris::String result = inst.getPovWhiteList();
+    __pythreadSaver.restore();
+    return boost::python::object( result );
+}
+
+static boost::python::object getPovBlackList_6480ce74f158c47cb6cf6ab0b43b72bd( ::osiris::PortalsOptionsShared const & inst ){
+    ::osiris::PythonThreadSaver __pythreadSaver;
+    ::osiris::String result = inst.getPovBlackList();
+    __pythreadSaver.restore();
+    return boost::python::object( result );
+}
+
 static boost::python::object getAvatarMaxWidth_a194958ba45d7b591f7e85a4f3c63a41( ::osiris::PortalsOptionsShared const & inst ){
     ::osiris::PythonThreadSaver __pythreadSaver;
     ::osiris::uint32 result = inst.getAvatarMaxWidth();
@@ -317,6 +331,18 @@ static void setPortalName_af34ccd7d7030e19fa5cb3710fc10882( ::osiris::PortalsOpt
     __pythreadSaver.restore();
 }
 
+static void setPovBlackList_cd5c9791e2da5a57471ae5fc745bfb14( ::osiris::PortalsOptionsShared & inst, ::osiris::String const & value ){
+    ::osiris::PythonThreadSaver __pythreadSaver;
+    inst.setPovBlackList(value);
+    __pythreadSaver.restore();
+}
+
+static void setPovWhiteList_7ad3a02a7d65dc500d1f62c54ba0ffe2( ::osiris::PortalsOptionsShared & inst, ::osiris::String const & value ){
+    ::osiris::PythonThreadSaver __pythreadSaver;
+    inst.setPovWhiteList(value);
+    __pythreadSaver.restore();
+}
+
 static void setRegisterTerms_c433f5dfd3c99ddf6cade85f56efbe8f( ::osiris::PortalsOptionsShared & inst, ::osiris::String const & value ){
     ::osiris::PythonThreadSaver __pythreadSaver;
     inst.setRegisterTerms(value);
@@ -380,6 +406,24 @@ void register_PortalsOptionsShared_class(){
             PortalsOptionsShared_exposer.def( 
                 "getEditorsReputationThreshold"
                 , getEditorsReputationThreshold_function_type( &getEditorsReputationThreshold_5323bb6850ef01838f1cc251decaa210 ) );
+        
+        }
+        { //::osiris::PortalsOptionsShared::getPovWhiteList
+        
+            typedef boost::python::object ( *getPovWhiteList_function_type )( ::osiris::PortalsOptionsShared const & );
+            
+            PortalsOptionsShared_exposer.def( 
+                "getPovWhiteList"
+                , getPovWhiteList_function_type( &getPovWhiteList_7cab2511348c37743023bec4e51f4984 ) );
+        
+        }
+        { //::osiris::PortalsOptionsShared::getPovBlackList
+        
+            typedef boost::python::object ( *getPovBlackList_function_type )( ::osiris::PortalsOptionsShared const & );
+            
+            PortalsOptionsShared_exposer.def( 
+                "getPovBlackList"
+                , getPovBlackList_function_type( &getPovBlackList_6480ce74f158c47cb6cf6ab0b43b72bd ) );
         
         }
         { //::osiris::PortalsOptionsShared::getAvatarMaxWidth
@@ -781,6 +825,26 @@ void register_PortalsOptionsShared_class(){
                 , ( ::boost::python::arg("inst"), ::boost::python::arg("name") ) );
         
         }
+        { //::osiris::PortalsOptionsShared::setPovBlackList
+        
+            typedef void ( *setPovBlackList_function_type )( ::osiris::PortalsOptionsShared &,::osiris::String const & );
+            
+            PortalsOptionsShared_exposer.def( 
+                "setPovBlackList"
+                , setPovBlackList_function_type( &setPovBlackList_cd5c9791e2da5a57471ae5fc745bfb14 )
+                , ( ::boost::python::arg("inst"), ::boost::python::arg("value") ) );
+        
+        }
+        { //::osiris::PortalsOptionsShared::setPovWhiteList
+        
+            typedef void ( *setPovWhiteList_function_type )( ::osiris::PortalsOptionsShared &,::osiris::String const & );
+            
+            PortalsOptionsShared_exposer.def( 
+                "setPovWhiteList"
+                , setPovWhiteList_function_type( &setPovWhiteList_7ad3a02a7d65dc500d1f62c54ba0ffe2 )
+                , ( ::boost::python::arg("inst"), ::boost::python::arg("value") ) );
+        
+        }
         { //::osiris::PortalsOptionsShared::setRegisterTerms
         
             typedef void ( *setRegisterTerms_function_type )( ::osiris::PortalsOptionsShared &,::osiris::String const & );
@@ -847,6 +911,30 @@ void register_PortalsOptionsShared_class(){
                 , fget( &::osiris::PortalsOptionsShared::getEditorsReputationThreshold )
                 , fset( &::osiris::PortalsOptionsShared::setEditorsReputationThreshold )
                 , "get\\set property, built on top of \"osiris::ObjectsReputationThreshold osiris::PortalsOptionsShared::getEditorsReputationThreshold() const [member function]\" and \"void osiris::PortalsOptionsShared::setEditorsReputationThreshold(osiris::ObjectsReputationThreshold const & threshold) [member function]\"" );
+        
+        }
+        { //property "povWhiteList"[fget=::osiris::PortalsOptionsShared::getPovWhiteList, fset=::osiris::PortalsOptionsShared::setPovWhiteList]
+        
+            typedef ::osiris::String ( ::osiris::PortalsOptionsShared::*fget )(  ) const;
+            typedef void ( ::osiris::PortalsOptionsShared::*fset )( ::osiris::String const & ) ;
+            
+            PortalsOptionsShared_exposer.add_property( 
+                "povWhiteList"
+                , fget( &::osiris::PortalsOptionsShared::getPovWhiteList )
+                , fset( &::osiris::PortalsOptionsShared::setPovWhiteList )
+                , "get\\set property, built on top of \"osiris::String osiris::PortalsOptionsShared::getPovWhiteList() const [member function]\" and \"void osiris::PortalsOptionsShared::setPovWhiteList(osiris::String const & value) [member function]\"" );
+        
+        }
+        { //property "povBlackList"[fget=::osiris::PortalsOptionsShared::getPovBlackList, fset=::osiris::PortalsOptionsShared::setPovBlackList]
+        
+            typedef ::osiris::String ( ::osiris::PortalsOptionsShared::*fget )(  ) const;
+            typedef void ( ::osiris::PortalsOptionsShared::*fset )( ::osiris::String const & ) ;
+            
+            PortalsOptionsShared_exposer.add_property( 
+                "povBlackList"
+                , fget( &::osiris::PortalsOptionsShared::getPovBlackList )
+                , fset( &::osiris::PortalsOptionsShared::setPovBlackList )
+                , "get\\set property, built on top of \"osiris::String osiris::PortalsOptionsShared::getPovBlackList() const [member function]\" and \"void osiris::PortalsOptionsShared::setPovBlackList(osiris::String const & value) [member function]\"" );
         
         }
         { //property "avatarMaxWidth"[fget=::osiris::PortalsOptionsShared::getAvatarMaxWidth, fset=::osiris::PortalsOptionsShared::setAvatarMaxWidth]

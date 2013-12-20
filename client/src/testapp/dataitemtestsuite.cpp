@@ -36,34 +36,34 @@ BOOST_AUTO_TEST_CASE(test_dataitem_construction)
 	BOOST_CHECK(value.isDataTree() == false);
 	BOOST_CHECK(value.get<bool>() == false);
 	BOOST_CHECK(static_cast<bool>(value) == false);
-	BOOST_CHECK(static_cast<bool *>(value) == null);
+	BOOST_CHECK(static_cast<bool *>(value) == nullptr);
 	BOOST_CHECK(value.get<byte>() == 0);
 	BOOST_CHECK(static_cast<byte>(value) == 0);
-	BOOST_CHECK(static_cast<byte *>(value) == null);
+	BOOST_CHECK(static_cast<byte *>(value) == nullptr);
 	BOOST_CHECK(value.get<int32>() == 0);
 	BOOST_CHECK(static_cast<int32>(value) == 0);
-	BOOST_CHECK(static_cast<int32 *>(value) == null);
+	BOOST_CHECK(static_cast<int32 *>(value) == nullptr);
 	BOOST_CHECK(value.get<uint32>() == 0);
 	BOOST_CHECK(static_cast<uint32>(value) == 0);
-	BOOST_CHECK(static_cast<uint32 *>(value) == null);
+	BOOST_CHECK(static_cast<uint32 *>(value) == nullptr);
 	BOOST_CHECK(value.get<double>() == 0);
 	BOOST_CHECK(static_cast<double>(value) == 0);
-	BOOST_CHECK(static_cast<double *>(value) == null);
+	BOOST_CHECK(static_cast<double *>(value) == nullptr);
 	BOOST_CHECK(value.get<String>().empty());
 	BOOST_CHECK(static_cast<String>(value).empty());
-	BOOST_CHECK(static_cast<String *>(value) == null);
+	BOOST_CHECK(static_cast<String *>(value) == nullptr);
 	BOOST_CHECK(value.get<Buffer>().empty());
 //	BOOST_CHECK(static_cast<Buffer>(value).empty());
-//	BOOST_CHECK(static_cast<Buffer *>(value) == null);
+//	BOOST_CHECK(static_cast<Buffer *>(value) == nullptr);
 	BOOST_CHECK(value.get<DataTree>().empty());
 	BOOST_CHECK(static_cast<DataTree>(value).empty());
-	BOOST_CHECK(static_cast<DataTree *>(value) == null);
+	BOOST_CHECK(static_cast<DataTree *>(value) == nullptr);
 	BOOST_CHECK(value.get<int64>() == 0);
 	BOOST_CHECK(static_cast<int64>(value) == 0);
-	BOOST_CHECK(static_cast<int64 *>(value) == null);
+	BOOST_CHECK(static_cast<int64 *>(value) == nullptr);
 	BOOST_CHECK(value.get<uint64>() == 0);
 	BOOST_CHECK(static_cast<uint64>(value) == 0);
-	BOOST_CHECK(static_cast<uint64 *>(value) == null);
+	BOOST_CHECK(static_cast<uint64 *>(value) == nullptr);
 	BOOST_CHECK(value == DataItem::EMPTY);
 	BOOST_CHECK(value.cast(DataItem::vt_null) == value);
 }
@@ -73,11 +73,11 @@ void test_dataitem_type(DataItem::ValueType type, const T &def, const T &val)
 {
 	DataItem value;
 	BOOST_CHECK(value.get<T>() == def);
-	BOOST_CHECK(static_cast<T *>(value) == null);
+	BOOST_CHECK(static_cast<T *>(value) == nullptr);
 	value = val;
 	BOOST_CHECK(value.getType() == type);
 	BOOST_CHECK(value.get<T>() == val);
-	BOOST_CHECK(static_cast<T *>(value) != null);
+	BOOST_CHECK(static_cast<T *>(value) != nullptr);
 
 	Buffer buffer;
 	BOOST_CHECK(value.write(buffer));
@@ -90,7 +90,7 @@ void test_dataitem_type(DataItem::ValueType type, const T &def, const T &val)
 	BOOST_CHECK(valueCheck.getType() == type);
 	BOOST_CHECK(value == valueCheck);
 	BOOST_CHECK(valueCheck.get<T>() == val);
-	BOOST_CHECK(static_cast<T *>(valueCheck) != null);
+	BOOST_CHECK(static_cast<T *>(valueCheck) != nullptr);
 
 	value.clear();
 	BOOST_CHECK(value.isNull());

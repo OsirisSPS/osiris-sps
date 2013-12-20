@@ -118,7 +118,7 @@ void test_httpclient()
 
 	shared_ptr<HttpClient> client(OS_NEW HttpClient(service, socket));
 	shared_ptr<HttpRequest> request = client->getRequest();
-	OS_ASSERT(request != null);
+	OS_ASSERT(request != nullptr);
 
 	request->setMethod(httpMethodPost);
 
@@ -179,7 +179,7 @@ void test_unordered_map()
 void check_job(shared_ptr<IBackgroundJob> job)
 {
 	shared_ptr<MainAddonsJob> check = boost::dynamic_pointer_cast<MainAddonsJob>(job);
-	if(check != null)
+	if(check != nullptr)
 	{
 		// job punta effettivamente ad un MainAddonsJob o ad una ulteriore derivata da MainAddonsJob
 	}
@@ -255,7 +255,7 @@ void testUnicode()
 
 	printf("--- End Clodo hack on SampleApp\n");
 
-	u_strFromWCS(null, 0, null, null, 0, &status);
+	u_strFromWCS(nullptr, 0, nullptr, nullptr, 0, &status);
 }
 */
 

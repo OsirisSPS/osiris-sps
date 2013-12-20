@@ -16,7 +16,7 @@ struct IEventCallback_wrapper : ::osiris::IEventCallback, ::osiris::PythonWrappe
     IEventCallback_wrapper( )
     : ::osiris::IEventCallback( )
       , ::osiris::PythonWrapper< ::osiris::IEventCallback >(){
-        // null constructor
+        // nullptr constructor
     
     }
 

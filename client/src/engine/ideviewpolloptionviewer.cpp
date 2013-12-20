@@ -53,7 +53,7 @@ void PollOptionViewer::onInit()
 	ControlBase::onInit();
 
 	shared_ptr<ObjectsPollOption> poll_option = objects_poll_option_cast(getObject());
-	if(poll_option != null)
+	if(poll_option != nullptr)
 	{
 		getSession()->redirect(getPortal()->getViewObjectLink(poll_option->getParent()));
 		return;

@@ -73,7 +73,7 @@ void ForumManager::renderSection(shared_ptr<EntitiesEntity> section, shared_ptr<
 
 void ForumManager::_render(shared_ptr<EntitiesEntity> entity, shared_ptr<XMLPortalExporter> exporter, bool renderSections, bool renderForums, uint32 level)
 {
-	if(entity == null)
+	if(entity == nullptr)
 		return;
 
 	RealtimeStatsScopeTimer RSS1(_S("Debug"), _S("ForumManager::renderSection::exportXML"));
@@ -85,7 +85,7 @@ void ForumManager::_render(shared_ptr<EntitiesEntity> entity, shared_ptr<XMLPort
 		RealtimeStatsScopeTimer RSS(_S("Debug"), _S("ForumManager::renderSection::renderSections::getChilds"));
 		shared_ptr<EntitiesEntities> subsections = entity->getChilds(exporter->getDatabase(), ExtensionsComponentID(OS_COMFORUM_SECTION_ID.to_ascii()));		
 		RSS.stop();
-		if(subsections != null && subsections->empty() == false)
+		if(subsections != nullptr && subsections->empty() == false)
 		{
 			// Crea il nodo delle sottosezioni
 			shared_ptr<XMLNode> nodeSections = exporter->getRoot()->addChild(OS_COMFORUM_SECTIONS_NODE);
@@ -101,7 +101,7 @@ void ForumManager::_render(shared_ptr<EntitiesEntity> entity, shared_ptr<XMLPort
 		RealtimeStatsScopeTimer RSS(_S("Debug"), _S("ForumManager::renderSection::renderForums::getChilds"));
 		shared_ptr<EntitiesEntities> subforums = entity->getChilds(exporter->getDatabase(), ExtensionsComponentID(OS_COMFORUM_FORUM_ID.to_ascii()));
 		RSS.stop();
-		if(subforums != null && subforums->empty() == false)
+		if(subforums != nullptr && subforums->empty() == false)
 		{		
 			// Crea il nodo dei sottoforums
 			shared_ptr<XMLNode> nodeForums = exporter->getRoot()->addChild(OS_COMFORUM_FORUMS_NODE);

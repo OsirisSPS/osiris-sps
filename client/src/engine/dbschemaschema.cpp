@@ -67,7 +67,7 @@ shared_ptr<DbSchemaTable> DbSchemaSchema::getTable(const String &name, bool chec
 			return *i;
 	}
 
-	return null;
+	return nullptr;
 }
 
 bool DbSchemaSchema::parse(const String &filename)
@@ -80,7 +80,7 @@ bool DbSchemaSchema::parse(const String &filename)
 		return false;
 
 	shared_ptr<XMLNode> nodeRoot = document->getRoot();
-	if(nodeRoot == null)
+	if(nodeRoot == nullptr)
 		return false;
 
 	return _parseSchema(nodeRoot);
@@ -113,7 +113,7 @@ bool DbSchemaSchema::generateDifferences(shared_ptr<DbSchemaSchema> new_schema, 
 	for(DbSchemaTables::const_iterator nt = new_tables.begin(); nt != new_tables.end(); ++nt)
 	{
 		shared_ptr<DbSchemaTable> new_table = *nt;
-		shared_ptr<DbSchemaTable> old_table = null;
+		shared_ptr<DbSchemaTable> old_table = nullptr;
 
 		// Controlla se la tabella  ancora presente
 		if(hasTable(new_table->getName()))
@@ -126,7 +126,7 @@ bool DbSchemaSchema::generateDifferences(shared_ptr<DbSchemaSchema> new_schema, 
 			if(new_table->wasRenamed())
 			{
 				old_table = getTable(new_table->getOldName());
-				if(old_table == null)
+				if(old_table == nullptr)
 				{
 					OS_TRACE(String::format(_S("table renamed but not found: oldname='%S', newname='%S'\n").c_str(), new_table->getOldName().c_str(), new_table->getName().c_str()).to_ascii());
 					return false;
@@ -142,7 +142,7 @@ bool DbSchemaSchema::generateDifferences(shared_ptr<DbSchemaSchema> new_schema, 
 		}
 
 		// Se  stata trova la vecchia tabella la allinea a quella nuova
-		if(old_table != null && old_table->generateDifferences(new_table, commands) == false)
+		if(old_table != nullptr && old_table->generateDifferences(new_table, commands) == false)
 			return false;
 	}
 
@@ -163,7 +163,7 @@ bool DbSchemaSchema::_parseSchema(shared_ptr<XMLNode> schema)
 	_parseOptions(schema);
 
 	shared_ptr<XMLNode> tables = schema->getNode(TABLES);
-	if(tables == null)
+	if(tables == nullptr)
 		return false;
 
 	// Carica le tabelle dello schema

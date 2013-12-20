@@ -99,7 +99,7 @@ void TextEditor::onPreRender()
 	if(isRevision() && getPostBack() == false)
 	{
 		shared_ptr<ObjectsText> current = objects_text_cast(getCurrent());
-		if(current != null)
+		if(current != nullptr)
 		{
 			m_title->setValue(current->title);
 			m_description->setValue(current->description);
@@ -116,8 +116,8 @@ void TextEditor::onPreviewCallback(String &preview)
 	if(model.empty() == false)
 	{
 		shared_ptr<EntitiesEntity> model_entity = getPortal()->getEntity(getDatabase(), model);
-		shared_ptr<ObjectsModel> model_object = model_entity != null ? objects_model_cast(model_entity->getCurrent()) : null;
-		if(model_object == null)
+		shared_ptr<ObjectsModel> model_object = model_entity != nullptr ? objects_model_cast(model_entity->getCurrent()) : nullptr;
+		if(model_object == nullptr)
 		{
 			getPage()->showError(getPage()->getText(_S("text.editor.errors.model_not_found")));
 			return;

@@ -51,7 +51,7 @@ bool ReputationsManager::exists(shared_ptr<IPortalDatabase> database, const Obje
 		return false;
 
 	shared_ptr<ObjectsReputation> reputation = database->getReputation(IPortalDatabase::getUserReputationID(hash_from, hash_to));
-	if(reputation == null)
+	if(reputation == nullptr)
 		return false;
 
 	return reputation->score != ReputationsScore::DEFAULT;
@@ -60,14 +60,14 @@ bool ReputationsManager::exists(shared_ptr<IPortalDatabase> database, const Obje
 shared_ptr<ObjectsReputation> ReputationsManager::get(shared_ptr<IPortalDatabase> database, const ObjectID &hash_from, const ObjectID &hash_to)
 {
 	if(hash_from == hash_to)
-		return null;
+		return nullptr;
 
 	shared_ptr<ObjectsReputation> reputation = database->getReputation(IPortalDatabase::getUserReputationID(hash_from, hash_to));
-	if(reputation == null)
-		return null;
+	if(reputation == nullptr)
+		return nullptr;
 
 	if(reputation->score == ReputationsScore::DEFAULT)
-		return null;
+		return nullptr;
 
 	return reputation;
 }
@@ -81,7 +81,7 @@ LanguageResult ReputationsManager::set(shared_ptr<IPortalDatabase> database, con
 	ObjectID reputation_id = IPortalDatabase::getUserReputationID(hash_from, hash_to);
 
 	shared_ptr<ObjectsReputation> reputation = database->getReputation(reputation_id);
-	if(reputation != null)
+	if(reputation != nullptr)
 		return database->setReputationValue(reputation, score, comment, follow, private_key);
 
 	if(score == ReputationsScore::DEFAULT)
@@ -131,8 +131,8 @@ ReputationsScore ReputationsManager::compute(shared_ptr<IPortalDatabase> databas
 	// v2: cachare e in caso di ricorsivit restituire il valore di default (ininfluente)
 	// al posto di quello cachate Se  per richiesto il feedback, la cache non viene usata.
 
-	Score S=null;
-	if ( (Fb!=null) || (!m_Cache.Get(HashFrom,HashTo,ref S)) )
+	Score S=nullptr;
+	if ( (Fb!=nullptr) || (!m_Cache.Get(HashFrom,HashTo,ref S)) )
 	{
 		ArrayList Steps=new ArrayList();
 		S=GetReputation(HashFrom,HashTo,Steps,false,Fb);
@@ -145,7 +145,7 @@ ReputationsScore ReputationsManager::compute(shared_ptr<IPortalDatabase> databas
 
 bool ReputationsManager::getReputations(shared_ptr<IPortalDatabase> database, const String &author, double thresholdListen, objects_reputations_list &reputations) const
 {
-	OS_ASSERT(database != null);
+	OS_ASSERT(database != nullptr);
 
 	shared_ptr<DbSqlSelect> select(OS_NEW DbSqlSelect(DBTABLES::REPUTATIONS_TABLE));
 	select->where.add(DBTABLES::REPUTATIONS::AUTHOR, Convert::toSQL(author));
@@ -204,7 +204,7 @@ ReputationsScore ReputationsManager::compute(shared_ptr<IPortalDatabase> databas
 	if( (exit == false) && (m_stopWithDirect || onlyDirect) )
 	{
 		shared_ptr<ObjectsReputation> repDirect = get(database,hash_from, hash_to);
-		if( (repDirect != null) && (repDirect->score != ReputationsScore::DEFAULT) )
+		if( (repDirect != nullptr) && (repDirect->score != ReputationsScore::DEFAULT) )
 		{
 			result = ReputationsScore(repDirect->score, repDirect->description, false);
 			String desc = _S("Direct");
@@ -219,12 +219,12 @@ ReputationsScore ReputationsManager::compute(shared_ptr<IPortalDatabase> databas
 	{
 		// Computo la mia diretta
 		shared_ptr<ReputationsFeedback> directFeedBack;
-		if(feedback != null)
+		if(feedback != nullptr)
 			directFeedBack.reset(OS_NEW ReputationsFeedback());
 
 		result = compute(database,hash_from, hash_to, steps, true, directFeedBack);
 
-		if(feedback != null)
+		if(feedback != nullptr)
 		{
 			if( (result.isValid()) || (!m_skipUnknownFeedbacks) )
 				feedback->addChild(directFeedBack);
@@ -244,7 +244,7 @@ ReputationsScore ReputationsManager::compute(shared_ptr<IPortalDatabase> databas
 				shared_ptr<ObjectsReputation> reputation = *i;
 				shared_ptr<ReputationsFeedback> childFeedBack;
 
-				if(feedback != null)
+				if(feedback != nullptr)
 					childFeedBack.reset(OS_NEW ReputationsFeedback());
 
 				const ObjectID &hash_sub = reputation->reference;
@@ -261,7 +261,7 @@ ReputationsScore ReputationsManager::compute(shared_ptr<IPortalDatabase> databas
 						result.setFollow(true);
 				}
 
-				if(feedback != null)
+				if(feedback != nullptr)
 				{
 					if( (currentScore.isValid()) || (!m_skipUnknownFeedbacks) )
 						feedback->addChild(childFeedBack);
@@ -293,7 +293,7 @@ ReputationsScore ReputationsManager::compute(shared_ptr<IPortalDatabase> databas
 		}
 	}
 
-	if(feedback != null)
+	if(feedback != nullptr)
 	{
 		feedback->setLevel(static_cast<uint32>(steps.size()));
 		feedback->setHashFrom(hash_from.toUTF16());

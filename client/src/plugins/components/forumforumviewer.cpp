@@ -96,7 +96,7 @@ String ForumViewer::getPageHref(uint32 offset) const
 	String href;
 
 	shared_ptr<EntitiesEntity> entity = getEntity(getDatabase());
-	if(entity != null)
+	if(entity != nullptr)
 	{
 		ordered_map<std::wstring, std::wstring> params;
 		if(offset != 0)
@@ -112,7 +112,7 @@ void ForumViewer::onLoad()
 {
 	ViewerBase::onLoad();
 
-	if(m_topic != null)
+	if(m_topic != nullptr)
 	{
 		getControls()->add(shared_ptr<IHtmlControl>(OS_NEW TopicViewer(m_topic)));
 	}
@@ -137,7 +137,7 @@ void ForumViewer::onLoad()
 
 void ForumViewer::onCreateTopic()
 {
-	ide::edit::editor_ptr topic_editor(OS_NEW ide::edit::TextEditor(null, getEntity(getDatabase())));
+	ide::edit::editor_ptr topic_editor(OS_NEW ide::edit::TextEditor(nullptr, getEntity(getDatabase())));
 	topic_editor->setID(_S("topicEditor"));
 	// Una volta creato il topic effettua il redirect in modalit di vista
 	topic_editor->setRedirectionType(ide::edit::IObjectEditor::rtView);
@@ -147,7 +147,7 @@ void ForumViewer::onCreateTopic()
 
 void ForumViewer::onCreatePoll()
 {
-	ide::edit::editor_ptr poll_editor(OS_NEW ide::edit::PollEditor(null, getEntity(getDatabase())));
+	ide::edit::editor_ptr poll_editor(OS_NEW ide::edit::PollEditor(nullptr, getEntity(getDatabase())));
 	poll_editor->setID(_S("pollEditor"));
 
 	getControls()->add(poll_editor);
@@ -156,7 +156,7 @@ void ForumViewer::onCreatePoll()
 void ForumViewer::onViewForum(uint32 offset)
 {
 	shared_ptr<EntitiesEntity> entity = getEntity(getDatabase());
-	if(entity != null)
+	if(entity != nullptr)
 	{
 		shared_ptr<XMLPortalExporter> exporter(OS_NEW XMLPortalExporter(getDocument()->create(OS_COMFORUM_FORUM_NODE), getPage(), XMLPortalExporter::emFull));
 
@@ -169,7 +169,7 @@ void ForumViewer::onViewForum(uint32 offset)
 
 void ForumViewer::renderForumActions(shared_ptr<EntitiesEntity> entity, shared_ptr<XMLPortalExporter> exporter)
 {
-	OS_ASSERT(entity != null);
+	OS_ASSERT(entity != nullptr);
 	if(getPage()->getSessionAccount()->isPortalGuest(getDatabase()) == false)
 	{
 		exporter->createAction(_S("createTopic"), getCreateTopicLink(entity->getEntityID()));
@@ -179,7 +179,7 @@ void ForumViewer::renderForumActions(shared_ptr<EntitiesEntity> entity, shared_p
 
 void ForumViewer::renderForumContent(shared_ptr<EntitiesEntity> entity, shared_ptr<XMLPortalExporter> exporter, uint32 offset)
 {
-	OS_ASSERT(entity != null);
+	OS_ASSERT(entity != nullptr);
 
 	ObjectsTypes types;
 	types.push_back(portalObjectTypeText);
@@ -216,7 +216,7 @@ void ForumViewer::renderForumContent(shared_ptr<EntitiesEntity> entity, shared_p
 
 		// Carica le discussioni nel range richiesto
 		shared_ptr<EntitiesEntities> discussions_childs = entity->getChilds(getDatabase(), types, RangeUint32(offset, discussions_to_show), select);
-		if(discussions_childs != null && discussions_childs->empty() == false)
+		if(discussions_childs != nullptr && discussions_childs->empty() == false)
 		{
 			shared_ptr<XMLNode> forum_node = exporter->getRoot();
 			shared_ptr<XMLNode> discussions_node = forum_node->addChild(_S("discussions"));
@@ -224,7 +224,7 @@ void ForumViewer::renderForumContent(shared_ptr<EntitiesEntity> entity, shared_p
 			for(EntitiesEntities::const_iterator i = discussions_childs->begin(); i != discussions_childs->end(); ++i)
 			{
 				shared_ptr<EntitiesEntity> discussion = discussions_childs->get(getDatabase(), *i);
-				if(discussion != null)
+				if(discussion != nullptr)
 				{
 					shared_ptr<XMLPortalExporter> discussionExporter(OS_NEW XMLPortalExporter(discussions_node->addChild(_S("discussion")), getPage(), XMLPortalExporter::emFull));
 					discussion->exportXML(discussionExporter);

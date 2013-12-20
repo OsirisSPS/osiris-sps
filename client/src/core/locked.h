@@ -93,7 +93,7 @@ LockPtr<T, M, L>::~LockPtr()
 template <typename T, typename M, typename L>
 inline bool LockPtr<T, M, L>::empty() const
 {
-	return m_ptr == null;
+	return m_ptr == nullptr;
 }
 
 template <typename T, typename M, typename L>
@@ -105,7 +105,7 @@ inline T * LockPtr<T, M, L>::get() const
 template <typename T, typename M, typename L>
 inline T & LockPtr<T, M, L>::operator *() const
 {
-	OS_ASSERT(m_ptr != null);
+	OS_ASSERT(m_ptr != nullptr);
 	return *m_ptr;
 }
 

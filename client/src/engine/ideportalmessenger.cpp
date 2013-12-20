@@ -208,7 +208,7 @@ void Messenger::_editMessage()
 	block->getBody()->getControls()->add(table);
 
 	shared_ptr<ObjectsUser> message_reference = _getMessageReference();
-	if(message_reference == null)
+	if(message_reference == nullptr)
 	{
 		redirect(getUrl(acDefault).to_ascii());
 		return;
@@ -275,7 +275,7 @@ shared_ptr<ObjectsUser> Messenger::_getMessageReference()
 void Messenger::_sendMessage()
 {
 	shared_ptr<ObjectsUser> message_reference = _getMessageReference();
-	if(message_reference == null)
+	if(message_reference == nullptr)
 		return;
 
 	shared_ptr<ObjectsMessage> message(OS_NEW ObjectsMessage());
@@ -354,7 +354,7 @@ void Messenger::onInit()
 	}
 
 	_createBrowser();
-	OS_ASSERT(m_view != null);
+	OS_ASSERT(m_view != nullptr);
 
 	switch(getAction())
 	{

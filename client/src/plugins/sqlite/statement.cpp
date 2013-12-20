@@ -28,8 +28,8 @@
 
 Statement::Statement(boost::recursive_mutex &cs) : m_lock(cs)
 {
-	m_statement = null;
-	m_connection = null;
+	m_statement = nullptr;
+	m_connection = nullptr;
 }
 
 Statement::~Statement()
@@ -39,9 +39,9 @@ Statement::~Statement()
 
 void Statement::prepare(sqlite3 *connection, const String &sql)
 {
-	OS_ASSERT(m_statement == null);
+	OS_ASSERT(m_statement == nullptr);
 
-	OS_EXCEPT_IF(connection == null, "Invalid connection");
+	OS_EXCEPT_IF(connection == nullptr, "Invalid connection");
 	m_connection = connection;
 
 	sqlite_int res = safe_sqlite_prepare(connection, sql, &m_statement);
@@ -55,10 +55,10 @@ uint32 Statement::neededParameters()
 
 void Statement::close()
 {
-	if(m_statement != null)
+	if(m_statement != nullptr)
 	{
 		sqlite3_stmt *statement = m_statement;
-		m_statement = null;		// Resetta il puntatore allo statement
+		m_statement = nullptr;		// Resetta il puntatore allo statement
 
 		sqlite_int res = safe_sqlite_finalize(statement);
 		// La chiusura  richiamata nel distruttore pertanto non deve lanciare eccezioni
@@ -69,7 +69,7 @@ void Statement::close()
 		}
 	}
 
-	m_connection = null;
+	m_connection = nullptr;
 }
 
 shared_ptr<IDbParameter> Statement::createParameter(uint32 index)

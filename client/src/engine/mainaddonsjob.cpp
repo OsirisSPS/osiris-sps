@@ -222,7 +222,7 @@ IJob::JobStatus MainAddonsJob::run()
 
 	/*
 	shared_ptr<Portal> portal = m_impl->getPortal();
-	if(portal == null)
+	if(portal == nullptr)
 		return jobComplete;
 
 	NotificationsManager::instance()->notify(_S("Import on '") + portal->getName() + _S("' started."));
@@ -253,11 +253,11 @@ shared_ptr<IBackgroundJob::Details> MainAddonsJob::getDetails() const
 
 	/*
 	shared_ptr<PortalsSerializer> serializer = m_impl->getSerializer();
-	if(serializer != null)
+	if(serializer != nullptr)
 		details->setPercentage(serializer->getProgressPercentage());
 
 	shared_ptr<PortalsSerializer::IResult> result = m_impl->getResult();
-	if(portal != null && result != null)
+	if(portal != nullptr && result != nullptr)
 		details->setUrl(portal->getLink(ide::portal::ppView));
 	*/
 

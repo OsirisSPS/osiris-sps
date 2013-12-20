@@ -77,7 +77,7 @@ std::size_t TCPSocket::read_some(const T &buffers)
 template <typename T>
 std::size_t TCPSocket::read_some(const T &buffers, boost::system::error_code &e)
 {
-	if(m_layer != null)
+	if(m_layer != nullptr)
 		return m_layer->read_some(buffers, e);
 
 	return m_socket->read_some(buffers, e);
@@ -86,7 +86,7 @@ std::size_t TCPSocket::read_some(const T &buffers, boost::system::error_code &e)
 template <typename T, typename H>
 void TCPSocket::async_read_some(const T &buffers, const H &handler)
 {
-	if(m_layer != null)
+	if(m_layer != nullptr)
 		m_layer->async_read_some(buffers, handler);
 	else
 		m_socket->async_read_some(buffers, handler);
@@ -104,7 +104,7 @@ std::size_t TCPSocket::write_some(const T &buffers)
 template <typename T>
 std::size_t TCPSocket::write_some(const T &buffers, boost::system::error_code &e)
 {
-	if(m_layer != null)
+	if(m_layer != nullptr)
 		return m_layer->write_some(buffers, e);
 
 	return m_socket->write_some(buffers, e);
@@ -113,7 +113,7 @@ std::size_t TCPSocket::write_some(const T &buffers, boost::system::error_code &e
 template <typename T, typename H>
 void TCPSocket::async_write_some(const T &buffers, const H &handler)
 {
-	if(m_layer != null)
+	if(m_layer != nullptr)
 		m_layer->async_write_some(buffers, handler);
 	else
 		m_socket->async_write_some(buffers, handler);

@@ -42,7 +42,7 @@ class EngineExport PostEditor : public IObjectEditor
 
 // Construction
 public:
-	PostEditor(shared_ptr<EntitiesEntity> entity = null, shared_ptr<EntitiesEntity> parent = null);
+	PostEditor(shared_ptr<EntitiesEntity> entity = nullptr, shared_ptr<EntitiesEntity> parent = nullptr);
 	virtual ~PostEditor();
 
 // Attributes

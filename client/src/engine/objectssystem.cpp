@@ -52,7 +52,7 @@ ObjectsSystem::~ObjectsSystem()
 shared_ptr<ObjectsIDescriptor> ObjectsSystem::getDescriptor(PortalObjectType type) const
 {
 	if(type == portalObjectTypeUnknown)
-		return null;
+		return nullptr;
 
 	ObjectsDescriptors::const_iterator i = m_descriptors.find(type);
 	OS_EXCEPT_IF(i == m_descriptors.end(), "Invalid descriptor");
@@ -62,7 +62,7 @@ shared_ptr<ObjectsIDescriptor> ObjectsSystem::getDescriptor(PortalObjectType typ
 String ObjectsSystem::getTypeName(PortalObjectType type) const
 {
 	shared_ptr<ObjectsIDescriptor> descriptor = getDescriptor(type);
-	if(descriptor != null)
+	if(descriptor != nullptr)
 		return descriptor->getTypeName();
 	else
 		return OS_PORTAL_OBJECT_UNKNOWN_TYPENAME;	
@@ -89,12 +89,12 @@ ObjectID ObjectsSystem::getVirtualObjectID(const EntityID & id) const
 shared_ptr<ObjectsIObject> ObjectsSystem::createObject(PortalObjectType type) const
 {
 	shared_ptr<ObjectsIDescriptor> descriptor = getDescriptor(type);
-	return descriptor != null ? descriptor->createObject() : null;
+	return descriptor != nullptr ? descriptor->createObject() : nullptr;
 }
 
 void ObjectsSystem::fireNewObject(shared_ptr<ObjectsIObject> object)
 {
-	OS_ASSERT(object != null);
+	OS_ASSERT(object != nullptr);
 	m_newObjectEvent(object);
 }
 
@@ -109,7 +109,7 @@ bool ObjectsSystem::start(bool recovery)
 	for(ObjectsIDescriptorClass::descriptors_classes::iterator i = classes.begin(); i != classes.end(); ++i)
 	{
 		shared_ptr<ObjectsIDescriptor> descriptor = (*i)->create();
-		OS_EXCEPT_IF(descriptor == null, "Cannot create descriptor class");
+		OS_EXCEPT_IF(descriptor == nullptr, "Cannot create descriptor class");
 		OS_EXCEPT_IF(m_descriptors.find(descriptor->getType()) != m_descriptors.end(), "Duplicated descriptor class");
 
 		m_descriptors[descriptor->getType()] = descriptor;

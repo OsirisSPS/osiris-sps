@@ -53,7 +53,7 @@ private:
 template <typename T>
 PythonWrapper<T>::PythonWrapper() : m_pythonState(PyThreadState_Get())	// TODO: corretto? in teoria qui non serve una lock...
 {
-	OS_ASSERT(m_pythonState != null);
+	OS_ASSERT(m_pythonState != nullptr);
 }
 
 template <typename T>

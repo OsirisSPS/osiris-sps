@@ -43,7 +43,7 @@ class XMLExport XMLNode : public Object,
 {
 // Construction
 public:
-	XMLNode(const String &name = String::EMPTY, shared_ptr<XMLDocument> document = null, shared_ptr<XMLNode> parent = null);
+	XMLNode(const String &name = String::EMPTY, shared_ptr<XMLDocument> document = nullptr, shared_ptr<XMLNode> parent = nullptr);
 	virtual ~XMLNode();
 
 // Attributes

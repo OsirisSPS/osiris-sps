@@ -155,14 +155,14 @@ IPage::~IPage()
 shared_ptr<IPortalDatabase> IPage::getDatabaseX() const
 {
 	shared_ptr<Portal> portal = getPortalFromUrl();
-	return portal != null ? getActiveDatabaseX(portal) : null;
+	return portal != nullptr ? getActiveDatabaseX(portal) : nullptr;
 }
 */
 
 String IPage::getLanguage() const
 {
 	shared_ptr<IdeSession> ideSession = getSessionAccount();
-	if( (ideSession != null) && ideSession->isLogged() )
+	if( (ideSession != nullptr) && ideSession->isLogged() )
 	{
 		return ideSession->getLanguage();
 	}
@@ -173,7 +173,7 @@ String IPage::getLanguage() const
 int32 IPage::getTimeOffset() const
 {
 	shared_ptr<IdeSession> ideSession = getSessionAccount();
-	if( (ideSession != null) && ideSession->isLogged() )
+	if( (ideSession != nullptr) && ideSession->isLogged() )
 	{
 		int time_offset = ideSession->getAccount()->getAccount()->getTimeOffset();
 		if(time_offset != OS_TIME_DETECTION_SYSTEM)
@@ -186,7 +186,7 @@ int32 IPage::getTimeOffset() const
 int32 IPage::getTimeDST() const
 {
 	shared_ptr<IdeSession> ideSession = getSessionAccount();
-	if( (ideSession != null) && ideSession->isLogged() )
+	if( (ideSession != nullptr) && ideSession->isLogged() )
 	{
 		int time_dst = ideSession->getAccount()->getAccount()->getTimeDST();
 		if(time_dst != OS_TIME_DETECTION_SYSTEM)
@@ -211,7 +211,7 @@ String IPage::getText(const LanguageResult &result) const
 String IPage::formatDate(const DateTime &dt, const DateTime::DateTimePattern &pattern) const
 {
 	shared_ptr<LanguageCulture> culture = LanguageManager::instance()->getCulture(getLanguage());
-	OS_EXCEPT_IF(culture == null, "Invalid culture");
+	OS_EXCEPT_IF(culture == nullptr, "Invalid culture");
 
 	return culture->formatDate(dt, pattern, getTimeOffset(), getTimeDST());
 }
@@ -219,7 +219,7 @@ String IPage::formatDate(const DateTime &dt, const DateTime::DateTimePattern &pa
 String IPage::formatDate(const DateTime &dt, const String &pattern) const
 {
 	shared_ptr<LanguageCulture> culture = LanguageManager::instance()->getCulture(getLanguage());
-	OS_EXCEPT_IF(culture == null, "Invalid culture");
+	OS_EXCEPT_IF(culture == nullptr, "Invalid culture");
 
 	return culture->formatDate(dt, pattern, getTimeOffset(), getTimeDST());
 }
@@ -257,12 +257,12 @@ shared_ptr<IdeSkin> IPage::getSkin() const
 {
 	//return IdeSystem::instance()->getDefaultSkin();
 	shared_ptr<IdeSession> ideSession = getSessionAccount();
-	if(ideSession != null && ideSession->isLogged())
+	if(ideSession != nullptr && ideSession->isLogged())
 	{
 		shared_ptr<IdeSkin> skin;
 		skin = ideSession->getCurrentSkin();
 
-		if(skin != null && skin->isValid())
+		if(skin != nullptr && skin->isValid())
 			return skin;
 	}
 
@@ -382,7 +382,7 @@ void IPage::initStylesheet(shared_ptr<XMLStylesheet> stylesheet)
 bool IPage::loginAccountWithName(const String &login, const String &password, bool save_password)
 {
 	shared_ptr<IdeAccount> account = IdeAccountsManager::instance()->getByName(login);
-	if(account == null)
+	if(account == nullptr)
 		return false;
 
 	return loginAccountWithID(account->getID(), password, save_password);
@@ -392,7 +392,7 @@ bool IPage::loginAccountWithID(const String &accountID, const String &password, 
 {	
 	// Ottiene la sessione sul portale specificato
 	shared_ptr<IdeSession> session = getSessionAccount();
-	if(session == null)
+	if(session == nullptr)
 		return false;
 
 	// Effettua il login e restituisce il risultato dell'operazione
@@ -421,7 +421,7 @@ void IPage::ensureAccountSession()
 		m_session = IdeSystem::instance()->getSession(sessionID);
 
 	// Controlla se l'utente loggatto non esiste
-	if(m_session == null)
+	if(m_session == nullptr)
 	{
 		// Crea un nuovo utente
 		m_session = IdeSystem::instance()->createSession();
@@ -435,7 +435,7 @@ void IPage::ensureAccountSession()
 		if(lastAccountUsed.empty() == false)
 		{
 			shared_ptr<IdeAccount> account = IdeAccountsManager::instance()->getByID(lastAccountUsed);
-			if( (account != null) && (account->getAccount()->hasAutologin()) )
+			if( (account != nullptr) && (account->getAccount()->hasAutologin()) )
 			{
 				loginAccountWithID(account->getID(), account->getRealPassword());
 			}
@@ -545,7 +545,7 @@ void IPage::onLoadResources()
 	
 	/*
 	shared_ptr<Portal> portal = getPortalFromUrl();
-	if(portal != null)
+	if(portal != nullptr)
 		addCss(portal->getLink("lesslib"));
 	else
 		addCss(PortalsSystem::instance()->getMainLink("lesslib"));	
@@ -566,7 +566,7 @@ void IPage::onLoadResources()
 
 	
 
-	if(skin != null)
+	if(skin != nullptr)
 	{
 		// Applica la skin alla pagina
 		skin->apply(get_this_ptr<IPage>());
@@ -646,7 +646,7 @@ shared_ptr<IHtmlControl> IPage::getArea(const PageArea &area)
 								break;
 	}
 
-	OS_ASSERT(m_template != null);
+	OS_ASSERT(m_template != nullptr);
 	m_template->addChildParam(areaControl, areaName);
 
 	return areaControl;
@@ -752,7 +752,7 @@ void IPage::onInit()
 		String defaultPortalID = Options::instance()->getOption<String>(Options::web_options::default_portal).to_ascii();
 
 		shared_ptr<Portal> defaultPortal = PortalsSystem::instance()->getPortalByFullPov(defaultPortalID);
-		if(defaultPortal == null)
+		if(defaultPortal == nullptr)
 		{
 			//reportError(httpStatusForbidden);
 			if(getAjax() == false)
@@ -813,7 +813,7 @@ void IPage::onRender(HtmlWriter &writer)
 void IPage::onLogout()
 {
 	shared_ptr<IdeSession> ideSession = getSessionAccount();
-	if((ideSession != null) && (ideSession->isLogged()))
+	if((ideSession != nullptr) && (ideSession->isLogged()))
 	{
 		// Effettua il logout
 		ideSession->logout();
@@ -821,7 +821,7 @@ void IPage::onLogout()
 		getResponse()->removeCookie("osiris.account");
 		/*
 		shared_ptr<Portal> portal = getPortal();
-		if(portal != null)
+		if(portal != nullptr)
 		{
 			// Rimuove il cookie dell'ultimo account usato in modo tale che il metodo restoreSession (se successivamente chiamato) non trovi il cookie
 			
@@ -835,11 +835,11 @@ void IPage::onLogout()
 // URGENT: Temporanea, vedi commento nel .H
 shared_ptr<IPortalDatabase> IPage::getDatabase() const
 {
-	if(m_databaseWork == null)
+	if(m_databaseWork == nullptr)
 	{
 		shared_ptr<Portal> portal = getPortalFromUrl();
-		if(portal == null)
-			return null;
+		if(portal == nullptr)
+			return nullptr;
 		m_databaseWork = portal->startTransaction(true); // CLODOURGENT, Perchè exclusive access?
 		m_databaseWork->getDatabase()->beginTransaction();
 	}
@@ -850,7 +850,7 @@ shared_ptr<IPortalDatabase> IPage::getDatabase() const
 // URGENT: Da sistemare
 void IPage::closeDatabase(bool commit)
 {
-	if(m_databaseWork != null)
+	if(m_databaseWork != nullptr)
 	{
 		shared_ptr<IPortalDatabase> database = m_databaseWork->getDatabase();
 		if(database->inTransaction())
@@ -860,7 +860,7 @@ void IPage::closeDatabase(bool commit)
 			else
 				database->rollback();
 		}
-		m_databaseWork = null;
+		m_databaseWork = nullptr;
 	}
 }
 

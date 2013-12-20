@@ -59,7 +59,7 @@ ExtensionsExtension::~ExtensionsExtension()
 shared_ptr<LanguageFolder> Extension::getExtensionsFolder() const
 {
 	shared_ptr<LanguageFolder> folder = LanguageManager::instance()->getRootFolder()->getFolder(_S("extensions"));
-	if(folder == null)
+	if(folder == nullptr)
 		folder = LanguageManager::instance()->getRootFolder()->addFolder(_S("extensions"));
 
 	return folder;
@@ -167,7 +167,7 @@ bool ExtensionsExtension::init(const ExtensionID &id, const Path &path)
 	NotificationsManager::instance()->notify(_S("Loading extension: ") + m_name);
 	
 	shared_ptr<XMLNode> nodeFiles = document->getRoot()->getNode(OS_EXTENSION_XML_NODE_SCRIPTS);
-	if(nodeFiles != null)
+	if(nodeFiles != nullptr)
 	{
 		shared_ptr<XMLNodes> files = nodeFiles->getNodes();
 		for(XMLNodes::const_iterator i = files->begin(); i != files->end(); ++i)
@@ -176,14 +176,14 @@ bool ExtensionsExtension::init(const ExtensionID &id, const Path &path)
 			String scriptLanguage = (*i)->getAttributeString(OS_EXTENSION_XML_NODE_SCRIPT_LANGUAGE);
 
 			shared_ptr<IExtensionsCodeProvider> codeProvider = ExtensionsSystem::instance()->getCodeProvider(scriptLanguage);
-			if(codeProvider == null)
+			if(codeProvider == nullptr)
 			{
 				OS_LOG_ERROR(_S("Invalid script language '") + scriptLanguage + _S("'"));
 				return false;
 			}
 
 			shared_ptr<IExtensionsCodeContext> context = codeProvider->createContext();
-			if(context == null)
+			if(context == nullptr)
 			{
 				OS_LOG_ERROR(_S("Cannot create context for script language '") + scriptLanguage + _S("'"));
 				return false;
@@ -311,7 +311,7 @@ bool ExtensionsExtension::getInternal() const
 /*
 String Extension::getText(const String &culture, const String &name)
 {
-	OS_ASSERT(m_languageFolder != null);
+	OS_ASSERT(m_languageFolder != nullptr);
 	return m_languageFolder->getText(culture, name);
 }
 */

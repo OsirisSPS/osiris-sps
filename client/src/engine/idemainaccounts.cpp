@@ -99,7 +99,7 @@ shared_ptr<IdeAccount> Accounts::getAccount() const
 {
 	String id = getRequest()->getUrlParam(OS_URL_PARAM_ID);
 	if(id.empty())
-		return null;
+		return nullptr;
 
 	return IdeAccountsManager::instance()->getByID(id);	
 }
@@ -120,7 +120,7 @@ std::string Accounts::getAccountRedirectLink(const String &id) const
 	params.set(OS_URL_PARAM_ID, id.to_wide());
 
 	//return PortalsSystem::instance()->getAccountsLink(portal, params);
-	return PortalsSystem::instance()->getMainLink("accounts", params);
+	return PortalsSystem::instance()->getMainLink("accounts2", params);
 }
 
 std::string Accounts::getAccountImportLink() const
@@ -129,7 +129,7 @@ std::string Accounts::getAccountImportLink() const
 	params.set(OS_URL_PARAM_ACTION, conversions::to_wstring(static_cast<uint32>(aaAccountImport)));
 
 	//return PortalsSystem::instance()->getAccountsLink(portal, params);
-	return PortalsSystem::instance()->getMainLink("accounts", params);
+	return PortalsSystem::instance()->getMainLink("accounts2", params);
 }
 
 std::string Accounts::getAccountExportLink(const String &id) const
@@ -139,7 +139,7 @@ std::string Accounts::getAccountExportLink(const String &id) const
 	params.set(OS_URL_PARAM_ID, id.to_wide());
 
 	//return PortalsSystem::instance()->getAccountsLink(portal, params);
-	return PortalsSystem::instance()->getMainLink("accounts", params);
+	return PortalsSystem::instance()->getMainLink("accounts2", params);
 }
 
 std::string Accounts::getAccountRemoveLink(const String &id) const
@@ -149,7 +149,7 @@ std::string Accounts::getAccountRemoveLink(const String &id) const
 	params.set(OS_URL_PARAM_ID, id.to_wide());
 
 	//return PortalsSystem::instance()->getAccountsLink(portal, params);
-	return PortalsSystem::instance()->getMainLink("accounts", params);
+	return PortalsSystem::instance()->getMainLink("accounts2", params);
 }
 
 void Accounts::onViewAccounts()
@@ -176,7 +176,7 @@ void Accounts::onViewAccounts()
 		{
 			// Se disponibile carica l'utente associato all'account
 			shared_ptr<ObjectsUser> user = i->second->loadUser(getDatabase());
-			if(user != null)
+			if(user != nullptr)
 				// Salva l'associazione account - utente
 				accounts_users[i->second->getID()] = user;
 		}
@@ -238,10 +238,10 @@ void Accounts::onViewAccounts()
 			if(hasAutologin)
 			{
 				shared_ptr<ObjectsAvatar> avatar;
-				if(user != null)
+				if(user != nullptr)
 					avatar = user->getAvatar(getDatabase());
 
-				if(avatar != null)
+				if(avatar != nullptr)
 					user_image->setUrl(portal->getAvatarLink(avatar->id, avatar->submit_date));
 				else
 					user_image->setUrl(getSkin()->getImageUrl(_S("user_known.png")));
@@ -297,7 +297,7 @@ void Accounts::onViewAccounts()
 void Accounts::onAccountRedirect()
 {
 	shared_ptr<IdeAccount> account = getAccount();
-	if(account == null || account->getAccount()->hasAutologin() == false)
+	if(account == nullptr || account->getAccount()->hasAutologin() == false)
 	{
 		onViewAccounts();
 		return;
@@ -345,14 +345,14 @@ void Accounts::onAccountImport()
 void Accounts::onAccountExport()
 {
 	shared_ptr<IdeAccount> account = getAccount();
-	if(account != null)
+	if(account != nullptr)
 		m_document = account->getAccount()->exportXML();
 }
 
 void Accounts::onAccountRemove()
 {
 	shared_ptr<IdeAccount> account = getAccount();
-	if(account != null)
+	if(account != nullptr)
 	{
 		IdeAccountsManager::instance()->remove(account->getID());
 		//portal->removeAccount(getDatabase(), account->getID());
@@ -365,12 +365,12 @@ void Accounts::_importAccount()
 {
 	/*
 	shared_ptr<Portal> portal = getPortalFromUrl();
-	if(portal == null)
+	if(portal == nullptr)
 		return;
 	*/
 
-	const Buffer *accountBuffer = m_accountBrowser->getFileBuffer();
-	if(accountBuffer == null)
+	const Buffer *accountBuffer = m_accountBrowser->getFileBufferPtr();
+	if(accountBuffer == nullptr)
 		return;
 
 	shared_ptr<XMLSchema> schema(OS_NEW XMLSchema());
@@ -391,7 +391,7 @@ void Accounts::_importAccount()
 	}
 
 	shared_ptr<IdeAccount> account = IdeAccountsManager::instance()->createAccount(dataAccount);
-	if(account == null)
+	if(account == nullptr)
 	{
 		showError(getText(_S("main.pages.accounts.actions.import.error.cannotImport")));
 		return;
@@ -411,7 +411,7 @@ void Accounts::onLoad()
 
 	/*
 	shared_ptr<Portal> portal = getPortalFromUrl();
-	if(portal == null)
+	if(portal == nullptr)
 	{
 		showError(_S("Invalid portal"));
 		return;
@@ -442,7 +442,7 @@ void Accounts::onLoad()
 
 bool Accounts::onTransmit(HtmlWriter &writer)
 {
-	if(m_document != null)
+	if(m_document != nullptr)
 	{
 		Buffer buffer;
 		if(m_document->writeBuffer(buffer) == false)

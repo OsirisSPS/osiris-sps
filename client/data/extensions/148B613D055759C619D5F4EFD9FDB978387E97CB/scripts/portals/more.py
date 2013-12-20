@@ -47,11 +47,6 @@ class Page(osiris.IPortalPage):
 			actionPrivateMessages.attributes.set("name", "messenger")
 			actionPrivateMessages.attributes.set("icon", "messenger")
 			actionPrivateMessages.attributes.set("href", self.portal.getLink("messenger"))
-			
-		actionEdit = nodeActions.nodes.add("action")
-		actionEdit.attributes.set("name", "info")
-		actionEdit.attributes.set("icon", "info")
-		actionEdit.attributes.set("href", self.portal.getLink("info"))
 				
 		actionEdit = nodeActions.nodes.add("action")
 		actionEdit.attributes.set("name", "edit")

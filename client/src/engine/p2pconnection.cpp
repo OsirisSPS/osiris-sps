@@ -108,7 +108,7 @@ P2PConnection::P2PScope::P2PScope(shared_ptr<boost::asio::io_service> service, s
 P2PConnection::P2PScope::~P2PScope()
 {
 	shared_ptr<P2PConnection> connection = boost::dynamic_pointer_cast<P2PConnection>(getListener());
-	if(connection == null)
+	if(connection == nullptr)
 	{
 		OS_ASSERTFALSE();
 		return;
@@ -147,7 +147,7 @@ P2PConnection::P2PConnection(shared_ptr<P2PServer> server, shared_ptr<TCPSocket>
 																																			    m_localSession(OS_NEW LocalSession()),
 																																			    m_remoteSession(OS_NEW RemoteSession())
 {
-	OS_ASSERT(m_socket != null);
+	OS_ASSERT(m_socket != nullptr);
 }
 
 P2PConnection::~P2PConnection()
@@ -157,8 +157,8 @@ P2PConnection::~P2PConnection()
 
 String P2PConnection::getPeerHostname() const
 {
-	shared_ptr<IPAddress> address = m_remoteSession != null ? m_remoteSession->getAddress() : null;
-	if(address != null)
+	shared_ptr<IPAddress> address = m_remoteSession != nullptr ? m_remoteSession->getAddress() : nullptr;
+	if(address != nullptr)
 		return address->toString();
 
 	return String::EMPTY;
@@ -172,16 +172,16 @@ shared_ptr<Portal> P2PConnection::getPortal() const
 shared_ptr<PortalOptions> P2PConnection::getPortalOptions() const
 {
 	shared_ptr<Portal> portal = getPortal();
-	if(portal != null)
+	if(portal != nullptr)
 		return portal->getOptions();
 
-	return null;
+	return nullptr;
 }
 
 String P2PConnection::getPortalName() const
 {
 	shared_ptr<Portal> portal = getPortal();
-	if(portal != null)
+	if(portal != nullptr)
 		return portal->getPovName();
 
 	return String::EMPTY;
@@ -190,7 +190,7 @@ String P2PConnection::getPortalName() const
 std::string P2PConnection::getPortalPovID() const
 {
 	shared_ptr<Portal> portal = getPortal();
-	if(portal != null)
+	if(portal != nullptr)
 		return portal->getFullPovID();
 
 	return "";
@@ -200,14 +200,14 @@ bool P2PConnection::setPortal(shared_ptr<Portal> portal)
 {
 	OS_P2P_CONNECTION_STATUS_GUARD();
 
-	if(portal == null)
+	if(portal == nullptr)
 		return false;
 
 	m_status->setPortal(portal);
 
 	// Salva il contest p2p
 	m_exchangeContext = portal->getExchangeContext();
-	if(m_exchangeContext == null)
+	if(m_exchangeContext == nullptr)
 	{
         OS_ASSERTFALSE();
         return false;
@@ -215,7 +215,7 @@ bool P2PConnection::setPortal(shared_ptr<Portal> portal)
 
 	// Crea una nuova sessione
 	m_exchangeSession = m_exchangeContext->createSession();
-	if(m_exchangeSession == null)
+	if(m_exchangeSession == nullptr)
 	{
         OS_ASSERTFALSE();
         return false;
@@ -250,7 +250,7 @@ void P2PConnection::setRun(bool run)
 bool P2PConnection::isAllowed()
 {
 	shared_ptr<P2PServer> server = getServer();
-	return server != null && server->getAllowConnection(get_this_ptr());
+	return server != nullptr && server->getAllowConnection(get_this_ptr());
 }
 
 bool P2PConnection::setPortalPov(const std::string &id)
@@ -269,7 +269,7 @@ bool P2PConnection::compareSessionKey(const Buffer &public_key) const
 	OS_LOCK(m_cs);
 	OS_ASSERT(public_key.empty() == false);
 
-	if(m_localSession == null)
+	if(m_localSession == nullptr)
 		return false;
 
 	return m_localSession->getPublicKey() == public_key;
@@ -282,7 +282,7 @@ shared_ptr<p2p::NodeStatus> P2PConnection::takeStatusSnapshot() const
 
 void P2PConnection::openConnection(shared_ptr<IPAddress> address, shared_ptr<ConnectionScope> scope)
 {
-	if(address == null || address->isAny())
+	if(address == nullptr || address->isAny())
 		return;
 
 	OS_P2P_CONNECTION_STATUS_GUARD();
@@ -329,7 +329,7 @@ void P2PConnection::acceptConnection(shared_ptr<ConnectionScope> scope)
 
 	m_remoteSession->setValidable(false);
 
-	OS_ASSERT(m_remoteSession != null);
+	OS_ASSERT(m_remoteSession != nullptr);
 	updateLastEvent(_S("incoming connection from '") + m_remoteSession->m_address->toString() + _S("'"), logLevelInfo);
 
 	changeStatus(NodeStatus::statusHandshaking);
@@ -349,10 +349,10 @@ void P2PConnection::finalizeConnection(bool successful)
 		if(successful)
 		{
 			shared_ptr<Portal> portal = getPortal();
-			if(portal != null)
+			if(portal != nullptr)
 			{
 				shared_ptr<PortalOptions> portalOptions = portal->getOptions();
-				if(portalOptions != null)
+				if(portalOptions != nullptr)
 					// Aggiorna la data di ultimo allineamento (senza considerare eventuali stati di busy)
 					portalOptions->updateLastExchangeDate();
 			}
@@ -370,7 +370,7 @@ void P2PConnection::finalizeConnection(bool successful)
 			{
 				updateLastEvent(_S("data exchange with '") + getPeerHostname() + _S("' succeeded"), logLevelNotice);
 
-				if(portal != null)
+				if(portal != nullptr)
 					// Aggiorna la data di ultimo allineamento terminato con successo del portale (non in stato di busy)
 					portal->updateLastSuccessfulExchange();
 			}
@@ -405,7 +405,7 @@ void P2PConnection::finalizeConnection(bool successful)
 
 bool P2PConnection::handlePacket(packet_ptr &local, packet_ptr &remote, shared_ptr<P2PScope> scope)
 {
-	if(remote == null)
+	if(remote == nullptr)
 		return false;
 
 	switch(remote->getType())
@@ -479,13 +479,13 @@ bool P2PConnection::handlePacket(packet_ptr &local, packet_ptr &remote, shared_p
 
 bool P2PConnection::validatePacket(packet_ptr &local, packet_ptr &remote)
 {
-	if(remote == null)
+	if(remote == nullptr)
 		return false;
 
 	if(validateType(remote->getType()) == false)
 		return false;
 
-	return local != null ? local->validate(remote) : true;
+	return local != nullptr ? local->validate(remote) : true;
 }
 
 bool P2PConnection::validateType(packets::PacketType type)
@@ -544,20 +544,20 @@ packet_ptr P2PConnection::allocPacket(packets::PacketType type)
 	default:									OS_ASSERTFALSE();
 	}
 
-	return null;
+	return nullptr;
 }
 
 packets::packet_ptr P2PConnection::createHelloPacket()
 {
 	shared_ptr<P2PServer> server = getServer();
-	if(server == null)							// Può accadere in fase di chiusura
-		return null;
+	if(server == nullptr)							// Può accadere in fase di chiusura
+		return nullptr;
 
-	OS_ASSERT(m_localSession != null);
+	OS_ASSERT(m_localSession != nullptr);
 	Buffer signature;
 	// Firma la chiave di sessione
 	if(m_localSession->signKey(p2p::LocalMachine::instance()->getPrivateKey(), signature) == false)
-		return null;
+		return nullptr;
 
 	packets::hello_ptr hello(OS_NEW packets::Hello());
 	hello->setMachineID(p2p::LocalMachine::instance()->getID());
@@ -572,12 +572,12 @@ packets::packet_ptr P2PConnection::createHelloPacket()
 
 void P2PConnection::_clear()
 {
-	if(m_exchangeContext != null)
+	if(m_exchangeContext != nullptr)
 	{
-		if(m_exchangeSession != null)
+		if(m_exchangeSession != nullptr)
 		{
 		    shared_ptr<Portal> portal = getPortal();
-		    if(portal != null)
+		    if(portal != nullptr)
                 // Finalizza la sessione corrente
                 m_exchangeSession->finalize(portal);
 
@@ -595,10 +595,10 @@ void P2PConnection::_clear()
 
 void P2PConnection::_applyPortalKeyDerivation(LocalSession::DerivationType type)
 {
-	OS_ASSERT(m_localSession != null);
+	OS_ASSERT(m_localSession != nullptr);
 
 	shared_ptr<Portal> portal = getPortal();
-	if(portal == null)
+	if(portal == nullptr)
 		return;
 
 	// Controlla se il portale è protetto da password
@@ -618,7 +618,7 @@ bool P2PConnection::onHello(packets::hello_ptr hello, packet_ptr &response, shar
 		m_remoteSession->m_address->setPort(hello->getServerPort());
 
 		shared_ptr<P2pMachine> machine = P2PSystem::instance()->getMachine(m_remoteSession->m_id);
-		if(machine == null)
+		if(machine == nullptr)
 		{
 			m_remoteSession->m_known = false;
 		}
@@ -716,7 +716,7 @@ bool P2PConnection::onPortalResponse(packets::portal_response_ptr portal_respons
 bool P2PConnection::onTerminate(packets::terminate_ptr terminate, packet_ptr &response, shared_ptr<P2PScope> scope)
 {
 	// Constrolla se il pacchetto ricevuto Ã¨ la conferma di terminazione
-	if(m_localPacket == null || m_localPacket->getType() == packets::ptTerminate)
+	if(m_localPacket == nullptr || m_localPacket->getType() == packets::ptTerminate)
 	{
 		response.reset();
 
@@ -740,7 +740,7 @@ bool P2PConnection::onTerminate(packets::terminate_ptr terminate, packet_ptr &re
 bool P2PConnection::onQueryRequest(packets::query_request_ptr request, packet_ptr &response)
 {
     shared_ptr<Portal> portal = getPortal();
-    if(portal == null)
+    if(portal == nullptr)
         return false;
 
 	// Carica le statistiche del client remoto
@@ -848,7 +848,7 @@ bool P2PConnection::onQueryRequest(packets::query_request_ptr request, packet_pt
 bool P2PConnection::onQueryResponse(packets::query_response_ptr response, packet_ptr &request)
 {
     shared_ptr<Portal> portal = getPortal();
-    if(portal == null)
+    if(portal == nullptr)
         return false;
 
 	shared_ptr<PortalsTransaction> databaseWork = portal->startTransaction(false);
@@ -871,7 +871,7 @@ bool P2PConnection::onQueryResponse(packets::query_response_ptr response, packet
 			// nodo remoto, pertando marca l'id come conosciuto solo nel caso in cui la data coincida
 
 			shared_ptr<DataEntry> ptr = m_exchangeContext->getEntry(database, entry->id);
-			if(ptr != null)
+			if(ptr != nullptr)
 				known = ptr->submit_date == entry->submit_date;
 		}
 
@@ -898,7 +898,7 @@ bool P2PConnection::onQueryResponse(packets::query_response_ptr response, packet
 bool P2PConnection::onObjectsRequest(packets::objects_request_ptr request, packet_ptr &response)
 {
     shared_ptr<Portal> portal = getPortal();
-    if(portal == null)
+    if(portal == nullptr)
         return false;
 
 	OS_P2P_CONNECTION_STATUS_GUARD();
@@ -935,7 +935,7 @@ bool P2PConnection::onObjectsRequest(packets::objects_request_ptr request, packe
 	if(somethingUploaded)
 	{
 		shared_ptr<PortalOptions> portalOptions = getPortalOptions();
-		if(portalOptions != null)
+		if(portalOptions != nullptr)
 			portalOptions->updateLastUploadedObjectDate();
 	}
 
@@ -945,7 +945,7 @@ bool P2PConnection::onObjectsRequest(packets::objects_request_ptr request, packe
 bool P2PConnection::onObjectsResponse(packets::objects_response_ptr response, packet_ptr &request)
 {
     shared_ptr<Portal> portal = getPortal();
-    if(portal == null)
+    if(portal == nullptr)
         return false;
 
 	OS_P2P_CONNECTION_STATUS_GUARD();
@@ -970,7 +970,7 @@ bool P2PConnection::onObjectsResponse(packets::objects_response_ptr response, pa
 
 			shared_ptr<ObjectsIObject> object = response->getObject(id);
 			// Carica l'oggetto corrente
-			if(object != null)
+			if(object != nullptr)
 			{
 				// Processa l'oggetto corrente
 				processObject(databaseWork->getDatabase(), object);
@@ -989,7 +989,7 @@ bool P2PConnection::onObjectsResponse(packets::objects_response_ptr response, pa
 	if(somethingDownloaded)
 	{
 		shared_ptr<PortalOptions> portalOptions = getPortalOptions();
-		if(portalOptions != null)
+		if(portalOptions != nullptr)
 			portalOptions->updateLastDownloadedObjectDate();
 	}
 
@@ -1101,7 +1101,7 @@ bool P2PConnection::createHelloResponse(packets::packet_ptr &packet)
 {
 	// Crea il pacchetto di hello
 	packet = createHelloPacket();
-	if(packet == null)
+	if(packet == nullptr)
 		return false;
 
 	m_localSession->setHelloSended(true);
@@ -1111,7 +1111,7 @@ bool P2PConnection::createHelloResponse(packets::packet_ptr &packet)
 void P2PConnection::savePeer(shared_ptr<IPAddress> address, bool connectedSuccessfully, const String &origin)
 {
 	shared_ptr<Portal> portal = getPortal();
-	if(portal != null)
+	if(portal != nullptr)
 	{
 		// Se la connessione è andata a buon fine valida anche il nodo
 		portal->getPeersManager()->savePeer(address, connectedSuccessfully, origin);
@@ -1124,21 +1124,21 @@ void P2PConnection::savePeer(shared_ptr<IPAddress> address, bool connectedSucces
 void P2PConnection::validatePeer(shared_ptr<IPAddress> address)
 {
 	shared_ptr<Portal> portal = getPortal();
-	if(portal != null)
+	if(portal != nullptr)
 		portal->getPeersManager()->validatePeer(address);
 }
 
 void P2PConnection::invalidatePeer(shared_ptr<IPAddress> address)
 {
 	shared_ptr<Portal> portal = getPortal();
-	if(portal != null)
+	if(portal != nullptr)
 		portal->getPeersManager()->invalidatePeer(address);
 }
 
 void P2PConnection::removePeer(shared_ptr<IPAddress> address)
 {
 	shared_ptr<Portal> portal = getPortal();
-	if(portal != null)
+	if(portal != nullptr)
 		portal->getPeersManager()->removePeer(address);
 }
 
@@ -1156,7 +1156,7 @@ void P2PConnection::peekPacket(packet_ptr &packet)
 	// Ottiene la richiesta corrente
 	m_exchangeSession->peekRequest(request);
 	// Controlla se non ci sono altre richieste
-	if(request == null)
+	if(request == nullptr)
 	{
 		// Crea il pacchetto di proposta chiusura
 		packet.reset(OS_NEW Terminate());
@@ -1210,7 +1210,7 @@ bool P2PConnection::loadRequest(packets::query_request_ptr request)
 void P2PConnection::saveRequest(packets::query_request_ptr request)
 {
 	shared_ptr<Portal> portal = getPortal();
-	if(portal == null)
+	if(portal == nullptr)
 		return;
 
 	list<shared_ptr<PortalsPeer> >::type supernodes;
@@ -1222,7 +1222,7 @@ void P2PConnection::saveRequest(packets::query_request_ptr request)
 		// Propone come ip i supernodi conosciuti (saltando il nodo a cui si è connessi se è tra questi)
 
 		shared_ptr<PortalsPeer> supernode = *i;
-		OS_ASSERT(supernode != null);
+		OS_ASSERT(supernode != nullptr);
 
 		// N.B.: il confronto deve essere fatto solo sull'indirizzo IP perchè potrebbe essere una connessione in entrata
 		if(supernode->getIP() != getPeerHostname())
@@ -1246,7 +1246,7 @@ shared_ptr<ConnectionStatusGuard> P2PConnection::lockStatus()
 	OS_LOCK(m_statusCS);
 
 	shared_ptr<ConnectionStatusGuard> statusGuard = m_statusGuard.lock();
-	if(statusGuard == null)
+	if(statusGuard == nullptr)
 	{
 		statusGuard.reset(OS_NEW ConnectionStatusGuard(get_this_ptr(), m_status));
 		m_statusGuard = statusGuard;
@@ -1262,7 +1262,7 @@ void P2PConnection::connectionCallback(const boost::system::error_code &e, share
 	OS_P2P_CONNECTION_STATUS_GUARD();
 
 	shared_ptr<IPAddress> address = getPeer();
-	OS_ASSERT(address != null);
+	OS_ASSERT(address != nullptr);
 
 	if(e)
 	{
@@ -1280,7 +1280,7 @@ void P2PConnection::connectionCallback(const boost::system::error_code &e, share
 		changeStatus(NodeStatus::statusHandshaking);
 
 		shared_ptr<CryptKeyAgreement> keyAgreement = m_localSession->initDH();
-		if(keyAgreement != null)
+		if(keyAgreement != nullptr)
 		{
 			const Buffer &modulus = keyAgreement->getModulus();
 			OS_ASSERT(modulus.getSize() == OS_P2P_KEY_AGREEMENT_MODULUS_SIZE);
@@ -1370,14 +1370,14 @@ bool P2PConnection::handleHandshakeResponse(const Buffer &remotePublicKey)
 	}
 
 	shared_ptr<P2PServer> server = getServer();
-	if(server == null)
+	if(server == nullptr)
 	{
 		OS_ASSERTFALSE();
 		return false;
 	}
 
 	shared_ptr<P2PConnection> remoteConnection = server->detectLoopbackConnection(remotePublicKey);
-	if(remoteConnection != null)
+	if(remoteConnection != nullptr)
 	{
 		updateLastEvent(_S("Detected loopback connection with '") + getPeerHostname() + _S("'"), logLevelDebug);
 
@@ -1426,7 +1426,7 @@ void P2PConnection::handleHandshakeRequest(const boost::system::error_code &e, s
 			return;
 
 		shared_ptr<CryptKeyAgreement> keyAgreement = m_localSession->initDH(modulus, generator);
-		if(keyAgreement == null || m_localSession->agree(public_key) == false)
+		if(keyAgreement == nullptr || m_localSession->agree(public_key) == false)
 		{
 			updateLastEvent(_S("P2P connection error: dh agree error"), logLevelNotice);
 			return;
@@ -1472,7 +1472,7 @@ void P2PConnection::startExchange(shared_ptr<P2PScope> scope, bool starter)
 		m_localSession->setHelloSended(true);
 
 		p2p::packets::packet_ptr helloPacket = createHelloPacket();
-		if(helloPacket != null)
+		if(helloPacket != nullptr)
 			asyncSendPacket(helloPacket, scope);
 		else
 			updateLastEvent("Error creating hello packet, connection dropped", logLevelError);
@@ -1485,7 +1485,7 @@ void P2PConnection::startExchange(shared_ptr<P2PScope> scope, bool starter)
 
 bool P2PConnection::asyncSendPacket(p2p::packets::packet_ptr packet, shared_ptr<P2PScope> scope)
 {
-	if(packet == null || packet->create() == false)
+	if(packet == nullptr || packet->create() == false)
 	{
 		OS_ASSERTFALSE();
 		return false;
@@ -1603,7 +1603,7 @@ void P2PConnection::handlePacketHeader(const boost::system::error_code &e, size_
 
 		// Alloca il pacchetto
 		m_remotePacket = allocPacket(Convert::toPacketType(packetHeader.type));
-		if(m_remotePacket == null)
+		if(m_remotePacket == nullptr)
 			return;
 
 		// Verifica che la dimensione richiesta non superi quella massima prevista
@@ -1657,7 +1657,7 @@ void P2PConnection::handlePacketBody(const boost::system::error_code &e, size_t 
 
 void P2PConnection::onPacketReceived(shared_ptr<P2PScope> scope)
 {
-	OS_ASSERT(m_remotePacket != null);
+	OS_ASSERT(m_remotePacket != nullptr);
 
 	if(validatePacket(m_localPacket, m_remotePacket) == false)
 		return;
@@ -1665,7 +1665,7 @@ void P2PConnection::onPacketReceived(shared_ptr<P2PScope> scope)
 	if(handlePacket(m_localPacket, m_remotePacket, scope) == false)
 		return;
 
-	if(m_localPacket != null)
+	if(m_localPacket != nullptr)
 		asyncSendPacket(m_localPacket, scope);
 }
 

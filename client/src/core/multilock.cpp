@@ -95,7 +95,7 @@ void pimpl<MultiLock>::unlock()
 
 void pimpl<MultiLock>::add(boost::recursive_mutex *m)
 {
-	OS_ASSERT(m != null);
+	OS_ASSERT(m != nullptr);
 	OS_ASSERT(std::find_if(m_locks.begin(), m_locks.end(), boost::bind(&Lock::mutex, _1) == m) == m_locks.end());
 	m_locks.push_back(shared_ptr<Lock>(new Lock(*m, boost::defer_lock)));
 }

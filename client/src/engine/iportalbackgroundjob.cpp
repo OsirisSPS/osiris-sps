@@ -32,7 +32,7 @@ OS_NAMESPACE_BEGIN()
 IPortalBackgroundJob::IPortalBackgroundJob(bool visible, uint32 id, shared_ptr<Portal> portal, TaskPriority priority) : JobBase(visible, id, priority),
 																														m_portal(portal)
 {
-	OS_ASSERT(portal != null);
+	OS_ASSERT(portal != nullptr);
 }
 
 IPortalBackgroundJob::~IPortalBackgroundJob()

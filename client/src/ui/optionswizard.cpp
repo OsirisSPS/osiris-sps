@@ -65,7 +65,7 @@ void OptionsWizard::run()
 	updatePages(true);
 
 	wxSizer *sizer = GetSizer();
-	if(sizer != null)
+	if(sizer != nullptr)
 	{
 		// Il bordo della colonna principale nel wizard viene settato a 5px e, non essendo al momento
 		// regolabile, viene qui modificato in questo modo...
@@ -91,7 +91,7 @@ void OptionsWizard::updatePages(bool load)
     wxBusyCursor busyCursor;
 
 	IOptionsWizardPage *currentPage = m_pageWelcome;
-	while(currentPage != null)
+	while(currentPage != nullptr)
 	{
 		if(load)
 			currentPage->loadOptions();

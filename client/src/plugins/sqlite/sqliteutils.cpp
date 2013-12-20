@@ -118,7 +118,7 @@ std::string sqlite_error_code(int32 code)
 std::string sqlite_last_error(sqlite3 *db, int32 code)
 {
 	String error;
-	if(db != null)
+	if(db != nullptr)
 	{
 		const uchar *desc = _tsqlite3_errmsg(db);
 		if(code != -1)

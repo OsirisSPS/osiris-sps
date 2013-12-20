@@ -35,7 +35,7 @@ class PollViewer : public CommentableObjectViewer
 
 // Construction
 public:
-	PollViewer(shared_ptr<EntitiesEntity> entity = null);
+	PollViewer(shared_ptr<EntitiesEntity> entity = nullptr);
 	virtual ~PollViewer();
 
 // IXSLRenderer interface

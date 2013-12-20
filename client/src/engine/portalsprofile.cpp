@@ -64,7 +64,7 @@ Profile::~Profile()
 String Profile::getSubscribeLink(bool http) const
 {
 	shared_ptr<Portal> portal = getPortal();
-	if(portal == null)
+	if(portal == nullptr)
 	{
 		OS_ASSERTFALSE();
 		return String::EMPTY;

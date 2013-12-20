@@ -53,8 +53,8 @@ Buffer::~Buffer()
 
 void Buffer::construct(uint32 growSize)
 {
-	m_data = null;
-	m_position = null;
+	m_data = nullptr;
+	m_position = nullptr;
 	m_size = 0;
 	m_allocSize = 0;
 	setGrowSize(growSize);
@@ -271,9 +271,9 @@ bool Buffer::writeCount(uint32 count)
 void Buffer::clear()
 {
 	OS_DEALLOCATE(m_data);
-	m_data = null;
+	m_data = nullptr;
 
-	m_position = null;
+	m_position = nullptr;
 	m_size = 0;
 	m_allocSize = 0;
 }
@@ -288,10 +288,10 @@ bool Buffer::grow(uint32 size)
 			m_allocSize += m_growSize;
 		}
 
-		if(m_data != null)
+		if(m_data != nullptr)
 		{
 			m_data = static_cast<byte *>(OS_REALLOCATE(m_data, m_allocSize));
-			if(m_data == null)
+			if(m_data == nullptr)
 			{
 				OS_ASSERTFALSE();
 
@@ -302,7 +302,7 @@ bool Buffer::grow(uint32 size)
 		else
 		{
 			m_data = static_cast<byte *>(OS_ALLOCATE(m_allocSize));
-			if(m_data == null)
+			if(m_data == nullptr)
 			{
 				OS_ASSERTFALSE();
 
@@ -390,13 +390,13 @@ bool Buffer::save(shared_ptr<IStream> stream) const
 
 const byte * Buffer::find(const byte *value, uint32 length, const byte *pos) const
 {
-	OS_ASSERT(value != null && length > 0);
+	OS_ASSERT(value != nullptr && length > 0);
 
 	const byte *startPosition = getData();
 	const byte *endPosition = getEndPosition();
 
 	// Se non è stat specificata una posizione parte dall'inizio
-	if(pos == null)
+	if(pos == nullptr)
 		pos = startPosition;
 
 	OS_ASSERT(pos >= startPosition && pos < endPosition);
@@ -411,7 +411,7 @@ const byte * Buffer::find(const byte *value, uint32 length, const byte *pos) con
 			return result;
 	}
 
-	return null;
+	return nullptr;
 }
 
 bool Buffer::erase(uint32 pos, uint32 count)

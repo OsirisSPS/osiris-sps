@@ -83,7 +83,7 @@ void XsltTransformEditor::onLoad()
 	if(getPostBack() == false)
 	{
 		shared_ptr<XMLNode> root = getModuleDocument()->getRoot();
-		if(root != null)
+		if(root != nullptr)
 		{
 			m_xml->setValue(root->getAttributeString(OS_MODULES_XSLTTRANSFORM_XML));
 			m_xsl->setValue(root->getAttributeString(OS_MODULES_XSLTTRANSFORM_XSL));
@@ -100,8 +100,8 @@ void XsltTransformEditor::onLoad()
 	if(stylesheet->parseFile(path))
 	{
 		// URGENT devo per forza creare un documento?
-		// Se il secondo parametro della XSLControl  null non crea il controllo,
-		// e non posso passare una "getDocument()" perch se  una nuova istanza  null pure lui...
+		// Se il secondo parametro della XSLControl  nullptr non crea il controllo,
+		// e non posso passare una "getDocument()" perch se  una nuova istanza  nullptr pure lui...
 		shared_ptr<XMLDocument> document(OS_NEW XMLDocument());
 		document->create(OS_MODULES_XSLTTRANSFORM_ROOT);
 

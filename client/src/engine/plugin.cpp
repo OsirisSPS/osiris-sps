@@ -130,7 +130,7 @@ Plugin::LoadResult Plugin::load(const UniqueID &id, const String &path)
 	NotificationsManager::instance()->notify(_S("Loading plugin: ") + m_name);
 
 	shared_ptr<XMLNode> nodeModules = document->getRoot()->getNode(_S("modules"));
-	if(nodeModules != null)
+	if(nodeModules != nullptr)
 	{
 		shared_ptr<XMLNodes> modules = nodeModules->getNodes();
 		for(XMLNodes::const_iterator i = modules->begin(); i != modules->end(); ++i)

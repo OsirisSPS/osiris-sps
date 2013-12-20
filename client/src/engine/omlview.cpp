@@ -55,7 +55,7 @@ String OMLView::processHtml(shared_ptr<OMLItem> i, shared_ptr<OMLContext> contex
 		return String::EMPTY;
 
 	shared_ptr<IPortalPage> page = context->getPortalPage();
-	if(page == null) return String::EMPTY;
+	if(page == nullptr) return String::EMPTY;
 
 	mapDefaultParamTo(i, _S("mode"));
 
@@ -82,7 +82,7 @@ String OMLView::processHtml(shared_ptr<OMLItem> i, shared_ptr<OMLContext> contex
 	shared_ptr<XMLNode> nodeUser = doc->getRoot()->addChild(_S("object"));
 	shared_ptr<XMLPortalExporter> exporter(OS_NEW XMLPortalExporter(nodeUser, page, exportMode, withStats));
 	shared_ptr<ObjectsIObject> object = page->getObject(id.to_ascii());
-	if(object != null)
+	if(object != nullptr)
 	{
 		object->exportXML(exporter);
 	}

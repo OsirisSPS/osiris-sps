@@ -96,7 +96,7 @@ void IdeAssistant::_exportTarget()
 	{
 		EntityID id = getPage()->getTargetObject();
 		shared_ptr<EntitiesEntity> targetObject = getPortal()->getEntity(getDatabase(), getPage()->getTargetObject());
-		if( (targetObject != null) && (targetObject->getCurrent() != null) )
+		if( (targetObject != nullptr) && (targetObject->getCurrent() != nullptr) )
 		{
 			shared_ptr<XMLPortalExporter> exporterObject = m_exporter->createChild<XMLPortalExporter>(OS_PORTAL_OBJECT_OBJECT_TYPENAME);
 			targetObject->exportXML(exporterObject);
@@ -161,7 +161,7 @@ void IdeAssistant::_exportSelectedObjects()
 	for(StringMap::const_iterator i = selectedObjects.begin(); i != selectedObjects.end(); ++i)
 	{
 		shared_ptr<EntitiesEntity> objectEntity = getPortal()->getEntity(getDatabase(), i->first.to_ascii());
-		if( (objectEntity != null) && (objectEntity->getCurrent() != null) )
+		if( (objectEntity != nullptr) && (objectEntity->getCurrent() != nullptr) )
 		{
 			shared_ptr<XMLPortalExporter> exporter = m_exporter->createChild<XMLPortalExporter>(m_exporter->getNode(OS_PORTAL_OBJECT_OBJECT_GROUPNAME)->addChild(OS_PORTAL_OBJECT_OBJECT_TYPENAME));
 			objectEntity->exportXML(exporter);
@@ -211,7 +211,7 @@ String IdeAssistant::getTemplatePath()
 void IdeAssistant::onViewMode(IEvent *e)
 {
 	HtmlEvent *htmlEvent = dynamic_cast<HtmlEvent *>(e);
-	if(htmlEvent == null)
+	if(htmlEvent == nullptr)
 		return;
 
 	// TODO
@@ -220,7 +220,7 @@ void IdeAssistant::onViewMode(IEvent *e)
 void IdeAssistant::onObjectAdd(IEvent *e)
 {
 	HtmlEvent *htmlEvent = dynamic_cast<HtmlEvent *>(e);
-	if(htmlEvent == null)
+	if(htmlEvent == nullptr)
 		return;
 
 	StringMap &selectedObjects = getSessionAccount()->getSessionPortal(getPortal())->getSelectedObjects();
@@ -230,7 +230,7 @@ void IdeAssistant::onObjectAdd(IEvent *e)
 void IdeAssistant::onObjectRemove(IEvent *e)
 {
 	HtmlEvent *htmlEvent = dynamic_cast<HtmlEvent *>(e);
-	if(htmlEvent == null)
+	if(htmlEvent == nullptr)
 		return;
 
 	StringMap &selectedObjects = getSessionAccount()->getSessionPortal(getPortal())->getSelectedObjects();
@@ -246,7 +246,7 @@ void IdeAssistant::onObjectsClear(IEvent *e)
 void IdeAssistant::onObjectView(IEvent *e)
 {
 	HtmlEvent *htmlEvent = dynamic_cast<HtmlEvent *>(e);
-	if(htmlEvent == null)
+	if(htmlEvent == nullptr)
 		return;
 
 	getPage()->redirect(getPortal()->getViewObjectLink(htmlEvent->get(0).to_ascii()));
@@ -255,7 +255,7 @@ void IdeAssistant::onObjectView(IEvent *e)
 void IdeAssistant::onObjectEdit(IEvent *e)
 {
 	HtmlEvent *htmlEvent = dynamic_cast<HtmlEvent *>(e);
-	if(htmlEvent == null)
+	if(htmlEvent == nullptr)
 		return;
 
 	getPage()->redirect(getPortal()->getEditObjectLink(htmlEvent->get(0).to_ascii()));

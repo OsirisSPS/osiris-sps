@@ -26,7 +26,7 @@ struct IdePickerSections_wrapper : ::osiris::IdePickerSections, ::osiris::Python
     IdePickerSections_wrapper( )
     : ::osiris::IdePickerSections( )
       , ::osiris::PythonWrapper< ::osiris::IdePickerSections >(){
-        // null constructor
+        // nullptr constructor
     
     }
 

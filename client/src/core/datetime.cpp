@@ -182,9 +182,9 @@ DateTime DateTime::now()
 	static boost::recursive_mutex cs;
 	OS_LOCK(cs);			// gmtime non è garantita essere thread-safe su tutti i sistemi operativi
 
-	time_t t = time(null);
+	time_t t = time(nullptr);
 	tm *ct = gmtime(&t);
-	if(ct == null)
+	if(ct == nullptr)
 		return EMPTY;
 
 	DateTime dt;

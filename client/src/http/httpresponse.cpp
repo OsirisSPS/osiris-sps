@@ -141,7 +141,7 @@ bool HttpResponse::removeCookie(const std::string &name)
 
 std::string HttpResponse::_createHeader(shared_ptr<HttpRequest> request)
 {
-	OS_ASSERT(request != null);
+	OS_ASSERT(request != nullptr);
 
 	std::string header;
 
@@ -203,7 +203,7 @@ void HttpResponse::_addCookies(std::string &str)
 
 const Buffer & HttpResponse::getResponseBuffer() const
 {
-	OS_ASSERT(m_responseBuffer != null);
+	OS_ASSERT(m_responseBuffer != nullptr);
 	return *m_responseBuffer;
 }
 
@@ -229,14 +229,14 @@ bool HttpResponse::write(const std::string &str)
 
 bool HttpResponse::write(const void *data, uint32 size)
 {
-	OS_ASSERT(m_responseBuffer != null);
+	OS_ASSERT(m_responseBuffer != nullptr);
 	return m_responseBuffer->write(data, size) == size;
 }
 
 shared_ptr<HttpData> HttpResponse::createHeader(shared_ptr<HttpData> content) const
 {
 	// URGENT: fixme
-	return null;
+	return nullptr;
 }
 
 bool HttpResponse::parseMethod(const std::string &header)

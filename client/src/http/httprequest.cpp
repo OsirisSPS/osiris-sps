@@ -55,7 +55,8 @@ HttpRequest::~HttpRequest()
 
 const std::wstring & HttpRequest::getUrlParam(const std::wstring &name) const
 { 
-	ordered_map<std::wstring, std::wstring>::const_iterator i = m_urlParams.find(name);
+	ordered_map<std::wstring, std::wstring>::const_iterator i = m_urlParams.find(name);
+
 	if(i != m_urlParams.end())
 		return i->second;
 
@@ -65,7 +66,7 @@ const std::wstring & HttpRequest::getUrlParam(const std::wstring &name) const
 std::wstring HttpRequest::getPostParamString(const std::wstring &name, const std::wstring &def) const
 {
 	shared_ptr<HttpPostParam> param = getPostParam(name);
-	if(param == null)
+	if(param == nullptr)
 		return def;
 
 	return param->getString();
@@ -74,8 +75,8 @@ std::wstring HttpRequest::getPostParamString(const std::wstring &name, const std
 const Buffer * HttpRequest::getPostParamBuffer(const std::wstring &name) const
 {
 	shared_ptr<HttpPostParam> param = getPostParam(name);
-	if(param == null)
-		return null;
+	if(param == nullptr)
+		return nullptr;
 
 	return param->getBuffer();
 }
@@ -83,7 +84,7 @@ const Buffer * HttpRequest::getPostParamBuffer(const std::wstring &name) const
 void HttpRequest::setPostParamString(const std::wstring &name, const std::wstring &value)
 {
 	shared_ptr<HttpPostParam> postParam = m_postParams.get(name);
-	if(postParam == null)
+	if(postParam == nullptr)
 	{
 		postParam.reset(OS_NEW HttpPostParam());
 		m_postParams.push_back(name, postParam);
@@ -96,7 +97,7 @@ void HttpRequest::setPostParamString(const std::wstring &name, const std::wstrin
 void HttpRequest::setPostParamBuffer(const std::wstring &name, const Buffer &value)
 {
 	shared_ptr<HttpPostParam> postParam = m_postParams.get(name);
-	if(postParam == null)
+	if(postParam == nullptr)
 	{
 		postParam.reset(OS_NEW HttpPostParam());
 		m_postParams.push_back(name, postParam);
@@ -123,7 +124,7 @@ void HttpRequest::parseUrlParams()
 void HttpRequest::addPostParam(const std::wstring &name, shared_ptr<HttpPostParam> param)
 {
 	OS_ASSERT(name.empty() == false);
-	OS_ASSERT(param != null);
+	OS_ASSERT(param != nullptr);
 
 	m_postParams.push_back(name, param);
 }
@@ -256,7 +257,7 @@ bool HttpRequest::parseMethod(const std::string &header)
 shared_ptr<HttpData> HttpRequest::createContent() const
 {	
     shared_ptr<HttpData> content = MethodBase::createContent();
-    if(content != null)
+    if(content != nullptr)
     {
         OS_ASSERT(m_postParams.empty());    // Se il contenuto del metodo è stato valorizzato nella base la richiesta non dovrebbe avere nulla da scrivere
         return content;
@@ -347,7 +348,7 @@ shared_ptr<HttpData> HttpRequest::createContent() const
 				if(param->isBuffer())
 				{
 					const Buffer *buffer = param->getBuffer();
-					OS_ASSERT(buffer != null);	
+					OS_ASSERT(buffer != nullptr);	
 
 					if(compressData)
 					{

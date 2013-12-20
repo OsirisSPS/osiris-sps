@@ -61,7 +61,7 @@ JobsPool::JobsPoolThread::~JobsPoolThread()
 
 void JobsPool::JobsPoolThread::onJobCompleted(shared_ptr<IJob> job)
 {
-	// N.B.: va richiamato prima l'evento sul pool altrimenti la base rimuoverebbe il job dalla lista ed un'eventuale pool->getJob(id) sull'evento restituirebbe null
+	// N.B.: va richiamato prima l'evento sul pool altrimenti la base rimuoverebbe il job dalla lista ed un'eventuale pool->getJob(id) sull'evento restituirebbe nullptr
 
 	m_pool.onJobCompleted(job);
 
@@ -107,11 +107,11 @@ shared_ptr<IJob> JobsPool::getJob(uint32 id) const
 	for(WorkerThreads::const_iterator i = m_threads.begin(); i != m_threads.end(); ++i)
 	{
 		shared_ptr<IJob> job = (*i)->getJob(id);
-		if(job != null)
+		if(job != nullptr)
 			return job;
 	}
 
-	return null;
+	return nullptr;
 }
 
 void JobsPool::getJobs(Jobs &jobs) const

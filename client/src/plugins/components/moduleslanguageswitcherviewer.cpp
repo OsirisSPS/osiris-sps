@@ -76,11 +76,11 @@ LanguageSwitcherViewer::~LanguageSwitcherViewer()
 void LanguageSwitcherViewer::onSelect(IEvent *e)
 {
 	HtmlEvent *htmlEvent = dynamic_cast<HtmlEvent *>(e);
-	if(htmlEvent == null)
+	if(htmlEvent == nullptr)
 		return;
 
 	shared_ptr<IdeSession> ideSession = getSessionAccount();
-	if( (ideSession != null) && ideSession->isLogged() )
+	if( (ideSession != nullptr) && ideSession->isLogged() )
 	{
 		shared_ptr<IdeAccount> account = getSessionAccount()->getAccount();
 		if(account->getLanguage() != htmlEvent->get(0))
@@ -88,7 +88,7 @@ void LanguageSwitcherViewer::onSelect(IEvent *e)
 			account->setLanguage(htmlEvent->get(0));
 			IdeAccountsManager::instance()->save(account);
 			//account->updateAccount(getDatabase());
-			IdeAccountsManager::instance()->save(account);
+			//IdeAccountsManager::instance()->save(account);
 		}
 	}
 	else
@@ -97,6 +97,13 @@ void LanguageSwitcherViewer::onSelect(IEvent *e)
 	}	
 
 	getPage()->reload();
+}
+
+void LanguageSwitcherViewer::onInit()
+{
+	ViewerBase::onInit();
+
+	getEvents()->get(EVENT_ONSELECT)->connect(boost::bind(&LanguageSwitcherViewer::onSelect, this, _1));
 }
 
 void LanguageSwitcherViewer::onLoad()
@@ -108,10 +115,8 @@ void LanguageSwitcherViewer::onLoad()
 		controlID = _S("preview"); // Se il modulo è in preview, non ha un'ID di istanza. Ma un ID mi serve x forza per gli eventi.
 	setID(controlID);
 
-	getEvents()->get(EVENT_ONSELECT)->connect(boost::bind(&LanguageSwitcherViewer::onSelect, this, _1));
-
 	shared_ptr<XMLNode> root = getModuleDocument()->getRoot();
-	OS_ASSERT(root != null);
+	OS_ASSERT(root != nullptr);
 	
 	String style = root->getAttributeString(OS_MODULES_LANGUAGESWITCHER_STYLE);
 	String cultures = root->getAttributeString(OS_MODULES_LANGUAGESWITCHER_CULTURES);
@@ -127,8 +132,8 @@ void LanguageSwitcherViewer::onLoad()
 	if(stylesheet->parseFile(path))
 	{
 		// URGENT devo per forza creare un documento?
-		// Se il secondo parametro della XSLControl  null non crea il controllo,
-		// e non posso passare una "getDocument()" perch se  una nuova istanza  null pure lui...
+		// Se il secondo parametro della XSLControl  nullptr non crea il controllo,
+		// e non posso passare una "getDocument()" perch se  una nuova istanza  nullptr pure lui...
 		shared_ptr<XMLDocument> document(OS_NEW XMLDocument());
 		document->create(OS_MODULES_LANGUAGESWITCHER_ROOT);
 

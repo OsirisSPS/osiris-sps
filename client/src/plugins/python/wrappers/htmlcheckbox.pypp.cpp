@@ -23,7 +23,7 @@ struct HtmlCheckBox_wrapper : ::osiris::HtmlCheckBox, ::osiris::PythonWrapper< :
     HtmlCheckBox_wrapper( )
     : ::osiris::HtmlCheckBox( )
       , ::osiris::PythonWrapper< ::osiris::HtmlCheckBox >(){
-        // null constructor
+        // nullptr constructor
     
     }
 

@@ -77,8 +77,8 @@ private:
 pimpl<UPnPManager>::pimpl() : m_discoverTimeout(OS_UPNP_DEFAULT_DISCOVER_TIMEOUT),
 							  m_initialized(false),
 							  m_serviceAvailable(false),
-							  m_upnpUrls(null),
-							  m_igdDatas(null)
+							  m_upnpUrls(nullptr),
+							  m_igdDatas(nullptr)
 {
 
 }
@@ -128,10 +128,10 @@ bool pimpl<UPnPManager>::addPortMapping(uint32 port, const std::string &protocol
 	if(description.empty())
 		description = protocol + "_" + strPort;
 
-	OS_ASSERT(m_upnpUrls != null);
-	OS_ASSERT(m_upnpUrls->controlURL != null);
-	OS_ASSERT(m_igdDatas != null);
-	return UPNP_AddPortMapping(m_upnpUrls->controlURL, m_igdDatas->servicetype, strPort.c_str(), strPort.c_str(), m_lanIP, description.c_str(), protocol.c_str(), null) == 0;
+	OS_ASSERT(m_upnpUrls != nullptr);
+	OS_ASSERT(m_upnpUrls->controlURL != nullptr);
+	OS_ASSERT(m_igdDatas != nullptr);
+	return UPNP_AddPortMapping(m_upnpUrls->controlURL, m_igdDatas->servicetype, strPort.c_str(), strPort.c_str(), m_lanIP, description.c_str(), protocol.c_str(), nullptr) == 0;
 }
 
 bool pimpl<UPnPManager>::removePortMapping(uint32 port, const std::string &protocol)
@@ -143,10 +143,10 @@ bool pimpl<UPnPManager>::removePortMapping(uint32 port, const std::string &proto
 	if(m_serviceAvailable == false)
 		return false;
 
-	OS_ASSERT(m_upnpUrls != null);
-	OS_ASSERT(m_upnpUrls->controlURL != null);
-	OS_ASSERT(m_igdDatas != null);
-	return UPNP_DeletePortMapping(m_upnpUrls->controlURL, m_igdDatas->servicetype, conversions::to_string(port).c_str(), protocol.c_str(), null) == 0;
+	OS_ASSERT(m_upnpUrls != nullptr);
+	OS_ASSERT(m_upnpUrls->controlURL != nullptr);
+	OS_ASSERT(m_igdDatas != nullptr);
+	return UPNP_DeletePortMapping(m_upnpUrls->controlURL, m_igdDatas->servicetype, conversions::to_string(port).c_str(), protocol.c_str(), nullptr) == 0;
 }
 
 void pimpl<UPnPManager>::ensureInitialized() const
@@ -155,8 +155,8 @@ void pimpl<UPnPManager>::ensureInitialized() const
 
 	if(m_initialized)
 	{
-		OS_ASSERT(m_upnpUrls != null);
-		OS_ASSERT(m_igdDatas != null);
+		OS_ASSERT(m_upnpUrls != nullptr);
+		OS_ASSERT(m_igdDatas != nullptr);
 		return;
 	}
 
@@ -168,8 +168,8 @@ void pimpl<UPnPManager>::ensureInitialized() const
 	OS_ZEROMEMORY(m_igdDatas, sizeof(IGDdatas));
 	OS_ZEROMEMORY(m_lanIP, sizeof(m_lanIP));
 
-	UPNPDev *devices = upnpDiscover(m_discoverTimeout, null, null, 0);
-	if(devices != null)
+	UPNPDev *devices = upnpDiscover(m_discoverTimeout, nullptr, nullptr, 0);
+	if(devices != nullptr)
 	{
 		switch(UPNP_GetValidIGD(devices, m_upnpUrls, m_igdDatas, m_lanIP, sizeof(m_lanIP)))
 		{
@@ -177,8 +177,8 @@ void pimpl<UPnPManager>::ensureInitialized() const
 												break;
 
 		case OS_MINIUPNP_IGD_FOUND:				OS_LOG_INFO("UPnP: valid IGD found");
-												OS_ASSERT(m_upnpUrls->controlURL != null);
-												m_serviceAvailable = m_upnpUrls->controlURL != null;
+												OS_ASSERT(m_upnpUrls->controlURL != nullptr);
+												m_serviceAvailable = m_upnpUrls->controlURL != nullptr;
 												break;
 
 		case OS_MINIUPNP_IGD_NOT_CONNECTED:		OS_LOG_DEBUG("UPnP: not connected IGD found");
@@ -201,16 +201,16 @@ void pimpl<UPnPManager>::cleanup()
 
 	m_serviceAvailable = false;
 
-	if(m_upnpUrls != null)
+	if(m_upnpUrls != nullptr)
 	{
 		FreeUPNPUrls(m_upnpUrls);
 
 		OS_DEALLOCATE(m_upnpUrls);
-		m_upnpUrls = null;
+		m_upnpUrls = nullptr;
 	}
 
 	OS_DEALLOCATE(m_igdDatas);
-	m_igdDatas = null;
+	m_igdDatas = nullptr;
 
 	m_initialized = false;
 }

@@ -124,7 +124,7 @@ void ThreadsGroup<T, C>::setPriority(TaskPriority priority)
 template <typename T, typename C>
 void ThreadsGroup<T, C>::add(shared_ptr<T> thread, bool run)
 {
-	if(thread == null)
+	if(thread == nullptr)
 	{
 		OS_ASSERTFALSE();
 		return;

@@ -61,7 +61,7 @@ void HtmlControls::remove(shared_ptr<IHtmlControl> control)
 void HtmlControls::remove(const String &id)
 {
 	shared_ptr<IHtmlControl> control = find(id);
-	if(control != null)
+	if(control != nullptr)
 		remove(control);
 }
 
@@ -77,7 +77,7 @@ void HtmlControls::push_front(shared_ptr<IHtmlControl> control)
 
 void HtmlControls::_insert(shared_ptr<IHtmlControl> control, bool back)
 {
-	OS_EXCEPT_IF((control == null) || (control->getParent() != null), "Invalid control");
+	OS_EXCEPT_IF((control == nullptr) || (control->getParent() != nullptr), "Invalid control");
 	
 	OS_ASSERT(utils::exists(m_controls, control) == false);		// Se il controllo non è ancora stato agganciato è impossibile che figuri nella lista dei figli
 
@@ -98,7 +98,7 @@ shared_ptr<IHtmlControl> HtmlControls::find(const String &id) const
 			return *i;
 	}
 
-	return null;
+	return nullptr;
 }
 
 //////////////////////////////////////////////////////////////////////

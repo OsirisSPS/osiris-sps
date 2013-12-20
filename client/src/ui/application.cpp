@@ -145,7 +145,7 @@ String Application::getText(const String &key) const
 {
 	/*
 	shared_ptr<LanguageFolder> folder = LanguageManager::instance()->getRootFolder();
-	OS_ASSERT(folder != null);
+	OS_ASSERT(folder != nullptr);
 	return folder->getText(Options::instance()->getDefaultLanguage(), key);
 	*/
 	//return LanguageManager::instance()->getText(Options::instance()->getDefaultLanguage(), key);
@@ -294,7 +294,7 @@ void Application::viewHome()
 void Application::openLocalUrl(const String &relativePath)
 {
 	shared_ptr<IHttpServer> server = IdeSystem::instance()->getServer();
-	if(server == null || server->running() == false)
+	if(server == nullptr || server->running() == false)
 	{
 		wxMessageBox(conversions::from_utf16<wxString>(_S("Http server is not running")), conversions::from_utf16<wxString>(_S("Error")), wxOK | wxICON_ERROR);
 		return;
@@ -357,7 +357,7 @@ void Application::processFile(const String &filename, bool verbose)
 	String password;
 	{
 		MainWindow *window = MainWindow::instance();
-		if(window != null)
+		if(window != nullptr)
 			window->showMode(false);
 
 		wxPasswordEntryDialog passwordDialog(window, conversions::from_utf16<wxString>(getText("ui.file_import.portal_password.message")), conversions::from_utf16<wxString>(filename));
@@ -385,14 +385,14 @@ void Application::processFile(const String &filename, bool verbose)
 	shared_ptr<PortalsSerializer> serializer(OS_NEW PortalsSerializer());
 
 	shared_ptr<PortalsSerializer::IResult> result = serializer->parsePortalLink(file);
-	if(result == null)
+	if(result == nullptr)
 	{
 		reportError(String::format(_S("Invalid file '%S'").c_str(), filename.c_str()), verbose);
 		return;
 	}
 
 	shared_ptr<OsirisLink> portalLink = result->getPortalLink();
-	if(portalLink == null)
+	if(portalLink == nullptr)
 	{
 		reportError(String::format(_S("Invalid portal link found in file '%S'").c_str(), filename.c_str()), verbose);
 		return;
@@ -401,7 +401,7 @@ void Application::processFile(const String &filename, bool verbose)
 	
 
 	shared_ptr<Portal> portal = PortalsSystem::instance()->ensurePortal(portalLink, password);
-	if(portal == null)
+	if(portal == nullptr)
 	{
 		reportError(String::format(_S("Cannot create portal from file '%S'").c_str(), filename.c_str()), verbose);
 		return;
@@ -446,7 +446,7 @@ void Application::reportError(const String &error, bool verbose)
 void Application::dispatchEvents()
 {
 	shared_ptr<wxEventLoopBase> active(wxEventLoopBase::GetActive(), null_deleter());
-	if(active == null)
+	if(active == nullptr)
 		active = shared_ptr<wxEventLoopBase>(OS_NEW_T(wxEventLoop), os_delete_t());
 
     wxEventLoopActivator activator(active.get());
@@ -523,7 +523,7 @@ bool Application::registerFilesAssociations(bool associate)
 	{
 		wxString openCommand = conversions::from_utf16<wxString>(getShellOpenCommand(false));	// Il parametro file viene già inserito in automatico da wxFileTypeInfo
 
-		// N.B.: non usare qui null (causa problemi nel costruttore di wxFileTypeInfo va_start/va_arg)
+		// N.B.: non usare qui nullptr (causa problemi nel costruttore di wxFileTypeInfo va_start/va_arg)
 		wxFileTypeInfo file(conversions::from_utf16<wxString>(mime_type), openCommand, wxEmptyString, wxEmptyString, wxT(OS_PORTALFILE_EXTENSION), wxNullPtr);
 		file.SetShortDesc(wxT("osiris.file"));
 
@@ -540,11 +540,11 @@ bool Application::registerFilesAssociations(bool associate)
 		file.SetIcon(conversions::from_utf16<wxString>(iconPath));
 		*/
 		
-		return wxTheMimeTypesManager->Associate(file) != null;
+		return wxTheMimeTypesManager->Associate(file) != nullptr;
 	}
 
 	wxFileType *file = wxTheMimeTypesManager->GetFileTypeFromMimeType(conversions::from_utf16<wxString>(mime_type));
-	if(file == null)
+	if(file == nullptr)
 		return true;
 
 	return wxTheMimeTypesManager->Unassociate(file);
@@ -814,7 +814,7 @@ bool Application::OnInit()
 
 	if(start() == false)
 	{
-		if(splash != null)
+		if(splash != nullptr)
 		{
 	        splash->setStatus(_S("Initialization failed"));
 			PlatformManager::instance()->sleep(1000);

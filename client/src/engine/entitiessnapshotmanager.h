@@ -210,7 +210,7 @@ public:
 
 	shared_ptr<EntitiesEntity> getEntity(const shared_ptr<IPortalDatabase> database, const EntityID id);
 
-	ReputationsScore computeReputation(const shared_ptr<IPortalDatabase> &database, const String &reference, const shared_ptr<ReputationsFeedback> &feedback = null);
+	ReputationsScore computeReputation(const shared_ptr<IPortalDatabase> &database, const String &reference, const shared_ptr<ReputationsFeedback> &feedback = nullptr);
 	
 
 	// Dell'oggetto specificato, ricerca le revisioni valide, e restituisce l'ID di quella da ritenere corrente (primaria esclusa). Restituisce anche lo score dell'utente che l'ha creata.

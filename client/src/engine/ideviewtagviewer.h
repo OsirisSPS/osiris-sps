@@ -35,7 +35,7 @@ class TagViewer : public IObjectViewer
 
 // Construction
 public:
-	TagViewer(shared_ptr<EntitiesEntity> entity = null);
+	TagViewer(shared_ptr<EntitiesEntity> entity = nullptr);
 	virtual ~TagViewer();
 
 // IXSLRenderer interface

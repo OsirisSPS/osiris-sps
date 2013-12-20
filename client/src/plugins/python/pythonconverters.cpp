@@ -34,6 +34,38 @@ OS_NAMESPACE_BEGIN()
 //////////////////////////////////////////////////////////////////////
 
 template <>
+struct PythonConverter<std::nullptr_t>
+{
+	/*
+	static void * convertible(PyObject *obj)
+	{
+		if(obj == Py_None)
+			return obj;
+
+		return nullptr;
+	}
+
+	static void create(PyObject *obj, boost::python::converter::rvalue_from_python_stage1_data *data)
+	{
+		void *memory_chunk = reinterpret_cast<boost::python::converter::rvalue_from_python_storage<std::nullptr_t> *>(data)->storage.bytes;
+		new (memory_chunk) std::nullptr_t();
+		data->convertible = memory_chunk; 
+	}
+
+	static PyObject * convert(const std::nullptr_t &obj)
+	{
+		return boost::python::detail::none();
+	}
+	*/
+	static PyObject* convert(void const* x)
+	{
+		return boost::python::detail::none();
+	}
+};
+
+//////////////////////////////////////////////////////////////////////
+
+template <>
 struct PythonConverter<String>
 {
 	static void * convertible(PyObject *obj)
@@ -41,7 +73,7 @@ struct PythonConverter<String>
 		if(PyString_Check(obj) || PyUnicode_Check(obj))
 			return obj;
 			
-		return null;
+		return nullptr;
 	}
 
 	static void create(PyObject *obj, boost::python::converter::rvalue_from_python_stage1_data *data)
@@ -73,7 +105,7 @@ struct PythonConverter<boost::none_t>
 		if(obj == Py_None)
 			return obj;
 
-		return null;
+		return nullptr;
 	}
 
 	static void create(PyObject *obj, boost::python::converter::rvalue_from_python_stage1_data *data)
@@ -102,7 +134,7 @@ struct PythonConverter<boost::posix_time::ptime>
 		if(PyDateTime_Check(obj))
 			return obj;
 
-		return null;
+		return nullptr;
 	}
 
 	static void create(PyObject *obj, boost::python::converter::rvalue_from_python_stage1_data *data)
@@ -138,7 +170,7 @@ struct PythonContainerConverter
 		if(PyList_Check(obj))
 			return obj;
 
-		return null;
+		return nullptr;
 	}
 	
 	static void create(PyObject *obj, boost::python::converter::rvalue_from_python_stage1_data *data)
@@ -205,7 +237,7 @@ struct PythonMapConverter
 		if(PyDict_Check(obj))
 			return obj;
 
-		return null;
+		return nullptr;
 	}
 
 	static void create(PyObject *obj, boost::python::converter::rvalue_from_python_stage1_data *data)
@@ -265,8 +297,10 @@ OS_DECLARE_PYTHONMAPCONVERTER(unordered_map<OS_DECLARE_PYTHONMAPCONVERTER_PARAMS
 
 void PythonConverters::init()
 {
+	boost::python::converter::registry::insert(&PythonConverter<std::nullptr_t>::convert, boost::python::type_id<std::nullptr_t>());
+	
 	add<boost::none_t>();
-	add<boost::posix_time::ptime>();
+	add<boost::posix_time::ptime>();		
 	add<String>();
 	
 	// N.B.: la conversione da C++ a Python è già esposta tramite indexing suite

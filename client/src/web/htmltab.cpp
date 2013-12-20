@@ -47,7 +47,7 @@ HtmlTab::~HtmlTab()
 
 void HtmlTab::addPage(shared_ptr<IHtmlControl> page, const String &title)
 {
-	if(page == null)
+	if(page == nullptr)
 		return;
 
 	if(page->hasCss() == false)

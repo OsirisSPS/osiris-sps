@@ -29,7 +29,7 @@ OS_NAMESPACE_BEGIN()
 
 IIRCCommand::IIRCCommand(shared_ptr<IRCSession> session) : m_session(session)
 {
-	OS_ASSERT(session != null);	
+	OS_ASSERT(session != nullptr);	
 }
 
 IIRCCommand::~IIRCCommand()
@@ -39,7 +39,7 @@ IIRCCommand::~IIRCCommand()
 
 shared_ptr<IIRCCommand> IIRCCommand::getReply() const
 {
-	return null;
+	return nullptr;
 }
 
 std::string IIRCCommand::toString() const
