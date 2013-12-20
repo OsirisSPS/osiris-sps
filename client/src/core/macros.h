@@ -51,8 +51,7 @@
 #ifdef OS_SUPPORT_CPP0X
 	#define OS_OVERRIDE						override
 #else
-	#define OS_OVERRIDE
-	#define nullptr							NULL
+	#define OS_OVERRIDE	
 #endif
 
 #define OS_MAKE_UINT8(l, h)					((uint8)(((uint8)(l)) & 0xF) | (((uint8)(h)) << 4))
