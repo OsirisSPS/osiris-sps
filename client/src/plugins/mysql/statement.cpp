@@ -34,7 +34,7 @@ static std::string getStatementError(MYSQL_STMT *statement)
 
 Statement::Statement(boost::recursive_mutex &cs) : m_lock(cs)
 {
-	m_statement = null;
+	m_statement = nullptr;
 }
 
 Statement::~Statement()
@@ -49,12 +49,12 @@ std::string Statement::error() const
 
 void Statement::prepare(MYSQL *connection, const String &sql)
 {
-	OS_ASSERT(m_statement == null);
+	OS_ASSERT(m_statement == nullptr);
 
-	OS_EXCEPT_IF(connection == null, "Invalid connection");
+	OS_EXCEPT_IF(connection == nullptr, "Invalid connection");
 
 	m_statement = mysql_stmt_init(connection);
-	OS_EXCEPT_IF(m_statement == null, "Mysql internal error");
+	OS_EXCEPT_IF(m_statement == nullptr, "Mysql internal error");
 
 	std::string query = sql.to_utf8();
 	int32 result = mysql_stmt_prepare(m_statement, query.c_str(), static_cast<unsigned long>(query.size()));
@@ -72,10 +72,10 @@ uint32 Statement::neededParameters()
 
 void Statement::close()
 {
-    if(m_statement != null)
+    if(m_statement != nullptr)
 	{
 		MYSQL_STMT *statement = m_statement;
-		m_statement = null;		// Resetta il puntatore allo statement
+		m_statement = nullptr;		// Resetta il puntatore allo statement
 
 		int32 result = mysql_stmt_close(statement);
 		

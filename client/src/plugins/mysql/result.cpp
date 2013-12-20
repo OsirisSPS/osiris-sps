@@ -28,31 +28,31 @@
 
 Result::Result(boost::recursive_mutex &cs) : m_lock(cs)
 {
-	m_result = null;
-	m_row = null;
-	m_lengths = null;
+	m_result = nullptr;
+	m_row = nullptr;
+	m_lengths = nullptr;
 }
 
 Result::~Result()
 {
-	if(m_result != null)
+	if(m_result != nullptr)
 	{
         mysql_free_result(m_result);
-		m_result = null;
+		m_result = nullptr;
 	}
 }
 
 void Result::prepare(Connection *connection)
 {
 	MYSQL_RES *result = mysql_use_result(connection->mysql());
-	OS_EXCEPT_IF(result == null, connection->error());
+	OS_EXCEPT_IF(result == nullptr, connection->error());
 
 	prepare(result);
 }
 
 void Result::prepare(MYSQL_RES *result)
 {
-	OS_EXCEPT_IF(result == null, "Invalid result");
+	OS_EXCEPT_IF(result == nullptr, "Invalid result");
 
 	m_result = result;
 
@@ -62,7 +62,7 @@ void Result::prepare(MYSQL_RES *result)
 		mysql_field_seek(m_result, i);
 
 		MYSQL_FIELD *field = mysql_fetch_field(m_result);
-		OS_EXCEPT_IF(field == null, "Mysql internal error");
+		OS_EXCEPT_IF(field == nullptr, "Mysql internal error");
 
 		// Salva il nome del campo
 		m_fieldNames.push_back(field->name);
@@ -88,7 +88,7 @@ String Result::columnName(uint32 index)
 
 bool Result::end()
 {
-	return m_row == null;
+	return m_row == nullptr;
 }
 
 void Result::moveNext()
@@ -96,17 +96,16 @@ void Result::moveNext()
 	// Si posiziona sulla riga successiva
 	m_row = mysql_fetch_row(m_result);
 	// Se la riga corrente  valida carica la dimensione dei campi
-	m_lengths = m_row != null ? mysql_fetch_lengths(m_result) : null;
+	m_lengths = m_row != nullptr ? mysql_fetch_lengths(m_result) : null;
 }
 
 void Result::get(uint32 index, DataItem &value)
 {
-	OS_ASSERT(m_row != null);
+	OS_ASSERT(m_row != nullptr);
 	OS_ASSERT(index < columns());
 
 	char *data = m_row[index];
-	// Controlla se il campo  null
-	if(data == null)
+	if(data == nullptr)
 	{
 		value = DataItem::EMPTY;
 	}

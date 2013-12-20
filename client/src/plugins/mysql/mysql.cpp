@@ -45,7 +45,7 @@ static bool pluginInitialize(Plugin &plugin)
 		return false;
 
 	shared_ptr<ThirdPartyLibrary> mysqlLibrary = ThirdPartyLibrariesReporter::instance()->addLibrary();
-	OS_ASSERT(mysqlLibrary != null);
+	OS_ASSERT(mysqlLibrary != nullptr);
 	mysqlLibrary->setName("Mysql");
     mysqlLibrary->setUrl("http://www.mysql.com");
     mysqlLibrary->setLicense("GPL"); 

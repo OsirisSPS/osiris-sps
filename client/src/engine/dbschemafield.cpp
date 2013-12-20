@@ -36,7 +36,7 @@ const String DbSchemaField::NAME = _S("name");
 const String DbSchemaField::OLD_NAME = _S("old_name");
 const String DbSchemaField::TYPE = _S("type");
 const String DbSchemaField::SIZE = _S("size");
-const String DbSchemaField::ALLOW_NULL = _S("nullptr");
+const String DbSchemaField::ALLOW_NULL = _S("null");
 const String DbSchemaField::DEFAULT = _S("default");
 const String DbSchemaField::PRIMARY = _S("primary");
 

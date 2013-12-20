@@ -55,7 +55,7 @@ bool Server::start(const String &base_path, const String &data_path)
 		m_options[1] = m_base_path;
 		m_options[2] = m_data_path;
 
-		return mysql_server_init(OS_COUNTOF(m_options), m_options, null) == MYSQL_OK;
+		return mysql_server_init(OS_COUNTOF(m_options), m_options, nullptr) == MYSQL_OK;
 	#else
 		return true;
 	#endif // OS_DEBUG

@@ -504,7 +504,7 @@ bool Parser::_generateBoolFieldSql(shared_ptr<DbSchemaField> field, String &sql)
 	sql = String::format(_S("%S int(1)").c_str(), field->getName().c_str());
 
 	if(field->getNull() == false)
-		sql += _S(" NOT nullptr");
+		sql += _S(" NOT null");
 
 	String value = field->getDefault();
 	if(value.empty() == false)
@@ -523,7 +523,7 @@ bool Parser::_generateIntFieldSql(shared_ptr<DbSchemaField> field, String &sql)
 	sql = String::format(_S("%S int(%d)").c_str(), field->getName().c_str(), field->getSize());
 
 	if(field->getNull() == false)
-		sql += _S(" NOT nullptr");
+		sql += _S(" NOT null");
 
 	String value = field->getDefault();
 	if(value.empty() == false)
@@ -537,7 +537,7 @@ bool Parser::_generateDoubleFieldSql(shared_ptr<DbSchemaField> field, String &sq
 	sql = String::format(_S("%S real").c_str(), field->getName().c_str());
 
 	if(field->getNull() == false)
-		sql += _S(" NOT nullptr");
+		sql += _S(" NOT null");
 
 	String value = field->getDefault();
 	if(value.empty() == false)
@@ -551,7 +551,7 @@ bool Parser::_generateVarcharFieldSql(shared_ptr<DbSchemaField> field, String &s
 	sql = String::format(_S("%S varchar(%d)").c_str(), field->getName().c_str(), field->getSize());
 
 	if(field->getNull() == false)
-		sql += _S(" NOT nullptr");
+		sql += _S(" NOT null");
 
 	String value = field->getDefault();
 	if(value.empty() == false)
@@ -565,7 +565,7 @@ bool Parser::_generateTextFieldSql(shared_ptr<DbSchemaField> field, String &sql)
 	sql = String::format(_S("%S text").c_str(), field->getName().c_str());
 
 	if(field->getNull() == false)
-		sql += _S(" NOT nullptr");
+		sql += _S(" NOT null");
 
 	String value = field->getDefault();
 	if(value.empty() == false)
@@ -579,7 +579,7 @@ bool Parser::_generateBlobFieldSql(shared_ptr<DbSchemaField> field, String &sql)
 	sql = String::format(_S("%S blob").c_str(), field->getName().c_str());
 
 	if(field->getNull() == false)
-		sql += _S(" NOT nullptr");
+		sql += _S(" NOT null");
 
 	String value = field->getDefault();
 	if(value.empty() == false)

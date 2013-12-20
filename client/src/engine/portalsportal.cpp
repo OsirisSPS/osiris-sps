@@ -1351,7 +1351,7 @@ bool Portal::onPostDatabaseVersionUpdate(shared_ptr<IPortalDatabase> database, c
 	if(toVersion == OS_MAKEVERSION(6, 0))
 	{
 		String patch;
-		patch.append(String::format(_S("update os_snapshot_objects set search_date = '%S' where search_date is nullptr;").c_str(),DateTime::EMPTY.toString().c_str()));
+		patch.append(String::format(_S("update os_snapshot_objects set search_date = '%S' where search_date is null;").c_str(),DateTime::EMPTY.toString().c_str()));
 		patch.append(_S("update os_snapshot_profiles set initialized=0;"));
 
 		NotificationsManager::instance()->notify(String::format(_S("Patching %S's database...").c_str(), getName().c_str()));

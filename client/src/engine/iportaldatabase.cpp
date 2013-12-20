@@ -837,7 +837,7 @@ void IPortalDatabase::computeVotesStats(shared_ptr<ObjectsIRevisionable> object,
 		where \
 		ts.reference = tv.author and \
 		ts.score %S and \
-		tv.score is not nullptr and \
+		tv.score is not null and \
 		tv.reference = '%S'").c_str(),
 		getPortal()->getSnapshotManager()->getReputationSqlRule(getPortal()->getOptionsShared()->getAuthorsReputationThreshold()).c_str(),
 		object->getPrimary().toUTF16().c_str());

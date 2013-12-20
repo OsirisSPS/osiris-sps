@@ -25,7 +25,7 @@
 
 Parameter::Parameter(MYSQL_BIND *binder)
 {
-	OS_ASSERT(binder != null);
+	OS_ASSERT(binder != nullptr);
 	m_binder = binder;
 }
 
@@ -73,7 +73,7 @@ void Parameter::setBlob(const void *data, uint32 size)
 
 void Parameter::setNull()
 {
-	_setValue(MYSQL_TYPE_NULL, null, 0, true, false);
+	_setValue(MYSQL_TYPE_NULL, nullptr, 0, true, false);
 }
 
 void Parameter::_setValue(enum_field_types type, const void *data, uint32 size, bool is_null,  bool is_unsigned)

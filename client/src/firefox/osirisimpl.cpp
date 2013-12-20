@@ -123,7 +123,7 @@ typedef void * handle;
 
     static handle loadLibrary(const nsString &libraryName)
     {
-		// NS_StringCloneData to ensure a null terminated buffer
+		// NS_StringCloneData to ensure a nullptr terminated buffer
 		boost::shared_ptr<PRUnichar> data(NS_StringCloneData(libraryName), &nsMemory::Free);
 		return static_cast<handle>(LoadLibraryEx(data.get(), NULL, LOAD_WITH_ALTERED_SEARCH_PATH));
     }

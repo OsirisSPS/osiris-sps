@@ -211,7 +211,7 @@ void ObjectsPollDescriptor::computeStatistics(shared_ptr<IPortalDatabase> db, sh
 								os_snapshot_users.id = os_polls_votes.author \
 								and os_snapshot_users.visible=1 \
 								and os_polls_votes.parent = '%S' \
-								and os_polls_votes.score is not nullptr").c_str(),
+								and os_polls_votes.score is not null").c_str(),
 								poll->getEntityID().toUTF16().c_str());
 
 	DataTable table;

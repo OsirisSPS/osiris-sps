@@ -477,7 +477,7 @@ void ObjectsUserDescriptor::computeStatistics(shared_ptr<IPortalDatabase> db, sh
 	// N.B. CLODOURGENT così però non conta voti, reputazioni etc e l'utente stesso. DEVO valorizzare entity_author = author per questi.
 #ifdef OS_TODOCIP
 	uint32 revisionable = db->getConnection()->value_of(String::format(_S("select count(*) from os_entries where entity_author='%S'").c_str(), userId.c_str()));
-	uint32 other = db->getConnection()->value_of(String::format(_S("select count(*) from os_entries where author='%S' and entity is nullptr").c_str(), userId.c_str()));
+	uint32 other = db->getConnection()->value_of(String::format(_S("select count(*) from os_entries where author='%S' and entity is null").c_str(), userId.c_str()));
 	stats->objects = revisionable + other;
 #else
 		stats->objects = db->value_of(String::format(_S("select count(*) from os_entries where author='%S'").c_str(), userId.c_str()));

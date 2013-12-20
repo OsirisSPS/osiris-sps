@@ -37,7 +37,7 @@ OS_NAMESPACE_BEGIN()
 
 const String OMLItem::ITEM_TAG_TEXT = _S("text");
 const String OMLItem::ITEM_TAG_PARAM = _S("?");
-//const String OMLItem::ITEM_TAG_NULL = _S("nullptr");
+//const String OMLItem::ITEM_TAG_NULL = _S("null");
 const String OMLItem::ITEM_PARAM_TEXT = _S("text");
 const String OMLItem::ITEM_PARAM_DEFAULT = _S("default");
 

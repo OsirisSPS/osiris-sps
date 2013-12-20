@@ -452,7 +452,7 @@ void IsisConnection::step(shared_ptr<ConnectionScope> scope, shared_ptr<XMLNode>
 																// Qui eseguo la richiesta in locale
 
 																shared_ptr<boost::asio::io_service> service = getService();
-																OS_EXCEPT_IF(service == nullptr, "Internal error (nullptr service)");
+																OS_EXCEPT_IF(service == nullptr, "Internal error (null service)");
 
 																HttpClient client(service, Engine::instance()->createTCPSocket(service, false, false));
 

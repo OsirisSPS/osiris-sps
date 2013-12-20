@@ -202,7 +202,7 @@ void Parser::parseCreateIndex(shared_ptr<sql::CreateIndex> command, String &sql)
 void Parser::parseDropIndex(shared_ptr<sql::DropIndex> command, String &sql)
 {
 	db::schema::index_ptr index = command->getIndex();
-	OS_ASSERT(index != null);
+	OS_ASSERT(index != nullptr);
 
 	sql = _S("drop index ") + OS_MYSQL_ESCAPE(index->getName()) + _S(" on ") + OS_MYSQL_ESCAPE(index->getTableName());
 }
@@ -501,7 +501,7 @@ bool Parser::_generateFieldSql(schema::field_ptr field, String &sql)
 
 bool Parser::_generateIndexSql(schema::index_ptr index, String &sql)
 {
-	OS_ASSERT(index != null);
+	OS_ASSERT(index != nullptr);
 
 	const db::schema::IndexFields &indexFields = index->getFields();
 	if(indexFields.empty())

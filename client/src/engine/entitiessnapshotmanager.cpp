@@ -1198,7 +1198,7 @@ bool EntitiesSnapshotManager::computeStabilityAccept(const shared_ptr<IPortalDat
 		LanguageResult acceptedMessage = object->acceptable(database);
 		if(acceptedMessage.empty())
 		{
-			sql = _S("update os_entries set rank=0, accept_msg=nullptr where id='") + id.toUTF16() + _S("'"); // Mark as accepted
+			sql = _S("update os_entries set rank=0, accept_msg=null where id='") + id.toUTF16() + _S("'"); // Mark as accepted
 			database->execute(sql);
 
 			// createObjectRecord? e abolisco la Prepare?
@@ -1252,12 +1252,12 @@ bool EntitiesSnapshotManager::computeStabilityPrepare(const shared_ptr<IPortalDa
 	if(skip == false)
 	{
 		DataTable result;
-		// N.B. Non filtro i tipi di oggetto, dato che gli oggetti non revisionabili hanno 'revision'==nullptr.
+		// N.B. Non filtro i tipi di oggetto, dato che gli oggetti non revisionabili hanno 'revision'==null.
 		RealtimeStatsScopeTimer RSS2(_S("Debug"), _S("SnapshotManager::computeStabilityPrepare::objects enumeration"));
 #ifdef OS_TODOCIP
 		//String sql=String::format(_S("select distinct entity_id as id from os_entries where not exists(select reference from os_snapshot_objects where reference=entity_id) limit %d").c_str(),getObjectsStep());
 		
-		String sql=String::format(_S("select distinct entity_id as id from os_entries where entity_id is not nullptr and not exists(select reference from os_snapshot_objects where reference=entity_id)").c_str());
+		String sql=String::format(_S("select distinct entity_id as id from os_entries where entity_id is not null and not exists(select reference from os_snapshot_objects where reference=entity_id)").c_str());
 #else
 		String sql=String::format(_S("select id from os_entries where revision='' and not exists(select reference from os_snapshot_objects where reference=id) limit %d").c_str(),getObjectsStep());
 #endif
@@ -2160,8 +2160,8 @@ void EntitiesSnapshotManager::ensureSnapshot(shared_ptr<IPortalDatabase> databas
 		// Snapshot objects records
 		{
 			DataTable result;
-			// "where entity is not nullptr" == revisionable objects.
-			String sql=String::format(_S("select id from os_entries where entity is not nullptr").c_str());
+			// "where entity is not null" == revisionable objects.
+			String sql=String::format(_S("select id from os_entries where entity is not null").c_str());
 			database->execute(sql, result);		
 
 			for(uint32 r=0;r<result.rows();r++)

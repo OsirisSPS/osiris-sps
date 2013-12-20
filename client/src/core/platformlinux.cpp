@@ -98,7 +98,7 @@ String pimpl<PlatformManager>::getExpandedEnvironmentPath(const String &path) co
 String pimpl<PlatformManager>::getUserDataPath() const
 {
     char *homeDir = ::getenv("HOME");
-    if(homeDir != null)
+    if(homeDir != nullptr)
         return homeDir;
 
 	OS_ASSERTFALSE();
@@ -176,7 +176,7 @@ void * pimpl<PlatformManager>::findProcedure(handle hLibrary, const String &proc
 handle pimpl<PlatformManager>::loadLibrary(const String &libraryName) const
 {
     handle h = reinterpret_cast<handle>(dlopen(libraryName.to_utf8().c_str(), RTLD_LAZY));
-    if(h == null)
+    if(h == nullptr)
         OS_LOG_ERROR(_S("Error loading library '") + libraryName + _S("':") + dlerror());
 
     return h;
@@ -213,8 +213,8 @@ bool pimpl<PlatformManager>::setThreadPriority(const boost::any &threadID, TaskP
 
 bool pimpl<PlatformManager>::compareThreadsID(const boost::any &first, const boost::any &second)
 {
-	OS_ASSERT(boost::any_cast<pthread_t>(&first) != null);
-	OS_ASSERT(boost::any_cast<pthread_t>(&second) != null);
+	OS_ASSERT(boost::any_cast<pthread_t>(&first) != nullptr);
+	OS_ASSERT(boost::any_cast<pthread_t>(&second) != nullptr);
 
 	return pthread_equal(boost::any_cast<pthread_t>(first), boost::any_cast<pthread_t>(second)) != 0;
 }
@@ -234,7 +234,7 @@ shared_ptr<PlatformManager::ProcessDetails> pimpl<PlatformManager>::getProcessDe
 	int32 result = kill(static_cast<pid_t>(processID), 0);
 	bool exists = (result == 0 || result == EPERM);
 	if(exists == false)
-		return null;
+		return nullptr;
 
 	shared_ptr<PlatformManager::ProcessDetails> processDetails(new PlatformManager::ProcessDetails(processID));
 
@@ -260,14 +260,14 @@ double pimpl<PlatformManager>::tickCount()
 
 void pimpl<PlatformManager>::trace(const std::string &message, const char *file, size_t line, const char *function)
 {
-    if(file != null && file[0])
+    if((file != nullptr) && file[0])
     {
         std::clog << file;
 
         if(line != 0)
             std::clog << " (line: " << line << ")";
 
-        if(function != null)
+        if(function != nullptr)
             std::clog << " (function: " << function << ")";
 
         std::clog << ": ";
@@ -348,7 +348,7 @@ String pimpl<PlatformManager>::getLastError() const
 {
     char buffer[1024];
     OS_ZEROMEMORY(buffer, 1024);
-    //if(strerror_r(errno, buffer, 1024) == null)
+    //if(strerror_r(errno, buffer, 1024) == nullptr)
     if(strerror_r(errno, buffer, 1024) == 0)
         return String::EMPTY;
 
@@ -405,7 +405,7 @@ bool pimpl<PlatformManager>::fileEof(FILE *handle)
 
 bool pimpl<PlatformManager>::fileStats(FILE *handle, boost::posix_time::ptime *timeCreation, boost::posix_time::ptime *timeLastModify, boost::posix_time::ptime *timeLastAccess)
 {
-	if(handle == null)
+	if(handle == nullptr)
 	{
 		OS_ASSERTFALSE();
 		return false;
@@ -415,13 +415,13 @@ bool pimpl<PlatformManager>::fileStats(FILE *handle, boost::posix_time::ptime *t
 	if(fstat(fileno(handle), &stats) != 0)
 		return false;
 
-	if(timeCreation != null)
+	if(timeCreation != nullptr)
 		*timeCreation = boost::posix_time::from_time_t(stats.st_ctime);
 
-	if(timeLastAccess != null)
+	if(timeLastAccess != nullptr)
 		*timeLastAccess = boost::posix_time::from_time_t(stats.st_atime);
 
-	if(timeLastModify != null)
+	if(timeLastModify != nullptr)
 		*timeLastModify = boost::posix_time::from_time_t(stats.st_mtime);
 
 	return true;

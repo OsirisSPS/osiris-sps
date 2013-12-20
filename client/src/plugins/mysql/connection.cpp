@@ -31,7 +31,7 @@
 //////////////////////////////////////////////////////////////////////
 
 Connection::Connection(const String &database, shared_ptr<IDatabaseOptions> options, shared_ptr<IDatabaseDriver> driver) : ConnectionBase(database, options, driver),
-																														   m_connection(null)
+																														   m_connection(nullptr)
 {
 	
 }
@@ -61,7 +61,7 @@ bool Connection::databaseExists(const String &name) const
 {
 	scoped_ptr<Result> result(OS_NEW Result(m_cs));
 	// Enumera i database
-	result->prepare(mysql_list_dbs(m_connection, null));
+	result->prepare(mysql_list_dbs(m_connection, nullptr));
 
 	DataTable table;
 	result->bind(table);
@@ -84,15 +84,15 @@ void Connection::connect(const String &name, const String &host, const String &u
 {
 	close();
 
-	m_connection = mysql_init(null);
-	OS_EXCEPT_IF(m_connection == null, "Internal mysql error");
+	m_connection = mysql_init(nullptr);
+	OS_EXCEPT_IF(m_connection == nullptr, "Internal mysql error");
 
 	String mysql_host = host.empty() ? OS_MYSQL_LOCALHOST : host;
 	String mysql_user = user.empty() ? OS_MYSQL_ROOT : user;
 	String mysql_pass = password;
 	String mysql_db = name;
 
-	bool done = mysql_real_connect(m_connection, mysql_host.to_utf8().c_str(), mysql_user.to_utf8().c_str(), mysql_pass.to_utf8().c_str(), mysql_db.to_utf8().c_str(), MYSQL_PORT, null, CLIENT_MULTI_STATEMENTS) != null;
+	bool done = mysql_real_connect(m_connection, mysql_host.to_utf8().c_str(), mysql_user.to_utf8().c_str(), mysql_pass.to_utf8().c_str(), mysql_db.to_utf8().c_str(), MYSQL_PORT, nullptr, CLIENT_MULTI_STATEMENTS) != nullptr;
 	OS_EXCEPT_IF(done == false, error());
 
 	// Dopo 8 ore di inattivit mysql chiude in automatico la connessione, settando questo flag viene riaperta in automatico (l'opzione va settata dopo l'apertura della connessione, altrimenti verrebbe resettata)
@@ -102,7 +102,7 @@ void Connection::connect(const String &name, const String &host, const String &u
 
 void Connection::_checkConnection()
 {
-	OS_EXCEPT_IF(m_connection == null, "Invalid mysql connection");
+	OS_EXCEPT_IF(m_connection == nullptr, "Invalid mysql connection");
 }
 
 void Connection::open()
@@ -113,10 +113,10 @@ void Connection::open()
 
 void Connection::close()
 {
-	if(m_connection != null)
+	if(m_connection != nullptr)
 	{
 		mysql_close(m_connection);
-		m_connection = null;
+		m_connection = nullptr;
 	}
 }
 

@@ -222,7 +222,7 @@ void ObjectsPollOptionDescriptor::computeStatistics(shared_ptr<IPortalDatabase> 
 								and os_snapshot_users.visible=1 \
 								and os_polls_votes.parent = '%S' \
 								and os_polls_votes.reference = '%S' \
-								and os_polls_votes.score is not nullptr").c_str(),
+								and os_polls_votes.score is not null").c_str(),
 								poll_option->getParent().toUTF16().c_str(),
 								poll_option->getEntityID().toUTF16().c_str());
 
