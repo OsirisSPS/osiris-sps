@@ -71,6 +71,7 @@
 #include "platformmanager.h"
 #include "portalsoptionsshared.h"
 #include "portalsportal.h"
+#include "portalsportaloptions.h"
 #include "realtimestats.h"
 #include "timerperformance.h"
 
@@ -516,6 +517,9 @@ bool IPortalDatabase::insertRecord(shared_ptr<DataIRecord> record)
 	if(record->getRecordType() == dataRecordTypeObject)
 	{
 		shared_ptr<ObjectsIObject> object = objects_object_cast(record);
+
+		getPortal()->getOptions()->updateAlignmentHash(object->id, object->submit_date, true);
+
 		/*
 		if(object->insert(m_connection, object->getDescriptor()->getTableName()) == false)
 			return false;
@@ -575,11 +579,21 @@ bool IPortalDatabase::updateRecord(shared_ptr<DataIRecord> record)
 	if(validateRecord(record) == false)
 		return false;
 
+	if(record->getRecordType() == dataRecordTypeObject)
+	{
+		shared_ptr<ObjectsIObject> object = objects_object_cast(record);
+		shared_ptr<ObjectsIObject> objectOld = loadObject(object->id);
+
+		getPortal()->getOptions()->updateAlignmentHash(objectOld->id, objectOld->submit_date, false);
+	}
+
 	bool done = record->update(m_connection);
 
 	if( (done) && (record->getRecordType() == dataRecordTypeObject) )
 	{
 		shared_ptr<ObjectsIObject> object = objects_object_cast(record);
+				
+		getPortal()->getOptions()->updateAlignmentHash(object->id, object->submit_date, true);
 
 		/*
 		if(_updateObject(object->getDescriptor()->getTableName(), object) == false)
@@ -655,6 +669,9 @@ bool IPortalDatabase::removeRecord(shared_ptr<DataIRecord> record)
 	if(record->getRecordType() == dataRecordTypeObject)
 	{
 		shared_ptr<ObjectsIObject> object = objects_object_cast(record);
+
+		getPortal()->getOptions()->updateAlignmentHash(object->id, object->submit_date, false);
+
 		return removeObject(object);
 	}
 	else

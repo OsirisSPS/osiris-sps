@@ -219,7 +219,7 @@ public:
 		static const String optimize_threshold;
 		//static const String guest_account;
 		static const String last_sync_date;
-		static const String last_checking_date;
+		//static const String last_checking_date;
 		static const String last_stabilization_date;
 		static const String align_hash;		
 		static const String last_exchanged_object;

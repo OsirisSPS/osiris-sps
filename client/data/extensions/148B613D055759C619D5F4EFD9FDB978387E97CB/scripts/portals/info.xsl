@@ -7,6 +7,7 @@
                 exclude-result-prefixes="lang date system os"
                 version="1.0">
 
+	<xsl:import href="http://www.osiris-sps.org/htdocs/templates/includes/debug.xsl"/>
   <xsl:import href="http://www.osiris-sps.org/htdocs/templates/includes/block.xsl"/>
   <xsl:import href="http://www.osiris-sps.org/htdocs/templates/includes/actions.xsl"/>
   <xsl:import href="http://www.osiris-sps.org/htdocs/templates/includes/help.xsl"/>
@@ -21,6 +22,7 @@
 	<xsl:param name="sync"/>
 
   <xsl:template match="/info">
+		<xsl:call-template name="dump_xml"/>
     <xsl:choose>
       <xsl:when test="@mode = 'dialog'">
         <div title="{lang:text('portal.pages.info.title')}" data-os-otype="dialog" data-os-dialog-width="60%">
@@ -116,30 +118,48 @@
 						</td>
 					</tr>					
 					
-					<tr>
-						<td colspan="2" class="os_separator"/>
-					</tr>
-					<tr>
-						<td>
-							Machine ID :
-						</td>
-						<td class="hash">
-							<xsl:call-template name="hash">
-								<xsl:with-param name="hash" select="//@machine_id"/>
-							</xsl:call-template>
-						</td>
-					</tr>
-					<tr>
-						<td>
-							Alignment hash :
-						</td>
-						<td class="hash">
-							<xsl:call-template name="hash">
-								<xsl:with-param name="hash" select="//@align_hash"/>
-							</xsl:call-template>
-						</td>
-					</tr>
 				</table>
+
+				<div class="os_padding">
+					<h2>Isis Subscriptions</h2>
+				</div>
+
+				<xsl:for-each select="isis/isis">					
+					<table class="os_table_properties">						
+						<tr>
+							<td>
+								<xsl:value-of select="'Name'"/>
+								<xsl:text>: </xsl:text>
+							</td>
+							<td>
+								<xsl:value-of select="@name"/>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<xsl:value-of select="'Url'"/>
+								<xsl:text>: </xsl:text>
+							</td>
+							<td>
+								<xsl:value-of select="@url"/>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<xsl:value-of select="'Enabled'"/>
+								<xsl:text>: </xsl:text>
+							</td>
+							<td>
+								<xsl:call-template name="boolean-icon">
+									<xsl:with-param name="value" select="@enabled = '1'"/>
+								</xsl:call-template>
+							</td>
+						</tr>
+						<tr>
+							<td colspan="2" class="os_separator"/>
+						</tr>
+					</table>
+				</xsl:for-each>
 			</div>
 
 			<div data-os-tabType="header">

@@ -61,8 +61,9 @@
 								<xsl:with-param name="content">
 									<table class="os_table_properties">
 										<tr>
-											<td>
-												<xsl:value-of select="lang:text('main.pages.accounts.lastAccess')"/>
+											<td style="width:40%">
+												<xsl:value-of select="lang:text('main.pages.accounts.last_access')"/>
+												<xsl:text>: </xsl:text>
 											</td>
 											<td>
 												<xsl:value-of select="date:userfriendly-datetime(@last_access)"/>
@@ -70,7 +71,8 @@
 										</tr>
 										<tr>
 											<td>
-												<xsl:value-of select="lang:text('main.pages.accounts.savedPassword')"/>
+												<xsl:value-of select="lang:text('main.pages.accounts.saved_password')"/>
+												<xsl:text>: </xsl:text>
 											</td>
 											<td>
 												<xsl:call-template name="boolean-icon">
@@ -81,6 +83,7 @@
 										<tr>
 											<td>
 												<xsl:value-of select="lang:text('main.pages.accounts.connected')"/>
+												<xsl:text>: </xsl:text>
 											</td>
 											<td>
 												<xsl:call-template name="boolean-icon">
@@ -115,14 +118,11 @@
 				<div style="width:750px;margin:auto;">
 					<xsl:call-template name="block">
 						<xsl:with-param name="title" select="lang:text('main.pages.accounts.login.title')" />
-						<xsl:with-param name="content">
-							<xsl:call-template name="help-box">
-								<xsl:with-param name="text" select="lang:text('main.pages.accounts.login.help')"/>
-							</xsl:call-template>							
+						<xsl:with-param name="content">							
 							<table class="os_table_properties">
 								<tr>
 									<td>
-										<xsl:value-of select="lang:text('main.pages.accounts.password')"/>
+										<xsl:value-of select="lang:text('common.labels.password')"/>
 										<xsl:text> :</xsl:text>
 									</td>
 									<td>
@@ -131,7 +131,7 @@
 								</tr>
 								<tr>
 									<td>
-										<xsl:value-of select="lang:text('main.pages.accounts.save_password')"/>
+										<xsl:value-of select="lang:text('common.labels.password_remember')"/>
 										<xsl:text> :</xsl:text>
 									</td>
 									<td>
@@ -174,7 +174,7 @@
 											</tr>
 											<tr>
 												<td>
-													<xsl:value-of select="lang:text('main.pages.accounts.password')"/>
+													<xsl:value-of select="lang:text('common.labels.password')"/>
 													<xsl:text> :</xsl:text>
 												</td>
 												<td>
@@ -183,7 +183,7 @@
 											</tr>
 											<tr>
 												<td>
-													<xsl:value-of select="lang:text('main.pages.accounts.passwordConfirm')"/>
+													<xsl:value-of select="lang:text('common.labels.password_confirm')"/>
 													<xsl:text> :</xsl:text>
 												</td>
 												<td>
@@ -192,7 +192,7 @@
 											</tr>
 											<tr>
 												<td>
-													<xsl:value-of select="lang:text('main.pages.accounts.rememberPassword')"/>
+													<xsl:value-of select="lang:text('common.labels.password_remember')"/>
 													<xsl:text> :</xsl:text>
 												</td>
 												<td>

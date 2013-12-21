@@ -39,7 +39,7 @@
 
 
   <xsl:template name="page">    
-      <div style="float:right">
+      <div style="float:right;width:60%">
         <xsl:call-template name="block_small">
           <xsl:with-param name="title" select="'P2P Network'"/>
           <xsl:with-param name="content">

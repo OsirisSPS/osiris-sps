@@ -180,7 +180,7 @@ void EntitiesSnapshotManager::onInsertObject(const shared_ptr<IPortalDatabase> &
 	updateLastActionTick();
 
 	getPortal()->getOptions()->updateLastObjectDate();
-	getPortal()->getOptions()->updateAlignmentHash(object->id, object->submit_date, true);
+	
 	//getPortal()->save(); // TOOPTIMIZE.. saving alignmenthash is important, if a crash occur maybe unaligned.
 	
 	getPortal()->getObjects()->remove(object->id);
@@ -276,11 +276,7 @@ void EntitiesSnapshotManager::onUpdateObject(const shared_ptr<IPortalDatabase> &
 
 	updateLastActionTick();
 	getPortal()->getOptions()->updateLastObjectDate();
-
-	// PAZZO, DEBUGGARE, DEVE RIMUOVERE IL VECCHIO...
-	getPortal()->getOptions()->updateAlignmentHash(object->id, object->submit_date, false);
-	getPortal()->getOptions()->updateAlignmentHash(object->id, object->submit_date, true);
-
+	
 	getPortal()->getObjects()->remove(object->id);
 
     switch(object->getObjectType())
@@ -316,9 +312,7 @@ void EntitiesSnapshotManager::onRemovingObject(const shared_ptr<IPortalDatabase>
 	OS_LOCK(m_stabilityCS);
 
 	updateLastActionTick();
-
-	getPortal()->getOptions()->updateAlignmentHash(object->id, object->submit_date, false);
-
+		
 	// 05/01/2012 Razor: per me sta roba non dovrebbe servir +
 
 	/*

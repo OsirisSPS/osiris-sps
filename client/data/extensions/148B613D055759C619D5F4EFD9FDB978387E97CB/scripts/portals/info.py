@@ -83,6 +83,7 @@ class Page(osiris.IPortalPage):
 		nodeAction = nodeActions.nodes.add("action")
 		nodeAction.attributes.set("name", "remove")
 		#nodeAction.attributes.set("href", osiris.PortalsSystem.instance().getMainLink("removeportal?portal=" + self.portal.getFullPovID()))
+		nodeAction.attributes.set("prefix", "main.pages.info")
 		nodeAction.attributes.set("href", self.getEventCommand("onPortalRemove",self.portal.getFullPovID()))					
 		nodeAction.attributes.set("confirm", "true")
 		
@@ -96,11 +97,9 @@ class Page(osiris.IPortalPage):
 		if self.portal.optionsShared.portalDescription != "":
 			node.attributes.set("description", self.portal.optionsShared.portalDescription)
 			
-		node.setAttributeString("machine_id", osiris.Engine.instance().getMachineID())
-		
-		node.setAttributeString("align_hash", self.portal.options.getAlignHash().getString())
-		
-		node.setAttributeString("acceptable_hash", self.portal.optionsShared.getAcceptableHash())
+		#node.setAttributeString("machine_id", osiris.Engine.instance().getMachineID())		
+		#node.setAttributeString("align_hash", self.portal.options.getAlignHash().getString())
+		#node.setAttributeString("acceptable_hash", self.portal.optionsShared.getAcceptableHash())
 		
 		
 		
@@ -154,7 +153,7 @@ class Page(osiris.IPortalPage):
 		self.cboSync = osiris.HtmlComboBox()
 		self.cboSync.id = "sync"
 		template.addChildParam(self.cboSync)
-		self.cboSync.addOption(self.getText("main.pages.settings.sync.none"), "")	
+		self.cboSync.addOption(self.getText("portal.pages.info.settings.sync.none"), "")	
 		subscribedPortals = osiris.PortalsSystem.instance().portals
 		for portal2 in subscribedPortals:
 			#osiris.LogManager.instance().log(portal2.getPovName() + "," + self.portal.getPortalID().getString() + "-" + portal2.getPortalID().getString())			

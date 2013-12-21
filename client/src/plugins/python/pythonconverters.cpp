@@ -64,6 +64,7 @@ struct PythonConverter<String>
 {
 	static void * convertible(PyObject *obj)
 	{
+		//if(PyString_CheckExact(obj) || PyUnicode_CheckExact(obj))
 		if(PyString_Check(obj) || PyUnicode_Check(obj))
 			return obj;
 			

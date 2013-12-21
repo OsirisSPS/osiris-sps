@@ -189,6 +189,7 @@
         </div>
       </div>
 			-->
+			<div class="box-error">glagla</div>
       <div style="clear:both;" class="os_home_footer">        
         <span class="os_label">
           <xsl:value-of select="lang:text('main.pages.home.current_time')"/>

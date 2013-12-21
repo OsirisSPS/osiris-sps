@@ -21,6 +21,7 @@ import external
 import help
 import helptip
 import home
+import isis
 #import jobstatus
 import login_main
 import mcp
@@ -99,8 +100,8 @@ class MainHandler(osiris.IHttpDirectoryHandler):
 		if(relPage == "home"):
 			page = home.Page(session)			
 			
-		#if(relPage == "jobstatus"):
-		#	page = jobstatus.Page(session)			
+		if(relPage == "isis"):
+			page = isis.Page(session)			
 			
 		if(relPage == "login"):
 			page = login_main.Page(session)			
