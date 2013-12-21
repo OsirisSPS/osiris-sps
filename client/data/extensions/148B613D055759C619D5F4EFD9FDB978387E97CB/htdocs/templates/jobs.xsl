@@ -27,8 +27,7 @@
   </xsl:template>
 
   <xsl:template name="jobsTable">
-    <div class="os_content_box">
-      <table class="os_table_data">
+    <table class="os_table_data">
         <tr>
           <th>
             <xsl:value-of select="lang:text('main.pages.jobs.name')"/>
@@ -63,7 +62,7 @@
           </tr>
         </xsl:for-each>
       </table>
-    </div>
+    
 
     <div class="os_commands_right">
       <xsl:value-of select="$showAll" disable-output-escaping="yes"/>

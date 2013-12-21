@@ -83,7 +83,7 @@ const String PortalOptions::options::password = _S("password");
 const String PortalOptions::options::sync = _S("sync");
 const String PortalOptions::options::optimize_threshold = _S("optimize.threshold");
 const String PortalOptions::options::last_sync_date = _S("last_sync_date");
-const String PortalOptions::options::last_checking_date = _S("last_checking_date");
+//const String PortalOptions::options::last_checking_date = _S("last_checking_date");
 const String PortalOptions::options::last_stabilization_date = _S("last_stabilization_date");
 const String PortalOptions::options::align_hash = _S("align_hash");
 const String PortalOptions::options::last_exchanged_object = _S("last_exchanged_object");
@@ -113,7 +113,7 @@ PortalOptions::PortalOptions() : m_isisID(0)
 	m_portalOptions.ensureOption(options::sync, String::EMPTY, true);
 	m_portalOptions.ensureOption(options::optimize_threshold, -100, true);
 	m_portalOptions.ensureOption(options::last_sync_date, String::EMPTY, false);
-	m_portalOptions.ensureOption(options::last_checking_date, String::EMPTY, false);
+	//m_portalOptions.ensureOption(options::last_checking_date, String::EMPTY, false);
 	m_portalOptions.ensureOption(options::last_stabilization_date, String::EMPTY, false);
 	m_portalOptions.ensureOption(options::align_hash, String::EMPTY, false);
 	m_portalOptions.ensureOption(options::last_exchanged_object, ObjectID::EMPTY.toUTF16(), false);
@@ -207,6 +207,7 @@ void PortalOptions::setLastSyncDate(const DateTime &lastSyncDate)
 	m_portalOptions.setOption(options::last_sync_date, lastSyncDate.toString());
 }
 
+/*
 DateTime PortalOptions::getLastCheckingDate() const
 {
 	return static_cast<String>(m_portalOptions.getOption(options::last_checking_date));
@@ -216,6 +217,7 @@ void PortalOptions::setLastCheckingDate(const DateTime &lastCheckingDate)
 {
 	m_portalOptions.setOption(options::last_checking_date, lastCheckingDate.toString());
 }
+*/
 
 DateTime PortalOptions::getLastStabilizationDate() const
 {
@@ -242,10 +244,11 @@ void PortalOptions::resetAlignmentHash()
 	m_portalOptions.setOption(options::align_hash, String::EMPTY);
 }
 
-void PortalOptions::updateAlignmentHash(const ObjectID &id, bool add)
+void PortalOptions::updateAlignmentHash(const ObjectID &id, const DateTime &submitDate, bool add)
 {
+	std::string data = id.toAscii() + "_" + submitDate.toString().to_ascii();
 #ifdef OS_NOOBJECTID
-	setAlignHash(utils::generateHashMerge(getAlignHash().getString(), id.toAscii(), add)); 
+	setAlignHash(utils::generateHashMerge(getAlignHash().getString(), data, add)); 
 #else
 	setAlignHash(utils::generateHashMerge(getAlignHash().getString(), id.getHash(), add)); 
 #endif

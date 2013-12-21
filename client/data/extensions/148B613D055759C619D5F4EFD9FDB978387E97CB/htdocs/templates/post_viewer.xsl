@@ -43,7 +43,7 @@
     <xsl:param name="show_commands" select="'true'"/>
     <xsl:param name="vote_editor"/>
 
-    <div class="os_content" data-os-entity="{@entity}">
+    <div data-os-entity="{@entity}">
 
       <div style="float:left;width:250px;">
         <xsl:call-template name="authors"/>

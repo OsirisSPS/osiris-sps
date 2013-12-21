@@ -14,9 +14,7 @@
 
   <xsl:template match="/assistant">
     <div id="assistant_dialog" title="TODO title assistant">
-      <div class="os_content">
-        bla bla bla
-      </div>
+      
     </div>
 
     <script type="text/javascript">

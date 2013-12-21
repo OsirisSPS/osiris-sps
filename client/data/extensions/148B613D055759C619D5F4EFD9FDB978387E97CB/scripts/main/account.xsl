@@ -34,14 +34,18 @@
         <div style="clear:both;display:none" data-os-otype="tab" data-os-layout="left" data-os-storage="main.account">
 
           <div data-os-tabType="header">
-            <xsl:value-of select="lang:text('main.pages.account.general')"/>
+            <xsl:value-of select="lang:text('common.labels.overview')"/>
           </div>
           <div data-os-tabType="body">
             <table class="os_table_properties">              
               <tr>
                 <td>
-                  <xsl:value-of select="lang:text('main.pages.account.options.name')"/>
+                  <xsl:value-of select="lang:text('main.pages.account.options.name.title')"/>
                   <xsl:text> :</xsl:text>
+									<br/>
+									<div class="os_description">
+										<xsl:value-of select="lang:text('main.pages.account.options.name.description')"/>
+									</div>
                 </td>
                 <td>
                   <xsl:value-of select="$name" disable-output-escaping="yes"/>
@@ -49,8 +53,12 @@
               </tr>
 							<tr>
 								<td>
-									<xsl:value-of select="lang:text('main.pages.account.options.password')"/>
+									<xsl:value-of select="lang:text('main.pages.account.options.password.title')"/>
 									<xsl:text> :</xsl:text>
+									<br/>
+									<div class="os_description">
+										<xsl:value-of select="lang:text('main.pages.account.options.password.description')"/>
+									</div>
 								</td>
 								<td>
 									<xsl:value-of select="$password" disable-output-escaping="yes"/>
@@ -81,7 +89,7 @@
           </div>
 
           <div data-os-tabType="header">
-            <xsl:value-of select="lang:text('portal.pages.account.language')"/>
+            <xsl:value-of select="lang:text('main.pages.account.language')"/>
           </div>
           <div data-os-tabType="body">
             <table class="os_table_properties">

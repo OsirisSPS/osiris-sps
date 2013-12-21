@@ -260,8 +260,8 @@ class Page(osiris.IMainPage):
 			showActions = (self.session.request.getUrlParam("actions") == "yes")
 			showTrust = (self.session.request.getUrlParam("trust") == "yes")
 			
-			osiris.LogManager.instance().log("show actions: " + self.session.request.getUrlParam("actions"))
-			osiris.LogManager.instance().log(self.session.request.getRawUrl())
+			#osiris.LogManager.instance().log("show actions: " + self.session.request.getUrlParam("actions"))
+			#osiris.LogManager.instance().log(self.session.request.getRawUrl())
 			
 			self.processExtension(document.root, online, mode, showActions, showTrust)
 				
@@ -313,8 +313,3 @@ class Page(osiris.IMainPage):
 		
 		#osiris.LogManager.instance().log("page addons completed")
 		
-def main(args):	
-	page = Page(args[0])
-	page.transmit()
-	
-	

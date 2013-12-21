@@ -195,7 +195,16 @@
 
     <xsl:for-each select="actions/action">
       <xsl:call-template name="action-row">
-        <xsl:with-param name="prefix" select="$prefix"/>
+				<xsl:with-param name="prefix">
+					<xsl:choose>
+						<xsl:when test="@prefix">
+							<xsl:value-of select="@prefix"/>
+						</xsl:when>
+						<xsl:otherwise>
+							<xsl:value-of select="$prefix"/>
+						</xsl:otherwise>
+					</xsl:choose>
+				</xsl:with-param>
         <xsl:with-param name="icon" select="@name"/>        
         <xsl:with-param name="name" select="@name"/>
         <xsl:with-param name="href" select="@href"/>
@@ -207,7 +216,7 @@
 
   <xsl:template name="action-row">
     <xsl:param name="prefix"/>
-    <xsl:param name="name"/>
+		<xsl:param name="name"/>
     <xsl:param name="icon"/>
     <xsl:param name="icon_path"/>
     <xsl:param name="href"/>
@@ -215,7 +224,7 @@
     <xsl:param name="content"/>
 
     <xsl:variable name="title">
-      <xsl:choose>
+      <xsl:choose>				
         <xsl:when test="$prefix">
           <xsl:value-of select="system:parse(lang:text(concat($prefix,'.', $name, '.title')),false(),false(),true())"/>
         </xsl:when>
@@ -226,7 +235,7 @@
     </xsl:variable>
 
     <xsl:variable name="description">
-      <xsl:choose>
+      <xsl:choose>				
         <xsl:when test="$prefix">
           <xsl:value-of select="system:parse(lang:text(concat($prefix,'.', $name, '.description')),false(),false(),true())"/>
         </xsl:when>

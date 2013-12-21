@@ -32,8 +32,3 @@ class Page(osiris.IMainPage):
 				document.root.setAttributeString("id", helpID)
 				document.root.setAttributeString("title", title)
 		
-def main(args):
-	page = Page(args[0])
-	page.transmit()
-
-

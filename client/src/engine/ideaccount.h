@@ -69,9 +69,6 @@ public:
 
 // Operations
 public:
-	// Se associabile (nel caso di accesso automatico) carica l'utente di riferimento
-	//shared_ptr<ObjectsUser> loadUser(shared_ptr<IPortalDatabase> database); // TOCLEANPY
-
 	bool getDeleted() const;
 	void setDeleted(bool deleted);
 
@@ -89,9 +86,7 @@ public:
 
 	const DateTime & getReferenceDate() const;
 	void setReferenceDate(const DateTime &date);
-
-	//bool updateAccount(shared_ptr<IPortalDatabase> database); // TOCLEANPY
-
+		
 private:
 	//bool _sinkSkin();
 

@@ -258,10 +258,12 @@ shared_ptr<IHtmlControl> Options::createSeparator()
 }
 */
 
+/*
 void Options::onCancel()
 {
 	redirect(PortalsSystem::instance()->getMainLink(OS_IDE_PAGE_OSIRIS));
 }
+*/
 
 void Options::onSave()
 {
@@ -316,15 +318,18 @@ void Options::onInit()
 
 	shared_ptr<IdeButton> cmdSave(OS_NEW IdeButton());
 	cmdSave->setID("save");
+	cmdSave->setIconHref(getSkin()->getImageUrl(_S("/icons/16x16/save.png")));
 	cmdSave->setCaption(getText("main.pages.options.actions.save"));
 	cmdSave->getEventClick()->connect(boost::bind(&Options::onSave, this));
 	divActions->getControls()->add(cmdSave);
 
+	/*
 	shared_ptr<IdeButton> cmdCancel(OS_NEW IdeButton());
 	cmdCancel->setID("cancel");
 	cmdCancel->setCaption(getText("main.pages.options.actions.cancel"));
 	cmdCancel->getEventClick()->connect(boost::bind(&Options::onCancel, this));
 	divActions->getControls()->add(cmdCancel);
+	*/
 
 	uint32 pageIndex = 0;
 

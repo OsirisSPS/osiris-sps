@@ -1,8 +1,58 @@
+/* 
+Osiris CSS, configuration file.
+LESS format: http://lesscss.org/
+*/
+
+@os-color-delta: -1;
+
+@os-color-a: #70CCFF; /* Blue */
+@os-color-b: #EA7511;
+@os-color-c: #EA8115;
+
+@os-color-fg: #6F6F77;
+@os-color-bg: #222222;
+
+/*@os-color-box: rgba(0,0,0,0.2);*/
+@os-color-box: #090909;
+
+@os-color-link: #70CCFF; /* Blue */
+
+@os-color-white: #FFFFFF;
+@os-color-black: #000000;
+
+@os-color-highlight: rgba(112, 204, 255, 0.2);
+@os-color-focus: #FFFFDD;
+@os-color-attention: #FF0000;
+
+@os-color-info: #091A24; /* Blue */
+@os-color-warning: #261E0B;
+@os-color-error: #270A0A;
+@os-color-hint: #261E0B;
+@os-color-note: #222222;
+
+@os-color-gray1: #222222;
+@os-color-gray2: #444444;
+@os-color-gray3: #555555;
+@os-color-gray4: #666666;
+@os-color-gray5: #888888;
+@os-color-gray6: #AAAAAA;
+@os-color-gray7: #CCCCCC;
+@os-color-gray8: #E0E0E0;
+@os-color-gray9: #F2F3F3;
+@os-color-gray10: #FAFAFA;
+
+
+
+
+
+
 /*
 Additional CSS for dark themes.
 
 Dev note: Limit the use of this, by using for example
 lighten(@os-color-bg, (@os-color-delta * -5%));
+
+Probably don't work, overwritten by layout.less. Convert it to colors variables like above
 */
 
 ins {

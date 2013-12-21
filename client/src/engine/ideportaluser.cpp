@@ -345,7 +345,7 @@ void User::onLoad()
 	Utils::addAction(nodeActions, get_this_ptr<IPage>(), OS_PORTAL_OBJECT_USER_TYPENAME, _S("view_search"), getUrl(id.toUTF16(), acSearch), (action==acSearch), false);
 	if(getSessionAccount()->isPortalGuest(getDatabase()) == false)
 	{
-		Utils::addAction(nodeActions, get_this_ptr<IPage>(), OS_PORTAL_OBJECT_USER_TYPENAME, _S("send_private_message"), getPortal()->getSendMessageLink(id), false, false);
+		//Utils::addAction(nodeActions, get_this_ptr<IPage>(), OS_PORTAL_OBJECT_USER_TYPENAME, _S("send_private_message"), getPortal()->getSendMessageLink(id), false, false);
 	}
 //	Utils::addAction(nodeActions, get_this_ptr<IPage>(), OS_PORTAL_OBJECT_USER_TYPENAME, _S("view_objects"), getUrl(id, Action::acItems));
 

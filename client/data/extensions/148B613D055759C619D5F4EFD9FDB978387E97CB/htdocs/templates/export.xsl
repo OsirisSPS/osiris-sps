@@ -23,7 +23,7 @@
   </xsl:template>
 
   <xsl:template name="jobsTable">
-    <table class="os_table_data os_content_box">
+    <table class="os_table_data">
       <th>
         <xsl:value-of select="lang:text('main.pages.jobs.name')"/>
       </th>

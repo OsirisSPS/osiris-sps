@@ -51,8 +51,7 @@ public:
 
 // Events
 private:
-	void onImport();
-	void onCancel();
+	void onImport();	
 
 // IMainPage interface
 public:

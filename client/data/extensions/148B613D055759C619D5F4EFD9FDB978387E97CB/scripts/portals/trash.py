@@ -22,8 +22,8 @@ class Page(osiris.IPortalPage):
 		self.query = osiris.IdeTableQuery()
 		sql = "select id, author, submit_date, insert_date, rank, accept_msg from os_entries te where rank=-1"
 		self.query.setSql(sql)
-		self.query.setColumnType(0,osiris.IdeTableQuery.ctID)
-		self.query.setColumnType(1,osiris.IdeTableQuery.ctID)
+		self.query.setColumnType(0,osiris.IdeTableQuery.ctObjectID)
+		self.query.setColumnType(1,osiris.IdeTableQuery.ctUserID)
 		self.query.setColumnType(2,osiris.IdeTableQuery.ctShortDateTime)
 		self.query.setColumnType(3,osiris.IdeTableQuery.ctShortDateTime)
 						
@@ -33,6 +33,3 @@ class Page(osiris.IPortalPage):
 	def onPreRender(self):
 		osiris.IPortalPage.onPreRender(self)			
 				
-def main(args):
-	page = Page(args[0])
-	page.transmit()

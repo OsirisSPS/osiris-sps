@@ -32,7 +32,7 @@
 
   <xsl:template name="instance_editor">
 
-    <table class="os_table_data os_content_box">
+    <table class="os_table_data">
       <tr>
         <td class="os_label">
           <xsl:value-of select="lang:text('instance.editor.title')"/>
@@ -108,11 +108,9 @@
           <td colspan="2">
             <xsl:call-template name="block_minimal">
               <xsl:with-param name="title" select="lang:text('instance.editor.editor')"/>
-              <xsl:with-param name="content">
-                <div class="os_content">
-                  <xsl:value-of select="$editor" disable-output-escaping="yes"/>
-                </div>
-              </xsl:with-param>
+							<xsl:with-param name="content">
+								<xsl:value-of select="$editor" disable-output-escaping="yes"/>
+							</xsl:with-param>
             </xsl:call-template>
           </td>
         </tr>

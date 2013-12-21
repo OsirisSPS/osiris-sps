@@ -71,6 +71,12 @@ public:
 	ObjectsReputationThreshold getEditorsReputationThreshold() const;
 	void setEditorsReputationThreshold(const ObjectsReputationThreshold &threshold);
 
+	String getPovWhiteList() const;
+	void setPovWhiteList(const String &value);
+
+	String getPovBlackList() const;
+	void setPovBlackList(const String &value);
+
 	uint32 getAvatarMaxWidth() const;
 	void setAvatarMaxWidth(const uint32 &value);
 

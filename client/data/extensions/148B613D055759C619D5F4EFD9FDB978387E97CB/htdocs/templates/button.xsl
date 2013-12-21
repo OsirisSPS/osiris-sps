@@ -10,7 +10,7 @@
 
   <xsl:template match="button">
 
-    <input id="{@id}" onclick="{@href}; return false;" value="{@caption}" class="os_button">
+    <button id="{@id}" onclick="{@href}; return false;" value="{@caption}" class="os_button">
       <xsl:choose>
         <xsl:when test="@isDefault=true()">
           <xsl:attribute name="type">submit</xsl:attribute>
@@ -18,8 +18,13 @@
         <xsl:otherwise>
           <xsl:attribute name="type">button</xsl:attribute>
         </xsl:otherwise>
-      </xsl:choose>      
-    </input>
+      </xsl:choose>
+			<xsl:if test="@icon_href">
+				<img src="{@icon_href}"/>
+			</xsl:if>
+
+			<xsl:value-of select="@caption"/>
+    </button>
     
   </xsl:template>
   

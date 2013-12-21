@@ -175,7 +175,7 @@
           
         </div>
 
-        <table class="os_table_data os_content_box" data-os-otype="tabxle">
+        <table class="os_table_data">
           <thead>
             <tr>
               <th>

@@ -441,7 +441,7 @@ LanguageResult ObjectsIObject::acceptable(shared_ptr<IPortalDatabase> database) 
 	bool valid = validate(database);
 	if(valid == false)
 	{
-		bool valid = validate(database); // PAZZO
+		bool valid = validate(database); 
 		return LanguageResult("invalid");
 	}
 
@@ -463,7 +463,47 @@ LanguageResult ObjectsIObject::acceptable(shared_ptr<IPortalDatabase> database) 
 		}
 	}
 
-	
+	// Pov WhiteList
+	{
+		String povList = database->getPortal()->getOptionsShared()->getPovWhiteList();
+		String povCurrent = pov->getString();
+		if(povList != _S("*"))
+		{
+			bool found = false;
+			if(povList.empty())
+				found = (povCurrent == database->getPortal()->getPovID().getString());
+			else						
+			{
+				StringVector values;
+				utils::split(povList, _S(";"), values);
+				for(uint32 i = 0; i < values.size(); i++)
+				{
+					if(values[i] == povCurrent)
+					{
+						found = true;
+						break;
+					}			
+				}
+			}
+
+			if(found == false)
+				return LanguageResult("pov_rejected");
+		}		
+	}
+
+	// Pov BlackList
+	{
+		String povList = database->getPortal()->getOptionsShared()->getPovBlackList();
+		String povCurrent = pov->getString();
+
+		StringVector values;
+		utils::split(povList, _S(";"), values);
+		for(uint32 i = 0; i < values.size(); i++)
+		{
+			if(values[i] == povCurrent)
+				return LanguageResult("pov_rejected");			
+		}		
+	}
 
 	// Objects Max Size
 	uint32 size = getSize();

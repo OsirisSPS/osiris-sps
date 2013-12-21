@@ -14,12 +14,10 @@
 
   <xsl:template match="/helptip">
 
-    <div id="helptipdialog" title="{lang:text('help.tip.title')}">
-      <div class="os_content">
-        <img style="float:right" src="{system:resource-url('images/icons/32x32/help.png')}"/>
-        <xsl:value-of select="system:parse(lang:text(concat(@id,'.help')))" disable-output-escaping="yes"/>                                                
-      </div>
-    </div>
+		<div id="helptipdialog" title="{lang:text('help.tip.title')}">
+			<img style="float:right" src="{system:resource-url('images/icons/32x32/help.png')}"/>
+			<xsl:value-of select="system:parse(lang:text(concat(@id,'.help')))" disable-output-escaping="yes"/>
+		</div>
 
     <script type="text/javascript">
       <![CDATA[

@@ -116,6 +116,7 @@ public:
 	bool execute(const String &sql, DataTable &table) const;
 	bool execute(shared_ptr<DbSqlICommand> command) const;
 	bool execute(shared_ptr<DbSqlICommand> command, DataTable &table) const;
+	DataItem queryValue(const String &sql) const;
 	//bool executeStatement(const String &sql, const DbSqlValues &values) const;
 
 	//virtual uint32 executeEx(const String &sql);

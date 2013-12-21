@@ -120,7 +120,7 @@ std::string Accounts::getAccountRedirectLink(const String &id) const
 	params.set(OS_URL_PARAM_ID, id.to_wide());
 
 	//return PortalsSystem::instance()->getAccountsLink(portal, params);
-	return PortalsSystem::instance()->getMainLink("accounts", params);
+	return PortalsSystem::instance()->getMainLink("accounts2", params);
 }
 
 std::string Accounts::getAccountImportLink() const
@@ -129,7 +129,7 @@ std::string Accounts::getAccountImportLink() const
 	params.set(OS_URL_PARAM_ACTION, conversions::to_wstring(static_cast<uint32>(aaAccountImport)));
 
 	//return PortalsSystem::instance()->getAccountsLink(portal, params);
-	return PortalsSystem::instance()->getMainLink("accounts", params);
+	return PortalsSystem::instance()->getMainLink("accounts2", params);
 }
 
 std::string Accounts::getAccountExportLink(const String &id) const
@@ -139,7 +139,7 @@ std::string Accounts::getAccountExportLink(const String &id) const
 	params.set(OS_URL_PARAM_ID, id.to_wide());
 
 	//return PortalsSystem::instance()->getAccountsLink(portal, params);
-	return PortalsSystem::instance()->getMainLink("accounts", params);
+	return PortalsSystem::instance()->getMainLink("accounts2", params);
 }
 
 std::string Accounts::getAccountRemoveLink(const String &id) const
@@ -149,7 +149,7 @@ std::string Accounts::getAccountRemoveLink(const String &id) const
 	params.set(OS_URL_PARAM_ID, id.to_wide());
 
 	//return PortalsSystem::instance()->getAccountsLink(portal, params);
-	return PortalsSystem::instance()->getMainLink("accounts", params);
+	return PortalsSystem::instance()->getMainLink("accounts2", params);
 }
 
 void Accounts::onViewAccounts()
@@ -369,7 +369,7 @@ void Accounts::_importAccount()
 		return;
 	*/
 
-	const Buffer *accountBuffer = m_accountBrowser->getFileBuffer();
+	const Buffer *accountBuffer = m_accountBrowser->getFileBufferPtr();
 	if(accountBuffer == null)
 		return;
 

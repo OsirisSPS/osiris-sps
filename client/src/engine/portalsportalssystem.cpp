@@ -94,12 +94,12 @@ const String PortalsSystem::PORTAL_PAGE_ASSISTANT = _S("assistant");
 const String PortalsSystem::PORTAL_PAGE_SEARCH = _S("search");
 const String PortalsSystem::PORTAL_PAGE_MESSENGER = _S("privatemessages");
 
-const String PortalsSystem::MAIN_PAGE_ACCOUNTS = _S("accounts");
+const String PortalsSystem::MAIN_PAGE_ACCOUNTS = _S("accounts2");
 const String PortalsSystem::MAIN_PAGE_SETTINGS = _S("settings");
 const String PortalsSystem::MAIN_PAGE_RESOURCES = _S("resources");
 const String PortalsSystem::MAIN_PAGE_MAINTENANCE = _S("maintenance");
 const String PortalsSystem::MAIN_PAGE_SUBSCRIBE = _S("subscribe2");
-const String PortalsSystem::MAIN_PAGE_ISIS = _S("isis");
+const String PortalsSystem::MAIN_PAGE_ISIS = _S("isis2");
 const String PortalsSystem::MAIN_PAGE_JOBDETAIL = _S("jobdetail");
 const String PortalsSystem::MAIN_PAGE_JOBS = _S("jobs");
 const String PortalsSystem::MAIN_PAGE_IMPORT = _S("import");
@@ -563,24 +563,25 @@ bool PortalsSystem::createMonarchicPortal(shared_ptr<PortalOptions> options)
 }
 */
 
+/*
 shared_ptr<Portal> PortalsSystem::createPortal(shared_ptr<PortalOptions> options) // TOCLEAN
 {
 	options->setPortalID(PortalID::generate());
 
-	/*
+	
 	Buffer public_key;
 	Buffer private_key;
 
 	// Genera la coppia di chiavi dell'amministratore
 	if(CryptManager::instance()->rsaGenerateKeys(rsaType2048, private_key, public_key) == false)
 		return false;
-	*/
+	
 
 	//PortalAccess access = options->getPassword().empty() ? portalAccessPublic : portalAccessPrivate;
 	//options->setPortalID(PortalID::generateAnarchic(access));
 	
 
-	/*
+	
 	if(options->getPortalID().empty())
 		options->setPortalID(PortalID::generateAnarchic(access));
 	
@@ -598,7 +599,7 @@ shared_ptr<Portal> PortalsSystem::createPortal(shared_ptr<PortalOptions> options
 		account->getAccount()->decodePublicKey(OS_DEFAULT_ADMIN_PASSWORD, publicKey);
 		options->setUserID(DataAccount::getReferenceUser(publicKey));
 	}
-	*/
+	
 			
 	shared_ptr<Portal> portal = subscribePortal(options);
 	if(portal == null)
@@ -609,7 +610,7 @@ shared_ptr<Portal> PortalsSystem::createPortal(shared_ptr<PortalOptions> options
 
 	return portal;
 }
-
+*/
 shared_ptr<Portal> PortalsSystem::subscribePortal(shared_ptr<PortalOptions> options)
 {
 	OS_LOCK(m_cs);
@@ -622,7 +623,10 @@ shared_ptr<Portal> PortalsSystem::subscribePortal(shared_ptr<PortalOptions> opti
 
 	PortalID id = options->getPortalID();
 	if(id.empty())
+	{
 		id = PortalID::generate();		
+		options->setPortalID(id);
+	}
 
 	PovID pov = options->getPovID();
 	if(pov.empty())
@@ -739,14 +743,15 @@ shared_ptr<Portal> PortalsSystem::ensurePortal(shared_ptr<OsirisLink> link, cons
 	portalOptions->setDatabaseOptions(defaultDriver->createOptions());
 
 	// VERYURGENT: le varie createPortal/subscribePortal dovrebbero restituire il riferimento al portale
-	if(subscribePortal(portalOptions) == false)
+	portal = subscribePortal(portalOptions);
+	if(portal == null)
 	{
 		OS_LOG_ERROR("Cannot create portal");
 		return null;
 	}
 
-	portal = getPortal(portalID, povID);
-	OS_ASSERT(portal != null);
+	//portal = getPortal(portalID, povID);
+	//OS_ASSERT(portal != null);
 	return portal;
 }
 /*

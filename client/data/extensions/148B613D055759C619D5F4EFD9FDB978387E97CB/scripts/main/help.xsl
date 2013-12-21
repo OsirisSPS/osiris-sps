@@ -36,7 +36,7 @@
   <xsl:template name="page">
 
 		<div class="os_padding">
-			<div style="float:right;text-align:center;">
+			<div style="text-align:center;">
 				<img src="{system:resource-url('images/logo/logo1.png')}" alt="Osiris"/>
 				<br/>
 				<xsl:value-of select="@version"/>
@@ -57,8 +57,7 @@
 						<img src="{system:resource-url('images/link_external.png')}" />
 					</a>
 				</p>
-			</div>
-			<xsl:value-of select="system:parse(lang:text('main.pages.help.body'))" disable-output-escaping="yes"/>
+			</div>			
 		</div>
   </xsl:template>
 

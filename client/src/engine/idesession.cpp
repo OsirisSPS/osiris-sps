@@ -223,8 +223,8 @@ LanguageResult IdeSession::portalLogin(shared_ptr<IPortalDatabase> database)
 		user->birth_date = DateTime::EMPTY;
 		user->misc = String::EMPTY;
 		user->mark = String::EMPTY;
-		user->show_mark = true;
-		user->show_avatar = true;
+		//user->show_mark = true;
+		//user->show_avatar = true;
 
 		LanguageResult result = user->create(database, m_privateKey);
 

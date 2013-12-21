@@ -44,6 +44,3 @@ class Page(osiris.IMainPage):
 		
 		self.showMessage("Generated.")
 		
-def main(args):
-	page = Page(args[0])
-	page.transmit()

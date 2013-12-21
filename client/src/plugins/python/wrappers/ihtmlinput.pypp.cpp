@@ -14,10 +14,10 @@
 #include "httprequest.h"
 #include "httpresponse.h"
 #include "httpsession.h"
-#include "htmlfilebrowser.h"
 #include "htmlcheckbox.h"
-#include "idepickerbool.h"
+#include "htmlfilebrowser.h"
 #include "htmltextbox.h"
+#include "idepickerbool.h"
 #include "ihtmlinput.pypp.hpp"
 
 namespace bp = boost::python;

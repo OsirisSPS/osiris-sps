@@ -65,6 +65,3 @@ class Page(osiris.IPortalPage):
 		self.updateReferenceDate()
 		self.reload()
 				
-def main(args):
-	page = Page(args[0])
-	page.transmit()

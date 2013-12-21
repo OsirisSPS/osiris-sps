@@ -76,7 +76,6 @@ public:
 
 // Events
 private:
-	void onCancel();
 	void onSave();
 
 // IPage interface

@@ -971,10 +971,11 @@ a.os_nolink:hover /* Annulla lo stile classico dei link A */
 
 .os_padding /* For contents, margin only */
 {
-	padding: 20px;
+	padding: 1em;
 }
 
-.os_content /* Classic content, typical inside a box */
+/*
+.os_content
 {
 	padding:5px;
 	
@@ -991,6 +992,7 @@ a.os_nolink:hover /* Annulla lo stile classico dei link A */
 	
 	.os-box-shadow(0px, 0px, 2px, 0.5);	
 }
+*/
 
 .os_center
 {
@@ -1190,9 +1192,10 @@ table.properties tr:nth-child(2n+1) td,
 
 table.properties tr > td:first-child,
 .os_table_properties tr > td:first-child  {
+	width:250px;	
 	background-color: fadeout(@os-color-darker, 95%);	
 
-	white-space: nowrap;
+	/*white-space: nowrap;*/
 	color: @os-skin-label-fg;		
 	text-align:right;		
 	vertical-align: top;
@@ -2536,6 +2539,9 @@ a.os_button_img
 	text-align: left;
 		
 	border:1px solid transparent;
+
+	color: @os-skin-block-small-body-fg;
+	background-color: @os-skin-block-small-body-bg;
 }
 
 /* ======================================== */
@@ -4331,3 +4337,13 @@ a.os_pager_blog_right:hover
 /*   jQuery - ColorPicker  		  */
 /* ============================== */
 
+/* ============================== */
+/*   jQuery - Password  		  */
+/* ============================== */
+
+.jquery_passStrengthener span.score
+{
+	border:0px;
+	margin-left:10px;
+	.os-box-shadow(0px, 0px, 2px, 0.3);
+}

@@ -61,6 +61,3 @@ class Page(osiris.IMainPage):
 			document.root.setAttributeInt32("internet_datetime_delta", delta.getTotalSeconds())				
 			document.root.setAttributeString("internet_datetime_sync_method", osiris.IsisSystem.instance().getInternetDateTimeSyncMethod())
 				
-def main(args):
-	page = Page(args[0])
-	page.transmit()

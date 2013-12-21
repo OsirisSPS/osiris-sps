@@ -32,7 +32,3 @@ class Page(osiris.IMainPage):
 		output.id="output"
 		output.controls.add(osiris.HtmlLiteral(self.editor.value))
 		blockHtmlGenerated.body.controls.add(output)
-		
-def main(args):
-	page = Page(args[0])
-	page.transmit()

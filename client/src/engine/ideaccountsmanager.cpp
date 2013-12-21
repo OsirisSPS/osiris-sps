@@ -19,6 +19,7 @@
 #include "stdafx.h"
 #include "ideaccountsmanager.h"
 
+#include "buffer.h"
 #include "convert.h"
 #include "dataaccount.h"
 #include "idbconnection.h"
@@ -29,6 +30,9 @@
 #include "engine.h"
 #include "ideaccount.h"
 #include "lock.h"
+#include "options.h"
+#include "xmldocument.h"
+#include "xmlschema.h"
 
 //////////////////////////////////////////////////////////////////////
 
@@ -244,6 +248,26 @@ void IdeAccountsManager::save(shared_ptr<IdeAccount> account)
 {
 	shared_ptr<IDbConnection> connection = Engine::instance()->createSystemConnection();
 	account->getAccount()->update(connection);
+}
+
+bool IdeAccountsManager::import(const Buffer &buffer)
+{
+	shared_ptr<XMLSchema> schema(OS_NEW XMLSchema());
+	schema->parseFile(utils::makeFilePath(utils::makeFolderPath(Options::instance()->getSharePath(),OS_SCHEMAS_PATH), OS_SCHEMA_ACCOUNT));
+
+	shared_ptr<XMLDocument> document(OS_NEW XMLDocument(schema));
+	if(document->parseBuffer(buffer) == false)
+		return false;
+	
+	shared_ptr<DataAccount> dataAccount(OS_NEW DataAccount());
+	if(dataAccount->importXML(document) == false)
+		return false;
+	
+	shared_ptr<IdeAccount> account = IdeAccountsManager::instance()->createAccount(dataAccount);
+	if(account == null)
+		return false;
+
+	return true;	
 }
 
 bool IdeAccountsManager::_load(shared_ptr<IDbConnection> database, const String &id)

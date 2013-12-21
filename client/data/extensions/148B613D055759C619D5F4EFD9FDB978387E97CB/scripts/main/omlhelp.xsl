@@ -32,7 +32,7 @@
     <xsl:call-template name="block">
       <xsl:with-param name="title" select="lang:text('portal.pages.omlhelp.title')"/>
       <xsl:with-param name="content">
-        <div class="os_content">
+        <div>
           <xsl:call-template name="bbCode">
             <xsl:with-param name="code" select="'b'"/>
           </xsl:call-template>
@@ -98,7 +98,7 @@
     <xsl:call-template name="block">
       <xsl:with-param name="title" select="lang:text('bbcodes.help.section.layout')"/>
       <xsl:with-param name="content">
-        <div class="os_content">
+        <div>
           <xsl:call-template name="bbCode">
             <xsl:with-param name="code" select="'left'"/>
           </xsl:call-template>
@@ -121,7 +121,7 @@
     <xsl:call-template name="block">
       <xsl:with-param name="title" select="lang:text('bbcodes.help.section.misc')"/>
       <xsl:with-param name="content">
-        <div class="os_content">
+        <div>
           <xsl:call-template name="bbCode">
             <xsl:with-param name="code" select="'list'"/>
           </xsl:call-template>
@@ -150,7 +150,7 @@
     <xsl:call-template name="block">
       <xsl:with-param name="title" select="lang:text('bbcodes.help.section.blocks')"/>
       <xsl:with-param name="content">
-        <div class="os_content">
+        <div>
           <xsl:call-template name="bbCode">
             <xsl:with-param name="code" select="'code'"/>
           </xsl:call-template>
@@ -177,7 +177,7 @@
     <xsl:call-template name="block">
       <xsl:with-param name="title" select="lang:text('bbcodes.help.section.links')"/>
       <xsl:with-param name="content">
-        <div class="os_content">
+        <div>
           <xsl:call-template name="bbCode">
             <xsl:with-param name="code" select="'img'"/>
           </xsl:call-template>
@@ -194,7 +194,7 @@
     <xsl:call-template name="block">
       <xsl:with-param name="title" select="lang:text('bbcodes.help.section.language')"/>
       <xsl:with-param name="content">
-        <div class="os_content">
+        <div>
           <xsl:call-template name="bbCode">
             <xsl:with-param name="code" select="'lang'"/>
           </xsl:call-template>
@@ -208,7 +208,7 @@
     <xsl:call-template name="block">
       <xsl:with-param name="title" select="lang:text('bbcodes.help.section.special')"/>
       <xsl:with-param name="content">
-        <div class="os_content">
+        <div>
           <xsl:call-template name="bbCode">
             <xsl:with-param name="code" select="'noparse'"/>
           </xsl:call-template>

@@ -15,9 +15,9 @@
   
   <xsl:template match="/upgradable">
     <xsl:if test="@upgradable_counter > 0">
-      <div class="os_button_counter" data-os-tooltip="{lang:text('main.pages.addons.upgrade_available')}">
-        <xsl:value-of select="@upgradable_counter"/>
-      </div>
+			<div class="os_button_counter" data-os-tooltip="{lang:text('main.pages.addons.upgrade_available')}">
+					<xsl:value-of select="@upgradable_counter"/>
+			</div>			
     </xsl:if>
   </xsl:template>
 
@@ -307,9 +307,9 @@
       <xsl:text>','</xsl:text>
       <xsl:value-of select="system:html-encode('addon_confirm')" disable-output-escaping="yes"/>
       <xsl:text>','</xsl:text>
-      <xsl:value-of select="system:html-encode(lang:text('common.actions.confirm'))" disable-output-escaping="yes"/>
+      <xsl:value-of select="system:html-encode(lang:text('common.labels.confirm'))" disable-output-escaping="yes"/>
       <xsl:text>','</xsl:text>
-      <xsl:value-of select="system:html-encode(lang:text('common.actions.cancel'))" disable-output-escaping="yes"/>
+      <xsl:value-of select="system:html-encode(lang:text('common.labels.cancel'))" disable-output-escaping="yes"/>
       <xsl:text>','</xsl:text>
       <xsl:value-of select="system:js-encode($action)"/>
       <xsl:text>','</xsl:text>

@@ -73,6 +73,3 @@ class Page(osiris.IPortalPage):
 	def onCancel(self, args):
 		self.redirect(self.portal.getLink("view"))
 		
-def main(args):
-	page = Page(args[0])
-	page.transmit()

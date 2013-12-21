@@ -1,3 +1,20 @@
+Nomenclatura variabili:
+
+- C++: CamelCase
+- Javascript: CamelCase
+- CSS: Underscore (es. os_my_style)
+- XML: Underscore (es. user_id)
+- XSLT: Underscore (es. user_id)
+- Python, controlli IDE: Hungarian_notation (es. txtLogin)
+
+- Language Keys: Underscore & dots (es. portal.pages.mypage.account_information)
+- Opzioni: Underscore & dots (es. ide.my_option)
+
+http://en.wikipedia.org/wiki/CamelCase
+http://en.wikipedia.org/wiki/Hungarian_notation
+
+Tags:
+
 // CLODOURGENT: Under fix by Clodo
 // RAZORVERYURGENT: Razor changes
 // VERYURGENT: Need to fix, high priority

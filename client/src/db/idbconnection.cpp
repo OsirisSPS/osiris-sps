@@ -146,7 +146,7 @@ DataItem IDbConnection::queryValue(const String &sql)
 	DataTable result;
 	if(query(sql, result))
 		if(result.rows() > 0 && result.columns() > 0)
-			value = *result[0][0];
+			value = *result[0][0];			
 	return value;
 }
 

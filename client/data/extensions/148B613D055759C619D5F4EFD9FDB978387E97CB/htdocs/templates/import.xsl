@@ -15,7 +15,6 @@
   <xsl:param name="fileBrowser"/>
   <xsl:param name="portalPassword"/>
   <xsl:param name="cmdImport"/>
-  <xsl:param name="cmdCancel"/>
   
   <xsl:template match="page">
 		<div style="text-align:center">
@@ -57,8 +56,7 @@
       </tr>			
 		</table>
 		<div class="os_commands">
-			<xsl:value-of select="$cmdImport" disable-output-escaping="yes"/>
-			<xsl:value-of select="$cmdCancel" disable-output-escaping="yes"/>
+			<xsl:value-of select="$cmdImport" disable-output-escaping="yes"/>			
 		</div>
     
   </xsl:template>

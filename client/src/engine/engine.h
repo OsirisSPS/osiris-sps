@@ -97,10 +97,7 @@ public:
 
 	// Abilita/disabilita la serializzazione del log su disco
 	void enableLogger(bool enable);
-
-	// Effettua una sincronizzazione ntp
-	//bool synchronizeClock_ZZZ(bool force = false); // TOCLEAN
-
+		
 	void waitJobs();
 
 	void addBackgroundJob(shared_ptr<IBackgroundJob> job);

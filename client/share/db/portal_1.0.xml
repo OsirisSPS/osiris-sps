@@ -595,22 +595,12 @@
         <field name="signature" type="blob" />
         <field name="public_key" type="blob" />
         <field name="name" type="varchar" size="32" />
-        <field name="description" type="varchar" size="32" null="true" />
-        <field name="authors_threshold" type="uint" size="2" />
-        <field name="editors_threshold" type="uint" size="2" />
+        <field name="description" type="varchar" size="32" null="true" />        
         <field name="join_date" type="varchar" size="14" />
         <field name="birth_date" type="varchar" size="14" null="true" />
-        <field name="gender" type ="uint" size="1" null="true" />
-        <field name="location" type="varchar" size="128" null="true" />
-        <field name="time_offset" type="int" size="4" null="true" />
-        <field name="language" type="varchar" size="8" null="true" />
+        <field name="gender" type ="uint" size="1" null="true" />        
         <field name="misc" type="text" null="true" />
-        <field name="mark" type="text" null="true" />
-        <field name="show_mark" type="bool" null="true" />
-        <field name="show_avatar" type="bool" null="true" />
-        <field name="email" type="varchar" size="64" null="true" />
-        <field name="website" type="varchar" size="128" null="true" />
-        <field name="contacts" type="text" null="true" />
+        <field name="mark" type="text" null="true" />        
         <field name="options" type="text" null="true" />
       </fields>
       <indexes>

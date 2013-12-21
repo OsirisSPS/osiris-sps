@@ -97,7 +97,3 @@ class Page(osiris.IPortalPage):
 			self.showError(self.getText("portal.pages.peers.message.error.cannotInsertPeer"))
 			return
 			
-
-def main(args):
-	page = Page(args[0])
-	page.transmit()
