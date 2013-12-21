@@ -103,6 +103,10 @@ namespace OMS.Commands
             CopyToPreinstalled("AF4E66017B2F4E240E47EA9240F6F7E8C9EF7D78"); // Advertising
             CopyToPreinstalled("9A53510BB471C48AF9B7954466D123438C387368"); // Html Snippet
             //CopyToPreinstalled("FBB11DCD3134703D1A2179451C5898B5E3A1DCBB"); // Custom CSS
+
+			CopyToPreinstalled("DB535FE72E91BD84ADA5D46745F2121E1D058402"); // Language Pack - English
+			CopyToPreinstalled("9F4EBA0F1F02D218D684D92A39EF8F52E1DA9704"); // Language Pack - Italian
+			CopyToPreinstalled("F86BDAADDDAE54753F3DC7608925780632CE4BF1"); // Language Pack - Invariant
            
             Engine.Form.AddLog(Engine.LogType.ltInfo, "Done.");
         }
