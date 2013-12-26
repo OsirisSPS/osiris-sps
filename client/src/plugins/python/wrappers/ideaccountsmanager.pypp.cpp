@@ -79,9 +79,9 @@ static boost::python::object hasAccount_6bd63eca7ddbbba82640f0345ede1c9a( ::osir
     return boost::python::object( result );
 }
 
-static boost::python::object import_0587da2ec5449f138574e47d712a8114( ::osiris::IdeAccountsManager & inst, ::osiris::Buffer const & buffer ){
+static boost::python::object importXml_22e9b4cb78a67e5c67673dc4981ff2e6( ::osiris::IdeAccountsManager & inst, ::osiris::Buffer const & buffer ){
     ::osiris::PythonThreadSaver __pythreadSaver;
-    bool result = inst.import(buffer);
+    bool result = inst.importXml(buffer);
     __pythreadSaver.restore();
     return boost::python::object( result );
 }
@@ -211,13 +211,13 @@ void register_IdeAccountsManager_class(){
                 , ( ::boost::python::arg("inst"), ::boost::python::arg("id") ) );
         
         }
-        { //::osiris::IdeAccountsManager::import
+        { //::osiris::IdeAccountsManager::importXml
         
-            typedef boost::python::object ( *import_function_type )( ::osiris::IdeAccountsManager &,::osiris::Buffer const & );
+            typedef boost::python::object ( *importXml_function_type )( ::osiris::IdeAccountsManager &,::osiris::Buffer const & );
             
             IdeAccountsManager_exposer.def( 
-                "import"
-                , import_function_type( &import_0587da2ec5449f138574e47d712a8114 )
+                "importXml"
+                , importXml_function_type( &importXml_22e9b4cb78a67e5c67673dc4981ff2e6 )
                 , ( ::boost::python::arg("inst"), ::boost::python::arg("buffer") ) );
         
         }
