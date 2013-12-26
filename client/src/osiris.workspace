@@ -26,7 +26,7 @@
 		<Project filename="plugins/components/components.cbp">
 			<Depends filename="engine/engine.cbp" />
 		</Project>
-		<Project filename="console/console.cbp">
+		<Project filename="console/console.cbp" active="1">
 			<Depends filename="core/core.cbp" />
 			<Depends filename="db/db.cbp" />
 			<Depends filename="engine/engine.cbp" />
