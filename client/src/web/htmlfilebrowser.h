@@ -45,7 +45,7 @@ public:
 public:
 	String getFileName() const;
 	String getFileType() const;
-	const Buffer * getFileBufferPtr() const;
+	const Buffer * getFileBuffer() const;
 
 private:
 	shared_ptr<HttpPostParam> _getPostParam() const;

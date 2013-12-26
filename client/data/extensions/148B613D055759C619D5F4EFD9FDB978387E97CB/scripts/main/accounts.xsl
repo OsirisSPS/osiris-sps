@@ -216,10 +216,7 @@
 				<div style="width:750px;margin:auto;">
 					<xsl:call-template name="block">
 						<xsl:with-param name="title" select="lang:text('main.pages.accounts.import.title')" />
-						<xsl:with-param name="content">
-							<xsl:call-template name="help-box">
-								<xsl:with-param name="text" select="lang:text('main.pages.accounts.import.help')"/>
-							</xsl:call-template>
+						<xsl:with-param name="content">							
 							<table class="os_table_properties">
 								<tr>
 									<td>

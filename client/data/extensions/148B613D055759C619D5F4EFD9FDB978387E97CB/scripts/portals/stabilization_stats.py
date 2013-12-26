@@ -61,14 +61,7 @@ class Page(osiris.IPortalPage):
 		self.query.setColumnType(4,osiris.IdeTableQuery.ctShortDateTime)		
 		self.query.setColumnType(5,osiris.IdeTableQuery.ctShortDateTime)		
 		#template.addChildParam(self.query)	
-
-		tableTest = osiris.DataTable()
-		self.database.execute("select count(*) as n from os_entries", tableTest)
-		osiris.LogManager.instance().log(tableTest.get(0,"n").getString()) # 
-		osiris.LogManager.instance().log(tableTest.get(0,0).getString()) # 
-		osiris.LogManager.instance().log(tableTest.getPtr(0,"n").getString()) # 
-		osiris.LogManager.instance().log(tableTest.getPtr(0,0).getString()) # 
-
+				
 		dataTrashReason = osiris.DataTable()
 		sql = "select accept_msg, count(*) n from os_entries group by accept_msg"
 		self.database.execute(sql, dataTrashReason)

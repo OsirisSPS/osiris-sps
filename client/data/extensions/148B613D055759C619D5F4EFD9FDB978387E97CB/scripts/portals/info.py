@@ -83,7 +83,7 @@ class Page(osiris.IPortalPage):
 		nodeAction = nodeActions.nodes.add("action")
 		nodeAction.attributes.set("name", "remove")
 		#nodeAction.attributes.set("href", osiris.PortalsSystem.instance().getMainLink("removeportal?portal=" + self.portal.getFullPovID()))
-		nodeAction.attributes.set("prefix", "main.pages.info")
+		nodeAction.attributes.set("prefix", "portal.pages.info")
 		nodeAction.attributes.set("href", self.getEventCommand("onPortalRemove",self.portal.getFullPovID()))					
 		nodeAction.attributes.set("confirm", "true")
 		

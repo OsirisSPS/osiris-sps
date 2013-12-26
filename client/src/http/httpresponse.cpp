@@ -149,7 +149,8 @@ std::string HttpResponse::_createHeader(shared_ptr<HttpRequest> request)
 	_addParams(header);
 	_addCookies(header);
 
-	if(request->getCloseConnection())
+	//if(request->getCloseConnection())
+	if(true) // VERYVERYURGENT
 		header += "Connection: close\r\n";
 	else
 		header += "Connection: keep-alive\r\n";

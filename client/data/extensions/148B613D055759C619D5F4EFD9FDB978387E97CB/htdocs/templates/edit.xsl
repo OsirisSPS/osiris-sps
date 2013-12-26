@@ -80,7 +80,7 @@
           
         </td>
         <td style="width:100%">
-          <div class="os_tab_left_bodies">            
+          <div class="os_tab_left_bodies" style="min-height:650px;">            
             <xsl:choose>              
               <xsl:when test="@action = 'moveable'">
                 <xsl:call-template name="block">

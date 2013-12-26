@@ -69,7 +69,7 @@
                   </xsl:if>
 
                   <xsl:if test="$area_top">
-                    <div class="os_area_top" style="padding-top:5px;">
+                    <div class="os_area_top" style="">
                       <xsl:value-of select="$area_top" disable-output-escaping="yes"/>
                     </div>
                     <!--<div class="os_clear"/>-->
@@ -149,16 +149,15 @@
                 </div>
 
                 <a id="bottom" href="#bottom" accesskey="z" title="{lang:text('accesskey.bottom')}"></a>
-
-                <xsl:value-of select="$assistant" disable-output-escaping="yes"/>
+								
+                <xsl:value-of select="$assistant" disable-output-escaping="yes"/>								
 
                 <xsl:if test="@isis">
                   <!--<xsl:value-of select="$isis_area_systembar" disable-output-escaping="yes"/>-->
                   <xsl:text disable-output-escaping="yes"><![CDATA[
                   <!--{__Isis_Area_Footer__}-->
                   ]]></xsl:text>
-                </xsl:if>
-
+                </xsl:if>								
 
               </div>
             </div>

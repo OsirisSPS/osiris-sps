@@ -21,8 +21,7 @@
 	<xsl:param name="password"/>
 	<xsl:param name="sync"/>
 
-  <xsl:template match="/info">
-		<xsl:call-template name="dump_xml"/>
+  <xsl:template match="/info">		
     <xsl:choose>
       <xsl:when test="@mode = 'dialog'">
         <div title="{lang:text('portal.pages.info.title')}" data-os-otype="dialog" data-os-dialog-width="60%">

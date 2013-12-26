@@ -156,7 +156,7 @@ shared_ptr<IBackgroundJob::Details> PortalsExporterJob::getDetails() const
 	if(m_file != null && m_downloadDirectory != null)
 	{
 		// TOTRANSLATE
-		String msg = _S("[center][url=\"{@url}\"]Click here for download[/url][/center]");
+		String msg = _S("[center][a class=\"os_button\" href=\"{@url}\"]Click here for download[/a][/center]");
 		msg.replace_all(_S("{@url}"), m_downloadDirectory->getPath().getUrl());
 		details->setResult(msg);
 		//details->setUrl(m_downloadDirectory->getPath().getUrl().to_ascii());

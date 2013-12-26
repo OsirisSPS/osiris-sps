@@ -76,43 +76,35 @@
               <xsl:when test="object">
                 <xsl:apply-templates select="object" mode="assistant"/>
               </xsl:when>
-              <xsl:otherwise>
-                <fieldset>
-                  <legend>
-                    <b>
-                      <xsl:value-of select="lang:text('assistant.informations.page')"/>
-                    </b>
-                  </legend>
-                    <div style="float:right;">
-                      <img src="{system:resource-url('images/objects/special_page.png')}"/>
-                    </div>
-                    <div style="overflow:auto;">
-                    <table class="os_table_properties" style="">
-                      <xsl:call-template name="row-information">
-                        <xsl:with-param name="name" select="'object.title'"/>
-                        <xsl:with-param name="content">
-                          <xsl:value-of select="system:parse(page/@title, false(), false(), true())" disable-output-escaping="yes" />
-                        </xsl:with-param>
-                      </xsl:call-template>
-                      <xsl:call-template name="row-information">
-                        <xsl:with-param name="name" select="'object.description'"/>
-                        <xsl:with-param name="value">
-                          <xsl:value-of select="system:parse(page/@description, false(), false(), true())" disable-output-escaping="yes" />
-                        </xsl:with-param>
-                      </xsl:call-template>
-                    </table>
-                    </div>
-                    <div class="os_commands_right">
-                      <xsl:call-template name="copy-paste">
-                        <xsl:with-param name="title" select="'object.actions.oml.link'"/>
-                        <xsl:with-param name="body" select="page/@oml_code"/>
-                      </xsl:call-template>                      
-                    </div>
-                    <div style="clear:both"/>
+							<xsl:otherwise>
+								<div style="float:right;">
+									<img src="{system:resource-url('images/objects/special_page.png')}"/>
+								</div>
+								<div style="overflow:auto;">
+									<table class="os_table_properties" style="">
+										<xsl:call-template name="row-information">
+											<xsl:with-param name="name" select="'object.title'"/>
+											<xsl:with-param name="content">
+												<xsl:value-of select="system:parse(page/@title, false(), false(), true())" disable-output-escaping="yes" />
+											</xsl:with-param>
+										</xsl:call-template>
+										<xsl:call-template name="row-information">
+											<xsl:with-param name="name" select="'object.description'"/>
+											<xsl:with-param name="value">
+												<xsl:value-of select="system:parse(page/@description, false(), false(), true())" disable-output-escaping="yes" />
+											</xsl:with-param>
+										</xsl:call-template>
+									</table>
+								</div>
+								<div class="os_commands_right">
+									<xsl:call-template name="copy-paste">
+										<xsl:with-param name="title" select="'object.actions.oml.link'"/>
+										<xsl:with-param name="body" select="page/@oml_code"/>
+									</xsl:call-template>
+								</div>
+								<div style="clear:both"/>
 
-                  
-                </fieldset> 
-              </xsl:otherwise>
+							</xsl:otherwise>
             </xsl:choose>      
             
             
@@ -163,71 +155,71 @@
           
           
         </div>
-        
-        <div data-os-tabType="body">
-            <table>
-              <tr>
-              	<xsl:variable name="start_text" select="lang:text('assistant.search')"/>
-                <td style="width:100%;">                  
-                  <input style="width:100%" id="assistant_search" value="{$start_text}" onfocus="javascript:if (this.value == '{$start_text}') this.value = '';" Onkeypress="javascript:if (osGetEvent(event).keyCode != 13)  return true; Osiris.Assistant.doSearch('assistant_search', '{@search_href}','{$start_text}',true); return false;"/>
-                </td>
-                <td style="vertical-align:middle;">
-                  <img style="padding-left:10px;cursor:pointer;" src="{system:resource-url('images/quick_search.gif')}" onclick="javascript:Osiris.Assistant.doSearch('assistant_search', '{@search_href}','{$start_text}',true);"/>
-                </td>
-              </tr>
-            </table>
-            <div class="os_assistant_actions">
-              <a class="os_button_link" href="{@search_href}">
-                <img src="{system:resource-url('images/small/related.gif')}"/>
-                <span data-os-tooltip="{lang:text('help.assistant.pages.search.actions.advanced')}">
-                  <xsl:value-of select="lang:text('assistant.pages.search.actions.advanced')"/>
-                </span>
-              </a>
-            </div>
-            <div id="assistant_search_results" style="overflow:auto;max-height:500px;">
-              
-            </div>
-          
-        </div>
+
+				<div data-os-tabType="body">
+					<div class="os_padding">
+						<table>
+							<tr>
+								<xsl:variable name="start_text" select="lang:text('assistant.search')"/>
+								<td style="width:100%;">
+									<input style="width:100%" id="assistant_search" value="{$start_text}" onfocus="javascript:if (this.value == '{$start_text}') this.value = '';" Onkeypress="javascript:if (osGetEvent(event).keyCode != 13)  return true; Osiris.Assistant.doSearch('assistant_search', '{@search_href}','{$start_text}',true); return false;"/>
+								</td>
+								<td style="vertical-align:middle;">
+									<img style="padding-left:10px;cursor:pointer;" src="{system:resource-url('images/quick_search.gif')}" onclick="javascript:Osiris.Assistant.doSearch('assistant_search', '{@search_href}','{$start_text}',true);"/>
+								</td>
+							</tr>
+						</table>
+						<div class="os_assistant_actions">
+							<a class="os_button_link" href="{@search_href}">
+								<img src="{system:resource-url('images/small/related.gif')}"/>
+								<span data-os-tooltip="{lang:text('help.assistant.pages.search.actions.advanced')}">
+									<xsl:value-of select="lang:text('assistant.pages.search.actions.advanced')"/>
+								</span>
+							</a>
+						</div>
+						<div id="assistant_search_results" style="overflow:auto;max-height:500px;">
+
+						</div>
+					</div>
+
+				</div>
         <xsl:if test="@guest = 'false'">
           <div data-os-tabType="body">
-              <fieldset>
-                <legend>
-                  <xsl:value-of select="lang:text('assistant.pages.objects.title')"/>
-                </legend>
-                <div class="os_assistant_objects">
-                  <xsl:choose>
-                    <xsl:when test="objects">
-                      <xsl:apply-templates select="objects/object" mode="row-tech"/>
-                    </xsl:when>
-                    <xsl:otherwise>
-											<div class="os_message_nodata">
-												<xsl:value-of select="lang:text('assistant.pages.objects.none')"/>
-											</div>
-                    </xsl:otherwise>
-                  </xsl:choose>
-                </div>
-              </fieldset>
-              <div class="os_assistant_actions">
-                <a class="os_button_link" href="javascript:Osiris.Assistant.objectPicker('onObjectAdd')">
-                  <img src="{system:resource-url('images/small/add.gif')}"/>
-                  <span data-os-tooltip="{lang:text('help.assistant.pages.objects.actions.add')}">
-                    <xsl:value-of select="lang:text('assistant.pages.objects.actions.add')"/>
-                  </span>
-                </a>
-                <a class="os_button_link" href="javascript:Osiris.Assistant.objectPicker('onObjectRemove')">
-                  <img src="{system:resource-url('images/small/remove.gif')}"/>
-                  <span data-os-tooltip="{lang:text('help.assistant.pages.objects.actions.remove')}">
-                    <xsl:value-of select="lang:text('assistant.pages.objects.actions.remove')"/>
-                  </span>
-                </a>
-                <a class="os_button_link" href="{@objectsClear_href}">
-                  <img src="{system:resource-url('images/small/clear.gif')}"/>
-                  <span data-os-tooltip="{lang:text('help.assistant.pages.objects.actions.clearAll')}">
-                    <xsl:value-of select="lang:text('assistant.pages.objects.actions.clearAll')"/>
-                  </span>
-                </a>
-              </div>
+						<div class="os_padding">
+							<div class="os_assistant_objects">
+								<xsl:choose>
+									<xsl:when test="objects">
+										<xsl:apply-templates select="objects/object" mode="row-tech"/>
+									</xsl:when>
+									<xsl:otherwise>
+										<div class="os_message_nodata">
+											<xsl:value-of select="lang:text('assistant.pages.objects.none')"/>
+										</div>
+									</xsl:otherwise>
+								</xsl:choose>
+							</div>
+
+							<div class="os_assistant_actions">
+								<a class="os_button_link" href="javascript:Osiris.Assistant.objectPicker('onObjectAdd')">
+									<img src="{system:resource-url('images/small/add.gif')}"/>
+									<span data-os-tooltip="{lang:text('help.assistant.pages.objects.actions.add')}">
+										<xsl:value-of select="lang:text('assistant.pages.objects.actions.add')"/>
+									</span>
+								</a>
+								<a class="os_button_link" href="javascript:Osiris.Assistant.objectPicker('onObjectRemove')">
+									<img src="{system:resource-url('images/small/remove.gif')}"/>
+									<span data-os-tooltip="{lang:text('help.assistant.pages.objects.actions.remove')}">
+										<xsl:value-of select="lang:text('assistant.pages.objects.actions.remove')"/>
+									</span>
+								</a>
+								<a class="os_button_link" href="{@objectsClear_href}">
+									<img src="{system:resource-url('images/small/clear.gif')}"/>
+									<span data-os-tooltip="{lang:text('help.assistant.pages.objects.actions.clearAll')}">
+										<xsl:value-of select="lang:text('assistant.pages.objects.actions.clearAll')"/>
+									</span>
+								</a>
+							</div>
+						</div>
             
           </div>
           <div data-os-tabType="body">
@@ -245,25 +237,14 @@
   </xsl:template>
 
   <xsl:template match="object" mode="assistant">
-    <fieldset>
-      <legend>
-        <b>
-          <xsl:value-of select="lang:text('assistant.informations.context')"/>
-        </b>
-      </legend>
+    
       <xsl:call-template name="object-box-tech"/>
-    </fieldset>
+    
   </xsl:template>
 
 
   <xsl:template match="root" mode="assistant">
-    <fieldset>
-      <legend>
-        <b>
-          <xsl:value-of select="lang:text('assistant.informations.portal')"/>
-        </b>
-      </legend>
-
+		<!--
       <table>
         <tr>
           <td style="width:50px; text-align:center; padding-right:10px;">
@@ -274,9 +255,9 @@
           </td>
         </tr>
       </table>
+-->
 
 
-
-    </fieldset>
+    
   </xsl:template>
 </xsl:stylesheet>

@@ -69,6 +69,11 @@ bool HttpClient::perform(const HttpUrl &url, uint32 redirectsCount)
 	m_request->setUrl(url);
 	m_response.reset(OS_NEW HttpResponse());
 
+	
+
+
+
+
 	shared_ptr<boost::asio::ip::tcp::resolver> resolver = createAsioObject<boost::asio::ip::tcp::resolver>(*m_service);
 
 	boost::asio::ip::tcp::resolver::query query(url.getHost(), conversions::to_string(url.getPort()));
@@ -76,7 +81,7 @@ bool HttpClient::perform(const HttpUrl &url, uint32 redirectsCount)
 	boost::asio::ip::tcp::resolver::iterator end;
 
 	shared_ptr<boost::asio::ssl::stream<TCPSocket &> > sslSocket(OS_NEW_T(boost::asio::ssl::stream<TCPSocket &>)(*m_socket, *m_sslContext), os_delete_t());
-	
+
 	boost::system::error_code error = boost::asio::error::host_not_found;
 	while(error && endpoint_iterator != end)
 	{

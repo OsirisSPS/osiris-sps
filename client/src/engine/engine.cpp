@@ -669,7 +669,7 @@ bool Engine::start(bool recovery)
 	NotificationsManager::instance()->notify(_S("Initializing background jobs"));
 	initBackgroundJobs();
 
-	//waitJobs(); // CLODOURGENT
+	waitJobs();
 
 	LanguageManager::instance()->setDumpKey(OS_NAMESPACE_NAME::Options::instance()->getOption<bool>(_S("developer.show_language_keys")));
 

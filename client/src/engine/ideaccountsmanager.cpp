@@ -250,7 +250,7 @@ void IdeAccountsManager::save(shared_ptr<IdeAccount> account)
 	account->getAccount()->update(connection);
 }
 
-bool IdeAccountsManager::import(const Buffer &buffer)
+bool IdeAccountsManager::importXml(const Buffer &buffer)
 {
 	shared_ptr<XMLSchema> schema(OS_NEW XMLSchema());
 	schema->parseFile(utils::makeFilePath(utils::makeFolderPath(Options::instance()->getSharePath(),OS_SCHEMAS_PATH), OS_SCHEMA_ACCOUNT));

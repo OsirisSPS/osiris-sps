@@ -105,6 +105,21 @@ template <typename P>
 Socket<P>::Socket(boost::asio::io_service &service) : m_socket(createAsioObject<socket_type>(service))
 {
 
+	// TIMEOUT?
+	/*
+#if defined _WINDOWS
+    int32_t timeout = 5000;
+    setsockopt(m_socket->native_handle(), SOL_SOCKET, SO_RCVTIMEO, (const char*)&timeout, sizeof(timeout));
+    setsockopt(m_socket->native_handle(), SOL_SOCKET, SO_SNDTIMEO, (const char*)&timeout, sizeof(timeout));
+#else
+    struct timeval tv;
+    tv.tv_sec  = 5; 
+    tv.tv_usec = 0;         
+    setsockopt(m_socket.native_handle(), SOL_SOCKET, SO_RCVTIMEO, &tv, sizeof(tv));
+    setsockopt(m_socket.native_handle(), SOL_SOCKET, SO_SNDTIMEO, &tv, sizeof(tv));
+#endif
+	*/
+
 }
 
 template <typename P>

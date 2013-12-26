@@ -181,8 +181,13 @@ class Page(osiris.IMainPage):
 		if(self.act != "home"):
 			self.getPathway().add(self.getText("main.pages.accounts." + self.act + ".title"),"")
 					
-	def onImport(self, args):		
-		self.showError(self.getText("main.pages.accounts.error.cannot_import"))			
+	def onImport(self, args):				
+
+		if(osiris.IdeAccountsManager.instance().importXml(self.txtFile.getFileBuffer())):
+			self.redirect(osiris.PortalsSystem.instance().getMainLink("accounts"))
+		else:
+			self.showError(self.getText("main.pages.accounts.error.cannot_import"))			
+
 
 	def onExport(self, args):		
 		accountID = args[0]		
