@@ -369,7 +369,7 @@ void Accounts::_importAccount()
 		return;
 	*/
 
-	const Buffer *accountBuffer = m_accountBrowser->getFileBufferPtr();
+	const Buffer *accountBuffer = m_accountBrowser->getFileBuffer();
 	if(accountBuffer == null)
 		return;
 
