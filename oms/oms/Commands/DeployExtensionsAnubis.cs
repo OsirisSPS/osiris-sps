@@ -63,7 +63,12 @@ namespace OMS.Commands
             FetchToPreinstalled("DB535FE72E91BD84ADA5D46745F2121E1D058402"); // Language Pack - English
             FetchToPreinstalled("9F4EBA0F1F02D218D684D92A39EF8F52E1DA9704"); // Language Pack - Italian
             FetchToPreinstalled("F86BDAADDDAE54753F3DC7608925780632CE4BF1"); // Language Pack - Invariant
-                        
+            
+            /*
+			 * Not need: the addons repository Isis is the same machine of Anubis
+			 * */
+
+			/*
             FetchAndUpload("A15635A70058CAEBD21D7473CE8310D410CFD547"); // Osiris Language Pack - Russian
             FetchAndUpload("9F4EBA0F1F02D218D684D92A39EF8F52E1DA9704"); // Osiris Language Pack - Italian
             FetchAndUpload("9BD6234B4AE6FB62C132353B6B181D7515E34D46"); // Osiris Language Pack - German
@@ -75,7 +80,7 @@ namespace OMS.Commands
             FetchAndUpload("C6222C74FF3B26904BC6AFB519E6E457CC77E1A8"); // Osiris Language Pack - Japanese
             FetchAndUpload("76FB856842D3E085A7A82B55350D8F409D15B023"); // Osiris Language Pack - French
             FetchAndUpload("6E43DDFBBD44D8930177B7084EDD970992A9DBBE"); // Osiris Language Pack - Greek
-
+			*/
 
             //CopyToPreinstalled("DB535FE72E91BD84ADA5D46745F2121E1D058402"); // Language Pack - English
             //CopyToPreinstalled("9F4EBA0F1F02D218D684D92A39EF8F52E1DA9704"); // Language Pack - Italian

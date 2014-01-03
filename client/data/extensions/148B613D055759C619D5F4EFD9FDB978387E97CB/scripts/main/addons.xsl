@@ -10,20 +10,21 @@
   <xsl:import href="http://www.osiris-sps.org/htdocs/templates/includes/actions.xsl"/>
   <xsl:import href="http://www.osiris-sps.org/htdocs/templates/includes/block.xsl"/>
   <xsl:import href="http://www.osiris-sps.org/htdocs/templates/includes/help.xsl"/>
-  
+	
   <xsl:output method="html" indent="yes" omit-xml-declaration="yes"/>
   
   <xsl:template match="/upgradable">
     <xsl:if test="@upgradable_counter > 0">
-      <div class="os_button_counter" data-os-tooltip="{lang:text('main.pages.addons.upgrade_available')}">
-        <xsl:value-of select="@upgradable_counter"/>
-      </div>
+			<div class="os_button_counter" data-os-tooltip="{lang:text('main.pages.addons.upgrade_available')}">
+					<xsl:value-of select="@upgradable_counter"/>
+			</div>			
     </xsl:if>
   </xsl:template>
 
   <xsl:template match="/home">
-    <xsl:call-template name="block_page">
-      <xsl:with-param name="prefix" select="'main.pages.addons'"/>
+		
+    <xsl:call-template name="block">
+      <xsl:with-param name="title" select="lang:text('main.pages.addons.title')"/>
       <xsl:with-param name="content">
         <xsl:if test="@online != 'true'">
           <xsl:call-template name="help-box">
@@ -111,7 +112,7 @@
   
   <xsl:template match="addon">
     <div>
-      <xsl:param name="list"/>
+      <!--<xsl:param name="list"/>-->
       <xsl:choose>
         <xsl:when test="@active != 'false'">
           <xsl:attribute name="class">
@@ -206,7 +207,7 @@
                     <xsl:text>:</xsl:text>
                   </td>
                   <td class="os_value">
-                    <xsl:value-of select="format-number(@version_installed,'##########.##')"/>
+                    <xsl:value-of select="@version_installed"/>
                   </td>
                 </tr>
               </xsl:if>
@@ -218,7 +219,7 @@
                     <xsl:text>:</xsl:text>
                   </td>
                   <td class="os_value">
-                    <xsl:value-of select="format-number(@version_repository,'##########.##')"/>                    
+                    <xsl:value-of select="@version_repository"/>                    
                   </td>
                 </tr>
               </xsl:if>
@@ -294,7 +295,7 @@
     <xsl:param name="mode"/>
     <xsl:param name="showTrust"/>
     <div id="addon_confirm">
-      <xsl:value-of select="lang:text(concat('main.pages.addons.',$action,'.description'))"/>
+      <xsl:value-of select="lang:text(concat('main.pages.addons.',$action,'.description'))"/>      
       <div data-os-url="/main/addons?act=addon&amp;id={@id}&amp;mode={$mode}&amp;trust={$showTrust}" data-os-wait="center">
       </div>
     </div>
@@ -306,9 +307,9 @@
       <xsl:text>','</xsl:text>
       <xsl:value-of select="system:html-encode('addon_confirm')" disable-output-escaping="yes"/>
       <xsl:text>','</xsl:text>
-      <xsl:value-of select="system:html-encode(lang:text('common.actions.confirm'))" disable-output-escaping="yes"/>
+      <xsl:value-of select="system:html-encode(lang:text('common.labels.confirm'))" disable-output-escaping="yes"/>
       <xsl:text>','</xsl:text>
-      <xsl:value-of select="system:html-encode(lang:text('common.actions.cancel'))" disable-output-escaping="yes"/>
+      <xsl:value-of select="system:html-encode(lang:text('common.labels.cancel'))" disable-output-escaping="yes"/>
       <xsl:text>','</xsl:text>
       <xsl:value-of select="system:js-encode($action)"/>
       <xsl:text>','</xsl:text>

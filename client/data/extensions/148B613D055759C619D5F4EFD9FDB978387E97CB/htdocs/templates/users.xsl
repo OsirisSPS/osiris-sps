@@ -24,8 +24,8 @@
   
   <xsl:template match="users">
 
-    <xsl:call-template name="block_page">
-      <xsl:with-param name="prefix" select="'portal.pages.users'"/>
+    <xsl:call-template name="block_big">
+      <xsl:with-param name="title" select="lang:text('portal.pages.users.title')"/>
       <xsl:with-param name="content">
         
 
@@ -60,63 +60,68 @@
         <xsl:apply-templates select="pager" mode="row"/>
 
 
-    <xsl:call-template name="block_small">
-      <xsl:with-param name="title">
-        <xsl:value-of select="lang:text('portal.pages.users.options')"/>
-      </xsl:with-param>
-      <xsl:with-param name="content">
-        <div class="os_content">
-          <div style="width:35%;float:left;">
-            <xsl:call-template name="block_minimal">
-              <xsl:with-param name="title" select="lang:text('search.what_options')"/>
-              <xsl:with-param name="content">
-                <div class="os_content">
-                  <xsl:value-of select="$nickMode" disable-output-escaping="yes"/>
-                  <xsl:value-of select="$nickName" disable-output-escaping="yes"/>
-                </div>
-              </xsl:with-param>
-            </xsl:call-template>
-          </div>
 
-          <div style="width:25%;float:left;">
-            <xsl:call-template name="block_minimal">
-              <xsl:with-param name="title" select="lang:text('search.view_options')"/>
-              <xsl:with-param name="content">
-                <div class="os_content">
-                  <span class="os_label">
-                    <xsl:value-of select="lang:text('portal.pages.users.search.pager_size')"/>
-                  </span>
-                  <xsl:value-of select="$pagerSize" disable-output-escaping="yes"/>
-                  <br/>
-                  <span class="os_label">
-                    <xsl:value-of select="lang:text('portal.pages.users.search.template')"/>
-                  </span>
-                  <xsl:value-of select="$template" disable-output-escaping="yes"/>
-                </div>
-              </xsl:with-param>
-            </xsl:call-template>
-          </div>
+		<div style="text-align:center;">
+			<div style="display:inline-block;">
+				<xsl:call-template name="block_small">
+					<xsl:with-param name="title">
+						<xsl:value-of select="lang:text('portal.pages.users.options')"/>
+					</xsl:with-param>
+					<xsl:with-param name="content">
 
-          <div style="width:40%;float:left;">
-            <xsl:call-template name="block_minimal">
-              <xsl:with-param name="title" select="lang:text('search.order_mode')"/>
-              <xsl:with-param name="content">
-                <div class="os_content">
-                  <xsl:value-of select="$orderMode" disable-output-escaping="yes"/>
-                  <xsl:value-of select="$orderDirection" disable-output-escaping="yes"/>
-                </div>
-              </xsl:with-param>
-            </xsl:call-template>
-          </div>
+						<div style="float:left;">
+							<xsl:call-template name="block_minimal">
+								<xsl:with-param name="title" select="lang:text('search.what_options')"/>
+								<xsl:with-param name="content">
+									<div class="os_padding">
+										<xsl:value-of select="$nickMode" disable-output-escaping="yes"/>
+										<xsl:value-of select="$nickName" disable-output-escaping="yes"/>
+									</div>
+								</xsl:with-param>
+							</xsl:call-template>
+						</div>
 
-          <div class="os_clear" />
+						<div style="float:left;">
+							<xsl:call-template name="block_minimal">
+								<xsl:with-param name="title" select="lang:text('search.view_options')"/>
+								<xsl:with-param name="content">
+									<div class="os_padding">
+										<span class="os_label">
+											<xsl:value-of select="lang:text('portal.pages.users.search.pager_size')"/>
+										</span>
+										<xsl:value-of select="$pagerSize" disable-output-escaping="yes"/>
+										<xsl:text> </xsl:text>
+										<span class="os_label">
+											<xsl:value-of select="lang:text('portal.pages.users.search.template')"/>
+										</span>
+										<xsl:value-of select="$template" disable-output-escaping="yes"/>
+									</div>
+								</xsl:with-param>
+							</xsl:call-template>
+						</div>
 
-          <div class="os_commands">
-            <xsl:value-of select="$submit" disable-output-escaping="yes"/>
-          </div>
-        </div>
-      </xsl:with-param>
-    </xsl:call-template>
+						<div style="float:left;">
+							<xsl:call-template name="block_minimal">
+								<xsl:with-param name="title" select="lang:text('search.order_mode')"/>
+								<xsl:with-param name="content">
+									<div class="os_padding">
+										<xsl:value-of select="$orderMode" disable-output-escaping="yes"/>
+										<xsl:value-of select="$orderDirection" disable-output-escaping="yes"/>
+									</div>
+								</xsl:with-param>
+							</xsl:call-template>
+						</div>
+
+						<div class="os_clear" />
+
+						<div class="os_commands">
+							<xsl:value-of select="$submit" disable-output-escaping="yes"/>
+						</div>
+
+					</xsl:with-param>
+				</xsl:call-template>
+			</div>
+		</div>
 
   </xsl:template>
   

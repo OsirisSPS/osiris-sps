@@ -34,7 +34,10 @@
 		ctx;
 		
 	function init() {
+		
 		width = img.width;
+		//width = $(container).width();
+		
 		height = img.height;
 		
 		half_width = width >> 1;
@@ -65,12 +68,35 @@
 		
 		
 		canvas.addEventListener('mousemove', function(/* Event */ evt) {
-			disturb(evt.offsetX || evt.layerX, evt.offsetY || evt.layerY);
+			
+			var x;
+    var y;
+    if (evt.pageX || evt.pageY) {
+	x = evt.pageX;
+	y = evt.pageY;
+    }
+    else {
+	x = evt.clientX + document.body.scrollLeft +
+            document.documentElement.scrollLeft;
+	y = evt.clientY + document.body.scrollTop +
+            document.documentElement.scrollTop;
+    }
+    // Convert to coordinates relative to the canvas
+    x -= canvas.offsetLeft;
+    y -= canvas.offsetTop;
+    
+			disturb(x,y);
 		}, false);
 		
 		start();
 	}
 	
+	function getCursorPosition(e) {
+    
+
+    return [x,y]
+}
+		
 	function stop() {
 		if (timer_id)
 			clearInterval(timer_id);

@@ -21,10 +21,10 @@
   <xsl:template match="/login">
     <div style="width:500px;margin:auto;">
       <xsl:call-template name="block">
-        <xsl:with-param name="title" select="lang:text('portal.pages.login.title')" />
+        <xsl:with-param name="title" select="lang:text('main.pages.login.title')" />
         <xsl:with-param name="content">
           <xsl:call-template name="help-box">
-            <xsl:with-param name="text" select="lang:text('portal.pages.login.help')"/>
+            <xsl:with-param name="text" select="lang:text('main.pages.login.help')"/>
           </xsl:call-template>
           <table style="width:100%"> 
             <tr>
@@ -32,37 +32,39 @@
                 <img src="{system:resource-url('images/icons/48x48/permission.png')}"/>
               </td>
               <td>
-                <table class="os_table_data os_content_box">
-                  <xsl:if test="$username">
-                    <tr>
-                      <td class="os_label">
-                        <xsl:value-of select="lang:text('portal.pages.login.username')"/>
-                        <xsl:text> :</xsl:text>
-                      </td>
-                      <td class="os_value">
-                        <xsl:value-of select="$username" disable-output-escaping="yes"/>
-                      </td>
-                    </tr>
-                  </xsl:if>
-                  <tr>
-                    <td class="os_label">
-                      <xsl:value-of select="lang:text('portal.pages.login.password')"/>
-                      <xsl:text> :</xsl:text>
-                    </td>
-                    <td class="os_value">
-                      <xsl:value-of select="$password" disable-output-escaping="yes"/>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td class="os_label">
-                      <xsl:value-of select="lang:text('portal.pages.login.save_password')"/>
-                      <xsl:text> :</xsl:text>
-                    </td>
-                    <td class="os_value">
-                      <xsl:value-of select="$savePassword" disable-output-escaping="yes"/>
-                    </td>
-                  </tr>
-                </table>
+								<div class="os_padding">
+									<table class="os_table_data">
+										<xsl:if test="$username">
+											<tr>
+												<td class="os_label">
+													<xsl:value-of select="lang:text('main.pages.login.username')"/>
+													<xsl:text> :</xsl:text>
+												</td>
+												<td class="os_value">
+													<xsl:value-of select="$username" disable-output-escaping="yes"/>
+												</td>
+											</tr>
+										</xsl:if>
+										<tr>
+											<td class="os_label">
+												<xsl:value-of select="lang:text('main.pages.login.password')"/>
+												<xsl:text> :</xsl:text>
+											</td>
+											<td class="os_value">
+												<xsl:value-of select="$password" disable-output-escaping="yes"/>
+											</td>
+										</tr>
+										<tr>
+											<td class="os_label">
+												<xsl:value-of select="lang:text('main.pages.login.save_password')"/>
+												<xsl:text> :</xsl:text>
+											</td>
+											<td class="os_value">
+												<xsl:value-of select="$savePassword" disable-output-escaping="yes"/>
+											</td>
+										</tr>
+									</table>
+								</div>
               </td>
             </tr>
           </table>

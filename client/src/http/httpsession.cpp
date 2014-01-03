@@ -380,7 +380,8 @@ void HttpSession::handleRead(const boost::system::error_code &e, size_t bytes_tr
 {
 	scope->cancelTimeout();
 
-	if(e)
+	bool readable = isAsioEOF(e) == false;
+	if(readable && e)
 	{
 		// TODO: corretto? logga l'errore solo nel caso in cui non derivi da una sessione di keep-alive...
 		if(keepAlive == false)
@@ -389,18 +390,33 @@ void HttpSession::handleRead(const boost::system::error_code &e, size_t bytes_tr
 		return;
 	}
 
+	OS_ASSERT((readable == false) || (bytes_transferred > 0));
+
 	shared_ptr<HttpBuffer> requestBuffer = getRequestBuffer();
 	if(requestBuffer == nullptr)
 	{
-		handleError("invalid request buffer");
+		handleError(_S("invalid request buffer"));
 		return;
 	}
 
+	//switch(m_request->writeData(requestBuffer->data(), static_cast<uint32>(bytes_transferred), true, readable))
 	switch(m_request->writeData(requestBuffer->data(), static_cast<uint32>(bytes_transferred)))
 	{
 	case HttpRequest::statusWaitingHeader:
 	case HttpRequest::statusWaitingContent:
-												getSocket().async_read_some(boost::asio::buffer(*requestBuffer), boost::bind(&HttpSession::handleRead, get_this_ptr<HttpSession>(), boost::asio::placeholders::error, boost::asio::placeholders::bytes_transferred, scope->extendTimeout(), false));
+												if(readable)
+												{
+													getSocket().async_read_some(boost::asio::buffer(*requestBuffer), boost::bind(&HttpSession::handleRead, get_this_ptr<HttpSession>(), boost::asio::placeholders::error, boost::asio::placeholders::bytes_transferred, scope->extendTimeout(), false));
+												}
+												else
+												{
+													if(keepAlive == false)
+													{
+														OS_ASSERT(e);
+														handleError(e);
+													}
+												}
+												
 												break;
 
 	case HttpRequest::statusCompleted:			handleRequestCompleted(scope);

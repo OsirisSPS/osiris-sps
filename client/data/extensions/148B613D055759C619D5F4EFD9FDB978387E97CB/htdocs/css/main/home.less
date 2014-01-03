@@ -20,6 +20,7 @@
 
 .os_home_tile_portal
 {
+	display:block;
 	float:left;
 	
 	margin:10px;
@@ -27,8 +28,11 @@
 	width: 320px;
 	height: 100px;
 	
-	background-image:url("/htdocs/images/tiles/p2p.png");
+	background-image:url("/htdocs/images/tile.png");
 	background-size:100%;
+	
+	background-color:#ff0000;
+	/*.os-gradient-gloss(rgba(192,192,192,0.4), 20%, 40%);*/
 	
 	border: 0px;
 	
@@ -39,19 +43,45 @@
 	.os-box-shadow(0px,0px,10px,1);
 }
 
+.os_home_tile_portal_area1
+{
+	margin:10px;
+	margin-bottom:0px;
+	height:40px;
+	
+	
+}
+
+.os_home_tile_portal_area2
+{
+	margin:10px;
+	margin-top:0px;
+	height:40px;
+	
+}
+
 .os_home_tile_portal:hover
 {
 	.os-opacity-high();
 }
 
-.os_home_tile_portal_name,
+a.os_home_tile_portal_name,
 .os_home_tile_portal_description
 {
-	text-shadow: 0px 0px 2px white,0px 0px 2px white,0px 0px 2px white,0px 0px 2px white;
-	color: black;
+	text-decoration:none;
+	/*text-shadow: 0px 0px 2px white,0px 0px 2px white,0px 0px 2px white,0px 0px 2px white;*/
+	
+	
+	width:250px;
+	display:inline-block;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	overflow: hidden;
+
+	text-shadow: 0px 0px 2px white;
 }
 
-.os_home_tile_portal_name
+a.os_home_tile_portal_name
 {
 	font-size:1.3em;	
 	font-weight:bold;
@@ -59,4 +89,5 @@
 
 .os_home_tile_portal_description
 {	
+	font-size:0.8em;
 }

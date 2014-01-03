@@ -195,7 +195,16 @@
 
     <xsl:for-each select="actions/action">
       <xsl:call-template name="action-row">
-        <xsl:with-param name="prefix" select="$prefix"/>
+				<xsl:with-param name="prefix">
+					<xsl:choose>
+						<xsl:when test="@prefix">
+							<xsl:value-of select="@prefix"/>
+						</xsl:when>
+						<xsl:otherwise>
+							<xsl:value-of select="$prefix"/>
+						</xsl:otherwise>
+					</xsl:choose>
+				</xsl:with-param>
         <xsl:with-param name="icon" select="@name"/>        
         <xsl:with-param name="name" select="@name"/>
         <xsl:with-param name="href" select="@href"/>
@@ -207,7 +216,7 @@
 
   <xsl:template name="action-row">
     <xsl:param name="prefix"/>
-    <xsl:param name="name"/>
+		<xsl:param name="name"/>
     <xsl:param name="icon"/>
     <xsl:param name="icon_path"/>
     <xsl:param name="href"/>
@@ -215,7 +224,7 @@
     <xsl:param name="content"/>
 
     <xsl:variable name="title">
-      <xsl:choose>
+      <xsl:choose>				
         <xsl:when test="$prefix">
           <xsl:value-of select="system:parse(lang:text(concat($prefix,'.', $name, '.title')),false(),false(),true())"/>
         </xsl:when>
@@ -226,7 +235,7 @@
     </xsl:variable>
 
     <xsl:variable name="description">
-      <xsl:choose>
+      <xsl:choose>				
         <xsl:when test="$prefix">
           <xsl:value-of select="system:parse(lang:text(concat($prefix,'.', $name, '.description')),false(),false(),true())"/>
         </xsl:when>
@@ -236,6 +245,8 @@
       </xsl:choose>
     </xsl:variable>
     
+    <!-- This commented version support action without link. -->
+    <!--
     <div class="os_action_row">      
       <xsl:if test="$icon or $icon_path">
         <div style="margin:3px;margin-right:15px;float:left;">
@@ -280,6 +291,45 @@
 
       <div class="os_clear"/>
     </div>
+    -->
+
+    <xsl:call-template name="action-href">
+      <xsl:with-param name="prefix" select="$prefix"/>
+      <xsl:with-param name="href" select="$href"/>
+      <xsl:with-param name="call" select="$call"/>
+      <xsl:with-param name="class" select="'os_action_row'"/>
+      <xsl:with-param name="content">
+        <xsl:if test="$icon or $icon_path">
+          <div style="margin:3px;margin-right:15px;float:left;">
+            <xsl:choose>
+              <xsl:when test="$icon_path">
+                <img src="{$icon_path}"/>
+              </xsl:when>
+              <xsl:otherwise>
+                <img src="{system:resource-url(concat('images/icons/32x32/',$icon,'.png'))}"/>
+              </xsl:otherwise>
+            </xsl:choose>
+
+          </div>
+        </xsl:if>
+
+        <span class="os_titlex" style="font-size:1.2em;font-weight:bold">
+          <xsl:value-of select="$title" disable-output-escaping="yes"/>
+        </span>
+        <br />
+        <span class="os_descriptionx" style="font-size:0.9em">
+          <xsl:value-of select="$description" disable-output-escaping="yes"/>
+        </span>
+        <xsl:if test="$content">
+          <br />
+          <xsl:copy-of select="$content"/>
+        </xsl:if>
+
+        <div class="os_clear"/>
+      </xsl:with-param>
+    </xsl:call-template>
+    
+    
 
   </xsl:template>
 

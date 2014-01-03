@@ -8,6 +8,7 @@
                 version="1.0">
 
   <xsl:import href="http://www.osiris-sps.org/htdocs/templates/block.xsl"/>
+  <xsl:import href="http://www.osiris-sps.org/htdocs/templates/includes/utils.xsl"/>
   
   <xsl:output method="html"/>
   
@@ -29,8 +30,8 @@
   <xsl:template name="page">
     <xsl:choose>
       <xsl:when test="@filter = ''">
-        <xsl:call-template name="block_page">
-          <xsl:with-param name="prefix" select="'main.pages.about'"/>
+        <xsl:call-template name="block">
+          <xsl:with-param name="title" select="lang:text('main.pages.about.title')"/>
           <xsl:with-param name="content">
             <xsl:call-template name="pages"/>
           </xsl:with-param>
@@ -129,28 +130,52 @@
 
   <xsl:template name="about">
 
-<a class="os_button" title="{lang:text('systembar.actions.help.about')}" href="javascript:void(0);" onclick="Osiris.loadUrl('/main/about?mode=dialog&amp;filter=libraries')">
-      <xsl:value-of select="lang:text('systembar.actions.help.about')"/>
-    </a>
+		<div style="text-align:center">
+    	<div id="container" style="margin:30px;">
 
-    <div id="credits" style="text-align:center;width:300px;border:1px solid red;position:absolute;">
-      bla bla bla<br/>
-      bla bla bla<br/>
-      bla bla bla<br/>
-      bla bla bla<br/>
-    </div>
+    	</div>
 
-    <div id="container">
+      <div>
+        <a class="os_button" title="{lang:text('systembar.actions.help.homepage')}" href="{@href_home}" target="_blank">
+          <xsl:value-of select="lang:text('systembar.actions.help.homepage')"/>
+          <xsl:text> </xsl:text>
+          <img src="{system:resource-url('images/link_external.png')}" />
+        </a>
+        <xsl:call-template name="separator" />
+        <a class="os_button" title="{lang:text('systembar.actions.help.forum')}" href="{@href_forum}" target="_blank">
+          <xsl:value-of select="lang:text('systembar.actions.help.forum')"/>
+          <xsl:text> </xsl:text>
+          <img src="{system:resource-url('images/link_external.png')}" />
+        </a>
+      </div>
 
+      <div>        
+        
+        <div style="display:inline-block;width:200px;margin:20px;vertical-align:text-top;">
+          <xsl:apply-templates select="credits/group[@group='main']"/>
+        </div>
+
+        <xsl:for-each select="credits/group[@group='supporters']">
+          <div style="display:inline-block;width:200px;margin:20px;vertical-align:text-top;">
+            <xsl:apply-templates select="."/>
+          </div>
+        </xsl:for-each>
+      </div>
+      
     </div>
     <script type="text/javascript">
       
       <xsl:text>$(function() { $.getScript(Osiris.adjustStaticUrl("/htdocs/js/libraries/ripple.js")); ripple('</xsl:text>
-      <xsl:value-of select="system:resource-url('images/about/background.jpg')"/>
+      <xsl:value-of select="system:resource-url('images/about/logobox.png')"/>
       <xsl:text>', document.getElementById('container')); });</xsl:text>
     </script>
 
-    
+    <!--
+    <a class="os_button" title="{lang:text('systembar.actions.help.about')}" href="javascript:void(0);" onclick="Osiris.loadUrl('/main/about?mode=dialog&amp;filter=libraries')">
+      <xsl:value-of select="lang:text('systembar.actions.help.about')"/>
+    </a>
+
+
     <div style="float:right;text-align:center;margin-top:10px;margin-bottom:10px;">
       <a class="os_nolink" href="{@href_home}">
         <img style="margin:5px;" src="{system:resource-url('images/logo/logo1.png')}"/>
@@ -160,18 +185,8 @@
         <xsl:value-of select="@version"/>
       </span>
     </div>
+    -->
     
-    <div style="float:left;width:40%;margin:20px;">
-      <xsl:apply-templates select="credits/group[@group='main']"/>
-    </div>
-
-    <div style="clear:both;"/>
-
-    <xsl:for-each select="credits/group[@group='supporters']">
-      <div style="float:left;width:200px;margin:20px;">
-        <xsl:apply-templates select="."/>
-      </div>
-    </xsl:for-each>
 
 
     <div style="clear:both;text-align:right;font-size:1.5em;padding:20px;">

@@ -49,17 +49,17 @@ class Page(osiris.IPortalPage):
 			osiris.events.connect(self.addPeerCommand.eventClick, self.onAddPeer)
 			template.addChildParam(self.addPeerCommand)
 			
-		if(self.act == "your"):
-						
-			client = osiris.Engine.instance().createHttpClient()		
-				
-			url = "check.php?port=" + str(osiris.Options.instance().getServerPort()) + "&output=xml";
-			if(osiris.Options.instance().getOptionBool("p2p.enable") == False):
-				url += "&notest";
-			client.perform(osiris.HttpUrl(osiris.Options.instance().getIsisLink(url)))
-			#osiris.LogManager.instance().log(osiris.Options.instance().getIsisLink(url))
-			self.document.parseBuffer(client.response.content.content)						
-			self.document.root.setAttributeBool("p2p_enabled",osiris.Options.instance().getOptionBool("p2p.enable"))
+		#if(self.act == "your"):
+		#				
+		#	client = osiris.Engine.instance().createHttpClient()		
+		#		
+		#	url = "check.php?port=" + str(osiris.Options.instance().getServerPort()) + "&output=xml";
+		#	if(osiris.Options.instance().getOptionBool("p2p.enable") == False):
+		#		url += "&notest";
+		#	client.perform(osiris.HttpUrl(osiris.Options.instance().getIsisLink(url)))
+		#	#osiris.LogManager.instance().log(osiris.Options.instance().getIsisLink(url))
+		#	self.document.parseBuffer(client.response.content.content)						
+		#	self.document.root.setAttributeBool("p2p_enabled",osiris.Options.instance().getOptionBool("p2p.enable"))
 						
 		if(self.ajax):
 			self.controls.add(template)
@@ -97,7 +97,3 @@ class Page(osiris.IPortalPage):
 			self.showError(self.getText("portal.pages.peers.message.error.cannotInsertPeer"))
 			return
 			
-
-def main(args):
-	page = Page(args[0])
-	page.transmit()

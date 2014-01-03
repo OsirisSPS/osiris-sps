@@ -6,7 +6,7 @@ Osiris Main CSS.
 
 @import url("/htdocs/css/libraries/smoothness/jquery-ui-1.8.18.custom.css");
 //@import url("/htdocs/css/libraries/jquery.passStrengthener.css");
-@import url("/htdocs/css/libraries/jquery.datatables.css"); // errore '* cursor', in sospeso, la versione originale non funziona con Isis. TOFIX
+//@import url("/htdocs/css/libraries/jquery.datatables.css"); 
 @import url("/htdocs/css/libraries/jquery.lightbox.css");
 /*
 @import url("/htdocs/css/libraries/jquery.fancybox.css");
@@ -15,7 +15,18 @@ Osiris Main CSS.
 */
 
 @import url("/htdocs/css/libraries/jquery.colorpicker.css");
+@import url("/htdocs/css/libraries/jquery.passStrengthener.css");
 @import url("/htdocs/css/libraries/syntaxhighlighter.css");
+
+/*
+.use-style(@style) when (@style = 'light') {	
+}
+.use-style(@style) when (@style = 'dark') {	
+	@import url("/htdocs/css/dark.less");
+}
+*/
+
+
 
 @import url("/htdocs/css/layout.less");
 @import url("/htdocs/css/plugins.less");

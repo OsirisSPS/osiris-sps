@@ -12,6 +12,3 @@ class Page(osiris.IMainPage):
 
 		self.showError(self.request.getUrlParam("message"));	
 		
-def main(args):
-	page = Page(args[0])
-	page.transmit()

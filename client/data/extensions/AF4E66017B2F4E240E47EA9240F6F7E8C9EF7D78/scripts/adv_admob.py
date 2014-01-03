@@ -63,7 +63,3 @@ class Page(osiris.IMainPage):
 		
 		self.controls.add(osiris.HtmlLiteral(str(data)))		
 		
-		
-def main(args):	
-	page = Page(args[0])
-	page.transmit()

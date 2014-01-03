@@ -439,7 +439,7 @@ void register_PortalOptions_class(){
             .def_readonly( "database_version", ::osiris::PortalOptions::options::database_version )    
             .def_readonly( "deleted", ::osiris::PortalOptions::options::deleted )    
             .def_readonly( "exchange_enabled", ::osiris::PortalOptions::options::exchange_enabled )    
-  //          .def_readonly( "last_checking_date", ::osiris::PortalOptions::options::last_checking_date )    
+            //.def_readonly( "last_checking_date", ::osiris::PortalOptions::options::last_checking_date )    
             .def_readonly( "last_downloaded_object_date", ::osiris::PortalOptions::options::last_downloaded_object_date )    
             .def_readonly( "last_exchange_date", ::osiris::PortalOptions::options::last_exchange_date )    
             .def_readonly( "last_exchanged_object", ::osiris::PortalOptions::options::last_exchanged_object )    

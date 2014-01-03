@@ -289,24 +289,34 @@ void AsyncHttpClient::handleRequestSended(const boost::system::error_code &e, sh
 }
 
 void AsyncHttpClient::handleServerResponse(const boost::system::error_code &e, size_t bytes_transferred, shared_ptr<ConnectionScope> scope)
-{
- 	scope->cancelTimeout();
+{	
+	scope->cancelTimeout();
 
-	if(e)
+	bool readable = isAsioEOF(e) == false;
+	if(readable && e)
 	{
 		// VERYURGENT: andrebbe convertita in handleError(errorContextResponse, e, scope)
 		onResponseError(e, scope);
 	}
 	else
 	{
+		//switch(m_response->writeData(m_buffer.data(), static_cast<uint32>(bytes_transferred), true, readable))
 		switch(m_response->writeData(m_buffer.data(), static_cast<uint32>(bytes_transferred)))
 		{
 		case HttpRequest::statusWaitingHeader:
 		case HttpRequest::statusWaitingContent:
-													if(m_url.getSSL())
-														m_sslStream->async_read_some(boost::asio::buffer(m_buffer), boost::bind(&AsyncHttpClient::handleServerResponse, get_this_ptr<AsyncHttpClient>(), boost::asio::placeholders::error, boost::asio::placeholders::bytes_transferred, scope->extendTimeout(getTimeout())));
+													if(readable)
+													{
+														if(m_url.getSSL())
+															m_sslStream->async_read_some(boost::asio::buffer(m_buffer), boost::bind(&AsyncHttpClient::handleServerResponse, get_this_ptr<AsyncHttpClient>(), boost::asio::placeholders::error, boost::asio::placeholders::bytes_transferred, scope->extendTimeout(getTimeout())));
+														else
+															getSocket().async_read_some(boost::asio::buffer(m_buffer), boost::bind(&AsyncHttpClient::handleServerResponse, get_this_ptr<AsyncHttpClient>(), boost::asio::placeholders::error, boost::asio::placeholders::bytes_transferred, scope->extendTimeout(getTimeout())));
+													}
 													else
-														getSocket().async_read_some(boost::asio::buffer(m_buffer), boost::bind(&AsyncHttpClient::handleServerResponse, get_this_ptr<AsyncHttpClient>(), boost::asio::placeholders::error, boost::asio::placeholders::bytes_transferred, scope->extendTimeout(getTimeout())));
+													{
+														// VERYURGENT: andrebbe convertita in handleError(errorContextResponse, e, scope)
+														onResponseError(boost::system::error_code(), scope);
+													}
 
 													break;
 

@@ -43,9 +43,9 @@
     <xsl:param name="show_commands" select="'true'"/>
     <xsl:param name="vote_editor"/>
 
-    <div class="os_content" data-os-entity="{@entity}">
+    <div data-os-entity="{@entity}">
 
-      <div class="os_divcell" style="float:left;">
+      <div style="float:left;width:250px;">
         <xsl:call-template name="authors"/>
       </div>
       <div class="os_divcell" style="overflow:auto;">
@@ -97,13 +97,7 @@
         <div class="os_divcell" style="float:left;width:200px">
           <xsl:apply-templates select="author/actions" mode="user"/>
         </div>
-
-        <div class="os_divcell" style="overflow:visible;">
-          <a class="os_nolink" href="javascript:scroll(0,0);">
-            <img src = "{system:resource-url('images/up.gif')}"/>
-          </a>
-        </div>
-
+        
       </div>
 
       <div style="clear:both"/>

@@ -18,6 +18,7 @@
   <xsl:param name="addPeerPort"/>
   <xsl:param name="addPeerCommand"/>
 
+	<!--
   <xsl:template match="/check">
     <table>    
       <tr>
@@ -79,14 +80,15 @@
       </tr>
     </table>
   </xsl:template>
+	-->
 
   <xsl:template match="/home">    
-    <xsl:call-template name="block_page">
-      <xsl:with-param name="prefix" select="'portal.pages.peers'"/>
+    <xsl:call-template name="block">
+      <xsl:with-param name="title" select="lang:text('portal.pages.peers.title')"/>
       <xsl:with-param name="content">
 
         <div style="float:right;margin:10px;width:300px;">
-          <xsl:call-template name="block_minimal">
+          <xsl:call-template name="block_small">
             <xsl:with-param name="title">
               <xsl:value-of select="lang:text('portal.pages.peers.add.title')"/>
             </xsl:with-param>
@@ -121,16 +123,18 @@
           </xsl:call-template>
         </div>
         
+				<!--
         <div style="float:right;margin:10px;width:300px;">
-          <xsl:call-template name="block_minimal">
+          <xsl:call-template name="block_small">
             <xsl:with-param name="title">
               <xsl:value-of select="lang:text('portal.pages.peers.your.title')"/>
             </xsl:with-param>
-            <xsl:with-param name="content">
+            <xsl:with-param name="content">							
               <div data-os-url="{@page_url}&amp;act=your" data-os-wait="center"></div>              
             </xsl:with-param>
           </xsl:call-template>
         </div>
+				-->
 
         
 
@@ -171,7 +175,7 @@
           
         </div>
 
-        <table class="os_table_data os_content_box" data-os-otype="tabxle">
+        <table class="os_table_data">
           <thead>
             <tr>
               <th>

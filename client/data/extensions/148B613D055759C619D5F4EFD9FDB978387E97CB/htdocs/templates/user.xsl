@@ -31,11 +31,7 @@
                 <xsl:with-param name="prefix" select="'user.actions'"/>
               </xsl:call-template>
             </xsl:for-each>
-
-          <div class="os_content_box">
-            Qui, se è già presente il portale dell'utente, click su "Visit".
-            Altrimenti, se a livello utente "portal" è a true, link "Subscribe/Follow".
-          </div>
+          
         </td>
         <td width="100%">
           <div class="os_tab_left_bodies">
@@ -50,6 +46,7 @@
               </xsl:call-template>
             </xsl:if>
 
+						<!--
             <xsl:if test="@subpage = 'invite'">
               <xsl:call-template name="block">
                 <xsl:with-param name="title">
@@ -85,19 +82,22 @@
                 </xsl:with-param>
               </xsl:call-template>
             </xsl:if>
+						-->
 
             <xsl:if test="@subpage = 'reputations'">
               <xsl:call-template name="block">
                 <xsl:with-param name="title">
-                  <xsl:value-of select="lang:text('user.actions.view_reputations')"/>
+                  <xsl:value-of select="lang:text('user.actions.view_reputations')"/>									
                 </xsl:with-param>
                 <xsl:with-param name="content">
                   <div style="display:none" data-os-otype="tab">
-                    <xsl:if test="$score">
-                      <div data-os-tabType="header" data-os-tabPage="0">
-                        <xsl:value-of select="lang:text('user.actions.change_reputation')"/>
-                      </div>
-                    </xsl:if>
+										<div class="os_padding">
+											<xsl:if test="$score">
+												<div data-os-tabType="header" data-os-tabPage="0">
+													<xsl:value-of select="lang:text('user.actions.change_reputation')"/>
+												</div>
+											</xsl:if>
+										</div>
                     <xsl:if test="reputation_forward">
                       <div data-os-tabType="header" data-os-tabPage="1">
                         <xsl:value-of select="lang:text('user.informations.reputations.forward')"/>
@@ -116,34 +116,24 @@
                     </div>
                     <xsl:if test="$score">
                       <div data-os-tabType="body" data-os-tabPage="0">
-                        <div class="os_content">
-                          <xsl:value-of select="$score" disable-output-escaping="yes"/>
-                        </div>
+                        <xsl:value-of select="$score" disable-output-escaping="yes"/>                        
                       </div>
                     </xsl:if>
                     <xsl:if test="reputation_forward">
                       <div data-os-tabType="body" data-os-tabPage="1">
-                        <div class="os_content">
-                          <xsl:apply-templates select="reputation_forward"/>
-                        </div>
+                        <xsl:apply-templates select="reputation_forward"/>                        
                       </div>
                     </xsl:if>
                     <xsl:if test="reputation_backward">
                       <div data-os-tabType="body" data-os-tabPage="2">
-                        <div class="os_content">
-                          <xsl:apply-templates select="reputation_backward"/>
-                        </div>
+                        <xsl:apply-templates select="reputation_backward"/>                        
                       </div>
                     </xsl:if>
                     <div data-os-tabType="body" data-os-tabPage="3">
-                      <div class="os_content">
-                        <xsl:value-of select="$directReputation_toUser" disable-output-escaping="yes"/>
-                      </div>
+                      <xsl:value-of select="$directReputation_toUser" disable-output-escaping="yes"/>                      
                     </div>
                     <div data-os-tabType="body" data-os-tabPage="4">
-                      <div class="os_content">
-                        <xsl:value-of select="$directReputation_fromUser" disable-output-escaping="yes"/>
-                      </div>
+                      <xsl:value-of select="$directReputation_fromUser" disable-output-escaping="yes"/>                      
                     </div>
                   </div>
                 </xsl:with-param>
@@ -237,14 +227,14 @@
   </xsl:template>
 
   <xsl:template name="user-informations">    
-    <div class="os_content_box">      
-      <xsl:value-of select="system:parse(@misc)" disable-output-escaping="yes"/>
-      <xsl:if test="@mark">
-        <div class="os_signature">
-          <xsl:value-of select="system:parse(@mark)" disable-output-escaping="yes"/>
-        </div>
-      </xsl:if>
-    </div>
+    
+    <xsl:value-of select="system:parse(@misc)" disable-output-escaping="yes"/>
+		<xsl:if test="@mark">
+			<div class="os_signature">
+				<xsl:value-of select="system:parse(@mark)" disable-output-escaping="yes"/>
+			</div>
+		</xsl:if>
+    
     
     <table class="os_table_properties">
       <xsl:call-template name="row-information">
@@ -317,14 +307,12 @@
     <xsl:if test="@misc">
           <div class="os_separator" colspan="2"/>
         
-          <div class="os_content_box">
-            <xsl:value-of select="system:parse(@misc)" disable-output-escaping="yes"/>
-          </div>        
+          <xsl:value-of select="system:parse(@misc)" disable-output-escaping="yes"/>          
       </xsl:if>
       
         <div class="os_separator" colspan="2"/>
       
-        <div class="os_content_box" style="font-size:0.8em">
+        <div style="font-size:0.8em">
           <span class="os_label">
             <xsl:value-of select="lang:text('user.id')"/>
             <xsl:text> : </xsl:text>

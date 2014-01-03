@@ -30,6 +30,3 @@ class Page(osiris.IMainPage):
 			
 		document.root.setAttributeString("mode", self.request.getUrlParam("mode"))
 		
-def main(args):
-	page = Page(args[0])
-	page.transmit()

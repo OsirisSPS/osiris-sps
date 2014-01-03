@@ -553,9 +553,9 @@ bool CompatibilityManager::razorPortalDatabaseUpgrade(const shared_ptr<IPortalDa
 	{
 		String povOptions;
 		povOptions += _S("<options>");
-		povOptions += _S("<option name=\"objects.allow_unsigned\" value=\"true\"/>");
-		povOptions += _S("<option name=\"portal.name\" value=\"") + HtmlParser::instance()->encode(portalName) + _S("\"/>");
-		povOptions += _S("<option name=\"portal.description\" value=\"") + HtmlParser::instance()->encode(portalDescription) + _S("\"/>");						
+		povOptions += _S("<option name=\"acp.objects.allow_unsigned\" value=\"true\"/>");
+		povOptions += _S("<option name=\"acp.portal.name\" value=\"") + HtmlParser::instance()->encode(portalName) + _S("\"/>");
+		povOptions += _S("<option name=\"acp.portal.description\" value=\"") + HtmlParser::instance()->encode(portalDescription) + _S("\"/>");						
 		povOptions += _S("</options>");
 
 		String sql = _S("update os_users set options=") + Convert::toSQL(povOptions) + _S(" where id=") + Convert::toSQL(userID.toUTF16()) + _S(";");

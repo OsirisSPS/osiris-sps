@@ -16,18 +16,13 @@
 <xsl:output method="html" indent="yes" omit-xml-declaration="yes"/>
 
   <xsl:template match="isis">
-    <xsl:call-template name="block_page">
-      <xsl:with-param name="prefix" select="'main.pages.isis'"/>
+    <xsl:call-template name="block">
+      <xsl:with-param name="title" select="lang:text('main.pages.isis.title')"/>
       <xsl:with-param name="content">
-        <xsl:call-template name="help-box">
-          <xsl:with-param name="text" select="lang:text('main.pages.isis.description')"/>
-        </xsl:call-template>
-
         
-
         <xsl:choose>
           <xsl:when test="portals/portal/isisEndpoints/isisEndpoint">
-            <table class="os_table_data os_content_box">
+            <table class="os_table_data">
               <tr>
                 <th>
                   <xsl:value-of select="lang:text('portal.name')"/>

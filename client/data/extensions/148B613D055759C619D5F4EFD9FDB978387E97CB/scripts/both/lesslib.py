@@ -10,7 +10,8 @@ def load(page):
 	css += "// pov\n";
 	css += "/* {@OsirisSkinEditor} */\n";
 	css += "@import url(\"/htdocs/css/libraries/elements.less\");\n"
-	css += "@import url(\"/htdocs/css/functions.less\");\n"		
+	css += "@import url(\"/htdocs/css/functions.less\");\n"			
+	#css += ".use-style(@os-skin-style);\n"
 		
 	page.controls.add(osiris.HtmlLiteral(css))		
 

@@ -2,32 +2,39 @@ import os
 import osiris
 import sys
 
+# enable debugger
+import ptvsd
+ptvsd.enable_attach(secret = '')	# optionally define a password
+#ptvsd.wait_for_attach()		# optional
+
 import globalvars
 
 # "Main" pages
 sys.path.append(os.path.join(os.path.dirname(__file__), "main"))
+import account
+import accounts
 import addons
 import omlhelp
 import bbobject
-import create
 import error
 import external
 import help
 import helptip
 import home
+import isis
 #import jobstatus
 import login_main
 import mcp
 import network
 import redirect
-import register_main
-import account
-import accounts2
+import subscribe
+
 
 # "Portals" pages
 sys.path.append(os.path.join(os.path.dirname(__file__), "portals"))
 import assistant
 import changes
+import info
 import latest_discussions
 import latest_user_discussions
 import login
@@ -35,9 +42,8 @@ import more
 import register
 import peers
 import trash
-import invite
 import acp
-import stats
+import stabilization_stats
 import importer
 
 
@@ -63,6 +69,12 @@ class MainHandler(osiris.IHttpDirectoryHandler):
 		
 		if(relPage == "about"):
 			page = about.MainPage(session)			
+			
+		if(relPage == "account"):
+			page = account.Page(session)			
+			
+		if(relPage == "accounts"):
+			page = accounts.Page(session)			
 	
 		if(relPage == "addons"):
 			page = addons.Page(session)			
@@ -72,9 +84,6 @@ class MainHandler(osiris.IHttpDirectoryHandler):
 			
 		if(relPage == "bbobject"):
 			page = bbobject.Page(session)			
-			
-		if(relPage == "create"):
-			page = create.Page(session)			
 			
 		if(relPage == "error"):
 			page = error.Page(session)			
@@ -91,8 +100,8 @@ class MainHandler(osiris.IHttpDirectoryHandler):
 		if(relPage == "home"):
 			page = home.Page(session)			
 			
-		#if(relPage == "jobstatus"):
-		#	page = jobstatus.Page(session)			
+		if(relPage == "isis"):
+			page = isis.Page(session)			
 			
 		if(relPage == "login"):
 			page = login_main.Page(session)			
@@ -106,15 +115,9 @@ class MainHandler(osiris.IHttpDirectoryHandler):
 		if(relPage == "redirect"):
 			page = redirect.Page(session)			
 			
-		if(relPage == "register"):
-			page = register_main.Page(session)			
-			
-		if(relPage == "account"):
-			page = account.Page(session)			
-			
-		if(relPage == "accounts2"):
-			page = accounts2.Page(session)			
-									
+		if(relPage == "subscribe"):
+			page = subscribe.Page(session)					
+											
 		if(page != None):
 			page.transmit()				
 			return True
@@ -140,6 +143,9 @@ class PortalsHandler(osiris.IHttpDirectoryHandler):
 		if(relPage == "assistant2"):
 			page = assistant.Page(session)			
 	
+		if(relPage == "info"):
+			page = info.Page(session)			
+			
 		if(relPage == "changes"):
 			page = changes.Page(session)			
 			
@@ -164,14 +170,11 @@ class PortalsHandler(osiris.IHttpDirectoryHandler):
 		if(relPage == "trash"):
 			page = trash.Page(session)			
 		
-		if(relPage == "invite"):
-			page = invite.Page(session)			
-			
 		if(relPage == "acp"):
 			page = acp.Page(session)			
 			
-		if(relPage == "stats"):
-			page = stats.Page(session)			
+		if(relPage == "stabilization_stats"):
+			page = stabilization_stats.Page(session)			
 			
 		if(relPage == "importer"):
 			page = importer.Page(session)			

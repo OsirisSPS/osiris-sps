@@ -61,7 +61,7 @@ void MultilanguageWizard::updateControls()
 
 	wxButton *buttonCancel = dynamic_cast<wxButton *>(FindWindow(wxID_CANCEL));
 	if(buttonCancel != nullptr)
-		buttonCancel->SetLabel(conversions::from_utf16<wxString>(getText(_S("common.cancel"))));	
+		buttonCancel->SetLabel(conversions::from_utf16<wxString>(getText(_S("common.labels.cancel"))));	
 }
 
 void MultilanguageWizard::OnWizardPageChanged(wxWizardEvent &e)

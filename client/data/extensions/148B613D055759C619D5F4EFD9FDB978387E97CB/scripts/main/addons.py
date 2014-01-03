@@ -17,7 +17,9 @@ class Page(osiris.IMainPage):
 		url = "addons.php?act=" + action
 		if(params != ""):
 			url += "&" + params
-		return osiris.Options.instance().getIsisSecureLink(str(url))
+		url = osiris.Options.instance().getIsisSecureLink(str(url))
+		#osiris.LogManager.instance().log("Isis url:" + url)
+		return url
 		
 	def processRemoteList(self, node, online):
 		if(node != None):			
@@ -59,15 +61,17 @@ class Page(osiris.IMainPage):
 		
 		if(remote == False):
 			mode = "local"
-			
+				
+		upgradable = ( (extension) and (remote) and (extension.versionCode < nodeRepository.getAttributeInt32("version_code")) )	
 		
-		upgradable = ( (extension) and (remote) and (extension.version < nodeRepository.getAttributeFloat("version")) )	
+		#if(extension):
+		#	osiris.LogManager.instance().log(extension.name + "=" + str(upgradable))
 		
 		if(extension):
 			node.setAttributeString("active", 'true' if extension.isActive() else 'false')
-			node.setAttributeFloat("version_installed", extension.version)			
+			node.setAttributeString("version_installed", extension.versionName)			
 		if(remote):
-			node.setAttributeFloat("version_repository", nodeRepository.getAttributeFloat("version"))
+			node.setAttributeString("version_repository", nodeRepository.getAttributeString("version_name"))
 			
 		node.setAttributeBool("installed", installed)
 		
@@ -87,7 +91,7 @@ class Page(osiris.IMainPage):
 					node.setAttributeString("verified","true")
 					node.setAttributeString("trust","")
 				node.setAttributeString("author",extension.author)
-				node.setAttributeFloat("compatibility",extension.compatibility)
+				node.setAttributeString("compatibility",extension.compatibility)
 				node.setAttributeString("homepage",extension.homePage)
 				if(extension.icon != ""):
 					node.setAttributeString("icon_href", "/main/addons?act=icon&id=" + id)
@@ -208,10 +212,11 @@ class Page(osiris.IMainPage):
 			for k in extensions.keys():
 				extension = extensions[k]
 				if(extension.internal == False):
-					currents += extension.id.getString() + ":{0:.5f};".format(extension.version);
+					#currents += extension.id.getString() + ":{0:.5f};".format(extension.versionCode);
+					currents += extension.id.getString() + ":" + str(extension.versionCode) + ";";
 			client.request.method = osiris.httpMethodPost
-			client.request.setPostParamString("currents",currents)
-			#osiris.LogManager.instance().log(self.getIsisUrl(action))
+			client.request.setPostParamString("currents",currents)			
+			#osiris.LogManager.instance().log("currents:" + currents)
 			if(client.perform(osiris.HttpUrl(self.getIsisUrl(action)))):
 				remoteDocument = osiris.XMLDocument()
 				online = remoteDocument.parseBuffer(client.response.content.content)
@@ -255,8 +260,8 @@ class Page(osiris.IMainPage):
 			showActions = (self.session.request.getUrlParam("actions") == "yes")
 			showTrust = (self.session.request.getUrlParam("trust") == "yes")
 			
-			osiris.LogManager.instance().log("show actions: " + self.session.request.getUrlParam("actions"))
-			osiris.LogManager.instance().log(self.session.request.getRawUrl())
+			#osiris.LogManager.instance().log("show actions: " + self.session.request.getUrlParam("actions"))
+			#osiris.LogManager.instance().log(self.session.request.getRawUrl())
 			
 			self.processExtension(document.root, online, mode, showActions, showTrust)
 				
@@ -308,8 +313,3 @@ class Page(osiris.IMainPage):
 		
 		#osiris.LogManager.instance().log("page addons completed")
 		
-def main(args):	
-	page = Page(args[0])
-	page.transmit()
-	
-	

@@ -65,7 +65,3 @@ class Page(osiris.IMainPage):
 		osiris.IMainPage.onPreRender(self)		
 
 		
-		
-def main(args):
-	page = Page(args[0])
-	page.transmit()

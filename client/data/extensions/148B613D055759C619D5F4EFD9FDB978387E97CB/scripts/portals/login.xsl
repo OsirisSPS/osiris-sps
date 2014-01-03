@@ -32,7 +32,7 @@
                 <img src="{system:resource-url('images/icons/48x48/permission.png')}"/>
               </td>
               <td>
-                <table class="os_table_data os_content_box">
+                <table class="os_table_data">
                   <tr>
                     <td class="os_label">
                       <xsl:value-of select="lang:text('portal.pages.login.username')"/>

@@ -72,7 +72,6 @@
           </div>
         </xsl:if>
         <div data-os-tabType="body">
-          <div class="os_content">
             <xsl:choose>
               <xsl:when test="object">
                 <xsl:apply-templates select="object" mode="assistant"/>
@@ -84,7 +83,6 @@
                       <xsl:value-of select="lang:text('assistant.informations.page')"/>
                     </b>
                   </legend>
-                  <div class="os_content">
                     <div style="float:right;">
                       <img src="{system:resource-url('images/objects/special_page.png')}"/>
                     </div>
@@ -112,7 +110,7 @@
                     </div>
                     <div style="clear:both"/>
 
-                  </div>
+                  
                 </fieldset> 
               </xsl:otherwise>
             </xsl:choose>      
@@ -162,12 +160,11 @@
               <xsl:with-param name="call" select="@more_href"/>
             </xsl:call-template>
             
-          </div>
+          
           
         </div>
         
         <div data-os-tabType="body">
-          <div class="os_content">
             <table>
               <tr>
               	<xsl:variable name="start_text" select="lang:text('assistant.search')"/>
@@ -190,11 +187,10 @@
             <div id="assistant_search_results" style="overflow:auto;max-height:500px;">
               
             </div>
-          </div>          
+          
         </div>
         <xsl:if test="@guest = 'false'">
           <div data-os-tabType="body">
-            <div class="os_content">
               <fieldset>
                 <legend>
                   <xsl:value-of select="lang:text('assistant.pages.objects.title')"/>
@@ -205,7 +201,9 @@
                       <xsl:apply-templates select="objects/object" mode="row-tech"/>
                     </xsl:when>
                     <xsl:otherwise>
-                      <xsl:value-of select="lang:text('assistant.pages.objects.none')"/>
+											<div class="os_message_nodata">
+												<xsl:value-of select="lang:text('assistant.pages.objects.none')"/>
+											</div>
                     </xsl:otherwise>
                   </xsl:choose>
                 </div>
@@ -230,16 +228,16 @@
                   </span>
                 </a>
               </div>
-            </div>
+            
           </div>
           <div data-os-tabType="body">
-            <div class="os_content">
+            
               <xsl:value-of select="$notes" disable-output-escaping="yes"/>
               <textarea id="assistantNotes" class="os_assistant_notes" onchange="javascript:Osiris.Assistant.notesChange();"></textarea>
               <div class="os_assistant_notes_warning">                
                 <xsl:value-of select="lang:text('assistant.notes.warning')"/>
               </div>
-            </div>
+            
           </div>
         </xsl:if>
       </div>      
