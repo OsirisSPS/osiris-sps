@@ -537,7 +537,7 @@ exposed_classes =  {
 				   "HttpData" : ExposedClass("httpdata.h"), 
 				   #"HttpDirectoryCallback" : ExposedClass("httpdirectorycallback.h"), #ErrorC: error C2091: function returns function
 				   #"HttpEnumeratedDirectoryCallback" : ExposedClass("httpenumerateddirectorycallback.h"), #ErrorC: error C2091: function returns function
-				   "HttpParser" : ExposedClass("httpparser.h"), 
+				   "HttpParser" : ExposedClass("httpparser.h", ["version.h"]),
 				   "HttpPath" : ExposedClass("httppath.h"),
 				   "HttpPhysicalDirectory" : ExposedClass("httpphysicaldirectory.h"),
 				   "HttpPostParam" : ExposedClass("httppostparam.h"),
@@ -681,7 +681,7 @@ exposed_classes =  {
 				   "IdeSessionPortal" : ExposedClass("idesessionportal.h"),
 				   "IdeSkin" : ExposedClass("ideskin.h"),
 				   "IdeSkinSimple" : ExposedClass("ideskinsimple.h"),
-				   "IdeSystem" : ExposedClass("idesystem.h", ["ideskin.h", "ihttpserver.h"]), "DynamicSingleton<osiris::IdeSystem>" : ExposedClass(),
+				   "IdeSystem" : ExposedClass("idesystem.h", ["iidepage.h", "ideskin.h", "ihttpserver.h", ]), "DynamicSingleton<osiris::IdeSystem>" : ExposedClass(),
 				   "IdeTableQuery" : ExposedClass("idetablequery.h"),
 				   "IdeVoteEditor" : ExposedClass("idevoteeditor.h"),
 				   "IdeXSLResolver" : ExposedClass("idexslresolver.h"),				   				   				   
@@ -704,7 +704,7 @@ exposed_classes =  {
 				   "MainAddonsJob" : ExposedClass("mainaddonsjob.h"),				   
 				   #"ObjectID" : ExposedClass("objectsobjectid.h"),				   
 				   "Options" : ExposedClass("options.h", [], customizeOptions), "StaticSingleton<osiris::Options, true>" : ExposedClass(),				   
-				   "Portal" : ExposedClass("portalsportal.h", ["portalspeersmanager.h", "ids.h", "portalsportaloptions.h", "reputationsmanager.h"]),
+				   "Portal" : ExposedClass("portalsportal.h", ["ids.h", "objectsuser.h", "portalsoptionsshared.h", "portalspeersmanager.h", "portalsportaloptions.h", "reputationsmanager.h"]),
 				   #"PortalsExporterJob" : ExposedClass("portalsexporterjob.h"), #Error: Strange, seem to work, but under Linux ICU throw an exception about this.
 				   "PortalsImporterJob" : ExposedClass("portalsimporterjob.h"),
 				   #"PortalID" : ExposedClass("portalsportalid.h"),

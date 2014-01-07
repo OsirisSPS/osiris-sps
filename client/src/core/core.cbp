@@ -8,7 +8,7 @@
 		<Build>
 			<Target title="debug linux-i386">
 				<Option platforms="Unix;" />
-				<Option output="../../bin/linux/i386/gcc/debug/libcore" prefix_auto="1" extension_auto="1" />
+				<Option output="../../bin/linux/i386/gcc/debug/core" prefix_auto="1" extension_auto="1" />
 				<Option object_output="../../obj/linux/i386/gcc/core/debug" />
 				<Option type="3" />
 				<Option compiler="gcc" />
@@ -51,7 +51,7 @@
 			</Target>
 			<Target title="release linux-i386">
 				<Option platforms="Unix;" />
-				<Option output="../../bin/linux/i386/gcc/release/libcore" prefix_auto="1" extension_auto="1" />
+				<Option output="../../bin/linux/i386/gcc/release/core" prefix_auto="1" extension_auto="1" />
 				<Option object_output="../../obj/linux/i386/gcc/core/release" />
 				<Option type="3" />
 				<Option compiler="gcc" />
@@ -95,7 +95,7 @@
 			</Target>
 			<Target title="debug mac-x86_64">
 				<Option platforms="Mac;" />
-				<Option output="../../bin/macosx/x86_64/gcc/debug/Osiris.app/Contents/MacOS/libcore" prefix_auto="1" extension_auto="1" />
+				<Option output="../../bin/macosx/x86_64/gcc/debug/Osiris.app/Contents/MacOS/core" prefix_auto="1" extension_auto="1" />
 				<Option object_output="../../obj/macosx/x86_64/gcc/core/debug" />
 				<Option type="3" />
 				<Option compiler="gcc" />
@@ -141,7 +141,7 @@
 			</Target>
 			<Target title="release mac-x86_64">
 				<Option platforms="Mac;" />
-				<Option output="../../bin/macosx/x86_64/gcc/release/Osiris.app/Contents/MacOS/libcore" prefix_auto="1" extension_auto="1" />
+				<Option output="../../bin/macosx/x86_64/gcc/release/Osiris.app/Contents/MacOS/core" prefix_auto="1" extension_auto="1" />
 				<Option object_output="../../obj/macosx/x86_64/gcc/core/release" />
 				<Option type="3" />
 				<Option compiler="gcc" />
@@ -188,7 +188,7 @@
 			</Target>
 			<Target title="debug linux-x86_64">
 				<Option platforms="Unix;" />
-				<Option output="../../bin/linux/x86_64/gcc/debug/libcore" prefix_auto="1" extension_auto="1" />
+				<Option output="../../bin/linux/x86_64/gcc/debug/core" prefix_auto="1" extension_auto="1" />
 				<Option object_output="../../obj/linux/x86_64/gcc/core/debug" />
 				<Option type="3" />
 				<Option compiler="gcc" />
@@ -230,7 +230,7 @@
 			</Target>
 			<Target title="release linux-x86_64">
 				<Option platforms="Unix;" />
-				<Option output="../../bin/linux/x86_64/gcc/release/libcore" prefix_auto="1" extension_auto="1" />
+				<Option output="../../bin/linux/x86_64/gcc/release/core" prefix_auto="1" extension_auto="1" />
 				<Option object_output="../../obj/linux/x86_64/gcc/core/release" />
 				<Option type="3" />
 				<Option compiler="gcc" />
@@ -283,7 +283,6 @@
 		<Unit filename="base/string.cpp" />
 		<Unit filename="base/string.h" />
 		<Unit filename="basicallocator.h" />
-		<Unit filename="boost.cpp" />
 		<Unit filename="boost.h" />
 		<Unit filename="boostregex.h" />
 		<Unit filename="boostthread.h" />

@@ -86,7 +86,7 @@ public:
 	String getDataPath() const;
 	String getSharePath() const;
 
-	inline const int getKnownUpgradableCounter() const;
+	inline int getKnownUpgradableCounter() const;
 	inline void setKnownUpgradableCounter(int v);
 	
 // Operations
@@ -157,7 +157,7 @@ inline const ExtensionsSystem::Components & ExtensionsSystem::getComponents() co
 inline const ExtensionsSystem::Modules & ExtensionsSystem::getModules() const { return m_modules; }
 inline const ExtensionsSystem::Extensions & ExtensionsSystem::getExtensions() const { return m_extensions; }
 
-inline const int ExtensionsSystem::getKnownUpgradableCounter() const { return m_knownUpgradableCounter; }
+inline int ExtensionsSystem::getKnownUpgradableCounter() const { return m_knownUpgradableCounter; }
 inline void ExtensionsSystem::setKnownUpgradableCounter(int v) { m_knownUpgradableCounter = v; }
 
 //////////////////////////////////////////////////////////////////////

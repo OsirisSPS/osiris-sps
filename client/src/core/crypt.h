@@ -59,6 +59,7 @@ enum RsaType
 {
 	rsaType1024					= 1024,
 	rsaType2048					= 2048,
+	rsaType4096					= 4096,
 };
 
 enum HashType

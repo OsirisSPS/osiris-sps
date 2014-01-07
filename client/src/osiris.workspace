@@ -27,23 +27,23 @@
 			<Depends filename="engine/engine.cbp" />
 		</Project>
 		<Project filename="console/console.cbp">
+			<Depends filename="plugins/components/components.cbp" />
 			<Depends filename="core/core.cbp" />
 			<Depends filename="db/db.cbp" />
+			<Depends filename="plugins/dht/dht.cbp" />
 			<Depends filename="engine/engine.cbp" />
 			<Depends filename="http/http.cbp" />
 			<Depends filename="irc/irc.cbp" />
 			<Depends filename="lang/lang.cbp" />
 			<Depends filename="net/net.cbp" />
+			<Depends filename="plugins/pluginsample/pluginsample.cbp" />
+			<Depends filename="plugins/python/python.cbp" />
 			<Depends filename="sdk/sdk.cbp" />
+			<Depends filename="plugins/sqlite/sqlite.cbp" />
+			<Depends filename="plugins/translations/translations.cbp" />
 			<Depends filename="upnp/upnp.cbp" />
 			<Depends filename="web/web.cbp" />
 			<Depends filename="xml/xml.cbp" />
-			<Depends filename="plugins/components/components.cbp" />
-			<Depends filename="plugins/dht/dht.cbp" />
-			<Depends filename="plugins/pluginsample/pluginsample.cbp" />
-			<Depends filename="plugins/sqlite/sqlite.cbp" />
-			<Depends filename="plugins/translations/translations.cbp" />
-			<Depends filename="plugins/python/python.cbp" />
 		</Project>
 		<Project filename="core/core.cbp" />
 		<Project filename="db/db.cbp" />

@@ -62,7 +62,7 @@ struct ExtensionsSystem_wrapper : ::osiris::ExtensionsSystem, ::osiris::PythonWr
 
     static boost::python::object getKnownUpgradableCounter( ::osiris::ExtensionsSystem const & inst ){
         ::osiris::PythonThreadSaver __pythreadSaver;
-        int const result = inst.getKnownUpgradableCounter();
+        int result = inst.getKnownUpgradableCounter();
         __pythreadSaver.restore();
         return boost::python::object( result );
     }
@@ -737,12 +737,12 @@ void register_ExtensionsSystem_class(){
         }
         { //property "knownUpgradableCounter"[fget=::osiris::ExtensionsSystem::getKnownUpgradableCounter]
         
-            typedef int const ( ::osiris::ExtensionsSystem::*fget )(  ) const;
+            typedef int ( ::osiris::ExtensionsSystem::*fget )(  ) const;
             
             ExtensionsSystem_exposer.add_property( 
                 "knownUpgradableCounter"
                 , fget( &::osiris::ExtensionsSystem::getKnownUpgradableCounter )
-                , "get property, built on top of \"int const osiris::ExtensionsSystem::getKnownUpgradableCounter() const [member function]\"" );
+                , "get property, built on top of \"int osiris::ExtensionsSystem::getKnownUpgradableCounter() const [member function]\"" );
         
         }
         { //property "name"[fget=::osiris::ExtensionsSystem::getName]

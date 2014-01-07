@@ -132,7 +132,7 @@ SkinnedWindow<T, R>::SkinnedWindow(P1 p1, P2 p2, P3 p3, P4 p4, P5 p5, P6 p6, P7 
 template <typename T, typename R>
 SkinnedWindow<T, R>::~SkinnedWindow()
 {
-	RemoveEventHandler(m_renderer);
+	this->RemoveEventHandler(m_renderer);
 
 	delete m_renderer;
 	m_renderer = nullptr;
@@ -143,7 +143,7 @@ void SkinnedWindow<T, R>::construct()
 {
 	m_renderer = new WindowRendererImpl(this);
 
-	PushEventHandler(m_renderer);
+	this->PushEventHandler(m_renderer);
 }
 
 template <typename T, typename R>

@@ -76,8 +76,7 @@
 					<Add library="libicui18n" />
 					<Add library="libicudata" />
 					<Add library="libboost_filesystem-gcc48-mt-d-1_54" />
-					<Add library="libarchives" />
-					<Add library="libwx_gtk2u-2.9" />
+					<Add library="libarchives" />					
 					<Add directory="../../dependencies/lib/linux/i386/gcc/debug" />
 					<Add directory="../../lib/linux/i386/gcc/debug" />
 					<Add directory="../../bin/linux/i386/gcc/debug" />
@@ -151,8 +150,7 @@
 					<Add library="libicui18n" />
 					<Add library="libicudata" />
 					<Add library="libboost_filesystem-gcc48-mt-1_54" />
-					<Add library="libarchives" />
-					<Add library="libwx_gtk2u-2.9" />
+					<Add library="libarchives" />					
 					<Add directory="../../dependencies/lib/linux/i386/gcc/release" />
 					<Add directory="../../lib/linux/i386/gcc/release" />
 					<Add directory="../../bin/linux/i386/gcc/release" />
@@ -334,8 +332,7 @@
 					<Add library="libicui18n" />
 					<Add library="libicudata" />
 					<Add library="libboost_filesystem-gcc48-mt-d-1_54" />
-					<Add library="libarchives" />
-					<Add library="libwx_gtk2u-2.9" />
+					<Add library="libarchives" />			
 					<Add directory="../../dependencies/lib/linux/x86_64/gcc/debug" />
 					<Add directory="../../lib/linux/x86_64/gcc/debug" />
 					<Add directory="../../bin/linux/x86_64/gcc/debug" />
@@ -408,7 +405,6 @@
 					<Add library="libicudata" />
 					<Add library="libboost_filesystem-gcc48-mt-1_54" />
 					<Add library="libarchives" />
-					<Add library="libwx_gtk2u-2.9" />
 					<Add directory="../../dependencies/lib/linux/x86_64/gcc/release" />
 					<Add directory="../../lib/linux/x86_64/gcc/release" />
 					<Add directory="../../bin/linux/x86_64/gcc/release" />

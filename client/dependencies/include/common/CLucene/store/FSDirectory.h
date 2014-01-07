@@ -89,7 +89,8 @@
     			DEFINE_MUTEX(*THIS_LOCK)
     			char path[CL_MAX_DIR]; //todo: this is only used for cloning, better to get information from the fhandle
     			SharedHandle();
-				~SharedHandle() throw(CLuceneError&);
+				// C++11 fix
+				~SharedHandle(); /*throw(CLuceneError&);*/
 			};
 			SharedHandle* handle;
 			int64_t _pos;

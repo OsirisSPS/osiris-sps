@@ -51,8 +51,8 @@ protected:
 
 // wxSkinWindow overrides
 protected:
-	virtual void SetLabel(const wxString &label);	
-	virtual wxSize DoGetBestSize() const;
+	virtual void SetLabel(const wxString &label) OS_OVERRIDE;
+	virtual wxSize DoGetBestSize() const OS_OVERRIDE;
 
 // Events
 private:
