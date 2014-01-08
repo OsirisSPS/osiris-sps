@@ -90,10 +90,10 @@ class Page(osiris.IPortalPage):
 			actionPeers.attributes.set("icon", "peers")
 			actionPeers.attributes.set("href", self.portal.getLink("peers"))
 		
-		actionInvite = nodeActions.nodes.add("action")
-		actionInvite.attributes.set("name", "invite")
-		actionInvite.attributes.set("icon", "invite")
-		actionInvite.attributes.set("href", self.portal.getLink("invite"))
+		#actionInvite = nodeActions.nodes.add("action")
+		#actionInvite.attributes.set("name", "invite")
+		#actionInvite.attributes.set("icon", "invite")
+		#actionInvite.attributes.set("href", self.portal.getLink("invite"))
 			
 		if( (self.getMcpMode()) and (self.getRequestSource() == osiris.IPage.rsOsiris) ):
 			actionACP = nodeActions.nodes.add("action")

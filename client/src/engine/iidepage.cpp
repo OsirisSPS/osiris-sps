@@ -663,7 +663,8 @@ void IPage::renderLinktags(HtmlWriter &writer)
 	style += "<style id=\"lesslib\" rel=\"stylesheet/less\">";
 	style += "@import url(\"/htdocs/css/default.less\");";	
 	//style += "@import url(\"/" + getSkin()->getID().getString() + "/css/skin.less\");";		
-	style += "@import url(\"" + getSkin()->getResourceUrl(_S("css/skin.less")).to_ascii() + "\");";		
+	style += "@import url(\"" + getSkin()->getResourceUrl(_S("css/options.less")).to_ascii() + "\");";		
+	style += "@import url(\"" + getSkin()->getResourceUrl(_S("css/custom.less")).to_ascii() + "\");";		
 	
 	style += "</style>";
 	writer.writeLine(style);

@@ -21,8 +21,7 @@
 	<xsl:param name="password"/>
 	<xsl:param name="sync"/>
 
-  <xsl:template match="/info">
-		<xsl:call-template name="dump_xml"/>
+  <xsl:template match="/info">		
     <xsl:choose>
       <xsl:when test="@mode = 'dialog'">
         <div title="{lang:text('portal.pages.info.title')}" data-os-otype="dialog" data-os-dialog-width="60%">
@@ -42,218 +41,251 @@
   </xsl:template>
 
   <xsl:template name="page">
+		<xsl:choose>
+			<xsl:when test="@action = 'home'">
+				<div style="clear:both;display:none" data-os-otype="tab" data-os-layout="left" data-os-storage="portal.acp">
+					<div data-os-place="below-tabs" style="padding-top:3em;width:400px;">
+						<xsl:call-template name="actions-row">
+							<xsl:with-param name="prefix" select="'portal.pages'"/>
+						</xsl:call-template>
 
-		<div style="clear:both;display:none" data-os-otype="tab" data-os-layout="left" data-os-storage="portal.acp">
-			<div data-os-place="below-tabs" style="padding-top:3em;width:400px;">
-					<xsl:call-template name="actions-row">
-						<xsl:with-param name="prefix" select="'portal.pages'"/>
-					</xsl:call-template>
-				
-			</div>
-			<div data-os-tabType="header">
-				<xsl:value-of select="lang:text('common.labels.overview')"/>
-			</div>
-			<div data-os-tabType="body">
-				<div class="os_padding">
-					<p>
-						<span class="os_title" style="font-size:1.3em" href="{@href}">
-							<xsl:value-of select="system:parse(@name, false(), false(), true())" disable-output-escaping="yes" />
-						</span>
-					</p>
-					<p>
-						<span class="os_description">
-							<xsl:value-of select="system:parse(@description, false(), false(), true())" disable-output-escaping="yes" />
-						</span>
-					</p>
-				</div>
-				<table class="os_table_properties">
-					<tr>
-						<td>
-							Align :
-						</td>
-						<td>
-							<xsl:value-of select="@nodesSameAlign"/>
-							<xsl:text> / </xsl:text>
-							<xsl:value-of select="@nodesSamePortalPov"/>
-						</td>
-					</tr>					
-					<tr>
-						<td>
-							Last object date :
-						</td>
-						<td>
-							<xsl:value-of select="date:userfriendly-datetime(@lastObjectDate)" />
-						</td>
-					</tr>
-					<tr>
-						<td>
-							Last exchange date :
-						</td>
-						<td>
-							<xsl:value-of select="date:userfriendly-datetime(@lastExchangeDate)" />
-						</td>
-					</tr>
-					<tr>
-						<td>
-							Last downloaded object date :
-						</td>
-						<td>
-							<xsl:value-of select="date:userfriendly-datetime(@lastDownloadedObjectDate)" />
-						</td>
-					</tr>
-					<tr>
-						<td>
-							Last uploaded object date :
-						</td>
-						<td>
-							<xsl:value-of select="date:userfriendly-datetime(@lastUploadedObjectDate)" />
-						</td>
-					</tr>
-					<tr>
-						<td>
-							Last optimization date :
-						</td>
-						<td>
-							<xsl:value-of select="date:userfriendly-datetime(@lastOptimizationDate)" />
-						</td>
-					</tr>					
-					
-				</table>
+					</div>
+					<div data-os-tabType="header">
+						<xsl:value-of select="lang:text('common.labels.overview')"/>
+					</div>
+					<div data-os-tabType="body">
+						<div class="os_padding">
+							<p>
+								<span class="os_title" style="font-size:1.3em" href="{@href}">
+									<xsl:value-of select="system:parse(@name, false(), false(), true())" disable-output-escaping="yes" />
+								</span>
+							</p>
+							<p>
+								<span class="os_description">
+									<xsl:value-of select="system:parse(@description, false(), false(), true())" disable-output-escaping="yes" />
+								</span>
+							</p>
+						</div>
+						<table class="os_table_properties">
+							<tr>
+								<td>
+									Align :
+								</td>
+								<td>
+									<xsl:value-of select="@nodesSameAlign"/>
+									<xsl:text> / </xsl:text>
+									<xsl:value-of select="@nodesSamePortalPov"/>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									Last object date :
+								</td>
+								<td>
+									<xsl:value-of select="date:userfriendly-datetime(@lastObjectDate)" />
+								</td>
+							</tr>
+							<tr>
+								<td>
+									Last exchange date :
+								</td>
+								<td>
+									<xsl:value-of select="date:userfriendly-datetime(@lastExchangeDate)" />
+								</td>
+							</tr>
+							<tr>
+								<td>
+									Last downloaded object date :
+								</td>
+								<td>
+									<xsl:value-of select="date:userfriendly-datetime(@lastDownloadedObjectDate)" />
+								</td>
+							</tr>
+							<tr>
+								<td>
+									Last uploaded object date :
+								</td>
+								<td>
+									<xsl:value-of select="date:userfriendly-datetime(@lastUploadedObjectDate)" />
+								</td>
+							</tr>
+							<tr>
+								<td>
+									Last optimization date :
+								</td>
+								<td>
+									<xsl:value-of select="date:userfriendly-datetime(@lastOptimizationDate)" />
+								</td>
+							</tr>
 
-				<div class="os_padding">
-					<h2>Isis Subscriptions</h2>
-				</div>
+						</table>
 
-				<xsl:for-each select="isis/isis">					
-					<table class="os_table_properties">						
-						<tr>
-							<td>
-								<xsl:value-of select="'Name'"/>
-								<xsl:text>: </xsl:text>
-							</td>
-							<td>
-								<xsl:value-of select="@name"/>
-							</td>
-						</tr>
-						<tr>
-							<td>
-								<xsl:value-of select="'Url'"/>
-								<xsl:text>: </xsl:text>
-							</td>
-							<td>
-								<xsl:value-of select="@url"/>
-							</td>
-						</tr>
-						<tr>
-							<td>
-								<xsl:value-of select="'Enabled'"/>
-								<xsl:text>: </xsl:text>
-							</td>
-							<td>
-								<xsl:call-template name="boolean-icon">
-									<xsl:with-param name="value" select="@enabled = '1'"/>
+						<div class="os_padding">
+							<h2>Isis Subscriptions</h2>
+						</div>
+						<div class="os_commands_right">
+							<a class="os_button" href="{isis/@add_href}">
+								<img src="/htdocs/images/icons/16x16/edit.png"/>
+								Add
+							</a>
+						</div>
+
+						<xsl:for-each select="isis/isis">
+							<table class="os_table_properties">
+								<tr>
+									<td>
+										<xsl:value-of select="'Name'"/>
+										<xsl:text>: </xsl:text>
+									</td>
+									<td>
+										<xsl:value-of select="@name"/>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<xsl:value-of select="'Url'"/>
+										<xsl:text>: </xsl:text>
+									</td>
+									<td>
+										<xsl:value-of select="@url"/>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<xsl:value-of select="'Enabled'"/>
+										<xsl:text>: </xsl:text>
+									</td>
+									<td>
+										<xsl:call-template name="boolean-icon">
+											<xsl:with-param name="value" select="@enabled = '1'"/>
+										</xsl:call-template>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<xsl:value-of select="'Last Event'"/>
+										<xsl:text>: </xsl:text>
+									</td>
+									<td>
+										<xsl:value-of select="@last_event"/>
+									</td>
+								</tr>
+								<tr>
+									<td colspan="2" class="os_commands_center">
+										<a class="os_button" href="{@edit_href}">
+											<img src="/htdocs/images/icons/16x16/edit.png"/>
+											Edit
+										</a>
+										<a class="os_button" href="{@remove_href}">
+											<img src="/htdocs/images/icons/16x16/remove.png"/>
+											Remove
+										</a>
+									</td>
+								</tr>
+								<tr>
+									<td colspan="2" class="os_separator"/>
+								</tr>
+							</table>
+						</xsl:for-each>
+					</div>
+
+					<div data-os-tabType="header">
+						<xsl:value-of select="lang:text('portal.pages.info.invite')"/>
+					</div>
+					<div data-os-tabType="body">
+						<xsl:call-template name="help-box">
+							<xsl:with-param name="text" select="lang:text('portal.pages.info.invite.help')"/>
+						</xsl:call-template>
+						<xsl:call-template name="action-row">
+							<xsl:with-param name="prefix" select="'portal.pages.info.invite'"/>
+							<xsl:with-param name="icon" select="'export'"/>
+							<xsl:with-param name="name" select="'export_link'"/>
+							<xsl:with-param name="href" select="@export_href"/>
+						</xsl:call-template>
+						<xsl:call-template name="action-row">
+							<xsl:with-param name="prefix" select="'portal.pages.info.invite'"/>
+							<xsl:with-param name="icon" select="'invite'"/>
+							<xsl:with-param name="name" select="'osiris_invite_link'"/>
+							<xsl:with-param name="href">
+								<xsl:call-template name="copy-paste-link">
+									<xsl:with-param name="text" select="@subscribe_href"/>
 								</xsl:call-template>
-							</td>
-						</tr>
-						<tr>
-							<td colspan="2" class="os_separator"/>
-						</tr>
-					</table>
-				</xsl:for-each>
-			</div>
-
-			<div data-os-tabType="header">
-				<xsl:value-of select="lang:text('portal.pages.info.invite')"/>
-			</div>
-			<div data-os-tabType="body">
-				<xsl:call-template name="help-box">
-					<xsl:with-param name="text" select="lang:text('portal.pages.info.invite.help')"/>
-				</xsl:call-template>
-				<xsl:call-template name="action-row">
-					<xsl:with-param name="prefix" select="'portal.pages.info.invite'"/>
-					<xsl:with-param name="icon" select="'export'"/>
-					<xsl:with-param name="name" select="'export_link'"/>
-					<xsl:with-param name="href" select="@export_href"/>
-				</xsl:call-template>
-				<xsl:call-template name="action-row">
-					<xsl:with-param name="prefix" select="'portal.pages.info.invite'"/>
-					<xsl:with-param name="icon" select="'invite'"/>
-					<xsl:with-param name="name" select="'osiris_invite_link'"/>
-					<xsl:with-param name="href">
-						<xsl:call-template name="copy-paste-link">
-							<xsl:with-param name="text" select="@subscribe_href"/>
+							</xsl:with-param>
 						</xsl:call-template>
-					</xsl:with-param>
-				</xsl:call-template>
-				<xsl:call-template name="action-row">
-					<xsl:with-param name="prefix" select="'portal.pages.info.invite'"/>
-					<xsl:with-param name="icon" select="'invite'"/>
-					<xsl:with-param name="name" select="'isis_invite_link'"/>
-					<xsl:with-param name="href">
-						<xsl:call-template name="copy-paste-link">
-							<xsl:with-param name="text" select="@isis_subscribe_href"/>
+						<xsl:call-template name="action-row">
+							<xsl:with-param name="prefix" select="'portal.pages.info.invite'"/>
+							<xsl:with-param name="icon" select="'invite'"/>
+							<xsl:with-param name="name" select="'isis_invite_link'"/>
+							<xsl:with-param name="href">
+								<xsl:call-template name="copy-paste-link">
+									<xsl:with-param name="text" select="@isis_subscribe_href"/>
+								</xsl:call-template>
+							</xsl:with-param>
 						</xsl:call-template>
-					</xsl:with-param>
-				</xsl:call-template>
-			</div>
+					</div>
 
-			<div data-os-tabType="header">
-				<xsl:value-of select="lang:text('portal.pages.info.settings')"/>
-			</div>
-			<div data-os-tabType="body">
-				<div class="os_commands_right">
-					<xsl:value-of select="$save" disable-output-escaping="yes"/>
+					<div data-os-tabType="header">
+						<xsl:value-of select="lang:text('portal.pages.info.settings')"/>
+					</div>
+					<div data-os-tabType="body">
+						<div class="os_commands_right">
+							<xsl:value-of select="$save" disable-output-escaping="yes"/>
+						</div>
+						<table class="os_table_properties">
+							<tr>
+								<td>
+									<div>
+										<xsl:value-of select="lang:text('portal.pages.info.settings.exchange.title')"/>
+										<xsl:text>: </xsl:text>
+									</div>
+									<div class="os_description">
+										<xsl:value-of select="lang:text('portal.pages.info.settings.exchange.description')"/>
+									</div>
+								</td>
+								<td>
+									<xsl:value-of select="$exchange" disable-output-escaping="yes"/>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<div>
+										<xsl:value-of select="lang:text('portal.pages.info.settings.password.title')"/>
+										<xsl:text>: </xsl:text>
+									</div>
+									<div class="os_description">
+										<xsl:value-of select="lang:text('portal.pages.info.settings.password.description')"/>
+									</div>
+								</td>
+								<td>
+									<xsl:value-of select="$password" disable-output-escaping="yes"/>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<div>
+										<xsl:value-of select="lang:text('portal.pages.info.settings.sync.title')"/>
+										<xsl:text>: </xsl:text>
+									</div>
+									<div class="os_description">
+										<xsl:value-of select="lang:text('portal.pages.info.settings.sync.description')"/>
+									</div>
+								</td>
+								<td>
+									<xsl:value-of select="$sync" disable-output-escaping="yes"/>
+									<br/>
+									<xsl:value-of select="'Last object - Insert Date'"/>
+									<xsl:text>: </xsl:text>
+									<xsl:value-of select="date:userfriendly-datetime(@lastSyncDate)" />
+								</td>
+							</tr>
+						</table>
+					</div>
 				</div>
-				<table class="os_table_properties">
-					<tr>
-						<td>
-							<div>
-								<xsl:value-of select="lang:text('portal.pages.info.settings.exchange.title')"/>
-								<xsl:text>: </xsl:text>
-							</div>
-							<div class="os_description">
-								<xsl:value-of select="lang:text('portal.pages.info.settings.exchange.description')"/>
-							</div>
-						</td>
-						<td>
-							<xsl:value-of select="$exchange" disable-output-escaping="yes"/>
-						</td>
-					</tr>
-					<tr>
-						<td>
-							<div>
-								<xsl:value-of select="lang:text('portal.pages.info.settings.password.title')"/>
-								<xsl:text>: </xsl:text>
-							</div>
-							<div class="os_description">
-								<xsl:value-of select="lang:text('portal.pages.info.settings.password.description')"/>
-							</div>
-						</td>
-						<td>
-							<xsl:value-of select="$password" disable-output-escaping="yes"/>
-						</td>
-					</tr>
-					<tr>
-						<td>
-							<div>
-								<xsl:value-of select="lang:text('portal.pages.info.settings.sync.title')"/>
-								<xsl:text>: </xsl:text>
-							</div>
-							<div class="os_description">
-								<xsl:value-of select="lang:text('portal.pages.info.settings.sync.description')"/>
-							</div>							
-						</td>
-						<td>
-							<xsl:value-of select="$sync" disable-output-escaping="yes"/>
-							<br/>
-							<xsl:value-of select="'Last object - Insert Date'"/>
-							<xsl:text>: </xsl:text>
-							<xsl:value-of select="date:userfriendly-datetime(@lastSyncDate)" />
-						</td>
-					</tr>
-				</table>
-			</div>
-		</div>
+			</xsl:when>
+			<xsl:when test="(@action = 'add') or (@action = 'edit')">
+				
+			</xsl:when>
+		</xsl:choose>
 	 
   </xsl:template>
 

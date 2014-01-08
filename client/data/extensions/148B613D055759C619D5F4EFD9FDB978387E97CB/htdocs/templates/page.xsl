@@ -69,7 +69,7 @@
                   </xsl:if>
 
                   <xsl:if test="$area_top">
-                    <div class="os_area_top" style="padding-top:5px;">
+                    <div class="os_area_top" style="">
                       <xsl:value-of select="$area_top" disable-output-escaping="yes"/>
                     </div>
                     <!--<div class="os_clear"/>-->
@@ -149,16 +149,15 @@
                 </div>
 
                 <a id="bottom" href="#bottom" accesskey="z" title="{lang:text('accesskey.bottom')}"></a>
-
-                <xsl:value-of select="$assistant" disable-output-escaping="yes"/>
+								
+                <xsl:value-of select="$assistant" disable-output-escaping="yes"/>								
 
                 <xsl:if test="@isis">
                   <!--<xsl:value-of select="$isis_area_systembar" disable-output-escaping="yes"/>-->
                   <xsl:text disable-output-escaping="yes"><![CDATA[
                   <!--{__Isis_Area_Footer__}-->
                   ]]></xsl:text>
-                </xsl:if>
-
+                </xsl:if>								
 
               </div>
             </div>
@@ -277,8 +276,7 @@
                   -->
                   <xsl:text> ) </xsl:text>
                 </xsl:when>
-                <xsl:otherwise>
-                  Guest
+                <xsl:otherwise>                  
                   <!--
                   <xsl:if test="user/actions/action[@name='login']">
                     <a href="{user/actions/action[@name='login']/@href}">
@@ -286,18 +284,20 @@
                     </a>
                   </xsl:if>
                   -->
-                  <xsl:if test="user/actions/action[@name='register']">
-                    <!--
-                    <xsl:text> </xsl:text>
-                    <xsl:value-of select="lang:text('common.or')"/>
-                    <xsl:text> </xsl:text>
-                    -->
-                    <xsl:text> ( </xsl:text>
-                    <a href="{user/actions/action[@name='register']/@href}">
-                      <xsl:value-of select="lang:text('portal.userbox.actions.register')"/>
-                    </a>
-                    <xsl:text> ) </xsl:text>
-                  </xsl:if>
+									<xsl:choose>										
+										<xsl:when test="user/actions/action[@name='register']">
+											Guest
+											<xsl:text> ( </xsl:text>
+											<a href="{user/actions/action[@name='register']/@href}">
+												<xsl:value-of select="lang:text('portal.userbox.actions.register')"/>
+											</a>
+											<xsl:text> ) </xsl:text>
+										</xsl:when>
+										<xsl:otherwise>
+											<xsl:value-of select="lang:text('portal.userbox.actions.readonly')"/>											
+										</xsl:otherwise>
+									</xsl:choose>
+                  
                 </xsl:otherwise>
               </xsl:choose>
 

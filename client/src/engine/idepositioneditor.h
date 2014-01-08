@@ -46,6 +46,9 @@ public:
 	double getPosition() const;
 	void setPosition(shared_ptr<EntitiesEntity> parent, const double position);
 
+	inline bool getFull() const;
+	inline void setFull(const bool full);
+
 // IHtmlControl overrides
 protected:
 	virtual void onInit();
@@ -53,9 +56,13 @@ protected:
 protected:
 	shared_ptr<HtmlComboBox> m_positions;
 
+	bool m_full;
 	double m_currentPosition;
 	shared_ptr<EntitiesEntity> m_parent;
 };
+
+inline bool IdePositionEditor::getFull() const { return m_full; }
+inline void IdePositionEditor::setFull(const bool full) { m_full = full; }
 
 //////////////////////////////////////////////////////////////////////
 

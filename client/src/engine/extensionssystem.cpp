@@ -447,6 +447,7 @@ void ExtensionsSystem::installShare(bool recovery)
 
 		bool required = false;
 		if( (path == OS_EXTENSIONS_CORE) || // Core
+			(path == OS_EXTENSIONS_SKINS) || // Skins
 			(path == OS_EXTENSIONS_ADVERTISING) || // Advertising
 			(path == OS_EXTENSIONS_HTMLSNIPPET) || // Html Snippet
 			(path == OS_EXTENSIONS_LANGUAGE_ENGLISH) || // English

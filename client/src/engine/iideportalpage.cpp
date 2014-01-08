@@ -509,10 +509,13 @@ void IPortalPage::onRenderDocument(shared_ptr<XMLNode> nodeRoot)
 				}
 				else
 				{
-					shared_ptr<XMLNode> nodeActionRegister = userActions->addChild(_S("action"));
-					nodeActionRegister->setAttributeString(_S("name"), _S("register"));
-					nodeActionRegister->setAttributeString(_S("href"), getEventCommand(EVENT_ONPORTALLOGIN));
-					nodeActionRegister->setAttributeString(_S("accesskey"), _S("l"));
+					if(getPortal()->getOptionsShared()->getAuthorsReputationThreshold() <= rtNotNegative)
+					{
+						shared_ptr<XMLNode> nodeActionRegister = userActions->addChild(_S("action"));
+						nodeActionRegister->setAttributeString(_S("name"), _S("register"));
+						nodeActionRegister->setAttributeString(_S("href"), getEventCommand(EVENT_ONPORTALLOGIN));
+						nodeActionRegister->setAttributeString(_S("accesskey"), _S("l"));
+					}
 				}				
 			}
 			else
@@ -795,7 +798,9 @@ void IPortalPage::renderLinktags(HtmlWriter &writer)
 	style += "<style id=\"lesslib\" rel=\"stylesheet/less\">";
 	style += "@import url(\"/htdocs/css/default.less\");";	
 	//style += "@import url(\"/" + getSkin()->getID().getString() + "/css/skin.less\");";		
-	style += "@import url(\"" + getSkin()->getResourceUrl(_S("css/skin.less")).to_ascii() + "\");";		
+	//style += "@import url(\"" + getSkin()->getResourceUrl(_S("css/skin.less")).to_ascii() + "\");";		
+	style += "@import url(\"" + getSkin()->getResourceUrl(_S("css/options.less")).to_ascii() + "\");";		
+	style += "@import url(\"" + getSkin()->getResourceUrl(_S("css/custom.less")).to_ascii() + "\");";		
 	style += getPortal()->getOptionsShared()->getLayoutSkinParams().to_ascii();
 	style += "</style>";
 	writer.writeLine(style);

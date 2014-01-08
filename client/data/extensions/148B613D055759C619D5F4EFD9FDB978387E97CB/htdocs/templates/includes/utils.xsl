@@ -146,7 +146,7 @@
       </xsl:when>
       <xsl:otherwise>
         <div class="os_progressbar_act_back">
-          <div class="os_progressbar_act" style="width:{$perc*2.2}px">
+          <div class="os_progressbar_act" style="width:{$perc}%">
             <div class="os_progressbar_text">
               <xsl:if test="$title != ''">
                 <xsl:value-of select="$title"/>

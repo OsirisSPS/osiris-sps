@@ -108,13 +108,13 @@ shared_ptr<ObjectsUser> IdeAccount::loadUser(shared_ptr<IPortalDatabase> databas
 }
 */
 
-bool IdeAccount::getDeleted() const
+bool IdeAccount::getDeleted() const // TOCLEAN
 {
 	OS_LOCK(m_cs);
 	return m_deleted;
 }
 
-void IdeAccount::setDeleted(bool deleted)
+void IdeAccount::setDeleted(bool deleted) // TOCLEAN
 {
 	OS_LOCK(m_cs);
 	m_deleted = deleted;

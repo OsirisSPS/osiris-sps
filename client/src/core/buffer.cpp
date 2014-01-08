@@ -157,6 +157,8 @@ bool Buffer::readString(String &str) const
 
 	if(size > 0)
 	{
+		// Razor: From UCS to UTF8
+		/*
 		if(size > getAvailable())
 			return false;	// Evita di allocare inutilmente un buffer se la dimensione va oltre quella disponibile
 
@@ -172,6 +174,21 @@ bool Buffer::readString(String &str) const
 
 		//	Nota: se si passa anche il numero di caratteri tenere presente della dimensione di tchar rispetto a byte
 		str.assign(reinterpret_cast<const uchar *>(buffer.get()));
+		*/
+
+		
+
+		uint32 buffer_size = size + 1*sizeof(char);
+
+		if(buffer_size>50000000)
+			buffer_size = 123;
+
+		scoped_array<achar, os_deallocate_t> buffer(OS_ALLOCATE_T(achar, buffer_size));
+		OS_ZEROMEMORY(buffer.get(), buffer_size);
+		if(read(buffer.get(), size) != size)
+			return false;
+
+		str.from_utf8(buffer.get());
 	}
 	else
 	{
@@ -183,11 +200,21 @@ bool Buffer::readString(String &str) const
 
 bool Buffer::writeString(const String &str)
 {
+	// Razor: From UCS to UTF8
+	/*
 	uint32 size = static_cast<uint32>(str.buffer_size());
 	if(writeCount(size) == false)
 		return false;
 
 	return write(str.buffer(), size) == size;
+	*/
+
+	std::string s = str.to_utf8();
+	uint32 size = static_cast<uint32>(s.length());
+	if(writeCount(size) == false)
+		return false;
+
+	return write(s.data(), size) == size;
 }
 
 bool Buffer::writeString(const uchar *str)

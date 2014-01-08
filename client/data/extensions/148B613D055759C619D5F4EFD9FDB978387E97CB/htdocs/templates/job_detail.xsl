@@ -47,7 +47,9 @@
       </div>
 
       <xsl:if test="@result">
-        <xsl:value-of select="system:parse(@result)" disable-output-escaping="yes"/>        
+				<div class="os_padding">
+					<xsl:value-of select="system:parse(@result)" disable-output-escaping="yes"/>
+				</div>
       </xsl:if>
 
 

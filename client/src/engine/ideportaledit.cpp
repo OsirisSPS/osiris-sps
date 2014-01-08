@@ -741,18 +741,13 @@ void Edit::onMove(IEvent *e)
 	StringMap &selectedObjects = getSessionAccount()->getSessionPortal(getPortal())->getSelectedObjects();
 
 	try
-	{
-		/*
+	{		
 		shared_ptr<EntitiesEntity> movedEntity = getPortal()->getEntity(getDatabase(), movedId);
 		if(movedEntity == nullptr)
 			OS_EXCEPTION("Invalid entity");
 
-		
-		ObjectID newID;
-		getDatabase()->__createRevisionMove(movedEntity->getCurrent(), id.toUTF16(), newID, getLoggedUser()->getUserID().toUTF16(), getLoggedUser()->getPrivateKey());
-		*/
-
-		shared_ptr<ObjectsIRevisionable> obj = objects_revisionable_cast(getPortal()->getObject(getDatabase(), movedId));
+				
+		shared_ptr<ObjectsIRevisionable> obj = objects_revisionable_cast(movedEntity->getCurrent());
 		obj->changeToRevision();
 		obj->parent = m_entity->getCurrent()->getEntityID();
 

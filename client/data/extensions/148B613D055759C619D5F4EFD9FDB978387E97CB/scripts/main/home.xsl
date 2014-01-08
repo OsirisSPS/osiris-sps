@@ -56,7 +56,9 @@
 							</xsl:if>
 						</xsl:when>
 						<xsl:otherwise>
+							<!--
 							<div data-os-url="/main/addons?act=upgradable&amp;mode=counter"/>
+							-->
 						</xsl:otherwise>
 					</xsl:choose>
 				</div>
@@ -69,7 +71,7 @@
 
       </div>
 
-      <table style="width:100%">        
+      <table style="clear:both;width:100%">        
           <tr>						
             <td>
 							<xsl:if test="//@session_user != ''">
@@ -188,8 +190,7 @@
         </xsl:call-template>
         </div>
       </div>
-			-->
-			<div class="box-error">glagla</div>
+			-->			
       <div style="clear:both;" class="os_home_footer">        
         <span class="os_label">
           <xsl:value-of select="lang:text('main.pages.home.current_time')"/>

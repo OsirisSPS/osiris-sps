@@ -245,7 +245,7 @@ shared_ptr<IBackgroundJob::Details> PortalsImporterJob::getDetails() const
 	if(portal != nullptr && result != nullptr)
 	{
 		// TOTRANSLATE
-		String msg = _S("[center][url=\"{@url}\"]Enter in portal[/url][/center][br/][br/][sub]Objects: [b]{@total}[/b], Imported: [b]{@imported}[/b], Skipped: [b]{@skipped}[/b], Invalid: [b]{@invalid}[/b][/sub]");
+		String msg = _S("[center][a class=\"os_button\" href=\"{@url}\"]Enter in portal[/a][br/][sub]Objects: [b]{@total}[/b], Imported: [b]{@imported}[/b], Skipped: [b]{@skipped}[/b], Invalid: [b]{@invalid}[/b][/sub][/center]");
 
 		msg.replace_all(_S("{@url}"), portal->getLink("view"));
 		msg.replace_all(_S("{@total}"), conversions::to_utf16(result->getTotalObjects()));
