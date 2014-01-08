@@ -61,11 +61,6 @@
 					<Add library="libcrypto" />
 					<Add library="libhttp" />
 					<Add library="libupnp" />		
-					<Add library="libX11" />
-					<Add library="libSM" />
-					<Add library="libcairo" />
-					<Add library="libexpat" />
-					<Add library="libdl" />
 					<Add library="libwx_gtk2u-3.0" />
 					<Add library="libwxjpeg-3.0" />
 					<Add library="libwxpng-3.0" />
@@ -80,6 +75,11 @@
 					<Add library="libpango-1.0" />
 					<Add library="libgobject-2.0" />
 					<Add library="libglib-2.0" />
+					<Add library="libX11" />
+					<Add library="libSM" />
+					<Add library="libcairo" />
+					<Add library="libexpat" />
+					<Add library="libdl" />					
 					<Add directory="../../dependencies/lib/linux/i386/gcc/debug" />
 					<Add directory="../../bin/linux/i386/gcc/debug" />
 				</Linker>
@@ -139,11 +139,6 @@
 					<Add library="libcrypto" />
 					<Add library="libhttp" />
 					<Add library="libupnp" />
-					<Add library="libX11" />
-					<Add library="libSM" />
-					<Add library="libcairo" />
-					<Add library="libexpat" />
-					<Add library="libdl" />
 					<Add library="libwx_gtk2u-3.0" />
 					<Add library="libwxjpeg-3.0" />
 					<Add library="libwxpng-3.0" />
@@ -158,6 +153,11 @@
 					<Add library="libpango-1.0" />
 					<Add library="libgobject-2.0" />
 					<Add library="libglib-2.0" />
+					<Add library="libX11" />
+					<Add library="libSM" />
+					<Add library="libcairo" />
+					<Add library="libexpat" />
+					<Add library="libdl" />					
 					<Add directory="../../dependencies/lib/linux/i386/gcc/release" />
 					<Add directory="../../bin/linux/i386/gcc/release" />
 				</Linker>
@@ -359,11 +359,6 @@
 					<Add library="libcrypto" />
 					<Add library="libhttp" />
 					<Add library="libupnp" />
-					<Add library="libX11" />
-					<Add library="libSM" />
-					<Add library="libcairo" />
-					<Add library="libexpat" />
-					<Add library="libdl" />
 					<Add library="libwx_gtk2u-3.0" />
 					<Add library="libwxjpeg-3.0" />
 					<Add library="libwxpng-3.0" />
@@ -378,6 +373,11 @@
 					<Add library="libpango-1.0" />
 					<Add library="libgobject-2.0" />
 					<Add library="libglib-2.0" />
+					<Add library="libX11" />
+					<Add library="libSM" />
+					<Add library="libcairo" />
+					<Add library="libexpat" />
+					<Add library="libdl" />					
 					<Add directory="../../dependencies/lib/linux/x86_64/gcc/debug" />
 					<Add directory="../../bin/linux/x86_64/gcc/debug" />
 				</Linker>
@@ -435,11 +435,6 @@
 					<Add library="libcrypto" />
 					<Add library="libhttp" />
 					<Add library="libupnp" />
-					<Add library="libX11" />
-					<Add library="libSM" />
-					<Add library="libcairo" />
-					<Add library="libexpat" />
-					<Add library="libdl" />
 					<Add library="libwx_gtk2u-3.0" />
 					<Add library="libwxjpeg-3.0" />
 					<Add library="libwxpng-3.0" />
@@ -454,6 +449,11 @@
 					<Add library="libpango-1.0" />
 					<Add library="libgobject-2.0" />
 					<Add library="libglib-2.0" />
+					<Add library="libX11" />
+					<Add library="libSM" />
+					<Add library="libcairo" />
+					<Add library="libexpat" />
+					<Add library="libdl" />					
 					<Add directory="../../dependencies/lib/linux/x86_64/gcc/release" />
 					<Add directory="../../bin/linux/x86_64/gcc/release" />
 				</Linker>

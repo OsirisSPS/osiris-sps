@@ -200,8 +200,6 @@
 					<Add option="-static-libstdc++" />
 					<Add option="-static-libgcc" />
 					<Add library="ui" />
-					<Add library="libwx_osx_cocoaud_core-2.9" />
-					<Add library="libwx_baseud-2.9" />
 					<Add directory="../../dependencies/lib/macosx/x86_64/gcc/debug" />
 					<Add directory="../../lib/macosx/x86_64/gcc/debug" />
 					<Add directory="../../bin/macosx/x86_64/gcc/debug/Osiris.app/Contents/MacOS" />
@@ -254,8 +252,6 @@
 					<Add option="-static-libstdc++" />
 					<Add option="-static-libgcc" />
 					<Add library="ui" />
-					<Add library="libwx_osx_cocoau_core-2.9" />
-					<Add library="libwx_baseu-2.9" />
 					<Add directory="../../dependencies/lib/macosx/x86_64/gcc/release" />
 					<Add directory="../../lib/macosx/x86_64/gcc/release" />
 					<Add directory="../../bin/macosx/x86_64/gcc/release/Osiris.app/Contents/MacOS" />
