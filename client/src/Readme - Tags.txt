@@ -84,7 +84,7 @@ objectsirevisionable
 - Quando creo una revisione, deve copiare entity_signature
 - Se creo una primaria, devo creare ad-hoc la firma in entity_signature
 - Quando creo un oggetto, se la entity non è specificata, usare id
-Son tutte robe che sbatto in un punto preciso, che sia chiamato da tutti, forse la ->create.
+Son tutte cose da mettere in un punto preciso, che sia chiamato da tutti, forse la ->create.
 
 - Tutto il giro di exportAuthor, exportBase, exportXML và ricontrollato e sistemato per il OS_TODOCIP.
 

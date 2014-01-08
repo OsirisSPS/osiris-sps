@@ -706,7 +706,6 @@ pimpl<PortalsSerializer>::Parser::ObjectImportResult pimpl<PortalsSerializer>::P
 
 	if(m_exchangeSession->storeObject(database, object) == false)
 	{
-		OS_ASSERTFALSE();
 		return objectImportSkipped;
 	}
 

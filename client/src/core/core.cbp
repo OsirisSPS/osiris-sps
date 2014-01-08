@@ -211,6 +211,8 @@
 				</ResourceCompiler>
 				<Linker>
 					<Add option="-Wl,-z,defs,-rpath=./" />
+					<Add library="libdl" />
+					<Add library="librt" />
 					<Add library="libcryptopp" />
 					<Add library="libboost_system-gcc48-mt-d-1_54" />
 					<Add library="libboost_thread-gcc48-mt-d-1_54" />
@@ -218,7 +220,6 @@
 					<Add library="libboost_filesystem-gcc48-mt-d-1_54" />
 					<Add library="libboost_signals-gcc48-mt-d-1_54" />
 					<Add library="libboost_date_time-gcc48-mt-d-1_54" />
-					<Add library="libdl" />
 					<Add library="libpthread" />
 					<Add library="libfreeimage" />
 					<Add library="libicuio" />
@@ -254,13 +255,14 @@
 				<Linker>
 					<Add option="-s" />
 					<Add option="-Wl,-z,defs,-rpath=./" />
+					<Add library="libdl" />
+					<Add library="librt" />
 					<Add library="libcryptopp" />
 					<Add library="libboost_system-gcc48-mt-1_54" />
 					<Add library="libboost_thread-gcc48-mt-1_54" />
 					<Add library="libboost_regex-gcc48-mt-1_54" />
 					<Add library="libboost_filesystem-gcc48-mt-1_54" />
 					<Add library="libboost_signals-gcc48-mt-1_54" />
-					<Add library="libdl" />
 					<Add library="libpthread" />
 					<Add library="libfreeimage" />
 					<Add library="libicuuc" />

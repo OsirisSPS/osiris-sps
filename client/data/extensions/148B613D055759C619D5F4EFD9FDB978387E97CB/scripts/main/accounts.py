@@ -67,8 +67,8 @@ class Page(osiris.IMainPage):
 			self.txtPassword = osiris.HtmlTextBox()
 			self.txtPassword.id = "password"
 			self.txtPassword.size = 20
-			self.txtPassword.attributes.set("data-os-otype","password")
-			self.txtPassword.attributes.set("data-os-login","page_name")
+			self.txtPassword.getAttributes().set("data-os-otype","string")
+			self.txtPassword.getAttributes().set("data-os-submit","page-login")
 			self.txtPassword.password = True
 			template.addChildParam(self.txtPassword)	
 
@@ -119,7 +119,7 @@ class Page(osiris.IMainPage):
 			self.chkSavePassword.id = "savePassword"
 			template.addChildParam(self.chkSavePassword)	
 			
-			self.cmdRegister = osiris.IdeButton(self.getText("main.pages.accounts.register"))
+			self.cmdRegister = osiris.IdeButton(self.getText("common.actions.create"))
 			self.cmdRegister.id = "register"
 			self.cmdRegister.isDefault = True
 			osiris.events.connect(self.cmdRegister.eventClick, self.onRegister)						
@@ -163,11 +163,12 @@ class Page(osiris.IMainPage):
 				nodeActionLogin.attributes.set("name", "enter")
 				nodeActionLogin.attributes.set("href", "/main/accounts?act=login&id=" + account.id)
 				
-				nodeActionRemove = nodeActions.nodes.add("action")
-				nodeActionRemove.attributes.set("name", "remove")
-				#nodeActionRemove.attributes.set("href", "/main/accounts?act=remove&id=" + account.id)
-				nodeActionRemove.attributes.set("href", self.getEventCommand("onRemove", account.id))
-				nodeActionRemove.attributes.set("confirm", "true")
+				if(self.sessionAccount.account != account):
+					nodeActionRemove = nodeActions.nodes.add("action")
+					nodeActionRemove.attributes.set("name", "remove")
+					#nodeActionRemove.attributes.set("href", "/main/accounts?act=remove&id=" + account.id)
+					nodeActionRemove.attributes.set("href", self.getEventCommand("onRemove", account.id))
+					nodeActionRemove.attributes.set("confirm", "true")
 				
 				nodeActionExport = nodeActions.nodes.add("action")
 				nodeActionExport.attributes.set("name", "export")
@@ -181,8 +182,13 @@ class Page(osiris.IMainPage):
 		if(self.act != "home"):
 			self.getPathway().add(self.getText("main.pages.accounts." + self.act + ".title"),"")
 					
-	def onImport(self, args):		
-		self.showError(self.getText("main.pages.accounts.error.cannot_import"))			
+	def onImport(self, args):				
+
+		if(osiris.IdeAccountsManager.instance().importXml(self.txtFile.getFileBuffer())):
+			self.redirect(osiris.PortalsSystem.instance().getMainLink("accounts"))
+		else:
+			self.showError(self.getText("main.pages.accounts.error.cannot_import"))			
+
 
 	def onExport(self, args):		
 		accountID = args[0]		

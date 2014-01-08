@@ -64,6 +64,7 @@ const String IObjectEditor::EVENT_ONCREATEOBJECT = _S("onCreateObject");
 
 IObjectEditor::IObjectEditor(PortalObjectType type, shared_ptr<EntitiesEntity> entity, shared_ptr<EntitiesEntity> parent) : m_enableComment(OS_NEW HtmlCheckBox()),
 																												   m_comment(OS_NEW IdeOMLEditor()),
+																												   m_enablePosition(OS_NEW HtmlCheckBox()),
 																												   m_position(OS_NEW IdePositionEditor())
 {
 	OS_ASSERT(type != portalObjectTypeUnknown);
@@ -78,31 +79,6 @@ IObjectEditor::IObjectEditor(PortalObjectType type, shared_ptr<EntitiesEntity> e
 	m_type = type;
 
 	m_redirectionType = rtEdit;
-
-	m_enableComment->setID(_S("enableComment"));
-	m_enableComment->setCheck(false);
-	m_enableComment->setAutoPostBack(true);
-	m_comment->setID(_S("comment"));
-
-	m_position->setID(_S("position"));
-
-	getTemplate()->addChildParam(m_enableComment, _S("enable_comment"));
-	getTemplate()->addChildParam(m_comment, _S("comment"));
-
-	// URGENT Nel componente documentazione, in alcuni casi ci vuole il positioneditor per gli oggetti testo.
-	// Non dovrebbe essere a livello di 'descriptor'.
-	// Certo è che ci vorrebbe un pager.. ma poi sta bene che ci sia nel "topiceditor"?
-	// 14/11/2008: Aggiunto sempre il positioneditor.
-	// 10/01/2008: Rimesso come prima.
-	//getTemplate()->addChildParam(m_position, _S("position"));
-
-#ifdef OS_DEBUG
-	getTemplate()->addChildParam(m_position, _S("position"));
-#else
-	// Se l'ordinamento dell'oggetto  per posizione aggiunge il position editor
-	if(ObjectsSystem::instance()->getDescriptor(m_type)->getOrderMode() == ObjectsIDescriptor::omPosition)
-		getTemplate()->addChildParam(m_position, _S("position"));
-#endif
 
 	getEvents()->get(EVENT_ONCREATEOBJECT)->connect(boost::bind(&IObjectEditor::onCreateObject, this));
 }
@@ -223,9 +199,11 @@ void IObjectEditor::renderActions(shared_ptr<XMLNode> nodeActions)
 	actionCreate->setAttributeString(_S("name"), _S("create"));
 	actionCreate->setAttributeString(_S("href"), getEventCommand(EVENT_ONCREATEOBJECT));
 
+	/*
 	shared_ptr<XMLNode> actionCancel = nodeActions->addChild(_S("action"));
 	actionCancel->setAttributeString(_S("name"), _S("cancel"));
 	actionCancel->setAttributeString(_S("href"), _S("javascript:void(history.go(-1));"));
+	*/
 }
 
 void IObjectEditor::onInit()
@@ -237,6 +215,18 @@ void IObjectEditor::onInit()
 		getPage()->showError(getPage()->getText(_S("ntp.errors.synchronization_failed"))); // TOFIX: Change translation id
 		return;
 	}
+
+	m_enableComment->setID(_S("enableComment"));	
+	m_enableComment->setAutoPostBack(true);
+	getTemplate()->addChildParam(m_enableComment, _S("enable_comment"));
+	m_enableComment->setCheck(false);
+	m_comment->setID(_S("comment"));	
+
+	m_enablePosition->setID(_S("enablePosition"));	
+	m_enablePosition->setAutoPostBack(true);
+	getTemplate()->addChildParam(m_enablePosition, _S("enable_position"));
+	m_enablePosition->setCheck(false);
+	m_position->setID(_S("position"));
 
 	double currentPosition = 0;
 	shared_ptr<EntitiesEntity> parentEntity = (m_parent != null) ? m_parent : m_entity->getParent(getDatabase());
@@ -257,11 +247,28 @@ void IObjectEditor::onInit()
 	renderActions(editor_node->addChild(_S("actions")));
 }
 
+void IObjectEditor::onLoad()
+{
+	ControlBase::onLoad();
+
+	
+	m_position->setFull(m_enablePosition->getCheck());
+}
+
 void IObjectEditor::onPreRender()
 {
 	ControlBase::onPreRender();
 
-	m_comment->setVisible(m_enableComment->getCheck());
+	//m_comment->setVisible(m_enableComment->getCheck());
+	if(m_enableComment->getCheck())
+	{		
+		getTemplate()->addChildParam(m_comment, _S("comment"));
+	}
+	
+	if(m_enablePosition->getCheck())
+	{		
+		getTemplate()->addChildParam(m_position, _S("position"));
+	}
 }
 
 //////////////////////////////////////////////////////////////////////

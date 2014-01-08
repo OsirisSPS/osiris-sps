@@ -1,6 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
 <skin id="0000000000000000000000000000000000000000" name="Osiris" description="Osiris default theme" version="1.0" author="Osiris Team" compatibility="0.1">
-  <styles>
-    <style css="css/test.less"/>
-  </styles>
+  
 </skin>

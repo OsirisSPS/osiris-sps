@@ -46,7 +46,7 @@
               <xsl:value-of select="system:parse(@name, false(), false(), true())" disable-output-escaping="yes"/>
             </td>
             <td class="os_nowrap">
-              <div style="padding-right:16px">
+              <div>
                 <xsl:if test="@completed != 'true'">
                   <xsl:attribute name="data-os-url">
                     <xsl:value-of select="concat('/main/jobdetail?id=',@id)"/>

@@ -62,34 +62,37 @@ void IdePositionEditor::onInit()
 
 	getControls()->add(m_positions);
 
-	shared_ptr<EntitiesEntities> childs = m_parent->getChilds(getDatabase(), portalObjectTypeUnknown, RangeUint32(0, 0), EntitiesEntity::coPositionAsc);
-
-	double prevPosition = 0;
-	shared_ptr<EntitiesEntity> prevEntity = null;
-	for(EntitiesEntities::iterator i = childs->begin(); i != childs->end(); ++i)
+	if(getFull())
 	{
-		shared_ptr<EntitiesEntity> childEntity = getPortal()->getEntity(getDatabase(), *i);
-		OS_ASSERT(childEntity != null);
+		shared_ptr<EntitiesEntities> childs = m_parent->getChilds(getDatabase(), portalObjectTypeUnknown, RangeUint32(0, 0), EntitiesEntity::coPositionAsc);
 
-		shared_ptr<ObjectsIRevisionable> current = childEntity->getCurrent();
-		String title = getPage()->parseOml(current->getTitle(), false, false, true);
-
-		String text;
-		if(prevEntity == null)
+		double prevPosition = 0;
+		shared_ptr<EntitiesEntity> prevEntity = null;
+		for(EntitiesEntities::iterator i = childs->begin(); i != childs->end(); ++i)
 		{
-			text = getPage()->getText(_S("positionEditor_before")) + _S(" '") + title + _S("'");
-		}
-		else
-		{
-			String prevTitle = getPage()->parseOml(prevEntity->getCurrent()->getTitle(), false, false, true);
-			text = getPage()->getText(_S("positionEditor_between")) + _S(" '") + prevTitle + _S("' ") + getPage()->getText(_S("positionEditor_between_and")) + _S(" '") + title + _S("'");
-		}
-		double newPosition = (current->position + prevPosition)/2;
+			shared_ptr<EntitiesEntity> childEntity = getPortal()->getEntity(getDatabase(), *i);
+			OS_ASSERT(childEntity != null);
 
-		m_positions->addOption(text, conversions::to_utf16(newPosition));
+			shared_ptr<ObjectsIRevisionable> current = childEntity->getCurrent();
+			String title = getPage()->parseOml(current->getTitle(), false, false, true);
 
-		prevPosition = current->position;
-		prevEntity = childEntity;
+			String text;
+			if(prevEntity == null)
+			{
+				text = getPage()->getText(_S("positionEditor_before")) + _S(" '") + title + _S("'");
+			}
+			else
+			{
+				String prevTitle = getPage()->parseOml(prevEntity->getCurrent()->getTitle(), false, false, true);
+				text = getPage()->getText(_S("positionEditor_between")) + _S(" '") + prevTitle + _S("' ") + getPage()->getText(_S("positionEditor_between_and")) + _S(" '") + title + _S("'");
+			}
+			double newPosition = (current->position + prevPosition)/2;
+
+			m_positions->addOption(text, conversions::to_utf16(newPosition));
+
+			prevPosition = current->position;
+			prevEntity = childEntity;
+		}
 	}
 
 	m_positions->addOption(getPage()->getText(_S("positionEditor_bottom")), conversions::to_utf16(double(0)));
@@ -97,8 +100,7 @@ void IdePositionEditor::onInit()
 	if(m_currentPosition!=0)
 		m_positions->addOption(getPage()->getText(_S("positionEditor_current")), conversions::to_utf16(m_currentPosition));
 
-	if(getPostBack() == false)
-		m_positions->setValue(conversions::to_utf16(m_currentPosition));
+	m_positions->setValue(conversions::to_utf16(m_currentPosition));
 }
 
 //////////////////////////////////////////////////////////////////////

@@ -63,7 +63,7 @@ String HtmlFileBrowser::getFileType() const
 	return String::EMPTY;
 }
 
-const Buffer * HtmlFileBrowser::getFileBufferPtr() const
+const Buffer * HtmlFileBrowser::getFileBuffer() const
 {
 	shared_ptr<HttpPostParam> param = _getPostParam();
 	if(param != null)

@@ -1398,7 +1398,7 @@
 						html += '<input id="ui-colorpicker-hex-alpha" maxlength="2" size="2"/>';
 					}
 
-					html += '<input id="ui-colorpicker-hex-input" maxlength="6" size="6"/>';
+					html += '<input id="ui-colorpicker-hex-input" maxlength="7" size="7"/>';
 
 					return '<div id="ui-colorpicker-hex"><label for="ui-colorpicker-hex-input">#: </label>' + html + '</div>';
 				};

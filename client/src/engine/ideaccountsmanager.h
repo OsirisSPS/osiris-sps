@@ -68,7 +68,7 @@ public:
 	bool remove(const String &id);
 	bool removePhysical(const String &id);
 	void save(shared_ptr<IdeAccount> account);
-	bool import(const Buffer &buffer);
+	bool importXml(const Buffer &buffer);
 
 private:
 	bool _load(shared_ptr<IDbConnection> database, const String &id);

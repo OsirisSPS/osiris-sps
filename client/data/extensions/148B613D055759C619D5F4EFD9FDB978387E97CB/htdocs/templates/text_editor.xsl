@@ -11,6 +11,7 @@
   <xsl:param name="content"/>
   <xsl:param name="model"/>
   <xsl:param name="pinned"/>
+	<xsl:param name="enable_position"/>
   <xsl:param name="position"/>
   <xsl:param name="enable_comment"/>
   <xsl:param name="comment"/>
@@ -72,17 +73,18 @@
           <xsl:value-of select="lang:text('text.editor.pinned')"/>
         </td>
       </tr>
-      <xsl:if test="$position">
+      
         <tr>
           <td class="os_label">
             <xsl:value-of select="lang:text('instance.editor.position')"/>
             <xsl:text>:</xsl:text>
           </td>
-          <td class="os_value">
-            <xsl:value-of select="$position" disable-output-escaping="yes"/>
-          </td>
+					<td class="os_value">
+						<xsl:value-of select="$enable_position" disable-output-escaping="yes"/>
+						<xsl:value-of select="$position" disable-output-escaping="yes"/>
+					</td>
         </tr>
-      </xsl:if>
+      
       <xsl:call-template name="row_object_comment">
         <xsl:with-param name="enable_comment" select="$enable_comment"/>
         <xsl:with-param name="comment" select="$comment"/>
