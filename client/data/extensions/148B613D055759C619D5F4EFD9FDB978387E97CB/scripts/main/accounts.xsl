@@ -237,8 +237,7 @@
 			</xsl:when>
 			
 		</xsl:choose>
-    <xsl:call-template name="dump_xml"/>
-    
+        
   </xsl:template>
   
 </xsl:stylesheet>

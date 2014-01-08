@@ -43,7 +43,7 @@
 			<tr>
 				<td>
 					<xsl:call-template name="block_small">
-						<xsl:with-param name="title" select="lang:text('portal.pages.stabilization_stats.general')"/>
+						<xsl:with-param name="title" select="lang:text('common.labels.overview')"/>
 						<xsl:with-param name="content">
 							<table class="os_table_properties">
 								<tr>

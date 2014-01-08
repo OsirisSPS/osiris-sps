@@ -156,15 +156,13 @@ void SectionEditor::onLoad()
 				{
 					getTemplate()->addChildParam(m_editor, _S("editor"));
 
-					/*
 					// Carica l'xml della base solo nel caso in cui si tratti dello stesso modulo
 					if(m_current != null && m_current->component == selectedComponentID)
 					{
-						m_editor->init(m_current->title, getPrimaryID(), m_current->data);
+						m_editor->init(ExtensionsSystem::instance()->getComponent(selectedComponentID), m_current->getEntityID(), m_current->data);
 					}
-					*/
-
-					m_editor->init(ExtensionsSystem::instance()->getComponent(selectedComponentID), m_current->getEntityID(), m_current->data);
+					
+					
 				}
 
 				break;

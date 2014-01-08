@@ -98,6 +98,7 @@ protected:
 // IControl overrides
 protected:
 	virtual void onInit();
+	virtual void onLoad();
 	virtual void onPreRender();
 
 protected:
@@ -106,6 +107,7 @@ protected:
 	PortalObjectType m_type;				// Type
 	shared_ptr<EntitiesEntity> m_entity;			// Istanza di base
 	shared_ptr<EntitiesEntity> m_parent;			// Istanza padre
+	shared_ptr<HtmlCheckBox> m_enablePosition;
 	shared_ptr<IdePositionEditor> m_position;
 	shared_ptr<HtmlCheckBox> m_enableComment;
 	shared_ptr<IdeOMLEditor> m_comment;

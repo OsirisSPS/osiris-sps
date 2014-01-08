@@ -383,7 +383,8 @@ void HttpSession::handleRead(const boost::system::error_code &e, size_t bytes_tr
 	if(e)
 	{
 		// TODO: corretto? logga l'errore solo nel caso in cui non derivi da una sessione di keep-alive...
-		if(keepAlive == false)
+		// Clodo 28/12/2013: ?
+		//if(keepAlive == false)
 			handleError(e);
 
 		return;

@@ -13,6 +13,10 @@ class Page(osiris.IMainPage):
 	def onLoad(self):	
 		osiris.IMainPage.onLoad(self)
 		
+		if(self.sessionAccount.isLogged() == False):
+			self.redirect("home")
+			return
+		
 		self.act = self.session.request.getUrlParam("act")
 		if(self.act == ""):
 			self.act = "home"		

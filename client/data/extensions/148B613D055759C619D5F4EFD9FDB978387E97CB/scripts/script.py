@@ -3,11 +3,16 @@ import osiris
 import sys
 
 # enable debugger
-import ptvsd
-ptvsd.enable_attach(secret = '')	# optionally define a password
+#import ptvsd
+#ptvsd.enable_attach(secret = '')	# optionally define a password
 #ptvsd.wait_for_attach()		# optional
 
 import globalvars
+
+# OML
+sys.path.append(os.path.join(os.path.dirname(__file__), "oml"))
+import anubis
+import rotator
 
 # "Main" pages
 sys.path.append(os.path.join(os.path.dirname(__file__), "main"))
@@ -27,6 +32,7 @@ import login_main
 import mcp
 import network
 import redirect
+import skinpreview
 import subscribe
 
 
@@ -34,6 +40,7 @@ import subscribe
 sys.path.append(os.path.join(os.path.dirname(__file__), "portals"))
 import assistant
 import changes
+import exporter
 import info
 import latest_discussions
 import latest_user_discussions
@@ -112,6 +119,9 @@ class MainHandler(osiris.IHttpDirectoryHandler):
 		if(relPage == "network"):
 			page = network.Page(session)			
 			
+		if(relPage == "skinpreview"):
+			page = skinpreview.Page(session)			
+			
 		if(relPage == "redirect"):
 			page = redirect.Page(session)			
 			
@@ -145,6 +155,9 @@ class PortalsHandler(osiris.IHttpDirectoryHandler):
 	
 		if(relPage == "info"):
 			page = info.Page(session)			
+			
+		if(relPage == "exporter"):
+			page = exporter.Page(session)			
 			
 		if(relPage == "changes"):
 			page = changes.Page(session)			
@@ -197,8 +210,17 @@ def load(args):
 	
 	osiris.PortalsSystem.instance().mainDirectory.addHandler(globalvars.mainHandler);
 	osiris.PortalsSystem.instance().portalsDirectory.addHandler(globalvars.portalsHandler);
+	
+	globalvars.omlAnubis = anubis.OmlAnubis("anubis")	
+	osiris.OMLManager.instance().add(globalvars.omlAnubis)
+	
+	globalvars.omlRotator = rotator.OmlRotator("rotator")	
+	osiris.OMLManager.instance().add(globalvars.omlRotator)
 		
 def unload(args):
+	osiris.OMLManager.instance().remove(globalvars.omlRotator)
+	osiris.OMLManager.instance().remove(globalvars.omlAnubis)
+	
 	osiris.PortalsSystem.instance().portalsDirectory.removeHandler(globalvars.portalsHandler);
 	osiris.PortalsSystem.instance().mainDirectory.removeHandler(globalvars.mainHandler);
 	

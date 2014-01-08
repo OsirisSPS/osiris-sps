@@ -276,8 +276,7 @@
                   -->
                   <xsl:text> ) </xsl:text>
                 </xsl:when>
-                <xsl:otherwise>
-                  Guest
+                <xsl:otherwise>                  
                   <!--
                   <xsl:if test="user/actions/action[@name='login']">
                     <a href="{user/actions/action[@name='login']/@href}">
@@ -285,18 +284,20 @@
                     </a>
                   </xsl:if>
                   -->
-                  <xsl:if test="user/actions/action[@name='register']">
-                    <!--
-                    <xsl:text> </xsl:text>
-                    <xsl:value-of select="lang:text('common.or')"/>
-                    <xsl:text> </xsl:text>
-                    -->
-                    <xsl:text> ( </xsl:text>
-                    <a href="{user/actions/action[@name='register']/@href}">
-                      <xsl:value-of select="lang:text('portal.userbox.actions.register')"/>
-                    </a>
-                    <xsl:text> ) </xsl:text>
-                  </xsl:if>
+									<xsl:choose>										
+										<xsl:when test="user/actions/action[@name='register']">
+											Guest
+											<xsl:text> ( </xsl:text>
+											<a href="{user/actions/action[@name='register']/@href}">
+												<xsl:value-of select="lang:text('portal.userbox.actions.register')"/>
+											</a>
+											<xsl:text> ) </xsl:text>
+										</xsl:when>
+										<xsl:otherwise>
+											<xsl:value-of select="lang:text('portal.userbox.actions.readonly')"/>											
+										</xsl:otherwise>
+									</xsl:choose>
+                  
                 </xsl:otherwise>
               </xsl:choose>
 
