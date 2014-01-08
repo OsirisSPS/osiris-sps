@@ -1013,7 +1013,7 @@ void Account::_initAvatar()
 
 void Account::_updateAvatar()
 {
-	const Buffer *pFileBuffer = m_avatarBrowser->getFileBufferPtr();
+	const Buffer *pFileBuffer = m_avatarBrowser->getFileBuffer();
 	if(pFileBuffer != nullptr)
 	{
 		if(ObjectsAvatar::validateFormat(getPortal(), *pFileBuffer))

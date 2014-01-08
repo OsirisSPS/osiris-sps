@@ -67,7 +67,7 @@ Import::~Import()
 
 void Import::onImport()
 {
-	const Buffer *buffer = m_fileBrowser->getFileBufferPtr();
+	const Buffer *buffer = m_fileBrowser->getFileBuffer();
 	if(buffer == nullptr)
 	{
 		showError(getText("main.pages.import.errors.invalid_file"));

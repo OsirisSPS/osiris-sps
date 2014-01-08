@@ -67,17 +67,17 @@ void IdePositionEditor::onInit()
 		shared_ptr<EntitiesEntities> childs = m_parent->getChilds(getDatabase(), portalObjectTypeUnknown, RangeUint32(0, 0), EntitiesEntity::coPositionAsc);
 
 		double prevPosition = 0;
-		shared_ptr<EntitiesEntity> prevEntity = null;
+		shared_ptr<EntitiesEntity> prevEntity = nullptr;
 		for(EntitiesEntities::iterator i = childs->begin(); i != childs->end(); ++i)
 		{
 			shared_ptr<EntitiesEntity> childEntity = getPortal()->getEntity(getDatabase(), *i);
-			OS_ASSERT(childEntity != null);
+			OS_ASSERT(childEntity != nullptr);
 
 			shared_ptr<ObjectsIRevisionable> current = childEntity->getCurrent();
 			String title = getPage()->parseOml(current->getTitle(), false, false, true);
 
 			String text;
-			if(prevEntity == null)
+			if(prevEntity == nullptr)
 			{
 				text = getPage()->getText(_S("positionEditor_before")) + _S(" '") + title + _S("'");
 			}
