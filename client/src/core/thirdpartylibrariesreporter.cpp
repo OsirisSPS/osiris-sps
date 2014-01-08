@@ -22,7 +22,7 @@
 #include "boost/format.hpp"
 #include "boost/version.hpp"
 #include "crypto++.h"
-#include "FreeImage/FreeImage.h"
+#include "freeimage.h"
 #include "openssl/opensslv.h"
 #include "unicode/uversion.h" 
 #include "thirdpartylibrary.h"

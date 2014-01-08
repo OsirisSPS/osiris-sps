@@ -20,7 +20,7 @@
 #include "image.h"
 
 #include "buffer.h"
-#include "FreeImage/FreeImage.h"
+#include "freeimage.h"
 
 //////////////////////////////////////////////////////////////////////
 
