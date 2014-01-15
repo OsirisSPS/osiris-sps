@@ -30,6 +30,12 @@
 
 #define OS_PLUGINS_PLUGIN_SCHEMA				_S("plugin.xsd")
 
+#if OS_PLATFORM == OS_PLATFORM_WIN
+	#define OS_PLUGINS_LIBRARY_PREFIX			_S("")
+#else
+	#define OS_PLUGINS_LIBRARY_PREFIX			_S("lib")
+#endif
+
 //////////////////////////////////////////////////////////////////////
 
 OS_NAMESPACE_BEGIN()

@@ -135,7 +135,7 @@ Plugin::LoadResult Plugin::load(const UniqueID &id, const String &path)
 		shared_ptr<XMLNodes> modules = nodeModules->getNodes();
 		for(XMLNodes::const_iterator i = modules->begin(); i != modules->end(); ++i)
 		{
-			String modulePath = utils::makeFilePath(Options::instance()->getRootPath(), (*i)->getAttributeString(_S("path")));
+			String modulePath = utils::makeFilePath(Options::instance()->getRootPath(), OS_PLUGINS_LIBRARY_PREFIX + (*i)->getAttributeString(_S("path")));
 			shared_ptr<PluginModule> module(OS_NEW PluginModule(get_this_ptr()));
 			if(module->load(modulePath))
 			{
