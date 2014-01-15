@@ -16,30 +16,31 @@
 // along with Osiris Serverless Portal System.  If not, see <http://www.gnu.org/licenses/>.
 // </osiris_sps_source_header>
 
-#ifndef _OS_CORE_CONFIGCOMPILERMSVC_H
-#define _OS_CORE_CONFIGCOMPILERMSVC_H
-
-#include "configcompilermsvcwarnings.h"
+#include "stdafx.h"
+#include "boost.h"
 
 //////////////////////////////////////////////////////////////////////
 
-#if _MSC_VER >= 1400			// Visual Studio 2005
-	#ifndef _CRT_SECURE_NO_DEPRECATE
-		#define _CRT_SECURE_NO_DEPRECATE
-	#endif
-
-	#ifndef _SCL_SECURE_NO_DEPRECATE
-		#define _SCL_SECURE_NO_DEPRECATE
-	#endif
-#endif
-
-#if _MSC_VER >= 1600			// Visual Studio 2010
-	#define OS_SUPPORT_CPP0X
-#endif
-
-#define OS_ENDIANITY						OS_ENDIANITY_LITTLE
-#define OS_FORCEINLINE						__forceinline
+OS_NAMESPACE_BEGIN()
 
 //////////////////////////////////////////////////////////////////////
 
-#endif // _OS_CORE_CONFIGCOMPILERMSVC_H
+const null_ptr nullptr;
+
+//////////////////////////////////////////////////////////////////////
+
+null_ptr::null_ptr()
+{
+
+}
+
+null_ptr::~null_ptr()
+{
+
+}
+
+//////////////////////////////////////////////////////////////////////
+
+OS_NAMESPACE_END()
+
+//////////////////////////////////////////////////////////////////////

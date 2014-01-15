@@ -73,11 +73,9 @@
 #define OS_COMPILER_GCC					2
 
 #if defined _MSC_VER
-	#define OS_COMPILER					OS_COMPILER_MSVC
-	#define OS_COMPILER_VERSION			_MSC_VER
+	#define OS_COMPILER					OS_COMPILER_MSVC	
 #elif defined __GNUC__
-	#define OS_COMPILER					OS_COMPILER_GCC
-	#define OS_COMPILER_VERSION			__VERSION__
+	#define OS_COMPILER					OS_COMPILER_GCC	
 #else
 	#error "Unknown compiler"
 #endif

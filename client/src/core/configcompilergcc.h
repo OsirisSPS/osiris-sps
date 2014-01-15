@@ -29,6 +29,10 @@
 	#define OS_ENDIANITY					OS_ENDIANITY_LITTLE
 #endif
 
+#if __GNUC__ > 3
+	#define OS_SUPPORT_CPP0X
+#endif
+
 #define OS_FORCEINLINE						__attribute__((always_inline))
 
 //////////////////////////////////////////////////////////////////////
