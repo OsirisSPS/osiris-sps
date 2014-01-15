@@ -29,7 +29,7 @@
 	#define OS_ENDIANITY					OS_ENDIANITY_LITTLE
 #endif
 
-#if __GNUC__ > 3
+#if __GNUC__ >= 4 && !defined(OS_GCCXML)
 	#define OS_SUPPORT_CPP0X
 #endif
 

@@ -28,7 +28,7 @@ class settings:
 	working_directory = ""
 	output_directory = ""
 	include_paths = []
-	defined_symbols = ["OS_STATIC_LIBRARY", "BOOST_HAS_THREADS", "BOOST_NO_INITIALIZER_LISTS", "OS_GCCXML", "BOOST_COMMON_TYPE_DONT_USE_TYPEOF", "__GNUC__=3", "__GNUC_MINOR__=3"]
+	defined_symbols = ["OS_STATIC_LIBRARY", "BOOST_HAS_THREADS", "BOOST_NO_INITIALIZER_LISTS", "OS_GCCXML", "BOOST_COMMON_TYPE_DONT_USE_TYPEOF"]
 
 settings.root_dir = os.path.abspath(os.path.dirname(__file__))
 settings.working_directory = settings.root_dir
@@ -36,10 +36,12 @@ settings.working_directory = settings.root_dir
 if sys.platform == "linux2":
 	settings.gccxml_path = os.path.join(settings.root_dir, "../../../../utils/gccxml/linux/bin")	
 	settings.include_paths.append(os.path.join(settings.root_dir, "../../../dependencies/include/common"))
+	settings.include_paths.append(os.path.join(settings.root_dir, "../../../dependencies/include/linux"))
 	settings.include_paths.append(os.path.join(settings.root_dir, "../../../dependencies/include/linux/i386"))
 elif sys.platform == "win32":
 	settings.gccxml_path = os.path.join(settings.root_dir, "../../../../utils/gccxml/win32/bin")
 	settings.include_paths.append(os.path.join(settings.root_dir, "../../../dependencies/include/common"))
+	settings.include_paths.append(os.path.join(settings.root_dir, "../../../dependencies/include/windows"))
 	settings.include_paths.append(os.path.join(settings.root_dir, "../../../dependencies/include/windows/i386"))
 	settings.defined_symbols.append("WIN32")	
 else:
