@@ -176,10 +176,7 @@ bool Buffer::readString(String &str) const
 		str.assign(reinterpret_cast<const uchar *>(buffer.get()));
 		*/
 
-		
-
 		uint32 buffer_size = size + 1*sizeof(char);
-
 		scoped_array<achar, os_deallocate_t> buffer(OS_ALLOCATE_T(achar, buffer_size));
 		OS_ZEROMEMORY(buffer.get(), buffer_size);
 		if(read(buffer.get(), size) != size)
