@@ -180,9 +180,6 @@ bool Buffer::readString(String &str) const
 
 		uint32 buffer_size = size + 1*sizeof(char);
 
-		if(buffer_size>50000000)
-			buffer_size = 123;
-
 		scoped_array<achar, os_deallocate_t> buffer(OS_ALLOCATE_T(achar, buffer_size));
 		OS_ZEROMEMORY(buffer.get(), buffer_size);
 		if(read(buffer.get(), size) != size)
