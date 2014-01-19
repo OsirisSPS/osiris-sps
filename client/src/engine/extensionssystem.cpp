@@ -425,7 +425,7 @@ void ExtensionsSystem::installShare(bool recovery)
 {	
 	OS_LOCK(m_cs);
 	
-	bool developingEnvironment = (FileSystem::instance()->fileExists(utils::makeFilePath(getDataPath(), _S("dev.txt"))));
+	bool developingEnvironment = (FileSystem::instance()->fileExists(utils::makeFilePath(getDataPath(), _S("git.readme"))));
 	
 	bool force = recovery;
 
