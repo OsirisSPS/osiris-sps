@@ -34,7 +34,7 @@
   
 
   <xsl:template name="page">
-
+		test
 		<div class="os_padding">
 			<div style="text-align:center;">
 				<img src="{system:resource-url('images/logo/logo1.png')}" alt="Osiris"/>
