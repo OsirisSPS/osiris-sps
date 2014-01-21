@@ -10,6 +10,11 @@ class Page(osiris.IPortalPage):
 				
 	def getPageName(self):
 		return "portal.pages.info"
+
+	def onInit(self):
+		self.act = self.session.request.getUrlParam("act")	
+		if(self.act == ""):
+			self.act = "home"
 		
 	def onLoad(self):
 		osiris.IPortalPage.onLoad(self)		
@@ -33,9 +38,7 @@ class Page(osiris.IPortalPage):
 
 		node.setAttributeString("mode", self.request.getUrlParam("mode"))
 
-		self.act = self.session.request.getUrlParam("act")	
-		if(self.act == ""):
-			self.act = "home"
+		
 
 		if(self.act == "home"):
 				
@@ -228,7 +231,7 @@ class Page(osiris.IPortalPage):
 		self.showMessage("todo")
 
 	def onPathway(self):
-		self.getPathway().add(self.getText("portal.pages.info.title"), self.portal.getLink("info"));
+		#self.getPathway().add(self.getText("portal.pages.info.title"), self.portal.getLink("info"));
 
 		if(self.act != "home"):
 			self.getPathway().add(self.getText("portal.pages.info." + self.act + ".title"),"")

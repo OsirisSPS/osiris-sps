@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<skin id="E33A7C59CDB2EA867D799F244606E6579808D145" name="Dark Blue" description="" version="1.0" author="Osiris Team" compatibility="0.1" preview="/E881E8B0E5F2CFE0FA74CC520756692EE2FB35DD/preview/dark_blue.png">
+  <styles>
+    <style css="css/limpid.css"/>    
+    <style css="css/style.css"/>
+    <style css="css/dark_blue.css"/>
+  </styles>
+</skin>

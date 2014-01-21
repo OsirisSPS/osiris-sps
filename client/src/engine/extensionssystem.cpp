@@ -425,7 +425,7 @@ void ExtensionsSystem::installShare(bool recovery)
 {	
 	OS_LOCK(m_cs);
 	
-	bool developingEnvironment = (FileSystem::instance()->fileExists(utils::makeFilePath(getDataPath(), _S("git.readme"))));
+	bool developingRepository = FileSystem::instance()->fileExists(utils::makeFilePath(getDataPath(), _S("git.readme")));
 	
 	bool force = recovery;
 
@@ -459,10 +459,11 @@ void ExtensionsSystem::installShare(bool recovery)
 		bool needInstall = force;
 		if( (FileSystem::instance()->directoryExists(utils::makeFolderPath(getDataPath(), path)) == false) && required)
 			needInstall = true;
-		else
-			if(developingEnvironment)
-				needInstall = false;
 
+		if( (FileSystem::instance()->directoryExists(utils::makeFolderPath(getDataPath(), path)) == true) && developingRepository)
+			needInstall = false; // Force doesn't matter
+		
+		
 		if(needInstall)
 		{
 			NotificationsManager::instance()->notify(String::format(_S("Installing default extensions, %d/%d").c_str(), index, extensions.size()));

@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<extension id="47987A793879597EC105C43C8E9F25D5ADEB09D8" author="Osiris Team" name="Html2Oml Extended Rules" description="Extended rules powered by the community, to clean the HTML>OML conversion." content="" version_code="1" version_name="1.1" icon="icon.png" logo="logo.png" category="OML" tags="oml html" homepage="http://www.osiris-sps.org/forums/index.php?showtopic=1679">
+  <scripts>
+    <script language="python" path="scripts/script.py" />
+  </scripts>
+</extension>

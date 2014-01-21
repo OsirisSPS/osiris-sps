@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<skin id="49FBCB756D964BC4EBAB9EDA9F62F5E86C41EB10" name="Light Blue" description="" version="1.0" author="Osiris Team" compatibility="0.1" preview="/E881E8B0E5F2CFE0FA74CC520756692EE2FB35DD/preview/light_blue.png">
+  <styles>
+	<style css="http://fonts.googleapis.com/css?family=Dancing+Script"/>
+    <style css="css/limpid.css"/>
+    <style css="css/style.css"/>
+    <style css="css/light_orange.css"/>
+  </styles>
+</skin>

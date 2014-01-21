@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<extension author="Osiris Team" description="Visual Skin Editor" icon="icon.png" id="6815D302BDA34A83374C5FB7231F572457A7443E" logo="logo.png" name="Skin Editor" version_code="1" version_name="0.1">
+
+  <scripts>
+    <script language="python" path="scripts/script.py"/>
+  </scripts>
+
+</extension>
