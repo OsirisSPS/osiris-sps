@@ -17,7 +17,7 @@ struct ISearchResults_wrapper : ::osiris::ISearchResults, ::osiris::PythonWrappe
     ISearchResults_wrapper( )
     : ::osiris::ISearchResults( )
       , ::osiris::PythonWrapper< ::osiris::ISearchResults >(){
-        // nullptr constructor
+        // null constructor
     
     }
 

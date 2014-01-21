@@ -15,7 +15,7 @@ struct IHttpDirectoryHandler_wrapper : ::osiris::IHttpDirectoryHandler, ::osiris
     IHttpDirectoryHandler_wrapper( )
     : ::osiris::IHttpDirectoryHandler( )
       , ::osiris::PythonWrapper< ::osiris::IHttpDirectoryHandler >(){
-        // nullptr constructor
+        // null constructor
     
     }
 

@@ -21,7 +21,7 @@ struct LanguageVocabolary_wrapper : ::osiris::LanguageVocabolary, ::osiris::Pyth
     LanguageVocabolary_wrapper( )
     : ::osiris::LanguageVocabolary( )
       , ::osiris::PythonWrapper< ::osiris::LanguageVocabolary >(){
-        // nullptr constructor
+        // null constructor
     
     }
 

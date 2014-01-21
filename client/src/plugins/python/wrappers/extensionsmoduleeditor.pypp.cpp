@@ -27,7 +27,7 @@ struct ExtensionsModuleEditor_wrapper : ::osiris::ExtensionsModuleEditor, ::osir
     ExtensionsModuleEditor_wrapper( )
     : ::osiris::ExtensionsModuleEditor( )
       , ::osiris::PythonWrapper< ::osiris::ExtensionsModuleEditor >(){
-        // nullptr constructor
+        // null constructor
     
     }
 

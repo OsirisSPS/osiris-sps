@@ -16,7 +16,7 @@ struct IsisSystem_wrapper : ::osiris::IsisSystem, ::osiris::PythonWrapper< ::osi
         IsisSystemThread_wrapper( )
         : ::osiris::IsisSystem::IsisSystemThread( )
           , ::osiris::PythonWrapper< ::osiris::IsisSystem::IsisSystemThread >(){
-            // nullptr constructor
+            // null constructor
         
         }
     
@@ -40,7 +40,7 @@ struct IsisSystem_wrapper : ::osiris::IsisSystem, ::osiris::PythonWrapper< ::osi
     IsisSystem_wrapper( )
     : ::osiris::IsisSystem( )
       , ::osiris::PythonWrapper< ::osiris::IsisSystem >(){
-        // nullptr constructor
+        // null constructor
     
     }
 

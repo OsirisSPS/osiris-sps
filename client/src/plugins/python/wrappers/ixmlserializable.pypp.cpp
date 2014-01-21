@@ -15,7 +15,7 @@ struct IXMLSerializable_wrapper : ::osiris::IXMLSerializable, ::osiris::PythonWr
     IXMLSerializable_wrapper( )
     : ::osiris::IXMLSerializable( )
       , ::osiris::PythonWrapper< ::osiris::IXMLSerializable >(){
-        // nullptr constructor
+        // null constructor
     
     }
 

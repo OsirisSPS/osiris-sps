@@ -16,13 +16,13 @@
 #include "httprequest.h"
 #include "httpresponse.h"
 #include "httpsession.h"
-#include "idepickerobjectex.h"
-#include "idemailbox.h"
-#include "idesearchresults.h"
-#include "idetablequery.h"
-#include "idesearchglobalparams.h"
-#include "idesearchquery.h"
 #include "ideassistant.h"
+#include "idesearchresults.h"
+#include "idepickerobjectex.h"
+#include "idesearchglobalparams.h"
+#include "idemailbox.h"
+#include "idetablequery.h"
+#include "idesearchquery.h"
 #include "iportalpagexslrendererhtmlcontrol.pypp.hpp"
 
 namespace bp = boost::python;
@@ -32,7 +32,7 @@ struct IXSLRenderer_less__osiris_scope_IPortalPageControl_less__osiris_scope_IHt
     IXSLRenderer_less__osiris_scope_IPortalPageControl_less__osiris_scope_IHtmlControl__greater___greater__wrapper( )
     : ::osiris::IXSLRenderer<osiris::IPortalPageControl<osiris::IHtmlControl> >( )
       , ::osiris::PythonWrapper< ::osiris::IXSLRenderer< osiris::IPortalPageControl< osiris::IHtmlControl > > >(){
-        // nullptr constructor
+        // null constructor
     
     }
 

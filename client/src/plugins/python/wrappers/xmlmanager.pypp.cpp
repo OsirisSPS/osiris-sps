@@ -16,7 +16,7 @@ struct XMLManager_wrapper : ::osiris::XMLManager, ::osiris::PythonWrapper< ::osi
     XMLManager_wrapper( )
     : ::osiris::XMLManager( )
       , ::osiris::PythonWrapper< ::osiris::XMLManager >(){
-        // nullptr constructor
+        // null constructor
     
     }
 

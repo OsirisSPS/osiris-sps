@@ -25,7 +25,7 @@ struct IdeVoteEditor_wrapper : ::osiris::IdeVoteEditor, ::osiris::PythonWrapper<
     IdeVoteEditor_wrapper( )
     : ::osiris::IdeVoteEditor( )
       , ::osiris::PythonWrapper< ::osiris::IdeVoteEditor >(){
-        // nullptr constructor
+        // null constructor
     
     }
 

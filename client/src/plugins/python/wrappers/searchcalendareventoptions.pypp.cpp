@@ -21,7 +21,7 @@ struct SearchCalendarEventOptions_wrapper : ::osiris::SearchCalendarEventOptions
     SearchCalendarEventOptions_wrapper( )
     : ::osiris::SearchCalendarEventOptions( )
       , ::osiris::PythonWrapper< ::osiris::SearchCalendarEventOptions >(){
-        // nullptr constructor
+        // null constructor
     
     }
 

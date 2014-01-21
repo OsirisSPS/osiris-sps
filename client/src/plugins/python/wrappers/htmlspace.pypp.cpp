@@ -23,7 +23,7 @@ struct HtmlSpace_wrapper : ::osiris::HtmlSpace, ::osiris::PythonWrapper< ::osiri
     HtmlSpace_wrapper( )
     : ::osiris::HtmlSpace( )
       , ::osiris::PythonWrapper< ::osiris::HtmlSpace >(){
-        // nullptr constructor
+        // null constructor
     
     }
 

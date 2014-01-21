@@ -16,17 +16,17 @@
 #include "httprequest.h"
 #include "httpresponse.h"
 #include "httpsession.h"
+#include "extensionscomponentcontrol.h"
+#include "extensionscomponentviewer.h"
+#include "extensionsinvalidcomponent.h"
+#include "extensionscomponenteditor.h"
+#include "idesearchparam.h"
+#include "idepositioneditor.h"
 #include "extensionsmodulecontrol.h"
-#include "extensionsmoduleeditor.h"
 #include "extensionsmoduleviewer.h"
 #include "extensionsinvalidmodule.h"
 #include "extensionsmoduleviewerhidden.h"
-#include "extensionscomponentcontrol.h"
-#include "extensionscomponenteditor.h"
-#include "extensionscomponentviewer.h"
-#include "extensionsinvalidcomponent.h"
-#include "idepositioneditor.h"
-#include "idesearchparam.h"
+#include "extensionsmoduleeditor.h"
 #include "iportalpagehtmldiv.pypp.hpp"
 
 namespace bp = boost::python;
@@ -36,7 +36,7 @@ struct IPortalPageControl_less__osiris_scope_HtmlDiv__greater__wrapper : ::osiri
     IPortalPageControl_less__osiris_scope_HtmlDiv__greater__wrapper( )
     : ::osiris::IPortalPageControl<osiris::HtmlDiv>( )
       , ::osiris::PythonWrapper< ::osiris::IPortalPageControl< osiris::HtmlDiv > >(){
-        // nullptr constructor
+        // null constructor
     
     }
 

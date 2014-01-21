@@ -15,7 +15,7 @@ struct SearchResultsDatabase_wrapper : ::osiris::SearchResultsDatabase, ::osiris
     SearchResultsDatabase_wrapper( )
     : ::osiris::SearchResultsDatabase( )
       , ::osiris::PythonWrapper< ::osiris::SearchResultsDatabase >(){
-        // nullptr constructor
+        // null constructor
     
     }
 

@@ -24,7 +24,7 @@ struct HtmlTooltip_wrapper : ::osiris::HtmlTooltip, ::osiris::PythonWrapper< ::o
     HtmlTooltip_wrapper( )
     : ::osiris::HtmlTooltip( )
       , ::osiris::PythonWrapper< ::osiris::HtmlTooltip >(){
-        // nullptr constructor
+        // null constructor
     
     }
 

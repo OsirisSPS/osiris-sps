@@ -14,7 +14,7 @@ struct CacheSystem_wrapper : ::osiris::CacheSystem, ::osiris::PythonWrapper< ::o
     CacheSystem_wrapper( )
     : ::osiris::CacheSystem( )
       , ::osiris::PythonWrapper< ::osiris::CacheSystem >(){
-        // nullptr constructor
+        // null constructor
     
     }
 

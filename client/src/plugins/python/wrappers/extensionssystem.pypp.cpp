@@ -18,7 +18,7 @@ struct ExtensionsSystem_wrapper : ::osiris::ExtensionsSystem, ::osiris::PythonWr
     ExtensionsSystem_wrapper( )
     : ::osiris::ExtensionsSystem( )
       , ::osiris::PythonWrapper< ::osiris::ExtensionsSystem >(){
-        // nullptr constructor
+        // null constructor
     
     }
 
@@ -679,6 +679,18 @@ void register_ExtensionsSystem_class(){
                 , ( ::boost::python::arg("inst"), ::boost::python::arg("module") ) );
         
         }
+        { //property "knownUpgradableCounter"[fget=::osiris::ExtensionsSystem::getKnownUpgradableCounter, fset=::osiris::ExtensionsSystem::setKnownUpgradableCounter]
+        
+            typedef int ( ::osiris::ExtensionsSystem::*fget )(  ) const;
+            typedef void ( ::osiris::ExtensionsSystem::*fset )( int ) ;
+            
+            ExtensionsSystem_exposer.add_property( 
+                "knownUpgradableCounter"
+                , fget( &::osiris::ExtensionsSystem::getKnownUpgradableCounter )
+                , fset( &::osiris::ExtensionsSystem::setKnownUpgradableCounter )
+                , "get\\set property, built on top of \"int osiris::ExtensionsSystem::getKnownUpgradableCounter() const [member function]\" and \"void osiris::ExtensionsSystem::setKnownUpgradableCounter(int v) [member function]\"" );
+        
+        }
         { //property "components"[fget=::osiris::ExtensionsSystem::getComponents]
         
             typedef ::boost::unordered::unordered_map<osiris::String, boost::shared_ptr<osiris::IExtensionsComponent>, boost::hash<osiris::String>, std::equal_to<osiris::String>, osiris::StdAllocator<std::pair<osiris::String const, boost::shared_ptr<osiris::IExtensionsComponent> >, osiris::SysAllocator<std::pair<osiris::String const, boost::shared_ptr<osiris::IExtensionsComponent> > > > > const & ( ::osiris::ExtensionsSystem::*fget )(  ) const;
@@ -733,16 +745,6 @@ void register_ExtensionsSystem_class(){
                 "sharePath"
                 , fget( &::osiris::ExtensionsSystem::getSharePath )
                 , "get property, built on top of \"osiris::String osiris::ExtensionsSystem::getSharePath() const [member function]\"" );
-        
-        }
-        { //property "knownUpgradableCounter"[fget=::osiris::ExtensionsSystem::getKnownUpgradableCounter]
-        
-            typedef int ( ::osiris::ExtensionsSystem::*fget )(  ) const;
-            
-            ExtensionsSystem_exposer.add_property( 
-                "knownUpgradableCounter"
-                , fget( &::osiris::ExtensionsSystem::getKnownUpgradableCounter )
-                , "get property, built on top of \"int osiris::ExtensionsSystem::getKnownUpgradableCounter() const [member function]\"" );
         
         }
         { //property "name"[fget=::osiris::ExtensionsSystem::getName]

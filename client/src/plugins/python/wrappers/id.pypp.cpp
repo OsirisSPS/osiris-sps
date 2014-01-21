@@ -14,7 +14,7 @@ struct ID_wrapper : ::osiris::ID, ::osiris::PythonWrapper< ::osiris::ID > {
     ID_wrapper( )
     : ::osiris::ID( )
       , ::osiris::PythonWrapper< ::osiris::ID >(){
-        // nullptr constructor
+        // null constructor
     
     }
 

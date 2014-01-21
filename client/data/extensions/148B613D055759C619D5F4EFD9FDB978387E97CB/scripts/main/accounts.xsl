@@ -44,7 +44,66 @@
 						</div>
 
 						<xsl:choose>
-							<xsl:when test="accounts/account"></xsl:when>
+							<xsl:when test="accounts/account">
+								<xsl:for-each select="accounts/account">
+									<xsl:call-template name="block_item">
+										<xsl:with-param name="style" select="'display:inline-block;width:300px;'"/>
+										<xsl:with-param name="title">
+											<xsl:value-of select="@name"/>
+										</xsl:with-param>
+										<xsl:with-param name="content">
+											<table class="os_table_properties">
+												<tr>
+													<td style="width:40%">
+														<xsl:value-of select="lang:text('main.pages.accounts.last_access')"/>
+														<xsl:text>: </xsl:text>
+													</td>
+													<td>
+														<xsl:value-of select="date:userfriendly-datetime(@last_access)"/>
+													</td>
+												</tr>
+												<tr>
+													<td>
+														<xsl:value-of select="lang:text('main.pages.accounts.saved_password')"/>
+														<xsl:text>: </xsl:text>
+													</td>
+													<td>
+														<xsl:call-template name="boolean-icon">
+															<xsl:with-param name="value" select="@saved_password"/>
+														</xsl:call-template>
+													</td>
+												</tr>
+												<tr>
+													<td>
+														<xsl:value-of select="lang:text('main.pages.accounts.connected')"/>
+														<xsl:text>: </xsl:text>
+													</td>
+													<td>
+														<xsl:call-template name="boolean-icon">
+															<xsl:with-param name="value" select="@logged"/>
+														</xsl:call-template>
+													</td>
+												</tr>
+											</table>
+											<div class="os_commands">
+												<a class="os_button" style="display:block;" href="{actions/action[@name='enter']/@href}">
+													<img src="{system:resource-url('images/icons/16x16/enter.png')}"/>
+													<xsl:value-of select="lang:text('main.pages.accounts.enter')"/>
+												</a>
+												<a class="os_button" style="display:block;" href="{actions/action[@name='export']/@href}">
+													<img src="{system:resource-url('images/icons/16x16/export.png')}"/>
+													<xsl:value-of select="lang:text('main.pages.accounts.export')"/>
+												</a>
+												<a class="os_button" style="display:block;" href="{actions/action[@name='remove']/@href}">
+													<img src="{system:resource-url('images/icons/16x16/remove.png')}"/>
+													<xsl:value-of select="lang:text('main.pages.accounts.remove')"/>
+												</a>
+											</div>
+										</xsl:with-param>
+									</xsl:call-template>
+								</xsl:for-each>
+
+							</xsl:when>
 							<xsl:otherwise>
 								<div class="os_message_nodata">
 									<xsl:value-of select="lang:text('main.pages.accounts.empty')"/>
@@ -52,64 +111,8 @@
 							</xsl:otherwise>
 						</xsl:choose>
 
-						<xsl:for-each select="accounts/account">
-							<xsl:call-template name="block_item">
-								<xsl:with-param name="style" select="'display:inline-block;width:300px;'"/>
-								<xsl:with-param name="title">
-									<xsl:value-of select="@name"/>
-								</xsl:with-param>
-								<xsl:with-param name="content">
-									<table class="os_table_properties">
-										<tr>
-											<td style="width:40%">
-												<xsl:value-of select="lang:text('main.pages.accounts.last_access')"/>
-												<xsl:text>: </xsl:text>
-											</td>
-											<td>
-												<xsl:value-of select="date:userfriendly-datetime(@last_access)"/>
-											</td>
-										</tr>
-										<tr>
-											<td>
-												<xsl:value-of select="lang:text('main.pages.accounts.saved_password')"/>
-												<xsl:text>: </xsl:text>
-											</td>
-											<td>
-												<xsl:call-template name="boolean-icon">
-													<xsl:with-param name="value" select="@saved_password"/>
-												</xsl:call-template>
-											</td>
-										</tr>
-										<tr>
-											<td>
-												<xsl:value-of select="lang:text('main.pages.accounts.connected')"/>
-												<xsl:text>: </xsl:text>
-											</td>
-											<td>
-												<xsl:call-template name="boolean-icon">
-													<xsl:with-param name="value" select="@logged"/>
-												</xsl:call-template>
-											</td>
-										</tr>
-									</table>
-									<div class="os_commands">
-										<a class="os_button" style="display:block;" href="{actions/action[@name='enter']/@href}">
-											<img src="{system:resource-url('images/icons/16x16/enter.png')}"/>
-											<xsl:value-of select="lang:text('main.pages.accounts.enter')"/>											
-										</a>
-										<a class="os_button" style="display:block;" href="{actions/action[@name='export']/@href}">
-											<img src="{system:resource-url('images/icons/16x16/export.png')}"/>
-											<xsl:value-of select="lang:text('main.pages.accounts.export')"/>
-										</a>
-										<a class="os_button" style="display:block;" href="{actions/action[@name='remove']/@href}">
-											<img src="{system:resource-url('images/icons/16x16/remove.png')}"/>
-											<xsl:value-of select="lang:text('main.pages.accounts.remove')"/>
-										</a>
-									</div>
-								</xsl:with-param>
-							</xsl:call-template>
-						</xsl:for-each>
-
+						
+						<div style="clear:both;"></div>
 						
 					</xsl:with-param>
 				</xsl:call-template>

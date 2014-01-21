@@ -14,7 +14,7 @@ struct RegexManager_wrapper : ::osiris::RegexManager, ::osiris::PythonWrapper< :
     RegexManager_wrapper( )
     : ::osiris::RegexManager( )
       , ::osiris::PythonWrapper< ::osiris::RegexManager >(){
-        // nullptr constructor
+        // null constructor
     
     }
 

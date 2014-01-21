@@ -26,7 +26,7 @@ struct IdePositionEditor_wrapper : ::osiris::IdePositionEditor, ::osiris::Python
     IdePositionEditor_wrapper( )
     : ::osiris::IdePositionEditor( )
       , ::osiris::PythonWrapper< ::osiris::IdePositionEditor >(){
-        // nullptr constructor
+        // null constructor
     
     }
 
@@ -43,6 +43,13 @@ struct IdePositionEditor_wrapper : ::osiris::IdePositionEditor, ::osiris::Python
         __pythreadSaver.restore();
     }
 
+    static boost::python::object getFull( ::osiris::IdePositionEditor const & inst ){
+        ::osiris::PythonThreadSaver __pythreadSaver;
+        bool result = inst.getFull();
+        __pythreadSaver.restore();
+        return boost::python::object( result );
+    }
+
     virtual void onInit(  ){
         ::osiris::PythonState __pystate(getPythonThreadState());
         if( ::osiris::PythonOverride func_onInit = this->get_override( "onInit" ) )
@@ -56,6 +63,12 @@ struct IdePositionEditor_wrapper : ::osiris::IdePositionEditor, ::osiris::Python
     virtual void default_onInit(  ){
         ::osiris::PythonThreadSaver __pythreadSaver;
         ::osiris::IdePositionEditor::onInit( );
+    }
+
+    static void setFull( ::osiris::IdePositionEditor & inst, bool const full ){
+        ::osiris::PythonThreadSaver __pythreadSaver;
+        inst.setFull(full);
+        __pythreadSaver.restore();
     }
 
     bool decodeEvent( ::osiris::String const & command, ::osiris::String & eventName, ::osiris::HtmlEvent & e ) const {
@@ -232,6 +245,15 @@ void register_IdePositionEditor_class(){
                 , ( ::boost::python::arg("inst"), ::boost::python::arg("parent"), ::boost::python::arg("position") ) );
         
         }
+        { //::osiris::IdePositionEditor::getFull
+        
+            typedef boost::python::object ( *getFull_function_type )( ::osiris::IdePositionEditor const & );
+            
+            IdePositionEditor_exposer.def( 
+                "getFull"
+                , getFull_function_type( &IdePositionEditor_wrapper::getFull ) );
+        
+        }
         { //::osiris::IdePositionEditor::onInit
         
             typedef void ( IdePositionEditor_wrapper::*onInit_function_type )(  ) ;
@@ -239,6 +261,16 @@ void register_IdePositionEditor_class(){
             IdePositionEditor_exposer.def( 
                 "onInit"
                 , onInit_function_type( &IdePositionEditor_wrapper::default_onInit ) );
+        
+        }
+        { //::osiris::IdePositionEditor::setFull
+        
+            typedef void ( *setFull_function_type )( ::osiris::IdePositionEditor &,bool const );
+            
+            IdePositionEditor_exposer.def( 
+                "setFull"
+                , setFull_function_type( &IdePositionEditor_wrapper::setFull )
+                , ( ::boost::python::arg("inst"), ::boost::python::arg("full") ) );
         
         }
         { //::osiris::IHtmlControl::decodeEvent
@@ -372,6 +404,16 @@ void register_IdePositionEditor_class(){
                 "position"
                 , fget( &::osiris::IdePositionEditor::getPosition )
                 , "get property, built on top of \"double osiris::IdePositionEditor::getPosition() const [member function]\"" );
+        
+        }
+        { //property "full"[fget=::osiris::IdePositionEditor::getFull]
+        
+            typedef bool ( ::osiris::IdePositionEditor::*fget )(  ) const;
+            
+            IdePositionEditor_exposer.add_property( 
+                "full"
+                , fget( &::osiris::IdePositionEditor::getFull )
+                , "get property, built on top of \"bool osiris::IdePositionEditor::getFull() const [member function]\"" );
         
         }
     }

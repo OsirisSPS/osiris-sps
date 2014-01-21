@@ -24,7 +24,7 @@ struct HtmlPopup_wrapper : ::osiris::HtmlPopup, ::osiris::PythonWrapper< ::osiri
     HtmlPopup_wrapper( )
     : ::osiris::HtmlPopup( )
       , ::osiris::PythonWrapper< ::osiris::HtmlPopup >(){
-        // nullptr constructor
+        // null constructor
     
     }
 

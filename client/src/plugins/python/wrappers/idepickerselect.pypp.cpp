@@ -17,9 +17,9 @@
 #include "httprequest.h"
 #include "httpresponse.h"
 #include "httpsession.h"
+#include "idepickersections.h"
 #include "idepickerskin.h"
 #include "idepickercomponent.h"
-#include "idepickersections.h"
 #include "idepickerselect.pypp.hpp"
 
 namespace bp = boost::python;
@@ -29,7 +29,7 @@ struct IdePickerSelect_wrapper : ::osiris::IdePickerSelect, ::osiris::PythonWrap
     IdePickerSelect_wrapper( )
     : ::osiris::IdePickerSelect( )
       , ::osiris::PythonWrapper< ::osiris::IdePickerSelect >(){
-        // nullptr constructor
+        // null constructor
     
     }
 

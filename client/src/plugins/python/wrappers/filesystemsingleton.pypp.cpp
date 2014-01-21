@@ -14,7 +14,7 @@ struct StaticSingleton_less__osiris_scope_FileSystem_comma__true__greater__wrapp
     StaticSingleton_less__osiris_scope_FileSystem_comma__true__greater__wrapper( )
     : ::osiris::StaticSingleton<osiris::FileSystem, true>( )
       , ::osiris::PythonWrapper< ::osiris::StaticSingleton< osiris::FileSystem, true > >(){
-        // nullptr constructor
+        // null constructor
     
     }
 

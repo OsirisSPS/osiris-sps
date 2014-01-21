@@ -18,7 +18,7 @@ struct HttpRootDirectory_wrapper : ::osiris::HttpRootDirectory, ::osiris::Python
     HttpRootDirectory_wrapper( )
     : ::osiris::HttpRootDirectory( )
       , ::osiris::PythonWrapper< ::osiris::HttpRootDirectory >(){
-        // nullptr constructor
+        // null constructor
     
     }
 

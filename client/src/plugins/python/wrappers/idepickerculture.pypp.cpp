@@ -26,7 +26,7 @@ struct IdePickerCulture_wrapper : ::osiris::IdePickerCulture, ::osiris::PythonWr
     IdePickerCulture_wrapper( )
     : ::osiris::IdePickerCulture( )
       , ::osiris::PythonWrapper< ::osiris::IdePickerCulture >(){
-        // nullptr constructor
+        // null constructor
     
     }
 

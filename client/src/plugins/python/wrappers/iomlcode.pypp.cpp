@@ -5,35 +5,35 @@
 #include "boost/python.hpp"
 #include "__call_policies.pypp.hpp"
 #include "iomlcode.h"
-#include "omlhtmlwrapper.h"
-#include "omla.h"
-#include "omlimg.h"
-#include "omlnoparse.h"
-#include "omlpopup.h"
-#include "omlsize.h"
+#include "omlmore.h"
 #include "omlgoto.h"
-#include "omllist.h"
-#include "omlreplace.h"
-#include "omlhtml.h"
+#include "omlpopup.h"
+#include "omlnoparse.h"
+#include "omlemail.h"
+#include "omlnobr.h"
+#include "omlurl.h"
+#include "omlanchor.h"
+#include "omlobject.h"
+#include "omlless.h"
+#include "omldate.h"
 #include "iomlxsl.h"
 #include "omlview.h"
 #include "omluser.h"
-#include "omldebug.h"
-#include "omlnobr.h"
-#include "omlmore.h"
-#include "omlless.h"
-#include "omlsystem.h"
-#include "omltext.h"
-#include "omlurl.h"
-#include "omlobject.h"
-#include "omlcode.h"
-#include "omldate.h"
+#include "omlreplace.h"
 #include "omlquote.h"
-#include "omlanchor.h"
-#include "omllang.h"
-#include "omlemail.h"
-#include "omltab.h"
 #include "omlif.h"
+#include "omltext.h"
+#include "omlsystem.h"
+#include "omlhtml.h"
+#include "omllist.h"
+#include "omlsize.h"
+#include "omlhtmlwrapper.h"
+#include "omlimg.h"
+#include "omla.h"
+#include "omltab.h"
+#include "omlcode.h"
+#include "omllang.h"
+#include "omldebug.h"
 #include "iomlcode.pypp.hpp"
 
 namespace bp = boost::python;
@@ -518,35 +518,35 @@ void register_IOMLCode_class(){
         }
         ::boost::python::register_ptr_to_python< boost::shared_ptr< ::osiris::IOMLCode > >();
         ::boost::python::implicitly_convertible< boost::shared_ptr< ::osiris::IOMLCode >, boost::shared_ptr< ::osiris::Object > >();
-        ::boost::python::implicitly_convertible< boost::shared_ptr< ::osiris::OMLHtmlWrapper >, boost::shared_ptr< ::osiris::IOMLCode > >();
-        ::boost::python::implicitly_convertible< boost::shared_ptr< ::osiris::OMLA >, boost::shared_ptr< ::osiris::IOMLCode > >();
-        ::boost::python::implicitly_convertible< boost::shared_ptr< ::osiris::OMLImg >, boost::shared_ptr< ::osiris::IOMLCode > >();
-        ::boost::python::implicitly_convertible< boost::shared_ptr< ::osiris::OMLNoParse >, boost::shared_ptr< ::osiris::IOMLCode > >();
-        ::boost::python::implicitly_convertible< boost::shared_ptr< ::osiris::OMLPopup >, boost::shared_ptr< ::osiris::IOMLCode > >();
-        ::boost::python::implicitly_convertible< boost::shared_ptr< ::osiris::OMLSize >, boost::shared_ptr< ::osiris::IOMLCode > >();
+        ::boost::python::implicitly_convertible< boost::shared_ptr< ::osiris::OMLMore >, boost::shared_ptr< ::osiris::IOMLCode > >();
         ::boost::python::implicitly_convertible< boost::shared_ptr< ::osiris::OMLGoto >, boost::shared_ptr< ::osiris::IOMLCode > >();
-        ::boost::python::implicitly_convertible< boost::shared_ptr< ::osiris::OMLList >, boost::shared_ptr< ::osiris::IOMLCode > >();
-        ::boost::python::implicitly_convertible< boost::shared_ptr< ::osiris::OMLReplace >, boost::shared_ptr< ::osiris::IOMLCode > >();
-        ::boost::python::implicitly_convertible< boost::shared_ptr< ::osiris::OMLHtml >, boost::shared_ptr< ::osiris::IOMLCode > >();
+        ::boost::python::implicitly_convertible< boost::shared_ptr< ::osiris::OMLPopup >, boost::shared_ptr< ::osiris::IOMLCode > >();
+        ::boost::python::implicitly_convertible< boost::shared_ptr< ::osiris::OMLNoParse >, boost::shared_ptr< ::osiris::IOMLCode > >();
+        ::boost::python::implicitly_convertible< boost::shared_ptr< ::osiris::OMLEMail >, boost::shared_ptr< ::osiris::IOMLCode > >();
+        ::boost::python::implicitly_convertible< boost::shared_ptr< ::osiris::OMLNoBR >, boost::shared_ptr< ::osiris::IOMLCode > >();
+        ::boost::python::implicitly_convertible< boost::shared_ptr< ::osiris::OMLUrl >, boost::shared_ptr< ::osiris::IOMLCode > >();
+        ::boost::python::implicitly_convertible< boost::shared_ptr< ::osiris::OMLAnchor >, boost::shared_ptr< ::osiris::IOMLCode > >();
+        ::boost::python::implicitly_convertible< boost::shared_ptr< ::osiris::OMLObject >, boost::shared_ptr< ::osiris::IOMLCode > >();
+        ::boost::python::implicitly_convertible< boost::shared_ptr< ::osiris::OMLLess >, boost::shared_ptr< ::osiris::IOMLCode > >();
+        ::boost::python::implicitly_convertible< boost::shared_ptr< ::osiris::OMLDate >, boost::shared_ptr< ::osiris::IOMLCode > >();
         ::boost::python::implicitly_convertible< boost::shared_ptr< ::osiris::IOMLXsl >, boost::shared_ptr< ::osiris::IOMLCode > >();
         ::boost::python::implicitly_convertible< boost::shared_ptr< ::osiris::OMLView >, boost::shared_ptr< ::osiris::IOMLCode > >();
         ::boost::python::implicitly_convertible< boost::shared_ptr< ::osiris::OMLUser >, boost::shared_ptr< ::osiris::IOMLCode > >();
-        ::boost::python::implicitly_convertible< boost::shared_ptr< ::osiris::OMLDebug >, boost::shared_ptr< ::osiris::IOMLCode > >();
-        ::boost::python::implicitly_convertible< boost::shared_ptr< ::osiris::OMLNoBR >, boost::shared_ptr< ::osiris::IOMLCode > >();
-        ::boost::python::implicitly_convertible< boost::shared_ptr< ::osiris::OMLMore >, boost::shared_ptr< ::osiris::IOMLCode > >();
-        ::boost::python::implicitly_convertible< boost::shared_ptr< ::osiris::OMLLess >, boost::shared_ptr< ::osiris::IOMLCode > >();
-        ::boost::python::implicitly_convertible< boost::shared_ptr< ::osiris::OMLSystem >, boost::shared_ptr< ::osiris::IOMLCode > >();
-        ::boost::python::implicitly_convertible< boost::shared_ptr< ::osiris::OMLText >, boost::shared_ptr< ::osiris::IOMLCode > >();
-        ::boost::python::implicitly_convertible< boost::shared_ptr< ::osiris::OMLUrl >, boost::shared_ptr< ::osiris::IOMLCode > >();
-        ::boost::python::implicitly_convertible< boost::shared_ptr< ::osiris::OMLObject >, boost::shared_ptr< ::osiris::IOMLCode > >();
-        ::boost::python::implicitly_convertible< boost::shared_ptr< ::osiris::OMLCode >, boost::shared_ptr< ::osiris::IOMLCode > >();
-        ::boost::python::implicitly_convertible< boost::shared_ptr< ::osiris::OMLDate >, boost::shared_ptr< ::osiris::IOMLCode > >();
+        ::boost::python::implicitly_convertible< boost::shared_ptr< ::osiris::OMLReplace >, boost::shared_ptr< ::osiris::IOMLCode > >();
         ::boost::python::implicitly_convertible< boost::shared_ptr< ::osiris::OMLQuote >, boost::shared_ptr< ::osiris::IOMLCode > >();
-        ::boost::python::implicitly_convertible< boost::shared_ptr< ::osiris::OMLAnchor >, boost::shared_ptr< ::osiris::IOMLCode > >();
-        ::boost::python::implicitly_convertible< boost::shared_ptr< ::osiris::OMLLang >, boost::shared_ptr< ::osiris::IOMLCode > >();
-        ::boost::python::implicitly_convertible< boost::shared_ptr< ::osiris::OMLEMail >, boost::shared_ptr< ::osiris::IOMLCode > >();
-        ::boost::python::implicitly_convertible< boost::shared_ptr< ::osiris::OMLTab >, boost::shared_ptr< ::osiris::IOMLCode > >();
         ::boost::python::implicitly_convertible< boost::shared_ptr< ::osiris::OMLIf >, boost::shared_ptr< ::osiris::IOMLCode > >();
+        ::boost::python::implicitly_convertible< boost::shared_ptr< ::osiris::OMLText >, boost::shared_ptr< ::osiris::IOMLCode > >();
+        ::boost::python::implicitly_convertible< boost::shared_ptr< ::osiris::OMLSystem >, boost::shared_ptr< ::osiris::IOMLCode > >();
+        ::boost::python::implicitly_convertible< boost::shared_ptr< ::osiris::OMLHtml >, boost::shared_ptr< ::osiris::IOMLCode > >();
+        ::boost::python::implicitly_convertible< boost::shared_ptr< ::osiris::OMLList >, boost::shared_ptr< ::osiris::IOMLCode > >();
+        ::boost::python::implicitly_convertible< boost::shared_ptr< ::osiris::OMLSize >, boost::shared_ptr< ::osiris::IOMLCode > >();
+        ::boost::python::implicitly_convertible< boost::shared_ptr< ::osiris::OMLHtmlWrapper >, boost::shared_ptr< ::osiris::IOMLCode > >();
+        ::boost::python::implicitly_convertible< boost::shared_ptr< ::osiris::OMLImg >, boost::shared_ptr< ::osiris::IOMLCode > >();
+        ::boost::python::implicitly_convertible< boost::shared_ptr< ::osiris::OMLA >, boost::shared_ptr< ::osiris::IOMLCode > >();
+        ::boost::python::implicitly_convertible< boost::shared_ptr< ::osiris::OMLTab >, boost::shared_ptr< ::osiris::IOMLCode > >();
+        ::boost::python::implicitly_convertible< boost::shared_ptr< ::osiris::OMLCode >, boost::shared_ptr< ::osiris::IOMLCode > >();
+        ::boost::python::implicitly_convertible< boost::shared_ptr< ::osiris::OMLLang >, boost::shared_ptr< ::osiris::IOMLCode > >();
+        ::boost::python::implicitly_convertible< boost::shared_ptr< ::osiris::OMLDebug >, boost::shared_ptr< ::osiris::IOMLCode > >();
     }
 
 }

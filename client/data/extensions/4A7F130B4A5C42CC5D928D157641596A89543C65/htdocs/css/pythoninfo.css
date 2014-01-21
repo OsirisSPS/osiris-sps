@@ -1,0 +1,23 @@
+.pyinfo
+{
+	padding:30px;
+	text-align:center;
+}
+
+.pyinfo table
+{
+	margin:auto;
+	width:70%;
+	
+}
+
+.pyinfo td
+{
+	border:1px solid #CCCCCC;
+	padding: 3px;
+}
+
+.pyinfo img
+{
+	float:right;
+}

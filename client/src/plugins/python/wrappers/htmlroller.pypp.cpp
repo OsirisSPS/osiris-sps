@@ -24,7 +24,7 @@ struct HtmlRoller_wrapper : ::osiris::HtmlRoller, ::osiris::PythonWrapper< ::osi
     HtmlRoller_wrapper( )
     : ::osiris::HtmlRoller( )
       , ::osiris::PythonWrapper< ::osiris::HtmlRoller >(){
-        // nullptr constructor
+        // null constructor
     
     }
 

@@ -7,8 +7,8 @@
 #include "ihttpmethod.h"
 #include "httpcontent.h"
 #include "httpdata.h"
-#include "httpresponse.h"
 #include "httprequest.h"
+#include "httpresponse.h"
 #include "ihttpmethod.pypp.hpp"
 
 namespace bp = boost::python;
@@ -18,7 +18,7 @@ struct IHttpMethod_wrapper : ::osiris::IHttpMethod, ::osiris::PythonWrapper< ::o
     IHttpMethod_wrapper( )
     : ::osiris::IHttpMethod( )
       , ::osiris::PythonWrapper< ::osiris::IHttpMethod >(){
-        // nullptr constructor
+        // null constructor
     
     }
 

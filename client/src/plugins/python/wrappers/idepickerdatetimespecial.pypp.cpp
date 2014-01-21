@@ -25,7 +25,7 @@ struct IdePickerDateTimeSpecial_wrapper : ::osiris::IdePickerDateTimeSpecial, ::
     IdePickerDateTimeSpecial_wrapper( )
     : ::osiris::IdePickerDateTimeSpecial( )
       , ::osiris::PythonWrapper< ::osiris::IdePickerDateTimeSpecial >(){
-        // nullptr constructor
+        // null constructor
     
     }
 

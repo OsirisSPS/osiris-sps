@@ -26,7 +26,7 @@ struct IdeOMLEditor_wrapper : ::osiris::IdeOMLEditor, ::osiris::PythonWrapper< :
     IdeOMLEditor_wrapper( )
     : ::osiris::IdeOMLEditor( )
       , ::osiris::PythonWrapper< ::osiris::IdeOMLEditor >(){
-        // nullptr constructor
+        // null constructor
     
     }
 

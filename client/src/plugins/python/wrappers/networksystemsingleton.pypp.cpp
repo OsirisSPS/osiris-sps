@@ -14,7 +14,7 @@ struct StaticSingleton_less__osiris_scope_NetworkSystem_comma__true__greater__wr
     StaticSingleton_less__osiris_scope_NetworkSystem_comma__true__greater__wrapper( )
     : ::osiris::StaticSingleton<osiris::NetworkSystem, true>( )
       , ::osiris::PythonWrapper< ::osiris::StaticSingleton< osiris::NetworkSystem, true > >(){
-        // nullptr constructor
+        // null constructor
     
     }
 
