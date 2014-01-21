@@ -14,7 +14,7 @@ struct IXMLResolver_wrapper : ::osiris::IXMLResolver, ::osiris::PythonWrapper< :
     IXMLResolver_wrapper( )
     : ::osiris::IXMLResolver( )
       , ::osiris::PythonWrapper< ::osiris::IXMLResolver >(){
-        // nullptr constructor
+        // null constructor
     
     }
 

@@ -15,7 +15,7 @@ struct EventSource_wrapper : ::osiris::EventSource, ::osiris::PythonWrapper< ::o
     EventSource_wrapper( )
     : ::osiris::EventSource( )
       , ::osiris::PythonWrapper< ::osiris::EventSource >(){
-        // nullptr constructor
+        // null constructor
     
     }
 

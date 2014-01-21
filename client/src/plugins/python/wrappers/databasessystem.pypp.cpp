@@ -15,7 +15,7 @@ struct DatabasesSystem_wrapper : ::osiris::DatabasesSystem, ::osiris::PythonWrap
     DatabasesSystem_wrapper( )
     : ::osiris::DatabasesSystem( )
       , ::osiris::PythonWrapper< ::osiris::DatabasesSystem >(){
-        // nullptr constructor
+        // null constructor
     
     }
 

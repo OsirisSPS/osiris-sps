@@ -5,6 +5,7 @@
 #include "boost/python.hpp"
 #include "__call_policies.pypp.hpp"
 #include "idesystem.h"
+#include "iidepage.h"
 #include "ideskin.h"
 #include "ihttpserver.h"
 #include "idesystem.pypp.hpp"
@@ -16,7 +17,7 @@ struct IdeSystem_wrapper : ::osiris::IdeSystem, ::osiris::PythonWrapper< ::osiri
     IdeSystem_wrapper( )
     : ::osiris::IdeSystem( )
       , ::osiris::PythonWrapper< ::osiris::IdeSystem >(){
-        // nullptr constructor
+        // null constructor
     
     }
 

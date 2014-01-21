@@ -25,7 +25,7 @@ struct IdePickerObject_wrapper : ::osiris::IdePickerObject, ::osiris::PythonWrap
     IdePickerObject_wrapper( )
     : ::osiris::IdePickerObject( )
       , ::osiris::PythonWrapper< ::osiris::IdePickerObject >(){
-        // nullptr constructor
+        // null constructor
     
     }
 

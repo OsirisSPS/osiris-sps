@@ -13,7 +13,7 @@ struct IOptionValidator_wrapper : ::osiris::IOptionValidator, ::osiris::PythonWr
     IOptionValidator_wrapper( )
     : ::osiris::IOptionValidator( )
       , ::osiris::PythonWrapper< ::osiris::IOptionValidator >(){
-        // nullptr constructor
+        // null constructor
     
     }
 

@@ -14,8 +14,8 @@
 #include "httprequest.h"
 #include "httpresponse.h"
 #include "httpsession.h"
-#include "htmlcheckbox.h"
 #include "htmlfilebrowser.h"
+#include "htmlcheckbox.h"
 #include "htmltextbox.h"
 #include "idepickerbool.h"
 #include "ihtmlinput.pypp.hpp"
@@ -27,7 +27,7 @@ struct IHtmlInput_wrapper : ::osiris::IHtmlInput, ::osiris::PythonWrapper< ::osi
     IHtmlInput_wrapper( )
     : ::osiris::IHtmlInput( )
       , ::osiris::PythonWrapper< ::osiris::IHtmlInput >(){
-        // nullptr constructor
+        // null constructor
     
     }
 

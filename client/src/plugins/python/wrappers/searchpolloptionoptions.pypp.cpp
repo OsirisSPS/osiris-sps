@@ -21,7 +21,7 @@ struct SearchPollOptionOptions_wrapper : ::osiris::SearchPollOptionOptions, ::os
     SearchPollOptionOptions_wrapper( )
     : ::osiris::SearchPollOptionOptions( )
       , ::osiris::PythonWrapper< ::osiris::SearchPollOptionOptions >(){
-        // nullptr constructor
+        // null constructor
     
     }
 

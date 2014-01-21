@@ -5,6 +5,7 @@
 #include "boost/python.hpp"
 #include "__call_policies.pypp.hpp"
 #include "httpparser.h"
+#include "version.h"
 #include "httpparser.pypp.hpp"
 
 namespace bp = boost::python;

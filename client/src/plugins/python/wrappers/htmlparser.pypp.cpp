@@ -14,7 +14,7 @@ struct HtmlParser_wrapper : ::osiris::HtmlParser, ::osiris::PythonWrapper< ::osi
     HtmlParser_wrapper( )
     : ::osiris::HtmlParser( )
       , ::osiris::PythonWrapper< ::osiris::HtmlParser >(){
-        // nullptr constructor
+        // null constructor
     
     }
 

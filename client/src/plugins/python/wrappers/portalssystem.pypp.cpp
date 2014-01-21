@@ -19,7 +19,7 @@ struct PortalsSystem_wrapper : ::osiris::PortalsSystem, ::osiris::PythonWrapper<
     PortalsSystem_wrapper( )
     : ::osiris::PortalsSystem( )
       , ::osiris::PythonWrapper< ::osiris::PortalsSystem >(){
-        // nullptr constructor
+        // null constructor
     
     }
 

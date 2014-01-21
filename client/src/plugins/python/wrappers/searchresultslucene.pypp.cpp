@@ -15,7 +15,7 @@ struct SearchResultsLucene_wrapper : ::osiris::SearchResultsLucene, ::osiris::Py
     SearchResultsLucene_wrapper( )
     : ::osiris::SearchResultsLucene( )
       , ::osiris::PythonWrapper< ::osiris::SearchResultsLucene >(){
-        // nullptr constructor
+        // null constructor
     
     }
 

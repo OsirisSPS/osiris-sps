@@ -26,7 +26,7 @@ struct IdeTableQuery_wrapper : ::osiris::IdeTableQuery, ::osiris::PythonWrapper<
     IdeTableQuery_wrapper( )
     : ::osiris::IdeTableQuery( )
       , ::osiris::PythonWrapper< ::osiris::IdeTableQuery >(){
-        // nullptr constructor
+        // null constructor
     
     }
 

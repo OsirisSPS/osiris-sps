@@ -23,7 +23,7 @@ struct HtmlTextBox_wrapper : ::osiris::HtmlTextBox, ::osiris::PythonWrapper< ::o
     HtmlTextBox_wrapper( )
     : ::osiris::HtmlTextBox( )
       , ::osiris::PythonWrapper< ::osiris::HtmlTextBox >(){
-        // nullptr constructor
+        // null constructor
     
     }
 

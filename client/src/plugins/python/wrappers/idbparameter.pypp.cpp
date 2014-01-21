@@ -14,7 +14,7 @@ struct IDbParameter_wrapper : ::osiris::IDbParameter, ::osiris::PythonWrapper< :
     IDbParameter_wrapper( )
     : ::osiris::IDbParameter( )
       , ::osiris::PythonWrapper< ::osiris::IDbParameter >(){
-        // nullptr constructor
+        // null constructor
     
     }
 

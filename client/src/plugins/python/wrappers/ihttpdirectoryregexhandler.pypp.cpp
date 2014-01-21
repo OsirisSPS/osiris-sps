@@ -15,7 +15,7 @@ struct IHttpDirectoryRegexHandler_wrapper : ::osiris::IHttpDirectoryRegexHandler
     IHttpDirectoryRegexHandler_wrapper( )
     : ::osiris::IHttpDirectoryRegexHandler( )
       , ::osiris::PythonWrapper< ::osiris::IHttpDirectoryRegexHandler >(){
-        // nullptr constructor
+        // null constructor
     
     }
 

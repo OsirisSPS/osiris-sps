@@ -15,7 +15,7 @@ struct CryptManager_wrapper : ::osiris::CryptManager, ::osiris::PythonWrapper< :
     CryptManager_wrapper( )
     : ::osiris::CryptManager( )
       , ::osiris::PythonWrapper< ::osiris::CryptManager >(){
-        // nullptr constructor
+        // null constructor
     
     }
 

@@ -15,28 +15,28 @@
 #include "httprequest.h"
 #include "httpresponse.h"
 #include "httpsession.h"
-#include "htmltooltip.h"
 #include "htmlpager.h"
+#include "htmltabpage.h"
 #include "htmlpopup.h"
-#include "idepickerculture.h"
+#include "htmlroller.h"
+#include "htmltab.h"
+#include "htmltooltip.h"
 #include "idepickerselect.h"
+#include "idepickersections.h"
 #include "idepickerskin.h"
 #include "idepickercomponent.h"
-#include "idepickersections.h"
+#include "extensionscomponentcontrol.h"
+#include "extensionscomponentviewer.h"
+#include "extensionsinvalidcomponent.h"
+#include "extensionscomponenteditor.h"
+#include "idesearchparam.h"
+#include "idepositioneditor.h"
 #include "extensionsmodulecontrol.h"
-#include "extensionsmoduleeditor.h"
 #include "extensionsmoduleviewer.h"
 #include "extensionsinvalidmodule.h"
 #include "extensionsmoduleviewerhidden.h"
-#include "extensionscomponentcontrol.h"
-#include "extensionscomponenteditor.h"
-#include "extensionscomponentviewer.h"
-#include "extensionsinvalidcomponent.h"
-#include "idepositioneditor.h"
-#include "idesearchparam.h"
-#include "htmltabpage.h"
-#include "htmltab.h"
-#include "htmlroller.h"
+#include "extensionsmoduleeditor.h"
+#include "idepickerculture.h"
 #include "htmldiv.pypp.hpp"
 
 namespace bp = boost::python;
@@ -46,7 +46,7 @@ struct HtmlDiv_wrapper : ::osiris::HtmlDiv, ::osiris::PythonWrapper< ::osiris::H
     HtmlDiv_wrapper( )
     : ::osiris::HtmlDiv( )
       , ::osiris::PythonWrapper< ::osiris::HtmlDiv >(){
-        // nullptr constructor
+        // null constructor
     
     }
 
@@ -357,30 +357,30 @@ void register_HtmlDiv_class(){
         ::boost::python::implicitly_convertible< boost::shared_ptr< ::osiris::HtmlDiv >, boost::shared_ptr< ::boost::signals::trackable > >();
         ::boost::python::implicitly_convertible< boost::shared_ptr< ::osiris::HtmlDiv >, boost::shared_ptr< ::osiris::enable_this_ptr< osiris::IHtmlControl > > >();
         ::boost::python::implicitly_convertible< boost::shared_ptr< ::osiris::HtmlDiv >, boost::shared_ptr< ::osiris::Object > >();
-        ::boost::python::implicitly_convertible< boost::shared_ptr< ::osiris::HtmlTooltip >, boost::shared_ptr< ::osiris::HtmlDiv > >();
         ::boost::python::implicitly_convertible< boost::shared_ptr< ::osiris::HtmlPager >, boost::shared_ptr< ::osiris::HtmlDiv > >();
+        ::boost::python::implicitly_convertible< boost::shared_ptr< ::osiris::HtmlTabPage >, boost::shared_ptr< ::osiris::HtmlDiv > >();
         ::boost::python::implicitly_convertible< boost::shared_ptr< ::osiris::HtmlPopup >, boost::shared_ptr< ::osiris::HtmlDiv > >();
+        ::boost::python::implicitly_convertible< boost::shared_ptr< ::osiris::HtmlRoller >, boost::shared_ptr< ::osiris::HtmlDiv > >();
+        ::boost::python::implicitly_convertible< boost::shared_ptr< ::osiris::HtmlTab >, boost::shared_ptr< ::osiris::HtmlDiv > >();
+        ::boost::python::implicitly_convertible< boost::shared_ptr< ::osiris::HtmlTooltip >, boost::shared_ptr< ::osiris::HtmlDiv > >();
         ::boost::python::implicitly_convertible< boost::shared_ptr< ::osiris::IPageControl< osiris::HtmlDiv > >, boost::shared_ptr< ::osiris::HtmlDiv > >();
-        ::boost::python::implicitly_convertible< boost::shared_ptr< ::osiris::IdePickerCulture >, boost::shared_ptr< ::osiris::HtmlDiv > >();
         ::boost::python::implicitly_convertible< boost::shared_ptr< ::osiris::IdePickerSelect >, boost::shared_ptr< ::osiris::HtmlDiv > >();
+        ::boost::python::implicitly_convertible< boost::shared_ptr< ::osiris::IdePickerSections >, boost::shared_ptr< ::osiris::HtmlDiv > >();
         ::boost::python::implicitly_convertible< boost::shared_ptr< ::osiris::IdePickerSkin >, boost::shared_ptr< ::osiris::HtmlDiv > >();
         ::boost::python::implicitly_convertible< boost::shared_ptr< ::osiris::IdePickerComponent >, boost::shared_ptr< ::osiris::HtmlDiv > >();
-        ::boost::python::implicitly_convertible< boost::shared_ptr< ::osiris::IdePickerSections >, boost::shared_ptr< ::osiris::HtmlDiv > >();
         ::boost::python::implicitly_convertible< boost::shared_ptr< ::osiris::IPortalPageControl< osiris::HtmlDiv > >, boost::shared_ptr< ::osiris::HtmlDiv > >();
+        ::boost::python::implicitly_convertible< boost::shared_ptr< ::osiris::ExtensionsComponentControl >, boost::shared_ptr< ::osiris::HtmlDiv > >();
+        ::boost::python::implicitly_convertible< boost::shared_ptr< ::osiris::ExtensionsComponentViewer >, boost::shared_ptr< ::osiris::HtmlDiv > >();
+        ::boost::python::implicitly_convertible< boost::shared_ptr< ::osiris::ExtensionsInvalidComponent >, boost::shared_ptr< ::osiris::HtmlDiv > >();
+        ::boost::python::implicitly_convertible< boost::shared_ptr< ::osiris::ExtensionsComponentEditor >, boost::shared_ptr< ::osiris::HtmlDiv > >();
+        ::boost::python::implicitly_convertible< boost::shared_ptr< ::osiris::IdeSearchParam >, boost::shared_ptr< ::osiris::HtmlDiv > >();
+        ::boost::python::implicitly_convertible< boost::shared_ptr< ::osiris::IdePositionEditor >, boost::shared_ptr< ::osiris::HtmlDiv > >();
         ::boost::python::implicitly_convertible< boost::shared_ptr< ::osiris::ExtensionsModuleControl >, boost::shared_ptr< ::osiris::HtmlDiv > >();
-        ::boost::python::implicitly_convertible< boost::shared_ptr< ::osiris::ExtensionsModuleEditor >, boost::shared_ptr< ::osiris::HtmlDiv > >();
         ::boost::python::implicitly_convertible< boost::shared_ptr< ::osiris::ExtensionsModuleViewer >, boost::shared_ptr< ::osiris::HtmlDiv > >();
         ::boost::python::implicitly_convertible< boost::shared_ptr< ::osiris::ExtensionsInvalidModule >, boost::shared_ptr< ::osiris::HtmlDiv > >();
         ::boost::python::implicitly_convertible< boost::shared_ptr< ::osiris::ExtensionsModuleViewerHidden >, boost::shared_ptr< ::osiris::HtmlDiv > >();
-        ::boost::python::implicitly_convertible< boost::shared_ptr< ::osiris::ExtensionsComponentControl >, boost::shared_ptr< ::osiris::HtmlDiv > >();
-        ::boost::python::implicitly_convertible< boost::shared_ptr< ::osiris::ExtensionsComponentEditor >, boost::shared_ptr< ::osiris::HtmlDiv > >();
-        ::boost::python::implicitly_convertible< boost::shared_ptr< ::osiris::ExtensionsComponentViewer >, boost::shared_ptr< ::osiris::HtmlDiv > >();
-        ::boost::python::implicitly_convertible< boost::shared_ptr< ::osiris::ExtensionsInvalidComponent >, boost::shared_ptr< ::osiris::HtmlDiv > >();
-        ::boost::python::implicitly_convertible< boost::shared_ptr< ::osiris::IdePositionEditor >, boost::shared_ptr< ::osiris::HtmlDiv > >();
-        ::boost::python::implicitly_convertible< boost::shared_ptr< ::osiris::IdeSearchParam >, boost::shared_ptr< ::osiris::HtmlDiv > >();
-        ::boost::python::implicitly_convertible< boost::shared_ptr< ::osiris::HtmlTabPage >, boost::shared_ptr< ::osiris::HtmlDiv > >();
-        ::boost::python::implicitly_convertible< boost::shared_ptr< ::osiris::HtmlTab >, boost::shared_ptr< ::osiris::HtmlDiv > >();
-        ::boost::python::implicitly_convertible< boost::shared_ptr< ::osiris::HtmlRoller >, boost::shared_ptr< ::osiris::HtmlDiv > >();
+        ::boost::python::implicitly_convertible< boost::shared_ptr< ::osiris::ExtensionsModuleEditor >, boost::shared_ptr< ::osiris::HtmlDiv > >();
+        ::boost::python::implicitly_convertible< boost::shared_ptr< ::osiris::IdePickerCulture >, boost::shared_ptr< ::osiris::HtmlDiv > >();
     }
 
 }

@@ -5,8 +5,8 @@
 #include "boost/python.hpp"
 #include "__call_policies.pypp.hpp"
 #include "iidepageable.h"
-#include "idemailbox.h"
 #include "idesearchresults.h"
+#include "idemailbox.h"
 #include "iidepageable.pypp.hpp"
 
 namespace bp = boost::python;
@@ -16,7 +16,7 @@ struct IIdePageable_wrapper : ::osiris::IIdePageable, ::osiris::PythonWrapper< :
     IIdePageable_wrapper( )
     : ::osiris::IIdePageable( )
       , ::osiris::PythonWrapper< ::osiris::IIdePageable >(){
-        // nullptr constructor
+        // null constructor
     
     }
 

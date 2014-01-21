@@ -21,7 +21,7 @@ struct SearchTagOptions_wrapper : ::osiris::SearchTagOptions, ::osiris::PythonWr
     SearchTagOptions_wrapper( )
     : ::osiris::SearchTagOptions( )
       , ::osiris::PythonWrapper< ::osiris::SearchTagOptions >(){
-        // nullptr constructor
+        // null constructor
     
     }
 

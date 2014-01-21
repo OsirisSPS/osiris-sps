@@ -27,7 +27,7 @@ struct ExtensionsModuleViewerHidden_wrapper : ::osiris::ExtensionsModuleViewerHi
     ExtensionsModuleViewerHidden_wrapper( )
     : ::osiris::ExtensionsModuleViewerHidden( )
       , ::osiris::PythonWrapper< ::osiris::ExtensionsModuleViewerHidden >(){
-        // nullptr constructor
+        // null constructor
     
     }
 

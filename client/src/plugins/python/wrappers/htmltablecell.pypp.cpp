@@ -24,7 +24,7 @@ struct HtmlTableCell_wrapper : ::osiris::HtmlTableCell, ::osiris::PythonWrapper<
     HtmlTableCell_wrapper( )
     : ::osiris::HtmlTableCell( )
       , ::osiris::PythonWrapper< ::osiris::HtmlTableCell >(){
-        // nullptr constructor
+        // null constructor
     
     }
 

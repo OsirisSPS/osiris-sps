@@ -14,7 +14,7 @@ struct StaticSingleton_less__osiris_scope_RegexManager_comma__true__greater__wra
     StaticSingleton_less__osiris_scope_RegexManager_comma__true__greater__wrapper( )
     : ::osiris::StaticSingleton<osiris::RegexManager, true>( )
       , ::osiris::PythonWrapper< ::osiris::StaticSingleton< osiris::RegexManager, true > >(){
-        // nullptr constructor
+        // null constructor
     
     }
 

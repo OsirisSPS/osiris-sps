@@ -14,7 +14,7 @@ struct FileSystem_wrapper : ::osiris::FileSystem, ::osiris::PythonWrapper< ::osi
     FileSystem_wrapper( )
     : ::osiris::FileSystem( )
       , ::osiris::PythonWrapper< ::osiris::FileSystem >(){
-        // nullptr constructor
+        // null constructor
     
     }
 

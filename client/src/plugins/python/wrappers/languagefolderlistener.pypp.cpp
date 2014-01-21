@@ -13,7 +13,7 @@ struct LanguageFolderListener_wrapper : ::osiris::LanguageFolderListener, ::osir
     LanguageFolderListener_wrapper( )
     : ::osiris::LanguageFolderListener( )
       , ::osiris::PythonWrapper< ::osiris::LanguageFolderListener >(){
-        // nullptr constructor
+        // null constructor
     
     }
 

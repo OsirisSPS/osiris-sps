@@ -14,7 +14,7 @@ struct StaticSingleton_less__osiris_scope_OMLManager_comma__true__greater__wrapp
     StaticSingleton_less__osiris_scope_OMLManager_comma__true__greater__wrapper( )
     : ::osiris::StaticSingleton<osiris::OMLManager, true>( )
       , ::osiris::PythonWrapper< ::osiris::StaticSingleton< osiris::OMLManager, true > >(){
-        // nullptr constructor
+        // null constructor
     
     }
 

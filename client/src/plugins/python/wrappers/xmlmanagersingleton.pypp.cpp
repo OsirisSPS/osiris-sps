@@ -14,7 +14,7 @@ struct StaticSingleton_less__osiris_scope_XMLManager_comma__true__greater__wrapp
     StaticSingleton_less__osiris_scope_XMLManager_comma__true__greater__wrapper( )
     : ::osiris::StaticSingleton<osiris::XMLManager, true>( )
       , ::osiris::PythonWrapper< ::osiris::StaticSingleton< osiris::XMLManager, true > >(){
-        // nullptr constructor
+        // null constructor
     
     }
 

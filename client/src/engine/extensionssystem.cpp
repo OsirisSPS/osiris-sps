@@ -6,12 +6,12 @@
 // it under the terms of the GNU General Public License as published by
 // the Free Software Foundation, either version 3 of the License, or
 // (at your option) any later version.
-// 
+//
 // Osiris Serverless Portal System is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 // GNU General Public License for more details.
-// 
+//
 // You should have received a copy of the GNU General Public License
 // along with Osiris Serverless Portal System.  If not, see <http://www.gnu.org/licenses/>.
 // </osiris_sps_source_header>
@@ -234,7 +234,7 @@ bool ExtensionsSystem::registerModule(shared_ptr<IExtensionsModule> module)
 	}
 
 	String name = module->getName();
-		
+
 	ExtensionsModuleID id = module->getID();
 	// TOFIX_VALIDATING
 	/*
@@ -363,28 +363,28 @@ bool ExtensionsSystem::loadExtension(shared_ptr<IExtensionsExtension> extension)
 void ExtensionsSystem::reloadExtensions()
 {
 	OS_LOCK(m_cs);
-	
+
 	unloadExtensions();
 	loadExtensions();
 }
 
 void ExtensionsSystem::install(const ExtensionID &id, const String &path, bool load)
-{	
+{
 	// TODO: If the uninstall fail (for example, if some file in the directory are in use), the install fail.
 	OS_LOCK(m_cs);
 
 	if(id.validate(false) == false)
 	{
-		OS_LOG_ERROR(_S("Invalid extension id: ") + id.getString());			
+		OS_LOG_ERROR(_S("Invalid extension id: ") + id.getString());
 		return;
 	}
-	
+
 	if(hasExtension(id))
-		uninstall(id);		
+		uninstall(id);
 
 	String outPath = utils::makeFolderPath(getDataPath(), id.getString());
 
-	ArchivesManager::instance()->extract(path, outPath);	
+	ArchivesManager::instance()->extract(path, outPath);
 
 	if(load)
 	{
@@ -398,18 +398,18 @@ void ExtensionsSystem::install(const ExtensionID &id, const String &path, bool l
 
 void ExtensionsSystem::uninstall(const ExtensionID &id)
 {
-	OS_LOCK(m_cs);	
+	OS_LOCK(m_cs);
 
 	if(id.validate(false) == false)
 	{
-		OS_LOG_ERROR(_S("Invalid extension id: ") + id.getString());			
+		OS_LOG_ERROR(_S("Invalid extension id: ") + id.getString());
 		return;
 	}
 
 	shared_ptr<ExtensionsExtension> extension = boost::dynamic_pointer_cast<ExtensionsExtension>(ExtensionsSystem::instance()->getExtension(id));
 	if(extension)
 	{
-		extension->unload();		
+		extension->unload();
 	}
 
 		String outPath = utils::makeFolderPath(getDataPath(), id.getString());
@@ -422,23 +422,23 @@ void ExtensionsSystem::uninstall(const ExtensionID &id)
 }
 
 void ExtensionsSystem::installShare(bool recovery)
-{	
+{
 	OS_LOCK(m_cs);
-	
+
 	bool developingRepository = FileSystem::instance()->fileExists(utils::makeFilePath(getDataPath(), _S("git.readme")));
-	
+
 	bool force = recovery;
 
 	if(Options::instance()->isLastVersionCurrent() == false)
 		force = true;
-	
+
 	StringList extensions;
 	if(FileSystem::instance()->getFiles(getSharePath(), extensions, false) == false)
 		return;
 
 	int index = 0;
 	for(StringList::const_iterator i = extensions.begin(); i != extensions.end(); ++i)
-	{		
+	{
 		index++;
 		String path = *i;
 		String fullPath = utils::makeFilePath(getSharePath(), path);
@@ -460,23 +460,25 @@ void ExtensionsSystem::installShare(bool recovery)
 		if( (FileSystem::instance()->directoryExists(utils::makeFolderPath(getDataPath(), path)) == false) && required)
 			needInstall = true;
 
-		if( (FileSystem::instance()->directoryExists(utils::makeFolderPath(getDataPath(), path)) == true) && developingRepository)
-			needInstall = false; // Force doesn't matter
-		
-		
+		if( (needInstall) && (developingRepository) && (FileSystem::instance()->directoryExists(utils::makeFolderPath(getDataPath(), path)) == true) )
+		{
+            NotificationsManager::instance()->notify(String::format(_S("Skipped (GIT-versioning) default extensions, %d/%d").c_str(), index, extensions.size()));
+            needInstall = false; // Force doesn't matter
+		}
+
 		if(needInstall)
 		{
 			NotificationsManager::instance()->notify(String::format(_S("Installing default extensions, %d/%d").c_str(), index, extensions.size()));
 
-			install(id, fullPath, false);			
+			install(id, fullPath, false);
 		}
-	}	
+	}
 }
 
 void ExtensionsSystem::loadExtensions()
 {
 	OS_LOCK(m_cs);
-	
+
 	loadExtensions(getDataPath());
 }
 

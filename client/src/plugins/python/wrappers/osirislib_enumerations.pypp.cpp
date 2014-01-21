@@ -176,6 +176,7 @@ void register_enumerations(){
     ::boost::python::enum_< ::osiris::RsaType>("RsaType")
         .value("rsaType1024", ::osiris::rsaType1024)
         .value("rsaType2048", ::osiris::rsaType2048)
+        .value("rsaType4096", ::osiris::rsaType4096)
         .export_values()
         ;
 

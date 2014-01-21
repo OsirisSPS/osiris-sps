@@ -14,7 +14,7 @@ struct DataAccount_wrapper : ::osiris::DataAccount, ::osiris::PythonWrapper< ::o
     DataAccount_wrapper( )
     : ::osiris::DataAccount( )
       , ::osiris::PythonWrapper< ::osiris::DataAccount >(){
-        // nullptr constructor
+        // null constructor
     
     }
 

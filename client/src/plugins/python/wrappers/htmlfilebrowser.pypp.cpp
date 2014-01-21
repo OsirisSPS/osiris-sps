@@ -24,7 +24,7 @@ struct HtmlFileBrowser_wrapper : ::osiris::HtmlFileBrowser, ::osiris::PythonWrap
     HtmlFileBrowser_wrapper( )
     : ::osiris::HtmlFileBrowser( )
       , ::osiris::PythonWrapper< ::osiris::HtmlFileBrowser >(){
-        // nullptr constructor
+        // null constructor
     
     }
 

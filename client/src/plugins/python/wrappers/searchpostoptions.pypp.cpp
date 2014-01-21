@@ -21,7 +21,7 @@ struct SearchPostOptions_wrapper : ::osiris::SearchPostOptions, ::osiris::Python
     SearchPostOptions_wrapper( )
     : ::osiris::SearchPostOptions( )
       , ::osiris::PythonWrapper< ::osiris::SearchPostOptions >(){
-        // nullptr constructor
+        // null constructor
     
     }
 

@@ -14,7 +14,7 @@ struct StaticSingleton_less__osiris_scope_IdeAccountsManager_comma__true__greate
     StaticSingleton_less__osiris_scope_IdeAccountsManager_comma__true__greater__wrapper( )
     : ::osiris::StaticSingleton<osiris::IdeAccountsManager, true>( )
       , ::osiris::PythonWrapper< ::osiris::StaticSingleton< osiris::IdeAccountsManager, true > >(){
-        // nullptr constructor
+        // null constructor
     
     }
 

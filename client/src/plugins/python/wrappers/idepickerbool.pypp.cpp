@@ -23,7 +23,7 @@ struct IdePickerBool_wrapper : ::osiris::IdePickerBool, ::osiris::PythonWrapper<
     IdePickerBool_wrapper( )
     : ::osiris::IdePickerBool( )
       , ::osiris::PythonWrapper< ::osiris::IdePickerBool >(){
-        // nullptr constructor
+        // null constructor
     
     }
 
