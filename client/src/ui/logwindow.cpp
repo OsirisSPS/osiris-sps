@@ -88,7 +88,7 @@ void LogWindow::createLayout()
 	m_commandsPanel = new SkinnedWindow<wxPanel>( this, static_cast<wxWindowID>(wxID_ANY), wxDefaultPosition, wxSize( 25,-1 ), wxCLIP_CHILDREN|wxTAB_TRAVERSAL );
 	wxBoxSizer* commandsSizer;
 	commandsSizer = new wxBoxSizer( wxVERTICAL );
-	
+		
 	m_buttonClearLog = new wxSkinButton( m_commandsPanel, cmdClearLog, wxNullBitmap, wxDefaultPosition, wxDefaultSize, 0|wxNO_BORDER );
 	commandsSizer->Add( m_buttonClearLog, 0, wxALL, 2 );
 	
