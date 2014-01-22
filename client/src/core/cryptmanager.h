@@ -72,10 +72,6 @@ public:
 	bool rsaEncrypt(const Buffer &public_key, const void *data, size_t size, Buffer &encrypted);
 	// Decripta con l'rsa
 	bool rsaDecrypt(const Buffer &private_key, const void *data, size_t size, Buffer &decrypted);
-	// Cripta con l'rsa inversa
-	bool rrsaEncrypt(const Buffer &private_key, const void *data, size_t size, Buffer &encrypted);
-	// Decripta con l'rsa inversa
-	bool rrsaDecrypt(const Buffer &public_key, const void *data, size_t size, Buffer &decrypted);
 
 	// Firma un blocco con la chiave privata specificata
 	bool rsaSign(const Buffer &private_key, const void *data, size_t size, Buffer &signature);
@@ -104,10 +100,8 @@ public:
 	void randomBlock(void *data, size_t size) const;
 
 private:
-	// Se reversed = true -> key = privateKey, reversed = false -> key = publicKey
-	bool _rsaEncrypt(const Buffer &key, const void *data, size_t size, Buffer &encrypted, bool reversed);
-	// Se reversed = true -> key = publicKey, reversed = false -> key = privateKey
-	bool _rsaDecrypt(const Buffer &key, const void *data, size_t size, Buffer &decrypted, bool reversed);
+	bool _rsaEncrypt(const Buffer &key, const void *data, size_t size, Buffer &encrypted);
+	bool _rsaDecrypt(const Buffer &key, const void *data, size_t size, Buffer &decrypted);
 
 public:
 	static const uint32 MD5_DIGESTSIZE;

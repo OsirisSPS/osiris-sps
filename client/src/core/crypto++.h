@@ -230,66 +230,6 @@ private:
 
 //////////////////////////////////////////////////////////////////////
 
-template <class T>
-class ReverseTrapdoorFunctionPublic : public T::PublicKey,
-									  public TrapdoorFunctionInverse,
-									  public PrivateKey
-{
-// TrapdoorFunctionInverse overrides
-public:
-    virtual Integer CalculateInverse(RandomNumberGenerator &rng, const Integer &x) const
-    {
-		return T::PublicKey::ApplyRandomizedFunction(rng, x);
-	}
-};
-
-//////////////////////////////////////////////////////////////////////
-
-template <class T>
-class ReverseTrapdoorFunctionPrivate : public T::PrivateKey
-{
-// RandomizedTrapdoorFunction overrides
-public:
-    Integer ApplyRandomizedFunction(RandomNumberGenerator &rng, const Integer &x) const
-	{
-		return T::PrivateKey::CalculateInverse(rng, x);
-	}
-
-    void operator=(const ReverseTrapdoorFunctionPublic<T> &)
-	{
-		throw NotImplemented("ReverseTrapdoorFunctionPrivate: cannot convert a public key to a private key");
-	}
-};
-
-//////////////////////////////////////////////////////////////////////
-
-template <class T>
-struct ReverseKeys
-{
-    typedef ReverseTrapdoorFunctionPrivate<T> PublicKey;
-    typedef ReverseTrapdoorFunctionPublic<T> PrivateKey;
-
-	static std::string StaticAlgorithmName()
-	{ 
-		return std::string("Reverse") + T::StaticAlgorithmName(); 
-	}
-};
-
-//////////////////////////////////////////////////////////////////////
-
-template <class STANDARD>
-struct ReverseRSAES : public TF_ES<STANDARD, ReverseKeys<RSA> > 
-{
-
-};
-
-//////////////////////////////////////////////////////////////////////
-
-typedef ReverseRSAES<OAEP<SHA> >::Encryptor RSAReverseEncryptor;
-typedef ReverseRSAES<OAEP<SHA> >::Decryptor RSAReverseDecryptor;
-
-//////////////////////////////////////////////////////////////////////
-
 template <typename T>
 inline static unsigned int deflateLevel(OS_NAMESPACE_NAME::CompressionLevel level)
 {

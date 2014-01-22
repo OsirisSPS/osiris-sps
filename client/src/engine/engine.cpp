@@ -70,7 +70,7 @@
 #include "portalsportalssystem.h"
 #include "portalsserializer.h"
 #include "schedulablethread.h"
-#include "socks5socketproxy.h"
+#include "sockssocketproxy.h"
 #include "tcpsocket.h"
 #include "textfile.h"
 #include "thirdpartylibrariesreporter.h"
@@ -899,13 +899,14 @@ shared_ptr<TCPSocket> Engine::createTCPSocket(shared_ptr<boost::asio::io_service
 		// salvata (m_proxyType, m_proxyHost, m_proxyPort ecc...). Quando scatta l'evento di modifica delle opzioni, se cambia la configurazione del proxy,
 		// andrebbero riavviate le connessioni in uscita...
 
-		switch(Options::instance()->getOption<uint32>(Options::net_options::proxy_type))
+		uint32 proxyType = Options::instance()->getOption<uint32>(Options::net_options::proxy_type);
+		switch(proxyType)
 		{
 		case OS_PROXY_TYPE_NONE:
 										break;
 
 		case OS_PROXY_TYPE_HTTP:		{
-											shared_ptr<HttpSocketProxy<boost::asio::ip::tcp> > proxy = socket->addLayer<HttpSocketProxy<boost::asio::ip::tcp> >();
+											shared_ptr<HttpSocketProxy> proxy = socket->addLayer<HttpSocketProxy>();
 											proxy->setProxyHost(Options::instance()->getOption<String>(Options::net_options::proxy_host).to_ascii());
 											proxy->setProxyPort(Options::instance()->getOption<uint32>(Options::net_options::proxy_port));
 											proxy->setProxyUsername(Options::instance()->getOption<String>(Options::net_options::proxy_username).to_ascii());
@@ -914,8 +915,27 @@ shared_ptr<TCPSocket> Engine::createTCPSocket(shared_ptr<boost::asio::io_service
 
 										break;
 
+		case OS_PROXY_TYPE_SOCKS4:
+		case OS_PROXY_TYPE_SOCKS4A:
 		case OS_PROXY_TYPE_SOCKS5:		{
-											shared_ptr<Socks5SocketProxy<boost::asio::ip::tcp> > proxy = socket->addLayer<Socks5SocketProxy<boost::asio::ip::tcp> >();
+											shared_ptr<SocksSocketProxy> proxy = socket->addLayer<SocksSocketProxy>();
+
+											switch(proxyType)
+											{
+											case OS_PROXY_TYPE_SOCKS4:		proxy->setProxyVersion(SocksSocketProxy::v4);
+																			break;
+
+											case OS_PROXY_TYPE_SOCKS4A:		proxy->setProxyVersion(SocksSocketProxy::v4a);
+																			break;
+
+											case OS_PROXY_TYPE_SOCKS5:		proxy->setProxyVersion(SocksSocketProxy::v5);
+																			break;						
+
+											default:						OS_ASSERTFALSE();
+																			OS_LOG_ERROR("Invalid socks proxy version");
+																			break;
+											}											
+
 											proxy->setProxyHost(Options::instance()->getOption<String>(Options::net_options::proxy_host).to_ascii());
 											proxy->setProxyPort(Options::instance()->getOption<uint32>(Options::net_options::proxy_port));
 											proxy->setProxyUsername(Options::instance()->getOption<String>(Options::net_options::proxy_username).to_ascii());

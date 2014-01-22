@@ -19,6 +19,7 @@
 #ifndef _OS_ENGINE_P2PCONNECTION_H
 #define _OS_ENGINE_P2PCONNECTION_H
 
+#include "boost/array.hpp"
 #include "boost/thread/recursive_mutex.hpp"
 #include "constants.h"
 #include "datadata.h"
@@ -28,7 +29,6 @@
 #include "log.h"
 #include "p2pnodesession.h"
 #include "objectsobjects.h"
-
 #include "p2pp2p.h"
 #include "p2pnodestatus.h"
 #include "p2ppacketspackets.h"
@@ -127,6 +127,7 @@ protected:
 	void updateLastEvent(const String &description, LogLevel level);
 
 private:
+	static void generateRandomSeed(byte &size, Buffer &data);
 	void _clear();
 
 	void _applyPortalKeyDerivation(p2p::LocalSession::DerivationType type);
@@ -143,11 +144,14 @@ private:
 
 	void connectionCallback(const boost::system::error_code &e, shared_ptr<P2PScope> scope);
 	void handshakeRequestCallback(const boost::system::error_code &e, size_t transferredBytes, shared_ptr<Buffer> transferredData, shared_ptr<P2PScope> scope);
-	void handshakeResponseCallback(const boost::system::error_code &e, size_t transferredBytes, shared_ptr<Buffer> transferredData, shared_ptr<P2PScope> scope);
+	
+	void readResponseCallback(const boost::system::error_code &e, size_t transferredBytes, shared_ptr<Buffer> transferredData, shared_ptr<P2PScope> scope);
+	void handshakeResponseCallback(const Buffer &remotePublicKey, shared_ptr<P2PScope> scope);	
 	bool handleHandshakeResponse(const Buffer &remotePublicKey);
 
-	void handleHandshakeRequest(const boost::system::error_code &e, size_t transferredBytes, shared_ptr<Buffer> request, shared_ptr<P2PScope> scope);
-	void handshakeResponseSent(const boost::system::error_code &e, size_t transferredBytes, shared_ptr<P2PScope> scope);
+	void readHandshakeRequest(const boost::system::error_code &e, size_t transferredBytes, shared_ptr<Buffer> request, shared_ptr<P2PScope> scope);
+	void handleHandshakeRequest(shared_ptr<Buffer> request, shared_ptr<P2PScope> scope);
+	void handshakeResponseSent(const boost::system::error_code &e, size_t transferredBytes, shared_ptr<Buffer> response, shared_ptr<P2PScope> scope);
 
 	void startExchange(shared_ptr<P2PScope> scope, bool starter);
 
@@ -199,6 +203,8 @@ protected:
 	mutable boost::recursive_mutex m_statusCS;
 
 	mutable boost::recursive_mutex m_cs;
+
+	boost::array<char, OS_P2P_HANDSHAKE_BUFFER_SIZE> m_handshakeBuffer;
 };
 
 //////////////////////////////////////////////////////////////////////

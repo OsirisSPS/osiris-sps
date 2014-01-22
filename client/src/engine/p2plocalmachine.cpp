@@ -85,7 +85,7 @@ bool LocalMachine::init()
 		m_privateKey.clear();
 		m_publicKey.clear();
 
-		if(CryptManager::instance()->rsaGenerateKeys(rsaType2048, m_privateKey, m_publicKey) == false)
+		if(CryptManager::instance()->rsaGenerateKeys(rsaType4096, m_privateKey, m_publicKey) == false)
 			return false;
 
 		// L'ID della macchina  dato dall'hash della chiave pubblica

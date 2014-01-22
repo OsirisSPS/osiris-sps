@@ -323,6 +323,26 @@ BOOST_AUTO_TEST_CASE(test_buffer_serialization)
 	BOOST_CHECK(first == second);	
 }
 
+BOOST_AUTO_TEST_CASE(test_buffer_xor)
+{
+	String check(_S("osiris"));
+
+	Buffer b1;
+	BOOST_CHECK(b1.writeString(check));;
+	b1.seekToBegin();
+
+	uint32 v = 123;
+	b1.xor(&v, sizeof(uint32));
+
+	Buffer b2(b1);
+	b2.xor(&v, sizeof(uint32));
+
+	String str;
+	BOOST_CHECK(b2.readString(str));
+
+	BOOST_CHECK(check == str);
+}
+
 //////////////////////////////////////////////////////////////////////
 
 OS_NAMESPACE_END()

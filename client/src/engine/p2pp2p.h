@@ -43,6 +43,8 @@
 #define OS_P2P_KEY_AGREEMENT_PUBLIC_KEY_SIZE		16
 #define OS_P2P_KEY_AGREEMENT_HEADER_SIZE			33		// 16+1+16
 
+#define OS_P2P_HANDSHAKE_BUFFER_SIZE				512
+
 //////////////////////////////////////////////////////////////////////
 
 OS_NAMESPACE_BEGIN()

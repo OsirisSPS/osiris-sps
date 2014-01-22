@@ -140,6 +140,22 @@ uint32 Buffer::put(const void *data, uint32 size)
 	return size;
 }
 
+uint32 Buffer::append(const void *data, uint32 size)
+{
+	// Salva l'offset corrente (non come puntatore perchè il buffer potrebbe essere riallocato)
+	uint32 offset = getOffset();
+	// Si sposta al termine del buffer
+	if(seekToEnd() == false)
+		return 0;
+
+	// Accoda i dati
+	size = put(data, size);
+	// Ripristina la posizione precedente
+	seekAt(offset);
+
+	return size;
+}
+
 uint32 Buffer::write(const void *data, uint32 size)
 {
 	size = put(data, size);
@@ -151,6 +167,7 @@ uint32 Buffer::write(const void *data, uint32 size)
 bool Buffer::readString(String &str) const
 {
 	OS_ASSERT(str.empty());
+
 	uint32 size = 0;
 	if(readCount(size) == false)
 		return false;
@@ -176,13 +193,18 @@ bool Buffer::readString(String &str) const
 		str.assign(reinterpret_cast<const uchar *>(buffer.get()));
 		*/
 
-		uint32 buffer_size = size + 1*sizeof(char);
-		scoped_array<achar, os_deallocate_t> buffer(OS_ALLOCATE_T(achar, buffer_size));
-		OS_ZEROMEMORY(buffer.get(), buffer_size);
+		if(size > getAvailable())
+		{
+			OS_ASSERTFALSE();
+			return false;	// Evita di allocare inutilmente un buffer se la dimensione va oltre quella disponibile
+		}
+
+		scoped_array<achar, os_deallocate_t> buffer(OS_ALLOCATE_T(achar, size));
 		if(read(buffer.get(), size) != size)
 			return false;
 
-		str.from_utf8(buffer.get());
+		std::string utf8_str(buffer.get(), static_cast<std::string::size_type>(size));		
+		str.from_utf8(utf8_str);
 	}
 	else
 	{
@@ -204,7 +226,7 @@ bool Buffer::writeString(const String &str)
 	*/
 
 	std::string s = str.to_utf8();
-	uint32 size = static_cast<uint32>(s.length());
+	uint32 size = static_cast<uint32>(s.size());
 	if(writeCount(size) == false)
 		return false;
 
@@ -349,6 +371,12 @@ bool Buffer::grow(uint32 size)
 bool Buffer::reserve(uint32 size)
 {
 	return grow(getOffset() + size);
+}
+
+void Buffer::reset()
+{
+	m_position = m_data;
+	m_size = 0;
 }
 
 bool Buffer::load(const String &filename)
@@ -522,6 +550,19 @@ bool Buffer::fromBase64(const std::string &str)
 	return CryptManager::instance()->decodeBase64(str, *this);
 }
 
+void Buffer::xor(const void *data, uint32 size)
+{
+	byte *position = getPosition();
+	uint32 available = getAvailable();
+
+	for(uint32 i = 0; i < available; i++)
+	{
+		for(uint32 k = 0; k < size; k++)
+		{
+			position[i] ^= static_cast<const byte *>(data)[k];
+		}
+	}
+}
 
 Buffer & Buffer::operator =(const Buffer &second)
 {

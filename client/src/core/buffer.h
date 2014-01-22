@@ -89,6 +89,8 @@ public:
 	uint32 read(void *data, uint32 size) const;
 	// Effettua una scrittura senza spostare la posizione corrente
 	uint32 put(const void *data, uint32 size);
+	// Accoda dei dati al buffer (aumentando se necessario la dimensione) senza spostare la posizione corrente
+	uint32 append(const void *data, uint32 size);
 	// Effettua una scrittura spostando la posizione corrente
 	uint32 write(const void *data, uint32 size);
 	template <typename T>
@@ -107,6 +109,8 @@ public:
 	void clear();
 	bool grow(uint32 size);
 	bool reserve(uint32 size);
+	// Reset the buffer position without deallocate the current data
+	void reset();
 
 	bool load(const String &filename);
 	bool load(shared_ptr<const IStream> stream);
@@ -123,6 +127,8 @@ public:
 
 	std::string toBase64() const;
 	bool fromBase64(const std::string &str);
+
+	void xor(const void *data, uint32 size);
 		
 //	Operators
 public:

@@ -585,22 +585,12 @@ bool CryptManager::rsaGetPublicKey(const Buffer &privateKey, Buffer &publicKey)
 
 bool CryptManager::rsaEncrypt(const Buffer &public_key, const void *data, size_t size, Buffer &encrypted)
 {
-	return _rsaEncrypt(public_key, data, size, encrypted, false);
+	return _rsaEncrypt(public_key, data, size, encrypted);
 }
 
 bool CryptManager::rsaDecrypt(const Buffer &private_key, const void *data, size_t size, Buffer &decrypted)
 {
-	return _rsaDecrypt(private_key, data, size, decrypted, false);
-}
-
-bool CryptManager::rrsaEncrypt(const Buffer &private_key, const void *data, size_t size, Buffer &encrypted)
-{
-	return _rsaEncrypt(private_key, data, size, encrypted, true);
-}
-
-bool CryptManager::rrsaDecrypt(const Buffer &public_key, const void *data, size_t size, Buffer &decrypted)
-{
-	return _rsaDecrypt(public_key, data, size, decrypted, true);
+	return _rsaDecrypt(private_key, data, size, decrypted);
 }
 
 bool CryptManager::rsaSign(const Buffer &private_key, const void *data, size_t size, Buffer &signature)
@@ -673,9 +663,7 @@ bool CryptManager::rsaVerify(const Buffer &public_key, const void *data, size_t 
 
 bool CryptManager::rsaCheckKeys(const Buffer &privateKey, const Buffer &publicKey)
 {
-	// TODO: per effettuare il controllo viene ora generata e controllata la firma utilizzando
-	// le chiavi specificate, bisognerebbe però vedere se esiste un metodo più veloce e "ortodosso"...
-
+	/*
 	static const String checker = _S("checker");
 
 	Buffer signature;
@@ -683,6 +671,16 @@ bool CryptManager::rsaCheckKeys(const Buffer &privateKey, const Buffer &publicKe
 		return false;
 
 	return rsaVerify(publicKey, checker.buffer(), checker.buffer_size(), signature);
+	*/
+
+	Buffer checkKey;
+	if(rsaGetPublicKey(privateKey, checkKey) == false)
+	{
+		OS_ASSERTFALSE();
+		return false;
+	}
+
+	return checkKey.compare(publicKey.getData(), publicKey.getSize());
 }
 
 CompressorType CryptManager::detectCompressor(const void *data, size_t size)
@@ -920,7 +918,7 @@ void CryptManager::randomBlock(void *data, size_t size) const
 	m_impl->randomBlock(data, size);
 }
 
-bool CryptManager::_rsaEncrypt(const Buffer &key, const void *data, size_t size, Buffer &encrypted, bool reversed)
+bool CryptManager::_rsaEncrypt(const Buffer &key, const void *data, size_t size, Buffer &encrypted)
 {
 	bool result = false;
 
@@ -928,11 +926,7 @@ bool CryptManager::_rsaEncrypt(const Buffer &key, const void *data, size_t size,
 	{
 		scoped_ptr<CryptoPP::Source> keySource(new CryptoPP::BytesSource(key.getData(), key.getSize(), true));
 
-		scoped_ptr<CryptoPP::PK_Encryptor> encryptor;
-		if(reversed)
-			encryptor.reset(new CryptoPP::RSAReverseEncryptor(*keySource));
-		else
-			encryptor.reset(new CryptoPP::RSAEncryptor(*keySource));
+		scoped_ptr<CryptoPP::PK_Encryptor> encryptor(new CryptoPP::RSAEncryptor(*keySource));
 
 		encrypted.clear();
 		Locked<CryptoPP::AutoSeededRandomPool>::unique randomPool = getRandomPool();
@@ -952,7 +946,7 @@ bool CryptManager::_rsaEncrypt(const Buffer &key, const void *data, size_t size,
 	return result;
 }
 
-bool CryptManager::_rsaDecrypt(const Buffer &key, const void *data, size_t size, Buffer &decrypted, bool reversed)
+bool CryptManager::_rsaDecrypt(const Buffer &key, const void *data, size_t size, Buffer &decrypted)
 {
 	bool result = false;
 
@@ -960,11 +954,7 @@ bool CryptManager::_rsaDecrypt(const Buffer &key, const void *data, size_t size,
 	{
 		scoped_ptr<CryptoPP::Source> keySource(new CryptoPP::BytesSource(key.getData(), key.getSize(), true));
 
-		scoped_ptr<CryptoPP::PK_Decryptor> decryptor;
-		if(reversed)
-			decryptor.reset(new CryptoPP::RSAReverseDecryptor(*keySource));
-		else
-			decryptor.reset(new CryptoPP::RSADecryptor(*keySource));
+		scoped_ptr<CryptoPP::PK_Decryptor> decryptor(new CryptoPP::RSADecryptor(*keySource));
 
 		decrypted.clear();
 		Locked<CryptoPP::AutoSeededRandomPool>::unique randomPool = getRandomPool();

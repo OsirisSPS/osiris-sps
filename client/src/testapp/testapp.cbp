@@ -322,7 +322,6 @@
 				</ResourceCompiler>
 				<Linker>
 					<Add option="-Wl,-z,defs,-rpath=\\$$ORIGIN" />
-					<Add library="libboost_unit_test_framework-gcc48-mt-d" />
 					<Add library="libcore" />
 					<Add library="libhttp" />
 					<Add library="libengine" />
@@ -346,6 +345,8 @@
 					<Add library="libboost_date_time-gcc48-mt-d-1_54" />
 					<Add library="libminiupnpc" />
 					<Add library="libarchives" />
+					<Add library="libboost_unit_test_framework-gcc48-mt-d-1_54" />
+					<Add library="libpthread" />
 					<Add directory="../../dependencies/lib/linux/x86_64/gcc/debug" />
 					<Add directory="../../bin/linux/x86_64/gcc/debug" />
 				</Linker>
@@ -392,7 +393,6 @@
 				<Linker>
 					<Add option="-s" />
 					<Add option="-Wl,-z,defs,-rpath=\\$$ORIGIN" />
-					<Add library="libboost_unit_test_framework-gcc48-mt" />
 					<Add library="libcore" />
 					<Add library="libhttp" />
 					<Add library="libengine" />
@@ -416,6 +416,8 @@
 					<Add library="libboost_date_time-gcc48-mt-1_54" />
 					<Add library="libminiupnpc" />
 					<Add library="libarchives" />
+					<Add library="libboost_unit_test_framework-gcc48-mt-1_54" />
+					<Add library="libpthread" />
 					<Add directory="../../dependencies/lib/linux/x86_64/gcc/release" />
 					<Add directory="../../bin/linux/x86_64/gcc/release" />
 				</Linker>

@@ -209,10 +209,12 @@
     <ClCompile Include="isocketlayer.cpp" />
     <ClCompile Include="limitedconnection.cpp" />
     <ClCompile Include="net.cpp" />
+    <ClCompile Include="netutils.cpp" />
     <ClCompile Include="networkservice.cpp" />
     <ClCompile Include="networksystem.cpp" />
     <ClCompile Include="ntpclient.cpp" />
     <ClCompile Include="ntptime.cpp" />
+    <ClCompile Include="sockssocketproxy.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='debug|x64'">Create</PrecompiledHeader>
@@ -239,13 +241,14 @@
     <ClInclude Include="isocketproxy.h" />
     <ClInclude Include="limitedconnection.h" />
     <ClInclude Include="netconfig.h" />
+    <ClInclude Include="netutils.h" />
     <ClInclude Include="networkservice.h" />
     <ClInclude Include="networksystem.h" />
     <ClInclude Include="ntp.h" />
     <ClInclude Include="ntpclient.h" />
     <ClInclude Include="ntptime.h" />
     <ClInclude Include="socket.h" />
-    <ClInclude Include="socks5socketproxy.h" />
+    <ClInclude Include="sockssocketproxy.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="tcpsocket.h" />
     <ClInclude Include="udpsocket.h" />

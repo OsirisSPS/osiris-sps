@@ -211,6 +211,7 @@
     <ClCompile Include="httprootdirectory.cpp" />
     <ClCompile Include="httpsession.cpp" />
     <ClCompile Include="httpsessionstate.cpp" />
+    <ClCompile Include="httpsocketproxy.cpp" />
     <ClCompile Include="httpurl.cpp" />
     <ClCompile Include="httpvirtualdirectory.cpp" />
     <ClCompile Include="ihttpclient.cpp" />

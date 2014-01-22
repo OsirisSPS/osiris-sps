@@ -172,6 +172,10 @@ void OptionsWizardPageProxy::initWindow()
 
 	m_proxyType->Append(conversions::from_utf16<wxString>(getText(_S("ui.wizard_options.page_proxy.label_proxy_type_none"))), new wxCustomClientData<uint32>(OS_PROXY_TYPE_NONE));
 	m_proxyType->Append(conversions::from_utf16<wxString>(getText(_S("ui.wizard_options.page_proxy.label_proxy_type_http"))), new wxCustomClientData<uint32>(OS_PROXY_TYPE_HTTP));
+	m_proxyType->Append(conversions::from_utf16<wxString>(getText(_S("ui.wizard_options.page_proxy.label_proxy_type_socks4"))), new wxCustomClientData<uint32>(OS_PROXY_TYPE_SOCKS4));
+	m_proxyType->Append(conversions::from_utf16<wxString>(getText(_S("ui.wizard_options.page_proxy.label_proxy_type_socks4a"))), new wxCustomClientData<uint32>(OS_PROXY_TYPE_SOCKS4A));
+	m_proxyType->Append(conversions::from_utf16<wxString>(getText(_S("ui.wizard_options.page_proxy.label_proxy_type_socks5"))), new wxCustomClientData<uint32>(OS_PROXY_TYPE_SOCKS5));
+
 	m_proxyType->Connect(wxEVT_COMMAND_CHOICE_SELECTED, wxCommandEventHandler(OptionsWizardPageProxy::onProxySelChanged), NULL, this);
 }
 

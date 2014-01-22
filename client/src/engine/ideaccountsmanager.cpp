@@ -171,7 +171,7 @@ shared_ptr<IdeAccount> IdeAccountsManager::createAccount(const String &username,
 	Buffer public_key;
 	Buffer private_key;
 
-	if(CryptManager::instance()->rsaGenerateKeys(rsaType2048, private_key, public_key) == false)
+	if(CryptManager::instance()->rsaGenerateKeys(rsaType4096, private_key, public_key) == false)
 	{
 		OS_ASSERTFALSE();
 		return nullptr;

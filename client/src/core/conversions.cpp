@@ -125,39 +125,42 @@ CoreExport bool from_utf16<bool>(const String &v)
 template<>
 CoreExport std::string to_string<byte>(const byte &v)
 {
-	return number_to_string<byte, std::string>(v);
+	// TODO: fixme uint16
+	return number_to_string<uint16, std::string>(v);
 }
 
 template<>
 CoreExport std::wstring to_wstring<byte>(const byte &v)
 {
-	return number_to_string<byte, std::wstring>(v);
+	// TODO: fixme uint16
+	return number_to_string<uint16, std::wstring>(v);
 }
 
 template<>
 CoreExport String to_utf16<byte>(const byte &v)
 {
-	return number_to_string<byte>(v);
+	// TODO: fixme uint16
+	return number_to_string<uint16>(v);
 }
 
 template<>
 CoreExport byte from_string<byte>(const std::string &v)
 {
-	// TODO: fixme
+	// TODO: fixme uint16
 	return static_cast<byte>(string_to_number<uint16, std::string>(v));
 }
 
 template<>
 CoreExport byte from_wstring<byte>(const std::wstring &v)
 {
-	// TODO: fixme
+	// TODO: fixme uint16
 	return static_cast<byte>(string_to_number<uint16, std::wstring>(v));
 }
 
 template<>
 CoreExport byte from_utf16<byte>(const String &v)
 {
-	// TODO: fixme
+	// TODO: fixme uint16
 	return static_cast<byte>(string_to_number<uint16>(v));
 }
 

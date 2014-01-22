@@ -131,7 +131,7 @@ bool pimpl<UPnPManager>::addPortMapping(uint32 port, const std::string &protocol
 	OS_ASSERT(m_upnpUrls != nullptr);
 	OS_ASSERT(m_upnpUrls->controlURL != nullptr);
 	OS_ASSERT(m_igdDatas != nullptr);
-	return UPNP_AddPortMapping(m_upnpUrls->controlURL, m_igdDatas->servicetype, strPort.c_str(), strPort.c_str(), m_lanIP, description.c_str(), protocol.c_str(), nullptr) == 0;
+	return UPNP_AddPortMapping(m_upnpUrls->controlURL, m_igdDatas->first.servicetype, strPort.c_str(), strPort.c_str(), m_lanIP, description.c_str(), protocol.c_str(), nullptr, "0") == 0;
 }
 
 bool pimpl<UPnPManager>::removePortMapping(uint32 port, const std::string &protocol)
@@ -146,7 +146,7 @@ bool pimpl<UPnPManager>::removePortMapping(uint32 port, const std::string &proto
 	OS_ASSERT(m_upnpUrls != nullptr);
 	OS_ASSERT(m_upnpUrls->controlURL != nullptr);
 	OS_ASSERT(m_igdDatas != nullptr);
-	return UPNP_DeletePortMapping(m_upnpUrls->controlURL, m_igdDatas->servicetype, conversions::to_string(port).c_str(), protocol.c_str(), nullptr) == 0;
+	return UPNP_DeletePortMapping(m_upnpUrls->controlURL, m_igdDatas->first.servicetype, conversions::to_string(port).c_str(), protocol.c_str(), nullptr) == 0;
 }
 
 void pimpl<UPnPManager>::ensureInitialized() const
@@ -168,7 +168,8 @@ void pimpl<UPnPManager>::ensureInitialized() const
 	OS_ZEROMEMORY(m_igdDatas, sizeof(IGDdatas));
 	OS_ZEROMEMORY(m_lanIP, sizeof(m_lanIP));
 
-	UPNPDev *devices = upnpDiscover(m_discoverTimeout, nullptr, nullptr, 0);
+	int error = 0;
+	UPNPDev *devices = upnpDiscover(m_discoverTimeout, nullptr, nullptr, 0, 0, &error);
 	if(devices != nullptr)
 	{
 		switch(UPNP_GetValidIGD(devices, m_upnpUrls, m_igdDatas, m_lanIP, sizeof(m_lanIP)))

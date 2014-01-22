@@ -54,7 +54,7 @@ BOOST_AUTO_TEST_CASE(test_shell_link_common)
 	BOOST_CHECK(link.parse("osiris://|portal|000000027D017268CEBCDB28B8BACBD7462758405A4D1234|") == false);	// Tipologia ID != portale	
 	BOOST_CHECK(link.parse("osiris://|isis|000000027D017268CEBCDB28B8BACBD7462758405A4D1234|") == false);	// Tipologia ID != portale	
 }
-
+/* TODO:
 BOOST_AUTO_TEST_CASE(test_shell_link_portal)
 {
 	{
@@ -95,10 +95,9 @@ BOOST_AUTO_TEST_CASE(test_shell_link_portal)
 		BOOST_CHECK(linkO.generate() == strO);
 		BOOST_CHECK(linkN.generate() == strO);
 #endif
-	}	
-	
+	}		
 }
-
+*/
 BOOST_AUTO_TEST_CASE(test_shell_link_isis)
 {
 

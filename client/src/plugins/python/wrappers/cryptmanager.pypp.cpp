@@ -117,20 +117,6 @@ struct CryptManager_wrapper : ::osiris::CryptManager, ::osiris::PythonWrapper< :
         return boost::python::object( result );
     }
 
-    static boost::python::object rrsaEncrypt( ::osiris::CryptManager & inst, ::osiris::Buffer const & private_key, void const * data, ::size_t size, ::osiris::Buffer & encrypted ){
-        ::osiris::PythonThreadSaver __pythreadSaver;
-        bool result = inst.rrsaEncrypt(private_key, data, size, encrypted);
-        __pythreadSaver.restore();
-        return boost::python::object( result );
-    }
-
-    static boost::python::object rrsaDecrypt( ::osiris::CryptManager & inst, ::osiris::Buffer const & public_key, void const * data, ::size_t size, ::osiris::Buffer & decrypted ){
-        ::osiris::PythonThreadSaver __pythreadSaver;
-        bool result = inst.rrsaDecrypt(public_key, data, size, decrypted);
-        __pythreadSaver.restore();
-        return boost::python::object( result );
-    }
-
     static boost::python::object rsaSign( ::osiris::CryptManager & inst, ::osiris::Buffer const & private_key, void const * data, ::size_t size, ::osiris::Buffer & signature ){
         ::osiris::PythonThreadSaver __pythreadSaver;
         bool result = inst.rsaSign(private_key, data, size, signature);
@@ -386,26 +372,6 @@ void register_CryptManager_class(){
                 "rsaDecrypt"
                 , rsaDecrypt_function_type( &CryptManager_wrapper::rsaDecrypt )
                 , ( ::boost::python::arg("inst"), ::boost::python::arg("private_key"), ::boost::python::arg("data"), ::boost::python::arg("size"), ::boost::python::arg("decrypted") ) );
-        
-        }
-        { //::osiris::CryptManager::rrsaEncrypt
-        
-            typedef boost::python::object ( *rrsaEncrypt_function_type )( ::osiris::CryptManager &,::osiris::Buffer const &,void const *,::size_t,::osiris::Buffer & );
-            
-            CryptManager_exposer.def( 
-                "rrsaEncrypt"
-                , rrsaEncrypt_function_type( &CryptManager_wrapper::rrsaEncrypt )
-                , ( ::boost::python::arg("inst"), ::boost::python::arg("private_key"), ::boost::python::arg("data"), ::boost::python::arg("size"), ::boost::python::arg("encrypted") ) );
-        
-        }
-        { //::osiris::CryptManager::rrsaDecrypt
-        
-            typedef boost::python::object ( *rrsaDecrypt_function_type )( ::osiris::CryptManager &,::osiris::Buffer const &,void const *,::size_t,::osiris::Buffer & );
-            
-            CryptManager_exposer.def( 
-                "rrsaDecrypt"
-                , rrsaDecrypt_function_type( &CryptManager_wrapper::rrsaDecrypt )
-                , ( ::boost::python::arg("inst"), ::boost::python::arg("public_key"), ::boost::python::arg("data"), ::boost::python::arg("size"), ::boost::python::arg("decrypted") ) );
         
         }
         { //::osiris::CryptManager::rsaSign

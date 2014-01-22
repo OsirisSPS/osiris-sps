@@ -82,7 +82,7 @@ BOOST_AUTO_TEST_CASE(test_signer_operations)
 {
 	Buffer privateKey;
 	Buffer publicKey;
-	BOOST_REQUIRE(CryptManager::instance()->rsaGenerateKeys(rsaType2048, privateKey, publicKey));
+	BOOST_REQUIRE(CryptManager::instance()->rsaGenerateKeys(rsaType4096, privateKey, publicKey));
 
 	ObjectsSigner signer;
 	populate_signer(signer);

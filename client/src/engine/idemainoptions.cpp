@@ -482,6 +482,9 @@ void Options::onInit()
 	StringCollection<String> proxyTypeEnum;
 	proxyTypeEnum.set(getText("options.net.proxy.type.none"), conversions::to_utf16(OS_PROXY_TYPE_NONE));
 	proxyTypeEnum.set(getText("options.net.proxy.type.http"), conversions::to_utf16(OS_PROXY_TYPE_HTTP));
+	proxyTypeEnum.set(getText("options.net.proxy.type.socks4"), conversions::to_utf16(OS_PROXY_TYPE_SOCKS4));
+	proxyTypeEnum.set(getText("options.net.proxy.type.socks4a"), conversions::to_utf16(OS_PROXY_TYPE_SOCKS4A));
+	proxyTypeEnum.set(getText("options.net.proxy.type.socks5"), conversions::to_utf16(OS_PROXY_TYPE_SOCKS5));
 	groupNetworkProxy->getControls()->add(createControlEnum("net.proxy.type", proxyTypeEnum));
 	groupNetworkProxy->getControls()->add(createControlString("net.proxy.host"));
 	groupNetworkProxy->getControls()->add(createControlNumber("net.proxy.port"));

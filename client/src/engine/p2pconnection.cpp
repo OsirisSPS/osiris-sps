@@ -23,6 +23,7 @@
 #include "convert.h"
 #include "connectionstatusguard.h"
 #include "cryptkeyagreement.h"
+#include "cryptmanager.h"
 #include "dataentry.h"
 #include "datapeer.h"
 #include "iportaldatabase.h"
@@ -335,8 +336,9 @@ void P2PConnection::acceptConnection(shared_ptr<ConnectionScope> scope)
 	changeStatus(NodeStatus::statusHandshaking);
 
 	shared_ptr<Buffer> request(OS_NEW Buffer());
-	request->reserve(OS_P2P_KEY_AGREEMENT_HEADER_SIZE);
-	boost::asio::async_read(getSocket(), boost::asio::buffer(request->getData(), request->getSize()), boost::asio::transfer_all(), boost::bind(&P2PConnection::handleHandshakeRequest, get_this_ptr<P2PConnection>(), boost::asio::placeholders::error, boost::asio::placeholders::bytes_transferred, request, boost::dynamic_pointer_cast<P2PScope>(scope)));
+	//request->reserve(OS_P2P_KEY_AGREEMENT_HEADER_SIZE);
+	//boost::asio::async_read(getSocket(), boost::asio::buffer(request->getData(), request->getSize()), boost::asio::transfer_all(), boost::bind(&P2PConnection::handleHandshakeRequest, get_this_ptr<P2PConnection>(), boost::asio::placeholders::error, boost::asio::placeholders::bytes_transferred, request, boost::dynamic_pointer_cast<P2PScope>(scope)));
+	getSocket().async_read_some(boost::asio::buffer(m_handshakeBuffer), boost::bind(&P2PConnection::readHandshakeRequest, get_this_ptr<P2PConnection>(), boost::asio::placeholders::error, boost::asio::placeholders::bytes_transferred, request, boost::dynamic_pointer_cast<P2PScope>(scope)));
 }
 
 void P2PConnection::finalizeConnection(bool successful)
@@ -568,6 +570,30 @@ packets::packet_ptr P2PConnection::createHelloPacket()
 		hello->setServerPort(serverPort);
 
 	return hello;
+}
+
+void P2PConnection::generateRandomSeed(byte &size, Buffer &data)
+{
+	size = 0;
+	CryptManager::instance()->randomBlock(&size, sizeof(uint8));
+
+	data.clear();
+
+	if(size > 0)
+	{
+		if(data.reserve(size))
+		{
+			CryptManager::instance()->randomBlock(data.getData(), data.getSize());					
+		}
+		else
+		{
+			OS_ASSERTFALSE();
+			size = 0;
+			data.clear();
+		}		
+	}	
+
+	OS_ASSERT(static_cast<uint8>(data.getSize()) == size);
 }
 
 void P2PConnection::_clear()
@@ -1291,12 +1317,26 @@ void P2PConnection::connectionCallback(const boost::system::error_code &e, share
 			const Buffer &public_key = keyAgreement->getPublicKey();
 			OS_ASSERT(public_key.getSize() == OS_P2P_KEY_AGREEMENT_PUBLIC_KEY_SIZE);
 
-			shared_ptr<Buffer> buffer(OS_NEW Buffer());
-			buffer->write(modulus.getData(), modulus.getSize());
-			buffer->write(generator.getData(), generator.getSize());
-			buffer->write(public_key.getData(), public_key.getSize());
+			Buffer dh_buffer;
+			dh_buffer.write(modulus.getData(), modulus.getSize());
+			dh_buffer.write(generator.getData(), generator.getSize());
+			dh_buffer.write(public_key.getData(), public_key.getSize());
+			dh_buffer.seekToBegin();
 
-			OS_ASSERT(buffer->getSize() == OS_P2P_KEY_AGREEMENT_HEADER_SIZE);
+			uint8 seedSize = 0;
+			Buffer seedData;
+			generateRandomSeed(seedSize, seedData);
+
+			dh_buffer.xor(seedData.getData(), seedData.getSize());
+
+			// Handshake request packet structure: 1 byte random seed lenght, nbytes <random_seed>, 33 bytes (modulus,generator,pub_key) DH xor random_seed
+
+			shared_ptr<Buffer> buffer(OS_NEW Buffer());
+			buffer->write(&seedSize, sizeof(uint8));
+			buffer->write(seedData.getData(), seedData.getSize());
+			buffer->write(dh_buffer.getData(), dh_buffer.getSize());
+			
+			OS_ASSERT(buffer->getSize() == (seedSize + OS_P2P_KEY_AGREEMENT_HEADER_SIZE));
 			boost::asio::async_write(getSocket(), boost::asio::buffer(buffer->getData(), buffer->getSize()), boost::asio::transfer_all(), boost::bind(&P2PConnection::handshakeRequestCallback, get_this_ptr<P2PConnection>(), boost::asio::placeholders::error, boost::asio::placeholders::bytes_transferred, buffer, scope->extendTimeout()));
 		}
 	}
@@ -1324,12 +1364,13 @@ void P2PConnection::handshakeRequestCallback(const boost::system::error_code &e,
 		// Riutilizza il buffer per la ricezione della risposta
 
 		transferredData->clear();
-		transferredData->reserve(OS_P2P_KEY_AGREEMENT_PUBLIC_KEY_SIZE);
-		boost::asio::async_read(getSocket(), boost::asio::buffer(transferredData->getData(), transferredData->getSize()), boost::asio::transfer_all(), boost::bind(&P2PConnection::handshakeResponseCallback, get_this_ptr<P2PConnection>(), boost::asio::placeholders::error, boost::asio::placeholders::bytes_transferred, transferredData, scope->extendTimeout()));
+		//transferredData->reserve(OS_P2P_KEY_AGREEMENT_PUBLIC_KEY_SIZE);
+		//boost::asio::async_read(getSocket(), boost::asio::buffer(transferredData->getData(), transferredData->getSize()), boost::asio::transfer_all(), boost::bind(&P2PConnection::handshakeResponseCallback, get_this_ptr<P2PConnection>(), boost::asio::placeholders::error, boost::asio::placeholders::bytes_transferred, transferredData, scope->extendTimeout()));
+		getSocket().async_read_some(boost::asio::buffer(m_handshakeBuffer), boost::bind(&P2PConnection::readResponseCallback, get_this_ptr<P2PConnection>(), boost::asio::placeholders::error, boost::asio::placeholders::bytes_transferred, transferredData, scope->extendTimeout()));
 	}
 }
 
-void P2PConnection::handshakeResponseCallback(const boost::system::error_code &e, size_t transferredBytes, shared_ptr<Buffer> transferredData, shared_ptr<P2PScope> scope)
+void P2PConnection::readResponseCallback(const boost::system::error_code &e, size_t transferredBytes, shared_ptr<Buffer> transferredData, shared_ptr<P2PScope> scope)
 {
 	scope->cancelTimeout();
 
@@ -1346,17 +1387,72 @@ void P2PConnection::handshakeResponseCallback(const boost::system::error_code &e
 	}
 	else
 	{
-		OS_ASSERT(transferredData->getSize() == static_cast<uint32>(transferredBytes));
+		if(transferredData->append(m_handshakeBuffer.data(), static_cast<uint32>(transferredBytes)) != static_cast<uint32>(transferredBytes))
+			return;
 
-		if(handleHandshakeResponse(*transferredData))
+		transferredData->seekToBegin();
+
+		bool readAgain = false;
+		uint8 seedSize = 0;
+
+		if(transferredData->empty())
 		{
-			startExchange(scope, true);
+			readAgain = true;
+		}
+		else
+		{			
+			if(transferredData->read(&seedSize, sizeof(uint8)) != sizeof(uint8))
+				return;
+
+			if(transferredData->getAvailable() < static_cast<uint32>((seedSize + OS_P2P_KEY_AGREEMENT_PUBLIC_KEY_SIZE)))
+				readAgain = true;
+		}
+
+		if(readAgain)
+		{
+			getSocket().async_read_some(boost::asio::buffer(m_handshakeBuffer), boost::bind(&P2PConnection::readResponseCallback, get_this_ptr<P2PConnection>(), boost::asio::placeholders::error, boost::asio::placeholders::bytes_transferred, transferredData, scope->extendTimeout()));
 		}
 		else
 		{
-			removePeer(getPeer());
+			if(seedSize > 0)
+			{
+				Buffer seedData;
+				if(seedData.reserve(seedSize) == false)
+					return;
+
+				if(transferredData->read(seedData.getData(), seedSize) != seedSize)
+					return;
+
+				OS_ASSERT(transferredData->getAvailable() == OS_P2P_KEY_AGREEMENT_PUBLIC_KEY_SIZE);
+				transferredData->xor(seedData.getData(), seedData.getSize());
+			}
+
+			OS_ASSERT(transferredData->getAvailable() == OS_P2P_KEY_AGREEMENT_PUBLIC_KEY_SIZE);
+
+			Buffer remotePublicKey;
+			if(remotePublicKey.reserve(OS_P2P_KEY_AGREEMENT_PUBLIC_KEY_SIZE) == false)
+				return;
+
+			if(transferredData->read(remotePublicKey.getData(), remotePublicKey.getSize()) != remotePublicKey.getSize())
+				return;
+
+			handshakeResponseCallback(remotePublicKey, scope);
 		}
 	}
+}
+
+void P2PConnection::handshakeResponseCallback(const Buffer &remotePublicKey, shared_ptr<P2PScope> scope)
+{
+	OS_ASSERT(remotePublicKey.getSize() == OS_P2P_KEY_AGREEMENT_PUBLIC_KEY_SIZE);
+		
+	if(handleHandshakeResponse(remotePublicKey))
+	{
+		startExchange(scope, true);
+	}
+	else
+	{
+		removePeer(getPeer());
+	}	
 }
 
 bool P2PConnection::handleHandshakeResponse(const Buffer &remotePublicKey)
@@ -1392,7 +1488,7 @@ bool P2PConnection::handleHandshakeResponse(const Buffer &remotePublicKey)
 	return true;
 }
 
-void P2PConnection::handleHandshakeRequest(const boost::system::error_code &e, size_t transferredBytes, shared_ptr<Buffer> request, shared_ptr<P2PScope> scope)
+void P2PConnection::readHandshakeRequest(const boost::system::error_code &e, size_t transferredBytes, shared_ptr<Buffer> request, shared_ptr<P2PScope> scope)
 {
 	scope->cancelTimeout();
 
@@ -1408,40 +1504,103 @@ void P2PConnection::handleHandshakeRequest(const boost::system::error_code &e, s
 	}
 	else
 	{
-		OS_ASSERT(request->getSize() == static_cast<uint32>(transferredBytes));
-
-		Buffer modulus;
-		modulus.reserve(OS_P2P_KEY_AGREEMENT_MODULUS_SIZE);
-		if(request->read(modulus.getData(), OS_P2P_KEY_AGREEMENT_MODULUS_SIZE) == false)
+		if(request->append(m_handshakeBuffer.data(), static_cast<uint32>(transferredBytes)) != static_cast<uint32>(transferredBytes))
 			return;
 
-		Buffer generator;
-		generator.reserve(OS_P2P_KEY_AGREEMENT_GENERATOR_SIZE);
-		if(request->read(generator.getData(), OS_P2P_KEY_AGREEMENT_GENERATOR_SIZE) == false)
-			return;
+		request->seekToBegin();
 
-		Buffer public_key;
-		public_key.reserve(OS_P2P_KEY_AGREEMENT_PUBLIC_KEY_SIZE);
-		if(request->read(public_key.getData(), OS_P2P_KEY_AGREEMENT_PUBLIC_KEY_SIZE) == false)
-			return;
+		bool readAgain = false;
+		uint8 seedSize = 0;
 
-		shared_ptr<CryptKeyAgreement> keyAgreement = m_localSession->initDH(modulus, generator);
-		if(keyAgreement == nullptr || m_localSession->agree(public_key) == false)
+		if(request->empty())
 		{
-			updateLastEvent(_S("P2P connection error: dh agree error"), logLevelNotice);
-			return;
+			readAgain = true;
+		}
+		else
+		{			
+			if(request->read(&seedSize, sizeof(uint8)) != sizeof(uint8))
+				return;
+
+			if(request->getAvailable() < static_cast<uint32>((seedSize + OS_P2P_KEY_AGREEMENT_HEADER_SIZE)))
+				readAgain = true;
 		}
 
-		const Buffer &response = keyAgreement->getPublicKey();
-		OS_ASSERT(response.getSize() == OS_P2P_KEY_AGREEMENT_PUBLIC_KEY_SIZE);
+		if(readAgain)
+		{
+			getSocket().async_read_some(boost::asio::buffer(m_handshakeBuffer), boost::bind(&P2PConnection::readHandshakeRequest, get_this_ptr<P2PConnection>(), boost::asio::placeholders::error, boost::asio::placeholders::bytes_transferred, request, scope->extendTimeout()));
+		}
+		else
+		{
+			if(seedSize > 0)
+			{
+				Buffer seedData;
+				if(seedData.reserve(seedSize) == false)
+					return;
 
-		// N.B.: non serve effettuare una copia del buffer da inviare in quanto "keyAgreement" è membro di m_localSession e il buffer non viene di conseguenza distrutto
+				if(request->read(seedData.getData(), seedSize) != seedSize)
+					return;
 
-		boost::asio::async_write(getSocket(), boost::asio::buffer(response.getData(), response.getSize()), boost::asio::transfer_all(), boost::bind(&P2PConnection::handshakeResponseSent, get_this_ptr<P2PConnection>(), boost::asio::placeholders::error, boost::asio::placeholders::bytes_transferred, scope->extendTimeout()));
+				OS_ASSERT(request->getAvailable() == OS_P2P_KEY_AGREEMENT_HEADER_SIZE);
+				request->xor(seedData.getData(), seedData.getSize());
+			}
+
+			handleHandshakeRequest(request, scope);
+		}
 	}
 }
 
-void P2PConnection::handshakeResponseSent(const boost::system::error_code &e, size_t transferredBytes, shared_ptr<P2PScope> scope)
+void P2PConnection::handleHandshakeRequest(shared_ptr<Buffer> request, shared_ptr<P2PScope> scope)
+{
+	OS_ASSERT(request->getAvailable() == OS_P2P_KEY_AGREEMENT_HEADER_SIZE);
+
+	Buffer modulus;
+	modulus.reserve(OS_P2P_KEY_AGREEMENT_MODULUS_SIZE);
+	if(request->read(modulus.getData(), OS_P2P_KEY_AGREEMENT_MODULUS_SIZE) == false)
+		return;
+
+	Buffer generator;
+	generator.reserve(OS_P2P_KEY_AGREEMENT_GENERATOR_SIZE);
+	if(request->read(generator.getData(), OS_P2P_KEY_AGREEMENT_GENERATOR_SIZE) == false)
+		return;
+
+	Buffer public_key;
+	public_key.reserve(OS_P2P_KEY_AGREEMENT_PUBLIC_KEY_SIZE);
+	if(request->read(public_key.getData(), OS_P2P_KEY_AGREEMENT_PUBLIC_KEY_SIZE) == false)
+		return;
+
+	shared_ptr<CryptKeyAgreement> keyAgreement = m_localSession->initDH(modulus, generator);
+	if(keyAgreement == nullptr || m_localSession->agree(public_key) == false)
+	{
+		updateLastEvent(_S("P2P connection error: dh agree error"), logLevelNotice);
+		return;
+	}
+
+	const Buffer &response = keyAgreement->getPublicKey();
+	OS_ASSERT(response.getSize() == OS_P2P_KEY_AGREEMENT_PUBLIC_KEY_SIZE);
+
+	// N.B.: non serve effettuare una copia del buffer da inviare in quanto "keyAgreement" è membro di m_localSession e il buffer non viene di conseguenza distrutto
+
+	Buffer dh_buffer;
+	dh_buffer.put(response.getData(), modulus.getSize());
+	OS_ASSERT(dh_buffer.getPosition() == dh_buffer.getData());
+
+	uint8 seedSize = 0;
+	Buffer seedData;
+	generateRandomSeed(seedSize, seedData);
+
+	dh_buffer.xor(seedData.getData(), seedData.getSize());
+
+	// Handshake response packet structure: 1 byte random seed lenght, nbytes <random_seed>, 16 bytes (pub_key) DH xor random_seed
+
+	shared_ptr<Buffer> buffer(OS_NEW Buffer());
+	buffer->write(&seedSize, sizeof(uint8));
+	buffer->write(seedData.getData(), seedData.getSize());
+	buffer->write(dh_buffer.getData(), dh_buffer.getSize());
+
+	boost::asio::async_write(getSocket(), boost::asio::buffer(response.getData(), response.getSize()), boost::asio::transfer_all(), boost::bind(&P2PConnection::handshakeResponseSent, get_this_ptr<P2PConnection>(), boost::asio::placeholders::error, boost::asio::placeholders::bytes_transferred, buffer, scope->extendTimeout()));
+}
+
+void P2PConnection::handshakeResponseSent(const boost::system::error_code &e, size_t transferredBytes, shared_ptr<Buffer> response, shared_ptr<P2PScope> scope)
 {
 	scope->cancelTimeout();
 

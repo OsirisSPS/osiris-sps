@@ -122,7 +122,7 @@ void DHTManager::stopDHT()
 bool DHTManager::updateDHT()
 {
 	// TODO: attualmente il DHT va di pari passo con il P2P, andrebbe creata un'opzione adhoc
-	if(Options::instance()->getOption<bool>(Options::p2p_options::enable) == false)
+	if((Options::instance()->getOption<bool>(Options::p2p_options::enable) == false) || (Options::instance()->getOption<uint32>(Options::net_options::proxy_type) != OS_PROXY_TYPE_NONE))
 	{
 		stopDHT();
 		return true;
@@ -130,7 +130,7 @@ bool DHTManager::updateDHT()
 
 	bool needRestart = false;
 
-	if(m_dhtThread != nullptr && m_dhtThread->running())
+	if((m_dhtThread != nullptr) && m_dhtThread->running())
 	{
 		if(Options::instance()->getOption<uint32>(OS_DHT_OPTION_PORT) != m_port)
 			needRestart = true;

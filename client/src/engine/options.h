@@ -53,7 +53,9 @@
 
 #define OS_PROXY_TYPE_NONE						0
 #define OS_PROXY_TYPE_HTTP						1
-#define OS_PROXY_TYPE_SOCKS5					2
+#define OS_PROXY_TYPE_SOCKS4					2
+#define OS_PROXY_TYPE_SOCKS4A					3
+#define OS_PROXY_TYPE_SOCKS5					4
 
 //////////////////////////////////////////////////////////////////////
 
