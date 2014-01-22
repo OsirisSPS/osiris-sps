@@ -8,7 +8,7 @@
 		<Build>
 			<Target title="debug linux-i386">
 				<Option platforms="Unix;" />
-				<Option output="../../bin/linux/i386/gcc/debug/libnet" prefix_auto="1" extension_auto="1" />
+				<Option output="../../bin/linux/i386/gcc/debug/net" prefix_auto="1" extension_auto="1" />
 				<Option object_output="../../obj/linux/i386/gcc/net/debug" />
 				<Option type="3" />
 				<Option compiler="gcc" />
@@ -43,7 +43,7 @@
 			</Target>
 			<Target title="release linux-i386">
 				<Option platforms="Unix;" />
-				<Option output="../../bin/linux/i386/gcc/release/libnet" prefix_auto="1" extension_auto="1" />
+				<Option output="../../bin/linux/i386/gcc/release/net" prefix_auto="1" extension_auto="1" />
 				<Option object_output="../../obj/linux/i386/gcc/net/release" />
 				<Option type="3" />
 				<Option compiler="gcc" />
@@ -79,7 +79,7 @@
 			</Target>
 			<Target title="debug mac-x86_64">
 				<Option platforms="Mac;" />
-				<Option output="../../bin/macosx/x86_64/gcc/debug/Osiris.app/Contents/MacOS/libnet" prefix_auto="1" extension_auto="1" />
+				<Option output="../../bin/macosx/x86_64/gcc/debug/Osiris.app/Contents/MacOS/net" prefix_auto="1" extension_auto="1" />
 				<Option object_output="../../obj/macosx/x86_64/gcc/net/debug" />
 				<Option type="3" />
 				<Option compiler="gcc" />
@@ -115,7 +115,7 @@
 			</Target>
 			<Target title="release mac-x86_64">
 				<Option platforms="Mac;" />
-				<Option output="../../bin/macosx/x86_64/gcc/release/Osiris.app/Contents/MacOS/libnet" prefix_auto="1" extension_auto="1" />
+				<Option output="../../bin/macosx/x86_64/gcc/release/Osiris.app/Contents/MacOS/net" prefix_auto="1" extension_auto="1" />
 				<Option object_output="../../obj/macosx/x86_64/gcc/net/release" />
 				<Option type="3" />
 				<Option compiler="gcc" />
@@ -152,7 +152,7 @@
 			</Target>
 			<Target title="debug linux-x86_64">
 				<Option platforms="Unix;" />
-				<Option output="../../bin/linux/x86_64/gcc/debug/libnet" prefix_auto="1" extension_auto="1" />
+				<Option output="../../bin/linux/x86_64/gcc/debug/net" prefix_auto="1" extension_auto="1" />
 				<Option object_output="../../obj/linux/x86_64/gcc/net/debug" />
 				<Option type="3" />
 				<Option compiler="gcc" />
@@ -186,7 +186,7 @@
 			</Target>
 			<Target title="release linux-x86_64">
 				<Option platforms="Unix;" />
-				<Option output="../../bin/linux/x86_64/gcc/release/libnet" prefix_auto="1" extension_auto="1" />
+				<Option output="../../bin/linux/x86_64/gcc/release/net" prefix_auto="1" extension_auto="1" />
 				<Option object_output="../../obj/linux/x86_64/gcc/net/release" />
 				<Option type="3" />
 				<Option compiler="gcc" />
@@ -249,6 +249,8 @@
 		<Unit filename="limitedconnection.h" />
 		<Unit filename="net.cpp" />
 		<Unit filename="netconfig.h" />
+		<Unit filename="netutils.cpp" />
+		<Unit filename="netutils.h" />
 		<Unit filename="networkservice.cpp" />
 		<Unit filename="networkservice.h" />
 		<Unit filename="networksystem.cpp" />
@@ -260,6 +262,8 @@
 		<Unit filename="ntptime.h" />
 		<Unit filename="socket.h" />
 		<Unit filename="socks5socketproxy.h" />
+		<Unit filename="sockssocketproxy.cpp" />
+		<Unit filename="sockssocketproxy.h" />
 		<Unit filename="stdafx.cpp" />
 		<Unit filename="stdafx.h" />
 		<Unit filename="tcpsocket.cpp" />

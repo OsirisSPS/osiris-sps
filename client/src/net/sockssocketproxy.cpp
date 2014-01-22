@@ -557,7 +557,7 @@ bool SocksSocketProxy::parseConnectionResponseDataV4(boost::system::error_code &
 		OS_ASSERTFALSE();
 		return false;
 	}
-	setBindAddress(boost::asio::ip::address_v4::address_v4(utils::networkToHost32(address)));
+	setBindAddress(boost::asio::ip::address_v4(utils::networkToHost32(address)));
 	
 	return true;
 }
@@ -578,7 +578,7 @@ bool SocksSocketProxy::parseConnectionResponseDataV5(boost::system::error_code &
 		e = boost::asio::error::eof;
 		return false;
 	}
-	setBindAddress(boost::asio::ip::address_v4::address_v4(utils::networkToHost32(address)));
+	setBindAddress(boost::asio::ip::address_v4(utils::networkToHost32(address)));
 
 	uint16 port = 0;
 	if(m_buffer->read(&port, sizeof(uint16)) != sizeof(uint16))

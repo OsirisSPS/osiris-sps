@@ -19,6 +19,7 @@
 #ifndef _OS_NET_ISOCKETPROXY_H
 #define _OS_NET_ISOCKETPROXY_H
 
+#include "boost/bind.hpp"
 #include "conversions.h"
 #include "isocketlayer.h"
 
