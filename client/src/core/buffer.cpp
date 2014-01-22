@@ -80,30 +80,34 @@ bool Buffer::compare(const void *data, uint32 size) const
 	return memcmp(getData(), data, size) == 0;
 }
 
-byte * Buffer::seekToBegin() const
+bool Buffer::seekToBegin() const
 {
 	return seekAt(getData());
 }
 
-byte * Buffer::seekToEnd() const
+bool Buffer::seekToEnd() const
 {
 	return seekAt(getEndPosition());
 }
 
-byte * Buffer::seekAt(byte *position) const
+bool Buffer::seekAt(byte *position) const
 {
-	if(position <= getEndPosition())
-		m_position = position;
+	if(position >= getData() && position <= getEndPosition())
+	{
+		m_position = const_cast<byte *>(position);
+		return true;
+	}
 
-	return m_position;
+	OS_ASSERTFALSE();
+	return false;
 }
 
-byte * Buffer::seekAt(uint32 position) const
+bool Buffer::seekAt(uint32 position) const
 {
 	return seekAt(getData() + position);
 }
 
-byte * Buffer::seekOffset(uint32 offset) const
+bool Buffer::seekOffset(uint32 offset) const
 {
 	return seekAt(getPosition() + offset);
 }

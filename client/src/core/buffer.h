@@ -77,11 +77,11 @@ public:
 	uint32 assign(const void *data, uint32 size);
 	bool compare(const void *data, uint32 size) const;
 
-	byte * seekToBegin() const;
-	byte * seekToEnd() const;
-	byte * seekAt(byte *position) const;
-	byte * seekAt(uint32 position) const;
-	byte * seekOffset(uint32 offset) const;
+	bool seekToBegin() const;
+	bool seekToEnd() const;
+	bool seekAt(byte *position) const;
+	bool seekAt(uint32 position) const;
+	bool seekOffset(uint32 offset) const;
 
 	// Effettua una lettura senza spostare la posizione corrente
 	uint32 peek(void *data, uint32 size) const;

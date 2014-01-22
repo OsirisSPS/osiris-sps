@@ -102,8 +102,7 @@ bool MemFile::seek(uint64 offset, SeekPosition from) const
 						return false;
 	}
 
-	m_buffer->seekAt(pos);
-	return true;
+	return m_buffer->seekAt(pos);
 }
 
 uint64 MemFile::position() const

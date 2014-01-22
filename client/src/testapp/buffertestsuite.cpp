@@ -89,6 +89,8 @@ BOOST_AUTO_TEST_CASE(test_buffer_construction)
 	BOOST_CHECK(b3.getAllocEndPosition() == nullptr);
 	BOOST_CHECK(b3.getAvailable() == 0);
 	BOOST_CHECK(b3.isReadable() == false);
+	BOOST_CHECK(b3.seekToEnd());
+	BOOST_CHECK(b3.seekToBegin());
 	BOOST_CHECK(b3.getOffset() == 0);
 	BOOST_CHECK(b3.getSize() == 0);
 	BOOST_CHECK(b3.getAllocSize() == 0);
@@ -105,6 +107,7 @@ BOOST_AUTO_TEST_CASE(test_buffer_io)
 	BOOST_CHECK(b1.getAvailable() == 0);
 	BOOST_CHECK(b1.seekToBegin());	
 	BOOST_CHECK(b1.getAvailable() == 1);
+	BOOST_CHECK(b1.append(&v1, sizeof(uint8)) == 1);
 
 	uint8 v2 = 0;
 	BOOST_CHECK(b1.read(&v2, sizeof(uint8)) == 1);

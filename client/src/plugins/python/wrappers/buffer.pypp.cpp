@@ -148,18 +148,16 @@ static boost::python::object read_362eaf768b599acaa11b1e8f2c7ce44f( ::osiris::Bu
 
 static boost::python::object seekToBegin_34f028343a51764372eed0eff222d0cd( ::osiris::Buffer const & inst ){
     ::osiris::PythonThreadSaver __pythreadSaver;
-    ::osiris::byte * result = inst.seekToBegin();
+    bool result = inst.seekToBegin();
     __pythreadSaver.restore();
-    typedef bp::return_value_policy< bp::return_opaque_pointer > call_policies_t;
-    return boost::python::object( pyplusplus::call_policies::make_object< call_policies_t, ::osiris::byte * >( result ) );
+    return boost::python::object(result);
 }
 
 static boost::python::object seekToEnd_fd54aab1cfd3d0dc08fb0b3570160057( ::osiris::Buffer const & inst ){
     ::osiris::PythonThreadSaver __pythreadSaver;
-    ::osiris::byte * result = inst.seekToEnd();
+    bool result = inst.seekToEnd();
     __pythreadSaver.restore();
-    typedef bp::return_value_policy< bp::return_opaque_pointer > call_policies_t;
-    return boost::python::object( pyplusplus::call_policies::make_object< call_policies_t, ::osiris::byte * >( result ) );
+    return boost::python::object(result);
 }
 
 static boost::python::object toBase64_0ba5df3ebde0725463ad5f8cf03a5a7e( ::osiris::Buffer const & inst ){
@@ -276,26 +274,23 @@ static boost::python::object save_f01626cf509b880a126f73add69c1e64( ::osiris::Bu
 
 static boost::python::object seekAt_59519873defd8a0aeedfeab821b4fa53( ::osiris::Buffer const & inst, ::osiris::byte * position ){
     ::osiris::PythonThreadSaver __pythreadSaver;
-    ::osiris::byte * result = inst.seekAt(position);
+    bool result = inst.seekAt(position);
     __pythreadSaver.restore();
-    typedef bp::return_value_policy< bp::return_opaque_pointer > call_policies_t;
-    return boost::python::object( pyplusplus::call_policies::make_object< call_policies_t, ::osiris::byte * >( result ) );
+    return boost::python::object(result);
 }
 
 static boost::python::object seekAt_211e37fab155184f728f63f808eccf67( ::osiris::Buffer const & inst, ::osiris::uint32 position ){
     ::osiris::PythonThreadSaver __pythreadSaver;
-    ::osiris::byte * result = inst.seekAt(position);
+    bool result = inst.seekAt(position);
     __pythreadSaver.restore();
-    typedef bp::return_value_policy< bp::return_opaque_pointer > call_policies_t;
-    return boost::python::object( pyplusplus::call_policies::make_object< call_policies_t, ::osiris::byte * >( result ) );
+    return boost::python::object(result);
 }
 
 static boost::python::object seekOffset_148c3170794cc36d6ec2939f667c7eb2( ::osiris::Buffer const & inst, ::osiris::uint32 offset ){
     ::osiris::PythonThreadSaver __pythreadSaver;
-    ::osiris::byte * result = inst.seekOffset(offset);
+    bool result = inst.seekOffset(offset);
     __pythreadSaver.restore();
-    typedef bp::return_value_policy< bp::return_opaque_pointer > call_policies_t;
-    return boost::python::object( pyplusplus::call_policies::make_object< call_policies_t, ::osiris::byte * >( result ) );
+    return boost::python::object(result);
 }
 
 static void setGrowSize_570127840a440752c44e5223ed1fc60d( ::osiris::Buffer & inst, ::osiris::uint32 size ){

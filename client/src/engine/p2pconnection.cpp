@@ -1336,7 +1336,7 @@ void P2PConnection::connectionCallback(const boost::system::error_code &e, share
 			buffer->write(seedData.getData(), seedData.getSize());
 			buffer->write(dh_buffer.getData(), dh_buffer.getSize());
 			
-			OS_ASSERT(buffer->getSize() == (seedSize + OS_P2P_KEY_AGREEMENT_HEADER_SIZE));
+			OS_ASSERT(buffer->getSize() == (sizeof(uint8) + seedSize + OS_P2P_KEY_AGREEMENT_HEADER_SIZE));
 			boost::asio::async_write(getSocket(), boost::asio::buffer(buffer->getData(), buffer->getSize()), boost::asio::transfer_all(), boost::bind(&P2PConnection::handshakeRequestCallback, get_this_ptr<P2PConnection>(), boost::asio::placeholders::error, boost::asio::placeholders::bytes_transferred, buffer, scope->extendTimeout()));
 		}
 	}
@@ -1575,13 +1575,13 @@ void P2PConnection::handleHandshakeRequest(shared_ptr<Buffer> request, shared_pt
 		return;
 	}
 
-	const Buffer &response = keyAgreement->getPublicKey();
-	OS_ASSERT(response.getSize() == OS_P2P_KEY_AGREEMENT_PUBLIC_KEY_SIZE);
+	const Buffer &publicKey = keyAgreement->getPublicKey();
+	OS_ASSERT(publicKey.getSize() == OS_P2P_KEY_AGREEMENT_PUBLIC_KEY_SIZE);
 
 	// N.B.: non serve effettuare una copia del buffer da inviare in quanto "keyAgreement" è membro di m_localSession e il buffer non viene di conseguenza distrutto
 
 	Buffer dh_buffer;
-	dh_buffer.put(response.getData(), modulus.getSize());
+	dh_buffer.put(publicKey.getData(), publicKey.getSize());
 	OS_ASSERT(dh_buffer.getPosition() == dh_buffer.getData());
 
 	uint8 seedSize = 0;
@@ -1597,7 +1597,7 @@ void P2PConnection::handleHandshakeRequest(shared_ptr<Buffer> request, shared_pt
 	buffer->write(seedData.getData(), seedData.getSize());
 	buffer->write(dh_buffer.getData(), dh_buffer.getSize());
 
-	boost::asio::async_write(getSocket(), boost::asio::buffer(response.getData(), response.getSize()), boost::asio::transfer_all(), boost::bind(&P2PConnection::handshakeResponseSent, get_this_ptr<P2PConnection>(), boost::asio::placeholders::error, boost::asio::placeholders::bytes_transferred, buffer, scope->extendTimeout()));
+	boost::asio::async_write(getSocket(), boost::asio::buffer(buffer->getData(), buffer->getSize()), boost::asio::transfer_all(), boost::bind(&P2PConnection::handshakeResponseSent, get_this_ptr<P2PConnection>(), boost::asio::placeholders::error, boost::asio::placeholders::bytes_transferred, buffer, scope->extendTimeout()));
 }
 
 void P2PConnection::handshakeResponseSent(const boost::system::error_code &e, size_t transferredBytes, shared_ptr<Buffer> response, shared_ptr<P2PScope> scope)
