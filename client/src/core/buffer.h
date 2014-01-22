@@ -128,7 +128,7 @@ public:
 	std::string toBase64() const;
 	bool fromBase64(const std::string &str);
 
-	void xor(const void *data, uint32 size);
+	void xorValue(const void *data, uint32 size);
 		
 //	Operators
 public:

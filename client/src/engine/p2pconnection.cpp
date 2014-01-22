@@ -1327,7 +1327,7 @@ void P2PConnection::connectionCallback(const boost::system::error_code &e, share
 			Buffer seedData;
 			generateRandomSeed(seedSize, seedData);
 
-			dh_buffer.xor(seedData.getData(), seedData.getSize());
+			dh_buffer.xorValue(seedData.getData(), seedData.getSize());
 
 			// Handshake request packet structure: 1 byte random seed lenght, nbytes <random_seed>, 33 bytes (modulus,generator,pub_key) DH xor random_seed
 
@@ -1424,7 +1424,7 @@ void P2PConnection::readResponseCallback(const boost::system::error_code &e, siz
 					return;
 
 				OS_ASSERT(transferredData->getAvailable() == OS_P2P_KEY_AGREEMENT_PUBLIC_KEY_SIZE);
-				transferredData->xor(seedData.getData(), seedData.getSize());
+				transferredData->xorValue(seedData.getData(), seedData.getSize());
 			}
 
 			OS_ASSERT(transferredData->getAvailable() == OS_P2P_KEY_AGREEMENT_PUBLIC_KEY_SIZE);
@@ -1541,7 +1541,7 @@ void P2PConnection::readHandshakeRequest(const boost::system::error_code &e, siz
 					return;
 
 				OS_ASSERT(request->getAvailable() == OS_P2P_KEY_AGREEMENT_HEADER_SIZE);
-				request->xor(seedData.getData(), seedData.getSize());
+				request->xorValue(seedData.getData(), seedData.getSize());
 			}
 
 			handleHandshakeRequest(request, scope);
@@ -1588,7 +1588,7 @@ void P2PConnection::handleHandshakeRequest(shared_ptr<Buffer> request, shared_pt
 	Buffer seedData;
 	generateRandomSeed(seedSize, seedData);
 
-	dh_buffer.xor(seedData.getData(), seedData.getSize());
+	dh_buffer.xorValue(seedData.getData(), seedData.getSize());
 
 	// Handshake response packet structure: 1 byte random seed lenght, nbytes <random_seed>, 16 bytes (pub_key) DH xor random_seed
 

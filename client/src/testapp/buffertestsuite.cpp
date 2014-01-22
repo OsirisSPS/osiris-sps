@@ -332,10 +332,10 @@ BOOST_AUTO_TEST_CASE(test_buffer_xor)
 	b1.seekToBegin();
 
 	uint32 v = 123;
-	b1.xor(&v, sizeof(uint32));
+	b1.xorValue(&v, sizeof(uint32));
 
 	Buffer b2(b1);
-	b2.xor(&v, sizeof(uint32));
+	b2.xorValue(&v, sizeof(uint32));
 
 	String str;
 	BOOST_CHECK(b2.readString(str));

@@ -550,7 +550,7 @@ bool Buffer::fromBase64(const std::string &str)
 	return CryptManager::instance()->decodeBase64(str, *this);
 }
 
-void Buffer::xor(const void *data, uint32 size)
+void Buffer::xorValue(const void *data, uint32 size)
 {
 	byte *position = getPosition();
 	uint32 available = getAvailable();
