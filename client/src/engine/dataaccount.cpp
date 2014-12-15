@@ -106,7 +106,7 @@ bool DataAccount::getUserID(ObjectID &id) const
 
 bool DataAccount::encodeKeys(const String &password, const Buffer &public_key, const Buffer &private_key)
 {
-    CryptKey passkey(password);
+	CryptKey passkey(password.to_utf8());
 
 	Buffer encodedPublicKey;
 	// Salva la chiave pubblica dell'utente (criptandola con la password specificata)
@@ -125,22 +125,24 @@ bool DataAccount::encodeKeys(const String &password, const Buffer &public_key, c
 
 bool DataAccount::decodePublicKey(const String &password, Buffer &public_key) const
 {
-    CryptKey passkey(password);
+	CryptKey passkey(password.to_utf8());
 	return CryptManager::instance()->aesDecrypt(passkey, this->public_key->getData(), this->public_key->getSize(), public_key);
 }
 
 bool DataAccount::decodePrivateKey(const String &password, Buffer &private_key) const
 {
-    CryptKey passkey(password);
+    CryptKey passkey(password.to_utf8());
 	return CryptManager::instance()->aesDecrypt(passkey, this->private_key->getData(), this->private_key->getSize(), private_key);
 }
 
 bool DataAccount::encodePasswordInSecretResponse(const String &password, const String &secret_response)
 {
-    CryptKey responsekey(secret_response);
+    CryptKey responsekey(secret_response.to_utf8());
+
+	std::string passwordValue = password.to_utf8();
 
 	Buffer encodedSecretResponse;
-	if(CryptManager::instance()->aesEncrypt(responsekey, password.buffer(), password.buffer_size(), encodedSecretResponse) == false)
+	if(CryptManager::instance()->aesEncrypt(responsekey, passwordValue.data(), passwordValue.size(), encodedSecretResponse) == false)
 		return false;
 
 	this->secret_response = encodedSecretResponse;
@@ -149,7 +151,7 @@ bool DataAccount::encodePasswordInSecretResponse(const String &password, const S
 
 bool DataAccount::decodePasswordFromSecretResponse(const String &secret_response, String &password)
 {
-    CryptKey responsekey(secret_response);
+	CryptKey responsekey(secret_response.to_utf8());
 
 	Buffer decrypted;
 	if(CryptManager::instance()->aesDecrypt(responsekey, this->secret_response->getData(), this->secret_response->getSize(), decrypted) == false)
@@ -159,9 +161,14 @@ bool DataAccount::decodePasswordFromSecretResponse(const String &secret_response
 
 	// URGENT: da verificare
 	if(decrypted.empty())
+	{
 		password.clear();
+	}
 	else
-		password.assign(reinterpret_cast<uchar *>(decrypted.getData()), decrypted.getSize() / sizeof(uchar));
+	{
+		std::string passwordValue(reinterpret_cast<std::string::const_pointer>(decrypted.getData()), decrypted.getSize());
+		password.from_utf8(passwordValue);
+	}
 
 	return true;
 }
@@ -171,7 +178,7 @@ String DataAccount::encodePassword(const String &password) const
 	OS_EXCEPT_IF(id->empty(), "Invalid account id");
 
 	CryptKey key;
-	return key.generateKey(password, id).toHex();		// Deriva una chiave con l'id dell'account per evitare l'attacco del compleanno (http://en.wikipedia.org/wiki/Birthday_attack)
+	return key.generateKey(password.to_utf8(), id->to_utf8()).toHex();		// Deriva una chiave con l'id dell'account per evitare l'attacco del compleanno (http://en.wikipedia.org/wiki/Birthday_attack)	
 }
 
 bool DataAccount::validatePassword(const String &password) const

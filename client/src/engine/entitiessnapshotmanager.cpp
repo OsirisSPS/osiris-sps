@@ -2618,9 +2618,11 @@ void EntitiesSnapshotManager::updateObjectSearch(const shared_ptr<IPortalDatabas
 
 			if(visible)
 			{
+				// TODO: qui si potrebbe fare anche un to_ascii
+
 				//String currentDocumentKey = String::format(_S("%S%S%g%d").c_str(), currentID.toUTF16().c_str(), sectionID.toUTF16().c_str(), score, visible); // TOCLEAN_SNAPSHOT_SCORE
-				String currentDocumentKey = String::format(_S("%S%S%d").c_str(), currentID.toUTF16().c_str(), sectionID.toUTF16().c_str(), visible); // TOCLEAN_SNAPSHOT_SCORE
-				currentDocumentID = CryptManager:: instance()->SHA(currentDocumentKey.buffer(), currentDocumentKey.buffer_size()).toHex();
+				std::string currentDocumentKey = String::format(_S("%S%S%d").c_str(), currentID.toUTF16().c_str(), sectionID.toUTF16().c_str(), visible).to_utf8(); // TOCLEAN_SNAPSHOT_SCORE
+				currentDocumentID = CryptManager:: instance()->SHA(currentDocumentKey.data(), currentDocumentKey.size()).toHex();
 			}
 
 			bool needRemove = false;

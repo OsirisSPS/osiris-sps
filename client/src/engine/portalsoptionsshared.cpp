@@ -123,9 +123,7 @@ std::string PortalsOptionsShared::getAcceptableHash() const
 	addToMap(raw, "acp.objects.allow_unsigned");
 	addToMap(raw, "acp.objects.bad_words");
 	
-	std::string hash = CryptManager::instance()->SHA(raw.c_str(), raw.length()).toHex();
-	
-	return hash;
+	return CryptManager::instance()->SHA(raw.data(), raw.size()).toHex();
 }
 
 void PortalsOptionsShared::addToMap(std::string &raw, const std::string &name) const

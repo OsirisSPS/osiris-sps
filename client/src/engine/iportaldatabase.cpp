@@ -1160,11 +1160,11 @@ ObjectID IPortalDatabase::getUserRelatedObjectID(const ObjectID &user_id, const 
 
 
 #ifdef OS_NOOBJECTID
-	String data = user_id.getString() + relation + reference;	// NON modificare mai l'ordine di questa somma
-	return CryptManager::instance()->SHA(data.buffer(), data.buffer_size()).toHex();
+	std::string data = user_id.getString() + relation + reference;	// NON modificare mai l'ordine di questa somma
+	return CryptManager::instance()->SHA(data.data(), data.size()).toHex();
 #else
-	String data = user_id.getHash() + relation + reference;	// NON modificare mai l'ordine di questa somma
-	return generateID(type, true, CryptManager::instance()->SHA(data.buffer(), data.buffer_size()).toHex());
+	std::string data = user_id.getHash() + relation + reference;	// NON modificare mai l'ordine di questa somma
+	return generateID(type, true, CryptManager::instance()->SHA(data.data(), data.size()).toHex());
 #endif
 }
 

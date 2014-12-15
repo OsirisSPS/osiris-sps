@@ -1040,6 +1040,7 @@ DataItem::operator Buffer() const
 
 	case vt_buffer:		return *static_cast<Buffer *>(m_value);
 
+	/*
 	case vt_string:		{
 							// Nota la stringa deve essere serializzata in chiaro per cui non richiamare il metodo writeString (serializzerebbe anche la dimensione)
 
@@ -1048,7 +1049,7 @@ DataItem::operator Buffer() const
 							tmp.write(str->buffer(), static_cast<uint32>(str->buffer_size()));
 							return tmp;
 						}
-
+	*/
 	default:			OS_ASSERTFALSE();
 						break;
 	}

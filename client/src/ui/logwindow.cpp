@@ -79,24 +79,35 @@ LogWindow::~LogWindow()
 
 void LogWindow::createLayout()
 {
-	wxBoxSizer* mainSizer;
+wxBoxSizer* mainSizer;
 	mainSizer = new wxBoxSizer( wxHORIZONTAL );
 	
 	m_logCtrl = new SkinnedWindow<wxListCtrl, ListCtrlRenderer>( this, static_cast<wxWindowID>(wxID_ANY), wxDefaultPosition, wxDefaultSize, wxLC_NO_SORT_HEADER|wxLC_REPORT );
 	mainSizer->Add( m_logCtrl, 1, wxEXPAND, 0 );
 	
-	m_commandsPanel = new SkinnedWindow<wxPanel>( this, static_cast<wxWindowID>(wxID_ANY), wxDefaultPosition, wxSize( 25,-1 ), wxCLIP_CHILDREN|wxTAB_TRAVERSAL );
+	m_commandsPanel = new SkinnedWindow<wxPanel>( this, static_cast<wxWindowID>(wxID_ANY), wxDefaultPosition, wxSize( -1,-1 ), wxCLIP_CHILDREN|wxTAB_TRAVERSAL );
+	m_commandsPanel->SetMinSize( wxSize( 31,-1 ) );
+	
 	wxBoxSizer* commandsSizer;
 	commandsSizer = new wxBoxSizer( wxVERTICAL );
-		
+	
 	m_buttonClearLog = new wxSkinButton( m_commandsPanel, cmdClearLog, wxNullBitmap, wxDefaultPosition, wxDefaultSize, 0|wxNO_BORDER );
+	m_buttonClearLog->SetMinSize( wxSize( 27,26 ) );
+	
+	m_buttonClearLog->SetMinSize( wxSize( 27,26 ) );
+	
 	commandsSizer->Add( m_buttonClearLog, 0, wxALL, 2 );
 	
 	m_buttonLogSettings = new wxSkinButton( m_commandsPanel, cmdLogSettings, wxNullBitmap, wxDefaultPosition, wxDefaultSize, 0|wxNO_BORDER );
+	m_buttonLogSettings->SetMinSize( wxSize( 27,26 ) );
+	
+	m_buttonLogSettings->SetMinSize( wxSize( 27,26 ) );
+	
 	commandsSizer->Add( m_buttonLogSettings, 0, wxALL, 2 );
 	
 	m_commandsPanel->SetSizer( commandsSizer );
 	m_commandsPanel->Layout();
+	commandsSizer->Fit( m_commandsPanel );
 	mainSizer->Add( m_commandsPanel, 0, wxEXPAND, 0 );
 	
 	this->SetSizer( mainSizer );

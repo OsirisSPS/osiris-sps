@@ -21,6 +21,7 @@
 
 #include "boost/noncopyable.hpp"
 #include "boost/operators.hpp"
+#include "constants.h"
 #include "pimpl_ptr.h"
 #include "sealed.h"
 
@@ -41,7 +42,7 @@ class CoreExport CryptKey : public boost::noncopyable,
 // Construction
 public:
 	CryptKey();
-	CryptKey(const String &password, const String &salt = String::EMPTY);
+	CryptKey(const std::string &password, const std::string &salt = constants::empty_string);
 	CryptKey(const void *data, uint32 size);
 	~CryptKey();
 
@@ -55,17 +56,17 @@ public:
 // Operations
 public:
 	// Genera una chiave a 256 bit dalla password specificata
-	const Buffer & generateKey(const String &password, const String &salt = String::EMPTY);
+	const Buffer & generateKey(const std::string &password, const std::string &salt = constants::empty_string);
 	const Buffer & generateKey(const void *data, uint32 size);
 
 	// Deriva dalla chiave corrente un'altra chiave a 256 bit
-	const Buffer & deriveKey(const String &v);
+	const Buffer & deriveKey(const std::string &v);
 	const Buffer & deriveKey(const void *data, uint32 size);
 
 	// Genera un iv (16 bytes) da un intero
 	const Buffer & generateIV(const uint32 &v);
 	// Genera un iv (16 bytes) da una stringa
-	const Buffer & generateIV(const String &v);
+	const Buffer & generateIV(const std::string &v);
 	// Genera un iv (16 bytes) da un buffer
 	const Buffer & generateIV(const Buffer &v);
 

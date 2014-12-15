@@ -139,7 +139,7 @@ CryptKey::CryptKey()
 
 }
 
-CryptKey::CryptKey(const String &password, const String &salt)
+CryptKey::CryptKey(const std::string &password, const std::string &salt)
 {
 	generateKey(password, salt);
 }
@@ -169,15 +169,15 @@ uint32 CryptKey::getHMACSize()
 	return pimpl<CryptKey>::getHMACSize();
 }
 
-const Buffer & CryptKey::generateKey(const String &password, const String &salt)
+const Buffer & CryptKey::generateKey(const std::string &password, const std::string &salt)
 {
 	OS_EXCEPT_IF(password.empty(), "Invalid password");
 
 	// Nota: modificando il metodo di calcolo di una chiave a partire da una password
 	// falsa ovviamente tutti i dati codificati in precedenza con quella password
 
-	String block = password + salt;
-	return m_impl->updateKey(block.buffer(), static_cast<uint32>(block.buffer_size()), true);
+	std::string block = salt + password;
+	return m_impl->updateKey(block.data(), static_cast<uint32>(block.size()), true);
 }
 
 const Buffer & CryptKey::generateKey(const void *data, uint32 size)
@@ -185,9 +185,9 @@ const Buffer & CryptKey::generateKey(const void *data, uint32 size)
 	return m_impl->updateKey(data, size, true);
 }
 
-const Buffer & CryptKey::deriveKey(const String &v)
+const Buffer & CryptKey::deriveKey(const std::string &v)
 {
-	return m_impl->updateKey(v.buffer(), static_cast<uint32>(v.buffer_size()), false);
+	return m_impl->updateKey(v.data(), static_cast<uint32>(v.size()), false);
 }
 
 const Buffer & CryptKey::deriveKey(const void *data, uint32 size)
@@ -200,9 +200,9 @@ const Buffer & CryptKey::generateIV(const uint32 &v)
 	return m_impl->updateIV(&v, sizeof(uint32));
 }
 
-const Buffer & CryptKey::generateIV(const String &v)
+const Buffer & CryptKey::generateIV(const std::string &v)
 {
-	return m_impl->updateIV(v.buffer(), static_cast<uint32>(v.buffer_size()));
+	return m_impl->updateIV(v.data(), static_cast<uint32>(v.size()));
 }
 
 const Buffer & CryptKey::generateIV(const Buffer &v)

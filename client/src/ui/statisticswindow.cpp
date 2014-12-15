@@ -87,33 +87,51 @@ StatisticsWindow::~StatisticsWindow()
 
 void StatisticsWindow::createLayout()
 {
-	wxBoxSizer* contentSizer;
-	contentSizer = new wxBoxSizer( wxHORIZONTAL );
-
+	wxBoxSizer* mainSizer;
+	mainSizer = new wxBoxSizer( wxHORIZONTAL );
+	
 	m_pnlChart = new ChartPanel( this, static_cast<wxWindowID>(wxID_ANY), wxDefaultPosition, wxDefaultSize, wxTAB_TRAVERSAL );
-	contentSizer->Add( m_pnlChart, 1, wxEXPAND | wxALL, 0 );
-
+	mainSizer->Add( m_pnlChart, 1, wxEXPAND | wxALL, 0 );
+	
 	m_commandsPanel = new SkinnedWindow<wxPanel>( this, static_cast<wxWindowID>(wxID_ANY), wxDefaultPosition, wxSize( 25,-1 ), wxCLIP_CHILDREN|wxTAB_TRAVERSAL );
+	m_commandsPanel->SetMinSize( wxSize( 31,-1 ) );
+	
 	wxBoxSizer* commandsSizer;
 	commandsSizer = new wxBoxSizer( wxVERTICAL );
-
+	
 	m_buttonClear = new wxSkinButton( m_commandsPanel, cmdClear, wxNullBitmap, wxDefaultPosition, wxDefaultSize, 0|wxNO_BORDER );
+	m_buttonClear->SetMinSize( wxSize( 27,26 ) );
+	
+	m_buttonClear->SetMinSize( wxSize( 27,26 ) );
+	
 	commandsSizer->Add( m_buttonClear, 0, wxALL, 2 );
-
+	
 	m_buttonPause = new wxSkinButton( m_commandsPanel, cmdPause, wxNullBitmap, wxDefaultPosition, wxDefaultSize, 0|wxNO_BORDER );
+	m_buttonPause->SetMinSize( wxSize( 27,26 ) );
+	
+	m_buttonPause->SetMinSize( wxSize( 27,26 ) );
+	
 	commandsSizer->Add( m_buttonPause, 0, wxALL, 2 );
-
+	
 	m_buttonResolutions = new wxSkinButton( m_commandsPanel, cmdResolutions, wxNullBitmap, wxDefaultPosition, wxDefaultSize, 0|wxNO_BORDER );
+	m_buttonResolutions->SetMinSize( wxSize( 27,26 ) );
+	
+	m_buttonResolutions->SetMinSize( wxSize( 27,26 ) );
+	
 	commandsSizer->Add( m_buttonResolutions, 0, wxALL, 2 );
-
+	
 	m_buttonPresets = new wxSkinButton( m_commandsPanel, cmdPresets, wxNullBitmap, wxDefaultPosition, wxDefaultSize, 0|wxNO_BORDER );
+	m_buttonPresets->SetMinSize( wxSize( 27,26 ) );
+	
+	m_buttonPresets->SetMinSize( wxSize( 27,26 ) );
+	
 	commandsSizer->Add( m_buttonPresets, 0, wxALL, 2 );
-
+	
 	m_commandsPanel->SetSizer( commandsSizer );
 	m_commandsPanel->Layout();
-	contentSizer->Add( m_commandsPanel, 0, wxEXPAND, 0 );
-
-	this->SetSizer( contentSizer );
+	mainSizer->Add( m_commandsPanel, 0, wxEXPAND, 0 );
+	
+	this->SetSizer( mainSizer );
 	this->Layout();
 }
 

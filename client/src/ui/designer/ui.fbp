@@ -5520,7 +5520,7 @@
                                                 <property name="id">cmdViewHome</property>
                                                 <property name="label">MyButton</property>
                                                 <property name="maximum_size"></property>
-                                                <property name="minimum_size"></property>
+                                                <property name="minimum_size">93,53</property>
                                                 <property name="name">m_buttonHome</property>
                                                 <property name="permission">private</property>
                                                 <property name="pos"></property>
@@ -5620,7 +5620,7 @@
                                         <property name="id">cmdToggleP2PEnable</property>
                                         <property name="label">MyButton</property>
                                         <property name="maximum_size"></property>
-                                        <property name="minimum_size"></property>
+                                        <property name="minimum_size">27,26</property>
                                         <property name="name">m_buttonP2PEnable</property>
                                         <property name="permission">private</property>
                                         <property name="pos"></property>
@@ -5687,7 +5687,7 @@
                                         <property name="id">cmdToggleIsisEnable</property>
                                         <property name="label">MyButton</property>
                                         <property name="maximum_size"></property>
-                                        <property name="minimum_size"></property>
+                                        <property name="minimum_size">27,26</property>
                                         <property name="name">m_buttonIsisEnable</property>
                                         <property name="permission">private</property>
                                         <property name="pos"></property>
@@ -5754,7 +5754,7 @@
                                         <property name="id">cmdConfigureOptions</property>
                                         <property name="label">MyButton</property>
                                         <property name="maximum_size"></property>
-                                        <property name="minimum_size"></property>
+                                        <property name="minimum_size">27,26</property>
                                         <property name="name">m_buttonWizard</property>
                                         <property name="permission">private</property>
                                         <property name="pos"></property>
@@ -6493,11 +6493,11 @@
                         <property name="hidden">0</property>
                         <property name="id">static_cast&lt;wxWindowID&gt;(wxID_ANY)</property>
                         <property name="maximum_size"></property>
-                        <property name="minimum_size"></property>
+                        <property name="minimum_size">31,-1</property>
                         <property name="name">m_commandsPanel</property>
                         <property name="permission">private</property>
                         <property name="pos"></property>
-                        <property name="size">25,-1</property>
+                        <property name="size">-1,-1</property>
                         <property name="subclass">SkinnedWindow&lt;wxPanel&gt;; </property>
                         <property name="tooltip"></property>
                         <property name="window_extra_style"></property>
@@ -6550,7 +6550,7 @@
                                     <property name="id">cmdClearLog</property>
                                     <property name="label">MyButton</property>
                                     <property name="maximum_size"></property>
-                                    <property name="minimum_size"></property>
+                                    <property name="minimum_size">27,26</property>
                                     <property name="name">m_buttonClearLog</property>
                                     <property name="permission">private</property>
                                     <property name="pos"></property>
@@ -6607,7 +6607,7 @@
                                     <property name="id">cmdLogSettings</property>
                                     <property name="label">MyButton</property>
                                     <property name="maximum_size"></property>
-                                    <property name="minimum_size"></property>
+                                    <property name="minimum_size">27,26</property>
                                     <property name="name">m_buttonLogSettings</property>
                                     <property name="permission">private</property>
                                     <property name="pos"></property>
@@ -6650,7 +6650,7 @@
                 </object>
             </object>
         </object>
-        <object class="Panel" expanded="0">
+        <object class="Panel" expanded="1">
             <property name="bg"></property>
             <property name="context_help"></property>
             <property name="enabled">1</property>
@@ -6778,7 +6778,7 @@
                                 <property name="hidden">0</property>
                                 <property name="id">wxID_ANY</property>
                                 <property name="maximum_size"></property>
-                                <property name="minimum_size"></property>
+                                <property name="minimum_size">31,-1</property>
                                 <property name="name">m_commandsPanel</property>
                                 <property name="permission">private</property>
                                 <property name="pos"></property>
@@ -6835,7 +6835,7 @@
                                             <property name="id">cmdToggleConnection</property>
                                             <property name="label">MyButton</property>
                                             <property name="maximum_size"></property>
-                                            <property name="minimum_size"></property>
+                                            <property name="minimum_size">27,26</property>
                                             <property name="name">m_buttonToggleConnection</property>
                                             <property name="permission">private</property>
                                             <property name="pos"></property>
@@ -6892,7 +6892,7 @@
                                             <property name="id">cmdEditOptions</property>
                                             <property name="label">MyButton</property>
                                             <property name="maximum_size"></property>
-                                            <property name="minimum_size"></property>
+                                            <property name="minimum_size">27,26</property>
                                             <property name="name">m_buttonEditOptions</property>
                                             <property name="permission">private</property>
                                             <property name="pos"></property>
@@ -6949,7 +6949,7 @@
                                             <property name="id">cmdRefreshChannels</property>
                                             <property name="label">MyButton</property>
                                             <property name="maximum_size"></property>
-                                            <property name="minimum_size"></property>
+                                            <property name="minimum_size">27,26</property>
                                             <property name="name">m_buttonRefreshChannels</property>
                                             <property name="permission">private</property>
                                             <property name="pos"></property>
@@ -7006,7 +7006,7 @@
                                             <property name="id">cmdClearServerMessages</property>
                                             <property name="label">MyButton</property>
                                             <property name="maximum_size"></property>
-                                            <property name="minimum_size"></property>
+                                            <property name="minimum_size">27,26</property>
                                             <property name="name">m_buttonClearServerMessages</property>
                                             <property name="permission">private</property>
                                             <property name="pos"></property>
@@ -7960,7 +7960,7 @@
                 </object>
             </object>
         </object>
-        <object class="Panel" expanded="0">
+        <object class="Panel" expanded="1">
             <property name="bg"></property>
             <property name="context_help"></property>
             <property name="enabled">1</property>
@@ -8068,7 +8068,7 @@
                         <property name="hidden">0</property>
                         <property name="id">static_cast&lt;wxWindowID&gt;(wxID_ANY)</property>
                         <property name="maximum_size"></property>
-                        <property name="minimum_size"></property>
+                        <property name="minimum_size">31,-1</property>
                         <property name="name">m_commandsPanel</property>
                         <property name="permission">private</property>
                         <property name="pos"></property>
@@ -8125,7 +8125,7 @@
                                     <property name="id">cmdClear</property>
                                     <property name="label">MyButton</property>
                                     <property name="maximum_size"></property>
-                                    <property name="minimum_size"></property>
+                                    <property name="minimum_size">27,26</property>
                                     <property name="name">m_buttonClear</property>
                                     <property name="permission">private</property>
                                     <property name="pos"></property>
@@ -8182,7 +8182,7 @@
                                     <property name="id">cmdPause</property>
                                     <property name="label">MyButton</property>
                                     <property name="maximum_size"></property>
-                                    <property name="minimum_size"></property>
+                                    <property name="minimum_size">27,26</property>
                                     <property name="name">m_buttonPause</property>
                                     <property name="permission">private</property>
                                     <property name="pos"></property>
@@ -8239,7 +8239,7 @@
                                     <property name="id">cmdResolutions</property>
                                     <property name="label">MyButton</property>
                                     <property name="maximum_size"></property>
-                                    <property name="minimum_size"></property>
+                                    <property name="minimum_size">27,26</property>
                                     <property name="name">m_buttonResolutions</property>
                                     <property name="permission">private</property>
                                     <property name="pos"></property>
@@ -8296,7 +8296,7 @@
                                     <property name="id">cmdPresets</property>
                                     <property name="label">MyButton</property>
                                     <property name="maximum_size"></property>
-                                    <property name="minimum_size"></property>
+                                    <property name="minimum_size">27,26</property>
                                     <property name="name">m_buttonPresets</property>
                                     <property name="permission">private</property>
                                     <property name="pos"></property>

@@ -349,9 +349,9 @@ bool OsirisLink::parse(const std::string &link)
 
 		// Conversion of old 0.X portal ID
 		
-		String oldPortalID = getParam("portal");
+		std::string oldPortalID = String(getParam("portal")).to_utf8();
 		if(oldPortalID.empty() == false)
-			setParam("portal", CryptManager:: instance()->SHA(oldPortalID.buffer(), oldPortalID.buffer_size()).toHex());
+			setParam("portal", CryptManager::instance()->SHA(oldPortalID.data(), oldPortalID.size()).toHex());
 	}
 	else if(link.substr(0,8) == "osiris:?")
 	{

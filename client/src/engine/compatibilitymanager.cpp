@@ -229,8 +229,8 @@ bool CompatibilityManager::razorUpgrade(const String &folder)
 
 					if(userID.empty() == false)
 					{					
-						String newPortalIDKey = oldID.substr(8);
-						PortalID newPortalID = CryptManager:: instance()->SHA(newPortalIDKey.buffer(), newPortalIDKey.buffer_size()).toHex();
+						std::string newPortalIDKey = oldID.substr(8);
+						PortalID newPortalID = CryptManager:: instance()->SHA(newPortalIDKey.data(), newPortalIDKey.size()).toHex();
 
 						String newPovID = Portal::generatePovID(newPortalID, povID);
 						String newPath = utils::standardisePath(folder + newPovID);

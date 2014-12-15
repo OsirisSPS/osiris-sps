@@ -304,70 +304,86 @@ void MainWindow::setStatusText(const String &status)
 void MainWindow::createLayout()
 {
 	this->SetSizeHints( wxSize( 400,200 ), wxDefaultSize );
-
+	
 	wxBoxSizer* mainSizer;
 	mainSizer = new wxBoxSizer( wxVERTICAL );
-
+	
 	wxBoxSizer* bordersSizer;
 	bordersSizer = new wxBoxSizer( wxVERTICAL );
-
-
+	
+	
 	bordersSizer->Add( 0, 5, 0, 0, 0 );
-
+	
 	wxBoxSizer* menuPanelSizer;
 	menuPanelSizer = new wxBoxSizer( wxHORIZONTAL );
-
+	
 	wxBoxSizer* bSizer27;
 	bSizer27 = new wxBoxSizer( wxHORIZONTAL );
-
-
+	
+	
 	bSizer27->Add( 0, 0, 1, wxEXPAND, 5 );
-
+	
 	m_buttonHome = new wxSkinButton( this, cmdViewHome, wxNullBitmap, wxDefaultPosition, wxDefaultSize, 0|wxNO_BORDER );
+	m_buttonHome->SetMinSize( wxSize( 93,53 ) );
+	
+	m_buttonHome->SetMinSize( wxSize( 93,53 ) );
+	
 	bSizer27->Add( m_buttonHome, 0, wxALIGN_RIGHT|wxALL, 0 );
-
-
+	
+	
 	bSizer27->Add( 5, 0, 0, wxEXPAND, 0 );
-
+	
 	menuPanelSizer->Add( bSizer27, 1, wxEXPAND, 5 );
-
+	
 	bordersSizer->Add( menuPanelSizer, 0, wxALL|wxEXPAND, 0 );
-
-
+	
+	
 	bordersSizer->Add( 0, 4, 0, 0, 0 );
-
+	
 	wxBoxSizer* commandsPanelSizer;
 	commandsPanelSizer = new wxBoxSizer( wxHORIZONTAL );
-
-
+	
+	
 	commandsPanelSizer->Add( 0, 0, 1, wxEXPAND, 0 );
-
+	
 	m_buttonP2PEnable = new ToggleBitmapButton( this, cmdToggleP2PEnable, wxNullBitmap, wxDefaultPosition, wxDefaultSize, 0|wxNO_BORDER );
+	m_buttonP2PEnable->SetMinSize( wxSize( 27,26 ) );
+	
+	m_buttonP2PEnable->SetMinSize( wxSize( 27,26 ) );
+	
 	commandsPanelSizer->Add( m_buttonP2PEnable, 0, wxALL, 0 );
-
-
+	
+	
 	commandsPanelSizer->Add( 2, 0, 0, wxEXPAND, 0 );
-
+	
 	m_buttonIsisEnable = new ToggleBitmapButton( this, cmdToggleIsisEnable, wxNullBitmap, wxDefaultPosition, wxDefaultSize, 0|wxNO_BORDER );
+	m_buttonIsisEnable->SetMinSize( wxSize( 27,26 ) );
+	
+	m_buttonIsisEnable->SetMinSize( wxSize( 27,26 ) );
+	
 	commandsPanelSizer->Add( m_buttonIsisEnable, 0, wxALL, 0 );
-
-
+	
+	
 	commandsPanelSizer->Add( 2, 0, 0, wxEXPAND, 0 );
-
+	
 	m_buttonWizard = new wxSkinButton( this, cmdConfigureOptions, wxNullBitmap, wxDefaultPosition, wxDefaultSize, 0|wxNO_BORDER );
+	m_buttonWizard->SetMinSize( wxSize( 27,26 ) );
+	
+	m_buttonWizard->SetMinSize( wxSize( 27,26 ) );
+	
 	commandsPanelSizer->Add( m_buttonWizard, 0, wxALL, 0 );
-
-
+	
+	
 	commandsPanelSizer->Add( 5, 0, 0, wxEXPAND, 0 );
-
+	
 	bordersSizer->Add( commandsPanelSizer, 0, wxEXPAND, 0 );
-
-
+	
+	
 	bordersSizer->Add( 0, 6, 0, wxEXPAND, 0 );
-
+	
 	wxBoxSizer* contentPanelSizer;
 	contentPanelSizer = new wxBoxSizer( wxHORIZONTAL );
-
+	
 	m_pages = new wxAuiNotebook( this, static_cast<wxWindowID>(wxID_ANY), wxDefaultPosition, wxDefaultSize, wxAUI_NB_TAB_MOVE|wxAUI_NB_WINDOWLIST_BUTTON|wxNO_BORDER );
 	m_p2pConnectionsWindow = new P2PConnectionsWindow( m_pages, static_cast<wxWindowID>(wxID_ANY), wxDefaultPosition, wxDefaultSize, wxCLIP_CHILDREN|wxTAB_TRAVERSAL );
 	m_pages->AddPage( m_p2pConnectionsWindow, wxT("Connections"), true, wxNullBitmap );
@@ -379,13 +395,13 @@ void MainWindow::createLayout()
 	m_pages->AddPage( m_statisticsWindow, wxT("Statistics"), false, wxNullBitmap );
 	m_ircWindow = new IRCWindow( m_pages, static_cast<wxWindowID>(wxID_ANY), wxDefaultPosition, wxDefaultSize, wxCLIP_CHILDREN|wxTAB_TRAVERSAL );
 	m_pages->AddPage( m_ircWindow, wxT("Chat"), false, wxNullBitmap );
-
+	
 	contentPanelSizer->Add( m_pages, 1, wxEXPAND | wxALL, 0 );
-
+	
 	bordersSizer->Add( contentPanelSizer, 1, wxEXPAND, 0 );
-
+	
 	mainSizer->Add( bordersSizer, 1, wxALL|wxEXPAND, 0 );
-
+	
 	this->SetSizer( mainSizer );
 	this->Layout();
 }

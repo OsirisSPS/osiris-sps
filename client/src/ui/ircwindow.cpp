@@ -286,7 +286,7 @@ void IRCWindow::initSession()
 
 void IRCWindow::createLayout()
 {
-	wxBoxSizer* mainSizer;
+wxBoxSizer* mainSizer;
 	mainSizer = new wxBoxSizer( wxVERTICAL );
 	
 	wxBoxSizer* contentSizer;
@@ -297,19 +297,37 @@ void IRCWindow::createLayout()
 	contentSizer->Add( m_pages, 1, wxEXPAND | wxALL, 0 );
 	
 	m_commandsPanel = new SkinnedWindow<wxPanel>( this, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxTAB_TRAVERSAL );
+	m_commandsPanel->SetMinSize( wxSize( 31,-1 ) );
+	
 	wxBoxSizer* commandsSizer;
 	commandsSizer = new wxBoxSizer( wxVERTICAL );
 	
 	m_buttonToggleConnection = new ToggleBitmapButton( m_commandsPanel, cmdToggleConnection, wxNullBitmap, wxDefaultPosition, wxDefaultSize, 0|wxNO_BORDER );
+	m_buttonToggleConnection->SetMinSize( wxSize( 27,26 ) );
+	
+	m_buttonToggleConnection->SetMinSize( wxSize( 27,26 ) );
+	
 	commandsSizer->Add( m_buttonToggleConnection, 0, wxALL, 2 );
 	
 	m_buttonEditOptions = new wxSkinButton( m_commandsPanel, cmdEditOptions, wxNullBitmap, wxDefaultPosition, wxDefaultSize, 0|wxNO_BORDER );
+	m_buttonEditOptions->SetMinSize( wxSize( 27,26 ) );
+	
+	m_buttonEditOptions->SetMinSize( wxSize( 27,26 ) );
+	
 	commandsSizer->Add( m_buttonEditOptions, 0, wxALL, 2 );
 	
 	m_buttonRefreshChannels = new wxSkinButton( m_commandsPanel, cmdRefreshChannels, wxNullBitmap, wxDefaultPosition, wxDefaultSize, 0|wxNO_BORDER );
+	m_buttonRefreshChannels->SetMinSize( wxSize( 27,26 ) );
+	
+	m_buttonRefreshChannels->SetMinSize( wxSize( 27,26 ) );
+	
 	commandsSizer->Add( m_buttonRefreshChannels, 0, wxALL, 2 );
 	
 	m_buttonClearServerMessages = new wxSkinButton( m_commandsPanel, cmdClearServerMessages, wxNullBitmap, wxDefaultPosition, wxDefaultSize, 0|wxNO_BORDER );
+	m_buttonClearServerMessages->SetMinSize( wxSize( 27,26 ) );
+	
+	m_buttonClearServerMessages->SetMinSize( wxSize( 27,26 ) );
+	
 	commandsSizer->Add( m_buttonClearServerMessages, 0, wxALL, 2 );
 	
 	m_commandsPanel->SetSizer( commandsSizer );

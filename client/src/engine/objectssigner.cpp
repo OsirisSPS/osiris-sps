@@ -74,6 +74,12 @@ void EngineExport ObjectsSigner::add<double>(const double &value)
 	add(&value, sizeof(double));
 }
 
+template <>
+void EngineExport ObjectsSigner::add<std::string>(const std::string &value)
+{
+	add(value.data(), value.size()); // Razor added
+}
+
 // TOCLEAN, serve ancora?
 template <>
 void EngineExport ObjectsSigner::add<String>(const String &value)
@@ -86,16 +92,9 @@ void EngineExport ObjectsSigner::add<String>(const String &value)
 
 	//add(value.buffer(), static_cast<uint32>(value.buffer_size()));
 
-	// In previsione dell'abolizione della stringa
-	//add(value.to_utf8()); // CLODOURGENT dà errore
+	add<std::string>(value.to_utf8());
 	
-	add(value.buffer(), static_cast<uint32>(value.buffer_size()));
-}
-
-template <>
-void EngineExport ObjectsSigner::add<std::string>(const std::string &value)
-{
-	add(value.data(), value.size()); // Razor added
+	//add(value.buffer(), static_cast<uint32>(value.buffer_size()));
 }
 
 template <>

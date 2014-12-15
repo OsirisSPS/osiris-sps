@@ -81,10 +81,12 @@ const Buffer & LocalSession::getPublicKey() const
 
 void LocalSession::addKeyDerivation(DerivationType type, const String &derivation)
 {
-	Buffer buffer;
-	buffer.write(derivation.buffer(), static_cast<uint32>(derivation.buffer_size()));
+	std::string derivationValue = derivation.to_utf8();
 
-	return addKeyDerivation(type, buffer);
+	Buffer buffer;
+	buffer.write(derivationValue.data(), static_cast<uint32>(derivationValue.size()));
+
+	addKeyDerivation(type, buffer);
 }
 
 void LocalSession::addKeyDerivation(DerivationType type, const Buffer &derivation)
