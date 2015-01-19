@@ -181,10 +181,24 @@ String DataAccount::encodePassword(const String &password) const
 	return key.generateKey(password.to_utf8(), id->to_utf8()).toHex();		// Deriva una chiave con l'id dell'account per evitare l'attacco del compleanno (http://en.wikipedia.org/wiki/Birthday_attack)	
 }
 
+String DataAccount::encodePasswordOld(const String &password) const
+{
+	OS_EXCEPT_IF(id->empty(), "Invalid account id");
+
+	CryptKey key;
+	return key.generateKeyOld(password, *id).toHex();
+}
+
 bool DataAccount::validatePassword(const String &password) const
 {
 	// La password  valida se la versione codificata coincide con quella salvata
-	return encodePassword(password) == this->password;
+	if(encodePassword(password) == this->password)
+		return true;
+
+	if(encodePasswordOld(password) == this->password)
+		return true;
+
+	return false;
 }
 
 String DataAccount::getTableName() const

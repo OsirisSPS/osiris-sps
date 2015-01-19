@@ -185,6 +185,14 @@ const Buffer & CryptKey::generateKey(const void *data, uint32 size)
 	return m_impl->updateKey(data, size, true);
 }
 
+const Buffer & CryptKey::generateKeyOld(const String &password, const String &salt)
+{
+	OS_EXCEPT_IF(password.empty(), "Invalid password");
+
+    String block = password + salt;
+    return m_impl->updateKey(block.buffer(), static_cast<uint32>(block.buffer_size()), true);
+}
+
 const Buffer & CryptKey::deriveKey(const std::string &v)
 {
 	return m_impl->updateKey(v.data(), static_cast<uint32>(v.size()), false);

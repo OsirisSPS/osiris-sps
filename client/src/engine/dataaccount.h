@@ -106,6 +106,7 @@ public:
 	bool decodePasswordFromSecretResponse(const String &secret_response, String &password);
 
 	String encodePassword(const String &password) const;
+	String encodePasswordOld(const String &password) const;
 	// Verifica che la password specificata (in chiaro) corrisponda a quella dell'account
 	bool validatePassword(const String &password) const;
 

@@ -58,6 +58,7 @@ public:
 	// Genera una chiave a 256 bit dalla password specificata
 	const Buffer & generateKey(const std::string &password, const std::string &salt = constants::empty_string);
 	const Buffer & generateKey(const void *data, uint32 size);
+	const Buffer & generateKeyOld(const String &password, const String &salt = String::EMPTY);
 
 	// Deriva dalla chiave corrente un'altra chiave a 256 bit
 	const Buffer & deriveKey(const std::string &v);
