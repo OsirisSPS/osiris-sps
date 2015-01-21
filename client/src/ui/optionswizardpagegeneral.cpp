@@ -80,7 +80,7 @@ void OptionsWizardPageGeneral::createLayout()
 	
 	m_pageCaptionTitle = new wxStaticText( pageCaptionPanel, static_cast<wxWindowID>(wxID_ANY), wxT("General"), wxDefaultPosition, wxDefaultSize, 0 );
 	m_pageCaptionTitle->Wrap( -1 );
-	m_pageCaptionTitle->SetFont( wxFont( wxNORMAL_FONT->GetPointSize(), 77, 90, 92, false, wxEmptyString ) );
+	m_pageCaptionTitle->SetFont( wxFont( wxNORMAL_FONT->GetPointSize(), 70, 90, 92, false, wxEmptyString ) );
 	m_pageCaptionTitle->SetForegroundColour( wxColour( 0, 0, 0 ) );
 	
 	pageCaptionPanelIconSizer->Add( m_pageCaptionTitle, 0, wxALIGN_CENTER_VERTICAL|wxALL, 5 );
@@ -117,21 +117,25 @@ void OptionsWizardPageGeneral::createLayout()
 	
 	mainSizer->Add( m_languageBoxSizer, 0, wxALL|wxEXPAND, 2 );
 	
+	m_systemBoxSizer = new wxStaticBoxSizer( new wxStaticBox( this, static_cast<wxWindowID>(wxID_ANY), wxT("System Options") ), wxVERTICAL );
+	
 	m_startSystem = new wxCheckBox( this, checkAutoStartEnabled, wxT("Enable autostartup"), wxDefaultPosition, wxDefaultSize, 0 );
 	
-	mainSizer->Add( m_startSystem, 0, wxALL|wxTOP, 5 );
+	m_systemBoxSizer->Add( m_startSystem, 0, wxALL|wxTOP, 5 );
 	
 	m_startMinimized = new wxCheckBox( this, static_cast<wxWindowID>(wxID_ANY), wxT("Autostartup in backgroud"), wxDefaultPosition, wxDefaultSize, 0 );
 	
-	mainSizer->Add( m_startMinimized, 0, wxALL, 5 );
-
-	m_associationsProtocols = new wxCheckBox( this, static_cast<wxWindowID>(wxID_ANY), wxT("Protocol association"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_systemBoxSizer->Add( m_startMinimized, 0, wxALL, 5 );
 	
-	mainSizer->Add( m_associationsProtocols, 0, wxALL, 5 );
-
-	m_associationsFiles = new wxCheckBox( this, static_cast<wxWindowID>(wxID_ANY), wxT("Files association"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_associationsProtocols = new wxCheckBox( this, wxID_ANY, wxT("Associations protocols"), wxDefaultPosition, wxDefaultSize, 0 );
 	
-	mainSizer->Add( m_associationsFiles, 0, wxALL, 5 );
+	m_systemBoxSizer->Add( m_associationsProtocols, 0, wxALL, 5 );
+	
+	m_associationsFiles = new wxCheckBox( this, wxID_ANY, wxT("Associations files"), wxDefaultPosition, wxDefaultSize, 0 );
+	
+	m_systemBoxSizer->Add( m_associationsFiles, 0, wxALL, 5 );
+	
+	mainSizer->Add( m_systemBoxSizer, 0, wxALL|wxEXPAND, 2 );
 	
 	this->SetSizer( mainSizer );
 	this->Layout();
@@ -143,6 +147,7 @@ void OptionsWizardPageGeneral::initWindow()
 	m_pageCaptionTitle->SetLabel(conversions::from_utf16<wxString>(getText(_S("ui.wizard_options.page_general.label_caption_title"))));
 	m_pageCaptionDescription->SetLabel(conversions::from_utf16<wxString>(getText(_S("ui.wizard_options.page_general.label_caption_description"))));
 	m_languageBoxSizer->GetStaticBox()->SetLabel(conversions::from_utf16<wxString>(getText(_S("ui.wizard_options.page_general.label_language_box"))));
+	m_systemBoxSizer->GetStaticBox()->SetLabel(conversions::from_utf16<wxString>(getText(_S("ui.wizard_options.page_general.label_system_box"))));
 	m_languageLabel->SetLabel(conversions::from_utf16<wxString>(getText(_S("ui.wizard_options.page_general.label_language"))));
 	m_startSystem->SetLabel(conversions::from_utf16<wxString>(getText(_S("ui.wizard_options.page_general.label_start_system"))));
 	m_startMinimized->SetLabel(conversions::from_utf16<wxString>(getText(_S("ui.wizard_options.page_general.label_start_minimized"))));

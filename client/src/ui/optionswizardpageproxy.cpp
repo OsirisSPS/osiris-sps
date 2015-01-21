@@ -52,106 +52,106 @@ OptionsWizardPageProxy::~OptionsWizardPageProxy()
 
 void OptionsWizardPageProxy::createLayout()
 {
-	this->SetSizeHints( wxSize( 562,352 ), wxDefaultSize );
-
+this->SetSizeHints( wxSize( 562,352 ), wxDefaultSize );
+	
 	wxBoxSizer* mainSizer;
 	mainSizer = new wxBoxSizer( wxVERTICAL );
-
+	
 	wxBoxSizer* pageCaptionSizer;
 	pageCaptionSizer = new wxBoxSizer( wxVERTICAL );
-
+	
 	wxPanel* pageCaptionPanel;
 	pageCaptionPanel = new wxPanel( this, static_cast<wxWindowID>(wxID_ANY), wxDefaultPosition, wxDefaultSize, wxTAB_TRAVERSAL );
 	pageCaptionPanel->SetBackgroundColour( wxColour( 255, 255, 255 ) );
-
+	
 	wxBoxSizer* pageCaptionPanelSizer;
 	pageCaptionPanelSizer = new wxBoxSizer( wxVERTICAL );
-
+	
 	wxBoxSizer* pageCaptionPanelIconSizer;
 	pageCaptionPanelIconSizer = new wxBoxSizer( wxHORIZONTAL );
-
+	
 	m_pageIcon = new wxStaticBitmap( pageCaptionPanel, static_cast<wxWindowID>(wxID_ANY), wxNullBitmap, wxDefaultPosition, wxDefaultSize, 0 );
 	pageCaptionPanelIconSizer->Add( m_pageIcon, 0, wxALL, 5 );
-
+	
 	m_pageCaptionTitle = new wxStaticText( pageCaptionPanel, static_cast<wxWindowID>(wxID_ANY), wxT("General"), wxDefaultPosition, wxDefaultSize, 0 );
 	m_pageCaptionTitle->Wrap( -1 );
-	m_pageCaptionTitle->SetFont( wxFont( wxNORMAL_FONT->GetPointSize(), 77, 90, 92, false, wxEmptyString ) );
+	m_pageCaptionTitle->SetFont( wxFont( wxNORMAL_FONT->GetPointSize(), 70, 90, 92, false, wxEmptyString ) );
 	m_pageCaptionTitle->SetForegroundColour( wxColour( 0, 0, 0 ) );
-
+	
 	pageCaptionPanelIconSizer->Add( m_pageCaptionTitle, 0, wxALIGN_CENTER_VERTICAL|wxALL, 5 );
-
+	
 	pageCaptionPanelSizer->Add( pageCaptionPanelIconSizer, 1, wxEXPAND, 5 );
-
+	
 	m_pageCaptionDescription = new wxStaticText( pageCaptionPanel, static_cast<wxWindowID>(wxID_ANY), wxT("MyLabel"), wxPoint( -1,-1 ), wxDefaultSize, 0 );
 	m_pageCaptionDescription->Wrap( -1 );
 	m_pageCaptionDescription->SetForegroundColour( wxColour( 0, 0, 0 ) );
-
+	
 	pageCaptionPanelSizer->Add( m_pageCaptionDescription, 0, wxALL, 6 );
-
+	
 	pageCaptionPanel->SetSizer( pageCaptionPanelSizer );
 	pageCaptionPanel->Layout();
 	pageCaptionPanelSizer->Fit( pageCaptionPanel );
 	pageCaptionSizer->Add( pageCaptionPanel, 0, wxEXPAND | wxALL, 0 );
-
+	
 	mainSizer->Add( pageCaptionSizer, 0, wxEXPAND, 0 );
-
+	
 	wxStaticLine* pageCaptionSeparator;
 	pageCaptionSeparator = new wxStaticLine( this, static_cast<wxWindowID>(wxID_ANY), wxDefaultPosition, wxDefaultSize, wxLI_HORIZONTAL );
 	mainSizer->Add( pageCaptionSeparator, 0, wxEXPAND | wxALL, 0 );
-
+	
 	m_proxyBoxSizer = new wxStaticBoxSizer( new wxStaticBox( this, static_cast<wxWindowID>(wxID_ANY), wxT("Proxy") ), wxVERTICAL );
-
+	
 	wxFlexGridSizer* proxyFlexGridSizer;
 	proxyFlexGridSizer = new wxFlexGridSizer( 5, 2, 0, 0 );
 	proxyFlexGridSizer->AddGrowableCol( 1 );
 	proxyFlexGridSizer->SetFlexibleDirection( wxBOTH );
 	proxyFlexGridSizer->SetNonFlexibleGrowMode( wxFLEX_GROWMODE_SPECIFIED );
-
+	
 	m_proxyTypeLabel = new wxStaticText( this, static_cast<wxWindowID>(wxID_ANY), wxT("Proxy type"), wxDefaultPosition, wxDefaultSize, 0 );
 	m_proxyTypeLabel->Wrap( -1 );
 	proxyFlexGridSizer->Add( m_proxyTypeLabel, 0, wxALIGN_CENTER_VERTICAL|wxALIGN_RIGHT|wxALL, 5 );
-
+	
 	wxArrayString m_proxyTypeChoices;
 	m_proxyType = new wxChoice( this, wxID_ANY, wxDefaultPosition, wxDefaultSize, m_proxyTypeChoices, 0 );
 	m_proxyType->SetSelection( 0 );
 	proxyFlexGridSizer->Add( m_proxyType, 0, wxALL|wxEXPAND, 5 );
-
+	
 	m_proxyHostLabel = new wxStaticText( this, static_cast<wxWindowID>(wxID_ANY), wxT("Proxy host"), wxDefaultPosition, wxDefaultSize, 0 );
 	m_proxyHostLabel->Wrap( -1 );
 	proxyFlexGridSizer->Add( m_proxyHostLabel, 0, wxALIGN_CENTER_VERTICAL|wxALIGN_RIGHT|wxALL, 5 );
-
+	
 	m_proxyHost = new wxTextCtrl( this, static_cast<wxWindowID>(wxID_ANY), wxEmptyString, wxDefaultPosition, wxDefaultSize, 0 );
 	proxyFlexGridSizer->Add( m_proxyHost, 0, wxALL|wxEXPAND, 5 );
-
+	
 	m_proxyPortLabel = new wxStaticText( this, static_cast<wxWindowID>(wxID_ANY), wxT("Proxy port"), wxDefaultPosition, wxDefaultSize, 0 );
 	m_proxyPortLabel->Wrap( -1 );
 	proxyFlexGridSizer->Add( m_proxyPortLabel, 0, wxALIGN_CENTER_VERTICAL|wxALIGN_RIGHT|wxALL, 5 );
-
+	
 	m_proxyPort = new wxTextCtrl( this, static_cast<wxWindowID>(wxID_ANY), wxEmptyString, wxDefaultPosition, wxDefaultSize, 0 );
 	proxyFlexGridSizer->Add( m_proxyPort, 0, wxALL|wxEXPAND, 5 );
-
+	
 	m_proxyUsernameLabel = new wxStaticText( this, static_cast<wxWindowID>(wxID_ANY), wxT("Proxy user"), wxDefaultPosition, wxDefaultSize, 0 );
 	m_proxyUsernameLabel->Wrap( -1 );
 	proxyFlexGridSizer->Add( m_proxyUsernameLabel, 0, wxALIGN_CENTER_VERTICAL|wxALIGN_RIGHT|wxALL, 5 );
-
+	
 	m_proxyUsername = new wxTextCtrl( this, static_cast<wxWindowID>(wxID_ANY), wxEmptyString, wxDefaultPosition, wxDefaultSize, 0 );
 	proxyFlexGridSizer->Add( m_proxyUsername, 0, wxALL|wxEXPAND, 5 );
-
+	
 	m_proxyPasswordLabel = new wxStaticText( this, static_cast<wxWindowID>(wxID_ANY), wxT("Proxy password"), wxDefaultPosition, wxDefaultSize, 0 );
 	m_proxyPasswordLabel->Wrap( -1 );
 	proxyFlexGridSizer->Add( m_proxyPasswordLabel, 0, wxALIGN_CENTER_VERTICAL|wxALIGN_RIGHT|wxALL, 5 );
-
+	
 	m_proxyPassword = new wxTextCtrl( this, static_cast<wxWindowID>(wxID_ANY), wxEmptyString, wxDefaultPosition, wxDefaultSize, wxTE_PASSWORD );
 	proxyFlexGridSizer->Add( m_proxyPassword, 0, wxALL|wxEXPAND, 5 );
-
+	
 	m_proxyBoxSizer->Add( proxyFlexGridSizer, 0, wxEXPAND, 5 );
-
+	
 	m_proxyRestrictToUnsafeConnections = new wxCheckBox( this, wxID_ANY, wxT("Restrict to unsafe connections"), wxDefaultPosition, wxDefaultSize, 0 );
-
+	
 	m_proxyBoxSizer->Add( m_proxyRestrictToUnsafeConnections, 0, wxALL, 5 );
-
+	
 	mainSizer->Add( m_proxyBoxSizer, 1, wxALL|wxEXPAND, 2 );
-
+	
 	this->SetSizer( mainSizer );
 	this->Layout();
 	mainSizer->Fit( this );

@@ -64,7 +64,7 @@ void OptionsWizardPageWelcome::createLayout()
 	
 	m_welcomeLabel = new wxStaticText( mainPanel, static_cast<wxWindowID>(wxID_ANY), wxT("Welcome"), wxDefaultPosition, wxDefaultSize, 0 );
 	m_welcomeLabel->Wrap( -1 );
-	m_welcomeLabel->SetFont( wxFont( wxNORMAL_FONT->GetPointSize(), 77, 90, 92, false, wxEmptyString ) );
+	m_welcomeLabel->SetFont( wxFont( wxNORMAL_FONT->GetPointSize(), 70, 90, 92, false, wxEmptyString ) );
 	
 	rightSizer->Add( m_welcomeLabel, 0, wxALIGN_CENTER|wxALL, 5 );
 	

@@ -87,7 +87,7 @@ void OptionsWizardPageNetwork::createLayout()
 	
 	m_pageCaptionTitle = new wxStaticText( pageCaptionPanel, static_cast<wxWindowID>(wxID_ANY), wxT("General"), wxDefaultPosition, wxDefaultSize, 0 );
 	m_pageCaptionTitle->Wrap( -1 );
-	m_pageCaptionTitle->SetFont( wxFont( wxNORMAL_FONT->GetPointSize(), 77, 90, 92, false, wxEmptyString ) );
+	m_pageCaptionTitle->SetFont( wxFont( wxNORMAL_FONT->GetPointSize(), 70, 90, 92, false, wxEmptyString ) );
 	m_pageCaptionTitle->SetForegroundColour( wxColour( 0, 0, 0 ) );
 	
 	pageCaptionPanelIconSizer->Add( m_pageCaptionTitle, 0, wxALIGN_CENTER_VERTICAL|wxALL, 5 );

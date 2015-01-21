@@ -1886,7 +1886,7 @@
                     <property name="border">0</property>
                     <property name="flag">wxEXPAND | wxALL</property>
                     <property name="proportion">1</property>
-                    <object class="wxPanel" expanded="0">
+                    <object class="wxPanel" expanded="1">
                         <property name="bg"></property>
                         <property name="context_help"></property>
                         <property name="enabled">1</property>
@@ -2000,7 +2000,7 @@
                                             <property name="context_help"></property>
                                             <property name="enabled">1</property>
                                             <property name="fg"></property>
-                                            <property name="font">,90,92,-1,77,0</property>
+                                            <property name="font">,90,92,-1,70,0</property>
                                             <property name="hidden">0</property>
                                             <property name="id">static_cast&lt;wxWindowID&gt;(wxID_ANY)</property>
                                             <property name="label">Welcome</property>
@@ -2282,7 +2282,7 @@
                     <property name="border">0</property>
                     <property name="flag">wxEXPAND</property>
                     <property name="proportion">0</property>
-                    <object class="wxBoxSizer" expanded="0">
+                    <object class="wxBoxSizer" expanded="1">
                         <property name="minimum_size"></property>
                         <property name="name">pageCaptionSizer</property>
                         <property name="orient">wxVERTICAL</property>
@@ -2405,7 +2405,7 @@
                                                     <property name="context_help"></property>
                                                     <property name="enabled">1</property>
                                                     <property name="fg">0,0,0</property>
-                                                    <property name="font">,90,92,-1,77,0</property>
+                                                    <property name="font">,90,92,-1,70,0</property>
                                                     <property name="hidden">0</property>
                                                     <property name="id">static_cast&lt;wxWindowID&gt;(wxID_ANY)</property>
                                                     <property name="label">General</property>
@@ -2698,7 +2698,7 @@
                                 <property name="label">Enable autostartup</property>
                                 <property name="maximum_size"></property>
                                 <property name="minimum_size"></property>
-                                <property name="name">m_autoStartEnabled</property>
+                                <property name="name">m_startSystem</property>
                                 <property name="permission">protected</property>
                                 <property name="pos"></property>
                                 <property name="size"></property>
@@ -2750,7 +2750,111 @@
                                 <property name="label">Autostartup in backgroud</property>
                                 <property name="maximum_size"></property>
                                 <property name="minimum_size"></property>
-                                <property name="name">m_autoStartBackground</property>
+                                <property name="name">m_startMinimized</property>
+                                <property name="permission">protected</property>
+                                <property name="pos"></property>
+                                <property name="size"></property>
+                                <property name="style"></property>
+                                <property name="subclass"></property>
+                                <property name="tooltip"></property>
+                                <property name="window_extra_style"></property>
+                                <property name="window_name"></property>
+                                <property name="window_style"></property>
+                                <event name="OnChar"></event>
+                                <event name="OnCheckBox"></event>
+                                <event name="OnEnterWindow"></event>
+                                <event name="OnEraseBackground"></event>
+                                <event name="OnKeyDown"></event>
+                                <event name="OnKeyUp"></event>
+                                <event name="OnKillFocus"></event>
+                                <event name="OnLeaveWindow"></event>
+                                <event name="OnLeftDClick"></event>
+                                <event name="OnLeftDown"></event>
+                                <event name="OnLeftUp"></event>
+                                <event name="OnMiddleDClick"></event>
+                                <event name="OnMiddleDown"></event>
+                                <event name="OnMiddleUp"></event>
+                                <event name="OnMotion"></event>
+                                <event name="OnMouseEvents"></event>
+                                <event name="OnMouseWheel"></event>
+                                <event name="OnPaint"></event>
+                                <event name="OnRightDClick"></event>
+                                <event name="OnRightDown"></event>
+                                <event name="OnRightUp"></event>
+                                <event name="OnSetFocus"></event>
+                                <event name="OnSize"></event>
+                                <event name="OnUpdateUI"></event>
+                            </object>
+                        </object>
+                        <object class="sizeritem" expanded="1">
+                            <property name="border">5</property>
+                            <property name="flag">wxALL</property>
+                            <property name="proportion">0</property>
+                            <object class="wxCheckBox" expanded="1">
+                                <property name="bg"></property>
+                                <property name="checked">0</property>
+                                <property name="context_help"></property>
+                                <property name="enabled">1</property>
+                                <property name="fg"></property>
+                                <property name="font"></property>
+                                <property name="hidden">0</property>
+                                <property name="id">wxID_ANY</property>
+                                <property name="label">Associations protocols</property>
+                                <property name="maximum_size"></property>
+                                <property name="minimum_size"></property>
+                                <property name="name">m_associationsProtocols</property>
+                                <property name="permission">protected</property>
+                                <property name="pos"></property>
+                                <property name="size"></property>
+                                <property name="style"></property>
+                                <property name="subclass"></property>
+                                <property name="tooltip"></property>
+                                <property name="window_extra_style"></property>
+                                <property name="window_name"></property>
+                                <property name="window_style"></property>
+                                <event name="OnChar"></event>
+                                <event name="OnCheckBox"></event>
+                                <event name="OnEnterWindow"></event>
+                                <event name="OnEraseBackground"></event>
+                                <event name="OnKeyDown"></event>
+                                <event name="OnKeyUp"></event>
+                                <event name="OnKillFocus"></event>
+                                <event name="OnLeaveWindow"></event>
+                                <event name="OnLeftDClick"></event>
+                                <event name="OnLeftDown"></event>
+                                <event name="OnLeftUp"></event>
+                                <event name="OnMiddleDClick"></event>
+                                <event name="OnMiddleDown"></event>
+                                <event name="OnMiddleUp"></event>
+                                <event name="OnMotion"></event>
+                                <event name="OnMouseEvents"></event>
+                                <event name="OnMouseWheel"></event>
+                                <event name="OnPaint"></event>
+                                <event name="OnRightDClick"></event>
+                                <event name="OnRightDown"></event>
+                                <event name="OnRightUp"></event>
+                                <event name="OnSetFocus"></event>
+                                <event name="OnSize"></event>
+                                <event name="OnUpdateUI"></event>
+                            </object>
+                        </object>
+                        <object class="sizeritem" expanded="1">
+                            <property name="border">5</property>
+                            <property name="flag">wxALL</property>
+                            <property name="proportion">0</property>
+                            <object class="wxCheckBox" expanded="1">
+                                <property name="bg"></property>
+                                <property name="checked">0</property>
+                                <property name="context_help"></property>
+                                <property name="enabled">1</property>
+                                <property name="fg"></property>
+                                <property name="font"></property>
+                                <property name="hidden">0</property>
+                                <property name="id">wxID_ANY</property>
+                                <property name="label">Associations files</property>
+                                <property name="maximum_size"></property>
+                                <property name="minimum_size"></property>
+                                <property name="name">m_associationsFiles</property>
                                 <property name="permission">protected</property>
                                 <property name="pos"></property>
                                 <property name="size"></property>
@@ -2974,7 +3078,7 @@
                                                     <property name="context_help"></property>
                                                     <property name="enabled">1</property>
                                                     <property name="fg">0,0,0</property>
-                                                    <property name="font">,90,92,-1,77,0</property>
+                                                    <property name="font">,90,92,-1,70,0</property>
                                                     <property name="hidden">0</property>
                                                     <property name="id">static_cast&lt;wxWindowID&gt;(wxID_ANY)</property>
                                                     <property name="label">General</property>
@@ -4188,7 +4292,7 @@
                                                     <property name="context_help"></property>
                                                     <property name="enabled">1</property>
                                                     <property name="fg">0,0,0</property>
-                                                    <property name="font">,90,92,-1,77,0</property>
+                                                    <property name="font">,90,92,-1,70,0</property>
                                                     <property name="hidden">0</property>
                                                     <property name="id">static_cast&lt;wxWindowID&gt;(wxID_ANY)</property>
                                                     <property name="label">General</property>
@@ -5124,7 +5228,7 @@
                                             <property name="context_help"></property>
                                             <property name="enabled">1</property>
                                             <property name="fg"></property>
-                                            <property name="font">,90,92,-1,77,0</property>
+                                            <property name="font">,90,92,-1,70,0</property>
                                             <property name="hidden">0</property>
                                             <property name="id">static_cast&lt;wxWindowID&gt;(wxID_ANY)</property>
                                             <property name="label">End</property>

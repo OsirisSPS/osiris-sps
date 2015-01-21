@@ -63,6 +63,7 @@ private:
 	wxStaticText *m_pageCaptionTitle;
 	wxStaticText *m_pageCaptionDescription;
 	wxStaticBoxSizer *m_languageBoxSizer;
+	wxStaticBoxSizer *m_systemBoxSizer;
 	wxStaticText *m_languageLabel;
 	wxChoice *m_languageComboBox;
 	wxCheckBox *m_startSystem;

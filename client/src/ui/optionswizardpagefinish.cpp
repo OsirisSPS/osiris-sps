@@ -64,7 +64,7 @@ void OptionsWizardPageFinish::createLayout()
 	
 	m_finishLabel = new wxStaticText( mainPanel, static_cast<wxWindowID>(wxID_ANY), wxT("End"), wxDefaultPosition, wxDefaultSize, 0 );
 	m_finishLabel->Wrap( -1 );
-	m_finishLabel->SetFont( wxFont( wxNORMAL_FONT->GetPointSize(), 77, 90, 92, false, wxEmptyString ) );
+	m_finishLabel->SetFont( wxFont( wxNORMAL_FONT->GetPointSize(), 70, 90, 92, false, wxEmptyString ) );
 	
 	rightSizer->Add( m_finishLabel, 0, wxALIGN_CENTER|wxALL, 5 );
 	
