@@ -125,14 +125,40 @@ bool DataAccount::encodeKeys(const String &password, const Buffer &public_key, c
 
 bool DataAccount::decodePublicKey(const String &password, Buffer &public_key) const
 {
-	CryptKey passkey(password.to_utf8());
-	return CryptManager::instance()->aesDecrypt(passkey, this->public_key->getData(), this->public_key->getSize(), public_key);
+	{
+		CryptKey passkey;
+		passkey.generateKey(password.to_utf8());
+		if(CryptManager::instance()->aesDecrypt(passkey, this->public_key->getData(), this->public_key->getSize(), public_key))
+			return true;
+	}
+
+	{
+		CryptKey passkeyOld;
+		passkeyOld.generateKeyOld(password);
+		if(CryptManager::instance()->aesDecrypt(passkeyOld, this->public_key->getData(), this->public_key->getSize(), public_key))
+			return true;
+	}
+
+	return false;
 }
 
 bool DataAccount::decodePrivateKey(const String &password, Buffer &private_key) const
 {
-    CryptKey passkey(password.to_utf8());
-	return CryptManager::instance()->aesDecrypt(passkey, this->private_key->getData(), this->private_key->getSize(), private_key);
+	{
+		CryptKey passkey;
+		passkey.generateKey(password.to_utf8());
+		if(CryptManager::instance()->aesDecrypt(passkey, this->private_key->getData(), this->private_key->getSize(), private_key))
+			return true;
+	}
+
+	{
+		CryptKey passkeyOld;
+		passkeyOld.generateKeyOld(password);
+		if(CryptManager::instance()->aesDecrypt(passkeyOld, this->private_key->getData(), this->private_key->getSize(), private_key))
+			return true;
+	}
+
+	return false;
 }
 
 bool DataAccount::encodePasswordInSecretResponse(const String &password, const String &secret_response)
